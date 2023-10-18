@@ -116,7 +116,7 @@ void HarmonicFit(Data & d, const Settings & settings)
 		std::string frontLoad = "";
 		for (int i =0; i < dirSplit.size()-1; ++i)
 		{
-			frontLoad += dirSplit[i];
+			frontLoad += dirSplit[i] + "/";
 		}
 		JSL::mkdir(frontLoad);
 	}
