@@ -43,4 +43,6 @@ int main(int argc, char**argv)
 		Data d(settings.DataFile,settings.DataThinning,settings.TargetChromosome);
 		OutputPlot(d,settings);
 	}
+
+	Log("Deforest routine completed. Have a nice day.")
 }

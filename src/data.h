@@ -59,8 +59,10 @@ struct Data
 		chr_int normalGap;
 		chr_int prev = -1;
 		int spoofCount = 0;
+		long long int s = 0;
 		std::string currentFlag = "";
 		forLineVectorIn(target, ' ',
+			++s;
 			std::string chromFlag = FILE_LINE_VECTOR[0];
 			if (chromFlag == targetChromosome || targetChromosome == "all" )
 			{
@@ -69,6 +71,7 @@ struct Data
 					i = 0; //reset the thinning counter on a new chrom - prevents weird offsets
 					Chromosomes.push_back(Chromosome(chromFlag));
 					currentFlag = chromFlag;
+					Log("\tLoading " << chromFlag << " at file line " << s << "\n");
 					++chromID;
 				}
 

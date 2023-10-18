@@ -82,7 +82,7 @@ ShuffReturn OptimizeDistrubution(Data & d, int nWork)
 		}
 	}
 	if (nWork > 0)
-		Log("\tDistributed a core-deviance of " << var << std::endl;)
+		Log("\t\tDistributed a core-deviance of " << var << std::endl;)
 	return out;
 }
 
@@ -90,7 +90,7 @@ ShuffReturn OptimizeDistrubution(Data & d, int nWork)
 Distributor::Distributor(int nWorkers, Data & d) : DataCopy(d)
 {
 	if (nWorkers > 0)
-		Log("Setting up asynchronous pool"<<std::endl;);
+		Log("\tSetting up asynchronous pool"<<std::endl;);
 	WorkerCount = nWorkers;
 	
 	ChromAssignments.resize(nWorkers);
@@ -102,7 +102,7 @@ Distributor::Distributor(int nWorkers, Data & d) : DataCopy(d)
 	
 
 
-	Register = std::vector<int>(nWorkers,0);
+	Register = std::vector<int>(nWorkers,-2);
 	ebStart.resize(WorkerCount);
 	ebEnd.resize(WorkerCount);
 	for (int i = 0; i < WorkerCount; ++i)
@@ -110,6 +110,8 @@ Distributor::Distributor(int nWorkers, Data & d) : DataCopy(d)
 		Threads.push_back(std::thread(&Distributor::Worker,this,i));
 		// Threads[i].detach();
 	}
+	Gather();
+	Log("\t\tAll workers initialised & ready to work\n");
 }
 
 void Distributor::UpdateEB(ErroredBinomial * eb)
@@ -143,7 +145,8 @@ void Distributor::SetRegister(int value, int id)
 void Distributor::Worker(int id)
 {
 	mtx.lock();
-	Log("\tWorker " << id << " initialised " << std::endl;);
+	// Log("\t\tWorker " << id << " initialised " << std::endl;);
+	Register[id] = 0;
 	mtx.unlock();
 	bool WorkerActive = true;
 	while (WorkerActive)

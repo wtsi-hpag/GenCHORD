@@ -72,7 +72,7 @@ inline void TransitionFrame(Data & d, Settings & settings, std::vector<chr_int> 
 inline void OutputPlot(Data & d, Settings & settings)
 {
 	//write it to run from .tree file so can be run independently of the code which generates Transition objects -- makes it a bit roundabout, but will be more useful in the long run!
-
+	Log("\tBeginning Plot Routine\n");
 	std::string reconstructFile =settings.OutputName + ".tree";
 	double nu;
 	double sigma;	
@@ -159,6 +159,8 @@ inline void OutputPlot(Data & d, Settings & settings)
 
 	for (int i = 0; i < idx.size(); ++i)
 	{
+		Log("\t\tPlotting " << d.Chromosomes[trueChromIdx[i]].Name << "\n");
 		TransitionFrame(d,settings,idx[i],freq[i],trueChromIdx[i],settings.PlotOnly);
 	}
+	Log("\tPlotting Completed\n");
 }

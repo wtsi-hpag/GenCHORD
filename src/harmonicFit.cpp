@@ -24,6 +24,7 @@ Transitions AssignQs(double nu, Data & d, ErroredBinomial & EB,double alpha, int
 
 void HarmonicFit(Data & d, const Settings & settings)
 {
+	Log("Beginning search for harmonic parameters\n")
 	double sigmaMin = settings.sigmaMin;
 	double sigmaMax = settings.sigmaMax;
 	int sigmaResolution = settings.sigmaResolution;
@@ -50,7 +51,8 @@ void HarmonicFit(Data & d, const Settings & settings)
 	double deltaSig = (sigmaMax - sigmaMin)/(sigmaResolution -1);
 	double deltaNu = (nuMax - nuMin)/(nuResolution - 1);
 	JSL::ProgressBar<2> pb(sigmaResolution,nuResolution);
-
+	pb.SetName(std::vector<std::string>{"  ","  "});
+	Log("\tInitialising the Probability Array\n");
 	ErroredBinomial EB(d.maxK,res,bounder,gamma,qMax,qMax*nuMax,settings.ParallelWorkers);
 	std::vector<double> nus;
 	std::vector<std::vector<double>> searchVectors;
@@ -84,11 +86,12 @@ void HarmonicFit(Data & d, const Settings & settings)
 		}
 		searchVectors.push_back(probs);
 	}
-	
+	Log("\tHarmonic search complete\n\tIdeal parameters are nu=" << best.Nu << ", sigma=" << best.Sigma << "\nBeginning high-resolution search\n");
 	ErroredBinomial EB2(d.maxK,3*res,bounder,gamma,qMax,qMax*nuMax,settings.ParallelWorkers);
 	EB2.Populate(best.Sigma,dist);
+	Log("\tHigh-resolution probability grid generated\n")
 	best = AssignQs(best.Nu,d,EB2,alpha,L,1,dist);
-
+	Log("\tCompleted high-resolution search")
 	
 	// for (int c = 0; c < d.Chromosomes.size(); ++c)
 	// {
@@ -104,8 +107,7 @@ void HarmonicFit(Data & d, const Settings & settings)
 	// 	}
 	// }
 
-	Log("Found nu = " << best.Nu << "  " << best.Sigma << std::endl;)
-
+	Log("Saving files to output\n");
 	//check if output needs a dir creating
 	auto dirSplit = JSL::split(settings.OutputName,'/');
 	if (dirSplit.size() > 1)
@@ -154,4 +156,5 @@ void HarmonicFit(Data & d, const Settings & settings)
 	}
 	JSL::initialiseFile(treeFile);
 	JSL::writeStringToFile(treeFile,buffer.str());
+	Log("Harmonic Analysis Complete\n")
 }
