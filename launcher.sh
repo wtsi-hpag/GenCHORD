@@ -5,5 +5,5 @@ output=( "bc1/bc1-ccs" "hg002/hg002-ccs" "hg004/hg004-ccs" "oes103/oes103-10x" "
 for i in "${!files[@]}"; do
 	# echo ${files[i]} " goes to "  ${output[i]}
 	echo "BEGINNING LAUNCHER ON " ${files[i]}
-	echo ./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 8 -worker 20 -sigmaMin 5 -sigmaMax 25 -o Output/${output[i]} -L 1000000 -thin 25 -accelerate 50
+	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 8 -worker 20 -sigmaMin 5 -sigmaMax 25 -o Output/${output[i]} -L 1000000 -thin 25 -accelerate 50
 done
