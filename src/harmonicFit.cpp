@@ -56,6 +56,7 @@ void HarmonicFit(Data & d, const Settings & settings)
 	ErroredBinomial EB(d.maxK,res,bounder,gamma,qMax,qMax*nuMax,settings.ParallelWorkers);
 	std::vector<double> nus;
 	std::vector<std::vector<double>> searchVectors;
+	Log("\tBeginning the search\n");
 	for (int sigIdx = 0; sigIdx < sigmaResolution; ++sigIdx)
 	{
 		double sigma = (sigmaMin + deltaSig * sigIdx);
