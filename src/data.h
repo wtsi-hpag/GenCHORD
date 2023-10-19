@@ -154,6 +154,10 @@ struct Data
 		{
 			truncated += Chromosomes[i].GetMaxK(LudicrousValue);
 		}
+		if (truncated > 0)
+		{
+			maxK = LudicrousValue;
+		}
 		Log("\tI am asserting that any coverage above " << LudicrousValue << " is spurious. " << truncated << " Datapoints were affected\n")
 		Log("\tSpoofed " << spoofCount << " missing entries as gaps\n\tLoaded of " << j << " datapoints\n\tData has global coverage  "<< Mean << "±" << Deviation  << "\n\tMaximum coverage value is " << maxK << std::endl;);
 		
