@@ -31,6 +31,7 @@ struct Chromosome
 				maxK = Counts[i];
 			}
 		}
+		return truncated;
 	}
 	void Add(chr_int id, int count)
 	{
@@ -147,7 +148,7 @@ struct Data
 		Mean = accumulator/j;
 		Deviation = sqrt(accumulatorSq/j - Mean * Mean); 
 
-		int LudicrousValue = Mean + 10*Deviation;
+		int LudicrousValue = Mean + 20*Deviation;
 		int truncated = 0;
 		for (int i = 0; i < Chromosomes.size(); ++i)
 		{
