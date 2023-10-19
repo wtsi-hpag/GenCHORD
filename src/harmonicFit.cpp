@@ -35,7 +35,7 @@ void HarmonicFit(Data & d, const Settings & settings)
 	Ploidy = settings.Ploidy;
 	int accelerator = settings.Accelerator;
 	double gamma = settings.Gamma;
-	int bounder = std::max(50.0,std::ceil(5*gamma));
+	int bounder = std::max(100.0,std::ceil(5*gamma));
 	int qMax = settings.Qmax;
 	int L = settings.L;
 	int res = 0.25*qMax * nuMax;
