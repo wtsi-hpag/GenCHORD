@@ -87,6 +87,7 @@ void HarmonicFit(Data & d, const Settings & settings)
 		}
 		searchVectors.push_back(probs);
 	}
+	logPloidyPrior = 0;
 	Log("\tHarmonic search complete\n\tIdeal parameters are nu=" << best.Nu << ", sigma=" << best.Sigma << "\nBeginning high-resolution search\n");
 	ErroredBinomial EB2(d.maxK,3*res,bounder,gamma,qMax,qMax*nuMax,settings.ParallelWorkers);
 	EB2.Populate(best.Sigma,dist);
