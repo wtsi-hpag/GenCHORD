@@ -8,5 +8,5 @@ output=( "oes103/oes103-hic" )
 for i in "${!files[@]}"; do
 	# echo ${files[i]} " goes to "  ${output[i]}
 	echo "BEGINNING LAUNCHER ON " ${files[i]}
-	/deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 14 -worker 26 -sigmaMin 5 -sigmaMax 25 -o Output/${output[i]} -L 500000 -ploidyPrior 1 -gamma 10 -thin 100 -accelerate 5 -Qmax 6 -alpha 0.5 
+	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 14 -worker 26 -sigmaMin 5 -sigmaMax 25 -o Output/${output[i]} -L 500000 -ploidyPrior 1 -gamma 10 -thin 100 -accelerate 5 -Qmax 6 -alpha 0.5 
 done
