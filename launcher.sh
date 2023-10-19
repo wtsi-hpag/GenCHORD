@@ -5,12 +5,9 @@
 
 files=(  "OES148-T2T-HiC" "OES148-T2T-CCS" )
 output=( "oes148-hic" "oes148-ccs" )
+thinning=( 0.99 0.1 )
 for i in "${!files[@]}"; do
 	# echo ${files[i]} " goes to "  ${output[i]}
 	echo "BEGINNING LAUNCHER ON " ${files[i]}
-	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 25 -o Output/noThin/${output[i]} -L 1000000 -gamma 5 -thin 200 -accelerate 50 -Qmax 6 -alpha 0.1  -smooth 0
-	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 25 -o Output/midThin/${output[i]} -L 1000000 -gamma 5 -thin 200 -accelerate 50 -Qmax 6 -alpha 0.1  -smooth 0.5
-	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 25 -o Output/bigThin/${output[i]} -L 1000000 -gamma 5 -thin 200 -accelerate 50 -Qmax 6 -alpha 0.1  -smooth 0.9
-	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 25 -o Output/sillyThin/${output[i]} -L 1000000 -gamma 5 -thin 200 -accelerate 50 -Qmax 6 -alpha 0.1  -smooth 0.99
-	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 25 -o Output/ludicrousThin/${output[i]} -L 1000000 -gamma 5 -thin 200 -accelerate 50 -Qmax 6 -alpha 0.1  -smooth 0.999
+	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 30 -o Output/noThin/${output[i]} -L 1000000 -gamma 5 -thin 1 -accelerate 50 -Qmax 6 -alpha 0.01  -smooth ${thinning[i]}
 done
