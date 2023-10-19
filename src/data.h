@@ -83,6 +83,7 @@ struct Data
 		std::string currentFlag = "";
 		double moving = 0;
 		double memory = smoothing; 
+		bool first = true;
 		forLineVectorIn(target, ' ',
 			++s;
 			std::string chromFlag = FILE_LINE_VECTOR[0];
@@ -94,6 +95,7 @@ struct Data
 					Chromosomes.push_back(Chromosome(chromFlag));
 					currentFlag = chromFlag;
 					Log("\tLoading " << chromFlag << " at file line " << s << "\n");
+					first = true;
 					++chromID;
 				}
 
@@ -113,13 +115,13 @@ struct Data
 					gap = id - prev;
 					if (gap != normalGap)
 					{
-						moving = 0;
 						int spoofer = prev+normalGap;
 						while (spoofer < id)
 						{
+							moving *= memory;
 							if (i % thinning == 0 )
 							{
-								Chromosomes[chromID].Add(spoofer,0);
+								Chromosomes[chromID].Add(spoofer,moving);
 								++spoofCount;
 								++j;
 							}
@@ -134,7 +136,16 @@ struct Data
 				{
 					
 					int count = std::stoi(FILE_LINE_VECTOR[2]);
-					moving = memory * moving + (1.0 - memory) * count;
+					
+					if (first)
+					{
+						moving = count;
+						first = false;
+					}
+					else
+					{
+						moving = memory * moving + (1.0 - memory) * count;
+					}
 					accumulator += count;
 					accumulatorSq += count * count;
 
