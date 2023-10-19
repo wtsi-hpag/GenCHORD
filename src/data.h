@@ -151,9 +151,9 @@ struct Data
 
 					Chromosomes[chromID].Add(id,round(moving));
 					++j;
-					if (count > maxK)
+					if (round(moving) > maxK)
 					{
-						maxK = count;
+						maxK = round(moving);
 					}
 				}
 				++i;
