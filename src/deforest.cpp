@@ -44,5 +44,5 @@ int main(int argc, char**argv)
 		OutputPlot(d,settings);
 	}
 
-	Log("Deforest routine completed. Have a nice day.")
+	Log("Deforest routine completed. Have a nice day.\n\n")
 }

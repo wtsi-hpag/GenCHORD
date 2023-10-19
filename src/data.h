@@ -12,9 +12,20 @@ struct Chromosome
 	std::vector<chr_int> Idx;
 	std::vector<int> Counts;
 	int maxIdx = 0;
+	int maxK;
 	Chromosome(){};
 	Chromosome(std::string name){Name = name;}
 
+	void GetMaxK()
+	{
+		for (int i = 0; i < Counts.size(); ++i)
+		{
+			if (i == 0 || Counts[i] > maxK)
+			{
+				maxK = Counts[i];
+			}
+		}
+	}
 	void Add(chr_int id, int count)
 	{
 		Idx.push_back(id);
@@ -47,13 +58,15 @@ struct Data
 	std::vector<Chromosome> Chromosomes;
 	int maxK=0;
 	double Mean;
+	double Deviation;
 	Data(std::string target, int thinning, std::string targetChromosome)
 	{
 		Log("Loading data from " << target  << std::endl)
 		
 		long long int i = 0; //reasonable to assume total genome length exceeds INT_MAX, even if chr_int_max does not
 		long long int j = 0;
-		int accumulator = 0;
+		double accumulator = 0;
+		double accumulatorSq = 0;
 		int chromID = -1;
 		bool detectingNormalGap = true;
 		chr_int normalGap;
@@ -112,6 +125,7 @@ struct Data
 					
 					int count = std::stoi(FILE_LINE_VECTOR[2]);
 					accumulator += count;
+					accumulatorSq += count * count;
 					Chromosomes[chromID].Add(id,count);
 					++j;
 					if (count > maxK)
@@ -123,8 +137,14 @@ struct Data
 			}
 		
 		);
-		Mean = (double)accumulator/j;
-		Log("\tCompleted loading of " << j << " entries (" << spoofCount << " spoofed due to gaps)"  << std::endl;);
+		for (int i = 0; i < Chromosomes.size(); ++i)
+		{
+			Chromosomes[i].GetMaxK();
+		}
+		Mean = accumulator/j;
+		Deviation = sqrt(accumulatorSq/j - Mean * Mean); 
+
+		Log("\tSpoofed " << spoofCount << " missing entries as gaps\n\tLoaded of " << j << " datapoints\n\tData has global coverage  "<< Mean << "±" << Deviation  << "\n\tMaximum coverage value is " << maxK << std::endl;);
 		
 	}
 };

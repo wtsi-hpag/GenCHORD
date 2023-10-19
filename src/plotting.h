@@ -3,6 +3,7 @@
 #include "data.h"
 #include "Transitions.h"
 #include "settings.h"
+
 extern int nPlot;
 inline void basicPlot(JSL::gnuplot & gp,Data & d,int chrom)
 {
@@ -60,7 +61,10 @@ inline void TransitionFrame(Data & d, Settings & settings, std::vector<chr_int> 
 	gp.SetXLabel("Chromosome Index (bp)");
 	gp.SetYLabel("Coverage");
 	gp.SetLegend(true);
-
+	int maxVal = std::min((int)(d.Mean + 3*d.Deviation),d.Chromosomes[c].maxK);
+	auto it = max_element(std::begin(freq), std::end(freq)); 
+	maxVal = std::max(maxVal,(int)(*it*1.2));
+	gp.SetYRange(0,maxVal);
 	if (!instantPlot)
 	{
 		gp.SetOutput(outname);
