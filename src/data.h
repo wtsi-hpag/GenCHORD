@@ -16,10 +16,16 @@ struct Chromosome
 	Chromosome(){};
 	Chromosome(std::string name){Name = name;}
 
-	void GetMaxK()
+	int GetMaxK(int maxVal)
 	{
+		int truncated = 0;
 		for (int i = 0; i < Counts.size(); ++i)
 		{
+			if (Counts[i] > maxVal)
+			{
+				Counts[i] = maxVal;
+				++truncated;
+			}
 			if (i == 0 || Counts[i] > maxK)
 			{
 				maxK = Counts[i];
@@ -137,13 +143,17 @@ struct Data
 			}
 		
 		);
-		for (int i = 0; i < Chromosomes.size(); ++i)
-		{
-			Chromosomes[i].GetMaxK();
-		}
+		
 		Mean = accumulator/j;
 		Deviation = sqrt(accumulatorSq/j - Mean * Mean); 
 
+		int LudicrousValue = Mean + 10*Deviation;
+		int truncated = 0;
+		for (int i = 0; i < Chromosomes.size(); ++i)
+		{
+			truncated += Chromosomes[i].GetMaxK(LudicrousValue);
+		}
+		Log("\tI am asserting that any coverage above " << LudicrousValue << " is spurious. " << truncated << " Datapoints were affected\n")
 		Log("\tSpoofed " << spoofCount << " missing entries as gaps\n\tLoaded of " << j << " datapoints\n\tData has global coverage  "<< Mean << "±" << Deviation  << "\n\tMaximum coverage value is " << maxK << std::endl;);
 		
 	}
