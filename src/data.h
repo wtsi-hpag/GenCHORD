@@ -66,7 +66,7 @@ struct Data
 	int maxK=0;
 	double Mean;
 	double Deviation;
-	Data(std::string target, int thinning, std::string targetChromosome)
+	Data(std::string target, int thinning, std::string targetChromosome,double smoothing)
 	{
 		Log("Loading data from " << target  << std::endl)
 		
@@ -81,6 +81,8 @@ struct Data
 		int spoofCount = 0;
 		long long int s = 0;
 		std::string currentFlag = "";
+		double moving = 0;
+		double memory = smoothing; 
 		forLineVectorIn(target, ' ',
 			++s;
 			std::string chromFlag = FILE_LINE_VECTOR[0];
@@ -111,6 +113,7 @@ struct Data
 					gap = id - prev;
 					if (gap != normalGap)
 					{
+						moving = 0;
 						int spoofer = prev+normalGap;
 						while (spoofer < id)
 						{
@@ -131,9 +134,11 @@ struct Data
 				{
 					
 					int count = std::stoi(FILE_LINE_VECTOR[2]);
+					moving = memory * moving + (1.0 - memory) * count;
 					accumulator += count;
 					accumulatorSq += count * count;
-					Chromosomes[chromID].Add(id,count);
+
+					Chromosomes[chromID].Add(id,round(moving));
 					++j;
 					if (count > maxK)
 					{

@@ -4,9 +4,9 @@
 # output=( "bc1/bc1-ccs" "hg002/hg002-ccs" "hg004/hg004-ccs" "oes103/oes103-10x" "oes103/oes103-ccs" "oes117/oes117-ccs" "oes143/oes143-ccs" "oes148/oes148-ccs" "oes152/oes152-ccs" "oes152/oes152-ont" "hg003/hg003-ccs" "ht115/ht115-ccs" "oes103/oes103-blood" "oes103/oes103-hic" "oes117/oes117-hic" "oes143/oes143-hic" "oes148/oes148-hic" "oes152/oes152-hic" )
 
 files=(  "OES103-T2T-HiC" "OES103-T2T-CCS" )
-output=( "oes103/oes103-hic" "oes103/oes103-ccs" )
+output=( "oes103/oes148-hic" "oes103/oes148-ccs" )
 for i in "${!files[@]}"; do
 	# echo ${files[i]} " goes to "  ${output[i]}
 	echo "BEGINNING LAUNCHER ON " ${files[i]}
-	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 14 -worker 26 -sigmaMin 5 -sigmaMax 25 -o Output/${output[i]} -L 500000 -gamma 10 -thin 100 -accelerate 5 -Qmax 6 -alpha 0.1 
+	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 25 -o Output/${output[i]} -L 500000 -gamma 10 -thin 100 -accelerate 5 -Qmax 6 -alpha 0.1  -smooth 0.5
 done

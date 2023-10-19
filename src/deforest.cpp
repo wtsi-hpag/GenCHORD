@@ -33,14 +33,14 @@ int main(int argc, char**argv)
 	
 	if (!settings.PlotOnly)
 	{
-		Data d(settings.DataFile,settings.DataThinning,settings.TargetChromosome);
+		Data d(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
 		HarmonicFit(d,settings);
 		OutputPlot(d,settings);
 	}
 	else
 	{
 		recoverMeta(settings);
-		Data d(settings.DataFile,settings.DataThinning,settings.TargetChromosome);
+		Data d(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
 		OutputPlot(d,settings);
 	}
 

@@ -23,7 +23,7 @@ class Settings
 		int DataThinning;
 		bool Quiet;
 		bool PlotOnly;
-
+		double MemorySmoothing;
 		int ParallelWorkers;
 		Settings(){};
 
@@ -47,6 +47,8 @@ class Settings
 			OutputName = JSL::Argument<std::string>("output","o",argc,argv);
 			ParallelWorkers = JSL::Argument<int>(0,"worker",argc,argv);
 			PlotOnly = JSL::Toggle(false,"plot",argc,argv);
+
+			MemorySmoothing = JSL::Argument<double>(0,"smooth",argc,argv);
 		}
 		void Initialise(std::string configFile)
 		{

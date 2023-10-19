@@ -26,7 +26,7 @@ inline void TransitionPlot(JSL::gnuplot & gp,std::vector<chr_int> idx, std::vect
 	}
 	remap_idx.push_back(maxIdx);
 	remap_freq.push_back(prev);
-	gp.Plot(remap_idx,remap_freq,JSL::LineProperties::Legend("Treefit"));
+	gp.Plot(remap_idx,remap_freq,JSL::LineProperties::Legend("Treefit"),JSL::LineProperties::PenSize(3));
 }
 
 inline void recoverMeta(Settings & settings)
