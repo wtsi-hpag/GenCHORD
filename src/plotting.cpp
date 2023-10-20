@@ -144,7 +144,6 @@ TreeMeta::TreeMeta(Settings & settings)
 				remap = j;
 			}
 		}
-		std::cout << remap << std::endl;
 		if (remap == -1)
 		{
 			std::cout << " I seem to have encountered an error mapping Tree files to the data" << std::endl;
@@ -196,7 +195,6 @@ void ComparisonPlots(Settings & settings)
 		{
 			frontLoad += dirSplit[i] + "/";
 		}
-		std::cout << "makdir " << frontLoad << std::endl;
 		JSL::mkdir(frontLoad);
 	}
 
@@ -217,7 +215,6 @@ void ComparisonPlots(Settings & settings)
 		for (int i = nid; i < FILE_LINE_VECTOR.size(); ++i)
 		{
 			auto file = FILE_LINE_VECTOR[i];
-			std::cout << "\t" << file << std::endl;
 			settings.DataFile = file;
 			TreeMeta T(settings);
 			if (T.Name.size() > gps.size())
