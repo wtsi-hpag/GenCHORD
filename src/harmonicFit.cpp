@@ -148,13 +148,17 @@ void HarmonicFit(Data & d, const Settings & settings)
 	{
 		buffer << params[i] << " " << vals[i] << "\n";
 	}
+	
 	buffer << "===================\n";
 	for (int c = 0; c < best.List.size(); ++c)
 	{
+		double prev = 0;
 		for (int i = 0; i < best.List[c].Index.size(); ++i)
 		{
-			buffer << d.Chromosomes[c].Name << " " << best.List[c].Index[i] << " " << best.List[c].Resonance[i] << "\n";
+			prev = best.List[c].Resonance[i];
+			buffer << d.Chromosomes[c].Name << " " << best.List[c].Index[i] << " " << prev << "\n";
 		}
+		buffer << d.Chromosomes[c].Name << " " << d.Chromosomes[c].maxIdx << " " << prev << "\n";
 	}
 	JSL::initialiseFile(treeFile);
 	JSL::writeStringToFile(treeFile,buffer.str());

@@ -170,7 +170,7 @@ struct Data
 		{
 			truncated += Chromosomes[i].GetMaxK(LudicrousValue);
 		}
-		if (truncated > 0)
+		if (maxK > LudicrousValue)
 		{
 			maxK = LudicrousValue;
 		}

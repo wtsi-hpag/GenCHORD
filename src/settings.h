@@ -23,6 +23,7 @@ class Settings
 		int DataThinning;
 		bool Quiet;
 		bool PlotOnly;
+		std::string ComparePlot;
 		double MemorySmoothing;
 		int ParallelWorkers;
 		Settings(){};
@@ -47,6 +48,7 @@ class Settings
 			OutputName = JSL::Argument<std::string>("output","o",argc,argv);
 			ParallelWorkers = JSL::Argument<int>(0,"worker",argc,argv);
 			PlotOnly = JSL::Toggle(false,"plot",argc,argv);
+			ComparePlot = JSL::Argument<std::string>("__none__","compare",argc,argv);
 
 			MemorySmoothing = JSL::Argument<double>(0,"smooth",argc,argv);
 		}

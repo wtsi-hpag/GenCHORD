@@ -30,18 +30,23 @@ int main(int argc, char**argv)
 	Log("==========================================\n\tCoverage Deforesting\n==========================================" << std::endl);
 	
 
-	
 	if (!settings.PlotOnly)
 	{
 		Data d(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
 		HarmonicFit(d,settings);
-		OutputPlot(d,settings);
+		settings.DataFile = settings.OutputName;
+		OutputPlot(settings);
 	}
 	else
 	{
-		recoverMeta(settings);
-		Data d(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
-		OutputPlot(d,settings);
+		if (settings.ComparePlot == "__none__")
+		{
+			OutputPlot(settings);
+		}
+		else
+		{
+			ComparisonPlots(settings);
+		}
 	}
 
 	Log("Deforest routine completed. Have a nice day.\n\n")
