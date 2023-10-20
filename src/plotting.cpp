@@ -164,10 +164,23 @@ TreeMeta::TreeMeta(Settings & settings)
 	Log("\tPlotting Completed\n");
 }
 
-void TreePlot(JSL::gnuplot & gp,TreeMeta T,int j)
+void TreePlot(JSL::gnuplot & gp,TreeMeta T,int j,std::vector<int> & maxQ)
 {
 
 	// for (int T.Idx)
+
+	auto d = std::max_element(T.Frequency[j].begin(),T.Frequency[j].end());
+	int mQ = round(*d/T.Nu);
+
+	if (j >= maxQ.size())
+	{
+		maxQ.resize(j+1,0);
+	}
+	if (mQ > maxQ[j])
+	{
+		maxQ[j] = mQ;
+
+	}
 	TransitionPlot(gp,T.Idx[j],T.Frequency[j],T.Nu,T.DataFile);
 
 
@@ -175,6 +188,19 @@ void TreePlot(JSL::gnuplot & gp,TreeMeta T,int j)
 
 void ComparisonPlots(Settings & settings)
 {
+	auto dirSplit = JSL::split(settings.OutputName,'/');
+	std::string frontLoad = "";
+	if (dirSplit.size() > 1)
+	{
+		for (int i =0; i < dirSplit.size(); ++i)
+		{
+			frontLoad += dirSplit[i] + "/";
+		}
+		std::cout << "makdir " << frontLoad << std::endl;
+		JSL::mkdir(frontLoad);
+	}
+
+
 	forLineVectorIn(settings.ComparePlot,' ',
 		std::string title = "";
 		auto first = FILE_LINE_VECTOR[0];
@@ -182,26 +208,30 @@ void ComparisonPlots(Settings & settings)
 		if (first.substr(0,1)=="#")
 		{
 			nid = 1;
-			title = first.substr(1,std::string::npos) + " - ";
+			title = first.substr(1,std::string::npos) + "-";
 		}
 		settings.DataFile = FILE_LINE_VECTOR[nid];
 		std::vector<JSL::gnuplot> gps;
-		
+		std::vector<std::string> names;
+		std::vector<int> maxQ(FILE_LINE_VECTOR.size()+2,0);
 		for (int i = nid; i < FILE_LINE_VECTOR.size(); ++i)
 		{
 			auto file = FILE_LINE_VECTOR[i];
+			std::cout << "\t" << file << std::endl;
 			settings.DataFile = file;
 			TreeMeta T(settings);
 			if (T.Name.size() > gps.size())
 			{
 				gps.resize(T.Name.size());
 			}
-
-			for (int j = 0; j < gps.size(); ++j)
+			
+			names = T.Name;
+			for (int j = 0; j < T.Name.size(); ++j)
 			{
 				// gps[j].Plot(T,j);
-				TreePlot(gps[j],T,j);
+				TreePlot(gps[j],T,j,maxQ);
 				gps[j].SetTitle(title + T.Name[j]);
+				
 			}
 		}
 
@@ -210,7 +240,13 @@ void ComparisonPlots(Settings & settings)
 		{
 			gps[i].SetXLabel("Chromosome Index (bp)");
 			gps[i].SetYLabel("Harmonic");
+			std::string n = frontLoad + title+names[i] +".png";
+			gps[i].SetOutput(n);
+			gps[i].SetTerminal("png");
 			gps[i].SetLegend(true);
+			gps[i].SetYRange(0,maxQ[i]+0.5);
+			// std::cout << "Saving to " << n << "  " << maxQ[i] << "  " << maxQ.size() << "  " << i << std::endl;
+			
 			gps[i].Show();
 		}
 
