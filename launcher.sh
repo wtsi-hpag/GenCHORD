@@ -9,6 +9,6 @@ thinning=( 0.1 0.1 0.1 0.7 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.95 0.95 0.95 0.
 for i in "${!files[@]}"; do
 	# echo ${files[i]} " goes to "  ${output[i]}
 	# echo "BEGINNING LAUNCHER ON " ${files[i]} "  "${thinning[i]}
-	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 30 -o Output/smallBreak/${output[i]} -L 250000 -gamma 8 -thin 10 -accelerate 50 -Qmax 6 -alpha 0.01  -smooth ${thinning[i]}
-	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 30 -o Output/bigBreak/${output[i]} -L 1000000 -gamma 8 -thin 10 -accelerate 50 -Qmax 6 -alpha 0.01  -smooth ${thinning[i]}
+	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 30 -o Output/smallBreak/${output[i]} -L 250000 -gamma 3 -thin 10 -accelerate 50 -Qmax 14 -alpha 0.01  -smooth ${thinning[i]}
+	./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 26 -sigmaMin 5 -sigmaMax 30 -o Output/bigBreak/${output[i]} -L 1000000 -gamma 3 -thin 10 -accelerate 50 -Qmax 14 -alpha 0.01  -smooth ${thinning[i]}
 done

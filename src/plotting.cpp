@@ -226,7 +226,7 @@ void ComparisonPlots(Settings & settings)
 			for (int j = 0; j < T.Name.size(); ++j)
 			{
 				// gps[j].Plot(T,j);
-				TreePlot(gps[j],T,j,maxQ);
+				// TreePlot(gps[j],T,j,maxQ);
 				gps[j].SetTitle(title + T.Name[j]);
 				
 			}
