@@ -101,6 +101,9 @@ TreeMeta::TreeMeta(Settings & settings)
 	);
 }
 
+
+
+
  void TransitionFrame(Data & d, Settings & settings, std::vector<chr_int> idx, std::vector<double> freq, int c,bool instantPlot)
 {
 	JSL::gnuplot gp;
@@ -163,7 +166,25 @@ TreeMeta::TreeMeta(Settings & settings)
 	Log("\tPlotting Completed\n");
 }
 
-void TreePlot(JSL::gnuplot & gp,TreeMeta T,int j,std::vector<int> & maxQ)
+
+ void TransitionPtrPlot(std::unique_ptr<JSL::gnuplot> & gp,std::vector<chr_int> idx, std::vector<double> freq,double nuCorrect,std::string leg)
+{
+	std::vector<chr_int> remap_idx;
+	std::vector<double> remap_freq;
+	double prev = freq[0]/nuCorrect;
+	for (int i = 0; i < idx.size(); ++i)
+	{
+		remap_idx.push_back(idx[i]);
+		remap_idx.push_back(idx[i]);
+		remap_freq.push_back(prev);
+		prev = freq[i]/nuCorrect;
+		remap_freq.push_back(prev);
+	}
+
+	gp->Plot(remap_idx,remap_freq,JSL::LineProperties::Legend(leg),JSL::LineProperties::PenSize(2));
+}
+
+void TreePlot(std::unique_ptr<JSL::gnuplot> & gp,TreeMeta T,int j,std::vector<int> & maxQ)
 {
 
 	// for (int T.Idx)
@@ -180,7 +201,7 @@ void TreePlot(JSL::gnuplot & gp,TreeMeta T,int j,std::vector<int> & maxQ)
 		maxQ[j] = mQ;
 
 	}
-	TransitionPlot(gp,T.Idx[j],T.Frequency[j],T.Nu,T.DataFile);
+	TransitionPtrPlot(gp,T.Idx[j],T.Frequency[j],T.Nu,T.DataFile);
 
 
 }
@@ -197,19 +218,37 @@ void ComparisonPlots(Settings & settings)
 		}
 		JSL::mkdir(frontLoad);
 	}
-
-
+	
+	int count  =0;
 	forLineVectorIn(settings.ComparePlot,' ',
+		std::string saveDir = frontLoad;
+		++count;
 		std::string title = "";
+		std::string subdir = "";
 		auto first = FILE_LINE_VECTOR[0];
 		int nid = 0;
 		if (first.substr(0,1)=="#")
 		{
 			nid = 1;
 			title = first.substr(1,std::string::npos) + "-";
+			Log("Comparison: " << title << std::endl;);
+
+			auto second = FILE_LINE_VECTOR[nid];
+			if (second.substr(0,1)=="#")
+			{
+				subdir = second.substr(1,std::string::npos);
+				Log("\tSaving to subdir '" << subdir << "' within output directory\n");
+				++nid;
+				saveDir += "/" + subdir +"/";
+				JSL::mkdir(saveDir); 
+			}
+		}
+		else
+		{
+			Log("Comparison " << count << std::endl;);
 		}
 		settings.DataFile = FILE_LINE_VECTOR[nid];
-		std::vector<JSL::gnuplot> gps;
+		std::vector<std::unique_ptr<JSL::gnuplot>> gps;
 		std::vector<std::string> names;
 		std::vector<int> maxQ(FILE_LINE_VECTOR.size()+2,0);
 		for (int i = nid; i < FILE_LINE_VECTOR.size(); ++i)
@@ -217,36 +256,37 @@ void ComparisonPlots(Settings & settings)
 			auto file = FILE_LINE_VECTOR[i];
 			settings.DataFile = file;
 			TreeMeta T(settings);
-			if (T.Name.size() > gps.size())
+			Log("\tPlotting from " << file << std::endl;);
+			while (T.Name.size() > gps.size())
 			{
-				gps.resize(T.Name.size());
+				// JSL::gnuplot gp;
+				gps.push_back(std::make_unique<JSL::gnuplot>());
+				// gps.resize(T.Name.size());
 			}
 			
 			names = T.Name;
 			for (int j = 0; j < T.Name.size(); ++j)
 			{
 				// gps[j].Plot(T,j);
-				// TreePlot(gps[j],T,j,maxQ);
-				gps[j].SetTitle(title + T.Name[j]);
+				TreePlot(gps[j],T,j,maxQ);
+				gps[j]->SetTitle(title + T.Name[j]);
 				
 			}
 		}
 
-
 		for (int i = 0; i < gps.size(); ++i)
 		{
-			gps[i].SetXLabel("Chromosome Index (bp)");
-			gps[i].SetYLabel("Harmonic");
-			std::string n = frontLoad + title+names[i] +".png";
-			gps[i].SetOutput(n);
-			gps[i].SetTerminal("png");
-			gps[i].SetLegend(true);
-			gps[i].SetYRange(0,maxQ[i]+0.5);
+			gps[i]->SetXLabel("Chromosome Index (bp)");
+			gps[i]->SetYLabel("Harmonic");
+			std::string n = saveDir + title+names[i] +".png";
+			gps[i]->SetOutput(n);
+			gps[i]->SetTerminal("png");
+			gps[i]->SetLegend(true);
+			gps[i]->SetYRange(0,maxQ[i]+0.5);
 			// std::cout << "Saving to " << n << "  " << maxQ[i] << "  " << maxQ.size() << "  " << i << std::endl;
 			
-			gps[i].Show();
+			gps[i]->Show();
 		}
 
 	);
-
 }
