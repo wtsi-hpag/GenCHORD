@@ -31,6 +31,6 @@ class TreeMeta
 
 void TransitionFrame(Data & d, Settings & settings, std::vector<chr_int> idx, std::vector<double> freq, int c,bool instantPlot);
 
-void OutputPlot(Settings & settings);
+void OutputPlot(Data & d,Settings & settings);
 
 void ComparisonPlots(Settings & settings);

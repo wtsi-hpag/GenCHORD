@@ -29,19 +29,19 @@ int main(int argc, char**argv)
 	globalVerbose = !settings.Quiet;
 	Log("==========================================\n\tCoverage Deforesting\n==========================================" << std::endl);
 	
-
+	Data d;
 	if (!settings.PlotOnly)
 	{
-		Data d(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
+		d = Data(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
 		HarmonicFit(d,settings);
 		settings.DataFile = settings.OutputName;
-		OutputPlot(settings);
+		OutputPlot(d,settings);
 	}
 	else
 	{
 		if (settings.ComparePlot == "__none__")
 		{
-			OutputPlot(settings);
+			OutputPlot(d,settings);
 		}
 		else
 		{

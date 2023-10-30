@@ -11,6 +11,10 @@ class Settings
 		double sigmaMax;
 		int sigmaResolution;
 		int nuResolution;
+
+		double gammaMin;
+		double gammaMax;
+		int gammaResolution;
 		int Accelerator;
 		double Gamma;
 		int Qmax;
@@ -36,8 +40,11 @@ class Settings
 			sigmaMax = JSL::Argument<double>(10,"sigmaMax",argc,argv);
 			sigmaResolution= JSL::Argument<int>(3,"sigmaResolution",argc,argv);
 			nuResolution = JSL::Argument<int>(100,"nuResolution",argc,argv);
+			gammaMin =JSL::Argument<double>(0.1,"gammaMin",argc,argv);
+			gammaMax = JSL::Argument<double>(10,"gammaMax",argc,argv);
+			gammaResolution= JSL::Argument<int>(5,"gammaResolution",argc,argv);
 			Accelerator = JSL::Argument<int>(1,"accelerate",argc,argv);
-			Gamma =  JSL::Argument<double>(5,"gamma",argc,argv);
+			Gamma =  JSL::Argument<double>(-1,"gamma",argc,argv);
 			Qmax = JSL::Argument<int>(10,"Qmax",argc,argv);
 			L = JSL::Argument<int>(100000,"L",argc,argv);
 			alpha = JSL::Argument<double>(1e-2,"alpha",argc,argv);

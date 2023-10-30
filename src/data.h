@@ -66,8 +66,14 @@ struct Data
 	int maxK=0;
 	double Mean;
 	double Deviation;
+	bool Loaded;
+	Data()
+	{	
+		Loaded = false;
+	}
 	Data(std::string target, int thinning, std::string targetChromosome,double smoothing)
 	{
+		Loaded = true;
 		Log("Loading data from " << target  << std::endl)
 		
 		long long int i = 0; //reasonable to assume total genome length exceeds INT_MAX, even if chr_int_max does not

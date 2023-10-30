@@ -45,30 +45,32 @@ void NegativeBinomial::Populate(double sigma)
 }
 
 
-TruncatedGaussian::TruncatedGaussian(int kMax, int bounder, double gamma)
+TruncatedGaussian::TruncatedGaussian(int kMax, int bounder)
 {
 	Truncator = bounder;
-
+	KMax = kMax;
 	PureData.resize(kMax+1,std::vector<double>(kMax + bounder+2,0.0));
-
-	for (int kobs = 0; kobs <= kMax; ++kobs)
+}
+void TruncatedGaussian::Populate(double gamma)
+{
+	for (int kobs = 0; kobs <= KMax; ++kobs)
 	{
-		double s = -99999999;
-		for (int k = std::max(0,kobs-bounder); k <= kMax + bounder; ++k)
+		double s = -999999999;
+		for (int k = std::max(0,kobs-Truncator); k <= KMax + Truncator; ++k)
 		{
 			double d = (k - kobs)/gamma;
 			double v = - 0.5 * d * d;
 			PureData[kobs][k] = v;
 			s = ale(s,v);
 		}
-		for (int k = std::max(0,kobs-bounder); k <= kMax + bounder; ++k)
+		for (int k = std::max(0,kobs-Truncator); k <= KMax + Truncator; ++k)
 		{
 			PureData[kobs][k] -= s;
 		}
 	}
 }
 
-ErroredBinomial::ErroredBinomial(int kMax, int res, int bounder, double gamma, int q,double muMax, int nWork) : NB(kMax+bounder,res,muMax), TG(kMax,bounder,gamma), CurrentBracket(q), Resolution(res), qMax(q)
+ErroredBinomial::ErroredBinomial(int kMax, int res, int bounder, int q,double muMax, int nWork) : NB(kMax+bounder,res,muMax), TG(kMax,bounder), CurrentBracket(q), Resolution(res), qMax(q)
 {
 	nWorkers = nWork;
 	Data.resize(kMax+1,std::vector<double>(res,0.0));
@@ -124,9 +126,10 @@ void ErroredBinomial::PopulateChunk(int resMin, int resMax)
 		}
 	}
 }
-void ErroredBinomial::Populate(double sigma, Distributor & dist)
+void ErroredBinomial::Populate(double gamma,double sigma, Distributor & dist)
 {
 	Sigma = sigma;
+	TG.Populate(gamma);
 	NB.Populate(sigma);
 	
 	dist.UpdateEB(this);

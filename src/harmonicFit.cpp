@@ -31,11 +31,26 @@ void HarmonicFit(Data & d, const Settings & settings)
 	double nuMin = floor(d.Mean/4);
 	double nuMax = ceil(d.Mean);
 	int nuResolution = settings.nuResolution;
+
+	double deltaSig = (sigmaMax - sigmaMin)/(sigmaResolution -1);
+	double deltaNu = (nuMax - nuMin)/(nuResolution - 1);
+
+	double gammaMin = settings.gammaMin;
+	double gammaMax = settings.gammaMax;
+	int gammaResolution = settings.gammaResolution;
+	double deltaGamma = (gammaMax - gammaMin)/(gammaResolution - 1);
+	if (settings.Gamma > -1)
+	{
+		gammaMin = settings.Gamma;
+		gammaMax = settings.Gamma;
+		gammaResolution = 1;
+		deltaGamma = 0;
+	}
+	
 	logPloidyPrior = log(settings.PloidyPrior);
 	Ploidy = settings.Ploidy;
 	int accelerator = settings.Accelerator;
-	double gamma = settings.Gamma;
-	int bounder = std::max(100.0,std::ceil(5*gamma));
+	int bounder = std::max(100.0,std::ceil(5*gammaMax));
 	int qMax = settings.Qmax;
 	int L = settings.L;
 	int res = 0.25*qMax * nuMax;
@@ -43,56 +58,63 @@ void HarmonicFit(Data & d, const Settings & settings)
 	double alpha = settings.alpha;
 
 	Transitions best;
+	
 	best.Score = -999999999999999999;
 	double worstScore = 0;
 
 	Distributor dist(settings.ParallelWorkers,d);
 
-	double deltaSig = (sigmaMax - sigmaMin)/(sigmaResolution -1);
-	double deltaNu = (nuMax - nuMin)/(nuResolution - 1);
-	JSL::ProgressBar<2> pb(sigmaResolution,nuResolution);
-	pb.SetName(std::vector<std::string>{"  ","  "});
+	
+
+	JSL::ProgressBar<3> pb(gammaResolution,sigmaResolution,nuResolution);
+	pb.SetName(std::vector<std::string>{"  ","  ","  "});
 	Log("\tInitialising the Probability Array\n");
-	ErroredBinomial EB(d.maxK,res,bounder,gamma,qMax,qMax*nuMax,settings.ParallelWorkers);
+	ErroredBinomial EB(d.maxK,res,bounder,qMax,qMax*nuMax,settings.ParallelWorkers);
 	std::vector<double> nus;
 	std::vector<std::vector<double>> searchVectors;
 	Log("\tBeginning the search\n");
-	for (int sigIdx = 0; sigIdx < sigmaResolution; ++sigIdx)
+	for (int gamIdx = 0; gamIdx < gammaResolution; ++gamIdx)
 	{
-		double sigma = (sigmaMin + deltaSig * sigIdx);
-		std::vector<double> probs;
-		
-		EB.Populate(sigma,dist); //generates a new probability array
-		for (double nuIdx = 0; nuIdx < nuResolution; ++nuIdx)
+		double gamma = (gammaMin + deltaGamma * gamIdx);
+		for (int sigIdx = 0; sigIdx < sigmaResolution; ++sigIdx)
 		{
-			double nu = nuMin + nuIdx * deltaNu;
-			auto assign = AssignQs(nu,d,EB,alpha,L,accelerator,dist);
-			// std::cout << nu << "  " << sigma << " scored " << assign.Score << std::endl;
-			assign.Nu = nu;
+			double sigma = (sigmaMin + deltaSig * sigIdx);
+			std::vector<double> probs;
+			
+			EB.Populate(gamma,sigma,dist); //generates a new probability array
+			for (double nuIdx = 0; nuIdx < nuResolution; ++nuIdx)
+			{
+				double nu = nuMin + nuIdx * deltaNu;
+				auto assign = AssignQs(nu,d,EB,alpha,L,accelerator,dist);
+				// std::cout << nu << "  " << sigma << " scored " << assign.Score << std::endl;
+				assign.Nu = nu;
+				assign.Gamma = gamma;
+				if (sigIdx == 0)
+				{
+					nus.push_back(nu);
+				}
+				probs.push_back(abs(assign.Score));
 
-			if (sigIdx == 0)
-			{
-				nus.push_back(nu);
+				if (assign.Score > best.Score)
+				{
+					best = assign;
+				}
+				if (globalVerbose)
+				{
+					pb.Update(gamIdx,sigIdx,nuIdx);
+				}
 			}
-			probs.push_back(abs(assign.Score));
-
-			if (assign.Score > best.Score)
-			{
-				best = assign;
-			}
-			if (globalVerbose)
-			{
-				pb.Update(sigIdx,nuIdx);
-			}
+			searchVectors.push_back(probs);
 		}
-		searchVectors.push_back(probs);
 	}
 	logPloidyPrior = 0;
-	Log("\tHarmonic search complete\n\tIdeal parameters are nu=" << best.Nu << ", sigma=" << best.Sigma << "\nBeginning high-resolution search\n");
-	ErroredBinomial EB2(d.maxK,3*res,bounder,gamma,qMax,qMax*nuMax,settings.ParallelWorkers);
-	EB2.Populate(best.Sigma,dist);
+	double bGamma = best.Gamma;
+	Log("\tHarmonic search complete\n\tIdeal parameters are nu=" << best.Nu << ", sigma=" << best.Sigma << " gamma=" << best.Gamma << "\nBeginning high-resolution search\n");
+	ErroredBinomial EB2(d.maxK,3*res,bounder,qMax,qMax*nuMax,settings.ParallelWorkers);
+	EB2.Populate(best.Gamma,best.Sigma,dist);
 	Log("\tHigh-resolution probability grid generated\n")
 	best = AssignQs(best.Nu,d,EB2,alpha,L,1,dist);
+	best.Gamma = bGamma;
 	Log("\tCompleted high-resolution search")
 	
 	// for (int c = 0; c < d.Chromosomes.size(); ++c)
@@ -143,7 +165,7 @@ void HarmonicFit(Data & d, const Settings & settings)
 	buffer.clear();
 	buffer << "Data " << settings.DataFile << "\n";
 	std::vector<std::string> params = {"Nu","Sigma","Gamma","L"};
-	std::vector<double> vals = {best.Nu, best.Sigma,gamma,(double)L};
+	std::vector<double> vals = {best.Nu, best.Sigma,best.Gamma,(double)L};
 	for (int i = 0; i < params.size(); ++i)
 	{
 		buffer << params[i] << " " << vals[i] << "\n";

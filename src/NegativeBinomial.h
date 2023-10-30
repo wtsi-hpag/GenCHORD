@@ -31,7 +31,9 @@ class TruncatedGaussian
 	public:
 		int Truncator;
 		std::vector<std::vector<double>> PureData;
-		TruncatedGaussian(int kMax, int bounder,double gamma);
+		int KMax;
+		TruncatedGaussian(int kMax, int bounder);
+		void Populate(double gamma);
 };
 
 struct EB_Bracket
@@ -70,10 +72,10 @@ class ErroredBinomial
 		double Sigma;
 		int qMax;
 		
-		ErroredBinomial(int kMax, int res, int bounder, double gamma, int qMax,double muMax, int nWorkers);
+		ErroredBinomial(int kMax, int res, int bounder, int qMax,double muMax, int nWorkers);
 		// void CloseThreads();
 		void PopulateChunk(int resMin, int resMax);
-		void Populate(double sigma, Distributor & dist);
+		void Populate(double gamma, double sigma, Distributor & dist);
 
 		void SetBracket(double nu);
 

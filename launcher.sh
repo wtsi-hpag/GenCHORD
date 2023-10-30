@@ -7,13 +7,10 @@ output=( "bc1/bc1-ccs" "hg002/hg002-ccs" "hg004/hg004-ccs" "oes103/oes103-10x" "
 # output=( "oes148-hic" "oes148-ccs" )
 # thinning=( 0.99 0.1 )
 
-for thin in 0 0.1 0.5 0.9 0.99 0.999 0.9999; do
-	for gamma in 0.1 1 3 5 10; do
-		for i in "${!files[@]}"; do
-			# echo ${files[i]} " " $thin " " $gamma
-			simpleThin="${thin//.}"
-			simpleGamma="${gamma//.}"
-			./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 10 -worker 40 -sigmaMin 5 -sigmaMax 30 -o Output/Thin$simpleThin"Gamma"$simpleGamma/${output[i]} -L 1000000 -gamma $gamma -thin 10 -accelerate 50 -Qmax 14 -alpha 0.01  -smooth $thin
-		done
+for i in "${!files[@]}"; do
+	for thin in 0 0.1 0.3 0.5 0.8 0.9 0.99 0.999; do
+		# echo ${files[i]} " " $thin " " $gamma
+		simpleThin="${thin//.}"
+		./deforest -f ../Coverage/${files[i]}.dat -sigmaResolution 20 -worker 40 -sigmaMin 5 -sigmaMax 30 -o Output/Search/Thin$simpleThin/${output[i]} -L 1000000 -gammaResolution 4 -thin 10 -accelerate 30 -Qmax 14 -alpha 0.01  -smooth $thin
 	done
 done

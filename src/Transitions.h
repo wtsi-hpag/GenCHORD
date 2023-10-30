@@ -13,6 +13,7 @@ struct Transitions
 {
 	std::vector<ChromTransitions> List;
 	double Nu;
+	double Gamma;
 	double Sigma;
 	double Score;
 	Transitions(){};

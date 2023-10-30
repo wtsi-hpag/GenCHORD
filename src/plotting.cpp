@@ -129,13 +129,16 @@ TreeMeta::TreeMeta(Settings & settings)
 	gp.Show();
 }
 
- void OutputPlot(Settings & settings)
+ void OutputPlot(Data & d,Settings & settings)
 {
 	//write it to run from .tree file so can be run independently of the code which generates Transition objects -- makes it a bit roundabout, but will be more useful in the long run!
 	Log("\tBeginning Plot Routine\n");
 	std::string reconstructFile =settings.OutputName + ".tree";
 	TreeMeta T(settings);
-	Data d(T.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);	
+	if (!d.Loaded)
+	{
+		d = Data(T.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);	
+	}
 	std::vector<int> nameRemapper;
 	for (int i = 0; i < T.Name.size(); ++i)
 	{
