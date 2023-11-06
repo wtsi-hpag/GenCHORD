@@ -1,0 +1,79 @@
+\doxysection{/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/src/plotting.h File Reference}
+\hypertarget{plotting_8h}{}\label{plotting_8h}\index{/Users/jf20/Documents/Genomics/Deforest/src/plotting.h@{/Users/jf20/Documents/Genomics/Deforest/src/plotting.h}}
+{\ttfamily \#include "{}JSL.\+h"{}}\newline
+{\ttfamily \#include "{}data.\+h"{}}\newline
+{\ttfamily \#include "{}Transitions.\+h"{}}\newline
+{\ttfamily \#include "{}settings.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classTreeMeta}{Tree\+Meta}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{plotting_8h_a4eb6909f54bc251eb7e2c560b9aba3a9}{basic\+Plot}} (\mbox{\hyperlink{classJSL_1_1gnuplot}{JSL\+::gnuplot}} \&gp, \mbox{\hyperlink{structData}{Data}} \&d, int chrom)
+\item 
+void \mbox{\hyperlink{plotting_8h_ac6b15fc3a755ef6d617499ae7fd981e5}{Transition\+Plot}} (\mbox{\hyperlink{classJSL_1_1gnuplot}{JSL\+::gnuplot}} \&gp, std\+::vector$<$ \mbox{\hyperlink{data_8h_a3f3ed9a0a71dadb45244e663340fea39}{chr\+\_\+int}} $>$ idx, std\+::vector$<$ double $>$ freq, double nu\+Correct, std\+::string legend)
+\item 
+void \mbox{\hyperlink{plotting_8h_a8882d9011d7c6db8f503823742e97517}{recover\+Meta}} (\mbox{\hyperlink{classSettings}{Settings}} \&settings)
+\item 
+void \mbox{\hyperlink{plotting_8h_a11d847562ce70e71deeb1b028afca42f}{Transition\+Frame}} (\mbox{\hyperlink{structData}{Data}} \&d, \mbox{\hyperlink{classSettings}{Settings}} \&settings, std\+::vector$<$ \mbox{\hyperlink{data_8h_a3f3ed9a0a71dadb45244e663340fea39}{chr\+\_\+int}} $>$ idx, std\+::vector$<$ double $>$ freq, int c, bool instant\+Plot)
+\item 
+void \mbox{\hyperlink{plotting_8h_a285836345349fd051e651d1b4a274d96}{Output\+Plot}} (\mbox{\hyperlink{structData}{Data}} \&d, \mbox{\hyperlink{classSettings}{Settings}} \&settings)
+\item 
+void \mbox{\hyperlink{plotting_8h_a350486641f8e5e69113d5b1c1e088ae4}{Comparison\+Plots}} (\mbox{\hyperlink{classSettings}{Settings}} \&settings)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{plotting_8h_a8a2336d5099b1838af1b36d7a0555430}{n\+Plot}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{plotting_8h_a4eb6909f54bc251eb7e2c560b9aba3a9}\label{plotting_8h_a4eb6909f54bc251eb7e2c560b9aba3a9} 
+\index{plotting.h@{plotting.h}!basicPlot@{basicPlot}}
+\index{basicPlot@{basicPlot}!plotting.h@{plotting.h}}
+\doxysubsubsection{\texorpdfstring{basicPlot()}{basicPlot()}}
+{\footnotesize\ttfamily void basic\+Plot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classJSL_1_1gnuplot}{JSL\+::gnuplot}} \&}]{gp,  }\item[{\mbox{\hyperlink{structData}{Data}} \&}]{d,  }\item[{int}]{chrom }\end{DoxyParamCaption})}
+
+\Hypertarget{plotting_8h_a350486641f8e5e69113d5b1c1e088ae4}\label{plotting_8h_a350486641f8e5e69113d5b1c1e088ae4} 
+\index{plotting.h@{plotting.h}!ComparisonPlots@{ComparisonPlots}}
+\index{ComparisonPlots@{ComparisonPlots}!plotting.h@{plotting.h}}
+\doxysubsubsection{\texorpdfstring{ComparisonPlots()}{ComparisonPlots()}}
+{\footnotesize\ttfamily void Comparison\+Plots (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSettings}{Settings}} \&}]{settings }\end{DoxyParamCaption})}
+
+\Hypertarget{plotting_8h_a285836345349fd051e651d1b4a274d96}\label{plotting_8h_a285836345349fd051e651d1b4a274d96} 
+\index{plotting.h@{plotting.h}!OutputPlot@{OutputPlot}}
+\index{OutputPlot@{OutputPlot}!plotting.h@{plotting.h}}
+\doxysubsubsection{\texorpdfstring{OutputPlot()}{OutputPlot()}}
+{\footnotesize\ttfamily void Output\+Plot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structData}{Data}} \&}]{d,  }\item[{\mbox{\hyperlink{classSettings}{Settings}} \&}]{settings }\end{DoxyParamCaption})}
+
+\Hypertarget{plotting_8h_a8882d9011d7c6db8f503823742e97517}\label{plotting_8h_a8882d9011d7c6db8f503823742e97517} 
+\index{plotting.h@{plotting.h}!recoverMeta@{recoverMeta}}
+\index{recoverMeta@{recoverMeta}!plotting.h@{plotting.h}}
+\doxysubsubsection{\texorpdfstring{recoverMeta()}{recoverMeta()}}
+{\footnotesize\ttfamily void recover\+Meta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSettings}{Settings}} \&}]{settings }\end{DoxyParamCaption})}
+
+\Hypertarget{plotting_8h_a11d847562ce70e71deeb1b028afca42f}\label{plotting_8h_a11d847562ce70e71deeb1b028afca42f} 
+\index{plotting.h@{plotting.h}!TransitionFrame@{TransitionFrame}}
+\index{TransitionFrame@{TransitionFrame}!plotting.h@{plotting.h}}
+\doxysubsubsection{\texorpdfstring{TransitionFrame()}{TransitionFrame()}}
+{\footnotesize\ttfamily void Transition\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structData}{Data}} \&}]{d,  }\item[{\mbox{\hyperlink{classSettings}{Settings}} \&}]{settings,  }\item[{std\+::vector$<$ \mbox{\hyperlink{data_8h_a3f3ed9a0a71dadb45244e663340fea39}{chr\+\_\+int}} $>$}]{idx,  }\item[{std\+::vector$<$ double $>$}]{freq,  }\item[{int}]{c,  }\item[{bool}]{instant\+Plot }\end{DoxyParamCaption})}
+
+\Hypertarget{plotting_8h_ac6b15fc3a755ef6d617499ae7fd981e5}\label{plotting_8h_ac6b15fc3a755ef6d617499ae7fd981e5} 
+\index{plotting.h@{plotting.h}!TransitionPlot@{TransitionPlot}}
+\index{TransitionPlot@{TransitionPlot}!plotting.h@{plotting.h}}
+\doxysubsubsection{\texorpdfstring{TransitionPlot()}{TransitionPlot()}}
+{\footnotesize\ttfamily void Transition\+Plot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classJSL_1_1gnuplot}{JSL\+::gnuplot}} \&}]{gp,  }\item[{std\+::vector$<$ \mbox{\hyperlink{data_8h_a3f3ed9a0a71dadb45244e663340fea39}{chr\+\_\+int}} $>$}]{idx,  }\item[{std\+::vector$<$ double $>$}]{freq,  }\item[{double}]{nu\+Correct,  }\item[{std\+::string}]{legend }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{plotting_8h_a8a2336d5099b1838af1b36d7a0555430}\label{plotting_8h_a8a2336d5099b1838af1b36d7a0555430} 
+\index{plotting.h@{plotting.h}!nPlot@{nPlot}}
+\index{nPlot@{nPlot}!plotting.h@{plotting.h}}
+\doxysubsubsection{\texorpdfstring{nPlot}{nPlot}}
+{\footnotesize\ttfamily int n\+Plot\hspace{0.3cm}{\ttfamily [extern]}}
+

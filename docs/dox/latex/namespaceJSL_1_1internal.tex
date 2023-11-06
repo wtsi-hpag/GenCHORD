@@ -1,0 +1,44 @@
+\doxysection{JSL\+::internal Namespace Reference}
+\hypertarget{namespaceJSL_1_1internal}{}\label{namespaceJSL_1_1internal}\index{JSL::internal@{JSL::internal}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{typename}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , typename... Ts$>$ }\\\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{namespaceJSL_1_1internal_a7d30ff3799fac0a4594525b50b8c5ba6}{variadic\+Vector\+Print}} (std\+::fstream \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{os}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::string \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{delimiter}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{first}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$ \&... \mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{typename}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , typename... Ts$>$ }\\\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{namespaceJSL_1_1internal_acf34245ed74263da6fd864feaed681ed}{variadic\+Length\+Equality}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{size\+\_\+t}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{length}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{first}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$ \&...\mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})
+\item 
+std\+::string \mbox{\hyperlink{namespaceJSL_1_1internal_ad9e3cb9332be17eb5344432eb2a58570}{signifier}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{x}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{significance}})
+\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{namespaceJSL_1_1internal_ae5d5175406e607b000d8a7e719e7dd5e}{variadic\+Assertion}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{first}}, Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceJSL_1_1internal_ad9e3cb9332be17eb5344432eb2a58570}\label{namespaceJSL_1_1internal_ad9e3cb9332be17eb5344432eb2a58570} 
+\index{JSL::internal@{JSL::internal}!signifier@{signifier}}
+\index{signifier@{signifier}!JSL::internal@{JSL::internal}}
+\doxysubsubsection{\texorpdfstring{signifier()}{signifier()}}
+{\footnotesize\ttfamily std\+::string JSL\+::internal\+::signifier (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \&}]{x,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{significance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespaceJSL_1_1internal_ae5d5175406e607b000d8a7e719e7dd5e}\label{namespaceJSL_1_1internal_ae5d5175406e607b000d8a7e719e7dd5e} 
+\index{JSL::internal@{JSL::internal}!variadicAssertion@{variadicAssertion}}
+\index{variadicAssertion@{variadicAssertion}!JSL::internal@{JSL::internal}}
+\doxysubsubsection{\texorpdfstring{variadicAssertion()}{variadicAssertion()}}
+{\footnotesize\ttfamily template$<$typename... Ts$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} JSL\+::internal\+::variadic\+Assertion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{first,  }\item[{Ts...}]{args }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceJSL_1_1internal_acf34245ed74263da6fd864feaed681ed}\label{namespaceJSL_1_1internal_acf34245ed74263da6fd864feaed681ed} 
+\index{JSL::internal@{JSL::internal}!variadicLengthEquality@{variadicLengthEquality}}
+\index{variadicLengthEquality@{variadicLengthEquality}!JSL::internal@{JSL::internal}}
+\doxysubsubsection{\texorpdfstring{variadicLengthEquality()}{variadicLengthEquality()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{typename}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , typename... Ts$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} JSL\+::internal\+::variadic\+Length\+Equality (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{size\+\_\+t}}}]{length,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&}]{first,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$ \&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespaceJSL_1_1internal_a7d30ff3799fac0a4594525b50b8c5ba6}\label{namespaceJSL_1_1internal_a7d30ff3799fac0a4594525b50b8c5ba6} 
+\index{JSL::internal@{JSL::internal}!variadicVectorPrint@{variadicVectorPrint}}
+\index{variadicVectorPrint@{variadicVectorPrint}!JSL::internal@{JSL::internal}}
+\doxysubsubsection{\texorpdfstring{variadicVectorPrint()}{variadicVectorPrint()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{typename}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , typename... Ts$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::internal\+::variadic\+Vector\+Print (\begin{DoxyParamCaption}\item[{std\+::fstream \&}]{os,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::string \&}]{delimiter,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{i,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&}]{first,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$ \&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This is a helper function for write\+Multi\+Vector\+To\+File, and performs the recursive looping over the variadic vector templates. 

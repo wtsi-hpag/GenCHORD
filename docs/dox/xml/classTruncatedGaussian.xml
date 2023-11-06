@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classTruncatedGaussian" kind="class" language="C++" prot="public">
+    <compoundname>TruncatedGaussian</compoundname>
+    <includes refid="NegativeBinomial_8h" local="no">NegativeBinomial.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classTruncatedGaussian_1ae3b869451126b73a4bcfb573afe11d15" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TruncatedGaussian::Truncator</definition>
+        <argsstring></argsstring>
+        <name>Truncator</name>
+        <qualifiedname>TruncatedGaussian::Truncator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="32" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTruncatedGaussian_1a5f014175e3f954938da80b94cef9055a" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; double &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;double&gt; &gt; TruncatedGaussian::PureData</definition>
+        <argsstring></argsstring>
+        <name>PureData</name>
+        <qualifiedname>TruncatedGaussian::PureData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="33" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTruncatedGaussian_1a054d5d5d43e949ab8a28cd2f75bb0a56" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TruncatedGaussian::KMax</definition>
+        <argsstring></argsstring>
+        <name>KMax</name>
+        <qualifiedname>TruncatedGaussian::KMax</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="34" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTruncatedGaussian_1aab11db81ba5f6990331b1a82fa89dfd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TruncatedGaussian::TruncatedGaussian</definition>
+        <argsstring>(int kMax, int bounder)</argsstring>
+        <name>TruncatedGaussian</name>
+        <qualifiedname>TruncatedGaussian::TruncatedGaussian</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>kMax</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bounder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="35" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classTruncatedGaussian_1a154446e8f03f6933fb00d60943758a6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TruncatedGaussian::Populate</definition>
+        <argsstring>(double gamma)</argsstring>
+        <name>Populate</name>
+        <qualifiedname>TruncatedGaussian::Populate</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>gamma</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="36" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="28" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="29" bodyend="37"/>
+    <listofallmembers>
+      <member refid="classTruncatedGaussian_1a054d5d5d43e949ab8a28cd2f75bb0a56" prot="public" virt="non-virtual"><scope>TruncatedGaussian</scope><name>KMax</name></member>
+      <member refid="classTruncatedGaussian_1a154446e8f03f6933fb00d60943758a6f" prot="public" virt="non-virtual"><scope>TruncatedGaussian</scope><name>Populate</name></member>
+      <member refid="classTruncatedGaussian_1a5f014175e3f954938da80b94cef9055a" prot="public" virt="non-virtual"><scope>TruncatedGaussian</scope><name>PureData</name></member>
+      <member refid="classTruncatedGaussian_1aab11db81ba5f6990331b1a82fa89dfd3" prot="public" virt="non-virtual"><scope>TruncatedGaussian</scope><name>TruncatedGaussian</name></member>
+      <member refid="classTruncatedGaussian_1ae3b869451126b73a4bcfb573afe11d15" prot="public" virt="non-virtual"><scope>TruncatedGaussian</scope><name>Truncator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

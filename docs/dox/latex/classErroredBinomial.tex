@@ -1,0 +1,157 @@
+\doxysection{Errored\+Binomial Class Reference}
+\hypertarget{classErroredBinomial}{}\label{classErroredBinomial}\index{ErroredBinomial@{ErroredBinomial}}
+
+
+{\ttfamily \#include $<$Negative\+Binomial.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classErroredBinomial_a08b440709d6207a95d49921b686a1c6c}{Errored\+Binomial}} (int k\+Max, int res, int bounder, int \mbox{\hyperlink{classErroredBinomial_aa5866c60af39a3903c890238411bb0a6}{q\+Max}}, double mu\+Max, int \mbox{\hyperlink{classErroredBinomial_ab16dcfb8aed605c0a4758fdba6dd9560}{n\+Workers}})
+\item 
+void \mbox{\hyperlink{classErroredBinomial_ad2560e5bae4050525978993040c932d0}{Populate\+Chunk}} (int res\+Min, int res\+Max)
+\item 
+void \mbox{\hyperlink{classErroredBinomial_ad1af2ef0969f81597b017323f6bd079c}{Populate}} (double gamma, double sigma, \mbox{\hyperlink{classDistributor}{Distributor}} \&dist)
+\item 
+void \mbox{\hyperlink{classErroredBinomial_a7b4ba932092fae5511a532f2fa593be1}{Set\+Bracket}} (double nu)
+\item 
+double \mbox{\hyperlink{classErroredBinomial_a6de40808745eba4da73eeb3b8eb124cb}{Get\+Prob}} (int q, int k)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{classErroredBinomial_ac039018ba0cd2611010528dfafdfc4b5}{Data}}
+\item 
+\mbox{\hyperlink{classNegativeBinomial}{Negative\+Binomial}} \mbox{\hyperlink{classErroredBinomial_a4276ddb38d014a3a6b8a6ad40e44a5fb}{NB}}
+\item 
+int \mbox{\hyperlink{classErroredBinomial_aa7788dd9ce425031418a23f933a071ed}{Resolution}}
+\item 
+double \mbox{\hyperlink{classErroredBinomial_a65ceb20240d1950bf230c5ff0bc3c65e}{Sigma}}
+\item 
+int \mbox{\hyperlink{classErroredBinomial_aa5866c60af39a3903c890238411bb0a6}{q\+Max}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classErroredBinomial_ab16dcfb8aed605c0a4758fdba6dd9560}{n\+Workers}}
+\item 
+\mbox{\hyperlink{classTruncatedGaussian}{Truncated\+Gaussian}} \mbox{\hyperlink{classErroredBinomial_a64ecfeb4d79191580640d28fc46ac27a}{TG}}
+\item 
+\mbox{\hyperlink{structEB__Bracket}{EB\+\_\+\+Bracket}} \mbox{\hyperlink{classErroredBinomial_a6182e2247ca1986cac6ba399f4b51529}{Current\+Bracket}}
+\item 
+int \mbox{\hyperlink{classErroredBinomial_a605659f79977a313d749284ccbaf2cdc}{Kmax}}
+\item 
+int \mbox{\hyperlink{classErroredBinomial_ab2b1551e2f4eb819963f143ab952a1b7}{Bounder}}
+\item 
+int \mbox{\hyperlink{classErroredBinomial_a5d810f878deba2df83046e142ac3fa07}{master\+Start}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classErroredBinomial_a08b440709d6207a95d49921b686a1c6c}\label{classErroredBinomial_a08b440709d6207a95d49921b686a1c6c} 
+\index{ErroredBinomial@{ErroredBinomial}!ErroredBinomial@{ErroredBinomial}}
+\index{ErroredBinomial@{ErroredBinomial}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{ErroredBinomial()}{ErroredBinomial()}}
+{\footnotesize\ttfamily Errored\+Binomial\+::\+Errored\+Binomial (\begin{DoxyParamCaption}\item[{int}]{k\+Max,  }\item[{int}]{res,  }\item[{int}]{bounder,  }\item[{int}]{q\+Max,  }\item[{double}]{mu\+Max,  }\item[{int}]{n\+Workers }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classErroredBinomial_a6de40808745eba4da73eeb3b8eb124cb}\label{classErroredBinomial_a6de40808745eba4da73eeb3b8eb124cb} 
+\index{ErroredBinomial@{ErroredBinomial}!GetProb@{GetProb}}
+\index{GetProb@{GetProb}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{GetProb()}{GetProb()}}
+{\footnotesize\ttfamily double Errored\+Binomial\+::\+Get\+Prob (\begin{DoxyParamCaption}\item[{int}]{q,  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+\Hypertarget{classErroredBinomial_ad1af2ef0969f81597b017323f6bd079c}\label{classErroredBinomial_ad1af2ef0969f81597b017323f6bd079c} 
+\index{ErroredBinomial@{ErroredBinomial}!Populate@{Populate}}
+\index{Populate@{Populate}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{Populate()}{Populate()}}
+{\footnotesize\ttfamily void Errored\+Binomial\+::\+Populate (\begin{DoxyParamCaption}\item[{double}]{gamma,  }\item[{double}]{sigma,  }\item[{\mbox{\hyperlink{classDistributor}{Distributor}} \&}]{dist }\end{DoxyParamCaption})}
+
+\Hypertarget{classErroredBinomial_ad2560e5bae4050525978993040c932d0}\label{classErroredBinomial_ad2560e5bae4050525978993040c932d0} 
+\index{ErroredBinomial@{ErroredBinomial}!PopulateChunk@{PopulateChunk}}
+\index{PopulateChunk@{PopulateChunk}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{PopulateChunk()}{PopulateChunk()}}
+{\footnotesize\ttfamily void Errored\+Binomial\+::\+Populate\+Chunk (\begin{DoxyParamCaption}\item[{int}]{res\+Min,  }\item[{int}]{res\+Max }\end{DoxyParamCaption})}
+
+\Hypertarget{classErroredBinomial_a7b4ba932092fae5511a532f2fa593be1}\label{classErroredBinomial_a7b4ba932092fae5511a532f2fa593be1} 
+\index{ErroredBinomial@{ErroredBinomial}!SetBracket@{SetBracket}}
+\index{SetBracket@{SetBracket}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{SetBracket()}{SetBracket()}}
+{\footnotesize\ttfamily void Errored\+Binomial\+::\+Set\+Bracket (\begin{DoxyParamCaption}\item[{double}]{nu }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classErroredBinomial_ab2b1551e2f4eb819963f143ab952a1b7}\label{classErroredBinomial_ab2b1551e2f4eb819963f143ab952a1b7} 
+\index{ErroredBinomial@{ErroredBinomial}!Bounder@{Bounder}}
+\index{Bounder@{Bounder}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{Bounder}{Bounder}}
+{\footnotesize\ttfamily int Errored\+Binomial\+::\+Bounder\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classErroredBinomial_a6182e2247ca1986cac6ba399f4b51529}\label{classErroredBinomial_a6182e2247ca1986cac6ba399f4b51529} 
+\index{ErroredBinomial@{ErroredBinomial}!CurrentBracket@{CurrentBracket}}
+\index{CurrentBracket@{CurrentBracket}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{CurrentBracket}{CurrentBracket}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structEB__Bracket}{EB\+\_\+\+Bracket}} Errored\+Binomial\+::\+Current\+Bracket\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classErroredBinomial_ac039018ba0cd2611010528dfafdfc4b5}\label{classErroredBinomial_ac039018ba0cd2611010528dfafdfc4b5} 
+\index{ErroredBinomial@{ErroredBinomial}!Data@{Data}}
+\index{Data@{Data}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{Data}{Data}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$double$>$ $>$ Errored\+Binomial\+::\+Data}
+
+\Hypertarget{classErroredBinomial_a605659f79977a313d749284ccbaf2cdc}\label{classErroredBinomial_a605659f79977a313d749284ccbaf2cdc} 
+\index{ErroredBinomial@{ErroredBinomial}!Kmax@{Kmax}}
+\index{Kmax@{Kmax}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{Kmax}{Kmax}}
+{\footnotesize\ttfamily int Errored\+Binomial\+::\+Kmax\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classErroredBinomial_a5d810f878deba2df83046e142ac3fa07}\label{classErroredBinomial_a5d810f878deba2df83046e142ac3fa07} 
+\index{ErroredBinomial@{ErroredBinomial}!masterStart@{masterStart}}
+\index{masterStart@{masterStart}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{masterStart}{masterStart}}
+{\footnotesize\ttfamily int Errored\+Binomial\+::master\+Start = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classErroredBinomial_a4276ddb38d014a3a6b8a6ad40e44a5fb}\label{classErroredBinomial_a4276ddb38d014a3a6b8a6ad40e44a5fb} 
+\index{ErroredBinomial@{ErroredBinomial}!NB@{NB}}
+\index{NB@{NB}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{NB}{NB}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNegativeBinomial}{Negative\+Binomial}} Errored\+Binomial\+::\+NB}
+
+\Hypertarget{classErroredBinomial_ab16dcfb8aed605c0a4758fdba6dd9560}\label{classErroredBinomial_ab16dcfb8aed605c0a4758fdba6dd9560} 
+\index{ErroredBinomial@{ErroredBinomial}!nWorkers@{nWorkers}}
+\index{nWorkers@{nWorkers}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{nWorkers}{nWorkers}}
+{\footnotesize\ttfamily int Errored\+Binomial\+::n\+Workers\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classErroredBinomial_aa5866c60af39a3903c890238411bb0a6}\label{classErroredBinomial_aa5866c60af39a3903c890238411bb0a6} 
+\index{ErroredBinomial@{ErroredBinomial}!qMax@{qMax}}
+\index{qMax@{qMax}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{qMax}{qMax}}
+{\footnotesize\ttfamily int Errored\+Binomial\+::q\+Max}
+
+\Hypertarget{classErroredBinomial_aa7788dd9ce425031418a23f933a071ed}\label{classErroredBinomial_aa7788dd9ce425031418a23f933a071ed} 
+\index{ErroredBinomial@{ErroredBinomial}!Resolution@{Resolution}}
+\index{Resolution@{Resolution}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{Resolution}{Resolution}}
+{\footnotesize\ttfamily int Errored\+Binomial\+::\+Resolution}
+
+\Hypertarget{classErroredBinomial_a65ceb20240d1950bf230c5ff0bc3c65e}\label{classErroredBinomial_a65ceb20240d1950bf230c5ff0bc3c65e} 
+\index{ErroredBinomial@{ErroredBinomial}!Sigma@{Sigma}}
+\index{Sigma@{Sigma}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{Sigma}{Sigma}}
+{\footnotesize\ttfamily double Errored\+Binomial\+::\+Sigma}
+
+\Hypertarget{classErroredBinomial_a64ecfeb4d79191580640d28fc46ac27a}\label{classErroredBinomial_a64ecfeb4d79191580640d28fc46ac27a} 
+\index{ErroredBinomial@{ErroredBinomial}!TG@{TG}}
+\index{TG@{TG}!ErroredBinomial@{ErroredBinomial}}
+\doxysubsubsection{\texorpdfstring{TG}{TG}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTruncatedGaussian}{Truncated\+Gaussian}} Errored\+Binomial\+::\+TG\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/src/\mbox{\hyperlink{NegativeBinomial_8h}{Negative\+Binomial.\+h}}\end{DoxyCompactItemize}

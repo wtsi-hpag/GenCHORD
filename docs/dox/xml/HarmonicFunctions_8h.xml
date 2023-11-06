@@ -1,0 +1,782 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="HarmonicFunctions_8h" kind="file" language="C++">
+    <compoundname>HarmonicFunctions.h</compoundname>
+    <includes refid="settings_8h" local="yes">settings.h</includes>
+    <includes refid="Transitions_8h" local="yes">Transitions.h</includes>
+    <includes refid="data_8h" local="yes">data.h</includes>
+    <includes refid="NegativeBinomial_8h" local="yes">NegativeBinomial.h</includes>
+    <includedby refid="Distributor_8h" local="yes">/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h</includedby>
+    <includedby refid="harmonicFit_8h" local="yes">/Users/jf20/Documents/Genomics/Deforest/src/harmonicFit.h</includedby>
+    <incdepgraph>
+      <node id="45">
+        <label>Array/Array.h</label>
+        <link refid="Array_8h"/>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>VectorSearches.h</label>
+        <link refid="VectorSearches_8h"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>Argument.h</label>
+        <link refid="Argument_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>CommandArgs/CommandArgs.h</label>
+        <link refid="CommandArgs_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>Toggle.h</label>
+        <link refid="Toggle_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>Display/Display.h</label>
+        <link refid="Display_8h"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>PredictionBar.h</label>
+        <link refid="PredictionBar_8h"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>ProgressBar.h</label>
+        <link refid="ProgressBar_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>clearScreen.h</label>
+        <link refid="clearScreen_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>FileIO/FileIO.h</label>
+        <link refid="FileIO_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>LineReader.h</label>
+        <link refid="LineReader_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>fileWriter.h</label>
+        <link refid="fileWriter_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>jfglatex.h</label>
+        <link refid="jfglatex_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>lineCounter.h</label>
+        <link refid="lineCounter_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>../FileIO/locationExists.h</label>
+        <link refid="locationExists_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>mkdir.h</label>
+        <link refid="mkdir_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>JSL.h</label>
+        <link refid="JSL_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>Maths/Maths.h</label>
+        <link refid="Maths_8h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>MiscFunctions.h</label>
+        <link refid="MiscFunctions_8h"/>
+      </node>
+      <node id="42">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>vector.h</label>
+        <link refid="vector_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>Strings/Strings.h</label>
+        <link refid="Strings_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>Time.h</label>
+        <link refid="Time_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>../Strings/split.h</label>
+        <link refid="split_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>../System/System.h</label>
+        <link refid="System_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>error.h</label>
+        <link refid="error_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>readPipe.h</label>
+        <link refid="readPipe_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>rm.h</label>
+        <link refid="rm_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>systemCall.h</label>
+        <link refid="systemCall_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>PlotData.h</label>
+        <link refid="PlotData_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>axis.h</label>
+        <link refid="axis_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>colorArray.h</label>
+        <link refid="colorArray_8h"/>
+      </node>
+      <node id="48">
+        <label>gnuplot/gnuplot.h</label>
+        <link refid="gnuplot_8h"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>gnuplotMain.h</label>
+        <link refid="gnuplotMain_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>Distributor.h</label>
+        <link refid="Distributor_8h"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h</label>
+        <link refid="HarmonicFunctions_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>NegativeBinomial.h</label>
+        <link refid="NegativeBinomial_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>Transitions.h</label>
+        <link refid="Transitions_8h"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>basicFunctions.h</label>
+        <link refid="basicFunctions_8h"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>data.h</label>
+        <link refid="data_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>logFactorial.h</label>
+        <link refid="logFactorial_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>settings.h</label>
+        <link refid="settings_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>algorithm</label>
+      </node>
+      <node id="43">
+        <label>cassert</label>
+      </node>
+      <node id="32">
+        <label>chrono</label>
+      </node>
+      <node id="38">
+        <label>cmath</label>
+      </node>
+      <node id="13">
+        <label>dirent.h</label>
+      </node>
+      <node id="6">
+        <label>fstream</label>
+      </node>
+      <node id="26">
+        <label>iomanip</label>
+      </node>
+      <node id="22">
+        <label>iostream</label>
+      </node>
+      <node id="28">
+        <label>limits</label>
+      </node>
+      <node id="35">
+        <label>math.h</label>
+      </node>
+      <node id="64">
+        <label>mutex</label>
+      </node>
+      <node id="47">
+        <label>numeric</label>
+      </node>
+      <node id="41">
+        <label>ostream</label>
+      </node>
+      <node id="65">
+        <label>random</label>
+      </node>
+      <node id="10">
+        <label>sstream</label>
+      </node>
+      <node id="16">
+        <label>stdexcept</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="25">
+        <label>string.h</label>
+      </node>
+      <node id="15">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="63">
+        <label>thread</label>
+      </node>
+      <node id="21">
+        <label>unistd.h</label>
+      </node>
+      <node id="8">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h</label>
+        <link refid="Distributor_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h</label>
+        <link refid="HarmonicFunctions_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h</label>
+        <link refid="NegativeBinomial_8h"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/harmonicFit.h</label>
+        <link refid="harmonicFit_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structqReturn" prot="public">qReturn</innerclass>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="HarmonicFunctions_8h_1a0cd7d405fe3d494a6a1ff2e2cd2fad42" prot="public" static="no" extern="yes" mutable="no">
+        <type>int</type>
+        <definition>int Ploidy</definition>
+        <argsstring></argsstring>
+        <name>Ploidy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" line="9" column="12" declfile="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" declline="9" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="variable" id="HarmonicFunctions_8h_1af7f54c236f9de96756056edec9d6ceb1" prot="public" static="no" extern="yes" mutable="no">
+        <type>double</type>
+        <definition>double logPloidyPrior</definition>
+        <argsstring></argsstring>
+        <name>logPloidyPrior</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" line="10" column="15" declfile="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" declline="10" declcolumn="15"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="HarmonicFunctions_8h_1a1355a0c530cdddd0d949b0c2f2d70cf8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structqReturn" kindref="compound">qReturn</ref></type>
+        <definition>qReturn bestQ</definition>
+        <argsstring>(int chrom, int iStart, long long int maxIdx, double currentQ, double alpha, ErroredBinomial *EB, Data &amp;d, int accelerator)</argsstring>
+        <name>bestQ</name>
+        <param>
+          <type>int</type>
+          <declname>chrom</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iStart</declname>
+        </param>
+        <param>
+          <type>long long int</type>
+          <declname>maxIdx</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>currentQ</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type><ref refid="classErroredBinomial" kindref="compound">ErroredBinomial</ref> *</type>
+          <declname>EB</declname>
+        </param>
+        <param>
+          <type><ref refid="structData" kindref="compound">Data</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>accelerator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" line="19" column="9" declfile="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" declline="19" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="HarmonicFunctions_8h_1a41dde6e6bb134120baf530fa0c2e1233" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structqReturn" kindref="compound">qReturn</ref></type>
+        <definition>qReturn EdgeFinder</definition>
+        <argsstring>(int chrom, int iStart, int L, int originalQ, Data &amp;d, ErroredBinomial *EB, double alpha, int accelerator)</argsstring>
+        <name>EdgeFinder</name>
+        <param>
+          <type>int</type>
+          <declname>chrom</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iStart</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>L</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>originalQ</declname>
+        </param>
+        <param>
+          <type><ref refid="structData" kindref="compound">Data</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type><ref refid="classErroredBinomial" kindref="compound">ErroredBinomial</ref> *</type>
+          <declname>EB</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>accelerator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" line="21" column="9" declfile="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" declline="21" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="HarmonicFunctions_8h_1a0e0f7f15d93e1026b6a5acd6212b8504" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ChromosomeAssign</definition>
+        <argsstring>(Transitions *output, int chrom, Data &amp;d, double alpha, ErroredBinomial *EB, int L, int accelerator, double nu)</argsstring>
+        <name>ChromosomeAssign</name>
+        <param>
+          <type><ref refid="structTransitions" kindref="compound">Transitions</ref> *</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>chrom</declname>
+        </param>
+        <param>
+          <type><ref refid="structData" kindref="compound">Data</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type><ref refid="classErroredBinomial" kindref="compound">ErroredBinomial</ref> *</type>
+          <declname>EB</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>L</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>accelerator</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>nu</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" line="23" column="6" declfile="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" declline="23" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="settings_8h" kindref="compound">settings.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Transitions_8h" kindref="compound">Transitions.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="data_8h" kindref="compound">data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="NegativeBinomial_8h" kindref="compound">NegativeBinomial.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classErroredBinomial" kindref="compound">ErroredBinomial</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="HarmonicFunctions_8h_1a0cd7d405fe3d494a6a1ff2e2cd2fad42" kindref="member">Ploidy</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="HarmonicFunctions_8h_1af7f54c236f9de96756056edec9d6ceb1" kindref="member">logPloidyPrior</ref>;</highlight></codeline>
+<codeline lineno="11" refid="structqReturn" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structqReturn" kindref="compound">qReturn</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13" refid="structqReturn_1a1fd3cb45fa28fa2485d4d52dae82838c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data_8h_1a3f3ed9a0a71dadb45244e663340fea39" kindref="member">chr_int</ref><sp/><ref refid="structqReturn_1a1fd3cb45fa28fa2485d4d52dae82838c" kindref="member">idx</ref>;</highlight></codeline>
+<codeline lineno="14" refid="structqReturn_1ad69b4ca66bb6398d3f87a05be6969fef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structqReturn_1ad69b4ca66bb6398d3f87a05be6969fef" kindref="member">Q</ref>;</highlight></codeline>
+<codeline lineno="15" refid="structqReturn_1ac473498acb2e53c5e95f7436b746314f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structqReturn_1ac473498acb2e53c5e95f7436b746314f" kindref="member">Score</ref>;</highlight></codeline>
+<codeline lineno="16" refid="structqReturn_1a9e39ef518fa81dcccf6885fbf1ee783b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structqReturn_1a9e39ef518fa81dcccf6885fbf1ee783b" kindref="member">qReturn</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>q,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s):<sp/><ref refid="structqReturn_1ad69b4ca66bb6398d3f87a05be6969fef" kindref="member">Q</ref>(q),<sp/><ref refid="structqReturn_1ac473498acb2e53c5e95f7436b746314f" kindref="member">Score</ref>(s){};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="HarmonicFunctions_8h_1a1355a0c530cdddd0d949b0c2f2d70cf8" refkind="member"><highlight class="normal"><ref refid="structqReturn" kindref="compound">qReturn</ref><sp/><ref refid="HarmonicFunctions_8h_1a1355a0c530cdddd0d949b0c2f2d70cf8" kindref="member">bestQ</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>chrom,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iStart,</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxIdx,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>currentQ,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>alpha,<sp/><ref refid="classErroredBinomial" kindref="compound">ErroredBinomial</ref><sp/>*<sp/>EB,<sp/><ref refid="structData" kindref="compound">Data</ref><sp/>&amp;<sp/>d,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>accelerator);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="HarmonicFunctions_8h_1a41dde6e6bb134120baf530fa0c2e1233" refkind="member"><highlight class="normal"><ref refid="structqReturn" kindref="compound">qReturn</ref><sp/><ref refid="HarmonicFunctions_8h_1a41dde6e6bb134120baf530fa0c2e1233" kindref="member">EdgeFinder</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>chrom,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iStart,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>L,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>originalQ,<sp/><ref refid="structData" kindref="compound">Data</ref><sp/>&amp;<sp/>d,<sp/><ref refid="classErroredBinomial" kindref="compound">ErroredBinomial</ref><sp/>*<sp/>EB,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>alpha,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>accelerator);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="HarmonicFunctions_8h_1a0e0f7f15d93e1026b6a5acd6212b8504" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="HarmonicFunctions_8h_1a0e0f7f15d93e1026b6a5acd6212b8504" kindref="member">ChromosomeAssign</ref>(<ref refid="structTransitions" kindref="compound">Transitions</ref><sp/>*<sp/>output,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>chrom,<sp/><ref refid="structData" kindref="compound">Data</ref><sp/>&amp;<sp/>d,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>alpha,<sp/><ref refid="classErroredBinomial" kindref="compound">ErroredBinomial</ref><sp/>*<sp/>EB,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>L,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>accelerator,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>nu);</highlight></codeline>
+    </programlisting>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h"/>
+  </compounddef>
+</doxygen>

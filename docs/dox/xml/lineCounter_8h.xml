@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="lineCounter_8h" kind="file" language="C++">
+    <compoundname>lineCounter.h</compoundname>
+    <includes refid="locationExists_8h" local="yes">locationExists.h</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">limits</includes>
+    <includes refid="assert_8h" local="yes">../System/assert.h</includes>
+    <includedby refid="FileIO_8h" local="yes">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/FileIO.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/lineCounter.h</label>
+        <link refid="lineCounter_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>locationExists.h</label>
+        <link refid="locationExists_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>../System/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>error.h</label>
+        <link refid="error_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>fstream</label>
+      </node>
+      <node id="6">
+        <label>limits</label>
+      </node>
+      <node id="9">
+        <label>stdexcept</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="10">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Argument.h</label>
+        <link refid="Argument_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/CommandArgs.h</label>
+        <link refid="CommandArgs_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Toggle.h</label>
+        <link refid="Toggle_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/FileIO.h</label>
+        <link refid="FileIO_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/lineCounter.h</label>
+        <link refid="lineCounter_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/JSL.h</label>
+        <link refid="JSL_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Testing/Testing.h</label>
+        <link refid="Testing_8h"/>
+      </node>
+      <node id="6">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Testing/Testing_UnitTests.h</label>
+        <link refid="Testing__UnitTests_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h</label>
+        <link refid="axis_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplot.h</label>
+        <link refid="gnuplot_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplotMain.h</label>
+        <link refid="gnuplotMain_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h</label>
+        <link refid="Distributor_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h</label>
+        <link refid="HarmonicFunctions_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h</label>
+        <link refid="NegativeBinomial_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h</label>
+        <link refid="Transitions_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/data.h</label>
+        <link refid="data_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/harmonicFit.h</label>
+        <link refid="harmonicFit_8h"/>
+      </node>
+      <node id="14">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/plotting.h</label>
+        <link refid="plotting_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/settings.h</label>
+        <link refid="settings_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceJSL">JSL</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="locationExists_8h" kindref="compound">locationExists.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../System/assert.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceJSL" kindref="compound">JSL</ref></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8" refid="namespaceJSL_1aed873f557a849265f2197aa7a98d0da4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="namespaceJSL_1aed873f557a849265f2197aa7a98d0da4" kindref="member">LineCount</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">file</ref>)</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">exists</ref><sp/>=<sp/><ref refid="namespaceJSL_1a1752cd7c6e1134da51e9307527e0d788" kindref="member">JSL::locationExists</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">file</ref>);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">JSL::Assert</ref>(</highlight><highlight class="stringliteral">&quot;Can<sp/>only<sp/>count<sp/>lines<sp/>in<sp/>files<sp/>which<sp/>exist&quot;</highlight><highlight class="normal">,<ref refid="structJSL_1_1NameValuePair" kindref="compound">exists</ref>);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::fstream<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">in</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">file</ref>);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">lines</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">endline_char</ref><sp/>=<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">in</ref>.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(),<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">in</ref>.widen(<ref refid="structJSL_1_1NameValuePair" kindref="compound">endline_char</ref>)))</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">lines</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">lines</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/lineCounter.h"/>
+  </compounddef>
+</doxygen>

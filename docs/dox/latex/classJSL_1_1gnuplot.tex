@@ -1,0 +1,906 @@
+\doxysection{JSL\+::gnuplot Class Reference}
+\hypertarget{classJSL_1_1gnuplot}{}\label{classJSL_1_1gnuplot}\index{JSL::gnuplot@{JSL::gnuplot}}
+
+
+The global interface for the plotting system. All calls should be piped through this individual class. Each gnuplot object corresponds to a single plot (though they might have severable axes within each plot)  
+
+
+
+
+{\ttfamily \#include $<$gnuplot\+Main.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJSL_1_1gnuplot_aafcfb0c9032e7f0cfeddcc3baf2cc21f}{gnuplot}} ()
+\begin{DoxyCompactList}\small\item\em Constructor function, generates a unique name for itself, and creates a directory into which it stores its own data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1gnuplot_a1654a89612515dc3cd3c2a45c60dc733}{\texorpdfstring{$\sim$}{\string~}gnuplot}} ()
+\begin{DoxyCompactList}\small\item\em Custom destructor which also calls Cleanup\+Temp\+Files, tidying up after itself. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aa1e759e1965581b7c4fe508d2bca7060}{Set\+Multiplot}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{y\+Count}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{x\+Count}})
+\begin{DoxyCompactList}\small\item\em Puts gnuplot into multiplot mode, with y\+Count rows and x\+Count columns. Whenever this function is called, the entire set of axes is wiped clean. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aaa70a8840886ba609533e6b0fd6f5bc1}{Set\+Axis}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{y}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{x}})
+\begin{DoxyCompactList}\small\item\em Sets the current axis focus to the y-\/th row and x-\/th column. The "{}axis in focus"{} is acted upon whenever the gnuplot object is given a command (i.\+e. \doxylink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{gnuplot\+::\+Plot}) which does not otherwise specify the axis. By "{}switching focus"{}, calling \doxylink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{gnuplot\+::\+Plot} will write on different axes. It is also possible to act on the axes directly, using the operator\mbox{[}\mbox{]} overload, i.\+e. gnuplot\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}.\doxylink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{Plot()} would produce the same output as gnuplot.\+Set\+Axis(i,j); \doxylink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{Plot()} -\/ though with the second version, a subsequent call to \doxylink{classJSL_1_1gnuplot_a90306a67b5b8d990cbcb13b3f6f6eaa3}{Scatter()} would be written to the same axis, which would not be guaranteed for the first case. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a6ad5dca9e7826d774d18f0f36845aabb}{Set\+Axis}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{y}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{x}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} y\+Span, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} x\+Span)
+\begin{DoxyCompactList}\small\item\em Allows one to alter the span of the axis when indexing into it, so different axes can have different sizes on the canvas. Note that this enforces a strict lock on where grids can be put -\/ there must be enough room on the existing grid, and the span units are measured in units of these base-\/axis cells. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_af5ba95fdc854b7de524431efe9793f0a}{Set\+Axis}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} idx)
+\begin{DoxyCompactList}\small\item\em Sets the current axis focus to the idx-\/th axis, numbering columns-\/then-\/rows. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ }\\\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& \mbox{\hyperlink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{Plot}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{x}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{y}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$... \mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})
+\begin{DoxyCompactList}\small\item\em Passes the arguments along to the \doxylink{classJSL_1_1Axis_a95b78211cb09e6c6f0834fd353890a1d}{Axis\+::\+Plot()} function associated with the current axis focus. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ }\\\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& \mbox{\hyperlink{classJSL_1_1gnuplot_aff8f871df4ddbbbf519572dd1f717588}{Plot}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{x}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{y}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$... \mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})
+\begin{DoxyCompactList}\small\item\em As with \doxylink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{Plot(const std\+::vector$<$\+T$>$ \& x,const std\+::vector$<$\+S$>$  \& y, Name\+Value\+Pair$<$\+Ts$>$... args)}, but permits non-\/vector objects which can still be cast into vectors (i.\+e. \doxylink{classJSL_1_1Vector}{JSL\+::\+Vector} objects) \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ }\\\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& \mbox{\hyperlink{classJSL_1_1gnuplot_a90306a67b5b8d990cbcb13b3f6f6eaa3}{Scatter}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{x}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{y}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$... \mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})
+\begin{DoxyCompactList}\small\item\em Passes the arguments along to the \doxylink{classJSL_1_1Axis_abcccbd36fd86e0504c02a66dabc5f763}{Axis\+::\+Scatter()} function associated with the current axis focus. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ }\\\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& \mbox{\hyperlink{classJSL_1_1gnuplot_adfd19ba6419d0c23d18dbeb4f6302f59}{Scatter}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{x}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{y}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$... \mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})
+\begin{DoxyCompactList}\small\item\em As with \doxylink{classJSL_1_1gnuplot_a90306a67b5b8d990cbcb13b3f6f6eaa3}{Scatter(const std\+::vector$<$\+T$>$ \& x,const std\+::vector$<$\+S$>$  \& y, Name\+Value\+Pair$<$\+Ts$>$... args)}, but permits non-\/vector objects which can still be cast into vectors (i.\+e. \doxylink{classJSL_1_1Vector}{JSL\+::\+Vector} objects) \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ }\\\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& \mbox{\hyperlink{classJSL_1_1gnuplot_a483fcbfb0c4f30615330b9e8c0c004af}{Chart}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{x}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{y}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$... \mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ }\\\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& \mbox{\hyperlink{classJSL_1_1gnuplot_afc17d1165272bb4b21f49a38b0cea19c}{Chart}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{x}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{y}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$... \mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{R}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ }\\\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& \mbox{\hyperlink{classJSL_1_1gnuplot_ae1f612edfeb4165b88c2fbc7e572e761}{Map}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{x}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{y}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{R}} $>$ $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{z}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$... \mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a147fc21e6c9b48d823a16c738953d081}{Show}} ()
+\begin{DoxyCompactList}\small\item\em The key function -\/ until this function is called, the plot is hypothetical. Calling this function generates a gnuplot script file, which each axis writes to to generate the appropriate plot, which is then called using a system command, producing the plot. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classJSL_1_1Axis}{Axis}} $>$ \& \mbox{\hyperlink{classJSL_1_1gnuplot_af0ace47c0e36ef49cae6592a8a841926}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})
+\begin{DoxyCompactList}\small\item\em Allows indexing into the Axes without using the Set\+Axis(int,int) function, accessing the \doxylink{classJSL_1_1Axis}{Axis} object directly. Note that this returns a vector of axis objects, hence access must be via gunplot\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a26eba111f5ff83b852eded604d23fbe2}{Set\+XRange}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{min}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{max}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_a0bfb933a1509615566ca72a98e8574ca}{Axis\+::\+Set\+XRange(double,double)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a39e8bdc9b9bb9e47e4acdd0b17ad5430}{Set\+YRange}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{min}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{max}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_a23d28c6f113683490020da26e716cf14}{Axis\+::\+Set\+YRange(double,double)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a1db60fe3e9ee25b86851eba4459e8eca}{Set\+Colour\+Range}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{min}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{max}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_af2230b64696435194780c99e8107ac51}{Set\+XLog}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{val}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_aeef14102e056fa25dba72f9c1d61a2f6}{Axis\+::\+Set\+XLog} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a244f8e993705d7c79cbb37451db39632}{Set\+YLog}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{val}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_ad0695f111619f714627fd0269c8fec30}{Axis\+::\+Set\+YLog} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aefd68670821553e910ca469895370494}{Set\+CBLog}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{val}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_a3fc9ea47960e80ac3122d9ff0c20321b}{Axis\+::\+Set\+CBLog} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a80699eb05778c88b435ec62a5afe3a5d}{Set\+XLabel}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{xl}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_a28b2289c6d91769b48afe16c43819bb3}{Axis\+::\+Set\+XLabel(std\+::string)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a741f78103dd76eaff9475351b7f49edd}{Set\+YLabel}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{yl}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_a1d476b1547d88ee7c0c80f1a4e86faf4}{Axis\+::\+Set\+YLabel(std\+::string)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_ae3c1833621af3de598d34bc03e0c5fd2}{Set\+CBLabel}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{cl}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a142b566109c123a4a60cfc2da0814e6d}{Set\+CBLabel}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{cl}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{f}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aa4b92e98fe9231ed52d1f0c88c3cbd93}{Set\+XLabel}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{xl}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{size}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_a290663ea6c5991a52e8ffa3497e4f2e5}{Axis\+::\+Set\+XLabel(std\+::string,int)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a721199548950cfd60fb43d3ac3bc0fe1}{Set\+YLabel}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{yl}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{size}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_a80473fe4e172302383c9160cc7248b40}{Axis\+::\+Set\+YLabel(std\+::string,int)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aec8715b4e01671f44714f7406208e85c}{Set\+XTic\+Labels}} (std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{vals}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a061e3b33c2698f7334f40aed0b376b09}{Set\+YTic\+Labels}} (std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{vals}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a270b6a2f344a1d102b4eddd8aa47a6e9}{Set\+Legend}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{state}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_ac4c489a5fe9d37df1be1f82637bc6787}{Axis\+::\+Set\+Legend} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a2818a11a95a42d55d241950eefee20a3}{Set\+Legend\+Location}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{loc}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_af341bd970c54565cc47ec37186f97f9b}{Set\+Legend\+Columns}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{cols}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a1bb21de11eb29945e3ce1e158a33834b}{Set\+XTime}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{val}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_ae5105c85d5f0f2c039254adca85701c2}{Axis\+::\+Set\+XTime(bool)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_ade298a57eb04f9c7e844cf514fd2db86}{Set\+YTime}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{val}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_ae57ebe069619bee3b02527a6942774c2}{Axis\+::\+Set\+YTime(bool)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a4a1b9834ddc7705a2ebca70514dbc25d}{Set\+XTic\+Angle}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{val}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_ae5105c85d5f0f2c039254adca85701c2}{Axis\+::\+Set\+XTime(bool)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a360f2f92bafbc5e9d37098dbc4061f3e}{Set\+YTic\+Angle}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{val}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_ae57ebe069619bee3b02527a6942774c2}{Axis\+::\+Set\+YTime(bool)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aa494fa71da94293d08ede848d6d839f5}{Set\+XTic\+Gap}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{gap}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aac9cb36512358d1de7d28fb774b617d0}{Set\+YTic\+Gap}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{gap}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aaf719fec4d5d3e6eab445cc62e366984}{Set\+XTic\+Power\+Format}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{val}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aca49b3755a7ddceea73b0bddd2c0be89}{Set\+YTic\+Power\+Format}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{val}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_ae5651ce03f3b2d97b40ef1514f36a03f}{Set\+Grid}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{val}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a6cebc934c85d8b6e39950218328f71e3}{Window\+Size}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{width}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{height}})
+\begin{DoxyCompactList}\small\item\em Changes the window size of the generated plot, measured in pixels. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a929f817e0c0d2bf119a4aa06ef507289}{Set\+Title}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{tit}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_a35138d001b953b9aa0b327840ed9bba3}{Axis\+::\+Set\+Title(std\+::string)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a8ece1d633a3978a6d2bcdacd43331b2f}{Set\+Title}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{tit}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{size}})
+\begin{DoxyCompactList}\small\item\em Calls \doxylink{classJSL_1_1Axis_ae62a2c80ec71bf5f6c78c9347fc51303}{Axis\+::\+Set\+Title(std\+::string,int)} on the axis currently in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a3b9f002e0c20b19611b29e459be3581d}{Set\+Super\+Title}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{tit}})
+\begin{DoxyCompactList}\small\item\em Simple setter for \doxylink{classJSL_1_1gnuplot_a16e01fe5ebc78d04cb9683d49c2aee91}{gnuplot\+::super\+Title}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a9a2f9350971fb144772b550a8be84073}{Set\+Super\+Title}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{tit}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{size}})
+\begin{DoxyCompactList}\small\item\em Simple setter for \doxylink{classJSL_1_1gnuplot_a16e01fe5ebc78d04cb9683d49c2aee91}{gnuplot\+::super\+Title}, and changes the font size it is written to. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_ad29ef895e0251319e59198fe6d8ade6a}{Set\+Terminal}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{t}})
+\begin{DoxyCompactList}\small\item\em Simple setter for \doxylink{classJSL_1_1gnuplot_aa091157be13eeb60c3193ad06aba9b6f}{gnuplot\+::terminal}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a6a166e0499cea89f696db40cbc26d114}{Set\+Output}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{out}})
+\begin{DoxyCompactList}\small\item\em Simple setter for \doxylink{classJSL_1_1gnuplot_a631da60df3e3fb00e2d01c87be4da930}{gnuplot\+::output}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aed7de1ddfe25a18ff4aafaa55ee62ce8}{Set\+Font}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{f}})
+\begin{DoxyCompactList}\small\item\em Simple setter for \doxylink{classJSL_1_1gnuplot_a4c5db7bfe99161369b4c2d31ad4d7ece}{gnuplot\+::font}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_af8bcc5c6377fba537a1f38b35c9b48bf}{Set\+Colour\+Bar}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{in}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a3f5e2a563d6ecb5af32cd2f0521e28f2}{Set\+Colour\+Map}} (std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rgb}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_af25866de5b410e0851a8ee91c5c8f0cd}{Set\+Colour\+Map}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{n}}, std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{start}}, std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{end}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a264ee8da3571b8cb120e002fbdd8d130}{Set\+Global\+Colour\+Map}} (std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rgb}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a00f63f1e08b866f67cbe530dfe8e68de}{Set\+Global\+Colour\+Map}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{n}}, std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{start}}, std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{end}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a44db9c7322475266928c9829d70e2187}{Set\+Palette}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{in}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a8ccee4ee28636d9b9494dba28d26b7d9}{Set\+Font\+Size}} (\mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08ee}{Fonts\+::\+Target}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{target}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{size}})
+\begin{DoxyCompactList}\small\item\em Sets the fontsize of one of the texts associated with either the global fonts (such as global default or supertitle), or of the axis currently in focus. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a0601a115a1052a39a6621e42ec4d4f3e}{Cleanup\+Temp\+Files}} ()
+\begin{DoxyCompactList}\small\item\em When called, and if the relevant compiler flag is not set, recursively deletes the directory associated with \doxylink{classJSL_1_1gnuplot_a200e2b9b95ccd38d4f8e019c594b318f}{gnuplot\+::\+Dir\+Name}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_a275c33fa2dc4fce5a8af1f8d2ec7562d}{Initialise\+Output}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{out\+Name}})
+\begin{DoxyCompactList}\small\item\em Prints a default message and begins the setup of the gnuplot script. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1gnuplot_aa35fd7f6ebe1c18ea39d6cdbb12f8aa0}{Write\+Multiplot\+To\+File}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{gp\+File}})
+\begin{DoxyCompactList}\small\item\em Writes the data associated with the multiplot information to file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1gnuplot_a16e01fe5ebc78d04cb9683d49c2aee91}{super\+Title}} = "{}\+\_\+\+\_\+null\+\_\+\+\_\+"{}
+\begin{DoxyCompactList}\small\item\em In multiplot mode, the supertitle appears above all other axis titles. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{classJSL_1_1Axis}{Axis}} $>$ $>$ \mbox{\hyperlink{classJSL_1_1gnuplot_ae989349518a66a36b8003506b7af48ea}{Axes}}
+\begin{DoxyCompactList}\small\item\em The array of \doxylink{classJSL_1_1Axis}{JSL\+::\+Axis} objects containing the relevant plot data. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1gnuplot_a200e2b9b95ccd38d4f8e019c594b318f}{Dir\+Name}}
+\begin{DoxyCompactList}\small\item\em The temporary directory name created for this gnuplot object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1gnuplot_a102660ecaaece0b2b35e311b530e8b73}{axis\+\_\+x}}
+\begin{DoxyCompactList}\small\item\em The current x position of the axis in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1gnuplot_acf4f664ab476e047cdbf7f6dd1bfa74e}{axis\+\_\+y}}
+\begin{DoxyCompactList}\small\item\em The current y position of the axis in focus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1gnuplot_a4cb279032f4f688412bea6fb3c2e7289}{axis\+\_\+x\+\_\+max}} = 0
+\begin{DoxyCompactList}\small\item\em The maximum permitted value of \doxylink{classJSL_1_1gnuplot_a102660ecaaece0b2b35e311b530e8b73}{gnuplot\+::axis\+\_\+x}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1gnuplot_af0aefa22a2dcb30ff3f3b794e3b2749d}{axis\+\_\+y\+\_\+max}} = 0
+\begin{DoxyCompactList}\small\item\em The maximum permitted value of \doxylink{classJSL_1_1gnuplot_acf4f664ab476e047cdbf7f6dd1bfa74e}{gnuplot\+::axis\+\_\+y}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1gnuplot_a666ddb205d0cb9c76813e2f8075c1b65}{axis\+Count}} = 1
+\begin{DoxyCompactList}\small\item\em The current number of axes on the figure. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1gnuplot_aa091157be13eeb60c3193ad06aba9b6f}{terminal}} = "{}qt 0"{}
+\begin{DoxyCompactList}\small\item\em The current gnuplot terminal mode. See gnuplot documentation for more details. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1gnuplot_a631da60df3e3fb00e2d01c87be4da930}{output}} = "{}\+\_\+\+\_\+null\+\_\+\+\_\+"{}
+\begin{DoxyCompactList}\small\item\em The current output file that gnuplot will try to save to, if the terminal permits it. If set to {\bfseries{null}}, this argument is ignored. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1gnuplot_a4c5db7bfe99161369b4c2d31ad4d7ece}{font}} = "{}Geneva"{}
+\begin{DoxyCompactList}\small\item\em The current global font used by the terminal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1gnuplot_abc845a03e444f2f39bfbfbb3c9a45573}{global\+Font\+Size}} = 14
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1gnuplot_a99581d61b67ad3f0537dca6b041942ba}{super\+Title\+Font\+Size}} = -\/1
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} The global font size, which is used unless otherwise specified by a Set\+Font\+Size call \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1gnuplot_a2426c9fb055e1c69503166958602e2de}{default\+Size}} = \mbox{\hyperlink{structJSL_1_1NameValuePair}{true}}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1gnuplot_abd2c1a49e45beb3ac554a58694965be2}{window\+Width}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classJSL_1_1Toggle}{Toggle} indicating that \doxylink{classJSL_1_1gnuplot_a6cebc934c85d8b6e39950218328f71e3}{gnuplot\+::\+Window\+Size()} has not been called -- needed because changing window size is gross in gnuplot, so best left alone! \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1gnuplot_aa0e38b8208be147845e6708b1aa46a04}{window\+Height}}
+\begin{DoxyCompactList}\small\item\em Current value of the window Width. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1ColourArray}{Colour\+Array}} \mbox{\hyperlink{classJSL_1_1gnuplot_a05ed1200d39f012e829e7a43f472bbaa}{Global\+Colours}}
+\begin{DoxyCompactList}\small\item\em Current value of the window height. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The global interface for the plotting system. All calls should be piped through this individual class. Each gnuplot object corresponds to a single plot (though they might have severable axes within each plot) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classJSL_1_1gnuplot_aafcfb0c9032e7f0cfeddcc3baf2cc21f}\label{classJSL_1_1gnuplot_aafcfb0c9032e7f0cfeddcc3baf2cc21f} 
+\index{JSL::gnuplot@{JSL::gnuplot}!gnuplot@{gnuplot}}
+\index{gnuplot@{gnuplot}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{gnuplot()}{gnuplot()}}
+{\footnotesize\ttfamily JSL\+::gnuplot\+::gnuplot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor function, generates a unique name for itself, and creates a directory into which it stores its own data. 
+
+\Hypertarget{classJSL_1_1gnuplot_a1654a89612515dc3cd3c2a45c60dc733}\label{classJSL_1_1gnuplot_a1654a89612515dc3cd3c2a45c60dc733} 
+\index{JSL::gnuplot@{JSL::gnuplot}!````~gnuplot@{\texorpdfstring{$\sim$}{\string~}gnuplot}}
+\index{````~gnuplot@{\texorpdfstring{$\sim$}{\string~}gnuplot}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}gnuplot()}{\string~gnuplot()}}
+{\footnotesize\ttfamily JSL\+::gnuplot\+::\texorpdfstring{$\sim$}{\string~}gnuplot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Custom destructor which also calls Cleanup\+Temp\+Files, tidying up after itself. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classJSL_1_1gnuplot_a483fcbfb0c4f30615330b9e8c0c004af}\label{classJSL_1_1gnuplot_a483fcbfb0c4f30615330b9e8c0c004af} 
+\index{JSL::gnuplot@{JSL::gnuplot}!Chart@{Chart}}
+\index{Chart@{Chart}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{Chart()}{Chart()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ \\
+\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& JSL\+::gnuplot\+::\+Chart (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&}]{x,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} $>$ \&}]{y,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_afc17d1165272bb4b21f49a38b0cea19c}\label{classJSL_1_1gnuplot_afc17d1165272bb4b21f49a38b0cea19c} 
+\index{JSL::gnuplot@{JSL::gnuplot}!Chart@{Chart}}
+\index{Chart@{Chart}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{Chart()}{Chart()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ \\
+\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& JSL\+::gnuplot\+::\+Chart (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} \&}]{x,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} \&}]{y,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a0601a115a1052a39a6621e42ec4d4f3e}\label{classJSL_1_1gnuplot_a0601a115a1052a39a6621e42ec4d4f3e} 
+\index{JSL::gnuplot@{JSL::gnuplot}!CleanupTempFiles@{CleanupTempFiles}}
+\index{CleanupTempFiles@{CleanupTempFiles}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{CleanupTempFiles()}{CleanupTempFiles()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Cleanup\+Temp\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+When called, and if the relevant compiler flag is not set, recursively deletes the directory associated with \doxylink{classJSL_1_1gnuplot_a200e2b9b95ccd38d4f8e019c594b318f}{gnuplot\+::\+Dir\+Name}. 
+
+\Hypertarget{classJSL_1_1gnuplot_a275c33fa2dc4fce5a8af1f8d2ec7562d}\label{classJSL_1_1gnuplot_a275c33fa2dc4fce5a8af1f8d2ec7562d} 
+\index{JSL::gnuplot@{JSL::gnuplot}!InitialiseOutput@{InitialiseOutput}}
+\index{InitialiseOutput@{InitialiseOutput}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{InitialiseOutput()}{InitialiseOutput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Initialise\+Output (\begin{DoxyParamCaption}\item[{std\+::string}]{out\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Prints a default message and begins the setup of the gnuplot script. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Name} & the name of the gnuplot script \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classJSL_1_1gnuplot_ae1f612edfeb4165b88c2fbc7e572e761}\label{classJSL_1_1gnuplot_ae1f612edfeb4165b88c2fbc7e572e761} 
+\index{JSL::gnuplot@{JSL::gnuplot}!Map@{Map}}
+\index{Map@{Map}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{R}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ \\
+\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& JSL\+::gnuplot\+::\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&}]{x,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} $>$ \&}]{y,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{R}} $>$ $>$ \&}]{z,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_af0ace47c0e36ef49cae6592a8a841926}\label{classJSL_1_1gnuplot_af0ace47c0e36ef49cae6592a8a841926} 
+\index{JSL::gnuplot@{JSL::gnuplot}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classJSL_1_1Axis}{Axis}} $>$ \& JSL\+::gnuplot\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Allows indexing into the Axes without using the Set\+Axis(int,int) function, accessing the \doxylink{classJSL_1_1Axis}{Axis} object directly. Note that this returns a vector of axis objects, hence access must be via gunplot\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}. 
+
+\Hypertarget{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}\label{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea} 
+\index{JSL::gnuplot@{JSL::gnuplot}!Plot@{Plot}}
+\index{Plot@{Plot}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{Plot()}{Plot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ \\
+\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& JSL\+::gnuplot\+::\+Plot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&}]{x,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} $>$ \&}]{y,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Passes the arguments along to the \doxylink{classJSL_1_1Axis_a95b78211cb09e6c6f0834fd353890a1d}{Axis\+::\+Plot()} function associated with the current axis focus. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the generated \doxylink{classJSL_1_1PlotData}{JSL\+::\+Plot\+Data} object, allowing for post-\/facto modification of the linestyle. 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1gnuplot_aff8f871df4ddbbbf519572dd1f717588}\label{classJSL_1_1gnuplot_aff8f871df4ddbbbf519572dd1f717588} 
+\index{JSL::gnuplot@{JSL::gnuplot}!Plot@{Plot}}
+\index{Plot@{Plot}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{Plot()}{Plot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ \\
+\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& JSL\+::gnuplot\+::\+Plot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} \&}]{x,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} \&}]{y,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+As with \doxylink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{Plot(const std\+::vector$<$\+T$>$ \& x,const std\+::vector$<$\+S$>$  \& y, Name\+Value\+Pair$<$\+Ts$>$... args)}, but permits non-\/vector objects which can still be cast into vectors (i.\+e. \doxylink{classJSL_1_1Vector}{JSL\+::\+Vector} objects) 
+
+\begin{DoxyReturn}{Returns}
+A reference to the generated \doxylink{classJSL_1_1PlotData}{JSL\+::\+Plot\+Data} object, allowing for post-\/facto modification of the linestyle. 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1gnuplot_a90306a67b5b8d990cbcb13b3f6f6eaa3}\label{classJSL_1_1gnuplot_a90306a67b5b8d990cbcb13b3f6f6eaa3} 
+\index{JSL::gnuplot@{JSL::gnuplot}!Scatter@{Scatter}}
+\index{Scatter@{Scatter}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{Scatter()}{Scatter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ \\
+\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& JSL\+::gnuplot\+::\+Scatter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \&}]{x,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} $>$ \&}]{y,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Passes the arguments along to the \doxylink{classJSL_1_1Axis_abcccbd36fd86e0504c02a66dabc5f763}{Axis\+::\+Scatter()} function associated with the current axis focus. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the generated \doxylink{classJSL_1_1PlotData}{JSL\+::\+Plot\+Data} object, allowing for post-\/facto modification of the linestyle. 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1gnuplot_adfd19ba6419d0c23d18dbeb4f6302f59}\label{classJSL_1_1gnuplot_adfd19ba6419d0c23d18dbeb4f6302f59} 
+\index{JSL::gnuplot@{JSL::gnuplot}!Scatter@{Scatter}}
+\index{Scatter@{Scatter}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{Scatter()}{Scatter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} , \mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} , typename... Ts$>$ \\
+\mbox{\hyperlink{classJSL_1_1PlotData}{Plot\+Data}} \& JSL\+::gnuplot\+::\+Scatter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} \&}]{x,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{S}} \&}]{y,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{Name\+Value\+Pair}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}} $>$...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+As with \doxylink{classJSL_1_1gnuplot_a90306a67b5b8d990cbcb13b3f6f6eaa3}{Scatter(const std\+::vector$<$\+T$>$ \& x,const std\+::vector$<$\+S$>$  \& y, Name\+Value\+Pair$<$\+Ts$>$... args)}, but permits non-\/vector objects which can still be cast into vectors (i.\+e. \doxylink{classJSL_1_1Vector}{JSL\+::\+Vector} objects) 
+
+\begin{DoxyReturn}{Returns}
+A reference to the generated \doxylink{classJSL_1_1PlotData}{JSL\+::\+Plot\+Data} object, allowing for post-\/facto modification of the linestyle. 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1gnuplot_af5ba95fdc854b7de524431efe9793f0a}\label{classJSL_1_1gnuplot_af5ba95fdc854b7de524431efe9793f0a} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetAxis@{SetAxis}}
+\index{SetAxis@{SetAxis}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetAxis()}{SetAxis()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Axis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the current axis focus to the idx-\/th axis, numbering columns-\/then-\/rows. 
+
+\Hypertarget{classJSL_1_1gnuplot_aaa70a8840886ba609533e6b0fd6f5bc1}\label{classJSL_1_1gnuplot_aaa70a8840886ba609533e6b0fd6f5bc1} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetAxis@{SetAxis}}
+\index{SetAxis@{SetAxis}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetAxis()}{SetAxis()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Axis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{y,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the current axis focus to the y-\/th row and x-\/th column. The "{}axis in focus"{} is acted upon whenever the gnuplot object is given a command (i.\+e. \doxylink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{gnuplot\+::\+Plot}) which does not otherwise specify the axis. By "{}switching focus"{}, calling \doxylink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{gnuplot\+::\+Plot} will write on different axes. It is also possible to act on the axes directly, using the operator\mbox{[}\mbox{]} overload, i.\+e. gnuplot\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}.\doxylink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{Plot()} would produce the same output as gnuplot.\+Set\+Axis(i,j); \doxylink{classJSL_1_1gnuplot_ad7759efccfffa13d51620a3a695823ea}{Plot()} -\/ though with the second version, a subsequent call to \doxylink{classJSL_1_1gnuplot_a90306a67b5b8d990cbcb13b3f6f6eaa3}{Scatter()} would be written to the same axis, which would not be guaranteed for the first case. 
+
+\Hypertarget{classJSL_1_1gnuplot_a6ad5dca9e7826d774d18f0f36845aabb}\label{classJSL_1_1gnuplot_a6ad5dca9e7826d774d18f0f36845aabb} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetAxis@{SetAxis}}
+\index{SetAxis@{SetAxis}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetAxis()}{SetAxis()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Axis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{y,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{x,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{y\+Span,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{x\+Span }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Allows one to alter the span of the axis when indexing into it, so different axes can have different sizes on the canvas. Note that this enforces a strict lock on where grids can be put -\/ there must be enough room on the existing grid, and the span units are measured in units of these base-\/axis cells. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & The y coordinate of the chosen axis (0 indexed, with (0,0) being top left)\\
+\hline
+{\em x} & The x cooridnate of the chosen axis (0 indexed, with (0,0) being top left)\\
+\hline
+{\em y\+Span} & the height of the chosen axis in grid cells. Larger values push the bottom of the axis further down whilst keeping the top edge fixed.\\
+\hline
+{\em x\+Span} & the width of the chosen axis in grid cells. Larger values push the right hand size of the axis further right, whilst keeping the left edge fixed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classJSL_1_1gnuplot_ae3c1833621af3de598d34bc03e0c5fd2}\label{classJSL_1_1gnuplot_ae3c1833621af3de598d34bc03e0c5fd2} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetCBLabel@{SetCBLabel}}
+\index{SetCBLabel@{SetCBLabel}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetCBLabel()}{SetCBLabel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+CBLabel (\begin{DoxyParamCaption}\item[{std\+::string}]{cl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a142b566109c123a4a60cfc2da0814e6d}\label{classJSL_1_1gnuplot_a142b566109c123a4a60cfc2da0814e6d} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetCBLabel@{SetCBLabel}}
+\index{SetCBLabel@{SetCBLabel}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetCBLabel()}{SetCBLabel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+CBLabel (\begin{DoxyParamCaption}\item[{std\+::string}]{cl,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_aefd68670821553e910ca469895370494}\label{classJSL_1_1gnuplot_aefd68670821553e910ca469895370494} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetCBLog@{SetCBLog}}
+\index{SetCBLog@{SetCBLog}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetCBLog()}{SetCBLog()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+CBLog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_a3fc9ea47960e80ac3122d9ff0c20321b}{Axis\+::\+Set\+CBLog} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_af8bcc5c6377fba537a1f38b35c9b48bf}\label{classJSL_1_1gnuplot_af8bcc5c6377fba537a1f38b35c9b48bf} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetColourBar@{SetColourBar}}
+\index{SetColourBar@{SetColourBar}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetColourBar()}{SetColourBar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Colour\+Bar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_af25866de5b410e0851a8ee91c5c8f0cd}\label{classJSL_1_1gnuplot_af25866de5b410e0851a8ee91c5c8f0cd} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetColourMap@{SetColourMap}}
+\index{SetColourMap@{SetColourMap}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetColourMap()}{SetColourMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Colour\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{n,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$}]{start,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a3f5e2a563d6ecb5af32cd2f0521e28f2}\label{classJSL_1_1gnuplot_a3f5e2a563d6ecb5af32cd2f0521e28f2} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetColourMap@{SetColourMap}}
+\index{SetColourMap@{SetColourMap}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetColourMap()}{SetColourMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Colour\+Map (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ $>$}]{rgb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a1db60fe3e9ee25b86851eba4459e8eca}\label{classJSL_1_1gnuplot_a1db60fe3e9ee25b86851eba4459e8eca} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetColourRange@{SetColourRange}}
+\index{SetColourRange@{SetColourRange}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetColourRange()}{SetColourRange()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Colour\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{min,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_aed7de1ddfe25a18ff4aafaa55ee62ce8}\label{classJSL_1_1gnuplot_aed7de1ddfe25a18ff4aafaa55ee62ce8} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetFont@{SetFont}}
+\index{SetFont@{SetFont}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetFont()}{SetFont()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Font (\begin{DoxyParamCaption}\item[{std\+::string}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Simple setter for \doxylink{classJSL_1_1gnuplot_a4c5db7bfe99161369b4c2d31ad4d7ece}{gnuplot\+::font}. 
+
+\Hypertarget{classJSL_1_1gnuplot_a8ccee4ee28636d9b9494dba28d26b7d9}\label{classJSL_1_1gnuplot_a8ccee4ee28636d9b9494dba28d26b7d9} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetFontSize@{SetFontSize}}
+\index{SetFontSize@{SetFontSize}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetFontSize()}{SetFontSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Font\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08ee}{Fonts\+::\+Target}}}]{target,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the fontsize of one of the texts associated with either the global fonts (such as global default or supertitle), or of the axis currently in focus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The identifier of the text to be changed\\
+\hline
+{\em size} & The desired fontsize \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classJSL_1_1gnuplot_a00f63f1e08b866f67cbe530dfe8e68de}\label{classJSL_1_1gnuplot_a00f63f1e08b866f67cbe530dfe8e68de} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetGlobalColourMap@{SetGlobalColourMap}}
+\index{SetGlobalColourMap@{SetGlobalColourMap}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetGlobalColourMap()}{SetGlobalColourMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Global\+Colour\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{n,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$}]{start,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a264ee8da3571b8cb120e002fbdd8d130}\label{classJSL_1_1gnuplot_a264ee8da3571b8cb120e002fbdd8d130} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetGlobalColourMap@{SetGlobalColourMap}}
+\index{SetGlobalColourMap@{SetGlobalColourMap}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetGlobalColourMap()}{SetGlobalColourMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Global\+Colour\+Map (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ $>$}]{rgb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_ae5651ce03f3b2d97b40ef1514f36a03f}\label{classJSL_1_1gnuplot_ae5651ce03f3b2d97b40ef1514f36a03f} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetGrid@{SetGrid}}
+\index{SetGrid@{SetGrid}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetGrid()}{SetGrid()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Grid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a270b6a2f344a1d102b4eddd8aa47a6e9}\label{classJSL_1_1gnuplot_a270b6a2f344a1d102b4eddd8aa47a6e9} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetLegend@{SetLegend}}
+\index{SetLegend@{SetLegend}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetLegend()}{SetLegend()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Legend (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_ac4c489a5fe9d37df1be1f82637bc6787}{Axis\+::\+Set\+Legend} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_af341bd970c54565cc47ec37186f97f9b}\label{classJSL_1_1gnuplot_af341bd970c54565cc47ec37186f97f9b} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetLegendColumns@{SetLegendColumns}}
+\index{SetLegendColumns@{SetLegendColumns}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetLegendColumns()}{SetLegendColumns()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Legend\+Columns (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{cols }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a2818a11a95a42d55d241950eefee20a3}\label{classJSL_1_1gnuplot_a2818a11a95a42d55d241950eefee20a3} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetLegendLocation@{SetLegendLocation}}
+\index{SetLegendLocation@{SetLegendLocation}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetLegendLocation()}{SetLegendLocation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Legend\+Location (\begin{DoxyParamCaption}\item[{std\+::string}]{loc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_aa1e759e1965581b7c4fe508d2bca7060}\label{classJSL_1_1gnuplot_aa1e759e1965581b7c4fe508d2bca7060} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetMultiplot@{SetMultiplot}}
+\index{SetMultiplot@{SetMultiplot}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetMultiplot()}{SetMultiplot()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Multiplot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{y\+Count,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{x\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Puts gnuplot into multiplot mode, with y\+Count rows and x\+Count columns. Whenever this function is called, the entire set of axes is wiped clean. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y\+Count} & The number of rows\\
+\hline
+{\em x\+Count} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classJSL_1_1gnuplot_a6a166e0499cea89f696db40cbc26d114}\label{classJSL_1_1gnuplot_a6a166e0499cea89f696db40cbc26d114} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetOutput@{SetOutput}}
+\index{SetOutput@{SetOutput}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetOutput()}{SetOutput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Output (\begin{DoxyParamCaption}\item[{std\+::string}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Simple setter for \doxylink{classJSL_1_1gnuplot_a631da60df3e3fb00e2d01c87be4da930}{gnuplot\+::output}. 
+
+\Hypertarget{classJSL_1_1gnuplot_a44db9c7322475266928c9829d70e2187}\label{classJSL_1_1gnuplot_a44db9c7322475266928c9829d70e2187} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetPalette@{SetPalette}}
+\index{SetPalette@{SetPalette}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetPalette()}{SetPalette()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Palette (\begin{DoxyParamCaption}\item[{std\+::string}]{in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a3b9f002e0c20b19611b29e459be3581d}\label{classJSL_1_1gnuplot_a3b9f002e0c20b19611b29e459be3581d} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetSuperTitle@{SetSuperTitle}}
+\index{SetSuperTitle@{SetSuperTitle}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetSuperTitle()}{SetSuperTitle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Super\+Title (\begin{DoxyParamCaption}\item[{std\+::string}]{tit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Simple setter for \doxylink{classJSL_1_1gnuplot_a16e01fe5ebc78d04cb9683d49c2aee91}{gnuplot\+::super\+Title}. 
+
+\Hypertarget{classJSL_1_1gnuplot_a9a2f9350971fb144772b550a8be84073}\label{classJSL_1_1gnuplot_a9a2f9350971fb144772b550a8be84073} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetSuperTitle@{SetSuperTitle}}
+\index{SetSuperTitle@{SetSuperTitle}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetSuperTitle()}{SetSuperTitle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Super\+Title (\begin{DoxyParamCaption}\item[{std\+::string}]{tit,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Simple setter for \doxylink{classJSL_1_1gnuplot_a16e01fe5ebc78d04cb9683d49c2aee91}{gnuplot\+::super\+Title}, and changes the font size it is written to. 
+
+\Hypertarget{classJSL_1_1gnuplot_ad29ef895e0251319e59198fe6d8ade6a}\label{classJSL_1_1gnuplot_ad29ef895e0251319e59198fe6d8ade6a} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetTerminal@{SetTerminal}}
+\index{SetTerminal@{SetTerminal}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetTerminal()}{SetTerminal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Terminal (\begin{DoxyParamCaption}\item[{std\+::string}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Simple setter for \doxylink{classJSL_1_1gnuplot_aa091157be13eeb60c3193ad06aba9b6f}{gnuplot\+::terminal}. 
+
+\Hypertarget{classJSL_1_1gnuplot_a929f817e0c0d2bf119a4aa06ef507289}\label{classJSL_1_1gnuplot_a929f817e0c0d2bf119a4aa06ef507289} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetTitle@{SetTitle}}
+\index{SetTitle@{SetTitle}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetTitle()}{SetTitle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Title (\begin{DoxyParamCaption}\item[{std\+::string}]{tit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_a35138d001b953b9aa0b327840ed9bba3}{Axis\+::\+Set\+Title(std\+::string)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a8ece1d633a3978a6d2bcdacd43331b2f}\label{classJSL_1_1gnuplot_a8ece1d633a3978a6d2bcdacd43331b2f} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetTitle@{SetTitle}}
+\index{SetTitle@{SetTitle}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetTitle()}{SetTitle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+Title (\begin{DoxyParamCaption}\item[{std\+::string}]{tit,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_ae62a2c80ec71bf5f6c78c9347fc51303}{Axis\+::\+Set\+Title(std\+::string,int)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a80699eb05778c88b435ec62a5afe3a5d}\label{classJSL_1_1gnuplot_a80699eb05778c88b435ec62a5afe3a5d} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetXLabel@{SetXLabel}}
+\index{SetXLabel@{SetXLabel}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetXLabel()}{SetXLabel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+XLabel (\begin{DoxyParamCaption}\item[{std\+::string}]{xl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_a28b2289c6d91769b48afe16c43819bb3}{Axis\+::\+Set\+XLabel(std\+::string)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_aa4b92e98fe9231ed52d1f0c88c3cbd93}\label{classJSL_1_1gnuplot_aa4b92e98fe9231ed52d1f0c88c3cbd93} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetXLabel@{SetXLabel}}
+\index{SetXLabel@{SetXLabel}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetXLabel()}{SetXLabel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+XLabel (\begin{DoxyParamCaption}\item[{std\+::string}]{xl,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_a290663ea6c5991a52e8ffa3497e4f2e5}{Axis\+::\+Set\+XLabel(std\+::string,int)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_af2230b64696435194780c99e8107ac51}\label{classJSL_1_1gnuplot_af2230b64696435194780c99e8107ac51} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetXLog@{SetXLog}}
+\index{SetXLog@{SetXLog}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetXLog()}{SetXLog()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+XLog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_aeef14102e056fa25dba72f9c1d61a2f6}{Axis\+::\+Set\+XLog} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a26eba111f5ff83b852eded604d23fbe2}\label{classJSL_1_1gnuplot_a26eba111f5ff83b852eded604d23fbe2} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetXRange@{SetXRange}}
+\index{SetXRange@{SetXRange}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetXRange()}{SetXRange()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+XRange (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{min,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_a0bfb933a1509615566ca72a98e8574ca}{Axis\+::\+Set\+XRange(double,double)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a4a1b9834ddc7705a2ebca70514dbc25d}\label{classJSL_1_1gnuplot_a4a1b9834ddc7705a2ebca70514dbc25d} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetXTicAngle@{SetXTicAngle}}
+\index{SetXTicAngle@{SetXTicAngle}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetXTicAngle()}{SetXTicAngle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+XTic\+Angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_ae5105c85d5f0f2c039254adca85701c2}{Axis\+::\+Set\+XTime(bool)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_aa494fa71da94293d08ede848d6d839f5}\label{classJSL_1_1gnuplot_aa494fa71da94293d08ede848d6d839f5} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetXTicGap@{SetXTicGap}}
+\index{SetXTicGap@{SetXTicGap}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetXTicGap()}{SetXTicGap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+XTic\+Gap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{gap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_aec8715b4e01671f44714f7406208e85c}\label{classJSL_1_1gnuplot_aec8715b4e01671f44714f7406208e85c} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetXTicLabels@{SetXTicLabels}}
+\index{SetXTicLabels@{SetXTicLabels}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetXTicLabels()}{SetXTicLabels()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+XTic\+Labels (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{vals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_aaf719fec4d5d3e6eab445cc62e366984}\label{classJSL_1_1gnuplot_aaf719fec4d5d3e6eab445cc62e366984} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetXTicPowerFormat@{SetXTicPowerFormat}}
+\index{SetXTicPowerFormat@{SetXTicPowerFormat}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetXTicPowerFormat()}{SetXTicPowerFormat()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+XTic\+Power\+Format (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a1bb21de11eb29945e3ce1e158a33834b}\label{classJSL_1_1gnuplot_a1bb21de11eb29945e3ce1e158a33834b} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetXTime@{SetXTime}}
+\index{SetXTime@{SetXTime}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetXTime()}{SetXTime()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+XTime (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_ae5105c85d5f0f2c039254adca85701c2}{Axis\+::\+Set\+XTime(bool)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a741f78103dd76eaff9475351b7f49edd}\label{classJSL_1_1gnuplot_a741f78103dd76eaff9475351b7f49edd} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetYLabel@{SetYLabel}}
+\index{SetYLabel@{SetYLabel}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetYLabel()}{SetYLabel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+YLabel (\begin{DoxyParamCaption}\item[{std\+::string}]{yl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_a1d476b1547d88ee7c0c80f1a4e86faf4}{Axis\+::\+Set\+YLabel(std\+::string)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a721199548950cfd60fb43d3ac3bc0fe1}\label{classJSL_1_1gnuplot_a721199548950cfd60fb43d3ac3bc0fe1} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetYLabel@{SetYLabel}}
+\index{SetYLabel@{SetYLabel}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetYLabel()}{SetYLabel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+YLabel (\begin{DoxyParamCaption}\item[{std\+::string}]{yl,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_a80473fe4e172302383c9160cc7248b40}{Axis\+::\+Set\+YLabel(std\+::string,int)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a244f8e993705d7c79cbb37451db39632}\label{classJSL_1_1gnuplot_a244f8e993705d7c79cbb37451db39632} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetYLog@{SetYLog}}
+\index{SetYLog@{SetYLog}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetYLog()}{SetYLog()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+YLog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_ad0695f111619f714627fd0269c8fec30}{Axis\+::\+Set\+YLog} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a39e8bdc9b9bb9e47e4acdd0b17ad5430}\label{classJSL_1_1gnuplot_a39e8bdc9b9bb9e47e4acdd0b17ad5430} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetYRange@{SetYRange}}
+\index{SetYRange@{SetYRange}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetYRange()}{SetYRange()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+YRange (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{min,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_a23d28c6f113683490020da26e716cf14}{Axis\+::\+Set\+YRange(double,double)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a360f2f92bafbc5e9d37098dbc4061f3e}\label{classJSL_1_1gnuplot_a360f2f92bafbc5e9d37098dbc4061f3e} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetYTicAngle@{SetYTicAngle}}
+\index{SetYTicAngle@{SetYTicAngle}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetYTicAngle()}{SetYTicAngle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+YTic\+Angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_ae57ebe069619bee3b02527a6942774c2}{Axis\+::\+Set\+YTime(bool)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_aac9cb36512358d1de7d28fb774b617d0}\label{classJSL_1_1gnuplot_aac9cb36512358d1de7d28fb774b617d0} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetYTicGap@{SetYTicGap}}
+\index{SetYTicGap@{SetYTicGap}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetYTicGap()}{SetYTicGap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+YTic\+Gap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{gap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a061e3b33c2698f7334f40aed0b376b09}\label{classJSL_1_1gnuplot_a061e3b33c2698f7334f40aed0b376b09} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetYTicLabels@{SetYTicLabels}}
+\index{SetYTicLabels@{SetYTicLabels}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetYTicLabels()}{SetYTicLabels()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+YTic\+Labels (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{vals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_aca49b3755a7ddceea73b0bddd2c0be89}\label{classJSL_1_1gnuplot_aca49b3755a7ddceea73b0bddd2c0be89} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetYTicPowerFormat@{SetYTicPowerFormat}}
+\index{SetYTicPowerFormat@{SetYTicPowerFormat}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetYTicPowerFormat()}{SetYTicPowerFormat()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+YTic\+Power\+Format (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1gnuplot_ade298a57eb04f9c7e844cf514fd2db86}\label{classJSL_1_1gnuplot_ade298a57eb04f9c7e844cf514fd2db86} 
+\index{JSL::gnuplot@{JSL::gnuplot}!SetYTime@{SetYTime}}
+\index{SetYTime@{SetYTime}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{SetYTime()}{SetYTime()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Set\+YTime (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls \doxylink{classJSL_1_1Axis_ae57ebe069619bee3b02527a6942774c2}{Axis\+::\+Set\+YTime(bool)} on the axis currently in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a147fc21e6c9b48d823a16c738953d081}\label{classJSL_1_1gnuplot_a147fc21e6c9b48d823a16c738953d081} 
+\index{JSL::gnuplot@{JSL::gnuplot}!Show@{Show}}
+\index{Show@{Show}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The key function -\/ until this function is called, the plot is hypothetical. Calling this function generates a gnuplot script file, which each axis writes to to generate the appropriate plot, which is then called using a system command, producing the plot. 
+
+\Hypertarget{classJSL_1_1gnuplot_a6cebc934c85d8b6e39950218328f71e3}\label{classJSL_1_1gnuplot_a6cebc934c85d8b6e39950218328f71e3} 
+\index{JSL::gnuplot@{JSL::gnuplot}!WindowSize@{WindowSize}}
+\index{WindowSize@{WindowSize}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{WindowSize()}{WindowSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Window\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{width,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Changes the window size of the generated plot, measured in pixels. 
+
+\Hypertarget{classJSL_1_1gnuplot_aa35fd7f6ebe1c18ea39d6cdbb12f8aa0}\label{classJSL_1_1gnuplot_aa35fd7f6ebe1c18ea39d6cdbb12f8aa0} 
+\index{JSL::gnuplot@{JSL::gnuplot}!WriteMultiplotToFile@{WriteMultiplotToFile}}
+\index{WriteMultiplotToFile@{WriteMultiplotToFile}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{WriteMultiplotToFile()}{WriteMultiplotToFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::gnuplot\+::\+Write\+Multiplot\+To\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{gp\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Writes the data associated with the multiplot information to file. 
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classJSL_1_1gnuplot_ae989349518a66a36b8003506b7af48ea}\label{classJSL_1_1gnuplot_ae989349518a66a36b8003506b7af48ea} 
+\index{JSL::gnuplot@{JSL::gnuplot}!Axes@{Axes}}
+\index{Axes@{Axes}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{Axes}{Axes}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$\mbox{\hyperlink{classJSL_1_1Axis}{Axis}}$>$ $>$ JSL\+::gnuplot\+::\+Axes\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The array of \doxylink{classJSL_1_1Axis}{JSL\+::\+Axis} objects containing the relevant plot data. 
+
+\Hypertarget{classJSL_1_1gnuplot_a102660ecaaece0b2b35e311b530e8b73}\label{classJSL_1_1gnuplot_a102660ecaaece0b2b35e311b530e8b73} 
+\index{JSL::gnuplot@{JSL::gnuplot}!axis\_x@{axis\_x}}
+\index{axis\_x@{axis\_x}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{axis\_x}{axis\_x}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::gnuplot\+::axis\+\_\+x\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current x position of the axis in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_a4cb279032f4f688412bea6fb3c2e7289}\label{classJSL_1_1gnuplot_a4cb279032f4f688412bea6fb3c2e7289} 
+\index{JSL::gnuplot@{JSL::gnuplot}!axis\_x\_max@{axis\_x\_max}}
+\index{axis\_x\_max@{axis\_x\_max}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{axis\_x\_max}{axis\_x\_max}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::gnuplot\+::axis\+\_\+x\+\_\+max = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The maximum permitted value of \doxylink{classJSL_1_1gnuplot_a102660ecaaece0b2b35e311b530e8b73}{gnuplot\+::axis\+\_\+x}. 
+
+\Hypertarget{classJSL_1_1gnuplot_acf4f664ab476e047cdbf7f6dd1bfa74e}\label{classJSL_1_1gnuplot_acf4f664ab476e047cdbf7f6dd1bfa74e} 
+\index{JSL::gnuplot@{JSL::gnuplot}!axis\_y@{axis\_y}}
+\index{axis\_y@{axis\_y}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{axis\_y}{axis\_y}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::gnuplot\+::axis\+\_\+y\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current y position of the axis in focus. 
+
+\Hypertarget{classJSL_1_1gnuplot_af0aefa22a2dcb30ff3f3b794e3b2749d}\label{classJSL_1_1gnuplot_af0aefa22a2dcb30ff3f3b794e3b2749d} 
+\index{JSL::gnuplot@{JSL::gnuplot}!axis\_y\_max@{axis\_y\_max}}
+\index{axis\_y\_max@{axis\_y\_max}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{axis\_y\_max}{axis\_y\_max}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::gnuplot\+::axis\+\_\+y\+\_\+max = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The maximum permitted value of \doxylink{classJSL_1_1gnuplot_acf4f664ab476e047cdbf7f6dd1bfa74e}{gnuplot\+::axis\+\_\+y}. 
+
+\Hypertarget{classJSL_1_1gnuplot_a666ddb205d0cb9c76813e2f8075c1b65}\label{classJSL_1_1gnuplot_a666ddb205d0cb9c76813e2f8075c1b65} 
+\index{JSL::gnuplot@{JSL::gnuplot}!axisCount@{axisCount}}
+\index{axisCount@{axisCount}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{axisCount}{axisCount}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::gnuplot\+::axis\+Count = 1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current number of axes on the figure. 
+
+\Hypertarget{classJSL_1_1gnuplot_a2426c9fb055e1c69503166958602e2de}\label{classJSL_1_1gnuplot_a2426c9fb055e1c69503166958602e2de} 
+\index{JSL::gnuplot@{JSL::gnuplot}!defaultSize@{defaultSize}}
+\index{defaultSize@{defaultSize}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{defaultSize}{defaultSize}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} JSL\+::gnuplot\+::default\+Size = \mbox{\hyperlink{structJSL_1_1NameValuePair}{true}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a200e2b9b95ccd38d4f8e019c594b318f}\label{classJSL_1_1gnuplot_a200e2b9b95ccd38d4f8e019c594b318f} 
+\index{JSL::gnuplot@{JSL::gnuplot}!DirName@{DirName}}
+\index{DirName@{DirName}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{DirName}{DirName}}
+{\footnotesize\ttfamily std\+::string JSL\+::gnuplot\+::\+Dir\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The temporary directory name created for this gnuplot object. 
+
+\Hypertarget{classJSL_1_1gnuplot_a4c5db7bfe99161369b4c2d31ad4d7ece}\label{classJSL_1_1gnuplot_a4c5db7bfe99161369b4c2d31ad4d7ece} 
+\index{JSL::gnuplot@{JSL::gnuplot}!font@{font}}
+\index{font@{font}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily std\+::string JSL\+::gnuplot\+::font = "{}Geneva"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current global font used by the terminal. 
+
+\Hypertarget{classJSL_1_1gnuplot_a05ed1200d39f012e829e7a43f472bbaa}\label{classJSL_1_1gnuplot_a05ed1200d39f012e829e7a43f472bbaa} 
+\index{JSL::gnuplot@{JSL::gnuplot}!GlobalColours@{GlobalColours}}
+\index{GlobalColours@{GlobalColours}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{GlobalColours}{GlobalColours}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJSL_1_1ColourArray}{Colour\+Array}} JSL\+::gnuplot\+::\+Global\+Colours\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current value of the window height. 
+
+\Hypertarget{classJSL_1_1gnuplot_abc845a03e444f2f39bfbfbb3c9a45573}\label{classJSL_1_1gnuplot_abc845a03e444f2f39bfbfbb3c9a45573} 
+\index{JSL::gnuplot@{JSL::gnuplot}!globalFontSize@{globalFontSize}}
+\index{globalFontSize@{globalFontSize}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{globalFontSize}{globalFontSize}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::gnuplot\+::global\+Font\+Size = 14\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classJSL_1_1gnuplot_a631da60df3e3fb00e2d01c87be4da930}\label{classJSL_1_1gnuplot_a631da60df3e3fb00e2d01c87be4da930} 
+\index{JSL::gnuplot@{JSL::gnuplot}!output@{output}}
+\index{output@{output}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{output}{output}}
+{\footnotesize\ttfamily std\+::string JSL\+::gnuplot\+::output = "{}\+\_\+\+\_\+null\+\_\+\+\_\+"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current output file that gnuplot will try to save to, if the terminal permits it. If set to {\bfseries{null}}, this argument is ignored. 
+
+\Hypertarget{classJSL_1_1gnuplot_a16e01fe5ebc78d04cb9683d49c2aee91}\label{classJSL_1_1gnuplot_a16e01fe5ebc78d04cb9683d49c2aee91} 
+\index{JSL::gnuplot@{JSL::gnuplot}!superTitle@{superTitle}}
+\index{superTitle@{superTitle}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{superTitle}{superTitle}}
+{\footnotesize\ttfamily std\+::string JSL\+::gnuplot\+::super\+Title = "{}\+\_\+\+\_\+null\+\_\+\+\_\+"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+In multiplot mode, the supertitle appears above all other axis titles. 
+
+\Hypertarget{classJSL_1_1gnuplot_a99581d61b67ad3f0537dca6b041942ba}\label{classJSL_1_1gnuplot_a99581d61b67ad3f0537dca6b041942ba} 
+\index{JSL::gnuplot@{JSL::gnuplot}!superTitleFontSize@{superTitleFontSize}}
+\index{superTitleFontSize@{superTitleFontSize}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{superTitleFontSize}{superTitleFontSize}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::gnuplot\+::super\+Title\+Font\+Size = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\texorpdfstring{$<$}{<} The global font size, which is used unless otherwise specified by a Set\+Font\+Size call 
+
+The font size assigned to \doxylink{classJSL_1_1gnuplot_a16e01fe5ebc78d04cb9683d49c2aee91}{gnuplot\+::super\+Title}. If \texorpdfstring{$<$}{<} 0, uses the value of \doxylink{classJSL_1_1gnuplot_abc845a03e444f2f39bfbfbb3c9a45573}{gnuplot\+::global\+Font\+Size} \Hypertarget{classJSL_1_1gnuplot_aa091157be13eeb60c3193ad06aba9b6f}\label{classJSL_1_1gnuplot_aa091157be13eeb60c3193ad06aba9b6f} 
+\index{JSL::gnuplot@{JSL::gnuplot}!terminal@{terminal}}
+\index{terminal@{terminal}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{terminal}{terminal}}
+{\footnotesize\ttfamily std\+::string JSL\+::gnuplot\+::terminal = "{}qt 0"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current gnuplot terminal mode. See gnuplot documentation for more details. 
+
+\Hypertarget{classJSL_1_1gnuplot_aa0e38b8208be147845e6708b1aa46a04}\label{classJSL_1_1gnuplot_aa0e38b8208be147845e6708b1aa46a04} 
+\index{JSL::gnuplot@{JSL::gnuplot}!windowHeight@{windowHeight}}
+\index{windowHeight@{windowHeight}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{windowHeight}{windowHeight}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::gnuplot\+::window\+Height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current value of the window Width. 
+
+\Hypertarget{classJSL_1_1gnuplot_abd2c1a49e45beb3ac554a58694965be2}\label{classJSL_1_1gnuplot_abd2c1a49e45beb3ac554a58694965be2} 
+\index{JSL::gnuplot@{JSL::gnuplot}!windowWidth@{windowWidth}}
+\index{windowWidth@{windowWidth}!JSL::gnuplot@{JSL::gnuplot}}
+\doxysubsubsection{\texorpdfstring{windowWidth}{windowWidth}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::gnuplot\+::window\+Width\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{classJSL_1_1Toggle}{Toggle} indicating that \doxylink{classJSL_1_1gnuplot_a6cebc934c85d8b6e39950218328f71e3}{gnuplot\+::\+Window\+Size()} has not been called -- needed because changing window size is gross in gnuplot, so best left alone! 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/libs/\+JSL/gnuplot/\mbox{\hyperlink{gnuplotMain_8h}{gnuplot\+Main.\+h}}\end{DoxyCompactItemize}

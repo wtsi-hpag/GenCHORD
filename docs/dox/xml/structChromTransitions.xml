@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structChromTransitions" kind="struct" language="C++" prot="public">
+    <compoundname>ChromTransitions</compoundname>
+    <includes refid="Transitions_8h" local="no">Transitions.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structChromTransitions_1aaf1b7b4b01f5d4b887a14f78dd16dda2" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="data_8h_1a3f3ed9a0a71dadb45244e663340fea39" kindref="member">chr_int</ref> &gt;</type>
+        <definition>std::vector&lt;chr_int&gt; ChromTransitions::Index</definition>
+        <argsstring></argsstring>
+        <name>Index</name>
+        <qualifiedname>ChromTransitions::Index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="7" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structChromTransitions_1a3964b1c0f7dd06afbabefa3ba83eaa1a" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; ChromTransitions::Resonance</definition>
+        <argsstring></argsstring>
+        <name>Resonance</name>
+        <qualifiedname>ChromTransitions::Resonance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="8" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structChromTransitions_1afa85e8fe9ba3ec34ea8c315493cbace8" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; ChromTransitions::Frequency</definition>
+        <argsstring></argsstring>
+        <name>Frequency</name>
+        <qualifiedname>ChromTransitions::Frequency</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="9" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="5" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="6" bodyend="10"/>
+    <listofallmembers>
+      <member refid="structChromTransitions_1afa85e8fe9ba3ec34ea8c315493cbace8" prot="public" virt="non-virtual"><scope>ChromTransitions</scope><name>Frequency</name></member>
+      <member refid="structChromTransitions_1aaf1b7b4b01f5d4b887a14f78dd16dda2" prot="public" virt="non-virtual"><scope>ChromTransitions</scope><name>Index</name></member>
+      <member refid="structChromTransitions_1a3964b1c0f7dd06afbabefa3ba83eaa1a" prot="public" virt="non-virtual"><scope>ChromTransitions</scope><name>Resonance</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

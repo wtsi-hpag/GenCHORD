@@ -1,0 +1,136 @@
+\doxysection{JSL\+::Toggle Class Reference}
+\hypertarget{classJSL_1_1Toggle}{}\label{classJSL_1_1Toggle}\index{JSL::Toggle@{JSL::Toggle}}
+
+
+A \doxylink{classJSL_1_1Toggle}{Toggle} is a special case of an \doxylink{classJSL_1_1Argument}{Argument} which doesn\textquotesingle{}t actually require an argument -\/ that is, the presence of the flag is informative. A toggle is an \doxylink{classJSL_1_1Argument}{Argument$<$bool$>$} object with a specialised constructor which looks only for the presence of the Trigger\+String.  
+
+
+
+
+{\ttfamily \#include $<$Toggle.\+h$>$}
+
+Inheritance diagram for JSL\+::Toggle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classJSL_1_1Toggle}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJSL_1_1Toggle_a1d4a110b61fad303c6a3651d8ec6b861}{Toggle}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{trigger}})
+\begin{DoxyCompactList}\small\item\em Non-\/\+Parsing Constructor. With no default value provided, false is assumed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Toggle_abfe418b14de3b6524d79e83c64b35456}{Toggle}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{default\+Val}}, std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{trigger}})
+\begin{DoxyCompactList}\small\item\em Non-\/\+Parsing Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Toggle_a942da5cba465fc2a9b17ba61d1e04974}{Toggle}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{default\+Val}}, std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{trigger}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{argc}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structJSL_1_1NameValuePair}{argv}})
+\begin{DoxyCompactList}\small\item\em Parsing Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Toggle_a9819749bc5f33f184905f51865c5fae5}{Toggle}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{trigger}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{argc}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structJSL_1_1NameValuePair}{argv}})
+\begin{DoxyCompactList}\small\item\em Parsing Constructor With no default value provided, false is assumed (hence True if trigger is in argv) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classJSL_1_1Argument}{JSL\+::\+Argument$<$ bool $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJSL_1_1Argument_ab438509a3c030516de72f3f493295bd5}{Argument}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Argument_ab07e7981db832cce30f534c67f6491f4}{Argument}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{trigger}})
+\begin{DoxyCompactList}\small\item\em Constructor initialising the \doxylink{classJSL_1_1ArgumentInterface_a29460ecfd033ad1a485333767e28b816}{Trigger\+String}. Value is set to uninitialised memory of the Template type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Argument_a2511f7c98ee2b0b59650f468341b8747}{Argument}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{default\+Value}}, std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{trigger}})
+\begin{DoxyCompactList}\small\item\em Constructor which initialises the \doxylink{classJSL_1_1ArgumentInterface_a29460ecfd033ad1a485333767e28b816}{Trigger\+String} and \doxylink{classJSL_1_1Argument_a83ada5bfa412192f76dd4290f679defd}{Value} members. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Argument_a4d187d2fb658021866b173987b920ab4}{Argument}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{default\+Value}}, std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{trigger}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{argc}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structJSL_1_1NameValuePair}{argv}}\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Constructor which initialises as per \#\+Argument(\+T default\+Value, std\+::string trigger), but which also immediately calls \doxylink{classJSL_1_1Argument_a64740707b33acbcb7fa664c253973cd2}{List\+Parse()} to check for assignment. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Argument_a83799e9089f88d7e6cf30990fae42610}{Argument}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{default\+Value}}, std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{trigger}}, std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{config\+File}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{config\+Delimiter}})
+\begin{DoxyCompactList}\small\item\em Constructor which initialises as per \#\+Argument(\+T default\+Value, std\+::string trigger), but which also immediately calls \doxylink{classJSL_1_1Argument_aa626ff37dbebaf0501614dc625a76383}{Configure()} to check for assignment. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1Argument_aa626ff37dbebaf0501614dc625a76383}{Configure}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{config\+File}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{config\+Delimiter}})
+\begin{DoxyCompactList}\small\item\em Iterate through a configuration file, extracting Name/\+Value pairs and calling \doxylink{classJSL_1_1Argument_a8984e7ce23155259d90a3e98170f36e0}{Parse()} in them. Each Name/\+Value pair should be on a new line in the file, and separated by the {\itshape config\+Delimiter}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{virtual}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1Argument_a64740707b33acbcb7fa664c253973cd2}{List\+Parse}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{argc}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structJSL_1_1NameValuePair}{argv}}\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Iterate through the provided commandline args, extracting Name/\+Value pairs and calling \doxylink{classJSL_1_1Argument_a8984e7ce23155259d90a3e98170f36e0}{Parse()} on them. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1Argument_a8984e7ce23155259d90a3e98170f36e0}{Parse}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structJSL_1_1NameValuePair}{name}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structJSL_1_1NameValuePair}{value}})
+\begin{DoxyCompactList}\small\item\em Checks if the Name matches the Trigger\+String. For a successful match, Name must be prefaced by one more dash than found in Trigger\+String. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Argument_a965bc0dfdce6e03380605af313f8c880}{operator bool}} ()
+\begin{DoxyCompactList}\small\item\em Allow the \doxylink{classJSL_1_1Argument}{Argument} object to be implicitly casted into the value of \doxylink{classJSL_1_1Argument_a83ada5bfa412192f76dd4290f679defd}{Value}, and hence treated as an object of the templated type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Argument_a088b37401f3183f6f3b081bfd370c991}{operator bool}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\begin{DoxyCompactList}\small\item\em Annoying const version. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classJSL_1_1ArgumentInterface}{JSL\+::\+Argument\+Interface}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJSL_1_1ArgumentInterface_a5c12814b0c7d12369aebd77baa19fbac}{Argument\+Interface}} (std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{string}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1Toggle_a1d85f1c5c2bbee6ee863df002dcb94f9}{Toggle\+Parse}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{argc}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structJSL_1_1NameValuePair}{argv}}\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Overload the usual \doxylink{classJSL_1_1Argument_a64740707b33acbcb7fa664c253973cd2}{Argument\+::\+List\+Parse} with a specialised version for detecting single-\/arg elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Data Fields inherited from \mbox{\hyperlink{classJSL_1_1Argument}{JSL\+::\+Argument$<$ bool $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1Argument_a83ada5bfa412192f76dd4290f679defd}{Value}}
+\begin{DoxyCompactList}\small\item\em The current value of the argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Data Fields inherited from \mbox{\hyperlink{classJSL_1_1ArgumentInterface}{JSL\+::\+Argument\+Interface}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::string \mbox{\hyperlink{classJSL_1_1ArgumentInterface_a29460ecfd033ad1a485333767e28b816}{Trigger\+String}}
+\begin{DoxyCompactList}\small\item\em The chosen "{}\+Name"{} of the \doxylink{classJSL_1_1Argument}{Argument} -\/ the string which will trigger the \doxylink{classJSL_1_1ArgumentInterface_a28b487f7a4fa6e721ed6629abe2073f2}{Parse()} function to write in the passed value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classJSL_1_1Toggle}{Toggle} is a special case of an \doxylink{classJSL_1_1Argument}{Argument} which doesn\textquotesingle{}t actually require an argument -\/ that is, the presence of the flag is informative. A toggle is an \doxylink{classJSL_1_1Argument}{Argument$<$bool$>$} object with a specialised constructor which looks only for the presence of the Trigger\+String. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classJSL_1_1Toggle_a1d4a110b61fad303c6a3651d8ec6b861}\label{classJSL_1_1Toggle_a1d4a110b61fad303c6a3651d8ec6b861} 
+\index{JSL::Toggle@{JSL::Toggle}!Toggle@{Toggle}}
+\index{Toggle@{Toggle}!JSL::Toggle@{JSL::Toggle}}
+\doxysubsubsection{\texorpdfstring{Toggle()}{Toggle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily JSL\+::\+Toggle\+::\+Toggle (\begin{DoxyParamCaption}\item[{std\+::string}]{trigger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Non-\/\+Parsing Constructor. With no default value provided, false is assumed. 
+
+\Hypertarget{classJSL_1_1Toggle_abfe418b14de3b6524d79e83c64b35456}\label{classJSL_1_1Toggle_abfe418b14de3b6524d79e83c64b35456} 
+\index{JSL::Toggle@{JSL::Toggle}!Toggle@{Toggle}}
+\index{Toggle@{Toggle}!JSL::Toggle@{JSL::Toggle}}
+\doxysubsubsection{\texorpdfstring{Toggle()}{Toggle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily JSL\+::\+Toggle\+::\+Toggle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{default\+Val,  }\item[{std\+::string}]{trigger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Non-\/\+Parsing Constructor. 
+
+\Hypertarget{classJSL_1_1Toggle_a942da5cba465fc2a9b17ba61d1e04974}\label{classJSL_1_1Toggle_a942da5cba465fc2a9b17ba61d1e04974} 
+\index{JSL::Toggle@{JSL::Toggle}!Toggle@{Toggle}}
+\index{Toggle@{Toggle}!JSL::Toggle@{JSL::Toggle}}
+\doxysubsubsection{\texorpdfstring{Toggle()}{Toggle()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily JSL\+::\+Toggle\+::\+Toggle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}}}]{default\+Val,  }\item[{std\+::string}]{trigger,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{argc,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parsing Constructor. 
+
+\Hypertarget{classJSL_1_1Toggle_a9819749bc5f33f184905f51865c5fae5}\label{classJSL_1_1Toggle_a9819749bc5f33f184905f51865c5fae5} 
+\index{JSL::Toggle@{JSL::Toggle}!Toggle@{Toggle}}
+\index{Toggle@{Toggle}!JSL::Toggle@{JSL::Toggle}}
+\doxysubsubsection{\texorpdfstring{Toggle()}{Toggle()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily JSL\+::\+Toggle\+::\+Toggle (\begin{DoxyParamCaption}\item[{std\+::string}]{trigger,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{argc,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parsing Constructor With no default value provided, false is assumed (hence True if trigger is in argv) 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classJSL_1_1Toggle_a1d85f1c5c2bbee6ee863df002dcb94f9}\label{classJSL_1_1Toggle_a1d85f1c5c2bbee6ee863df002dcb94f9} 
+\index{JSL::Toggle@{JSL::Toggle}!ToggleParse@{ToggleParse}}
+\index{ToggleParse@{ToggleParse}!JSL::Toggle@{JSL::Toggle}}
+\doxysubsubsection{\texorpdfstring{ToggleParse()}{ToggleParse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} JSL\+::\+Toggle\+::\+Toggle\+Parse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{argc,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Overload the usual \doxylink{classJSL_1_1Argument_a64740707b33acbcb7fa664c253973cd2}{Argument\+::\+List\+Parse} with a specialised version for detecting single-\/arg elements. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/libs/\+JSL/\+Command\+Args/\mbox{\hyperlink{Toggle_8h}{Toggle.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,59 @@
+\doxysection{jfglatex.\+h}
+\hypertarget{jfglatex_8h_source}{}\label{jfglatex_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/jfglatex.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/jfglatex.h}}
+\mbox{\hyperlink{jfglatex_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{locationExists_8h}{locationExists.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mkdir_8h}{mkdir.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_a7885f51066f38fb013d8065b97a3013d}{jfglatex}}(std::string\ filename,\ std::string\ compilename,\ \textcolor{keywordtype}{bool}\ openfile,\ \textcolor{keywordtype}{bool}\ quietmode)\textcolor{comment}{//a\ C++\ implementation\ of\ my\ jfglatex\ bash\ script,\ to\ prevent\ carting\ it\ around}}
+\DoxyCodeLine{00009\ \ \ \ \ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ std::string\ texTail\ =\ \textcolor{stringliteral}{"{}.tex"{}};}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ std::string::size\_type\ i\ =\ filename.find(texTail);}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ !=\ std::string::npos)}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ filename.erase(i,texTail.length());}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::string\ cmd\ =\ \textcolor{stringliteral}{"{}pdflatex\ "{}}\ +\ filename;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (quietmode)}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ cmd\ +=\ \textcolor{stringliteral}{"{}\ >\ /dev/null"{}};\ \textcolor{comment}{//pipes\ to\ null\ to\ prevent\ printing}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ cmd\ +=\ \textcolor{stringliteral}{"{};\ "{}};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cmd\ +=\ "{}biblatex"{}\ //do\ not\ need\ biblatex\ for\ this\ implementation}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ cmd\ +=\ cmd;\ \textcolor{comment}{//double\ up\ compilation\ to\ get\ references\ working}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (compilename.find(\textcolor{stringliteral}{"{}.pdf"{}})\ ==\ std::string::npos)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ compilename\ +=\ \textcolor{stringliteral}{"{}.pdf"{}};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ cmd\ +=\ \textcolor{stringliteral}{"{}mv\ "{}}\ +\ filename\ +\ \textcolor{stringliteral}{"{}.pdf\ "{}}\ +\ compilename\ +\ \textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespaceJSL_a1752cd7c6e1134da51e9307527e0d788}{JSL::locationExists}}(\textcolor{stringliteral}{"{}\_build"{}}))}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ cmd\ =\ \textcolor{stringliteral}{"{}[[\ -\/f\ \_build/*\ ]]\ \&\&\ mv\ \_build/*\ ./;\ "{}}\ +\ cmd;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ system(mvcmd.c\_str());}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_abf525d02b8c49f21ef7faa68b7571f93}{JSL::mkdir}}(\textcolor{stringliteral}{"{}\_build"{}});}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (openfile)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ cmd\ +=\ \textcolor{stringliteral}{"{}\ open\ "{}}\ +\ compilename\ +\ \textcolor{stringliteral}{"{};\ "{}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ std::vector<std::string>\ buildArray=\{\textcolor{stringliteral}{"{}*.aux"{}},\ \textcolor{stringliteral}{"{}*.log"{}},\ \textcolor{stringliteral}{"{}*.toc"{}},\ \textcolor{stringliteral}{"{}*.mtc*"{}},\ \textcolor{stringliteral}{"{}*.blg"{}},\ \textcolor{stringliteral}{"{}*.bbl"{}},\ \textcolor{stringliteral}{"{}*.out"{}},\ \textcolor{stringliteral}{"{}*.maf"{}},\ \textcolor{stringliteral}{"{}*.fdb\_latexmk"{}},\ \textcolor{stringliteral}{"{}*.fls"{}},\ \textcolor{stringliteral}{"{}*-\/blx.bib"{}},\ \textcolor{stringliteral}{"{}*xml"{}},\ \textcolor{stringliteral}{"{}.snm"{}},\ \textcolor{stringliteral}{"{}*.nav"{}}\};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ std::vector<std::string>\ buildArray=\{"{}*.aux"{}\};}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ buildArray.size();\ ++i)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ cmd\ +=\ \textcolor{stringliteral}{"{}[\ -\/f\ "{}}\ +\ buildArray[i]\ +\ \textcolor{stringliteral}{"{}\ ]\ \&\&\ mv\ "{}}\ +\ buildArray[i]\ +\ \textcolor{stringliteral}{"{}\ \_build/;"{}};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ system(cmd.c\_str());}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_9ed050a2c1ded898f03e7cda4bbbc421" kind="dir">
+    <compoundname>/Users/jf20/Documents/Genomics/Deforest/libs/JSL</compoundname>
+    <innerdir refid="dir_9019563945193ca7de39307ba13a671c">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Array</innerdir>
+    <innerdir refid="dir_2874dae9605f0224ac5788d19c7dfbcd">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs</innerdir>
+    <innerdir refid="dir_826ceccf4c6bef4347ea58aac1af60f2">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display</innerdir>
+    <innerdir refid="dir_4bf86a16ce68e3976ed369fde08f14b6">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO</innerdir>
+    <innerdir refid="dir_c18f74ad414024b6d6f3471f11252802">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot</innerdir>
+    <innerdir refid="dir_c9e8e26e68e0de006846287b37322d50">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths</innerdir>
+    <innerdir refid="dir_837aab53d9abcc5260cde2177c775945">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings</innerdir>
+    <innerdir refid="dir_eaf35c7ea4ccdad7d4f4527b112ccc74">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System</innerdir>
+    <innerdir refid="dir_dc22bd37673fc53f719aa12d552cf9f9">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Testing</innerdir>
+    <innerfile refid="JSL_8h">JSL.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/"/>
+  </compounddef>
+</doxygen>

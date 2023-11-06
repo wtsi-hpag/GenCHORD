@@ -1,0 +1,240 @@
+\doxysection{Distributor Class Reference}
+\hypertarget{classDistributor}{}\label{classDistributor}\index{Distributor@{Distributor}}
+
+
+{\ttfamily \#include $<$Distributor.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classDistributor_aa02fcbe32e15ec6f3e1354b6da14a7b5}{Signal}} (int value)
+\item 
+void \mbox{\hyperlink{classDistributor_a54ad9297d61154f3f56fa2863b9ca67a}{Gather}} ()
+\item 
+void \mbox{\hyperlink{classDistributor_ada6ec906e1f36364f780dbcff26260ce}{Update\+EB}} (\mbox{\hyperlink{classErroredBinomial}{Errored\+Binomial}} \texorpdfstring{$\ast$}{*}eb)
+\item 
+void \mbox{\hyperlink{classDistributor_aa644bc97597a582f8bfd58acba36ce6a}{Update\+Assigner}} (\mbox{\hyperlink{structTransitions}{Transitions}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classDistributor_a46710d125cbf0edd3a8c84bbe3d66710}{Output}}, double \mbox{\hyperlink{classDistributor_a3959469a0ebc958253a3f070011626d0}{alpha}}, int \mbox{\hyperlink{classDistributor_accec77fcb1e05ccca8a78f76913c7138}{L}}, int \mbox{\hyperlink{classDistributor_ac773fd794cfd2df838b55b89f30d2400}{accelerator}}, double \mbox{\hyperlink{classDistributor_af4e4fe3e2b365cb85a09a6ffa032ba2e}{nu}})
+\item 
+\mbox{\hyperlink{classDistributor_abd21bd9d68f5757f1631247984fcb74c}{Distributor}} (int \mbox{\hyperlink{NegativeBinomial_8h_ab100bf2217331ec3cb44188c833e7df4}{n\+Workers}}, \mbox{\hyperlink{structData}{Data}} \&d)
+\item 
+\mbox{\hyperlink{classDistributor_a661281a8c58cc1bc1b135b15910030c1}{\texorpdfstring{$\sim$}{\string~}\+Distributor}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classDistributor_afe07bb1c9563b4d360828d4cff072968}{Main\+Chrom\+Assigment}}
+\item 
+\mbox{\hyperlink{classErroredBinomial}{Errored\+Binomial}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classDistributor_a9c68919030af9e0eee749c8a292d5c19}{EB}}
+\item 
+\mbox{\hyperlink{structTransitions}{Transitions}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classDistributor_a46710d125cbf0edd3a8c84bbe3d66710}{Output}}
+\item 
+int \mbox{\hyperlink{classDistributor_ab7fdcd7aaef29094caeda49cdd865b46}{Worker\+Count}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classDistributor_a7d44525cb713f5a39d0686a46df56e18}{Worker}} (int id)
+\item 
+void \mbox{\hyperlink{classDistributor_a3ccf88b3b370a34d867d559ffcd0148a}{EB\+\_\+\+Task}} (int id)
+\item 
+void \mbox{\hyperlink{classDistributor_a4899a90489bbf29087c6114d13a8e0d5}{Assignment\+\_\+\+Task}} (int id)
+\item 
+void \mbox{\hyperlink{classDistributor_a9d38af8686e8d386116dedf18709e3c6}{Spool\+Down}} (int id)
+\item 
+int \mbox{\hyperlink{classDistributor_aff43d57595aa9f844bfdde33bdabb85f}{Check\+Register}} (int id)
+\item 
+void \mbox{\hyperlink{classDistributor_a340af027357abe54b41c72d1015d8b1f}{Set\+Register}} (int value, int id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classDistributor_aa68612f1af8bb860fd0fd3e9cde2c5a8}{Register}}
+\item 
+std\+::vector$<$ std\+::thread $>$ \mbox{\hyperlink{classDistributor_a9e40bdfe952682af3f1fe3df9da6deea}{Threads}}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classDistributor_a30c2552d2b49a39b9888eed3f56d8c82}{eb\+Start}}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classDistributor_a1cb4ab602dc59da2f074732697ae153e}{eb\+End}}
+\item 
+\mbox{\hyperlink{structData}{Data}} \& \mbox{\hyperlink{classDistributor_a7e30d51de95f0a7633d85302a34fbc44}{Data\+Copy}}
+\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{classDistributor_a6560644471bf9971f0b513f51d029c0e}{Chrom\+Assignments}}
+\item 
+double \mbox{\hyperlink{classDistributor_a3959469a0ebc958253a3f070011626d0}{alpha}}
+\item 
+int \mbox{\hyperlink{classDistributor_accec77fcb1e05ccca8a78f76913c7138}{L}}
+\item 
+int \mbox{\hyperlink{classDistributor_ac773fd794cfd2df838b55b89f30d2400}{accelerator}}
+\item 
+double \mbox{\hyperlink{classDistributor_af4e4fe3e2b365cb85a09a6ffa032ba2e}{nu}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classDistributor_abd21bd9d68f5757f1631247984fcb74c}\label{classDistributor_abd21bd9d68f5757f1631247984fcb74c} 
+\index{Distributor@{Distributor}!Distributor@{Distributor}}
+\index{Distributor@{Distributor}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{Distributor()}{Distributor()}}
+{\footnotesize\ttfamily Distributor\+::\+Distributor (\begin{DoxyParamCaption}\item[{int}]{n\+Workers,  }\item[{\mbox{\hyperlink{structData}{Data}} \&}]{d }\end{DoxyParamCaption})}
+
+\Hypertarget{classDistributor_a661281a8c58cc1bc1b135b15910030c1}\label{classDistributor_a661281a8c58cc1bc1b135b15910030c1} 
+\index{Distributor@{Distributor}!````~Distributor@{\texorpdfstring{$\sim$}{\string~}Distributor}}
+\index{````~Distributor@{\texorpdfstring{$\sim$}{\string~}Distributor}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Distributor()}{\string~Distributor()}}
+{\footnotesize\ttfamily Distributor\+::\texorpdfstring{$\sim$}{\string~}\+Distributor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDistributor_a4899a90489bbf29087c6114d13a8e0d5}\label{classDistributor_a4899a90489bbf29087c6114d13a8e0d5} 
+\index{Distributor@{Distributor}!Assignment\_Task@{Assignment\_Task}}
+\index{Assignment\_Task@{Assignment\_Task}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{Assignment\_Task()}{Assignment\_Task()}}
+{\footnotesize\ttfamily void Distributor\+::\+Assignment\+\_\+\+Task (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_aff43d57595aa9f844bfdde33bdabb85f}\label{classDistributor_aff43d57595aa9f844bfdde33bdabb85f} 
+\index{Distributor@{Distributor}!CheckRegister@{CheckRegister}}
+\index{CheckRegister@{CheckRegister}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{CheckRegister()}{CheckRegister()}}
+{\footnotesize\ttfamily int Distributor\+::\+Check\+Register (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_a3ccf88b3b370a34d867d559ffcd0148a}\label{classDistributor_a3ccf88b3b370a34d867d559ffcd0148a} 
+\index{Distributor@{Distributor}!EB\_Task@{EB\_Task}}
+\index{EB\_Task@{EB\_Task}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{EB\_Task()}{EB\_Task()}}
+{\footnotesize\ttfamily void Distributor\+::\+EB\+\_\+\+Task (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_a54ad9297d61154f3f56fa2863b9ca67a}\label{classDistributor_a54ad9297d61154f3f56fa2863b9ca67a} 
+\index{Distributor@{Distributor}!Gather@{Gather}}
+\index{Gather@{Gather}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{Gather()}{Gather()}}
+{\footnotesize\ttfamily void Distributor\+::\+Gather (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classDistributor_a340af027357abe54b41c72d1015d8b1f}\label{classDistributor_a340af027357abe54b41c72d1015d8b1f} 
+\index{Distributor@{Distributor}!SetRegister@{SetRegister}}
+\index{SetRegister@{SetRegister}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{SetRegister()}{SetRegister()}}
+{\footnotesize\ttfamily void Distributor\+::\+Set\+Register (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_aa02fcbe32e15ec6f3e1354b6da14a7b5}\label{classDistributor_aa02fcbe32e15ec6f3e1354b6da14a7b5} 
+\index{Distributor@{Distributor}!Signal@{Signal}}
+\index{Signal@{Signal}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{Signal()}{Signal()}}
+{\footnotesize\ttfamily void Distributor\+::\+Signal (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+\Hypertarget{classDistributor_a9d38af8686e8d386116dedf18709e3c6}\label{classDistributor_a9d38af8686e8d386116dedf18709e3c6} 
+\index{Distributor@{Distributor}!SpoolDown@{SpoolDown}}
+\index{SpoolDown@{SpoolDown}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{SpoolDown()}{SpoolDown()}}
+{\footnotesize\ttfamily void Distributor\+::\+Spool\+Down (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_aa644bc97597a582f8bfd58acba36ce6a}\label{classDistributor_aa644bc97597a582f8bfd58acba36ce6a} 
+\index{Distributor@{Distributor}!UpdateAssigner@{UpdateAssigner}}
+\index{UpdateAssigner@{UpdateAssigner}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{UpdateAssigner()}{UpdateAssigner()}}
+{\footnotesize\ttfamily void Distributor\+::\+Update\+Assigner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTransitions}{Transitions}} \texorpdfstring{$\ast$}{*}}]{Output,  }\item[{double}]{alpha,  }\item[{int}]{L,  }\item[{int}]{accelerator,  }\item[{double}]{nu }\end{DoxyParamCaption})}
+
+\Hypertarget{classDistributor_ada6ec906e1f36364f780dbcff26260ce}\label{classDistributor_ada6ec906e1f36364f780dbcff26260ce} 
+\index{Distributor@{Distributor}!UpdateEB@{UpdateEB}}
+\index{UpdateEB@{UpdateEB}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{UpdateEB()}{UpdateEB()}}
+{\footnotesize\ttfamily void Distributor\+::\+Update\+EB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classErroredBinomial}{Errored\+Binomial}} \texorpdfstring{$\ast$}{*}}]{eb }\end{DoxyParamCaption})}
+
+\Hypertarget{classDistributor_a7d44525cb713f5a39d0686a46df56e18}\label{classDistributor_a7d44525cb713f5a39d0686a46df56e18} 
+\index{Distributor@{Distributor}!Worker@{Worker}}
+\index{Worker@{Worker}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{Worker()}{Worker()}}
+{\footnotesize\ttfamily void Distributor\+::\+Worker (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classDistributor_ac773fd794cfd2df838b55b89f30d2400}\label{classDistributor_ac773fd794cfd2df838b55b89f30d2400} 
+\index{Distributor@{Distributor}!accelerator@{accelerator}}
+\index{accelerator@{accelerator}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{accelerator}{accelerator}}
+{\footnotesize\ttfamily int Distributor\+::accelerator\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_a3959469a0ebc958253a3f070011626d0}\label{classDistributor_a3959469a0ebc958253a3f070011626d0} 
+\index{Distributor@{Distributor}!alpha@{alpha}}
+\index{alpha@{alpha}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{alpha}{alpha}}
+{\footnotesize\ttfamily double Distributor\+::alpha\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_a6560644471bf9971f0b513f51d029c0e}\label{classDistributor_a6560644471bf9971f0b513f51d029c0e} 
+\index{Distributor@{Distributor}!ChromAssignments@{ChromAssignments}}
+\index{ChromAssignments@{ChromAssignments}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{ChromAssignments}{ChromAssignments}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$int$>$ $>$ Distributor\+::\+Chrom\+Assignments\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_a7e30d51de95f0a7633d85302a34fbc44}\label{classDistributor_a7e30d51de95f0a7633d85302a34fbc44} 
+\index{Distributor@{Distributor}!DataCopy@{DataCopy}}
+\index{DataCopy@{DataCopy}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{DataCopy}{DataCopy}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structData}{Data}}\& Distributor\+::\+Data\+Copy\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_a9c68919030af9e0eee749c8a292d5c19}\label{classDistributor_a9c68919030af9e0eee749c8a292d5c19} 
+\index{Distributor@{Distributor}!EB@{EB}}
+\index{EB@{EB}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{EB}{EB}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classErroredBinomial}{Errored\+Binomial}}\texorpdfstring{$\ast$}{*} Distributor\+::\+EB}
+
+\Hypertarget{classDistributor_a1cb4ab602dc59da2f074732697ae153e}\label{classDistributor_a1cb4ab602dc59da2f074732697ae153e} 
+\index{Distributor@{Distributor}!ebEnd@{ebEnd}}
+\index{ebEnd@{ebEnd}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{ebEnd}{ebEnd}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Distributor\+::eb\+End\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_a30c2552d2b49a39b9888eed3f56d8c82}\label{classDistributor_a30c2552d2b49a39b9888eed3f56d8c82} 
+\index{Distributor@{Distributor}!ebStart@{ebStart}}
+\index{ebStart@{ebStart}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{ebStart}{ebStart}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Distributor\+::eb\+Start\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_accec77fcb1e05ccca8a78f76913c7138}\label{classDistributor_accec77fcb1e05ccca8a78f76913c7138} 
+\index{Distributor@{Distributor}!L@{L}}
+\index{L@{L}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{L}{L}}
+{\footnotesize\ttfamily int Distributor\+::L\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_afe07bb1c9563b4d360828d4cff072968}\label{classDistributor_afe07bb1c9563b4d360828d4cff072968} 
+\index{Distributor@{Distributor}!MainChromAssigment@{MainChromAssigment}}
+\index{MainChromAssigment@{MainChromAssigment}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{MainChromAssigment}{MainChromAssigment}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Distributor\+::\+Main\+Chrom\+Assigment}
+
+\Hypertarget{classDistributor_af4e4fe3e2b365cb85a09a6ffa032ba2e}\label{classDistributor_af4e4fe3e2b365cb85a09a6ffa032ba2e} 
+\index{Distributor@{Distributor}!nu@{nu}}
+\index{nu@{nu}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{nu}{nu}}
+{\footnotesize\ttfamily double Distributor\+::nu\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_a46710d125cbf0edd3a8c84bbe3d66710}\label{classDistributor_a46710d125cbf0edd3a8c84bbe3d66710} 
+\index{Distributor@{Distributor}!Output@{Output}}
+\index{Output@{Output}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{Output}{Output}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structTransitions}{Transitions}}\texorpdfstring{$\ast$}{*} Distributor\+::\+Output}
+
+\Hypertarget{classDistributor_aa68612f1af8bb860fd0fd3e9cde2c5a8}\label{classDistributor_aa68612f1af8bb860fd0fd3e9cde2c5a8} 
+\index{Distributor@{Distributor}!Register@{Register}}
+\index{Register@{Register}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{Register}{Register}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Distributor\+::\+Register\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_a9e40bdfe952682af3f1fe3df9da6deea}\label{classDistributor_a9e40bdfe952682af3f1fe3df9da6deea} 
+\index{Distributor@{Distributor}!Threads@{Threads}}
+\index{Threads@{Threads}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{Threads}{Threads}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::thread$>$ Distributor\+::\+Threads\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDistributor_ab7fdcd7aaef29094caeda49cdd865b46}\label{classDistributor_ab7fdcd7aaef29094caeda49cdd865b46} 
+\index{Distributor@{Distributor}!WorkerCount@{WorkerCount}}
+\index{WorkerCount@{WorkerCount}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{WorkerCount}{WorkerCount}}
+{\footnotesize\ttfamily int Distributor\+::\+Worker\+Count}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/src/\mbox{\hyperlink{Distributor_8h}{Distributor.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="jfglatex_8h" kind="file" language="C++">
+    <compoundname>jfglatex.h</compoundname>
+    <includes refid="locationExists_8h" local="yes">locationExists.h</includes>
+    <includes refid="mkdir_8h" local="yes">mkdir.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">string</includes>
+    <includedby refid="FileIO_8h" local="yes">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/FileIO.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/jfglatex.h</label>
+        <link refid="jfglatex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>locationExists.h</label>
+        <link refid="locationExists_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>mkdir.h</label>
+        <link refid="mkdir_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>dirent.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Argument.h</label>
+        <link refid="Argument_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/CommandArgs.h</label>
+        <link refid="CommandArgs_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Toggle.h</label>
+        <link refid="Toggle_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/FileIO.h</label>
+        <link refid="FileIO_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/jfglatex.h</label>
+        <link refid="jfglatex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/JSL.h</label>
+        <link refid="JSL_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Testing/Testing.h</label>
+        <link refid="Testing_8h"/>
+      </node>
+      <node id="6">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Testing/Testing_UnitTests.h</label>
+        <link refid="Testing__UnitTests_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h</label>
+        <link refid="axis_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplot.h</label>
+        <link refid="gnuplot_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplotMain.h</label>
+        <link refid="gnuplotMain_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h</label>
+        <link refid="Distributor_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h</label>
+        <link refid="HarmonicFunctions_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h</label>
+        <link refid="NegativeBinomial_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h</label>
+        <link refid="Transitions_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/data.h</label>
+        <link refid="data_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/harmonicFit.h</label>
+        <link refid="harmonicFit_8h"/>
+      </node>
+      <node id="14">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/plotting.h</label>
+        <link refid="plotting_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/settings.h</label>
+        <link refid="settings_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceJSL">JSL</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="locationExists_8h" kindref="compound">locationExists.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mkdir_8h" kindref="compound">mkdir.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceJSL" kindref="compound">JSL</ref></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8" refid="namespaceJSL_1a7885f51066f38fb013d8065b97a3013d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="namespaceJSL_1a7885f51066f38fb013d8065b97a3013d" kindref="member">jfglatex</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">filename</ref>,<sp/>std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">compilename</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">openfile</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">quietmode</ref>)</highlight><highlight class="comment">//a<sp/>C++<sp/>implementation<sp/>of<sp/>my<sp/>jfglatex<sp/>bash<sp/>script,<sp/>to<sp/>prevent<sp/>carting<sp/>it<sp/>around</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">texTail</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;.tex&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string::size_type<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">filename</ref>.find(<ref refid="structJSL_1_1NameValuePair" kindref="compound">texTail</ref>);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>!=<sp/>std::string::npos)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">filename</ref>.erase(<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">texTail</ref>.length());</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;pdflatex<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">filename</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">quietmode</ref>)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&gt;<sp/>/dev/null&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//pipes<sp/>to<sp/>null<sp/>to<sp/>prevent<sp/>printing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cmd<sp/>+=<sp/>&quot;biblatex&quot;<sp/>//do<sp/>not<sp/>need<sp/>biblatex<sp/>for<sp/>this<sp/>implementation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref><sp/>+=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref>;<sp/></highlight><highlight class="comment">//double<sp/>up<sp/>compilation<sp/>to<sp/>get<sp/>references<sp/>working</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">compilename</ref>.find(</highlight><highlight class="stringliteral">&quot;.pdf&quot;</highlight><highlight class="normal">)<sp/>==<sp/>std::string::npos)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">compilename</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;.pdf&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;mv<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">filename</ref><sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.pdf<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">compilename</ref><sp/>+<sp/></highlight><highlight class="stringliteral">&quot;;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceJSL_1a1752cd7c6e1134da51e9307527e0d788" kindref="member">JSL::locationExists</ref>(</highlight><highlight class="stringliteral">&quot;_build&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;[[<sp/>-f<sp/>_build/*<sp/>]]<sp/>&amp;&amp;<sp/>mv<sp/>_build/*<sp/>./;<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>system(mvcmd.c_str());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1abf525d02b8c49f21ef7faa68b7571f93" kindref="member">JSL::mkdir</ref>(</highlight><highlight class="stringliteral">&quot;_build&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">openfile</ref>)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>open<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">compilename</ref><sp/>+<sp/></highlight><highlight class="stringliteral">&quot;;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">buildArray</ref>={</highlight><highlight class="stringliteral">&quot;*.aux&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*.log&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*.toc&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*.mtc*&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*.blg&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*.bbl&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*.out&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*.maf&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*.fdb_latexmk&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*.fls&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*-blx.bib&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*xml&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;.snm&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*.nav&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::vector&lt;std::string&gt;<sp/>buildArray={&quot;*.aux&quot;};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>&lt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">buildArray</ref>.size();<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;[<sp/>-f<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">buildArray</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>]<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>]<sp/>&amp;&amp;<sp/>mv<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">buildArray</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>]<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>_build/;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">system</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">cmd</ref>.c_str());</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/jfglatex.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,41 @@
+\doxysection{Toggle.\+h}
+\hypertarget{Toggle_8h_source}{}\label{Toggle_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Toggle.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Toggle.h}}
+\mbox{\hyperlink{Toggle_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Argument_8h}{Argument.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceJSL_a2822caa026c439b483c262bb5edf30aa}{DEFAULT\_TOGGLE\_VALUE}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00007\ \ \ \ \ }
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classJSL_1_1Toggle}{Toggle}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classJSL_1_1Argument}{Argument}}<bool>}
+\DoxyCodeLine{00010\ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Toggle()\ :\ Argument<bool>()\{\};}}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Toggle_a1d4a110b61fad303c6a3651d8ec6b861}{Toggle}}(std::string\ trigger)\ :\ \mbox{\hyperlink{classJSL_1_1Argument}{Argument}}<bool>(\mbox{\hyperlink{namespaceJSL_a2822caa026c439b483c262bb5edf30aa}{DEFAULT\_TOGGLE\_VALUE}},\ trigger)\ \{\};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Toggle_abfe418b14de3b6524d79e83c64b35456}{Toggle}}(\textcolor{keywordtype}{bool}\ defaultVal,\ std::string\ trigger)\ :\ \mbox{\hyperlink{classJSL_1_1Argument}{Argument}}<bool>(defaultVal,trigger)\{\};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Toggle_a942da5cba465fc2a9b17ba61d1e04974}{Toggle}}(\textcolor{keywordtype}{bool}\ defaultVal,\ std::string\ trigger,\ \textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ **\ argv)\ :\ \mbox{\hyperlink{classJSL_1_1Argument}{Argument}}<bool>(defaultVal,trigger)}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Toggle_a1d85f1c5c2bbee6ee863df002dcb94f9}{ToggleParse}}(argc,argv);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Toggle_a9819749bc5f33f184905f51865c5fae5}{Toggle}}(std::string\ trigger,\ \textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ **\ argv)\ :\ \mbox{\hyperlink{classJSL_1_1Argument}{Argument}}<bool>(\mbox{\hyperlink{namespaceJSL_a2822caa026c439b483c262bb5edf30aa}{DEFAULT\_TOGGLE\_VALUE}},trigger)}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Toggle_a1d85f1c5c2bbee6ee863df002dcb94f9}{ToggleParse}}(argc,argv);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Toggle_a1d85f1c5c2bbee6ee863df002dcb94f9}{ToggleParse}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ *\ argv[])}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ argc;\ ++i)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((std::string)argv[i]\ ==\ \textcolor{stringliteral}{"{}-\/"{}}\ +\ \mbox{\hyperlink{classJSL_1_1ArgumentInterface_a29460ecfd033ad1a485333767e28b816}{TriggerString}})}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Argument_a83ada5bfa412192f76dd4290f679defd}{Value}}\ =\ !\mbox{\hyperlink{classJSL_1_1Argument_a83ada5bfa412192f76dd4290f679defd}{Value}};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \};}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}

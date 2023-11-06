@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['gamma_0',['gamma',['../classSettings.html#a8fa40e17cda2a56838be34ccfacb9af1',1,'Settings::Gamma'],['../structTransitions.html#a0dc8e7a95889f70ab870f7661eed9f29',1,'Transitions::Gamma'],['../classTreeMeta.html#a6341e1f31ba51f02ed2b86207b8f608b',1,'TreeMeta::Gamma']]],
+  ['gammamax_1',['gammaMax',['../classSettings.html#a839b60657b6274f5c2d6e790787a5661',1,'Settings']]],
+  ['gammamin_2',['gammaMin',['../classSettings.html#a07f895fffb07dbf175a318ae454a7646',1,'Settings']]],
+  ['gammaresolution_3',['gammaResolution',['../classSettings.html#a64fe814939b941d6fa5372a411329f6a',1,'Settings']]],
+  ['gather_4',['Gather',['../classDistributor.html#a54ad9297d61154f3f56fa2863b9ca67a',1,'Distributor']]],
+  ['getcolumn_5',['GetColumn',['../classJSL_1_1Matrix.html#a11ea58ca43e028123f628966eb4834a0',1,'JSL::Matrix']]],
+  ['getmaxk_6',['GetMaxK',['../structChromosome.html#a0298c1efdcc60a6f0e23481fba5f1435',1,'Chromosome']]],
+  ['getnextcolour_7',['GetNextColour',['../classJSL_1_1ColourArray.html#a24b6de7f6b9d4f26c0225eb5575e4a1e',1,'JSL::ColourArray']]],
+  ['getprob_8',['GetProb',['../classErroredBinomial.html#a6de40808745eba4da73eeb3b8eb124cb',1,'ErroredBinomial']]],
+  ['getrow_9',['GetRow',['../classJSL_1_1Matrix.html#aa8bae8650234f5e5569277563d68f22d',1,'JSL::Matrix']]],
+  ['global_10',['Global',['../namespaceJSL_1_1Fonts.html#a7a55fcb9c82e5a8c7f98ce1c803d08eead0545c4e33d28a3450f2d7fda228303e',1,'JSL::Fonts']]],
+  ['globalcolours_11',['GlobalColours',['../classJSL_1_1gnuplot.html#a05ed1200d39f012e829e7a43f472bbaa',1,'JSL::gnuplot']]],
+  ['globalcolourset_12',['GlobalColourSet',['../classJSL_1_1Axis.html#af8a902a6b54fa5b93c7039087dd4eefe',1,'JSL::Axis']]],
+  ['globalfontsize_13',['globalFontSize',['../classJSL_1_1gnuplot.html#abc845a03e444f2f39bfbfbb3c9a45573',1,'JSL::gnuplot']]],
+  ['globalregress_14',['globalRegress',['../settings_8h.html#a2a1436a9541174a0649321204d235e14',1,'settings.h']]],
+  ['globalverbose_15',['globalVerbose',['../basicFunctions_8h.html#a4338f6760709ebb9944c56f03268e4e6',1,'basicFunctions.h']]],
+  ['gnuplot_16',['gnuplot',['../classJSL_1_1gnuplot.html#aafcfb0c9032e7f0cfeddcc3baf2cc21f',1,'JSL::gnuplot::gnuplot()'],['../classJSL_1_1gnuplot.html',1,'JSL::gnuplot']]],
+  ['gnuplot_2eh_17',['gnuplot.h',['../gnuplot_8h.html',1,'']]],
+  ['gnuplotmain_2eh_18',['gnuplotMain.h',['../gnuplotMain_8h.html',1,'']]],
+  ['gridactive_19',['gridActive',['../classJSL_1_1Axis.html#aefb9e0d2281581911456b30917a02684',1,'JSL::Axis']]]
+];

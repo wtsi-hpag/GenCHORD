@@ -1,0 +1,295 @@
+\doxysection{Plot\+Data.\+h}
+\hypertarget{PlotData_8h_source}{}\label{PlotData_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h}}
+\mbox{\hyperlink{PlotData_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{colorArray_8h}{colorArray.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49beda}{PlotType}}\ \{\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaafa1098e16302d619cc16c6117128c7e2}{Line}},\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa523747d04b06019ae6db545703793d22}{ScatterPoint}},\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa18063242b9bed054d8672dd4efb6cd33}{BarChart}},\ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa5411aeb3b0211480c96c5d14e5e41e53}{SurfaceMap}}\};}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8}{Property}}\ \{\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8ae7660181e67b34cc8012e44899358c0a}{Colour}},\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8a22d189b48d50314bdd20b34e9a40e4a5}{PenSize}},\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8ab516e098813c27967b8e649b94f98db8}{PenType}},\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8afadeba2e8b035dc3c761f416c88a293d}{Legend}}\};}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355}{LineType}}\ \{\mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355aaf6d64d28f76aa54961a419d3d9e17b5}{Solid}},\ \mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355a5d77703e9d097677886b897d9a2eeb62}{Dash}},\ \mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355af0b887cb0d75c330317bc843146bfc92}{DashDot}},\mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355ac3cd9b153ce73b7d8dd0485ae186379d}{Dotted}},\ \mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355a48afd9609abb3d990c826b2c74850d3e}{DashDotDot}}\};}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526}{ScatterType}}\ \{\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526a7d6491e51b0151fad51114bdc9fe0006}{Dot}},\ \mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526ac54fadde63eae4fbfb5090af9e2c8c68}{Plus}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526af2349f50039f930d90a39a689282aaf8}{Cross}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526a3d4283b7785e19142f43a8d705f45128}{Star}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526af5af415948dea41c775febe11df59707}{OpenSquare}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526ab2977a42bdf7f8cafd62d56eb573d71a}{FilledSquare}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526a24102e043f642c5aadf0a5184838e065}{OpenCircle}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526a1e5a2218783d5197e73aab6b16f3add3}{FilledCircle}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526a163fb60ab5d5beca95d7afa4c97d6fda}{OpenDelta}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526abc2204e7d338e5c0f3c5b524c3250352}{FilledDelta}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526ae6f313a61f49260feabbe0252daebf39}{OpenNabla}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526ac57738c0de5dcd2b52aedd0ac353fcd8}{FilledNabla}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526aede7da49ec9867bc58a9883ac6f7fd12}{OpenDiamond}},\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526a9ba302e97b23281952e4e194387808b2}{FilledDiamond}}\};}
+\DoxyCodeLine{00010\ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair}}}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8}{Property}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair_a43effa79099e9015b45b6b9a9f8a2f0a}{Name}};\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{structJSL_1_1NameValuePair_a03e493ef338a55846408051a5d544b11}{Value}};\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair_aad7234d2606ab8dc017a62206f4a4a69}{NameValuePair}}(\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8}{Property}}\ name,\ T\ value)}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair_a43effa79099e9015b45b6b9a9f8a2f0a}{Name}}\ =\ name;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair_a03e493ef338a55846408051a5d544b11}{Value}}\ =\ value;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{namespace\ }LineProperties}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<int>}}\ \mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8a22d189b48d50314bdd20b34e9a40e4a5}{PenSize}}(\textcolor{keywordtype}{int}\ w)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<int>}}(\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8a22d189b48d50314bdd20b34e9a40e4a5}{JSL::PenSize}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{w}});}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<T>}}\ \mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8ae7660181e67b34cc8012e44899358c0a}{Colour}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{T}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{c}})}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<T>}}(\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8ae7660181e67b34cc8012e44899358c0a}{JSL::Colour}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{c}});}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<LineType>}}\ \mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8ab516e098813c27967b8e649b94f98db8}{PenType}}(\mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355}{LineType}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{c}})}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<LineType>}}(\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8ab516e098813c27967b8e649b94f98db8}{JSL::PenType}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{c}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<JSL::ScatterType>}}\ \mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526}{ScatterType}}(\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526}{JSL::ScatterType}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{c}})}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<JSL::ScatterType>}}(\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8ab516e098813c27967b8e649b94f98db8}{JSL::PenType}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{c}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<std::string>}}\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8afadeba2e8b035dc3c761f416c88a293d}{Legend}}(std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s}})}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<std::string>}}(\mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8afadeba2e8b035dc3c761f416c88a293d}{JSL::Legend}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{s}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classJSL_1_1PlotData}{PlotData}}}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}}>}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_acefcd21025b95d2f76313dfd578bb25f}{PlotData}}(std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{data}},\textcolor{keywordtype}{int}\ idx,\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49beda}{PlotType}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{t}},\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<Ts>}}...\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{args}})\ :\ \mbox{\hyperlink{classJSL_1_1PlotData_a59b333717ba98216efcd19499eacc6d9}{DataLocation}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{data}})}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a9c2193e46a79618ee04e4d229f44f20c}{Idx}}\ =\ idx;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a419724bfc1943f5c5efbc7607f9034d1}{type}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{t}};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_ab25bd54000960736d1c2687fc52b8bcc}{DefaultInit}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\textcolor{keyword}{sizeof}...(args)\ >\ 0)}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a0cb1885e91da9457fd684a60547e66d0}{ParseLoop}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{args}}...);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a67c6db4673dc35b4433e26dc9259a22f}{SetColour}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{T}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{v}})}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5783bc90550deca94c1790e581fb707d}{Error}}(\textcolor{stringliteral}{"{}Cannot\ parse\ colours\ in\ the\ provided\ format.\ Please\ use\ a\ supported\ colour\ encoding"{}});}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_af350ddfe10bf959868087490d58cc6f6}{SetColour}}(std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{c}})}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a2936bcc90d54c471f31388e2673081b3}{colour}}\ =\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ +\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{c}}\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a04b4ee30bc1c289bc956bead3ad016da}{SetColour}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{c}})}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a67c6db4673dc35b4433e26dc9259a22f}{SetColour}}((std::string)\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{c}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a433b879e54d8ab172d6b3a73600ff1df}{SetColour}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{r}},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{g}},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{b}})}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{combined}}\ =\ 65536\ *\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{r}}\ \%\ 256)\ +\ 256\ *\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{g}}\%256)\ +\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{b}}\%256);\ \textcolor{comment}{//bitshifting\ nonsense}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a2936bcc90d54c471f31388e2673081b3}{colour}}\ =\ \textcolor{stringliteral}{"{}\ rgb\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{combined}});}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_af96df168f1f17d3405e7c630ea6e1649}{SetColour}}(std::vector<unsigned\ int>\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}})}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}RGB\ Vectors\ must\ have\ length\ 3"{}},\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}.size()\ ==\ 3);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a67c6db4673dc35b4433e26dc9259a22f}{SetColour}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}[0],\mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}[1],\mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}[2]);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a2af9740750705afa42bec5586b93d7d5}{SetColour}}(std::vector<double>\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}})}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}RGB\ Vectors\ must\ have\ length\ 3"{}},\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}.size()\ ==\ 3);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}When\ passed\ as\ doubles,\ colour\ vals\ must\ be\ 0<=x<=1"{}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{abs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}[0])\ <=\ 1,\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{abs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}[1])\ <=\ 1,\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{abs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}[2])\ <=\ \ \ \ 1);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a67c6db4673dc35b4433e26dc9259a22f}{SetColour}}(255*\mbox{\hyperlink{structJSL_1_1NameValuePair}{abs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}[0]),255*\mbox{\hyperlink{structJSL_1_1NameValuePair}{abs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}[1]),255*\mbox{\hyperlink{structJSL_1_1NameValuePair}{abs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{cs}}[2]));}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_acb517655ae4ab52c1512fd48c0589d31}{SetPenSize}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{T}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{v}})}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5783bc90550deca94c1790e581fb707d}{Error}}(\textcolor{stringliteral}{"{}Cannot\ parse\ pensizes\ in\ the\ provided\ format.\ Please\ use\ a\ supported\ pensize\ encoding"{}});}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_aed7875d8ef940f0e1c0ec9321fc03001}{SetPenSize}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{l}})}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a91bf6edbf9d8a28cf5255aa1ed74948c}{penSize}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{l}};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a3e8e3327c8d29e55468709a1d02f554e}{SetPenType}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{T}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{v}})}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5783bc90550deca94c1790e581fb707d}{Error}}(\textcolor{stringliteral}{"{}Cannot\ parse\ pentypes\ in\ the\ provided\ format.\ Please\ use\ a\ supported\ pensize\ encoding"{}});}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_aa12ffd19507678e013db6a221a0c5849}{SetPenType}}(\mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355}{JSL::LineType}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{t}})}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}Can\ only\ set\ pentype\ for\ line\ objects\ -\/\ use\ ScatterType\ for\ scatterobjects"{}},\mbox{\hyperlink{classJSL_1_1PlotData_a419724bfc1943f5c5efbc7607f9034d1}{type}}==\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaafa1098e16302d619cc16c6117128c7e2}{Line}}\ ||\ \mbox{\hyperlink{classJSL_1_1PlotData_a419724bfc1943f5c5efbc7607f9034d1}{type}}==\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa18063242b9bed054d8672dd4efb6cd33}{BarChart}});}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{t}})}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355aaf6d64d28f76aa54961a419d3d9e17b5}{Solid}}:}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_ab84555b21166659535d130f84ac74b42}{dashType}}\ =\ \textcolor{stringliteral}{"{}1"{}};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355a5d77703e9d097677886b897d9a2eeb62}{Dash}}:}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_ab84555b21166659535d130f84ac74b42}{dashType}}\ =\ \textcolor{stringliteral}{"{}2"{}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355af0b887cb0d75c330317bc843146bfc92}{DashDot}}:}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_ab84555b21166659535d130f84ac74b42}{dashType}}\ =\ \textcolor{stringliteral}{"{}4"{}};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355ac3cd9b153ce73b7d8dd0485ae186379d}{Dotted}}:}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_ab84555b21166659535d130f84ac74b42}{dashType}}\ =\ \textcolor{stringliteral}{"{}3"{}};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355a48afd9609abb3d990c826b2c74850d3e}{DashDotDot}}:}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_ab84555b21166659535d130f84ac74b42}{dashType}}\ =\ \textcolor{stringliteral}{"{}5"{}};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_ab84555b21166659535d130f84ac74b42}{dashType}}\ =\ \textcolor{stringliteral}{"{}-\/1"{}};}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a30cf21f46a1911587a4381bfb40c3403}{SetScatterType}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{T}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{t}})}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{t}}\ <<\ std::endl;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5783bc90550deca94c1790e581fb707d}{Error}}(\textcolor{stringliteral}{"{}Cannot\ parse\ scattertype\ in\ the\ provided\ format.\ Please\ use\ a\ supported\ pensize\ encoding"{}});}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a677bd22e71e15894d5ac1d5fa652236b}{SetScatterType}}(\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526}{ScatterType}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{t}})}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}Can\ only\ set\ scattertype\ for\ scatter\ objects\ -\/\ use\ LineType\ for\ line\ objects"{}},\mbox{\hyperlink{classJSL_1_1PlotData_a419724bfc1943f5c5efbc7607f9034d1}{type}}==\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa523747d04b06019ae6db545703793d22}{ScatterPoint}});}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_ab84555b21166659535d130f84ac74b42}{dashType}}\ =\ std::to\_string((\textcolor{keywordtype}{int})\mbox{\hyperlink{structJSL_1_1NameValuePair}{t}});}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a24fa5385585f0eaa2777072ef2d818c2}{SetLegend}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{T}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{t}})}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5783bc90550deca94c1790e581fb707d}{Error}}(\textcolor{stringliteral}{"{}Cannot\ parse\ legends\ as\ anything\ other\ than\ strings"{}});}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a5e2c9a97035e97e3658c8bcc2913dab3}{SetLegend}}(std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s}})}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a17ce4f8c1648a676421b39a204b0a37d}{legend}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s}};}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a2c2705ec8a5487ff35756f93c9c10c7c}{useLegend}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a9df9d0ca187a223591049d8fc8e2bc71}{SetLegend}}(\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{t}})}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a2c2705ec8a5487ff35756f93c9c10c7c}{useLegend}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{t}};}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1PlotData_a7217d35bbaa918adee05f84bea021c5e}{Write}}(\mbox{\hyperlink{classJSL_1_1ColourArray}{ColourArray}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{colours}})}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)"{}"{}}\ +\ \mbox{\hyperlink{classJSL_1_1PlotData_a59b333717ba98216efcd19499eacc6d9}{DataLocation}}\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}\ "{}};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classJSL_1_1PlotData_a419724bfc1943f5c5efbc7607f9034d1}{type}})}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaafa1098e16302d619cc16c6117128c7e2}{Line}}:}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +=\ \textcolor{stringliteral}{"{}using\ 1:2\ with\ lines\ "{}};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +=\ \textcolor{stringliteral}{"{}dt\ "{}}\ +\ \mbox{\hyperlink{classJSL_1_1PlotData_ab84555b21166659535d130f84ac74b42}{dashType}};}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa523747d04b06019ae6db545703793d22}{ScatterPoint}}:}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +=\ \textcolor{stringliteral}{"{}using\ 1:2\ \ pt\ "{}}\ +\ \mbox{\hyperlink{classJSL_1_1PlotData_ab84555b21166659535d130f84ac74b42}{dashType}};}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa18063242b9bed054d8672dd4efb6cd33}{BarChart}}:}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +=\ \textcolor{stringliteral}{"{}using\ 1:3:xtic(2)\ with\ boxes\ "{}};}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa5411aeb3b0211480c96c5d14e5e41e53}{SurfaceMap}}:}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +=\ \textcolor{stringliteral}{"{}using\ 1:2:3\ with\ image\ "{}};}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +=\ \textcolor{stringliteral}{"{}\ lw\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{classJSL_1_1PlotData_a91bf6edbf9d8a28cf5255aa1ed74948c}{penSize}});}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{holdColour}}\ =\ \ \mbox{\hyperlink{classJSL_1_1PlotData_a2936bcc90d54c471f31388e2673081b3}{colour}}\ ==\ \textcolor{stringliteral}{"{}\(\backslash\)"{}hold\(\backslash\)"{}"{}}\ ||\ \mbox{\hyperlink{classJSL_1_1PlotData_a2936bcc90d54c471f31388e2673081b3}{colour}}\ ==\ \textcolor{stringliteral}{"{}\(\backslash\)"{}previous\(\backslash\)"{}"{}};}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{holdColour}})}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a2936bcc90d54c471f31388e2673081b3}{colour}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{colours}}.HoldColour();}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1PlotData_a2936bcc90d54c471f31388e2673081b3}{colour}}\ ==\ \textcolor{stringliteral}{"{}\_\_null\_\_"{}})}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a67c6db4673dc35b4433e26dc9259a22f}{SetColour}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{colours}}.GetNextColour());}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ colour\ <<\ std::endl;}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{colours}}.Save(\mbox{\hyperlink{classJSL_1_1PlotData_a2936bcc90d54c471f31388e2673081b3}{colour}});}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +=\ \textcolor{stringliteral}{"{}\ lc\ "{}}\ +\ \mbox{\hyperlink{classJSL_1_1PlotData_a2936bcc90d54c471f31388e2673081b3}{colour}};}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classJSL_1_1PlotData_a2c2705ec8a5487ff35756f93c9c10c7c}{useLegend}})}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +=\ \textcolor{stringliteral}{"{}\ notitle"{}};}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +=\ \textcolor{stringliteral}{"{}\ title\ \(\backslash\)"{}"{}}\ +\ \mbox{\hyperlink{classJSL_1_1PlotData_a17ce4f8c1648a676421b39a204b0a37d}{legend}}+\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}};}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{line}}\ +\ \textcolor{stringliteral}{"{},\(\backslash\)\(\backslash\)\(\backslash\)n"{}};}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1PlotData_a59b333717ba98216efcd19499eacc6d9}{DataLocation}};\ }
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1PlotData_a9c2193e46a79618ee04e4d229f44f20c}{Idx}};\ }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1PlotData_ab84555b21166659535d130f84ac74b42}{dashType}};\ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49beda}{PlotType}}\ \mbox{\hyperlink{classJSL_1_1PlotData_a419724bfc1943f5c5efbc7607f9034d1}{type}};\ }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1PlotData_a17ce4f8c1648a676421b39a204b0a37d}{legend}};\ }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1PlotData_a2936bcc90d54c471f31388e2673081b3}{colour}};\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1PlotData_a91bf6edbf9d8a28cf5255aa1ed74948c}{penSize}};\ }
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1PlotData_a2c2705ec8a5487ff35756f93c9c10c7c}{useLegend}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_ab25bd54000960736d1c2687fc52b8bcc}{DefaultInit}}()}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a2936bcc90d54c471f31388e2673081b3}{colour}}\ =\ \textcolor{stringliteral}{"{}\_\_null\_\_"{}};}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classJSL_1_1PlotData_a419724bfc1943f5c5efbc7607f9034d1}{type}})}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaafa1098e16302d619cc16c6117128c7e2}{Line}}:}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a3e8e3327c8d29e55468709a1d02f554e}{SetPenType}}(\mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355aaf6d64d28f76aa54961a419d3d9e17b5}{Solid}});}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa523747d04b06019ae6db545703793d22}{ScatterPoint}}:}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a30cf21f46a1911587a4381bfb40c3403}{SetScatterType}}(\mbox{\hyperlink{namespaceJSL_a086efb36ddb107d45961a6b46932c526a24102e043f642c5aadf0a5184838e065}{OpenCircle}});}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa18063242b9bed054d8672dd4efb6cd33}{BarChart}}:}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a3e8e3327c8d29e55468709a1d02f554e}{SetPenType}}(\mbox{\hyperlink{namespaceJSL_acbabfae0b320d418d49485b7c50bc355aaf6d64d28f76aa54961a419d3d9e17b5}{Solid}});}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a91bf6edbf9d8a28cf5255aa1ed74948c}{penSize}}\ =\ 1;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a17ce4f8c1648a676421b39a204b0a37d}{legend}}\ =\ \textcolor{stringliteral}{"{}Data\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{classJSL_1_1PlotData_a9c2193e46a79618ee04e4d229f44f20c}{Idx}});}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}},\ \textcolor{keyword}{typename}...\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Ts}}>}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a0cb1885e91da9457fd684a60547e66d0}{ParseLoop}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<T>}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{n1}},\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<Ts>}}...\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{ns}})}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a2e57942c52c4ec76436bd3179e4ee2cd}{ParseNVPair}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{n1}});}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\textcolor{keyword}{sizeof}...(ns)\ >\ 0)}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a0cb1885e91da9457fd684a60547e66d0}{ParseLoop}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{ns}}...);}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PlotData_a2e57942c52c4ec76436bd3179e4ee2cd}{ParseNVPair}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<T>}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{nv}})}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{nv}}.\mbox{\hyperlink{structJSL_1_1NameValuePair_a43effa79099e9015b45b6b9a9f8a2f0a}{Name}})}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8ae7660181e67b34cc8012e44899358c0a}{Colour}}:}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a67c6db4673dc35b4433e26dc9259a22f}{SetColour}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{nv}}.\mbox{\hyperlink{structJSL_1_1NameValuePair_a03e493ef338a55846408051a5d544b11}{Value}});}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8a22d189b48d50314bdd20b34e9a40e4a5}{PenSize}}:}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_acb517655ae4ab52c1512fd48c0589d31}{SetPenSize}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{nv}}.\mbox{\hyperlink{structJSL_1_1NameValuePair_a03e493ef338a55846408051a5d544b11}{Value}});}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8ab516e098813c27967b8e649b94f98db8}{PenType}}:}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1PlotData_a419724bfc1943f5c5efbc7607f9034d1}{type}}\ ==\ \mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaafa1098e16302d619cc16c6117128c7e2}{Line}})}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a3e8e3327c8d29e55468709a1d02f554e}{SetPenType}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{nv}}.\mbox{\hyperlink{structJSL_1_1NameValuePair_a03e493ef338a55846408051a5d544b11}{Value}});}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a30cf21f46a1911587a4381bfb40c3403}{SetScatterType}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{nv}}.\mbox{\hyperlink{structJSL_1_1NameValuePair_a03e493ef338a55846408051a5d544b11}{Value}});}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_ad5aeae8cb562d6f38c724cbdc51d81f8afadeba2e8b035dc3c761f416c88a293d}{Legend}}:}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData_a24fa5385585f0eaa2777072ef2d818c2}{SetLegend}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{nv}}.\mbox{\hyperlink{structJSL_1_1NameValuePair_a03e493ef338a55846408051a5d544b11}{Value}});}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00314\ \ \ \ \ \};}
+\DoxyCodeLine{00315\ \}}
+
+\end{DoxyCode}

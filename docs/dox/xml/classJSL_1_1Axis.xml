@@ -1,0 +1,2056 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classJSL_1_1Axis" kind="class" language="C++" prot="public">
+    <compoundname>JSL::Axis</compoundname>
+    <includes refid="axis_8h" local="no">axis.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a7a8183af8c3d70b635de14a685aa0554" prot="public" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::Lock</definition>
+        <argsstring></argsstring>
+        <name>Lock</name>
+        <qualifiedname>JSL::Axis::Lock</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="43" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a60a1a28cb72b5542c025bb0626a7bcb0" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string JSL::Axis::title</definition>
+        <argsstring></argsstring>
+        <name>title</name>
+        <qualifiedname>JSL::Axis::title</qualifiedname>
+        <briefdescription>
+<para>The text which appears above the axis. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="423" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="423" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1abdde241e2210da810c69d4cf117e9496" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string JSL::Axis::xlabel</definition>
+        <argsstring></argsstring>
+        <name>xlabel</name>
+        <qualifiedname>JSL::Axis::xlabel</qualifiedname>
+        <briefdescription>
+<para>The text which appears underneath the x axis. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="424" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="424" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1aaf6df18a857aef382343b1506641d6ff" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string JSL::Axis::ylabel</definition>
+        <argsstring></argsstring>
+        <name>ylabel</name>
+        <qualifiedname>JSL::Axis::ylabel</qualifiedname>
+        <briefdescription>
+<para>The text which appears to the left of the y axis. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="425" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="425" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a12d4c08ea04ccbefdef1f98a1b6528ef" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string JSL::Axis::cblabel</definition>
+        <argsstring></argsstring>
+        <name>cblabel</name>
+        <qualifiedname>JSL::Axis::cblabel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="426" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a078cf9b840f394d0189cd170373f3015" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+        <definition>std::vector&lt;double&gt; JSL::Axis::range_x</definition>
+        <argsstring></argsstring>
+        <name>range_x</name>
+        <qualifiedname>JSL::Axis::range_x</qualifiedname>
+        <briefdescription>
+<para>A (max) length-2 vector detailing the visual range of the plot on the x axis. If length is zero, uses gnuplot auto-scaling. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="427" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="427" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a9718570f4efec1fc9a6484c2e9f1d565" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+        <definition>std::vector&lt;double&gt; JSL::Axis::range_y</definition>
+        <argsstring></argsstring>
+        <name>range_y</name>
+        <qualifiedname>JSL::Axis::range_y</qualifiedname>
+        <briefdescription>
+<para>A (max) length-2 vector detailing the visual range of the plot on the x axis. If length is zero, uses gnuplot auto-scaling. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="428" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="428" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1ada7e2a8706a08e34533a9bc8309fe1d2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+        <definition>std::vector&lt;double&gt; JSL::Axis::range_c</definition>
+        <argsstring></argsstring>
+        <name>range_c</name>
+        <qualifiedname>JSL::Axis::range_c</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="429" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a80164659b50a175dcd1c8f34b4de1164" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::isLog_x</definition>
+        <argsstring></argsstring>
+        <name>isLog_x</name>
+        <qualifiedname>JSL::Axis::isLog_x</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+<para>If true, uses logarithmic scaling on the x axis. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="430" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a8ba71a330e6d326699af48f27bd31f18" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::isTime_x</definition>
+        <argsstring></argsstring>
+        <name>isTime_x</name>
+        <qualifiedname>JSL::Axis::isTime_x</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+<para>If true, interprets the x axis as a temporal coordinate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="431" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="431" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1aac644ec515bac649f9f82077bd85a297" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::isTime_y</definition>
+        <argsstring></argsstring>
+        <name>isTime_y</name>
+        <qualifiedname>JSL::Axis::isTime_y</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+<para>If true, interprets the y axis as a temporal coordinate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="432" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1acbea4a8261fa63858287b70306a75a8b" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::isLog_y</definition>
+        <argsstring></argsstring>
+        <name>isLog_y</name>
+        <qualifiedname>JSL::Axis::isLog_y</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+<para>If false, uses logarithmic scaling on the x axis. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="433" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a4ff1cc988b75be9420bfa84508f0360b" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::isLog_cb</definition>
+        <argsstring></argsstring>
+        <name>isLog_cb</name>
+        <qualifiedname>JSL::Axis::isLog_cb</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="434" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="434" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1aefb9e0d2281581911456b30917a02684" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::gridActive</definition>
+        <argsstring></argsstring>
+        <name>gridActive</name>
+        <qualifiedname>JSL::Axis::gridActive</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+<para>If true, overlays a grid onto the plot. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="435" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="435" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a8611d305bdcae805ebac3930617ce1f5" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+        <definition>double JSL::Axis::xSpan</definition>
+        <argsstring></argsstring>
+        <name>xSpan</name>
+        <qualifiedname>JSL::Axis::xSpan</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="436" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="436" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1acd6201408a049b8c963a23540d245f6a" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+        <definition>double JSL::Axis::ySpan</definition>
+        <argsstring></argsstring>
+        <name>ySpan</name>
+        <qualifiedname>JSL::Axis::ySpan</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="437" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="437" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a39877a67f32c8aedd60015674f99f92a" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::xtic_IsString</definition>
+        <argsstring></argsstring>
+        <name>xtic_IsString</name>
+        <qualifiedname>JSL::Axis::xtic_IsString</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="438" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="438" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1acb1e549279299d437a69527335da537c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; JSL::Axis::xtic_Strings</definition>
+        <argsstring></argsstring>
+        <name>xtic_Strings</name>
+        <qualifiedname>JSL::Axis::xtic_Strings</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="439" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="439" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a36a183ea84e87e2f94c003d53b3b0348" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::ytic_IsString</definition>
+        <argsstring></argsstring>
+        <name>ytic_IsString</name>
+        <qualifiedname>JSL::Axis::ytic_IsString</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="440" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="440" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a85b417d720b398abffd40fcafc6e8b2c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; JSL::Axis::ytic_Strings</definition>
+        <argsstring></argsstring>
+        <name>ytic_Strings</name>
+        <qualifiedname>JSL::Axis::ytic_Strings</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="441" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="441" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a537af4d2e243d88c4c9f0081a209d4d4" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::Axis::xTicAngle</definition>
+        <argsstring></argsstring>
+        <name>xTicAngle</name>
+        <qualifiedname>JSL::Axis::xTicAngle</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>RotationAngle of xtics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="444" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="444" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a0c548979ecc00ef132f184e813a11d40" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::Axis::yTicAngle</definition>
+        <argsstring></argsstring>
+        <name>yTicAngle</name>
+        <qualifiedname>JSL::Axis::yTicAngle</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Rotation Angle of ytics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="445" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="445" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a99a36f25ce02c490762a34a536c373f1" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::Axis::axisFontSize</definition>
+        <argsstring></argsstring>
+        <name>axisFontSize</name>
+        <qualifiedname>JSL::Axis::axisFontSize</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+<para>The font size used to write both the <ref refid="classJSL_1_1Axis_1abdde241e2210da810c69d4cf117e9496" kindref="member">Axis::xlabel</ref> and <ref refid="classJSL_1_1Axis_1aaf6df18a857aef382343b1506641d6ff" kindref="member">Axis::ylabel</ref> (cannot be different for x/y). If &lt; 0, uses the value of <ref refid="classJSL_1_1gnuplot_1abc845a03e444f2f39bfbfbb3c9a45573" kindref="member">gnuplot::globalFontSize</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="446" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="446" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a6800d42f740631e37e3a1fe472955ea4" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::Axis::titleFontSize</definition>
+        <argsstring></argsstring>
+        <name>titleFontSize</name>
+        <qualifiedname>JSL::Axis::titleFontSize</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+<para>The font size used to write <ref refid="classJSL_1_1Axis_1a60a1a28cb72b5542c025bb0626a7bcb0" kindref="member">Axis::title</ref>. If &lt; 0, uses the value of <ref refid="classJSL_1_1gnuplot_1abc845a03e444f2f39bfbfbb3c9a45573" kindref="member">gnuplot::globalFontSize</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="447" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="447" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1aa5c155153ea1a6caaaf555955bb1cd29" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::Axis::legendFontSize</definition>
+        <argsstring></argsstring>
+        <name>legendFontSize</name>
+        <qualifiedname>JSL::Axis::legendFontSize</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+<para>The font size used to write the legend, if active. If &lt; 0, uses the value of <ref refid="classJSL_1_1gnuplot_1abc845a03e444f2f39bfbfbb3c9a45573" kindref="member">gnuplot::globalFontSize</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="448" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="448" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1aa865e805c4c5581ba846773534b1c6d7" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string JSL::Axis::legendLocation</definition>
+        <argsstring></argsstring>
+        <name>legendLocation</name>
+        <qualifiedname>JSL::Axis::legendLocation</qualifiedname>
+        <initializer>= &quot;left <ref refid="structJSL_1_1NameValuePair" kindref="compound">top&quot;</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="449" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="449" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1aeda4464707016b4996df9b34692e6cc6" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::Axis::legendCols</definition>
+        <argsstring></argsstring>
+        <name>legendCols</name>
+        <qualifiedname>JSL::Axis::legendCols</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="450" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="450" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a750f8a4a9a96ba4d259702f6a9ad66da" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::MapMode</definition>
+        <argsstring></argsstring>
+        <name>MapMode</name>
+        <qualifiedname>JSL::Axis::MapMode</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="451" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="451" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a01db63a8d0674c821172dd3bc720fc7e" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string JSL::Axis::DataDir</definition>
+        <argsstring></argsstring>
+        <name>DataDir</name>
+        <qualifiedname>JSL::Axis::DataDir</qualifiedname>
+        <briefdescription>
+<para>The directory reserved for this axis to write its data to file for gnuplot to later scoop up. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="452" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="452" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a493f7f5899d5e867ade59af8e10e95bd" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref> &gt;</type>
+        <definition>std::vector&lt;PlotData&gt; JSL::Axis::Data</definition>
+        <argsstring></argsstring>
+        <name>Data</name>
+        <qualifiedname>JSL::Axis::Data</qualifiedname>
+        <briefdescription>
+<para>A vector of data detailing what should be plotted, and what it looks like, accessed during <ref refid="classJSL_1_1Axis_1a33cf7955573e8cae7c58a48e264fa573" kindref="member">Axis::Show()</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="453" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="453" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a16738eebad49e0faf3c883e1550d2d04" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::legendActive</definition>
+        <argsstring></argsstring>
+        <name>legendActive</name>
+        <qualifiedname>JSL::Axis::legendActive</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+<para>If true, shows a legend on the axis. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="454" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="454" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1acca070c88101d07fd42e35a606849e1f" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::Axis::DataIdx</definition>
+        <argsstring></argsstring>
+        <name>DataIdx</name>
+        <qualifiedname>JSL::Axis::DataIdx</qualifiedname>
+        <briefdescription>
+<para>The current counter for how many plots/lines have been added to the axis, used to index <ref refid="classJSL_1_1Axis_1a493f7f5899d5e867ade59af8e10e95bd" kindref="member">Axis::Data</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="455" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="455" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1ac177e318f405431295d8a88a412bdbc5" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::powerFormat_X</definition>
+        <argsstring></argsstring>
+        <name>powerFormat_X</name>
+        <qualifiedname>JSL::Axis::powerFormat_X</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="456" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="456" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a5126c2199ee25ff2d15bed2552a9c01a" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::powerFormat_Y</definition>
+        <argsstring></argsstring>
+        <name>powerFormat_Y</name>
+        <qualifiedname>JSL::Axis::powerFormat_Y</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="457" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="457" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1addeb6963592dbccf827a526d63c3b837" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::PaletteActive</definition>
+        <argsstring></argsstring>
+        <name>PaletteActive</name>
+        <qualifiedname>JSL::Axis::PaletteActive</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="458" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="458" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a40d7da6aa47d877bcb4f36a06fac7cb1" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::Axis::showColorBar</definition>
+        <argsstring></argsstring>
+        <name>showColorBar</name>
+        <qualifiedname>JSL::Axis::showColorBar</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">true</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="459" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="459" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a0a87dd05a9e9b69aea86997377f630e7" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string JSL::Axis::palette</definition>
+        <argsstring></argsstring>
+        <name>palette</name>
+        <qualifiedname>JSL::Axis::palette</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="460" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="460" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a9b5762d8a406e9962411526a919b8a26" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+        <definition>double JSL::Axis::xticgap</definition>
+        <argsstring></argsstring>
+        <name>xticgap</name>
+        <qualifiedname>JSL::Axis::xticgap</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="461" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="461" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1aeb7107049cfab5d59e3257eb744db23c" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+        <definition>double JSL::Axis::yticgap</definition>
+        <argsstring></argsstring>
+        <name>yticgap</name>
+        <qualifiedname>JSL::Axis::yticgap</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="462" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="462" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a85d293ac28ada2ed2cb9c07bf5d392f5" prot="private" static="no" mutable="no">
+        <type><ref refid="classJSL_1_1ColourArray" kindref="compound">ColourArray</ref></type>
+        <definition>ColourArray JSL::Axis::Colours</definition>
+        <argsstring></argsstring>
+        <name>Colours</name>
+        <qualifiedname>JSL::Axis::Colours</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="463" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="463" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1Axis_1a6655e1d9a5b38321b80adb17d4e9c596" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string JSL::Axis::WriteCommand</definition>
+        <argsstring></argsstring>
+        <name>WriteCommand</name>
+        <qualifiedname>JSL::Axis::WriteCommand</qualifiedname>
+        <briefdescription>
+<para>The string into which the <ref refid="classJSL_1_1Axis_1a33cf7955573e8cae7c58a48e264fa573" kindref="member">Axis::Show()</ref> function puts all its data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="464" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="464" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classJSL_1_1Axis_1a557386d460e8ad72ea2f6670857c99db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>JSL::Axis::Axis</definition>
+        <argsstring>()</argsstring>
+        <name>Axis</name>
+        <qualifiedname>JSL::Axis::Axis</qualifiedname>
+        <briefdescription>
+<para>Default, empty constructor (necessary for std::vector&lt;Axis&gt; to exist, even if never called) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="45" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1afb3f071c32240fe6c83816813b1f3370" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>JSL::Axis::Axis</definition>
+        <argsstring>(std::string rootDir, ColourArray colors)</argsstring>
+        <name>Axis</name>
+        <qualifiedname>JSL::Axis::Axis</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>rootDir</declname>
+        </param>
+        <param>
+          <type><ref refid="classJSL_1_1ColourArray" kindref="compound">ColourArray</ref></type>
+          <declname>colors</declname>
+        </param>
+        <briefdescription>
+<para>Expected constructor, generates a random id for itself, and generates a temporary directory in which it stores its data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rootDir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The temporary folder generated by <ref refid="classJSL_1_1gnuplot" kindref="compound">JSL::gnuplot</ref>, into which all temp data goes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="48" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="48" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a95b78211cb09e6c6f0834fd353890a1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">class</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref></type>
+          </param>
+          <param>
+            <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">class</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref></type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref> &amp;</type>
+        <definition>PlotData &amp; JSL::Axis::Plot</definition>
+        <argsstring>(const std::vector&lt; T &gt; &amp;x, const std::vector&lt; S &gt; &amp;y, NameValuePair&lt; Ts &gt;... args)</argsstring>
+        <name>Plot</name>
+        <qualifiedname>JSL::Axis::Plot</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref> &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair</ref>&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref> &gt;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Adds a line plot to the axis, plotting x against y, and using the args to define what the line looks like. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinates of the data to be plotted</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinates of the data t be plotted, must be the same length as x</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A variadic list of <ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair</ref> objects, used to define the properties of the line </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the generated <ref refid="classJSL_1_1PlotData" kindref="compound">JSL::PlotData</ref> object, allowing for post-facto modification of the linestyle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="62" column="11" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="62" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1abcccbd36fd86e0504c02a66dabc5f763" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">class</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref></type>
+          </param>
+          <param>
+            <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">class</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref></type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref> &amp;</type>
+        <definition>PlotData &amp; JSL::Axis::Scatter</definition>
+        <argsstring>(const std::vector&lt; T &gt; &amp;x, const std::vector&lt; S &gt; &amp;y, NameValuePair&lt; Ts &gt;... args)</argsstring>
+        <name>Scatter</name>
+        <qualifiedname>JSL::Axis::Scatter</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref> &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair</ref>&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref> &gt;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Adds a scatter plot to the axis, plotting x against y, and using the args to define what the line looks like. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinates of the data to be plotted</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinates of the data t be plotted, must be the same length as x</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A variadic list of <ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair</ref> objects, used to define the properties of the line </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the generated <ref refid="classJSL_1_1PlotData" kindref="compound">JSL::PlotData</ref> object, allowing for post-facto modification of the linestyle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="75" column="11" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="75" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a5763f45cac6b615ab7a4ff39b9992075" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">class</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref></type>
+          </param>
+          <param>
+            <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">class</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref></type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref> &amp;</type>
+        <definition>PlotData &amp; JSL::Axis::Chart</definition>
+        <argsstring>(const std::vector&lt; T &gt; &amp;x, const std::vector&lt; S &gt; &amp;y, NameValuePair&lt; Ts &gt;... args)</argsstring>
+        <name>Chart</name>
+        <qualifiedname>JSL::Axis::Chart</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref> &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair</ref>&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref> &gt;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="90" column="11" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="90" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a7492c669ee27441f461d26cc006503e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">class</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref></type>
+          </param>
+          <param>
+            <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">class</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref></type>
+          </param>
+          <param>
+            <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">class</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">R</ref></type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref> &amp;</type>
+        <definition>PlotData &amp; JSL::Axis::Map</definition>
+        <argsstring>(const std::vector&lt; T &gt; &amp;x, const std::vector&lt; S &gt; &amp;y, const std::vector&lt; std::vector&lt; R &gt; &gt; &amp;z, NameValuePair&lt; Ts &gt;... args)</argsstring>
+        <name>Map</name>
+        <qualifiedname>JSL::Axis::Map</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref> &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">R</ref> &gt; &gt; &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair</ref>&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref> &gt;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="113" column="11" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="113" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a33cf7955573e8cae7c58a48e264fa573" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string JSL::Axis::Show</definition>
+        <argsstring>()</argsstring>
+        <name>Show</name>
+        <qualifiedname>JSL::Axis::Show</qualifiedname>
+        <briefdescription>
+<para>The command which generates the gnuplot scripting code for plotting the data on this axis. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The string corresponding to the gnuplot script, must be written to file to be actionable </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="129" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="129" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a0bfb933a1509615566ca72a98e8574ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetXRange</definition>
+        <argsstring>(double min, double max)</argsstring>
+        <name>SetXRange</name>
+        <qualifiedname>JSL::Axis::SetXRange</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for range_x. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lower bound of the x range</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The upper bound of the x range </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="236" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="236" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a23d28c6f113683490020da26e716cf14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetYRange</definition>
+        <argsstring>(double min, double max)</argsstring>
+        <name>SetYRange</name>
+        <qualifiedname>JSL::Axis::SetYRange</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1a9718570f4efec1fc9a6484c2e9f1d565" kindref="member">Axis::range_y</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lower bound of the y range</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The upper bound of the y range </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="241" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="241" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a0e2ad508257396c2372f1a590f666eb0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetColourRange</definition>
+        <argsstring>(double min, double max)</argsstring>
+        <name>SetColourRange</name>
+        <qualifiedname>JSL::Axis::SetColourRange</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="245" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="245" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a28b2289c6d91769b48afe16c43819bb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetXLabel</definition>
+        <argsstring>(std::string xl)</argsstring>
+        <name>SetXLabel</name>
+        <qualifiedname>JSL::Axis::SetXLabel</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>xl</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1abdde241e2210da810c69d4cf117e9496" kindref="member">Axis::xlabel</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="250" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="250" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a1d476b1547d88ee7c0c80f1a4e86faf4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetYLabel</definition>
+        <argsstring>(std::string yl)</argsstring>
+        <name>SetYLabel</name>
+        <qualifiedname>JSL::Axis::SetYLabel</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>yl</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1aaf6df18a857aef382343b1506641d6ff" kindref="member">Axis::ylabel</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="255" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="255" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a290663ea6c5991a52e8ffa3497e4f2e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetXLabel</definition>
+        <argsstring>(std::string xl, int fontsize)</argsstring>
+        <name>SetXLabel</name>
+        <qualifiedname>JSL::Axis::SetXLabel</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>xl</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>fontsize</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classJSL_1_1Axis_1abdde241e2210da810c69d4cf117e9496" kindref="member">Axis::xlabel</ref> which also sets the font size of the axis text. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="260" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="260" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a80473fe4e172302383c9160cc7248b40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetYLabel</definition>
+        <argsstring>(std::string yl, int fontsize)</argsstring>
+        <name>SetYLabel</name>
+        <qualifiedname>JSL::Axis::SetYLabel</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>yl</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>fontsize</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classJSL_1_1Axis_1aaf6df18a857aef382343b1506641d6ff" kindref="member">Axis::ylabel</ref> which also sets the font size of the axis text. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="266" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="266" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a6b0a9ea809576534dcaaf40cc976c6ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetCBLabel</definition>
+        <argsstring>(std::string cl, int fontsize)</argsstring>
+        <name>SetCBLabel</name>
+        <qualifiedname>JSL::Axis::SetCBLabel</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>cl</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>fontsize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="271" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="271" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1aef827d7d5ebdc69a4c297f512bcca118" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetCBLabel</definition>
+        <argsstring>(std::string cl)</argsstring>
+        <name>SetCBLabel</name>
+        <qualifiedname>JSL::Axis::SetCBLabel</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>cl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="276" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="276" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1aeef14102e056fa25dba72f9c1d61a2f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetXLog</definition>
+        <argsstring>(bool val)</argsstring>
+        <name>SetXLog</name>
+        <qualifiedname>JSL::Axis::SetXLog</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1a80164659b50a175dcd1c8f34b4de1164" kindref="member">Axis::isLog_x</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="281" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="281" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1ad0695f111619f714627fd0269c8fec30" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetYLog</definition>
+        <argsstring>(bool val)</argsstring>
+        <name>SetYLog</name>
+        <qualifiedname>JSL::Axis::SetYLog</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1acbea4a8261fa63858287b70306a75a8b" kindref="member">Axis::isLog_y</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="286" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="286" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a3fc9ea47960e80ac3122d9ff0c20321b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetCBLog</definition>
+        <argsstring>(bool val)</argsstring>
+        <name>SetCBLog</name>
+        <qualifiedname>JSL::Axis::SetCBLog</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="290" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="290" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1ae5105c85d5f0f2c039254adca85701c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetXTime</definition>
+        <argsstring>(bool val)</argsstring>
+        <name>SetXTime</name>
+        <qualifiedname>JSL::Axis::SetXTime</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1a8ba71a330e6d326699af48f27bd31f18" kindref="member">Axis::isTime_x</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="295" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="295" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1ae57ebe069619bee3b02527a6942774c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetYTime</definition>
+        <argsstring>(bool val)</argsstring>
+        <name>SetYTime</name>
+        <qualifiedname>JSL::Axis::SetYTime</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1aac644ec515bac649f9f82077bd85a297" kindref="member">Axis::isTime_y</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="300" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="300" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a5ce4d8f8a7fd4e8a345338315e810a8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetXTicAngle</definition>
+        <argsstring>(int val)</argsstring>
+        <name>SetXTicAngle</name>
+        <qualifiedname>JSL::Axis::SetXTicAngle</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1a537af4d2e243d88c4c9f0081a209d4d4" kindref="member">Axis::xTicAngle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="305" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="305" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1ac39dbc70b8762c14e554f6c404acd4dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetYTicAngle</definition>
+        <argsstring>(bool val)</argsstring>
+        <name>SetYTicAngle</name>
+        <qualifiedname>JSL::Axis::SetYTicAngle</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1a0c548979ecc00ef132f184e813a11d40" kindref="member">Axis::yTicAngle</ref>;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="310" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="310" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1ac4c489a5fe9d37df1be1f82637bc6787" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetLegend</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>SetLegend</name>
+        <qualifiedname>JSL::Axis::SetLegend</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1a16738eebad49e0faf3c883e1550d2d04" kindref="member">Axis::legendActive</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="315" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="315" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a370386b66cab71daaa1a7132da391417" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetLegendLocation</definition>
+        <argsstring>(std::string loc)</argsstring>
+        <name>SetLegendLocation</name>
+        <qualifiedname>JSL::Axis::SetLegendLocation</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>loc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="319" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="319" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a300473a7c351c010f1fdd9bfe5cbc92f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetLegendColumns</definition>
+        <argsstring>(int cols)</argsstring>
+        <name>SetLegendColumns</name>
+        <qualifiedname>JSL::Axis::SetLegendColumns</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>cols</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="323" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="323" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a35138d001b953b9aa0b327840ed9bba3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetTitle</definition>
+        <argsstring>(std::string tit)</argsstring>
+        <name>SetTitle</name>
+        <qualifiedname>JSL::Axis::SetTitle</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>tit</declname>
+        </param>
+        <briefdescription>
+<para>Simple setter for <ref refid="classJSL_1_1Axis_1a60a1a28cb72b5542c025bb0626a7bcb0" kindref="member">Axis::title</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="328" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="328" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1ae62a2c80ec71bf5f6c78c9347fc51303" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetTitle</definition>
+        <argsstring>(std::string tit, int size)</argsstring>
+        <name>SetTitle</name>
+        <qualifiedname>JSL::Axis::SetTitle</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>tit</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classJSL_1_1Axis_1a60a1a28cb72b5542c025bb0626a7bcb0" kindref="member">Axis::title</ref> which also sets the fontsize for the title. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="332" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="332" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a756e78937a19acfd66bc55915339b7d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetXTicPowerFormat</definition>
+        <argsstring>(bool val)</argsstring>
+        <name>SetXTicPowerFormat</name>
+        <qualifiedname>JSL::Axis::SetXTicPowerFormat</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="337" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="337" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a273b6a68d8fef6ed4bbe1e4d3b4a580e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetXTicGap</definition>
+        <argsstring>(double val)</argsstring>
+        <name>SetXTicGap</name>
+        <qualifiedname>JSL::Axis::SetXTicGap</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="341" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="341" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a12d0d9eac46f5e2866a68dc42e482b80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetYTicGap</definition>
+        <argsstring>(double val)</argsstring>
+        <name>SetYTicGap</name>
+        <qualifiedname>JSL::Axis::SetYTicGap</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="345" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="345" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a55309dffa00aa5ea55b2798ce85a8314" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetYTicPowerFormat</definition>
+        <argsstring>(bool val)</argsstring>
+        <name>SetYTicPowerFormat</name>
+        <qualifiedname>JSL::Axis::SetYTicPowerFormat</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="349" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="349" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a90ab038c5929bb87c16ae92827cf404e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetXTicLabels</definition>
+        <argsstring>(std::vector&lt; std::string &gt; vals)</argsstring>
+        <name>SetXTicLabels</name>
+        <qualifiedname>JSL::Axis::SetXTicLabels</qualifiedname>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>vals</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="354" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="354" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a09df497b9b334bd178b2939edf4263a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetYTicLabels</definition>
+        <argsstring>(std::vector&lt; std::string &gt; vals)</argsstring>
+        <name>SetYTicLabels</name>
+        <qualifiedname>JSL::Axis::SetYTicLabels</qualifiedname>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>vals</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="359" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="359" bodyend="363"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1aea8396342a767d344aff9f3981a2b4b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetGrid</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>SetGrid</name>
+        <qualifiedname>JSL::Axis::SetGrid</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classJSL_1_1Axis_1aefb9e0d2281581911456b30917a02684" kindref="member">Axis::gridActive</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="365" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="365" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a0d759d567bb0c029b1ea76cecca3cbbd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetSpan</definition>
+        <argsstring>(double y, double x)</argsstring>
+        <name>SetSpan</name>
+        <qualifiedname>JSL::Axis::SetSpan</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="369" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="369" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a36b638e7664063f1ef730e32cbc34f8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetPalette</definition>
+        <argsstring>(std::string in)</argsstring>
+        <name>SetPalette</name>
+        <qualifiedname>JSL::Axis::SetPalette</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="374" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="374" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1abe9191f5cdcc181e7bc80badb8c007f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetFontSize</definition>
+        <argsstring>(Fonts::Target target, unsigned int size)</argsstring>
+        <name>SetFontSize</name>
+        <qualifiedname>JSL::Axis::SetFontSize</qualifiedname>
+        <param>
+          <type><ref refid="namespaceJSL_1_1Fonts_1a7a55fcb9c82e5a8c7f98ce1c803d08ee" kindref="member">Fonts::Target</ref></type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">unsigned</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Sets the fontsize of one of the texts associated with the axis. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The identifier of the text to be changed</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The desired fontsize </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="380" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="380" bodyend="404"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a27194f9aba640985c78d80f848d4ad66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetColourBar</definition>
+        <argsstring>(bool in)</argsstring>
+        <name>SetColourBar</name>
+        <qualifiedname>JSL::Axis::SetColourBar</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="405" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="405" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1ac15da691ac49a05aee58682ed4a1fb82" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetColourMap</definition>
+        <argsstring>(std::vector&lt; std::vector&lt; double &gt; &gt; rgb)</argsstring>
+        <name>SetColourMap</name>
+        <qualifiedname>JSL::Axis::SetColourMap</qualifiedname>
+        <param>
+          <type>std::vector&lt; std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt; &gt;</type>
+          <declname>rgb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="409" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="409" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a6f506c30a6aa1bcad651fc34a79c0526" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SetColourMap</definition>
+        <argsstring>(int n, std::vector&lt; double &gt; start, std::vector&lt; double &gt; end)</argsstring>
+        <name>SetColourMap</name>
+        <qualifiedname>JSL::Axis::SetColourMap</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="413" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="413" bodyend="416"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1af8a902a6b54fa5b93c7039087dd4eefe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::GlobalColourSet</definition>
+        <argsstring>(const ColourArray &amp;c)</argsstring>
+        <name>GlobalColourSet</name>
+        <qualifiedname>JSL::Axis::GlobalColourSet</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1ColourArray" kindref="compound">ColourArray</ref> &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="417" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="417" bodyend="420"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classJSL_1_1Axis_1a47a1fd72c650b4e7e4f2289b0dfc5864" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string JSL::Axis::NewData</definition>
+        <argsstring>()</argsstring>
+        <name>NewData</name>
+        <qualifiedname>JSL::Axis::NewData</qualifiedname>
+        <briefdescription>
+<para>Called when data added to the axis. Increments the data counter, and generates a filename and file into which the plot data will be saved. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The name of the file generated to store the data </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="467" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="467" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a30ec179de40908ac5ccb809365f3862e" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::AddProperty</definition>
+        <argsstring>(std::string line)</argsstring>
+        <name>AddProperty</name>
+        <qualifiedname>JSL::Axis::AddProperty</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>line</declname>
+        </param>
+        <briefdescription>
+<para>Used to add unique properties to <ref refid="classJSL_1_1Axis_1a6655e1d9a5b38321b80adb17d4e9c596" kindref="member">Axis::WriteCommand</ref> during the <ref refid="classJSL_1_1Axis_1a33cf7955573e8cae7c58a48e264fa573" kindref="member">Axis::Show()</ref> phase, followed by a linebreak. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A property to be written to file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="476" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="476" bodyend="479"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1afb135dc41127b155952fc3f42c2730c1" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::AddPlot</definition>
+        <argsstring>(int i)</argsstring>
+        <name>AddPlot</name>
+        <qualifiedname>JSL::Axis::AddPlot</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Called during <ref refid="classJSL_1_1Axis_1a33cf7955573e8cae7c58a48e264fa573" kindref="member">Axis::Show()</ref>, writes the data associated with the i-th line to the <ref refid="classJSL_1_1Axis_1a6655e1d9a5b38321b80adb17d4e9c596" kindref="member">Axis::WriteCommand</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the data to be written </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="482" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="482" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a666da7ba874d1e4c6926536918e7c8cc" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::LogSetter</definition>
+        <argsstring>(const std::string &amp;prefix, bool active)</argsstring>
+        <name>LogSetter</name>
+        <qualifiedname>JSL::Axis::LogSetter</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>prefix</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>active</declname>
+        </param>
+        <briefdescription>
+<para>Generates a string for either the x or y axis value of the logarithm toggle, which is then piped to <ref refid="classJSL_1_1Axis_1a30ec179de40908ac5ccb809365f3862e" kindref="member">Axis::AddProperty</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>prefix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Either &quot;x&quot; or &quot;y&quot;</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>active</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Either value of <ref refid="classJSL_1_1Axis_1a80164659b50a175dcd1c8f34b4de1164" kindref="member">Axis::isLog_x</ref> or <ref refid="classJSL_1_1Axis_1acbea4a8261fa63858287b70306a75a8b" kindref="member">Axis::isLog_y</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="488" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="488" bodyend="496"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1ac8302fff246dfe04da12fb859a69645a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::SpanSetter</definition>
+        <argsstring>()</argsstring>
+        <name>SpanSetter</name>
+        <qualifiedname>JSL::Axis::SpanSetter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="498" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="498" bodyend="504"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1aac28d3fe416dc77f068a96db4d41c869" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::RangeSetter</definition>
+        <argsstring>(const std::string &amp;axisPrefix, const std::vector&lt; double &gt; &amp;range)</argsstring>
+        <name>RangeSetter</name>
+        <qualifiedname>JSL::Axis::RangeSetter</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>axisPrefix</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt; &amp;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+<para>Generates a string for either the x or y axis value of the range, which is then piped to <ref refid="classJSL_1_1Axis_1a30ec179de40908ac5ccb809365f3862e" kindref="member">Axis::AddProperty</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>prefix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Either &quot;x&quot; or &quot;y&quot;</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>active</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Either value of Axis::xrange or Axis::yrange </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="506" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="506" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a2c444e633b16d448c83f97aee203d1a7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::TimeSetter</definition>
+        <argsstring>(const std::string &amp;axisPrefix, bool timeActive)</argsstring>
+        <name>TimeSetter</name>
+        <qualifiedname>JSL::Axis::TimeSetter</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>axisPrefix</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>timeActive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="516" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="516" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a37074d454432ed5e116fbd2fa359ab82" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::FormatSetter</definition>
+        <argsstring>()</argsstring>
+        <name>FormatSetter</name>
+        <qualifiedname>JSL::Axis::FormatSetter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="524" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="524" bodyend="542"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a86365c43b4bb732562cd19cfbd24a109" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::AngleSetter</definition>
+        <argsstring>(const std::string &amp;axisPrefix, int angle)</argsstring>
+        <name>AngleSetter</name>
+        <qualifiedname>JSL::Axis::AngleSetter</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>axisPrefix</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="543" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="543" bodyend="556"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a13beec95f6084241e25d279e293219fb" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::TicGapSetter</definition>
+        <argsstring>(const std::string &amp;axisPrefix, double gap)</argsstring>
+        <name>TicGapSetter</name>
+        <qualifiedname>JSL::Axis::TicGapSetter</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>axisPrefix</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>gap</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="558" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="558" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1Axis_1a118b06a4960a89030ae8a293c6b86102" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Axis::TicStringSetter</definition>
+        <argsstring>(std::string axis, std::vector&lt; std::string &gt; vals)</argsstring>
+        <name>TicStringSetter</name>
+        <qualifiedname>JSL::Axis::TicStringSetter</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>vals</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="566" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="566" bodyend="575"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An axis is a single instance of a plotting <lsquo/>grid<rsquo/> on the screen. Multiple such axes can exist simultaneously (via <ref refid="classJSL_1_1gnuplot_1aa1e759e1965581b7c4fe508d2bca7060" kindref="member">gnuplot::SetMultiplot()</ref>), with each axis tracking their own data and properties individually. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>JSL::Axis</label>
+        <link refid="classJSL_1_1Axis"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Colours</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>JSL::ColourArray</label>
+        <link refid="classJSL_1_1ColourArray"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" line="40" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h" bodystart="41" bodyend="577"/>
+    <listofallmembers>
+      <member refid="classJSL_1_1Axis_1afb135dc41127b155952fc3f42c2730c1" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>AddPlot</name></member>
+      <member refid="classJSL_1_1Axis_1a30ec179de40908ac5ccb809365f3862e" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>AddProperty</name></member>
+      <member refid="classJSL_1_1Axis_1a86365c43b4bb732562cd19cfbd24a109" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>AngleSetter</name></member>
+      <member refid="classJSL_1_1Axis_1a557386d460e8ad72ea2f6670857c99db" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>Axis</name></member>
+      <member refid="classJSL_1_1Axis_1afb3f071c32240fe6c83816813b1f3370" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>Axis</name></member>
+      <member refid="classJSL_1_1Axis_1a99a36f25ce02c490762a34a536c373f1" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>axisFontSize</name></member>
+      <member refid="classJSL_1_1Axis_1a12d4c08ea04ccbefdef1f98a1b6528ef" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>cblabel</name></member>
+      <member refid="classJSL_1_1Axis_1a5763f45cac6b615ab7a4ff39b9992075" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>Chart</name></member>
+      <member refid="classJSL_1_1Axis_1a85d293ac28ada2ed2cb9c07bf5d392f5" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>Colours</name></member>
+      <member refid="classJSL_1_1Axis_1a493f7f5899d5e867ade59af8e10e95bd" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>Data</name></member>
+      <member refid="classJSL_1_1Axis_1a01db63a8d0674c821172dd3bc720fc7e" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>DataDir</name></member>
+      <member refid="classJSL_1_1Axis_1acca070c88101d07fd42e35a606849e1f" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>DataIdx</name></member>
+      <member refid="classJSL_1_1Axis_1a37074d454432ed5e116fbd2fa359ab82" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>FormatSetter</name></member>
+      <member refid="classJSL_1_1Axis_1af8a902a6b54fa5b93c7039087dd4eefe" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>GlobalColourSet</name></member>
+      <member refid="classJSL_1_1Axis_1aefb9e0d2281581911456b30917a02684" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>gridActive</name></member>
+      <member refid="classJSL_1_1Axis_1a4ff1cc988b75be9420bfa84508f0360b" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>isLog_cb</name></member>
+      <member refid="classJSL_1_1Axis_1a80164659b50a175dcd1c8f34b4de1164" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>isLog_x</name></member>
+      <member refid="classJSL_1_1Axis_1acbea4a8261fa63858287b70306a75a8b" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>isLog_y</name></member>
+      <member refid="classJSL_1_1Axis_1a8ba71a330e6d326699af48f27bd31f18" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>isTime_x</name></member>
+      <member refid="classJSL_1_1Axis_1aac644ec515bac649f9f82077bd85a297" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>isTime_y</name></member>
+      <member refid="classJSL_1_1Axis_1a16738eebad49e0faf3c883e1550d2d04" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>legendActive</name></member>
+      <member refid="classJSL_1_1Axis_1aeda4464707016b4996df9b34692e6cc6" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>legendCols</name></member>
+      <member refid="classJSL_1_1Axis_1aa5c155153ea1a6caaaf555955bb1cd29" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>legendFontSize</name></member>
+      <member refid="classJSL_1_1Axis_1aa865e805c4c5581ba846773534b1c6d7" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>legendLocation</name></member>
+      <member refid="classJSL_1_1Axis_1a7a8183af8c3d70b635de14a685aa0554" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>Lock</name></member>
+      <member refid="classJSL_1_1Axis_1a666da7ba874d1e4c6926536918e7c8cc" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>LogSetter</name></member>
+      <member refid="classJSL_1_1Axis_1a7492c669ee27441f461d26cc006503e8" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>Map</name></member>
+      <member refid="classJSL_1_1Axis_1a750f8a4a9a96ba4d259702f6a9ad66da" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>MapMode</name></member>
+      <member refid="classJSL_1_1Axis_1a47a1fd72c650b4e7e4f2289b0dfc5864" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>NewData</name></member>
+      <member refid="classJSL_1_1Axis_1a0a87dd05a9e9b69aea86997377f630e7" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>palette</name></member>
+      <member refid="classJSL_1_1Axis_1addeb6963592dbccf827a526d63c3b837" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>PaletteActive</name></member>
+      <member refid="classJSL_1_1Axis_1a95b78211cb09e6c6f0834fd353890a1d" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>Plot</name></member>
+      <member refid="classJSL_1_1Axis_1ac177e318f405431295d8a88a412bdbc5" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>powerFormat_X</name></member>
+      <member refid="classJSL_1_1Axis_1a5126c2199ee25ff2d15bed2552a9c01a" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>powerFormat_Y</name></member>
+      <member refid="classJSL_1_1Axis_1ada7e2a8706a08e34533a9bc8309fe1d2" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>range_c</name></member>
+      <member refid="classJSL_1_1Axis_1a078cf9b840f394d0189cd170373f3015" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>range_x</name></member>
+      <member refid="classJSL_1_1Axis_1a9718570f4efec1fc9a6484c2e9f1d565" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>range_y</name></member>
+      <member refid="classJSL_1_1Axis_1aac28d3fe416dc77f068a96db4d41c869" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>RangeSetter</name></member>
+      <member refid="classJSL_1_1Axis_1abcccbd36fd86e0504c02a66dabc5f763" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>Scatter</name></member>
+      <member refid="classJSL_1_1Axis_1a6b0a9ea809576534dcaaf40cc976c6ac" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetCBLabel</name></member>
+      <member refid="classJSL_1_1Axis_1aef827d7d5ebdc69a4c297f512bcca118" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetCBLabel</name></member>
+      <member refid="classJSL_1_1Axis_1a3fc9ea47960e80ac3122d9ff0c20321b" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetCBLog</name></member>
+      <member refid="classJSL_1_1Axis_1a27194f9aba640985c78d80f848d4ad66" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetColourBar</name></member>
+      <member refid="classJSL_1_1Axis_1ac15da691ac49a05aee58682ed4a1fb82" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetColourMap</name></member>
+      <member refid="classJSL_1_1Axis_1a6f506c30a6aa1bcad651fc34a79c0526" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetColourMap</name></member>
+      <member refid="classJSL_1_1Axis_1a0e2ad508257396c2372f1a590f666eb0" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetColourRange</name></member>
+      <member refid="classJSL_1_1Axis_1abe9191f5cdcc181e7bc80badb8c007f3" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetFontSize</name></member>
+      <member refid="classJSL_1_1Axis_1aea8396342a767d344aff9f3981a2b4b2" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetGrid</name></member>
+      <member refid="classJSL_1_1Axis_1ac4c489a5fe9d37df1be1f82637bc6787" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetLegend</name></member>
+      <member refid="classJSL_1_1Axis_1a300473a7c351c010f1fdd9bfe5cbc92f" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetLegendColumns</name></member>
+      <member refid="classJSL_1_1Axis_1a370386b66cab71daaa1a7132da391417" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetLegendLocation</name></member>
+      <member refid="classJSL_1_1Axis_1a36b638e7664063f1ef730e32cbc34f8b" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetPalette</name></member>
+      <member refid="classJSL_1_1Axis_1a0d759d567bb0c029b1ea76cecca3cbbd" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetSpan</name></member>
+      <member refid="classJSL_1_1Axis_1a35138d001b953b9aa0b327840ed9bba3" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetTitle</name></member>
+      <member refid="classJSL_1_1Axis_1ae62a2c80ec71bf5f6c78c9347fc51303" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetTitle</name></member>
+      <member refid="classJSL_1_1Axis_1a28b2289c6d91769b48afe16c43819bb3" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetXLabel</name></member>
+      <member refid="classJSL_1_1Axis_1a290663ea6c5991a52e8ffa3497e4f2e5" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetXLabel</name></member>
+      <member refid="classJSL_1_1Axis_1aeef14102e056fa25dba72f9c1d61a2f6" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetXLog</name></member>
+      <member refid="classJSL_1_1Axis_1a0bfb933a1509615566ca72a98e8574ca" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetXRange</name></member>
+      <member refid="classJSL_1_1Axis_1a5ce4d8f8a7fd4e8a345338315e810a8f" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetXTicAngle</name></member>
+      <member refid="classJSL_1_1Axis_1a273b6a68d8fef6ed4bbe1e4d3b4a580e" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetXTicGap</name></member>
+      <member refid="classJSL_1_1Axis_1a90ab038c5929bb87c16ae92827cf404e" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetXTicLabels</name></member>
+      <member refid="classJSL_1_1Axis_1a756e78937a19acfd66bc55915339b7d7" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetXTicPowerFormat</name></member>
+      <member refid="classJSL_1_1Axis_1ae5105c85d5f0f2c039254adca85701c2" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetXTime</name></member>
+      <member refid="classJSL_1_1Axis_1a1d476b1547d88ee7c0c80f1a4e86faf4" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetYLabel</name></member>
+      <member refid="classJSL_1_1Axis_1a80473fe4e172302383c9160cc7248b40" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetYLabel</name></member>
+      <member refid="classJSL_1_1Axis_1ad0695f111619f714627fd0269c8fec30" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetYLog</name></member>
+      <member refid="classJSL_1_1Axis_1a23d28c6f113683490020da26e716cf14" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetYRange</name></member>
+      <member refid="classJSL_1_1Axis_1ac39dbc70b8762c14e554f6c404acd4dc" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetYTicAngle</name></member>
+      <member refid="classJSL_1_1Axis_1a12d0d9eac46f5e2866a68dc42e482b80" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetYTicGap</name></member>
+      <member refid="classJSL_1_1Axis_1a09df497b9b334bd178b2939edf4263a9" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetYTicLabels</name></member>
+      <member refid="classJSL_1_1Axis_1a55309dffa00aa5ea55b2798ce85a8314" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetYTicPowerFormat</name></member>
+      <member refid="classJSL_1_1Axis_1ae57ebe069619bee3b02527a6942774c2" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>SetYTime</name></member>
+      <member refid="classJSL_1_1Axis_1a33cf7955573e8cae7c58a48e264fa573" prot="public" virt="non-virtual"><scope>JSL::Axis</scope><name>Show</name></member>
+      <member refid="classJSL_1_1Axis_1a40d7da6aa47d877bcb4f36a06fac7cb1" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>showColorBar</name></member>
+      <member refid="classJSL_1_1Axis_1ac8302fff246dfe04da12fb859a69645a" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>SpanSetter</name></member>
+      <member refid="classJSL_1_1Axis_1a13beec95f6084241e25d279e293219fb" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>TicGapSetter</name></member>
+      <member refid="classJSL_1_1Axis_1a118b06a4960a89030ae8a293c6b86102" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>TicStringSetter</name></member>
+      <member refid="classJSL_1_1Axis_1a2c444e633b16d448c83f97aee203d1a7" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>TimeSetter</name></member>
+      <member refid="classJSL_1_1Axis_1a60a1a28cb72b5542c025bb0626a7bcb0" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>title</name></member>
+      <member refid="classJSL_1_1Axis_1a6800d42f740631e37e3a1fe472955ea4" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>titleFontSize</name></member>
+      <member refid="classJSL_1_1Axis_1a6655e1d9a5b38321b80adb17d4e9c596" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>WriteCommand</name></member>
+      <member refid="classJSL_1_1Axis_1abdde241e2210da810c69d4cf117e9496" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>xlabel</name></member>
+      <member refid="classJSL_1_1Axis_1a8611d305bdcae805ebac3930617ce1f5" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>xSpan</name></member>
+      <member refid="classJSL_1_1Axis_1a39877a67f32c8aedd60015674f99f92a" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>xtic_IsString</name></member>
+      <member refid="classJSL_1_1Axis_1acb1e549279299d437a69527335da537c" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>xtic_Strings</name></member>
+      <member refid="classJSL_1_1Axis_1a537af4d2e243d88c4c9f0081a209d4d4" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>xTicAngle</name></member>
+      <member refid="classJSL_1_1Axis_1a9b5762d8a406e9962411526a919b8a26" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>xticgap</name></member>
+      <member refid="classJSL_1_1Axis_1aaf6df18a857aef382343b1506641d6ff" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>ylabel</name></member>
+      <member refid="classJSL_1_1Axis_1acd6201408a049b8c963a23540d245f6a" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>ySpan</name></member>
+      <member refid="classJSL_1_1Axis_1a36a183ea84e87e2f94c003d53b3b0348" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>ytic_IsString</name></member>
+      <member refid="classJSL_1_1Axis_1a85b417d720b398abffd40fcafc6e8b2c" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>ytic_Strings</name></member>
+      <member refid="classJSL_1_1Axis_1a0c548979ecc00ef132f184e813a11d40" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>yTicAngle</name></member>
+      <member refid="classJSL_1_1Axis_1aeb7107049cfab5d59e3257eb744db23c" prot="private" virt="non-virtual"><scope>JSL::Axis</scope><name>yticgap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

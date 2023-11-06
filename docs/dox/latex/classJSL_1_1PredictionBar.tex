@@ -1,0 +1,172 @@
+\doxysection{JSL\+::Prediction\+Bar\texorpdfstring{$<$}{<} Dimension, Symbol, Max\+Hashes \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classJSL_1_1PredictionBar}{}\label{classJSL_1_1PredictionBar}\index{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}}
+
+
+{\ttfamily \#include $<$Prediction\+Bar.\+h$>$}
+
+Inheritance diagram for JSL\+::Prediction\+Bar\texorpdfstring{$<$}{<} Dimension, Symbol, Max\+Hashes \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classJSL_1_1PredictionBar}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{classJSL_1_1PredictionBar_a3d7378cd862a27eb7454f82a25b539d5}{Prediction\+Bar}} (Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{target\+Counts}})
+\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1PredictionBar_a1984b831cd0e821f4edebe3b24c25e47}{Update}} (Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{positions}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar$<$ Dimension, Delete\+Mode, Symbol, Max\+Hashes $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{classJSL_1_1ProgressBar_a387540b26d9e8cef6ef694e78ca21d05}{Progress\+Bar}} (Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{target\+Counts}})
+\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_ac7d924894ea76344ec2b1540d329a05f}{Update}} (Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{positions}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_ade149b634fe82923f5a284ba34045fbc}{Set\+Name}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ std\+::string $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{names}})
+\begin{DoxyCompactList}\small\item\em Sets all names for the bars simultaneously. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_ad02946ede96408489d672d15ab200958}{Set\+Name}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} idx, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::string \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{name}})
+\begin{DoxyCompactList}\small\item\em Changes the name of the idx-\/th bar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_ac434128522cfdfe01a2d9c791188c8ec}{Set\+Name}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::string \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{name}})
+\begin{DoxyCompactList}\small\item\em An override for \doxylink{classJSL_1_1ProgressBar_ad02946ede96408489d672d15ab200958}{Set\+Name(unsigned int idx, const std\+::string \& name)} available only when Dimension == 1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a5fa7f8ced9592b0cea5a366157332eff}{Clear}} ()
+\begin{DoxyCompactList}\small\item\em Deletes all levels of the bar from the screen, useful once the bar has finished and is no longer needed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1PredictionBar_a1f572d3120ffbaac844fea94bdef0df9}{Compute\+Time}} ()
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{virtual}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1PredictionBar_ab0b2554e099a042a310f1d21eaf9dbe2}{Print\+Positions\+\_\+\+Delete\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em The version of Printing which happens if Delete\+Mode is true -- clears the previous bars using ANSI codes, then overwrites them with the new values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::system\+\_\+clock $>$ \mbox{\hyperlink{classJSL_1_1PredictionBar_a6542fe38254fc02337cbd8bf060d0386}{Start}}
+\item 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::system\+\_\+clock $>$ \mbox{\hyperlink{classJSL_1_1PredictionBar_ad8c4e114c3c4ef2bc355af7cc10b19a8}{Update\+Time}}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1PredictionBar_ad3a39ff342d601bb866c06f0dbc75de7}{Current\+Duration}}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1PredictionBar_af9b118baf197404500d844ac9a8c4ab7}{Prediction}} = 0
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1PredictionBar_abef77bb45fe8dcff131ec5195b7d13e8}{prev\+Progress}} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar$<$ Dimension, Delete\+Mode, Symbol, Max\+Hashes $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a7088deecfe936d4eaba784cff05270f4}{Unpack\+Targets}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{target}}, Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{targets}})
+\begin{DoxyCompactList}\small\item\em The variadic internal function called by the compiler, looping over the arbitrary number of inputs and storing them in internal vectors. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a73c79e8e00905454aa2853b39d8143b6}{Unroll\+Positions}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} idx, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{pos}}, Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{remainder}})
+\begin{DoxyCompactList}\small\item\em The variadic internal function which is called by \doxylink{classJSL_1_1ProgressBar_ac7d924894ea76344ec2b1540d329a05f}{Update()}, loops over the arguments and computes the number of Symbols required by each bar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_adafc5d517ac0dc23b9761bce1d68f953}{Clear\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Loops over the existing bars and erases them using ANSI codes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a5dba8513809faf0a0f9a315b1f527314}{Print\+Positions\+\_\+\+Retain\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em The version of Printing which happens if Delete\+Mode is false -\/ gradually prints the progress bar one Symbol at a time, then adds the close brace "{}\mbox{]}"{} whn the final one is printed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar$<$ Dimension, Delete\+Mode, Symbol, Max\+Hashes $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a7354c455382575329326bedfd210957e}{first\+Print}} = \mbox{\hyperlink{structJSL_1_1NameValuePair}{true}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classJSL_1_1Toggle}{Toggle} to ensure open-\/brace "{}\mbox{[}"{} is printed only once. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} $>$ \mbox{\hyperlink{classJSL_1_1ProgressBar_a4fabdafceac14f4fbbb3e364578f6e1c}{Bar\+Targets}}
+\begin{DoxyCompactList}\small\item\em Storage for the target number of processes. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ \mbox{\hyperlink{classJSL_1_1ProgressBar_a8ab0aeecd87eaa2754a5a58aea3cca51}{Bar\+Progress}}
+\begin{DoxyCompactList}\small\item\em Current progress value (between 0 and 1) \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} $>$ \mbox{\hyperlink{classJSL_1_1ProgressBar_a0798094501860753307f92eafa464b4f}{Hashes}}
+\begin{DoxyCompactList}\small\item\em Current printed number of symbols for each bar. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classJSL_1_1ProgressBar_ab85ccf4638d649d88becf47e2af83525}{Names}}
+\begin{DoxyCompactList}\small\item\em The names printed in front of each bar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a913055a04bad40dbbf66f0f8247bb8b0}{reprint\+Needed}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classJSL_1_1Toggle}{Toggle} which ensures reprinting only occurs when something changes, prevents unnecessary overhead. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1ProgressBar_ae3160fd31be03fadd4c92a0906f64f79}{buffer\+Width}} = 10
+\begin{DoxyCompactList}\small\item\em Default size allocated for names, increases if a value of anmes would overfill it. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a3439198bd34393a92cfbc9067247be4a}{prev\+Hashes}} = 0
+\begin{DoxyCompactList}\small\item\em Used in Delete\+Mode=false to compute new hashe number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classJSL_1_1PredictionBar_a3d7378cd862a27eb7454f82a25b539d5}\label{classJSL_1_1PredictionBar_a3d7378cd862a27eb7454f82a25b539d5} 
+\index{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}!PredictionBar@{PredictionBar}}
+\index{PredictionBar@{PredictionBar}!JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{PredictionBar()}{PredictionBar()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+template$<$typename... Ts$>$ \\
+\mbox{\hyperlink{classJSL_1_1PredictionBar}{JSL\+::\+Prediction\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Prediction\+Bar (\begin{DoxyParamCaption}\item[{Ts...}]{target\+Counts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classJSL_1_1PredictionBar_a1f572d3120ffbaac844fea94bdef0df9}\label{classJSL_1_1PredictionBar_a1f572d3120ffbaac844fea94bdef0df9} 
+\index{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}!ComputeTime@{ComputeTime}}
+\index{ComputeTime@{ComputeTime}!JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{ComputeTime()}{ComputeTime()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1PredictionBar}{JSL\+::\+Prediction\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Compute\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{classJSL_1_1PredictionBar_ab0b2554e099a042a310f1d21eaf9dbe2}\label{classJSL_1_1PredictionBar_ab0b2554e099a042a310f1d21eaf9dbe2} 
+\index{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}!PrintPositions\_DeleteMode@{PrintPositions\_DeleteMode}}
+\index{PrintPositions\_DeleteMode@{PrintPositions\_DeleteMode}!JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{PrintPositions\_DeleteMode()}{PrintPositions\_DeleteMode()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{virtual}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1PredictionBar}{JSL\+::\+Prediction\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Print\+Positions\+\_\+\+Delete\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+The version of Printing which happens if Delete\+Mode is true -- clears the previous bars using ANSI codes, then overwrites them with the new values. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classJSL_1_1ProgressBar_a982ed7fb5d898e838b3685509d609b23}{JSL\+::\+Progress\+Bar$<$ Dimension, Delete\+Mode, Symbol, Max\+Hashes $>$}}.
+
+\Hypertarget{classJSL_1_1PredictionBar_a1984b831cd0e821f4edebe3b24c25e47}\label{classJSL_1_1PredictionBar_a1984b831cd0e821f4edebe3b24c25e47} 
+\index{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}!Update@{Update}}
+\index{Update@{Update}!JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+template$<$typename... Ts$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1PredictionBar}{JSL\+::\+Prediction\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Update (\begin{DoxyParamCaption}\item[{Ts...}]{positions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classJSL_1_1PredictionBar_ad3a39ff342d601bb866c06f0dbc75de7}\label{classJSL_1_1PredictionBar_ad3a39ff342d601bb866c06f0dbc75de7} 
+\index{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}!CurrentDuration@{CurrentDuration}}
+\index{CurrentDuration@{CurrentDuration}!JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{CurrentDuration}{CurrentDuration}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1PredictionBar}{JSL\+::\+Prediction\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Current\+Duration\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classJSL_1_1PredictionBar_af9b118baf197404500d844ac9a8c4ab7}\label{classJSL_1_1PredictionBar_af9b118baf197404500d844ac9a8c4ab7} 
+\index{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}!Prediction@{Prediction}}
+\index{Prediction@{Prediction}!JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{Prediction}{Prediction}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1PredictionBar}{JSL\+::\+Prediction\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Prediction = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classJSL_1_1PredictionBar_abef77bb45fe8dcff131ec5195b7d13e8}\label{classJSL_1_1PredictionBar_abef77bb45fe8dcff131ec5195b7d13e8} 
+\index{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}!prevProgress@{prevProgress}}
+\index{prevProgress@{prevProgress}!JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{prevProgress}{prevProgress}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1PredictionBar}{JSL\+::\+Prediction\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::prev\+Progress = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classJSL_1_1PredictionBar_a6542fe38254fc02337cbd8bf060d0386}\label{classJSL_1_1PredictionBar_a6542fe38254fc02337cbd8bf060d0386} 
+\index{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}!Start@{Start}}
+\index{Start@{Start}!JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{Start}{Start}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::system\+\_\+clock$>$ \mbox{\hyperlink{classJSL_1_1PredictionBar}{JSL\+::\+Prediction\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Start\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classJSL_1_1PredictionBar_ad8c4e114c3c4ef2bc355af7cc10b19a8}\label{classJSL_1_1PredictionBar_ad8c4e114c3c4ef2bc355af7cc10b19a8} 
+\index{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}!UpdateTime@{UpdateTime}}
+\index{UpdateTime@{UpdateTime}!JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$@{JSL::PredictionBar$<$ Dimension, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{UpdateTime}{UpdateTime}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::system\+\_\+clock$>$ \mbox{\hyperlink{classJSL_1_1PredictionBar}{JSL\+::\+Prediction\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Update\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/libs/\+JSL/\+Display/\mbox{\hyperlink{PredictionBar_8h}{Prediction\+Bar.\+h}}\end{DoxyCompactItemize}

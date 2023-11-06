@@ -1,0 +1,29 @@
+\doxysection{split.\+h}
+\hypertarget{split_8h_source}{}\label{split_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/split.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/split.h}}
+\mbox{\hyperlink{split_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{inline}\ std::vector<std::string>\ \mbox{\hyperlink{namespaceJSL_aa37a5ffd99a34e2f12377c9f00b31c50}{split}}(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s}},\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{delimiter}})}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//dumb\ brute-\/force\ string\ splitter\ based\ on\ a\ delimiter}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{tokens}};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{token}};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::istringstream\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{tokenStream}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{s}});}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{getline}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{tokenStream}},\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{token}},\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{delimiter}}))}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{token}}.length()\ >\ 0)\ \textcolor{comment}{//\ empty\ rows\ not\ allowed}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{tokens}}.push\_back(\mbox{\hyperlink{structJSL_1_1NameValuePair}{token}});}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{tokens}};}
+\DoxyCodeLine{00028\ \ \ \ \ \};}
+\DoxyCodeLine{00029\ \}}
+
+\end{DoxyCode}

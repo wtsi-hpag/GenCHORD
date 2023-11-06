@@ -1,0 +1,44 @@
+\doxysection{log\+Factorial.\+h}
+\hypertarget{logFactorial_8h_source}{}\label{logFactorial_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h@{/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h}}
+\mbox{\hyperlink{logFactorial_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLogFactorial}{LogFactorial}}}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogFactorial_a97f2f6b4de38bfb927247048f2ba5953}{LogFactorial}}()}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogFactorial_add78a7f913db194761c1bdcb2b821017}{Populate}}(10);}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classLogFactorial_a098fb5756b91300bff77c0bc9f77860b}{operator\ ()\ }}(\textcolor{keywordtype}{int}\ k)}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (k\ >\ \mbox{\hyperlink{classLogFactorial_a06be3f54e43c34ee36cbbf8e5c1c3d39}{CurrentMax}})}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}Adding\ to\ buffer"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogFactorial_add78a7f913db194761c1bdcb2b821017}{Populate}}(k+10);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structData}{Data}}[k];}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classLogFactorial_a06be3f54e43c34ee36cbbf8e5c1c3d39}{CurrentMax}}\ =\ 0;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classLogFactorial_a1e3e2197f809b03f1baa84355d8f1261}{Data}};\ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLogFactorial_add78a7f913db194761c1bdcb2b821017}{Populate}}(\textcolor{keywordtype}{int}\ end)}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ prev\ =\ 0;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classLogFactorial_a06be3f54e43c34ee36cbbf8e5c1c3d39}{CurrentMax}}\ >\ 0)}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prev\ =\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{classLogFactorial_a06be3f54e43c34ee36cbbf8e5c1c3d39}{CurrentMax}}];}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}.resize(end+1,0);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ \mbox{\hyperlink{classLogFactorial_a06be3f54e43c34ee36cbbf8e5c1c3d39}{CurrentMax}}+1;\ i\ <=\ end;\ ++i)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prev\ +=\ log(i);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}[i]\ =\ prev;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogFactorial_a06be3f54e43c34ee36cbbf8e5c1c3d39}{CurrentMax}}\ =\ end;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,531 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classDistributor" kind="class" language="C++" prot="public">
+    <compoundname>Distributor</compoundname>
+    <includes refid="Distributor_8h" local="no">Distributor.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classDistributor_1aa68612f1af8bb860fd0fd3e9cde2c5a8" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; Distributor::Register</definition>
+        <argsstring></argsstring>
+        <name>Register</name>
+        <qualifiedname>Distributor::Register</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="19" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1a9e40bdfe952682af3f1fe3df9da6deea" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::thread &gt;</type>
+        <definition>std::vector&lt;std::thread&gt; Distributor::Threads</definition>
+        <argsstring></argsstring>
+        <name>Threads</name>
+        <qualifiedname>Distributor::Threads</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="20" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1a30c2552d2b49a39b9888eed3f56d8c82" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; Distributor::ebStart</definition>
+        <argsstring></argsstring>
+        <name>ebStart</name>
+        <qualifiedname>Distributor::ebStart</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="23" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1a1cb4ab602dc59da2f074732697ae153e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; Distributor::ebEnd</definition>
+        <argsstring></argsstring>
+        <name>ebEnd</name>
+        <qualifiedname>Distributor::ebEnd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="24" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1a7e30d51de95f0a7633d85302a34fbc44" prot="private" static="no" mutable="no">
+        <type><ref refid="structData" kindref="compound">Data</ref> &amp;</type>
+        <definition>Data&amp; Distributor::DataCopy</definition>
+        <argsstring></argsstring>
+        <name>DataCopy</name>
+        <qualifiedname>Distributor::DataCopy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="31" column="7" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1a6560644471bf9971f0b513f51d029c0e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; int &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;int&gt; &gt; Distributor::ChromAssignments</definition>
+        <argsstring></argsstring>
+        <name>ChromAssignments</name>
+        <qualifiedname>Distributor::ChromAssignments</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="32" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1a3959469a0ebc958253a3f070011626d0" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Distributor::alpha</definition>
+        <argsstring></argsstring>
+        <name>alpha</name>
+        <qualifiedname>Distributor::alpha</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="33" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1accec77fcb1e05ccca8a78f76913c7138" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Distributor::L</definition>
+        <argsstring></argsstring>
+        <name>L</name>
+        <qualifiedname>Distributor::L</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="34" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1ac773fd794cfd2df838b55b89f30d2400" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Distributor::accelerator</definition>
+        <argsstring></argsstring>
+        <name>accelerator</name>
+        <qualifiedname>Distributor::accelerator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="35" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1af4e4fe3e2b365cb85a09a6ffa032ba2e" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Distributor::nu</definition>
+        <argsstring></argsstring>
+        <name>nu</name>
+        <qualifiedname>Distributor::nu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="36" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classDistributor_1afe07bb1c9563b4d360828d4cff072968" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; Distributor::MainChromAssigment</definition>
+        <argsstring></argsstring>
+        <name>MainChromAssigment</name>
+        <qualifiedname>Distributor::MainChromAssigment</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="38" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1a9c68919030af9e0eee749c8a292d5c19" prot="public" static="no" mutable="no">
+        <type><ref refid="classErroredBinomial" kindref="compound">ErroredBinomial</ref> *</type>
+        <definition>ErroredBinomial* Distributor::EB</definition>
+        <argsstring></argsstring>
+        <name>EB</name>
+        <qualifiedname>Distributor::EB</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="39" column="18" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1a46710d125cbf0edd3a8c84bbe3d66710" prot="public" static="no" mutable="no">
+        <type><ref refid="structTransitions" kindref="compound">Transitions</ref> *</type>
+        <definition>Transitions* Distributor::Output</definition>
+        <argsstring></argsstring>
+        <name>Output</name>
+        <qualifiedname>Distributor::Output</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="40" column="14" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDistributor_1ab7fdcd7aaef29094caeda49cdd865b46" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Distributor::WorkerCount</definition>
+        <argsstring></argsstring>
+        <name>WorkerCount</name>
+        <qualifiedname>Distributor::WorkerCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="41" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classDistributor_1a7d44525cb713f5a39d0686a46df56e18" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Distributor::Worker</definition>
+        <argsstring>(int id)</argsstring>
+        <name>Worker</name>
+        <qualifiedname>Distributor::Worker</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="21" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classDistributor_1a3ccf88b3b370a34d867d559ffcd0148a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Distributor::EB_Task</definition>
+        <argsstring>(int id)</argsstring>
+        <name>EB_Task</name>
+        <qualifiedname>Distributor::EB_Task</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="25" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classDistributor_1a4899a90489bbf29087c6114d13a8e0d5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Distributor::Assignment_Task</definition>
+        <argsstring>(int id)</argsstring>
+        <name>Assignment_Task</name>
+        <qualifiedname>Distributor::Assignment_Task</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="27" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classDistributor_1a9d38af8686e8d386116dedf18709e3c6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Distributor::SpoolDown</definition>
+        <argsstring>(int id)</argsstring>
+        <name>SpoolDown</name>
+        <qualifiedname>Distributor::SpoolDown</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="28" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classDistributor_1aff43d57595aa9f844bfdde33bdabb85f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Distributor::CheckRegister</definition>
+        <argsstring>(int id)</argsstring>
+        <name>CheckRegister</name>
+        <qualifiedname>Distributor::CheckRegister</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="29" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classDistributor_1a340af027357abe54b41c72d1015d8b1f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Distributor::SetRegister</definition>
+        <argsstring>(int value, int id)</argsstring>
+        <name>SetRegister</name>
+        <qualifiedname>Distributor::SetRegister</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="30" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDistributor_1aa02fcbe32e15ec6f3e1354b6da14a7b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Distributor::Signal</definition>
+        <argsstring>(int value)</argsstring>
+        <name>Signal</name>
+        <qualifiedname>Distributor::Signal</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="42" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classDistributor_1a54ad9297d61154f3f56fa2863b9ca67a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Distributor::Gather</definition>
+        <argsstring>()</argsstring>
+        <name>Gather</name>
+        <qualifiedname>Distributor::Gather</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="43" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classDistributor_1ada6ec906e1f36364f780dbcff26260ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Distributor::UpdateEB</definition>
+        <argsstring>(ErroredBinomial *eb)</argsstring>
+        <name>UpdateEB</name>
+        <qualifiedname>Distributor::UpdateEB</qualifiedname>
+        <param>
+          <type><ref refid="classErroredBinomial" kindref="compound">ErroredBinomial</ref> *</type>
+          <declname>eb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="44" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classDistributor_1aa644bc97597a582f8bfd58acba36ce6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Distributor::UpdateAssigner</definition>
+        <argsstring>(Transitions *Output, double alpha, int L, int accelerator, double nu)</argsstring>
+        <name>UpdateAssigner</name>
+        <qualifiedname>Distributor::UpdateAssigner</qualifiedname>
+        <param>
+          <type><ref refid="structTransitions" kindref="compound">Transitions</ref> *</type>
+          <declname>Output</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>L</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>accelerator</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>nu</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="45" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classDistributor_1abd21bd9d68f5757f1631247984fcb74c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Distributor::Distributor</definition>
+        <argsstring>(int nWorkers, Data &amp;d)</argsstring>
+        <name>Distributor</name>
+        <qualifiedname>Distributor::Distributor</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>nWorkers</declname>
+        </param>
+        <param>
+          <type><ref refid="structData" kindref="compound">Data</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="49" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDistributor_1a661281a8c58cc1bc1b135b15910030c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Distributor::~Distributor</definition>
+        <argsstring>()</argsstring>
+        <name>~Distributor</name>
+        <qualifiedname>Distributor::~Distributor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="51" column="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Data</label>
+        <link refid="structData"/>
+      </node>
+      <node id="1">
+        <label>Distributor</label>
+        <link refid="classDistributor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>DataCopy</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>EB</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>Output</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>EB_Bracket</label>
+        <link refid="structEB__Bracket"/>
+      </node>
+      <node id="3">
+        <label>ErroredBinomial</label>
+        <link refid="classErroredBinomial"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>TG</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>CurrentBracket</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>NB</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>LogFactorial</label>
+        <link refid="classLogFactorial"/>
+      </node>
+      <node id="6">
+        <label>NegativeBinomial</label>
+        <link refid="classNegativeBinomial"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>LogFac</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Transitions</label>
+        <link refid="structTransitions"/>
+      </node>
+      <node id="4">
+        <label>TruncatedGaussian</label>
+        <link refid="classTruncatedGaussian"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" line="14" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h" bodystart="15" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classDistributor_1ac773fd794cfd2df838b55b89f30d2400" prot="private" virt="non-virtual"><scope>Distributor</scope><name>accelerator</name></member>
+      <member refid="classDistributor_1a3959469a0ebc958253a3f070011626d0" prot="private" virt="non-virtual"><scope>Distributor</scope><name>alpha</name></member>
+      <member refid="classDistributor_1a4899a90489bbf29087c6114d13a8e0d5" prot="private" virt="non-virtual"><scope>Distributor</scope><name>Assignment_Task</name></member>
+      <member refid="classDistributor_1aff43d57595aa9f844bfdde33bdabb85f" prot="private" virt="non-virtual"><scope>Distributor</scope><name>CheckRegister</name></member>
+      <member refid="classDistributor_1a6560644471bf9971f0b513f51d029c0e" prot="private" virt="non-virtual"><scope>Distributor</scope><name>ChromAssignments</name></member>
+      <member refid="classDistributor_1a7e30d51de95f0a7633d85302a34fbc44" prot="private" virt="non-virtual"><scope>Distributor</scope><name>DataCopy</name></member>
+      <member refid="classDistributor_1abd21bd9d68f5757f1631247984fcb74c" prot="public" virt="non-virtual"><scope>Distributor</scope><name>Distributor</name></member>
+      <member refid="classDistributor_1a9c68919030af9e0eee749c8a292d5c19" prot="public" virt="non-virtual"><scope>Distributor</scope><name>EB</name></member>
+      <member refid="classDistributor_1a3ccf88b3b370a34d867d559ffcd0148a" prot="private" virt="non-virtual"><scope>Distributor</scope><name>EB_Task</name></member>
+      <member refid="classDistributor_1a1cb4ab602dc59da2f074732697ae153e" prot="private" virt="non-virtual"><scope>Distributor</scope><name>ebEnd</name></member>
+      <member refid="classDistributor_1a30c2552d2b49a39b9888eed3f56d8c82" prot="private" virt="non-virtual"><scope>Distributor</scope><name>ebStart</name></member>
+      <member refid="classDistributor_1a54ad9297d61154f3f56fa2863b9ca67a" prot="public" virt="non-virtual"><scope>Distributor</scope><name>Gather</name></member>
+      <member refid="classDistributor_1accec77fcb1e05ccca8a78f76913c7138" prot="private" virt="non-virtual"><scope>Distributor</scope><name>L</name></member>
+      <member refid="classDistributor_1afe07bb1c9563b4d360828d4cff072968" prot="public" virt="non-virtual"><scope>Distributor</scope><name>MainChromAssigment</name></member>
+      <member refid="classDistributor_1af4e4fe3e2b365cb85a09a6ffa032ba2e" prot="private" virt="non-virtual"><scope>Distributor</scope><name>nu</name></member>
+      <member refid="classDistributor_1a46710d125cbf0edd3a8c84bbe3d66710" prot="public" virt="non-virtual"><scope>Distributor</scope><name>Output</name></member>
+      <member refid="classDistributor_1aa68612f1af8bb860fd0fd3e9cde2c5a8" prot="private" virt="non-virtual"><scope>Distributor</scope><name>Register</name></member>
+      <member refid="classDistributor_1a340af027357abe54b41c72d1015d8b1f" prot="private" virt="non-virtual"><scope>Distributor</scope><name>SetRegister</name></member>
+      <member refid="classDistributor_1aa02fcbe32e15ec6f3e1354b6da14a7b5" prot="public" virt="non-virtual"><scope>Distributor</scope><name>Signal</name></member>
+      <member refid="classDistributor_1a9d38af8686e8d386116dedf18709e3c6" prot="private" virt="non-virtual"><scope>Distributor</scope><name>SpoolDown</name></member>
+      <member refid="classDistributor_1a9e40bdfe952682af3f1fe3df9da6deea" prot="private" virt="non-virtual"><scope>Distributor</scope><name>Threads</name></member>
+      <member refid="classDistributor_1aa644bc97597a582f8bfd58acba36ce6a" prot="public" virt="non-virtual"><scope>Distributor</scope><name>UpdateAssigner</name></member>
+      <member refid="classDistributor_1ada6ec906e1f36364f780dbcff26260ce" prot="public" virt="non-virtual"><scope>Distributor</scope><name>UpdateEB</name></member>
+      <member refid="classDistributor_1a7d44525cb713f5a39d0686a46df56e18" prot="private" virt="non-virtual"><scope>Distributor</scope><name>Worker</name></member>
+      <member refid="classDistributor_1ab7fdcd7aaef29094caeda49cdd865b46" prot="public" virt="non-virtual"><scope>Distributor</scope><name>WorkerCount</name></member>
+      <member refid="classDistributor_1a661281a8c58cc1bc1b135b15910030c1" prot="public" virt="non-virtual"><scope>Distributor</scope><name>~Distributor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

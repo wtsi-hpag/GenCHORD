@@ -1,0 +1,553 @@
+\doxysection{axis.\+h}
+\hypertarget{axis_8h_source}{}\label{axis_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h}}
+\mbox{\hyperlink{axis_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../FileIO/FileIO.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{PlotData_8h}{PlotData.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../System/System.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{colorArray_8h}{colorArray.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{namespace\ }Fonts}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08ee}{Target}}\ \{\mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08eead0545c4e33d28a3450f2d7fda228303e}{Global}},\mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08eea43877ae65c82a120f36e34052714b182}{SuperTitle}},\mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08eeacdacd74f88fa721134ee5813ca56b0e3}{Title}},\mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08eea4a13f624c089b0f1d3c7e68db34da8a2}{Label}},\mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08eeab031025a82ff39f9a9183b2ee36c6b25}{Legend}}\};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespaceJSL_1_1Fonts_a916d4546aed69a1f4da72a0f172dc4a7}{SizeString}}(\textcolor{keywordtype}{int}\ size)}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ out\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ >\ 0)}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ out\ =\ \textcolor{stringliteral}{"{}\ font\ \ \ \ \(\backslash\)"{},"{}}\ +\ std::to\_string(size)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{namespace\ }internal}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespaceJSL_1_1internal_ad9e3cb9332be17eb5344432eb2a58570}{signifier}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ x,\textcolor{keywordtype}{int}\ significance)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ std::ostringstream\ os;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ std::setprecision(significance)\ <<\ x;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os.str();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classJSL_1_1Axis}{Axis}}}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_a7a8183af8c3d70b635de14a685aa0554}{Lock}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a557386d460e8ad72ea2f6670857c99db}{Axis}}()\{\};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_afb3f071c32240fe6c83816813b1f3370}{Axis}}(std::string\ rootDir,\mbox{\hyperlink{classJSL_1_1ColourArray}{ColourArray}}\ colors)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a01db63a8d0674c821172dd3bc720fc7e}{DataDir}}\ =\ rootDir\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ \textcolor{stringliteral}{"{}axis\_"{}}\ +\ std::to\_string(rand());}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_abf525d02b8c49f21ef7faa68b7571f93}{mkdir}}(\mbox{\hyperlink{classJSL_1_1Axis_a01db63a8d0674c821172dd3bc720fc7e}{DataDir}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a60a1a28cb72b5542c025bb0626a7bcb0}{title}}\ =\ \textcolor{stringliteral}{"{}\_\_null\_\_"{}};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_abdde241e2210da810c69d4cf117e9496}{xlabel}}\ =\ \textcolor{stringliteral}{"{}x"{}};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aaf6df18a857aef382343b1506641d6ff}{ylabel}}\ =\ \textcolor{stringliteral}{"{}y"{}};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a12d4c08ea04ccbefdef1f98a1b6528ef}{cblabel}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_acca070c88101d07fd42e35a606849e1f}{DataIdx}}\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a85d293ac28ada2ed2cb9c07bf5d392f5}{Colours}}\ =\ colors;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }T,\ \textcolor{keyword}{class\ }S,\ \textcolor{keyword}{typename}...\ Ts>}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData}{PlotData}}\ \&\ \mbox{\hyperlink{classJSL_1_1Axis_a95b78211cb09e6c6f0834fd353890a1d}{Plot}}(\textcolor{keyword}{const}\ std::vector<T>\ \&\ x,\textcolor{keyword}{const}\ std::vector<S>\ \ \&\ y,\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<Ts>}}...\ args)}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}Scatter\ only\ works\ on\ vectors\ of\ equal\ size"{}},x.size()==y.size());}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ name\ =\ \mbox{\hyperlink{classJSL_1_1Axis_a47a1fd72c650b4e7e4f2289b0dfc5864}{NewData}}();}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a425710dc6536490f1c1d6a5ce621f0e3}{writeMultiVectorToFile}}(name,\textcolor{stringliteral}{"{},\ "{}},x,y);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}.push\_back(\mbox{\hyperlink{classJSL_1_1PlotData}{PlotData}}(name,\mbox{\hyperlink{classJSL_1_1Axis_acca070c88101d07fd42e35a606849e1f}{DataIdx}},\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaafa1098e16302d619cc16c6117128c7e2}{Line}},args...));}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structData}{Data}}.size()-\/1];}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }T,\ \textcolor{keyword}{class\ }S,\ \textcolor{keyword}{typename}...\ Ts>}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData}{PlotData}}\ \&\ \mbox{\hyperlink{classJSL_1_1Axis_abcccbd36fd86e0504c02a66dabc5f763}{Scatter}}(\textcolor{keyword}{const}\ std::vector<T>\ \&\ x,\textcolor{keyword}{const}\ std::vector<S>\ \ \&\ y,\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<Ts>}}...\ args)}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}Scatter\ only\ works\ on\ vectors\ of\ equal\ size"{}},x.size()==y.size());}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ name\ =\ \mbox{\hyperlink{classJSL_1_1Axis_a47a1fd72c650b4e7e4f2289b0dfc5864}{NewData}}();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a425710dc6536490f1c1d6a5ce621f0e3}{writeMultiVectorToFile}}(name,\textcolor{stringliteral}{"{},\ "{}},x,y);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}.push\_back(\mbox{\hyperlink{classJSL_1_1PlotData}{PlotData}}(name,\mbox{\hyperlink{classJSL_1_1Axis_acca070c88101d07fd42e35a606849e1f}{DataIdx}},\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa523747d04b06019ae6db545703793d22}{ScatterPoint}},args...));}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structData}{Data}}.size()-\/1];}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }T,\ \textcolor{keyword}{class\ }S,\ \textcolor{keyword}{typename}...\ Ts>}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData}{PlotData}}\ \&\ \mbox{\hyperlink{classJSL_1_1Axis_a5763f45cac6b615ab7a4ff39b9992075}{Chart}}(\textcolor{keyword}{const}\ std::vector<T>\ \&\ x,\textcolor{keyword}{const}\ std::vector<S>\ \ \&\ y,\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<Ts>}}...\ args)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}Bar\ Chart\ only\ works\ on\ vectors\ of\ equal\ size"{}},x.size()==y.size());}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ name\ =\ \mbox{\hyperlink{classJSL_1_1Axis_a47a1fd72c650b4e7e4f2289b0dfc5864}{NewData}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ mock\_x(x.size());}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ x.size();\ ++i)}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::ostringstream\ os;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}"{}}\ <<\ x[i]\ <<\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mock\_x[i]\ =\ os.str();}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ idx(x.size());}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::iota(idx.begin(),idx.end(),1);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a425710dc6536490f1c1d6a5ce621f0e3}{writeMultiVectorToFile}}(name,\textcolor{stringliteral}{"{}\ "{}},idx,mock\_x,y);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}.push\_back(\mbox{\hyperlink{classJSL_1_1PlotData}{PlotData}}(name,\mbox{\hyperlink{classJSL_1_1Axis_acca070c88101d07fd42e35a606849e1f}{DataIdx}},\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa18063242b9bed054d8672dd4efb6cd33}{BarChart}},args...));}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structData}{Data}}.size()-\/1];}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }T,\ \textcolor{keyword}{class\ }S,\ \textcolor{keyword}{class\ }R,\ \textcolor{keyword}{typename}...\ Ts>}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PlotData}{PlotData}}\ \&\ \mbox{\hyperlink{classJSL_1_1Axis_a7492c669ee27441f461d26cc006503e8}{Map}}(\textcolor{keyword}{const}\ std::vector<T>\ \&\ x,\textcolor{keyword}{const}\ std::vector<S>\ \ \&\ y,\ \textcolor{keyword}{const}\ std::vector<std::vector<R>>\ \&\ z,\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{NameValuePair<Ts>}}...\ args)}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nx\ =\ x.size();}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ny\ =\ y.size();}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nz0\ =\ z.size();}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nz1\ =\ z[0].size();}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}Mapping\ requires\ an\ x-\/vector,\ a\ y-\/vector\ and\ a\ z-\/matrix\ with\ z[y][x]\ dimensions\ consistent"{}},ny==nz0,nx==nz1);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ name\ =\ \mbox{\hyperlink{classJSL_1_1Axis_a47a1fd72c650b4e7e4f2289b0dfc5864}{NewData}}();}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a245ac3bfe113c110491342bf2bb602fc}{writeHeatMapToFile}}(name,x,y,z,\textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}.push\_back(\mbox{\hyperlink{classJSL_1_1PlotData}{PlotData}}(name,\mbox{\hyperlink{classJSL_1_1Axis_acca070c88101d07fd42e35a606849e1f}{DataIdx}},\mbox{\hyperlink{namespaceJSL_a871354b683a8bee0151dbfbbde49bedaa5411aeb3b0211480c96c5d14e5e41e53}{SurfaceMap}},args...));}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a750f8a4a9a96ba4d259702f6a9ad66da}{MapMode}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structData}{Data}}.size()-\/1];}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Axis_a33cf7955573e8cae7c58a48e264fa573}{Show}}()}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a6655e1d9a5b38321b80adb17d4e9c596}{WriteCommand}}\ =\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_a60a1a28cb72b5542c025bb0626a7bcb0}{title}}\ !=\ \textcolor{stringliteral}{"{}\_\_null\_\_"{}})}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ title\ \(\backslash\)"{}"{}}\ +\ \mbox{\hyperlink{classJSL_1_1Axis_a60a1a28cb72b5542c025bb0626a7bcb0}{title}}\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ +\ \mbox{\hyperlink{namespaceJSL_1_1Fonts_a916d4546aed69a1f4da72a0f172dc4a7}{Fonts::SizeString}}(\mbox{\hyperlink{classJSL_1_1Axis_a6800d42f740631e37e3a1fe472955ea4}{titleFontSize}}));}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}unset\ title"{}});}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_acca070c88101d07fd42e35a606849e1f}{DataIdx}}\ >\ 0)}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_ac8302fff246dfe04da12fb859a69645a}{SpanSetter}}();}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a2c444e633b16d448c83f97aee203d1a7}{TimeSetter}}(\textcolor{stringliteral}{"{}x"{}},\mbox{\hyperlink{classJSL_1_1Axis_a8ba71a330e6d326699af48f27bd31f18}{isTime\_x}});}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a2c444e633b16d448c83f97aee203d1a7}{TimeSetter}}(\textcolor{stringliteral}{"{}y"{}},\mbox{\hyperlink{classJSL_1_1Axis_aac644ec515bac649f9f82077bd85a297}{isTime\_y}});}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_a750f8a4a9a96ba4d259702f6a9ad66da}{MapMode}})}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ view\ map"{}});}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ AddProperty("{}set\ dgrid3d"{});}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ AddProperty("{}set\ pm3d\ interpolate\ 1,1"{});}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_a40d7da6aa47d877bcb4f36a06fac7cb1}{showColorBar}})}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ colorbox"{}});}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ AddProperty("{}set\ autoscale\ cb"{});}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ cblabel\ \(\backslash\)"{}"{}}\ +\ \mbox{\hyperlink{classJSL_1_1Axis_a12d4c08ea04ccbefdef1f98a1b6528ef}{cblabel}}\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}});}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}unset\ colorbox"{}});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aac28d3fe416dc77f068a96db4d41c869}{RangeSetter}}(\textcolor{stringliteral}{"{}cb"{}},\mbox{\hyperlink{classJSL_1_1Axis_ada7e2a8706a08e34533a9bc8309fe1d2}{range\_c}});}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ border"{}});}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ xlabel\ \(\backslash\)"{}"{}}\ +\ \mbox{\hyperlink{classJSL_1_1Axis_abdde241e2210da810c69d4cf117e9496}{xlabel}}\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ +\ \mbox{\hyperlink{namespaceJSL_1_1Fonts_a916d4546aed69a1f4da72a0f172dc4a7}{Fonts::SizeString}}(\mbox{\hyperlink{classJSL_1_1Axis_a99a36f25ce02c490762a34a536c373f1}{axisFontSize}}));}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_a39877a67f32c8aedd60015674f99f92a}{xtic\_IsString}})}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a118b06a4960a89030ae8a293c6b86102}{TicStringSetter}}(\textcolor{stringliteral}{"{}x"{}},\mbox{\hyperlink{classJSL_1_1Axis_acb1e549279299d437a69527335da537c}{xtic\_Strings}});}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_a36a183ea84e87e2f94c003d53b3b0348}{ytic\_IsString}})}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a118b06a4960a89030ae8a293c6b86102}{TicStringSetter}}(\textcolor{stringliteral}{"{}y"{}},\mbox{\hyperlink{classJSL_1_1Axis_a85b417d720b398abffd40fcafc6e8b2c}{ytic\_Strings}});}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ ylabel\ \(\backslash\)"{}"{}}\ +\ \mbox{\hyperlink{classJSL_1_1Axis_aaf6df18a857aef382343b1506641d6ff}{ylabel}}\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ +\ \mbox{\hyperlink{namespaceJSL_1_1Fonts_a916d4546aed69a1f4da72a0f172dc4a7}{Fonts::SizeString}}(\mbox{\hyperlink{classJSL_1_1Axis_a99a36f25ce02c490762a34a536c373f1}{axisFontSize}}));}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ tics\ "{}}\ +\ \mbox{\hyperlink{namespaceJSL_1_1Fonts_a916d4546aed69a1f4da72a0f172dc4a7}{Fonts::SizeString}}(\mbox{\hyperlink{classJSL_1_1Axis_a99a36f25ce02c490762a34a536c373f1}{axisFontSize}}));}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ style\ fill\ solid"{}});}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ boxwidth\ 0.75"{}});}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ AddProperty("{}set\ lmargin\ 0.1"{});}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_addeb6963592dbccf827a526d63c3b837}{PaletteActive}})}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ palette\ "{}}\ +\ \mbox{\hyperlink{classJSL_1_1Axis_a0a87dd05a9e9b69aea86997377f630e7}{palette}});}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a666da7ba874d1e4c6926536918e7c8cc}{LogSetter}}(\textcolor{stringliteral}{"{}x"{}},\mbox{\hyperlink{classJSL_1_1Axis_a80164659b50a175dcd1c8f34b4de1164}{isLog\_x}});}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a666da7ba874d1e4c6926536918e7c8cc}{LogSetter}}(\textcolor{stringliteral}{"{}y"{}},\mbox{\hyperlink{classJSL_1_1Axis_acbea4a8261fa63858287b70306a75a8b}{isLog\_y}});}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a666da7ba874d1e4c6926536918e7c8cc}{LogSetter}}(\textcolor{stringliteral}{"{}cb"{}},\ \mbox{\hyperlink{classJSL_1_1Axis_a4ff1cc988b75be9420bfa84508f0360b}{isLog\_cb}});}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a86365c43b4bb732562cd19cfbd24a109}{AngleSetter}}(\textcolor{stringliteral}{"{}x"{}},\mbox{\hyperlink{classJSL_1_1Axis_a537af4d2e243d88c4c9f0081a209d4d4}{xTicAngle}});}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a86365c43b4bb732562cd19cfbd24a109}{AngleSetter}}(\textcolor{stringliteral}{"{}y"{}},\mbox{\hyperlink{classJSL_1_1Axis_a0c548979ecc00ef132f184e813a11d40}{yTicAngle}});}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ grid\_cmd\ =\ \textcolor{stringliteral}{"{}set\ grid"{}};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classJSL_1_1Axis_aefb9e0d2281581911456b30917a02684}{gridActive}})}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grid\_cmd\ =\ \textcolor{stringliteral}{"{}un"{}}\ +\ grid\_cmd;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(grid\_cmd);}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ key\_cmd\ =\ \textcolor{stringliteral}{"{}set\ key"{}};}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classJSL_1_1Axis_a16738eebad49e0faf3c883e1550d2d04}{legendActive}})}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ key\_cmd\ =\ \textcolor{stringliteral}{"{}un"{}}\ +\ key\_cmd;}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ key\_cmd\ +=\ \textcolor{stringliteral}{"{}\ "{}}\ +\ \mbox{\hyperlink{classJSL_1_1Axis_aa865e805c4c5581ba846773534b1c6d7}{legendLocation}};}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_aeda4464707016b4996df9b34692e6cc6}{legendCols}}\ >\ 1)}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ key\_cmd\ +=\ \textcolor{stringliteral}{"{}\ horizontal\ maxrows\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{classJSL_1_1Axis_aeda4464707016b4996df9b34692e6cc6}{legendCols}});}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(key\_cmd\ +\ \mbox{\hyperlink{namespaceJSL_1_1Fonts_a916d4546aed69a1f4da72a0f172dc4a7}{Fonts::SizeString}}(\mbox{\hyperlink{classJSL_1_1Axis_aa5c155153ea1a6caaaf555955bb1cd29}{legendFontSize}}));}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aac28d3fe416dc77f068a96db4d41c869}{RangeSetter}}(\textcolor{stringliteral}{"{}x"{}},\mbox{\hyperlink{classJSL_1_1Axis_a078cf9b840f394d0189cd170373f3015}{range\_x}});}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aac28d3fe416dc77f068a96db4d41c869}{RangeSetter}}(\textcolor{stringliteral}{"{}y"{}},\mbox{\hyperlink{classJSL_1_1Axis_a9718570f4efec1fc9a6484c2e9f1d565}{range\_y}});}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a13beec95f6084241e25d279e293219fb}{TicGapSetter}}(\textcolor{stringliteral}{"{}x"{}},\mbox{\hyperlink{classJSL_1_1Axis_a9b5762d8a406e9962411526a919b8a26}{xticgap}});}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a13beec95f6084241e25d279e293219fb}{TicGapSetter}}(\textcolor{stringliteral}{"{}y"{}},\mbox{\hyperlink{classJSL_1_1Axis_aeb7107049cfab5d59e3257eb744db23c}{yticgap}});}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a37074d454432ed5e116fbd2fa359ab82}{FormatSetter}}();}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (MapMode)}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ WriteCommand\ +=\ "{}s"{};\ //\ splot\ for\ map\ mode}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a6655e1d9a5b38321b80adb17d4e9c596}{WriteCommand}}\ +=\ \textcolor{stringliteral}{"{}plot\ "{}};}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =0;\ i\ <\ \mbox{\hyperlink{classJSL_1_1Axis_acca070c88101d07fd42e35a606849e1f}{DataIdx}};\ ++i)}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_afb135dc41127b155952fc3f42c2730c1}{AddPlot}}(i);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//creates\ an\ empty\ axis\ -\/\ else\ gnuplot\ skips\ them\ and\ the\ alignment\ gets\ all\ messed\ up}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}unset\ border\(\backslash\)nunset\ tics\(\backslash\)nunset\ xlabel\(\backslash\)nunset\ ylabel"{}});}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ xrange\ [0:1]\(\backslash\)nset\ yrange[0:1]\(\backslash\)nset\ key\ off\(\backslash\)nplot\ 5\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classJSL_1_1Axis_a6655e1d9a5b38321b80adb17d4e9c596}{WriteCommand}};}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a0bfb933a1509615566ca72a98e8574ca}{SetXRange}}(\textcolor{keywordtype}{double}\ min,\ \textcolor{keywordtype}{double}\ max)}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a078cf9b840f394d0189cd170373f3015}{range\_x}}\ =\ \{min,max\};}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a23d28c6f113683490020da26e716cf14}{SetYRange}}(\textcolor{keywordtype}{double}\ min,\ \textcolor{keywordtype}{double}\ max)}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a9718570f4efec1fc9a6484c2e9f1d565}{range\_y}}\ =\ \{min,max\};}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a0e2ad508257396c2372f1a590f666eb0}{SetColourRange}}(\textcolor{keywordtype}{double}\ min,\textcolor{keywordtype}{double}\ max)}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_ada7e2a8706a08e34533a9bc8309fe1d2}{range\_c}}\ =\ \{min,max\};}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a28b2289c6d91769b48afe16c43819bb3}{SetXLabel}}(std::string\ xl)}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_abdde241e2210da810c69d4cf117e9496}{xlabel}}\ =\ xl;}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a1d476b1547d88ee7c0c80f1a4e86faf4}{SetYLabel}}(std::string\ yl)}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aaf6df18a857aef382343b1506641d6ff}{ylabel}}\ =\ yl;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a290663ea6c5991a52e8ffa3497e4f2e5}{SetXLabel}}(std::string\ xl,\ \textcolor{keywordtype}{int}\ fontsize)}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_abdde241e2210da810c69d4cf117e9496}{xlabel}}\ =\ xl;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a99a36f25ce02c490762a34a536c373f1}{axisFontSize}}\ =\ fontsize;}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a80473fe4e172302383c9160cc7248b40}{SetYLabel}}(std::string\ yl,\ \textcolor{keywordtype}{int}\ fontsize)}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aaf6df18a857aef382343b1506641d6ff}{ylabel}}\ =\ yl;}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a99a36f25ce02c490762a34a536c373f1}{axisFontSize}}\ =\ fontsize;}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a6b0a9ea809576534dcaaf40cc976c6ac}{SetCBLabel}}(std::string\ cl,\ \textcolor{keywordtype}{int}\ fontsize)}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a12d4c08ea04ccbefdef1f98a1b6528ef}{cblabel}}\ =\ cl;}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a99a36f25ce02c490762a34a536c373f1}{axisFontSize}}\ =\ fontsize;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_aef827d7d5ebdc69a4c297f512bcca118}{SetCBLabel}}(std::string\ cl)}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a12d4c08ea04ccbefdef1f98a1b6528ef}{cblabel}}\ =\ cl;}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_aeef14102e056fa25dba72f9c1d61a2f6}{SetXLog}}(\textcolor{keywordtype}{bool}\ val)}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a80164659b50a175dcd1c8f34b4de1164}{isLog\_x}}\ =\ val;}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_ad0695f111619f714627fd0269c8fec30}{SetYLog}}(\textcolor{keywordtype}{bool}\ val)}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_acbea4a8261fa63858287b70306a75a8b}{isLog\_y}}\ =\ val;}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a3fc9ea47960e80ac3122d9ff0c20321b}{SetCBLog}}(\textcolor{keywordtype}{bool}\ val)}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a4ff1cc988b75be9420bfa84508f0360b}{isLog\_cb}}\ =\ val;}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_ae5105c85d5f0f2c039254adca85701c2}{SetXTime}}(\textcolor{keywordtype}{bool}\ val)}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a8ba71a330e6d326699af48f27bd31f18}{isTime\_x}}\ =\ val;}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_ae57ebe069619bee3b02527a6942774c2}{SetYTime}}(\textcolor{keywordtype}{bool}\ val)}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aac644ec515bac649f9f82077bd85a297}{isTime\_y}}\ =\ val;}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a5ce4d8f8a7fd4e8a345338315e810a8f}{SetXTicAngle}}(\textcolor{keywordtype}{int}\ val)}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a537af4d2e243d88c4c9f0081a209d4d4}{xTicAngle}}\ =\ val;}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_ac39dbc70b8762c14e554f6c404acd4dc}{SetYTicAngle}}(\textcolor{keywordtype}{bool}\ val)}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a0c548979ecc00ef132f184e813a11d40}{yTicAngle}}=val;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_ac4c489a5fe9d37df1be1f82637bc6787}{SetLegend}}(\textcolor{keywordtype}{bool}\ state)}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a16738eebad49e0faf3c883e1550d2d04}{legendActive}}\ =\ state;}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a370386b66cab71daaa1a7132da391417}{SetLegendLocation}}(std::string\ loc)}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aa865e805c4c5581ba846773534b1c6d7}{legendLocation}}\ =\ loc;}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a300473a7c351c010f1fdd9bfe5cbc92f}{SetLegendColumns}}(\textcolor{keywordtype}{int}\ cols)}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aeda4464707016b4996df9b34692e6cc6}{legendCols}}\ =\ cols;}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a35138d001b953b9aa0b327840ed9bba3}{SetTitle}}(std::string\ tit)}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a60a1a28cb72b5542c025bb0626a7bcb0}{title}}\ =\ tit;}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_ae62a2c80ec71bf5f6c78c9347fc51303}{SetTitle}}(std::string\ tit,\ \textcolor{keywordtype}{int}\ size)}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a60a1a28cb72b5542c025bb0626a7bcb0}{title}}\ =\ tit;}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a6800d42f740631e37e3a1fe472955ea4}{titleFontSize}}\ =\ size;}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a756e78937a19acfd66bc55915339b7d7}{SetXTicPowerFormat}}(\textcolor{keywordtype}{bool}\ val)}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_ac177e318f405431295d8a88a412bdbc5}{powerFormat\_X}}\ =\ val;}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a273b6a68d8fef6ed4bbe1e4d3b4a580e}{SetXTicGap}}(\textcolor{keywordtype}{double}\ val)}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a9b5762d8a406e9962411526a919b8a26}{xticgap}}\ =\ val;}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a12d0d9eac46f5e2866a68dc42e482b80}{SetYTicGap}}(\textcolor{keywordtype}{double}\ val)}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aeb7107049cfab5d59e3257eb744db23c}{yticgap}}\ =\ val;}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a55309dffa00aa5ea55b2798ce85a8314}{SetYTicPowerFormat}}(\textcolor{keywordtype}{bool}\ val)}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a5126c2199ee25ff2d15bed2552a9c01a}{powerFormat\_Y}}\ =\ val;}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a90ab038c5929bb87c16ae92827cf404e}{SetXTicLabels}}(std::vector<std::string>\ vals)}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a39877a67f32c8aedd60015674f99f92a}{xtic\_IsString}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_acb1e549279299d437a69527335da537c}{xtic\_Strings}}\ =\ vals;}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a09df497b9b334bd178b2939edf4263a9}{SetYTicLabels}}(std::vector<std::string>\ vals)}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a36a183ea84e87e2f94c003d53b3b0348}{ytic\_IsString}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a85b417d720b398abffd40fcafc6e8b2c}{ytic\_Strings}}\ =\ vals;}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_aea8396342a767d344aff9f3981a2b4b2}{SetGrid}}(\textcolor{keywordtype}{bool}\ state)}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aefb9e0d2281581911456b30917a02684}{gridActive}}\ =\ state;}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a0d759d567bb0c029b1ea76cecca3cbbd}{SetSpan}}(\textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ x)}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a8611d305bdcae805ebac3930617ce1f5}{xSpan}}\ =\ x;}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_acd6201408a049b8c963a23540d245f6a}{ySpan}}\ =\ y;}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a36b638e7664063f1ef730e32cbc34f8b}{SetPalette}}(std::string\ in)}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_addeb6963592dbccf827a526d63c3b837}{PaletteActive}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a0a87dd05a9e9b69aea86997377f630e7}{palette}}\ =\ in;}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_abe9191f5cdcc181e7bc80badb8c007f3}{SetFontSize}}(\mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08ee}{Fonts::Target}}\ target,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size)}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (target)}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08eeacdacd74f88fa721134ee5813ca56b0e3}{Fonts::Title}}:}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a6800d42f740631e37e3a1fe472955ea4}{titleFontSize}}\ =\ size;}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08eea4a13f624c089b0f1d3c7e68db34da8a2}{Fonts::Label}}:}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a99a36f25ce02c490762a34a536c373f1}{axisFontSize}}\ =\ size;}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceJSL_1_1Fonts_a7a55fcb9c82e5a8c7f98ce1c803d08eeab031025a82ff39f9a9183b2ee36c6b25}{Fonts::Legend}}:}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_aa5c155153ea1a6caaaf555955bb1cd29}{legendFontSize}}\ =\ size;}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5783bc90550deca94c1790e581fb707d}{Error}}(\textcolor{stringliteral}{"{}Cannot\ set\ global\ or\ supertitle\ font\ size\ from\ within\ axis\ scope"{}});}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a27194f9aba640985c78d80f848d4ad66}{SetColourBar}}(\textcolor{keywordtype}{bool}\ in)}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a40d7da6aa47d877bcb4f36a06fac7cb1}{showColorBar}}\ =\ in;}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_ac15da691ac49a05aee58682ed4a1fb82}{SetColourMap}}(std::vector<std::vector<double>>\ rgb)}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a85d293ac28ada2ed2cb9c07bf5d392f5}{Colours}}.\mbox{\hyperlink{classJSL_1_1ColourArray_a2aceaff1f2e5a117a45f7b037148b453}{SetColours}}(rgb);}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a6f506c30a6aa1bcad651fc34a79c0526}{SetColourMap}}(\textcolor{keywordtype}{int}\ n,\ std::vector<double>\ start,\ std::vector<double>\ end)}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a85d293ac28ada2ed2cb9c07bf5d392f5}{Colours}}.\mbox{\hyperlink{classJSL_1_1ColourArray_a2aceaff1f2e5a117a45f7b037148b453}{SetColours}}(n,start,end);}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_af8a902a6b54fa5b93c7039087dd4eefe}{GlobalColourSet}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1ColourArray}{ColourArray}}\ \&\ c)}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a85d293ac28ada2ed2cb9c07bf5d392f5}{Colours}}\ =\ c;}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Axis_a60a1a28cb72b5542c025bb0626a7bcb0}{title}};\ }
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Axis_abdde241e2210da810c69d4cf117e9496}{xlabel}};}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Axis_aaf6df18a857aef382343b1506641d6ff}{ylabel}};\ }
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Axis_a12d4c08ea04ccbefdef1f98a1b6528ef}{cblabel}};}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classJSL_1_1Axis_a078cf9b840f394d0189cd170373f3015}{range\_x}};\ }
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classJSL_1_1Axis_a9718570f4efec1fc9a6484c2e9f1d565}{range\_y}};}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classJSL_1_1Axis_ada7e2a8706a08e34533a9bc8309fe1d2}{range\_c}};}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_a80164659b50a175dcd1c8f34b4de1164}{isLog\_x}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_a8ba71a330e6d326699af48f27bd31f18}{isTime\_x}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_aac644ec515bac649f9f82077bd85a297}{isTime\_y}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_acbea4a8261fa63858287b70306a75a8b}{isLog\_y}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_a4ff1cc988b75be9420bfa84508f0360b}{isLog\_cb}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_aefb9e0d2281581911456b30917a02684}{gridActive}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classJSL_1_1Axis_a8611d305bdcae805ebac3930617ce1f5}{xSpan}}\ =\ -\/1;}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classJSL_1_1Axis_acd6201408a049b8c963a23540d245f6a}{ySpan}}\ =\ -\/1;}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_a39877a67f32c8aedd60015674f99f92a}{xtic\_IsString}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{classJSL_1_1Axis_acb1e549279299d437a69527335da537c}{xtic\_Strings}};}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_a36a183ea84e87e2f94c003d53b3b0348}{ytic\_IsString}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{classJSL_1_1Axis_a85b417d720b398abffd40fcafc6e8b2c}{ytic\_Strings}};}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Axis_a537af4d2e243d88c4c9f0081a209d4d4}{xTicAngle}}\ =\ 0;\ }
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Axis_a0c548979ecc00ef132f184e813a11d40}{yTicAngle}}\ =\ 0;}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Axis_a99a36f25ce02c490762a34a536c373f1}{axisFontSize}}\ =\ -\/1;\ }
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Axis_a6800d42f740631e37e3a1fe472955ea4}{titleFontSize}}\ =\ -\/1;}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Axis_aa5c155153ea1a6caaaf555955bb1cd29}{legendFontSize}}\ =\ -\/1;}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Axis_aa865e805c4c5581ba846773534b1c6d7}{legendLocation}}\ =\ \textcolor{stringliteral}{"{}left\ top"{}};}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Axis_aeda4464707016b4996df9b34692e6cc6}{legendCols}}\ =\ -\/1;}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_a750f8a4a9a96ba4d259702f6a9ad66da}{MapMode}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Axis_a01db63a8d0674c821172dd3bc720fc7e}{DataDir}};\ }
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<PlotData>\ \mbox{\hyperlink{classJSL_1_1Axis_a493f7f5899d5e867ade59af8e10e95bd}{Data}};\ }
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_a16738eebad49e0faf3c883e1550d2d04}{legendActive}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Axis_acca070c88101d07fd42e35a606849e1f}{DataIdx}};\ }
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_ac177e318f405431295d8a88a412bdbc5}{powerFormat\_X}}\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ sets\ flag\ to\ turn\ all\ xtics\ into\ powers\ of\ 10}}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_a5126c2199ee25ff2d15bed2552a9c01a}{powerFormat\_Y}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_addeb6963592dbccf827a526d63c3b837}{PaletteActive}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classJSL_1_1Axis_a40d7da6aa47d877bcb4f36a06fac7cb1}{showColorBar}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Axis_a0a87dd05a9e9b69aea86997377f630e7}{palette}};}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classJSL_1_1Axis_a9b5762d8a406e9962411526a919b8a26}{xticgap}}\ =\ -\/1;}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classJSL_1_1Axis_aeb7107049cfab5d59e3257eb744db23c}{yticgap}}\ =\ -\/1;}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1ColourArray}{ColourArray}}\ \mbox{\hyperlink{classJSL_1_1Axis_a85d293ac28ada2ed2cb9c07bf5d392f5}{Colours}};}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Axis_a6655e1d9a5b38321b80adb17d4e9c596}{WriteCommand}};}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Axis_a47a1fd72c650b4e7e4f2289b0dfc5864}{NewData}}()}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++\mbox{\hyperlink{classJSL_1_1Axis_acca070c88101d07fd42e35a606849e1f}{DataIdx}};}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ name\ =\ \mbox{\hyperlink{classJSL_1_1Axis_a01db63a8d0674c821172dd3bc720fc7e}{DataDir}}\ +\ \textcolor{stringliteral}{"{}/dataChunk\_"{}}\ +\ std::to\_string(\mbox{\hyperlink{classJSL_1_1Axis_acca070c88101d07fd42e35a606849e1f}{DataIdx}})\ +\ \textcolor{stringliteral}{"{}.dat"{}};}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a47d8cb112d513ee5a3ae38ca6a89743d}{initialiseFile}}(name);}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ name;}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(std::string\ line)}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a6655e1d9a5b38321b80adb17d4e9c596}{WriteCommand}}\ +=\ line\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_afb135dc41127b155952fc3f42c2730c1}{AddPlot}}(\textcolor{keywordtype}{int}\ i)}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a6655e1d9a5b38321b80adb17d4e9c596}{WriteCommand}}\ +=\ \mbox{\hyperlink{structData}{Data}}[i].Write(\mbox{\hyperlink{classJSL_1_1Axis_a85d293ac28ada2ed2cb9c07bf5d392f5}{Colours}});}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a666da7ba874d1e4c6926536918e7c8cc}{LogSetter}}(\textcolor{keyword}{const}\ std::string\ \&\ prefix,\ \textcolor{keywordtype}{bool}\ active)}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ t\ =\ \textcolor{stringliteral}{"{}set\ log\ "{}}\ +\ prefix;}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!active)}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\ =\ \textcolor{stringliteral}{"{}un"{}}\ +\ t;}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(t);}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00497\ }
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_ac8302fff246dfe04da12fb859a69645a}{SpanSetter}}()}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_a8611d305bdcae805ebac3930617ce1f5}{xSpan}}\ >\ 0\ \&\&\ \mbox{\hyperlink{classJSL_1_1Axis_acd6201408a049b8c963a23540d245f6a}{ySpan}}\ >\ 0)}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ size\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{classJSL_1_1Axis_a8611d305bdcae805ebac3930617ce1f5}{xSpan}})\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ std::to\_string(\mbox{\hyperlink{classJSL_1_1Axis_acd6201408a049b8c963a23540d245f6a}{ySpan}}));}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_aac28d3fe416dc77f068a96db4d41c869}{RangeSetter}}(\textcolor{keyword}{const}\ std::string\ \&\ axisPrefix,\ \textcolor{keyword}{const}\ std::vector<double>\ \&\ range)}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ val\ =\ \textcolor{stringliteral}{"{}[*:*]"{}};}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (range.size()\ ==\ 2)}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ val\ =\ \textcolor{stringliteral}{"{}["{}}\ +\ \mbox{\hyperlink{namespaceJSL_1_1internal_ad9e3cb9332be17eb5344432eb2a58570}{internal::signifier}}(range[0],8)\ +\ \textcolor{stringliteral}{"{}:"{}}\ +\ \mbox{\hyperlink{namespaceJSL_1_1internal_ad9e3cb9332be17eb5344432eb2a58570}{internal::signifier}}(range[1],8)\ +\ \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ cmd\ =\ \textcolor{stringliteral}{"{}set\ "{}}\ +\ axisPrefix\ +\ \textcolor{stringliteral}{"{}range\ "{}}\ +\ val;}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(cmd);}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a2c444e633b16d448c83f97aee203d1a7}{TimeSetter}}(\textcolor{keyword}{const}\ std::string\ \&\ axisPrefix,\ \textcolor{keywordtype}{bool}\ timeActive)}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timeActive)}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ cmd\ =\ \textcolor{stringliteral}{"{}set\ "{}}\ +\ axisPrefix\ +\ \textcolor{stringliteral}{"{}data\ time\(\backslash\)nset\ timefmt\ \(\backslash\)"{}\%s\(\backslash\)"{}"{}};}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(cmd);}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a37074d454432ed5e116fbd2fa359ab82}{FormatSetter}}()}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_ac177e318f405431295d8a88a412bdbc5}{powerFormat\_X}})}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ format\ x\ \(\backslash\)"{}10\string^\{\%T\}\(\backslash\)"{}"{}});}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}unset\ format\ x"{}});}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Axis_a5126c2199ee25ff2d15bed2552a9c01a}{powerFormat\_Y}})}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}set\ format\ y\ \(\backslash\)"{}10\string^\{\%T\}\(\backslash\)"{}"{}});}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(\textcolor{stringliteral}{"{}unset\ format\ y"{}});}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a86365c43b4bb732562cd19cfbd24a109}{AngleSetter}}(\textcolor{keyword}{const}\ std::string\ \&\ axisPrefix,\ \textcolor{keywordtype}{int}\ angle)}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (abs(angle)\ >\ 0)}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ cmd\ =\ \textcolor{stringliteral}{"{}set\ "{}}\ +\ axisPrefix\ +\ \textcolor{stringliteral}{"{}tics\ rotate\ by\ "{}}\ +\ std::to\_string(angle);}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\ >\ 0)}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ xOffset\ =\ -\/2\ *\ std::cos(3.141592654/180\ *\ angle);}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ yOffset\ =\ -\/2\ *\ std::sin(3.141592654/180\ *\ angle);}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cmd\ +=\ \textcolor{stringliteral}{"{}\ offset\ "{}}\ +\ std::to\_string(xOffset)\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ std::to\_string(yOffset);}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(cmd);}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00557\ }
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a13beec95f6084241e25d279e293219fb}{TicGapSetter}}(\textcolor{keyword}{const}\ std::string\ \&\ axisPrefix,\ \textcolor{keywordtype}{double}\ gap)}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gap\ >\ 0)}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ cmd\ =\ \textcolor{stringliteral}{"{}set\ "{}}\ +\ axisPrefix\ +\textcolor{stringliteral}{"{}tic\ "{}}\ +\ std::to\_string(gap);}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(cmd);}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1Axis_a118b06a4960a89030ae8a293c6b86102}{TicStringSetter}}(std::string\ axis,std::vector<std::string>\ vals)}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ cmd\ =\ \textcolor{stringliteral}{"{}set\ "{}}\ +\ axis\ +\textcolor{stringliteral}{"{}tics\ ("{}};}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ vals.size();\ ++i)}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cmd\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ +\ vals[i]\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}\ "{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cmd\ +=\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Axis_a30ec179de40908ac5ccb809365f3862e}{AddProperty}}(cmd);}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00577\ \ \ \ \ \};}
+\DoxyCodeLine{00578\ \};}
+
+\end{DoxyCode}

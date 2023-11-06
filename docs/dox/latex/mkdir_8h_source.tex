@@ -1,0 +1,56 @@
+\doxysection{mkdir.\+h}
+\hypertarget{mkdir_8h_source}{}\label{mkdir_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/mkdir.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/mkdir.h}}
+\mbox{\hyperlink{mkdir_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <dirent.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{locationExists_8h}{locationExists.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ }
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structJSL_1_1mkdirReturn}{mkdirReturn}}}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structJSL_1_1mkdirReturn_a76abe5af61a20e13756f833b79782b7f}{Successful}};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structJSL_1_1mkdirReturn_a64650d2f4b3d2ca29de3a4dcfdadbd0e}{Message}};}
+\DoxyCodeLine{00016\ \ \ \ \ \};}
+\DoxyCodeLine{00017\ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{structJSL_1_1mkdirReturn}{mkdirReturn}}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_abf525d02b8c49f21ef7faa68b7571f93}{mkdir}}(std::string\ directory)}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1mkdirReturn}{mkdirReturn}}\ output;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{structJSL_1_1mkdirReturn_a76abe5af61a20e13756f833b79782b7f}{Successful}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{structJSL_1_1mkdirReturn_a64650d2f4b3d2ca29de3a4dcfdadbd0e}{Message}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespaceJSL_a1752cd7c6e1134da51e9307527e0d788}{JSL::locationExists}}(directory))}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{structJSL_1_1mkdirReturn_a64650d2f4b3d2ca29de3a4dcfdadbd0e}{Message}}\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)tDirectory\ '"{}}\ +\ directory\ +\ \textcolor{stringliteral}{"{}'\ already\ exists.\ Request\ to\ mkdir\ ignored.\(\backslash\)n"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{structJSL_1_1mkdirReturn_a64650d2f4b3d2ca29de3a4dcfdadbd0e}{Message}}\ +=\ \textcolor{stringliteral}{"{}Directory\ '"{}}\ +\ directory\ +\textcolor{stringliteral}{"{}'\ \ does\ not\ exist.\ Constructing\ directory...\(\backslash\)n"{}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ command\ =\ \textcolor{stringliteral}{"{}mkdir\ -\/p\ "{}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ command.append(directory);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *commandChar\ =\ command.c\_str();\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ dir\_err\ =\ system(commandChar);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ error\ =\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n\(\backslash\)nERROR:\ A\ problem\ was\ encountered\ trying\ to\ create\ directory.\ Error\ message\ is\ as\ follows\(\backslash\)n"{}};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ error\ =\ error\ +\ std::string(e.what());}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{structJSL_1_1mkdirReturn_a64650d2f4b3d2ca29de3a4dcfdadbd0e}{Message}}\ +=\ error;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{structJSL_1_1mkdirReturn_a76abe5af61a20e13756f833b79782b7f}{Successful}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \}}
+
+\end{DoxyCode}

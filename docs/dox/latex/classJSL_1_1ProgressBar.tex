@@ -1,0 +1,325 @@
+\doxysection{JSL\+::Progress\+Bar\texorpdfstring{$<$}{<} Dimension, Delete\+Mode, Symbol, Max\+Hashes \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classJSL_1_1ProgressBar}{}\label{classJSL_1_1ProgressBar}\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+
+
+{\ttfamily \#include $<$Progress\+Bar.\+h$>$}
+
+Inheritance diagram for JSL\+::Progress\+Bar\texorpdfstring{$<$}{<} Dimension, Delete\+Mode, Symbol, Max\+Hashes \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classJSL_1_1ProgressBar}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{classJSL_1_1ProgressBar_a387540b26d9e8cef6ef694e78ca21d05}{Progress\+Bar}} (Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{target\+Counts}})
+\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_ac7d924894ea76344ec2b1540d329a05f}{Update}} (Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{positions}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_ade149b634fe82923f5a284ba34045fbc}{Set\+Name}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ std\+::string $>$ \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{names}})
+\begin{DoxyCompactList}\small\item\em Sets all names for the bars simultaneously. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_ad02946ede96408489d672d15ab200958}{Set\+Name}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} idx, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::string \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{name}})
+\begin{DoxyCompactList}\small\item\em Changes the name of the idx-\/th bar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_ac434128522cfdfe01a2d9c791188c8ec}{Set\+Name}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::string \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{name}})
+\begin{DoxyCompactList}\small\item\em An override for \doxylink{classJSL_1_1ProgressBar_ad02946ede96408489d672d15ab200958}{Set\+Name(unsigned int idx, const std\+::string \& name)} available only when Dimension == 1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a5fa7f8ced9592b0cea5a366157332eff}{Clear}} ()
+\begin{DoxyCompactList}\small\item\em Deletes all levels of the bar from the screen, useful once the bar has finished and is no longer needed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a7088deecfe936d4eaba784cff05270f4}{Unpack\+Targets}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{target}}, Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{targets}})
+\begin{DoxyCompactList}\small\item\em The variadic internal function called by the compiler, looping over the arbitrary number of inputs and storing them in internal vectors. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Ts$>$ }\\\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a73c79e8e00905454aa2853b39d8143b6}{Unroll\+Positions}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} idx, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{pos}}, Ts... \mbox{\hyperlink{structJSL_1_1NameValuePair}{remainder}})
+\begin{DoxyCompactList}\small\item\em The variadic internal function which is called by \doxylink{classJSL_1_1ProgressBar_ac7d924894ea76344ec2b1540d329a05f}{Update()}, loops over the arguments and computes the number of Symbols required by each bar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_adafc5d517ac0dc23b9761bce1d68f953}{Clear\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Loops over the existing bars and erases them using ANSI codes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{virtual}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a982ed7fb5d898e838b3685509d609b23}{Print\+Positions\+\_\+\+Delete\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em The version of Printing which happens if Delete\+Mode is true -- clears the previous bars using ANSI codes, then overwrites them with the new values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a5dba8513809faf0a0f9a315b1f527314}{Print\+Positions\+\_\+\+Retain\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em The version of Printing which happens if Delete\+Mode is false -\/ gradually prints the progress bar one Symbol at a time, then adds the close brace "{}\mbox{]}"{} whn the final one is printed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a7354c455382575329326bedfd210957e}{first\+Print}} = \mbox{\hyperlink{structJSL_1_1NameValuePair}{true}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classJSL_1_1Toggle}{Toggle} to ensure open-\/brace "{}\mbox{[}"{} is printed only once. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} $>$ \mbox{\hyperlink{classJSL_1_1ProgressBar_a4fabdafceac14f4fbbb3e364578f6e1c}{Bar\+Targets}}
+\begin{DoxyCompactList}\small\item\em Storage for the target number of processes. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ \mbox{\hyperlink{classJSL_1_1ProgressBar_a8ab0aeecd87eaa2754a5a58aea3cca51}{Bar\+Progress}}
+\begin{DoxyCompactList}\small\item\em Current progress value (between 0 and 1) \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} $>$ \mbox{\hyperlink{classJSL_1_1ProgressBar_a0798094501860753307f92eafa464b4f}{Hashes}}
+\begin{DoxyCompactList}\small\item\em Current printed number of symbols for each bar. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classJSL_1_1ProgressBar_ab85ccf4638d649d88becf47e2af83525}{Names}}
+\begin{DoxyCompactList}\small\item\em The names printed in front of each bar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a913055a04bad40dbbf66f0f8247bb8b0}{reprint\+Needed}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classJSL_1_1Toggle}{Toggle} which ensures reprinting only occurs when something changes, prevents unnecessary overhead. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1ProgressBar_ae3160fd31be03fadd4c92a0906f64f79}{buffer\+Width}} = 10
+\begin{DoxyCompactList}\small\item\em Default size allocated for names, increases if a value of anmes would overfill it. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1ProgressBar_a3439198bd34393a92cfbc9067247be4a}{prev\+Hashes}} = 0
+\begin{DoxyCompactList}\small\item\em Used in Delete\+Mode=false to compute new hashe number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$\newline
+class JSL\+::\+Progress\+Bar$<$ Dimension, Delete\+Mode, Symbol, Max\+Hashes $>$}
+A neat display widget for tracking the progress of a process by printing a progress bar on the screen, which updates to visually indicate the process is running. Supports arbitrary "{}levels"{} of progress bars which can be independently modified through a variadic argument interface. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dimension} & The number of concurrent bars to print (fixes the number of arguments which must be provided to subsequent functions). Defaults to 1 if 0 template arguments provided \\
+\hline
+{\em Delete\+Mode} & If true, utilises \doxylink{namespaceJSL_ae38780f94d60045b904b289eb3ab8eda}{JSL\+::delete\+Line()} to remove the previous line before reprinting, such that the bar appears animated. If false, provides a more limited form of animation (false only available in Dimension==1 mode). Defaults to true. \\
+\hline
+{\em Symbol} & The symbol which is printed within the bar to fill up space. Defaults to "{}\#"{}. \\
+\hline
+{\em Max\+Hashes} & The number of symbols in a full bar (dictates the width of the progress bar) \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classJSL_1_1ProgressBar_a387540b26d9e8cef6ef694e78ca21d05}\label{classJSL_1_1ProgressBar_a387540b26d9e8cef6ef694e78ca21d05} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!ProgressBar@{ProgressBar}}
+\index{ProgressBar@{ProgressBar}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{ProgressBar()}{ProgressBar()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+template$<$typename... Ts$>$ \\
+\mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Progress\+Bar (\begin{DoxyParamCaption}\item[{Ts...}]{target\+Counts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor function. Accepts a number of integer arguments equal to Dimension, throws an error if this is not true. 
+\begin{DoxyParams}{Parameters}
+{\em target\+Counts} & The number of processes (i.\+e. max loop index) that must complete before each bar is considered full. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classJSL_1_1ProgressBar_a5fa7f8ced9592b0cea5a366157332eff}\label{classJSL_1_1ProgressBar_a5fa7f8ced9592b0cea5a366157332eff} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!Clear@{Clear}}
+\index{Clear@{Clear}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Deletes all levels of the bar from the screen, useful once the bar has finished and is no longer needed. 
+
+\Hypertarget{classJSL_1_1ProgressBar_adafc5d517ac0dc23b9761bce1d68f953}\label{classJSL_1_1ProgressBar_adafc5d517ac0dc23b9761bce1d68f953} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!ClearScreen@{ClearScreen}}
+\index{ClearScreen@{ClearScreen}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{ClearScreen()}{ClearScreen()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Clear\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Loops over the existing bars and erases them using ANSI codes. 
+
+\Hypertarget{classJSL_1_1ProgressBar_a982ed7fb5d898e838b3685509d609b23}\label{classJSL_1_1ProgressBar_a982ed7fb5d898e838b3685509d609b23} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!PrintPositions\_DeleteMode@{PrintPositions\_DeleteMode}}
+\index{PrintPositions\_DeleteMode@{PrintPositions\_DeleteMode}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{PrintPositions\_DeleteMode()}{PrintPositions\_DeleteMode()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{virtual}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Print\+Positions\+\_\+\+Delete\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+The version of Printing which happens if Delete\+Mode is true -- clears the previous bars using ANSI codes, then overwrites them with the new values. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classJSL_1_1PredictionBar_ab0b2554e099a042a310f1d21eaf9dbe2}{JSL\+::\+Prediction\+Bar$<$ Dimension, Symbol, Max\+Hashes $>$}}.
+
+\Hypertarget{classJSL_1_1ProgressBar_a5dba8513809faf0a0f9a315b1f527314}\label{classJSL_1_1ProgressBar_a5dba8513809faf0a0f9a315b1f527314} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!PrintPositions\_RetainMode@{PrintPositions\_RetainMode}}
+\index{PrintPositions\_RetainMode@{PrintPositions\_RetainMode}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{PrintPositions\_RetainMode()}{PrintPositions\_RetainMode()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Print\+Positions\+\_\+\+Retain\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+The version of Printing which happens if Delete\+Mode is false -\/ gradually prints the progress bar one Symbol at a time, then adds the close brace "{}\mbox{]}"{} whn the final one is printed. 
+
+\Hypertarget{classJSL_1_1ProgressBar_ac434128522cfdfe01a2d9c791188c8ec}\label{classJSL_1_1ProgressBar_ac434128522cfdfe01a2d9c791188c8ec} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!SetName@{SetName}}
+\index{SetName@{SetName}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{SetName()}{SetName()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Set\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+An override for \doxylink{classJSL_1_1ProgressBar_ad02946ede96408489d672d15ab200958}{Set\+Name(unsigned int idx, const std\+::string \& name)} available only when Dimension == 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The message to go in front of the bar as it prints \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classJSL_1_1ProgressBar_ade149b634fe82923f5a284ba34045fbc}\label{classJSL_1_1ProgressBar_ade149b634fe82923f5a284ba34045fbc} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!SetName@{SetName}}
+\index{SetName@{SetName}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{SetName()}{SetName()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Set\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::vector$<$ std\+::string $>$ \&}]{names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets all names for the bars simultaneously. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em names} & A vector of strings (equal to Dimension), each of which is printed before their respective bar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classJSL_1_1ProgressBar_ad02946ede96408489d672d15ab200958}\label{classJSL_1_1ProgressBar_ad02946ede96408489d672d15ab200958} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!SetName@{SetName}}
+\index{SetName@{SetName}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{SetName()}{SetName()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Set\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{idx,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Changes the name of the idx-\/th bar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The bar name to be changes\\
+\hline
+{\em name} & The string which is printed in the front of the bar \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classJSL_1_1ProgressBar_a7088deecfe936d4eaba784cff05270f4}\label{classJSL_1_1ProgressBar_a7088deecfe936d4eaba784cff05270f4} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!UnpackTargets@{UnpackTargets}}
+\index{UnpackTargets@{UnpackTargets}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{UnpackTargets()}{UnpackTargets()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+template$<$typename... Ts$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Unpack\+Targets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{target,  }\item[{Ts...}]{targets }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+The variadic internal function called by the compiler, looping over the arbitrary number of inputs and storing them in internal vectors. 
+
+\Hypertarget{classJSL_1_1ProgressBar_a73c79e8e00905454aa2853b39d8143b6}\label{classJSL_1_1ProgressBar_a73c79e8e00905454aa2853b39d8143b6} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!UnrollPositions@{UnrollPositions}}
+\index{UnrollPositions@{UnrollPositions}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{UnrollPositions()}{UnrollPositions()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+template$<$typename... Ts$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Unroll\+Positions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{idx,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{pos,  }\item[{Ts...}]{remainder }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+The variadic internal function which is called by \doxylink{classJSL_1_1ProgressBar_ac7d924894ea76344ec2b1540d329a05f}{Update()}, loops over the arguments and computes the number of Symbols required by each bar. 
+
+\Hypertarget{classJSL_1_1ProgressBar_ac7d924894ea76344ec2b1540d329a05f}\label{classJSL_1_1ProgressBar_ac7d924894ea76344ec2b1540d329a05f} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!Update@{Update}}
+\index{Update@{Update}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+template$<$typename... Ts$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Update (\begin{DoxyParamCaption}\item[{Ts...}]{positions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Provide a progress update (i.\+e. loop index) for each of the active bars. Accepts a number of integer arguments equal to Dimension. 
+\begin{DoxyParams}{Parameters}
+{\em positons} & The current process count (to be compared against the targets) of the open progress bars \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classJSL_1_1ProgressBar_a8ab0aeecd87eaa2754a5a58aea3cca51}\label{classJSL_1_1ProgressBar_a8ab0aeecd87eaa2754a5a58aea3cca51} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!BarProgress@{BarProgress}}
+\index{BarProgress@{BarProgress}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{BarProgress}{BarProgress}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+std\+::vector$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}$>$ \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Bar\+Progress\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Current progress value (between 0 and 1) 
+
+\Hypertarget{classJSL_1_1ProgressBar_a4fabdafceac14f4fbbb3e364578f6e1c}\label{classJSL_1_1ProgressBar_a4fabdafceac14f4fbbb3e364578f6e1c} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!BarTargets@{BarTargets}}
+\index{BarTargets@{BarTargets}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{BarTargets}{BarTargets}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+std\+::vector$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}$>$ \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Bar\+Targets\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Storage for the target number of processes. 
+
+\Hypertarget{classJSL_1_1ProgressBar_ae3160fd31be03fadd4c92a0906f64f79}\label{classJSL_1_1ProgressBar_ae3160fd31be03fadd4c92a0906f64f79} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!bufferWidth@{bufferWidth}}
+\index{bufferWidth@{bufferWidth}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{bufferWidth}{bufferWidth}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::buffer\+Width = 10\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Default size allocated for names, increases if a value of anmes would overfill it. 
+
+\Hypertarget{classJSL_1_1ProgressBar_a7354c455382575329326bedfd210957e}\label{classJSL_1_1ProgressBar_a7354c455382575329326bedfd210957e} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!firstPrint@{firstPrint}}
+\index{firstPrint@{firstPrint}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{firstPrint}{firstPrint}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::first\+Print = \mbox{\hyperlink{structJSL_1_1NameValuePair}{true}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxylink{classJSL_1_1Toggle}{Toggle} to ensure open-\/brace "{}\mbox{[}"{} is printed only once. 
+
+\Hypertarget{classJSL_1_1ProgressBar_a0798094501860753307f92eafa464b4f}\label{classJSL_1_1ProgressBar_a0798094501860753307f92eafa464b4f} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!Hashes@{Hashes}}
+\index{Hashes@{Hashes}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{Hashes}{Hashes}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+std\+::vector$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}$>$ \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Hashes\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Current printed number of symbols for each bar. 
+
+\Hypertarget{classJSL_1_1ProgressBar_ab85ccf4638d649d88becf47e2af83525}\label{classJSL_1_1ProgressBar_ab85ccf4638d649d88becf47e2af83525} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!Names@{Names}}
+\index{Names@{Names}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{Names}{Names}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+std\+::vector$<$std\+::string$>$ \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::\+Names\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The names printed in front of each bar. 
+
+\Hypertarget{classJSL_1_1ProgressBar_a3439198bd34393a92cfbc9067247be4a}\label{classJSL_1_1ProgressBar_a3439198bd34393a92cfbc9067247be4a} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!prevHashes@{prevHashes}}
+\index{prevHashes@{prevHashes}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{prevHashes}{prevHashes}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::prev\+Hashes = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Used in Delete\+Mode=false to compute new hashe number. 
+
+\Hypertarget{classJSL_1_1ProgressBar_a913055a04bad40dbbf66f0f8247bb8b0}\label{classJSL_1_1ProgressBar_a913055a04bad40dbbf66f0f8247bb8b0} 
+\index{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}!reprintNeeded@{reprintNeeded}}
+\index{reprintNeeded@{reprintNeeded}!JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$@{JSL::ProgressBar$<$ Dimension, DeleteMode, Symbol, MaxHashes $>$}}
+\doxysubsubsection{\texorpdfstring{reprintNeeded}{reprintNeeded}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Dimension = 1, \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} Delete\+Mode = true, \mbox{\hyperlink{structJSL_1_1NameValuePair}{char}} Symbol = \textquotesingle{}\#\textquotesingle{}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} Max\+Hashes = 20$>$ \\
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1ProgressBar}{JSL\+::\+Progress\+Bar}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{Dimension}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Delete\+Mode}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Symbol}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{Max\+Hashes}} $>$\+::reprint\+Needed\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxylink{classJSL_1_1Toggle}{Toggle} which ensures reprinting only occurs when something changes, prevents unnecessary overhead. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/libs/\+JSL/\+Display/\mbox{\hyperlink{ProgressBar_8h}{Progress\+Bar.\+h}}\end{DoxyCompactItemize}

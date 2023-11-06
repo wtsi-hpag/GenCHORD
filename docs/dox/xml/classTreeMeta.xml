@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classTreeMeta" kind="class" language="C++" prot="public">
+    <compoundname>TreeMeta</compoundname>
+    <includes refid="plotting_8h" local="no">plotting.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classTreeMeta_1a6a90e91eb62f64b52ae8153408260574" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string TreeMeta::DataFile</definition>
+        <argsstring></argsstring>
+        <name>DataFile</name>
+        <qualifiedname>TreeMeta::DataFile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="16" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTreeMeta_1a9822c369fdbdccfbb3deee63aef5ad91" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double TreeMeta::Nu</definition>
+        <argsstring></argsstring>
+        <name>Nu</name>
+        <qualifiedname>TreeMeta::Nu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="17" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTreeMeta_1a48fb16d62b2c6868ce0c845b394945a1" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double TreeMeta::Sigma</definition>
+        <argsstring></argsstring>
+        <name>Sigma</name>
+        <qualifiedname>TreeMeta::Sigma</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="19" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTreeMeta_1a6341e1f31ba51f02ed2b86207b8f608b" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double TreeMeta::Gamma</definition>
+        <argsstring></argsstring>
+        <name>Gamma</name>
+        <qualifiedname>TreeMeta::Gamma</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="20" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTreeMeta_1a045f847fad484e607ee885ad2bbc8be1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TreeMeta::L</definition>
+        <argsstring></argsstring>
+        <name>L</name>
+        <qualifiedname>TreeMeta::L</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="21" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTreeMeta_1a0f5cd00d2b56e0fe513a9b8858f2670b" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; int &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;int&gt; &gt; TreeMeta::Harmonic</definition>
+        <argsstring></argsstring>
+        <name>Harmonic</name>
+        <qualifiedname>TreeMeta::Harmonic</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="24" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTreeMeta_1a3af5fc186769662cc60faec1a9d7c4eb" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; double &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;double&gt; &gt; TreeMeta::Frequency</definition>
+        <argsstring></argsstring>
+        <name>Frequency</name>
+        <qualifiedname>TreeMeta::Frequency</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="25" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTreeMeta_1a23096e592ba8ee1ab24f61507b5e9a8e" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; <ref refid="data_8h_1a3f3ed9a0a71dadb45244e663340fea39" kindref="member">chr_int</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;chr_int&gt; &gt; TreeMeta::Idx</definition>
+        <argsstring></argsstring>
+        <name>Idx</name>
+        <qualifiedname>TreeMeta::Idx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="26" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTreeMeta_1abaf273605c3923a38886a97b13992ebd" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; TreeMeta::Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <qualifiedname>TreeMeta::Name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="27" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTreeMeta_1a7e78f1690abb4344f9eea11e1c4ea73e" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; TreeMeta::TrueChrom</definition>
+        <argsstring></argsstring>
+        <name>TrueChrom</name>
+        <qualifiedname>TreeMeta::TrueChrom</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="28" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTreeMeta_1a6b17f1b20c1f005eeb1dd9d51f1f480f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TreeMeta::TreeMeta</definition>
+        <argsstring>(Settings &amp;s)</argsstring>
+        <name>TreeMeta</name>
+        <qualifiedname>TreeMeta::TreeMeta</qualifiedname>
+        <param>
+          <type><ref refid="classSettings" kindref="compound">Settings</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="23" column="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" line="13" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/plotting.h" bodystart="14" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classTreeMeta_1a6a90e91eb62f64b52ae8153408260574" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>DataFile</name></member>
+      <member refid="classTreeMeta_1a3af5fc186769662cc60faec1a9d7c4eb" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>Frequency</name></member>
+      <member refid="classTreeMeta_1a6341e1f31ba51f02ed2b86207b8f608b" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>Gamma</name></member>
+      <member refid="classTreeMeta_1a0f5cd00d2b56e0fe513a9b8858f2670b" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>Harmonic</name></member>
+      <member refid="classTreeMeta_1a23096e592ba8ee1ab24f61507b5e9a8e" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>Idx</name></member>
+      <member refid="classTreeMeta_1a045f847fad484e607ee885ad2bbc8be1" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>L</name></member>
+      <member refid="classTreeMeta_1abaf273605c3923a38886a97b13992ebd" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>Name</name></member>
+      <member refid="classTreeMeta_1a9822c369fdbdccfbb3deee63aef5ad91" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>Nu</name></member>
+      <member refid="classTreeMeta_1a48fb16d62b2c6868ce0c845b394945a1" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>Sigma</name></member>
+      <member refid="classTreeMeta_1a6b17f1b20c1f005eeb1dd9d51f1f480f" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>TreeMeta</name></member>
+      <member refid="classTreeMeta_1a7e78f1690abb4344f9eea11e1c4ea73e" prot="public" virt="non-virtual"><scope>TreeMeta</scope><name>TrueChrom</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

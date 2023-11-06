@@ -1,0 +1,539 @@
+\doxysection{JSL\+::Vector Class Reference}
+\hypertarget{classJSL_1_1Vector}{}\label{classJSL_1_1Vector}\index{JSL::Vector@{JSL::Vector}}
+
+
+{\ttfamily \#include $<$vector.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJSL_1_1Vector_a840fca607f8eae7dea1494b2954d3a3c}{Vector}} ()
+\item 
+\mbox{\hyperlink{classJSL_1_1Vector_aea8654ed3fb875d43f669a5f2e26fb25}{Vector}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{n}})
+\begin{DoxyCompactList}\small\item\em Initialises the vector to a state of length n, populated by zeros. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector_af5be93b29e1c2aab2882827d5001a2aa}{Vector}} (std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{input}})
+\begin{DoxyCompactList}\small\item\em Initialises the vector to contain the provided stl vector. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector_a7b07c27a73798d08b3a6271318f112c0}{Vector}} (std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{input}})
+\begin{DoxyCompactList}\small\item\em Initialises the vector to contain the provided stl vector. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1Vector_a53b26ca32061ebf41430fe2322f79c0c}{Size}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1Vector_afb4b68acfc19f52b5cb7514a743ccc87}{Min}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1Vector_a82f2385c1edd3fb0dafd577e32318255}{Max}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \& \mbox{\hyperlink{classJSL_1_1Vector_afc97ae2f771605f0cc32456542a2f0d5}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} idx)
+\begin{DoxyCompactList}\small\item\em Overload access operator so can call \doxylink{classJSL_1_1Vector}{Vector}\mbox{[}0\mbox{]} etc as normal for a vector class. Performs checks on the size so that you cannot over/underflow the memory access. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \& \mbox{\hyperlink{classJSL_1_1Vector_a57b871b70f9b894b0e5c302d1f9b71ad}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} idx) \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\begin{DoxyCompactList}\small\item\em Replication of non-\/const version (annoying) but necessary for good access.... \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1Vector_a60660b5a26e0ddace46f31699834b671}{Dot}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}) \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\begin{DoxyCompactList}\small\item\em Provides a member alias for \doxylink{namespaceJSL_aeae64b7e0cfdc1ab5f35cca90c32d9f6}{Vector\+Dot\+Product()}, with the first argument being the current object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \mbox{\hyperlink{classJSL_1_1Vector_a59ff98a99ebcf2b589290b9e57b8e184}{Cross}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}) \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\begin{DoxyCompactList}\small\item\em Provides a member alias for \doxylink{namespaceJSL_aa7816eb0cd81b74241ce460237990e70}{Vector\+Cross\+Product()}, with the first argument being the current object (recall order does matter for cross products!) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1Vector_ac1346e26bc981bf45d2c1c4317dac4e6}{Sq\+Norm}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\begin{DoxyCompactList}\small\item\em The squared-\/norm of the current object, calculated using \doxylink{namespaceJSL_a086efb36ddb107d45961a6b46932c526a7d6491e51b0151fad51114bdc9fe0006}{Dot()}. Probably not as much use as \doxylink{classJSL_1_1Vector_aa8af717591f5548ff471b6e4b28d7f9c}{Norm()}, but saves time sqrting and then squaring again! \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector}{JSL\+::\+Vector}} \mbox{\hyperlink{classJSL_1_1Vector_a3d758f7808e2aaeb21a123661b10a899}{Pointwise\+Divide}} (\mbox{\hyperlink{classJSL_1_1Vector}{JSL\+::\+Vector}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{dividor}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1Vector_afa9b72648ed64547eefdc1dca2f8e038}{Sum}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1Vector_aa8af717591f5548ff471b6e4b28d7f9c}{Norm}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\begin{DoxyCompactList}\small\item\em The norm of the current object,. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{classJSL_1_1Vector_a0529640bc02ce994026184d93f43f9c3}{Angle\+Between}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}) \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\begin{DoxyCompactList}\small\item\em A member-\/alias for \doxylink{namespaceJSL_a09355c91f84fd99d4634bf9189fef51d}{Angle\+Between\+Vectors()}, with the first argument being the current object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1Vector_a73579b4a194cc924341806a5d9ea3817}{to\+\_\+string}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\begin{DoxyCompactList}\small\item\em Converts the vector into a human-\/readable string. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1Vector_ad2d0bfdb432809a88a49f4576b0afb5a}{to\+\_\+simple\+\_\+string}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1Vector_a91d4cf29c2865069520d03292844d84f}{to\+\_\+string\+\_\+precision}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{n}}) \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\item 
+\mbox{\hyperlink{classJSL_1_1Vector_a41023e6371572e76196b44553b48215c}{operator std\+::vector$<$ double $>$}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\begin{DoxyCompactList}\small\item\em Implicit conversion back to std\+::vector$<$double$>$ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector_a284efd325068f5c75fd8d627325f01b3}{operator std\+::vector$<$ int $>$}} () \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\begin{DoxyCompactList}\small\item\em Implicit conversion back to std\+::vector$<$int$>$ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& \mbox{\hyperlink{classJSL_1_1Vector_ab0c81c187542077c13839a07cfc77d89}{operator+=}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})
+\begin{DoxyCompactList}\small\item\em In-\/place addition of two vectors. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_ae6530b77174d0dfae8e0d6e2a810f672}{operator+(const Vector \& lhs, const Vector \& rhs)} using this object as lhs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& \mbox{\hyperlink{classJSL_1_1Vector_a492901b0924e8055144af4c5e5b99ebf}{operator-\/=}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})
+\begin{DoxyCompactList}\small\item\em In-\/place subtraction of two vectors. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_a1d8393f2865dc23e7975ad041e341ba5}{operator-\/(const Vector \& lhs, const Vector \& rhs)} using this object as lhs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& \mbox{\hyperlink{classJSL_1_1Vector_a56d1795d754957311d22303c397174c1}{operator+=}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})
+\begin{DoxyCompactList}\small\item\em In-\/place addition of a scalar onto the callign object. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_a4b293e2ac3df51113e80022cb3c2ac99}{operator+(const Vector \& lhs, const double \& scalar)} using this object as lhs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& \mbox{\hyperlink{classJSL_1_1Vector_a953e5c39a0036ed7507a64c1810b65e6}{operator-\/=}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})
+\begin{DoxyCompactList}\small\item\em In-\/place subtraction of a scalar onto the callign object. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_ac6bd9311dd73aa6227d826bdb94e748d}{operator-\/(const Vector \& lhs, const double \& scalar)} using this object as lhs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& \mbox{\hyperlink{classJSL_1_1Vector_a3d7bee6bfd0624c8bebf63a1c7c3309b}{operator\texorpdfstring{$\ast$}{*}=}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})
+\begin{DoxyCompactList}\small\item\em In-\/place multiplication of a scalar with the calling object. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_afc5e092de4a9bdc5795d40ee0f51c7b9}{operator\texorpdfstring{$\ast$}{*}(const Vector \& lhs, const double \& scalar)} using this object as lhs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& \mbox{\hyperlink{classJSL_1_1Vector_acc5dec41ebc9cfc77a2b4be5eab07392}{operator/=}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})
+\begin{DoxyCompactList}\small\item\em In-\/place division of the calling object with a scalar. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_a1427fd44260592b7d65d27946969fba1}{operator/(const Vector \& lhs, const double \& scalar)} using this object as lhs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1Vector_ad7dc3af5e90b59e3ba2efc458e192a4c}{isnan}} ()
+\begin{DoxyCompactList}\small\item\em Reports true if any members are NaN. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{static}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \mbox{\hyperlink{classJSL_1_1Vector_a89f7ded3248861aa9ba4b715ef5eab6b}{zeros}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{size}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{static}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \mbox{\hyperlink{classJSL_1_1Vector_abc4fbd2797c05d7bba859e5a8c435711}{Rand\+Vec}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{size}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{lower\+Bound}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{upper\+Bound}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{static}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \mbox{\hyperlink{classJSL_1_1Vector_a46fc3e1d5ee9bdb66844aa5e2e5112e9}{linspace}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{start}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{end}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{length}})
+\begin{DoxyCompactList}\small\item\em Constructs a vector of specified length with start and end points (inclusive) given by the user, with the intervening points linearly spaced apart. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{static}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \mbox{\hyperlink{classJSL_1_1Vector_a4ca666ae14cef413dcf3679a10a7fbb9}{intspace}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{start}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{end}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{step}})
+\begin{DoxyCompactList}\small\item\em Similar to \doxylink{classJSL_1_1Vector_a46fc3e1d5ee9bdb66844aa5e2e5112e9}{linspace()}, but for integer values. Note that the step is specified here, not the length. It is possible that end is not included in the array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{static}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \mbox{\hyperlink{classJSL_1_1Vector_abf5562ae67edb5273b8dc5b419956825}{logintspace}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{start}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{end}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{size}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1Vector_ac41d3cb075c2bd871c31b96dedba08fe}{negative\+Integer\+Error}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} idx) \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1Vector_ab081a68e1fc526f4bf866de0ba61a09b}{out\+Of\+Bounds\+Error}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} idx) \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ \mbox{\hyperlink{classJSL_1_1Vector_aec102ab8391080ddaedeb4605ef40c5c}{Data}}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} \mbox{\hyperlink{classJSL_1_1Vector_a84eb32f5917a770c895e106834a6c05d}{n\+Elements}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class implementing basic R\texorpdfstring{$^\wedge$}{\string^}n vector mathematics. Mostly acts as an extention to the basic std\+::vector object, but with the implicit assumption that the objects should behave like members of a true vector space, can unambiguously overload some operators and add in additional functionality. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classJSL_1_1Vector_a840fca607f8eae7dea1494b2954d3a3c}\label{classJSL_1_1Vector_a840fca607f8eae7dea1494b2954d3a3c} 
+\index{JSL::Vector@{JSL::Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily JSL\+::\+Vector\+::\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1Vector_aea8654ed3fb875d43f669a5f2e26fb25}\label{classJSL_1_1Vector_aea8654ed3fb875d43f669a5f2e26fb25} 
+\index{JSL::Vector@{JSL::Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily JSL\+::\+Vector\+::\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initialises the vector to a state of length n, populated by zeros. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The length of the vector to be created \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classJSL_1_1Vector_af5be93b29e1c2aab2882827d5001a2aa}\label{classJSL_1_1Vector_af5be93b29e1c2aab2882827d5001a2aa} 
+\index{JSL::Vector@{JSL::Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily JSL\+::\+Vector\+::\+Vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initialises the vector to contain the provided stl vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & An std\+::vector which the new \doxylink{classJSL_1_1Vector}{Vector} will envelop. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classJSL_1_1Vector_a7b07c27a73798d08b3a6271318f112c0}\label{classJSL_1_1Vector_a7b07c27a73798d08b3a6271318f112c0} 
+\index{JSL::Vector@{JSL::Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily JSL\+::\+Vector\+::\+Vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} $>$}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initialises the vector to contain the provided stl vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & An std\+::vector which the new \doxylink{classJSL_1_1Vector}{Vector} will envelop. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classJSL_1_1Vector_a0529640bc02ce994026184d93f43f9c3}\label{classJSL_1_1Vector_a0529640bc02ce994026184d93f43f9c3} 
+\index{JSL::Vector@{JSL::Vector}!AngleBetween@{AngleBetween}}
+\index{AngleBetween@{AngleBetween}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{AngleBetween()}{AngleBetween()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} JSL\+::\+Vector\+::\+Angle\+Between (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A member-\/alias for \doxylink{namespaceJSL_a09355c91f84fd99d4634bf9189fef51d}{Angle\+Between\+Vectors()}, with the first argument being the current object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The second object passed to \doxylink{namespaceJSL_a09355c91f84fd99d4634bf9189fef51d}{Angle\+Between\+Vectors()} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The angle between this object and the provided vector 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_a59ff98a99ebcf2b589290b9e57b8e184}\label{classJSL_1_1Vector_a59ff98a99ebcf2b589290b9e57b8e184} 
+\index{JSL::Vector@{JSL::Vector}!Cross@{Cross}}
+\index{Cross@{Cross}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Cross()}{Cross()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} JSL\+::\+Vector\+::\+Cross (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Provides a member alias for \doxylink{namespaceJSL_aa7816eb0cd81b74241ce460237990e70}{Vector\+Cross\+Product()}, with the first argument being the current object (recall order does matter for cross products!) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The second object passed to Vector\+Dot\+Product \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The dot product (this x rhs) 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_a60660b5a26e0ddace46f31699834b671}\label{classJSL_1_1Vector_a60660b5a26e0ddace46f31699834b671} 
+\index{JSL::Vector@{JSL::Vector}!Dot@{Dot}}
+\index{Dot@{Dot}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Dot()}{Dot()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} JSL\+::\+Vector\+::\+Dot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Provides a member alias for \doxylink{namespaceJSL_aeae64b7e0cfdc1ab5f35cca90c32d9f6}{Vector\+Dot\+Product()}, with the first argument being the current object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The second object passed to Vector\+Dot\+Product \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The dot product of rhs and the object 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_a4ca666ae14cef413dcf3679a10a7fbb9}\label{classJSL_1_1Vector_a4ca666ae14cef413dcf3679a10a7fbb9} 
+\index{JSL::Vector@{JSL::Vector}!intspace@{intspace}}
+\index{intspace@{intspace}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{intspace()}{intspace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{static}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} JSL\+::\+Vector\+::intspace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{start,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{end,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Similar to \doxylink{classJSL_1_1Vector_a46fc3e1d5ee9bdb66844aa5e2e5112e9}{linspace()}, but for integer values. Note that the step is specified here, not the length. It is possible that end is not included in the array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The first element of the returned array\\
+\hline
+{\em end} & The maximum possible value for the final element in the array\\
+\hline
+{\em step} & The (integer) distance between each successive element in the array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector, starting at \#start, increasing by \#step each time. 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_ad7dc3af5e90b59e3ba2efc458e192a4c}\label{classJSL_1_1Vector_ad7dc3af5e90b59e3ba2efc458e192a4c} 
+\index{JSL::Vector@{JSL::Vector}!isnan@{isnan}}
+\index{isnan@{isnan}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{isnan()}{isnan()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} JSL\+::\+Vector\+::isnan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reports true if any members are NaN. 
+
+\Hypertarget{classJSL_1_1Vector_a46fc3e1d5ee9bdb66844aa5e2e5112e9}\label{classJSL_1_1Vector_a46fc3e1d5ee9bdb66844aa5e2e5112e9} 
+\index{JSL::Vector@{JSL::Vector}!linspace@{linspace}}
+\index{linspace@{linspace}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{linspace()}{linspace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{static}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} JSL\+::\+Vector\+::linspace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{start,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{end,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Constructs a vector of specified length with start and end points (inclusive) given by the user, with the intervening points linearly spaced apart. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The first element of the returned array\\
+\hline
+{\em end} & The final element of the array (included in the range!)\\
+\hline
+{\em length} & The length of the returned array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The vector (start, start + x,start + 2x, .... end) 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_abf5562ae67edb5273b8dc5b419956825}\label{classJSL_1_1Vector_abf5562ae67edb5273b8dc5b419956825} 
+\index{JSL::Vector@{JSL::Vector}!logintspace@{logintspace}}
+\index{logintspace@{logintspace}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{logintspace()}{logintspace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{static}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} JSL\+::\+Vector\+::logintspace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{start,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{end,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classJSL_1_1Vector_a82f2385c1edd3fb0dafd577e32318255}\label{classJSL_1_1Vector_a82f2385c1edd3fb0dafd577e32318255} 
+\index{JSL::Vector@{JSL::Vector}!Max@{Max}}
+\index{Max@{Max}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Max()}{Max()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} JSL\+::\+Vector\+::\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1Vector_afb4b68acfc19f52b5cb7514a743ccc87}\label{classJSL_1_1Vector_afb4b68acfc19f52b5cb7514a743ccc87} 
+\index{JSL::Vector@{JSL::Vector}!Min@{Min}}
+\index{Min@{Min}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Min()}{Min()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} JSL\+::\+Vector\+::\+Min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1Vector_ac41d3cb075c2bd871c31b96dedba08fe}\label{classJSL_1_1Vector_ac41d3cb075c2bd871c31b96dedba08fe} 
+\index{JSL::Vector@{JSL::Vector}!negativeIntegerError@{negativeIntegerError}}
+\index{negativeIntegerError@{negativeIntegerError}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{negativeIntegerError()}{negativeIntegerError()}}
+{\footnotesize\ttfamily std\+::string JSL\+::\+Vector\+::negative\+Integer\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\Hypertarget{classJSL_1_1Vector_aa8af717591f5548ff471b6e4b28d7f9c}\label{classJSL_1_1Vector_aa8af717591f5548ff471b6e4b28d7f9c} 
+\index{JSL::Vector@{JSL::Vector}!Norm@{Norm}}
+\index{Norm@{Norm}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Norm()}{Norm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} JSL\+::\+Vector\+::\+Norm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The norm of the current object,. 
+
+\begin{DoxyReturn}{Returns}
+The square-\/root of the \doxylink{classJSL_1_1Vector_ac1346e26bc981bf45d2c1c4317dac4e6}{Sq\+Norm()} function. 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_a41023e6371572e76196b44553b48215c}\label{classJSL_1_1Vector_a41023e6371572e76196b44553b48215c} 
+\index{JSL::Vector@{JSL::Vector}!operator std::vector$<$ double $>$@{operator std::vector$<$ double $>$}}
+\index{operator std::vector$<$ double $>$@{operator std::vector$<$ double $>$}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{operator std::vector$<$ double $>$()}{operator std::vector< double >()}}
+{\footnotesize\ttfamily JSL\+::\+Vector\+::operator std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implicit conversion back to std\+::vector$<$double$>$ 
+
+\Hypertarget{classJSL_1_1Vector_a284efd325068f5c75fd8d627325f01b3}\label{classJSL_1_1Vector_a284efd325068f5c75fd8d627325f01b3} 
+\index{JSL::Vector@{JSL::Vector}!operator std::vector$<$ int $>$@{operator std::vector$<$ int $>$}}
+\index{operator std::vector$<$ int $>$@{operator std::vector$<$ int $>$}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{operator std::vector$<$ int $>$()}{operator std::vector< int >()}}
+{\footnotesize\ttfamily JSL\+::\+Vector\+::operator std\+::vector$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implicit conversion back to std\+::vector$<$int$>$ 
+
+\Hypertarget{classJSL_1_1Vector_a3d7bee6bfd0624c8bebf63a1c7c3309b}\label{classJSL_1_1Vector_a3d7bee6bfd0624c8bebf63a1c7c3309b} 
+\index{JSL::Vector@{JSL::Vector}!operator\texorpdfstring{$\ast$}{*}=@{operator\texorpdfstring{$\ast$}{*}=}}
+\index{operator\texorpdfstring{$\ast$}{*}=@{operator\texorpdfstring{$\ast$}{*}=}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}=()}{operator*=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& JSL\+::\+Vector\+::operator\texorpdfstring{$\ast$}{*}= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \&}]{scalar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+In-\/place multiplication of a scalar with the calling object. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_afc5e092de4a9bdc5795d40ee0f51c7b9}{operator\texorpdfstring{$\ast$}{*}(const Vector \& lhs, const double \& scalar)} using this object as lhs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scalar} & The double to be accumulated into the current object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the now-\/modified calling object 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_a56d1795d754957311d22303c397174c1}\label{classJSL_1_1Vector_a56d1795d754957311d22303c397174c1} 
+\index{JSL::Vector@{JSL::Vector}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& JSL\+::\+Vector\+::operator+= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \&}]{scalar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+In-\/place addition of a scalar onto the callign object. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_a4b293e2ac3df51113e80022cb3c2ac99}{operator+(const Vector \& lhs, const double \& scalar)} using this object as lhs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scalar} & The double to be accumulated into the current object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the now-\/modified calling object 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_ab0c81c187542077c13839a07cfc77d89}\label{classJSL_1_1Vector_ab0c81c187542077c13839a07cfc77d89} 
+\index{JSL::Vector@{JSL::Vector}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& JSL\+::\+Vector\+::operator+= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+In-\/place addition of two vectors. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_ae6530b77174d0dfae8e0d6e2a810f672}{operator+(const Vector \& lhs, const Vector \& rhs)} using this object as lhs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The vector to be accumulated into the current object. Must be the same n\+Elements as the calling object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the now-\/modified calling object 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_a953e5c39a0036ed7507a64c1810b65e6}\label{classJSL_1_1Vector_a953e5c39a0036ed7507a64c1810b65e6} 
+\index{JSL::Vector@{JSL::Vector}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& JSL\+::\+Vector\+::operator-\/= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \&}]{scalar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+In-\/place subtraction of a scalar onto the callign object. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_ac6bd9311dd73aa6227d826bdb94e748d}{operator-\/(const Vector \& lhs, const double \& scalar)} using this object as lhs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scalar} & The double to be subtracted from the current object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the now-\/modified calling object 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_a492901b0924e8055144af4c5e5b99ebf}\label{classJSL_1_1Vector_a492901b0924e8055144af4c5e5b99ebf} 
+\index{JSL::Vector@{JSL::Vector}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& JSL\+::\+Vector\+::operator-\/= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+In-\/place subtraction of two vectors. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_a1d8393f2865dc23e7975ad041e341ba5}{operator-\/(const Vector \& lhs, const Vector \& rhs)} using this object as lhs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & The vector to be subtracted from the current object. Must be the same n\+Elements as the calling object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the now-\/modified calling object 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_acc5dec41ebc9cfc77a2b4be5eab07392}\label{classJSL_1_1Vector_acc5dec41ebc9cfc77a2b4be5eab07392} 
+\index{JSL::Vector@{JSL::Vector}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} \& JSL\+::\+Vector\+::operator/= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \&}]{scalar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+In-\/place division of the calling object with a scalar. Calls \doxylink{classJSL_1_1Vector}{Vector} \doxylink{namespaceJSL_a1427fd44260592b7d65d27946969fba1}{operator/(const Vector \& lhs, const double \& scalar)} using this object as lhs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scalar} & The double to be accumulated into the current object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the now-\/modified calling object 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_afc97ae2f771605f0cc32456542a2f0d5}\label{classJSL_1_1Vector_afc97ae2f771605f0cc32456542a2f0d5} 
+\index{JSL::Vector@{JSL::Vector}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \& JSL\+::\+Vector\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overload access operator so can call \doxylink{classJSL_1_1Vector}{Vector}\mbox{[}0\mbox{]} etc as normal for a vector class. Performs checks on the size so that you cannot over/underflow the memory access. 
+
+\Hypertarget{classJSL_1_1Vector_a57b871b70f9b894b0e5c302d1f9b71ad}\label{classJSL_1_1Vector_a57b871b70f9b894b0e5c302d1f9b71ad} 
+\index{JSL::Vector@{JSL::Vector}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} \& JSL\+::\+Vector\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Replication of non-\/const version (annoying) but necessary for good access.... 
+
+\Hypertarget{classJSL_1_1Vector_ab081a68e1fc526f4bf866de0ba61a09b}\label{classJSL_1_1Vector_ab081a68e1fc526f4bf866de0ba61a09b} 
+\index{JSL::Vector@{JSL::Vector}!outOfBoundsError@{outOfBoundsError}}
+\index{outOfBoundsError@{outOfBoundsError}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{outOfBoundsError()}{outOfBoundsError()}}
+{\footnotesize\ttfamily std\+::string JSL\+::\+Vector\+::out\+Of\+Bounds\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\Hypertarget{classJSL_1_1Vector_a3d758f7808e2aaeb21a123661b10a899}\label{classJSL_1_1Vector_a3d758f7808e2aaeb21a123661b10a899} 
+\index{JSL::Vector@{JSL::Vector}!PointwiseDivide@{PointwiseDivide}}
+\index{PointwiseDivide@{PointwiseDivide}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{PointwiseDivide()}{PointwiseDivide()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJSL_1_1Vector}{JSL\+::\+Vector}} JSL\+::\+Vector\+::\+Pointwise\+Divide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classJSL_1_1Vector}{JSL\+::\+Vector}}}]{dividor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1Vector_abc4fbd2797c05d7bba859e5a8c435711}\label{classJSL_1_1Vector_abc4fbd2797c05d7bba859e5a8c435711} 
+\index{JSL::Vector@{JSL::Vector}!RandVec@{RandVec}}
+\index{RandVec@{RandVec}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{RandVec()}{RandVec()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{static}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} JSL\+::\+Vector\+::\+Rand\+Vec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{size,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{lower\+Bound,  }\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}}]{upper\+Bound }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classJSL_1_1Vector_a53b26ca32061ebf41430fe2322f79c0c}\label{classJSL_1_1Vector_a53b26ca32061ebf41430fe2322f79c0c} 
+\index{JSL::Vector@{JSL::Vector}!Size@{Size}}
+\index{Size@{Size}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::\+Vector\+::\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1Vector_ac1346e26bc981bf45d2c1c4317dac4e6}\label{classJSL_1_1Vector_ac1346e26bc981bf45d2c1c4317dac4e6} 
+\index{JSL::Vector@{JSL::Vector}!SqNorm@{SqNorm}}
+\index{SqNorm@{SqNorm}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{SqNorm()}{SqNorm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} JSL\+::\+Vector\+::\+Sq\+Norm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The squared-\/norm of the current object, calculated using \doxylink{namespaceJSL_a086efb36ddb107d45961a6b46932c526a7d6491e51b0151fad51114bdc9fe0006}{Dot()}. Probably not as much use as \doxylink{classJSL_1_1Vector_aa8af717591f5548ff471b6e4b28d7f9c}{Norm()}, but saves time sqrting and then squaring again! 
+
+\begin{DoxyReturn}{Returns}
+this.\+Dot(this) 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_afa9b72648ed64547eefdc1dca2f8e038}\label{classJSL_1_1Vector_afa9b72648ed64547eefdc1dca2f8e038} 
+\index{JSL::Vector@{JSL::Vector}!Sum@{Sum}}
+\index{Sum@{Sum}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Sum()}{Sum()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{double}} JSL\+::\+Vector\+::\+Sum (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1Vector_ad2d0bfdb432809a88a49f4576b0afb5a}\label{classJSL_1_1Vector_ad2d0bfdb432809a88a49f4576b0afb5a} 
+\index{JSL::Vector@{JSL::Vector}!to\_simple\_string@{to\_simple\_string}}
+\index{to\_simple\_string@{to\_simple\_string}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{to\_simple\_string()}{to\_simple\_string()}}
+{\footnotesize\ttfamily std\+::string JSL\+::\+Vector\+::to\+\_\+simple\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1Vector_a73579b4a194cc924341806a5d9ea3817}\label{classJSL_1_1Vector_a73579b4a194cc924341806a5d9ea3817} 
+\index{JSL::Vector@{JSL::Vector}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string JSL\+::\+Vector\+::to\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts the vector into a human-\/readable string. 
+
+\begin{DoxyReturn}{Returns}
+A representation of the vector, such as (1,4.\+5,3) 
+\end{DoxyReturn}
+\Hypertarget{classJSL_1_1Vector_a91d4cf29c2865069520d03292844d84f}\label{classJSL_1_1Vector_a91d4cf29c2865069520d03292844d84f} 
+\index{JSL::Vector@{JSL::Vector}!to\_string\_precision@{to\_string\_precision}}
+\index{to\_string\_precision@{to\_string\_precision}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{to\_string\_precision()}{to\_string\_precision()}}
+{\footnotesize\ttfamily std\+::string JSL\+::\+Vector\+::to\+\_\+string\+\_\+precision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classJSL_1_1Vector_a89f7ded3248861aa9ba4b715ef5eab6b}\label{classJSL_1_1Vector_a89f7ded3248861aa9ba4b715ef5eab6b} 
+\index{JSL::Vector@{JSL::Vector}!zeros@{zeros}}
+\index{zeros@{zeros}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{zeros()}{zeros()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{static}} \mbox{\hyperlink{classJSL_1_1Vector}{Vector}} JSL\+::\+Vector\+::zeros (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structJSL_1_1NameValuePair}{unsigned}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classJSL_1_1Vector_aec102ab8391080ddaedeb4605ef40c5c}\label{classJSL_1_1Vector_aec102ab8391080ddaedeb4605ef40c5c} 
+\index{JSL::Vector@{JSL::Vector}!Data@{Data}}
+\index{Data@{Data}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{Data}{Data}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{double}}$>$ JSL\+::\+Vector\+::\+Data\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classJSL_1_1Vector_a84eb32f5917a770c895e106834a6c05d}\label{classJSL_1_1Vector_a84eb32f5917a770c895e106834a6c05d} 
+\index{JSL::Vector@{JSL::Vector}!nElements@{nElements}}
+\index{nElements@{nElements}!JSL::Vector@{JSL::Vector}}
+\doxysubsubsection{\texorpdfstring{nElements}{nElements}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJSL_1_1NameValuePair}{int}} JSL\+::\+Vector\+::n\+Elements\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/libs/\+JSL/\+Maths/\mbox{\hyperlink{vector_8h}{vector.\+h}}\end{DoxyCompactItemize}

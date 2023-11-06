@@ -1,0 +1,530 @@
+\doxysection{matrix.\+h}
+\hypertarget{matrix_8h_source}{}\label{matrix_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h}}
+\mbox{\hyperlink{matrix_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vector_8h}{vector.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix_a90ddd1113043b8959b0943be24f9ad9f}{Matrix}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{n}},\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{m}}):\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{n}}),\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{m}})}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}\ =\ std::vector<std::vector<double>>(\mbox{\hyperlink{structJSL_1_1NameValuePair}{n}},std::vector<double>(\mbox{\hyperlink{structJSL_1_1NameValuePair}{m}},0.0));}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix_a1d398af495c3906cfb1b1c9b0e8978f7}{Matrix}}(std::vector<std::vector<double>>\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{input}}):\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{input}}.\mbox{\hyperlink{structJSL_1_1NameValuePair}{size}}()),\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}}(\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{input}}[0].\mbox{\hyperlink{structJSL_1_1NameValuePair}{size}}())}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}}\ <=\ 0)}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Cannot\ construct\ a\ JSL::Matrix\ with\ zero\ columns"{}});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}\ =\ std::vector<std::vector<double>>(\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}},std::vector<double>(\mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}},0.0));}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{input}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}].\mbox{\hyperlink{structJSL_1_1NameValuePair}{size}}()\ !=\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}})}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Cannot\ construct\ a\ JSL::Matrix\ from\ rows\ with\ differing\ number\ of\ columns.\ Please\ ensure\ input\ array\ is\ rectangular."{}});}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}]\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{input}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}];}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix_ae6198f4beabaff7700265fffeb490ed7}{Matrix}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{input}}):\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{input}}.\mbox{\hyperlink{classJSL_1_1Matrix_af784cad8dcbb502c06be62e2e328ef6c}{Rows}}()),\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{input}}.\mbox{\hyperlink{classJSL_1_1Matrix_a8aba7f9803b553df2aeae68aba3445f5}{Columns}}())}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}\ =\ std::vector<std::vector<double>>(\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}},std::vector<double>(\mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}},0.0));}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}]\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{input}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Matrix_af784cad8dcbb502c06be62e2e328ef6c}{Rows}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00062\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Matrix_a8aba7f9803b553df2aeae68aba3445f5}{Columns}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00067\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{classJSL_1_1Matrix_a984691eac759ff0e8f98252d07be7e1a}{Transpose}}()}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ output(\mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}},\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}});}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output(\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})\ =\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}];}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Vector}{JSL::Vector}}\ \mbox{\hyperlink{classJSL_1_1Matrix_aa8bae8650234f5e5569277563d68f22d}{GetRow}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID}})\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00087\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID\ <\ nRows\ \&\&\ rowID\ >}}=\ 0)}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classJSL_1_1Vector}{JSL::Vector}}(\mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID}}]);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}ERROR\ in\ JSL::Matrix:\ Row\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID}})\ +\ \textcolor{stringliteral}{"{}\ is\ out\ of\ bounds\ (0-\/>"{}}\ +\ std::to\_string(\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}}-\/1)\ +\ \textcolor{stringliteral}{"{})"{}});}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Vector}{JSL::Vector}}\ \mbox{\hyperlink{classJSL_1_1Matrix_a11ea58ca43e028123f628966eb4834a0}{GetColumn}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{colID}})\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00099\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{colID\ <\ nCols\ \&\&\ colID\ >}}=\ 0)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{data}}(\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}},0.0);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}]\ =\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{colID}}];}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classJSL_1_1Vector}{JSL::Vector}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{data}});}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}ERROR\ in\ JSL::Matrix:\ Column\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{colID}})\ +\ \textcolor{stringliteral}{"{}\ is\ out\ of\ bounds\ (0-\/>"{}}\ +\ std::to\_string(\mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}}-\/1)\ +\ \textcolor{stringliteral}{"{})"{}});}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{classJSL_1_1Matrix_afd9edd73e5f559eed02b063d4c4e47f8}{Identity}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{n}})}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{JSL::Matrix}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{m}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{n}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{n}});}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{n}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{m}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})\ =\ 1;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{m}};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{classJSL_1_1Matrix_ae054e5a63242a6f40e334546bdc25145}{operator()}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{columnID}})}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID\ <\ nRows\ \&\&\ rowID\ >}}=\ 0\ \&\&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{columnID\ <\ nCols\ \&\&\ columnID\ >}}=\ 0)}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{columnID}}];}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\mbox{\hyperlink{classJSL_1_1Matrix_a92eb431da436e1e2922b211a9f158203}{outOfBoundsError}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{columnID}}));}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{classJSL_1_1Matrix_acc7c27b8630959a593a886118f90fb08}{operator()}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{columnID}})\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00142\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID\ <\ nRows\ \&\&\ rowID\ >}}=\ 0\ \&\&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{columnID\ <\ nCols\ \&\&\ columnID\ >}}=\ 0)}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{columnID}}];}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\mbox{\hyperlink{classJSL_1_1Matrix_a92eb431da436e1e2922b211a9f158203}{outOfBoundsError}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{rowID}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{columnID}}));}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{classJSL_1_1Matrix_a6319d6f45078d0321345b4203e74217d}{Cholesky}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00156\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{out}}(\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}},\mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}});}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{diag}}\ =\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}];}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{q}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{q}}\ <\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{q}})}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{diag}}\ -\/=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{pow}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{out}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{q}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}),2);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{diag}}\ =\ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{sqrt}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{diag}});}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{out}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{diag}};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}+1;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{el}}\ =\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}];}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{q}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{q}}\ <\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{q}})}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{el}}\ -\/=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{out}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{q}})\ *\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{out}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{q}});}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{out}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{el}}/\mbox{\hyperlink{structJSL_1_1NameValuePair}{diag}};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{out}};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{classJSL_1_1Matrix_a89a5d5b76dbc28e1980167cb560a45ff}{operator+=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}}\ !=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Rows()\ ||\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}}\ !=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Columns())}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Cannot\ add\ vectors\ of\ different\ sizes"{}});}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}]\ +=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}});}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{classJSL_1_1Matrix_a196d368632d44d5262f668618fb3cefc}{operator-\/=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}}\ !=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Rows()\ ||\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}}\ !=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Columns())}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Cannot\ subtract\ vectors\ of\ different\ sizes"{}});}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}]\ -\/=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}});}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{classJSL_1_1Matrix_a7e4bc02f6a1b7a999ec2e404c90d40e6}{operator+=}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}]\ +=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}};}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{classJSL_1_1Matrix_a87e59f6b3a32a2b12f5a73fb4db1e5f1}{operator-\/=}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}]\ -\/=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}};}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{classJSL_1_1Matrix_afba6a5e0e92aedc053fcd60428461800}{operator*=}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}]\ *=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}};}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{classJSL_1_1Matrix_aea26657df162243cfb7f44db591fb133}{operator/=}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}]\ /=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}};}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{classJSL_1_1Matrix_a77d086869638fb604e6df08250decebd}{Inverse}}()}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}Can\ only\ invert\ square\ matrices"{}},\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}}\ =\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}});}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{copy}}\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ output\ =\ \mbox{\hyperlink{classJSL_1_1Matrix_afd9edd73e5f559eed02b063d4c4e47f8}{JSL::Matrix::Identity}}(\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}});}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}}-\/1;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ >=0;\ -\/-\/\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ if\ Data[i][i]\ !=\ 0,\ then\ do\ swap?!}}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{grab}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{copy}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}});}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{abs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{grab}})\ >\ 1\mbox{\hyperlink{structJSL_1_1NameValuePair}{e}}-\/180)}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{copy}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})\ /=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{grab}};}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})/=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{grab}};}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}Step\ "{}\ <<\ 2*i+1\ <<\ "{}\ with\ grab\ =\ "{}\ <<\ grab\ <<\ "{}\(\backslash\)n"{}\ <<\ output.to\_string()\ <<\ "{}\ \(\backslash\)n\(\backslash\)n"{}\ <<\ copy.to\_string()\ <<\ std::endl;}}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lmod}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{copy}}.GetRow(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}});}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rmod}}\ =\ output.\mbox{\hyperlink{classJSL_1_1Matrix_aa8bae8650234f5e5569277563d68f22d}{GetRow}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}});}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{q}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{q}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{q}})}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{q}}!=\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{diff}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{copy}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{q}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}});}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}Copying\ val\ =\ "{}\ <<\ diff\ <<\ std::endl;}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{p}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{p}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{p}})}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output(\mbox{\hyperlink{structJSL_1_1NameValuePair}{q}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{p}})\ -\/=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{diff}}*\mbox{\hyperlink{structJSL_1_1NameValuePair}{rmod}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{p}}];}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{copy}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{q}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{p}})\ -\/=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{diff}}*\mbox{\hyperlink{structJSL_1_1NameValuePair}{lmod}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{p}}];}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (abs(output(q,p))\ <\ 1e-\/10)}}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ output(q,p)\ =\ 0;}}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (abs(copy(q,p))\ <\ 1e-\/10)}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ copy(q,p)\ =\ 0;}}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}Step\ "{}\ <<\ 2*i+2\ <<\ "{}\(\backslash\)n"{}\ <<\ output.to\_string()\ <<\ "{}\ \(\backslash\)n\(\backslash\)n"{}\ <<\ copy.to\_string()<<\ std::endl;}}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ output\ <<\ std::endl;}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classJSL_1_1Matrix_a1c453ee6f9f17eb6e87b895459ff4306}{Trace}}()}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{assert}}(\mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}}\ ==\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}});\ \textcolor{comment}{//can\ only\ trace\ a\ square\ matrix}}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{r}}=\ 0;}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{r}}\ +=\ \mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}];\ }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{r}};}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classJSL_1_1Matrix_abcf44559767ab6939851f0d3b60c6fa8}{to\_string}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00331\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{outString}}\ =\ \textcolor{stringliteral}{"{}["{}};}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{outString}}\ +=\ \textcolor{stringliteral}{"{}["{}};}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{outString}}\ +=\ std::to\_string(\mbox{\hyperlink{structData}{Data}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}][\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}]);}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}}\ -\/\ 1)}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{outString}}\ +=\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{outString}}\ +=\ \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}}\ -\/\ 1)}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{outString}}\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{outString}}\ +=\ \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{outString}};}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::vector<double>>\ \mbox{\hyperlink{classJSL_1_1Matrix_a446d23ba93238f3e2dfc79a3a4d5eb7e}{Data}};}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Matrix_a7b7a081bbf419b613f19142a634b2cfa}{nRows}};}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJSL_1_1Matrix_aef59f1402d2137e86aebf6b21f97ee6d}{nCols}};}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix_a92eb431da436e1e2922b211a9f158203}{outOfBoundsError}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{idx1}},\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{idx2}})\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00363\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{coord}}\ =\ \textcolor{stringliteral}{"{}("{}}\ +\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{idx1}})\ +\ \textcolor{stringliteral}{"{},\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{idx2}})\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{size}}\ =\ \ \textcolor{stringliteral}{"{}("{}}\ +\ std::to\_string(\mbox{\hyperlink{classJSL_1_1Matrix_af784cad8dcbb502c06be62e2e328ef6c}{Rows}}())\ +\ \textcolor{stringliteral}{"{},\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{classJSL_1_1Matrix_a8aba7f9803b553df2aeae68aba3445f5}{Columns}}())\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ERROR\ in\ JSL::Vector:\ Attempted\ to\ access\ "{}}\ +\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{coord}}\ +\ \textcolor{stringliteral}{"{}\ but\ matrix\ is\ of\ size\ "{}}\ +\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{size}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00368\ \ \ \ \ \};}
+\DoxyCodeLine{00369\ \ \ \ \ }
+\DoxyCodeLine{00371\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceJSL_a682c8bb3fff54370f38dcb16794fc7c5}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00372\ \ \ \ \ \{}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Columns()\ !=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Columns()\ ||\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Rows()\ !=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Rows())}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Rows();++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Columns();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})\ !=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}))}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00389\ \ \ \ \ \}}
+\DoxyCodeLine{00390\ \ \ \ \ }
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceJSL_a8b19814a4b6cb667d1e27133acc38513}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00393\ \ \ \ \ \{}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}\ ==\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}});}
+\DoxyCodeLine{00395\ \ \ \ \ \}}
+\DoxyCodeLine{00396\ \ \ \ \ }
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keywordtype}{bool}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_a38d1bbf23dc57ec028ea8d91a9688957}{MatrixSizesEqual}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{m1}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{m2}})}
+\DoxyCodeLine{00399\ \ \ \ \ \{}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{m1}}.Rows()\ ==\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{m2}}.Rows()\ \&\&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{m1}}.Columns()\ ==\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{m2}}.Columns()\ );}
+\DoxyCodeLine{00401\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00402\ \ \ \ \ }
+\DoxyCodeLine{00404\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{namespaceJSL_ad1bcc74167579ecff71209bf8c9c47a3}{operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00405\ \ \ \ \ \{}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespaceJSL_a38d1bbf23dc57ec028ea8d91a9688957}{MatrixSizesEqual}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}))}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}JSL::Vector\ Error:\ Cannot\ peform\ +\ operation\ on\ matrices\ of\ different\ sizes"{}});}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{JSL::Matrix}}\ output\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}};}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Matrix_af784cad8dcbb502c06be62e2e328ef6c}{Rows}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Matrix_a8aba7f9803b553df2aeae68aba3445f5}{Columns}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})\ +=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}});}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00421\ \ \ \ \ \};}
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{namespaceJSL_a4f1a2a224c7f6a8c57627b03594cd89f}{operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00424\ \ \ \ \ \{}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespaceJSL_a38d1bbf23dc57ec028ea8d91a9688957}{MatrixSizesEqual}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}))}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}JSL::Vector\ Error:\ Cannot\ peform\ +\ operation\ on\ matrices\ of\ different\ sizes"{}});}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ output\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}};}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Matrix_af784cad8dcbb502c06be62e2e328ef6c}{Rows}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Matrix_a8aba7f9803b553df2aeae68aba3445f5}{Columns}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})\ -\/=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}});}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00440\ \ \ \ \ \};}
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{namespaceJSL_ad1bcc74167579ecff71209bf8c9c47a3}{operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})}
+\DoxyCodeLine{00444\ \ \ \ \ \{}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ output\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}};}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Matrix_af784cad8dcbb502c06be62e2e328ef6c}{Rows}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Matrix_a8aba7f9803b553df2aeae68aba3445f5}{Columns}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})\ +=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}};}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00456\ \ \ \ \ \};}
+\DoxyCodeLine{00457\ \ \ \ \ }
+\DoxyCodeLine{00459\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{namespaceJSL_a95d670e99aed43f857d8ba5e6f3d7897}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00460\ \ \ \ \ \{}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Columns()\ !=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Rows())}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s1}}\ =\ \textcolor{stringliteral}{"{}("{}}\ +\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Rows())\ +\ \textcolor{stringliteral}{"{}x"{}}+\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Columns())\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s2}}\ =\ \textcolor{stringliteral}{"{}("{}}\ +\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Rows())\ +\ \textcolor{stringliteral}{"{}x"{}}+\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Columns())\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}JSL::Vector\ Error:\ Cannot\ peform\ \ operation\ on\ matrices\ of\ incompatible\ sizes:\ "{}}\ +\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s1}}\ +\ \textcolor{stringliteral}{"{}\ vs\ "{}}\ +\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s2}});}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ output(\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Rows(),\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Columns());}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Matrix_af784cad8dcbb502c06be62e2e328ef6c}{Rows}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Matrix_a8aba7f9803b553df2aeae68aba3445f5}{Columns}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{k}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{k}}\ <\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Columns();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{k}})}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})\ +=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{k}})\ *\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{k}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}});}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00480\ \ \ \ \ \}}
+\DoxyCodeLine{00481\ \ \ \ \ }
+\DoxyCodeLine{00483\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Vector}{Vector}}\ \mbox{\hyperlink{namespaceJSL_a95d670e99aed43f857d8ba5e6f3d7897}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Vector}{Vector}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00484\ \ \ \ \ \{}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Columns()\ !=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Size())}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s1}}\ =\ \textcolor{stringliteral}{"{}("{}}\ +\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Rows())\ +\ \textcolor{stringliteral}{"{}x"{}}+\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Columns())\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s2}}\ =\ \textcolor{stringliteral}{"{}("{}}\ +\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}.Size())\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}JSL::Vector\ Error:\ Cannot\ multiply\ matrices\ and\ vectors\ of\ incompatible\ sizes:\ "{}}\ +\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s1}}\ +\ \textcolor{stringliteral}{"{}\ vs\ "{}}\ +\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{s2}});}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Vector}{Vector}}\ output(\mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Rows());}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Vector_a53b26ca32061ebf41430fe2322f79c0c}{Size}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{k}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{k}}\ <\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}.Columns();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{k}})}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}]\ +=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{k}})\ *\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{k}}];}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00503\ \ \ \ \ \}}
+\DoxyCodeLine{00504\ \ \ \ \ }
+\DoxyCodeLine{00506\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{namespaceJSL_ad1bcc74167579ecff71209bf8c9c47a3}{operator+}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00507\ \ \ \ \ \{}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}}\ +\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}};}
+\DoxyCodeLine{00509\ \ \ \ \ \}}
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{namespaceJSL_a4f1a2a224c7f6a8c57627b03594cd89f}{operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})}
+\DoxyCodeLine{00512\ \ \ \ \ \{}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}}\ +\ -\/1*\mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}};}
+\DoxyCodeLine{00514\ \ \ \ \ \}}
+\DoxyCodeLine{00515\ \ \ \ \ }
+\DoxyCodeLine{00516\ \ \ \ \ }
+\DoxyCodeLine{00518\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{namespaceJSL_a95d670e99aed43f857d8ba5e6f3d7897}{operator*}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00519\ \ \ \ \ \{}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ output\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}};}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Matrix_af784cad8dcbb502c06be62e2e328ef6c}{Rows}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{j}}\ <\ output.\mbox{\hyperlink{classJSL_1_1Matrix_a8aba7f9803b553df2aeae68aba3445f5}{Columns}}();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output(\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{j}})\ *=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}};}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00530\ \ \ \ \ \}}
+\DoxyCodeLine{00531\ \ \ \ \ }
+\DoxyCodeLine{00533\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{namespaceJSL_a95d670e99aed43f857d8ba5e6f3d7897}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})}
+\DoxyCodeLine{00534\ \ \ \ \ \{}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}}\ *\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}};}
+\DoxyCodeLine{00536\ \ \ \ \ \}}
+\DoxyCodeLine{00537\ \ \ \ \ }
+\DoxyCodeLine{00539\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{namespaceJSL_ab1f3153179f59c59a0c2a5e553889eb1}{operator/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}})}
+\DoxyCodeLine{00540\ \ \ \ \ \{}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}}\ ==\ 0)}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Division\ by\ zero\ results\ in\ undefined\ behaviour"{}});}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1.0/\mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}}\ *\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{lhs}};}
+\DoxyCodeLine{00546\ \ \ \ \ \}}
+\DoxyCodeLine{00548\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \mbox{\hyperlink{namespaceJSL_a4f1a2a224c7f6a8c57627b03594cd89f}{operator-\/}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}})}
+\DoxyCodeLine{00549\ \ \ \ \ \{}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{scalar}}\ +\ -\/1\ *\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{rhs}};}
+\DoxyCodeLine{00551\ \ \ \ \ \}}
+\DoxyCodeLine{00552\ \ \ \ \ }
+\DoxyCodeLine{00553\ \ \ \ \ }
+\DoxyCodeLine{00555\ \ \ \ \ \textcolor{keyword}{inline}\ std::ostream\&\ \mbox{\hyperlink{namespaceJSL_a96050c622f5d29373cdc4a5ebb216b47}{operator<<}}(std::ostream\&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{os}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classJSL_1_1Matrix}{Matrix}}\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{obj}})\ }
+\DoxyCodeLine{00556\ \ \ \ \ \{}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{os}}\ <<\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{obj}}.to\_string();}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{os}};}
+\DoxyCodeLine{00559\ \ \ \ \ \}}
+\DoxyCodeLine{00560\ \}}
+
+\end{DoxyCode}

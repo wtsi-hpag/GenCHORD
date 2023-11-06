@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_c18f74ad414024b6d6f3471f11252802" kind="dir">
+    <compoundname>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot</compoundname>
+    <innerfile refid="axis_8h">axis.h</innerfile>
+    <innerfile refid="colorArray_8h">colorArray.h</innerfile>
+    <innerfile refid="gnuplot_8h">gnuplot.h</innerfile>
+    <innerfile refid="gnuplotMain_8h">gnuplotMain.h</innerfile>
+    <innerfile refid="PlotData_8h">PlotData.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/"/>
+  </compounddef>
+</doxygen>

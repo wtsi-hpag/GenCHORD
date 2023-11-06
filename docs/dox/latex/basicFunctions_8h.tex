@@ -1,0 +1,64 @@
+\doxysection{/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/src/basic\+Functions.h File Reference}
+\hypertarget{basicFunctions_8h}{}\label{basicFunctions_8h}\index{/Users/jf20/Documents/Genomics/Deforest/src/basicFunctions.h@{/Users/jf20/Documents/Genomics/Deforest/src/basicFunctions.h}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{basicFunctions_8h_ae9ae64d8a840f96015ae5e1421199248}{Log}}(...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{basicFunctions_8h_ac15fc66c1e5aff63ea41e3c97240ef3f}{ale}} (double x, double y)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{basicFunctions_8h_a25b520747637727e0a067178131c590a}{exp}} (std\+::vector$<$ double $>$ x)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{basicFunctions_8h_a4338f6760709ebb9944c56f03268e4e6}{global\+Verbose}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{basicFunctions_8h_ae9ae64d8a840f96015ae5e1421199248}\label{basicFunctions_8h_ae9ae64d8a840f96015ae5e1421199248} 
+\index{basicFunctions.h@{basicFunctions.h}!Log@{Log}}
+\index{Log@{Log}!basicFunctions.h@{basicFunctions.h}}
+\doxysubsubsection{\texorpdfstring{Log}{Log}}
+{\footnotesize\ttfamily \#define Log(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (\mbox{\hyperlink{basicFunctions_8h_a4338f6760709ebb9944c56f03268e4e6}{globalVerbose}})\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \_\_VA\_ARGS\_\_;\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{basicFunctions_8h_ac15fc66c1e5aff63ea41e3c97240ef3f}\label{basicFunctions_8h_ac15fc66c1e5aff63ea41e3c97240ef3f} 
+\index{basicFunctions.h@{basicFunctions.h}!ale@{ale}}
+\index{ale@{ale}!basicFunctions.h@{basicFunctions.h}}
+\doxysubsubsection{\texorpdfstring{ale()}{ale()}}
+{\footnotesize\ttfamily double ale (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
+
+\Hypertarget{basicFunctions_8h_a25b520747637727e0a067178131c590a}\label{basicFunctions_8h_a25b520747637727e0a067178131c590a} 
+\index{basicFunctions.h@{basicFunctions.h}!exp@{exp}}
+\index{exp@{exp}!basicFunctions.h@{basicFunctions.h}}
+\doxysubsubsection{\texorpdfstring{exp()}{exp()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ exp (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{x }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{basicFunctions_8h_a4338f6760709ebb9944c56f03268e4e6}\label{basicFunctions_8h_a4338f6760709ebb9944c56f03268e4e6} 
+\index{basicFunctions.h@{basicFunctions.h}!globalVerbose@{globalVerbose}}
+\index{globalVerbose@{globalVerbose}!basicFunctions.h@{basicFunctions.h}}
+\doxysubsubsection{\texorpdfstring{globalVerbose}{globalVerbose}}
+{\footnotesize\ttfamily bool global\+Verbose\hspace{0.3cm}{\ttfamily [extern]}}
+

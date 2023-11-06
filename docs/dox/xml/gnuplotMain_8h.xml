@@ -1,0 +1,788 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="gnuplotMain_8h" kind="file" language="C++">
+    <compoundname>gnuplotMain.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes refid="axis_8h" local="yes">axis.h</includes>
+    <includes refid="FileIO_8h" local="yes">../FileIO/FileIO.h</includes>
+    <includes refid="System_8h" local="yes">../System/System.h</includes>
+    <includedby refid="gnuplot_8h" local="yes">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplot.h</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>../FileIO/FileIO.h</label>
+        <link refid="FileIO_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>LineReader.h</label>
+        <link refid="LineReader_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>fileWriter.h</label>
+        <link refid="fileWriter_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>jfglatex.h</label>
+        <link refid="jfglatex_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>lineCounter.h</label>
+        <link refid="lineCounter_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>../FileIO/locationExists.h</label>
+        <link refid="locationExists_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>mkdir.h</label>
+        <link refid="mkdir_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>../Strings/split.h</label>
+        <link refid="split_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>../System/System.h</label>
+        <link refid="System_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>error.h</label>
+        <link refid="error_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>readPipe.h</label>
+        <link refid="readPipe_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>rm.h</label>
+        <link refid="rm_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>systemCall.h</label>
+        <link refid="systemCall_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>PlotData.h</label>
+        <link refid="PlotData_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>axis.h</label>
+        <link refid="axis_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>colorArray.h</label>
+        <link refid="colorArray_8h"/>
+      </node>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplotMain.h</label>
+        <link refid="gnuplotMain_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>cmath</label>
+      </node>
+      <node id="13">
+        <label>dirent.h</label>
+      </node>
+      <node id="8">
+        <label>fstream</label>
+      </node>
+      <node id="25">
+        <label>iomanip</label>
+      </node>
+      <node id="5">
+        <label>iostream</label>
+      </node>
+      <node id="27">
+        <label>limits</label>
+      </node>
+      <node id="10">
+        <label>sstream</label>
+      </node>
+      <node id="16">
+        <label>stdexcept</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="24">
+        <label>string.h</label>
+      </node>
+      <node id="15">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="21">
+        <label>unistd.h</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/JSL.h</label>
+        <link refid="JSL_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Testing/Testing.h</label>
+        <link refid="Testing_8h"/>
+      </node>
+      <node id="4">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Testing/Testing_UnitTests.h</label>
+        <link refid="Testing__UnitTests_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplot.h</label>
+        <link refid="gnuplot_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplotMain.h</label>
+        <link refid="gnuplotMain_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h</label>
+        <link refid="Distributor_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h</label>
+        <link refid="HarmonicFunctions_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h</label>
+        <link refid="NegativeBinomial_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h</label>
+        <link refid="Transitions_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/data.h</label>
+        <link refid="data_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/harmonicFit.h</label>
+        <link refid="harmonicFit_8h"/>
+      </node>
+      <node id="12">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/plotting.h</label>
+        <link refid="plotting_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/settings.h</label>
+        <link refid="settings_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classJSL_1_1gnuplot" prot="public">JSL::gnuplot</innerclass>
+    <innernamespace refid="namespaceJSL">JSL</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="axis_8h" kindref="compound">axis.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../FileIO/FileIO.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../System/System.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceJSL" kindref="compound">JSL</ref></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9" refid="classJSL_1_1gnuplot" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classJSL_1_1gnuplot" kindref="compound">gnuplot</ref></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="13" refid="classJSL_1_1gnuplot_1aafcfb0c9032e7f0cfeddcc3baf2cc21f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1aafcfb0c9032e7f0cfeddcc3baf2cc21f" kindref="member">gnuplot</ref>()<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a200e2b9b95ccd38d4f8e019c594b318f" kindref="member">DirName</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;gnuplot_tmp_&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="structJSL_1_1NameValuePair" kindref="compound">rand</ref>());</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref><sp/>=<sp/>{{<ref refid="classJSL_1_1Axis" kindref="compound">Axis</ref>(<ref refid="classJSL_1_1gnuplot_1a200e2b9b95ccd38d4f8e019c594b318f" kindref="member">DirName</ref>,<ref refid="classJSL_1_1gnuplot_1a05ed1200d39f012e829e7a43f472bbaa" kindref="member">GlobalColours</ref>)}};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1mkdirReturn" kindref="compound">mkdirReturn</ref><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">t</ref><sp/>=<sp/><ref refid="namespaceJSL_1abf525d02b8c49f21ef7faa68b7571f93" kindref="member">mkdir</ref>(<ref refid="classJSL_1_1gnuplot_1a200e2b9b95ccd38d4f8e019c594b318f" kindref="member">DirName</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="structJSL_1_1NameValuePair" kindref="compound">t</ref>.Successful)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;JSL::GNUPLOT<sp/>encountered<sp/>an<sp/>error<sp/>making<sp/>an<sp/>intermediary<sp/>directory,<sp/>error<sp/>is<sp/>as<sp/>follows:\n\n\t&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">t</ref>.Message<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n\nExiting...\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">exit</ref>(5);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classJSL_1_1gnuplot_1a1654a89612515dc3cd3c2a45c60dc733" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a1654a89612515dc3cd3c2a45c60dc733" kindref="member">~gnuplot</ref>()</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a0601a115a1052a39a6621e42ec4d4f3e" kindref="member">CleanupTempFiles</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classJSL_1_1gnuplot_1aa1e759e1965581b7c4fe508d2bca7060" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aa1e759e1965581b7c4fe508d2bca7060" kindref="member">SetMultiplot</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">yCount</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">xCount</ref>)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref><sp/>=<sp/>std::vector&lt;std::vector&lt;Axis&gt;&gt;(<ref refid="structJSL_1_1NameValuePair" kindref="compound">yCount</ref>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>&lt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">yCount</ref>;<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>].resize(<ref refid="structJSL_1_1NameValuePair" kindref="compound">xCount</ref>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref><sp/>&lt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">xCount</ref>;<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>]<sp/>=<sp/><ref refid="classJSL_1_1Axis" kindref="compound">Axis</ref>(<ref refid="classJSL_1_1gnuplot_1a200e2b9b95ccd38d4f8e019c594b318f" kindref="member">DirName</ref>,<ref refid="classJSL_1_1gnuplot_1a05ed1200d39f012e829e7a43f472bbaa" kindref="member">GlobalColours</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>=<sp/>std::vector&lt;Axis&gt;(xCount,<sp/>DirName);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a666ddb205d0cb9c76813e2f8075c1b65" kindref="member">axisCount</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">xCount</ref><sp/>*<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">yCount</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a4cb279032f4f688412bea6fb3c2e7289" kindref="member">axis_x_max</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">xCount</ref><sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1af0aefa22a2dcb30ff3f3b794e3b2749d" kindref="member">axis_y_max</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">yCount</ref><sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51" refid="classJSL_1_1gnuplot_1aaa70a8840886ba609533e6b0fd6f5bc1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aaa70a8840886ba609533e6b0fd6f5bc1" kindref="member">SetAxis</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">Assert</ref>(</highlight><highlight class="stringliteral">&quot;Must<sp/>index<sp/>into<sp/>existing<sp/>multiplot<sp/>values&quot;</highlight><highlight class="normal">,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref><sp/>&lt;=<sp/><ref refid="classJSL_1_1gnuplot_1af0aefa22a2dcb30ff3f3b794e3b2749d" kindref="member">axis_y_max</ref><sp/>&amp;&amp;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref><sp/>&lt;=<sp/><ref refid="classJSL_1_1gnuplot_1a4cb279032f4f688412bea6fb3c2e7289" kindref="member">axis_x_max</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">Assert</ref>(</highlight><highlight class="stringliteral">&quot;Cannot<sp/>index<sp/>into<sp/>an<sp/>axis<sp/>overwritten<sp/>by<sp/>a<sp/>multi-span<sp/>plot&quot;</highlight><highlight class="normal">,<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>].Lock==</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classJSL_1_1gnuplot_1a6ad5dca9e7826d774d18f0f36845aabb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a6ad5dca9e7826d774d18f0f36845aabb" kindref="member">SetAxis</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ySpan,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>xSpan)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">Assert</ref>(</highlight><highlight class="stringliteral">&quot;Must<sp/>index<sp/>into<sp/>existing<sp/>multiplot<sp/>values&quot;</highlight><highlight class="normal">,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref><sp/>&lt;=<sp/><ref refid="classJSL_1_1gnuplot_1af0aefa22a2dcb30ff3f3b794e3b2749d" kindref="member">axis_y_max</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref><sp/>&lt;=<sp/><ref refid="classJSL_1_1gnuplot_1a4cb279032f4f688412bea6fb3c2e7289" kindref="member">axis_x_max</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">Assert</ref>(</highlight><highlight class="stringliteral">&quot;Selected<sp/>Span<sp/>must<sp/>remain<sp/>within<sp/>confines&quot;</highlight><highlight class="normal">,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>+ySpan<sp/>&lt;=<ref refid="classJSL_1_1gnuplot_1af0aefa22a2dcb30ff3f3b794e3b2749d" kindref="member">axis_y_max</ref><sp/>+<sp/>1,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>+xSpan<sp/>&lt;=<sp/><ref refid="classJSL_1_1gnuplot_1a4cb279032f4f688412bea6fb3c2e7289" kindref="member">axis_x_max</ref><sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">Assert</ref>(</highlight><highlight class="stringliteral">&quot;Cannot<sp/>index<sp/>into<sp/>an<sp/>axis<sp/>overwritten<sp/>by<sp/>a<sp/>multi-span<sp/>plot&quot;</highlight><highlight class="normal">,<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>].Lock==</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">xs</ref><sp/>=<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref>)xSpan<sp/>/<sp/>(<ref refid="classJSL_1_1gnuplot_1a4cb279032f4f688412bea6fb3c2e7289" kindref="member">axis_x_max</ref><sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">ys</ref><sp/>=<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref>)ySpan<sp/>/<sp/>(<ref refid="classJSL_1_1gnuplot_1af0aefa22a2dcb30ff3f3b794e3b2749d" kindref="member">axis_y_max</ref><sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">yy</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">yy</ref><sp/>&lt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref><sp/>+<sp/>ySpan;<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">yy</ref>)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">xx</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">xx</ref><sp/>&lt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref><sp/>+<sp/>xSpan;<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">xx</ref>)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">Assert</ref>(</highlight><highlight class="stringliteral">&quot;Cannot<sp/>index<sp/>into<sp/>an<sp/>axis<sp/>overwritten<sp/>by<sp/>a<sp/>multi-span<sp/>plot&quot;</highlight><highlight class="normal">,<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>].Lock==</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">xx</ref><sp/>&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref><sp/>||<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">yy</ref><sp/>&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">yy</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">xx</ref>].Lock<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetSpan(<ref refid="structJSL_1_1NameValuePair" kindref="compound">ys</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">xs</ref>);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84" refid="classJSL_1_1gnuplot_1af5ba95fdc854b7de524431efe9793f0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1af5ba95fdc854b7de524431efe9793f0a" kindref="member">SetAxis</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">Assert</ref>(</highlight><highlight class="stringliteral">&quot;Must<sp/>index<sp/>into<sp/>existing<sp/>multiplot<sp/>values&quot;</highlight><highlight class="normal">,<sp/>idx<sp/>&lt;<sp/><ref refid="classJSL_1_1gnuplot_1a666ddb205d0cb9c76813e2f8075c1b65" kindref="member">axisCount</ref>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref><sp/>=<sp/>idx<sp/>/<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[0].size();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref><sp/>=<sp/>idx<sp/>%<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[0].size();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">Assert</ref>(</highlight><highlight class="stringliteral">&quot;Cannot<sp/>index<sp/>into<sp/>an<sp/>axis<sp/>overwritten<sp/>by<sp/>a<sp/>multi-span<sp/>plot&quot;</highlight><highlight class="normal">,<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].Lock==</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref>,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref>,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref>&gt;</highlight></codeline>
+<codeline lineno="94" refid="classJSL_1_1gnuplot_1ad7759efccfffa13d51620a3a695823ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref><sp/>&amp;<ref refid="classJSL_1_1gnuplot_1ad7759efccfffa13d51620a3a695823ea" kindref="member">Plot</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;T&gt;<sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;S&gt;<sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair&lt;Ts&gt;</ref>...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].Plot(<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>...);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref>,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref>,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref>&gt;</highlight></codeline>
+<codeline lineno="101" refid="classJSL_1_1gnuplot_1aff8f871df4ddbbbf519572dd1f717588" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref><sp/>&amp;<ref refid="classJSL_1_1gnuplot_1aff8f871df4ddbbbf519572dd1f717588" kindref="member">Plot</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref><sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref><sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair&lt;Ts&gt;</ref>...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].Plot((std::vector&lt;double&gt;)<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/>(std::vector&lt;double&gt;)<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>...);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref>,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref>,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref>&gt;</highlight></codeline>
+<codeline lineno="107" refid="classJSL_1_1gnuplot_1a90306a67b5b8d990cbcb13b3f6f6eaa3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref><sp/>&amp;<ref refid="classJSL_1_1gnuplot_1a90306a67b5b8d990cbcb13b3f6f6eaa3" kindref="member">Scatter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;T&gt;<sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;S&gt;<sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair&lt;Ts&gt;</ref>...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].Scatter(<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>...);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref>,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref>,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref>&gt;<sp/></highlight><highlight class="comment">//<sp/>allows<sp/>templating<sp/>for<sp/>non-vector<sp/>objects<sp/>which<sp/>can<sp/>nevertheless<sp/>be<sp/>successfully<sp/>cast<sp/>as<sp/>vectors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classJSL_1_1gnuplot_1adfd19ba6419d0c23d18dbeb4f6302f59" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref><sp/>&amp;<ref refid="classJSL_1_1gnuplot_1adfd19ba6419d0c23d18dbeb4f6302f59" kindref="member">Scatter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref><sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref><sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair&lt;Ts&gt;</ref>...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].Scatter((std::vector&lt;double&gt;)<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/>(std::vector&lt;double&gt;)<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>...);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref>,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref>,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref>&gt;</highlight></codeline>
+<codeline lineno="120" refid="classJSL_1_1gnuplot_1a483fcbfb0c4f30615330b9e8c0c004af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref><sp/>&amp;<ref refid="classJSL_1_1gnuplot_1a483fcbfb0c4f30615330b9e8c0c004af" kindref="member">Chart</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;T&gt;<sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;S&gt;<sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair&lt;Ts&gt;</ref>...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].Chart(<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>...);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref>,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref>,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref>&gt;<sp/></highlight><highlight class="comment">//<sp/>allows<sp/>templating<sp/>for<sp/>non-vector<sp/>objects<sp/>which<sp/>can<sp/>nevertheless<sp/>be<sp/>successfully<sp/>cast<sp/>as<sp/>vectors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classJSL_1_1gnuplot_1afc17d1165272bb4b21f49a38b0cea19c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref><sp/>&amp;<ref refid="classJSL_1_1gnuplot_1afc17d1165272bb4b21f49a38b0cea19c" kindref="member">Chart</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref><sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref><sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair&lt;Ts&gt;</ref>...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].Chart((std::vector&lt;double&gt;)<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/>(std::vector&lt;double&gt;)<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>...);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">R</ref>,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref>,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref>,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref>&gt;</highlight></codeline>
+<codeline lineno="132" refid="classJSL_1_1gnuplot_1ae1f612edfeb4165b88c2fbc7e572e761" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1PlotData" kindref="compound">PlotData</ref><sp/>&amp;<ref refid="classJSL_1_1gnuplot_1ae1f612edfeb4165b88c2fbc7e572e761" kindref="member">Map</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;T&gt;<sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;S&gt;<sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::vector&lt;R&gt;&gt;<sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">z</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">NameValuePair&lt;Ts&gt;</ref>...<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].Map(<ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">y</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">z</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">args</ref>...);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="classJSL_1_1gnuplot_1a147fc21e6c9b48d823a16c738953d081" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a147fc21e6c9b48d823a16c738953d081" kindref="member">Show</ref>()</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">gpFile</ref><sp/>=<sp/><ref refid="classJSL_1_1gnuplot_1a200e2b9b95ccd38d4f8e019c594b318f" kindref="member">DirName</ref><sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/></highlight><highlight class="stringliteral">&quot;plotter.gp&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a275c33fa2dc4fce5a8af1f8d2ec7562d" kindref="member">InitialiseOutput</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">gpFile</ref>);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>.size()<sp/>&gt;<sp/>0<sp/>||<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[0].size()<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1aa35fd7f6ebe1c18ea39d6cdbb12f8aa0" kindref="member">WriteMultiplotToFile</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">gpFile</ref>);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>&lt;<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>.size();<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref><sp/>&lt;<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>].size();<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>].Lock<sp/>==<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a838b3a913896993bc008408d164ec19d" kindref="member">writeStringToFile</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">gpFile</ref>,<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>].<ref refid="classJSL_1_1gnuplot_1a147fc21e6c9b48d823a16c738953d081" kindref="member">Show</ref>());</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>try-catch<sp/>loop<sp/>means<sp/>if<sp/>gnuplot<sp/>fails,<sp/>can<sp/>still<sp/>cleanup<sp/>after<sp/>itself<sp/>without<sp/>leaving<sp/>tempfiles<sp/>hanging<sp/>around</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a5cd4ed117decf1140104ad8566b589ac" kindref="member">systemCall</ref>(</highlight><highlight class="stringliteral">&quot;gnuplot<sp/>-p<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">gpFile</ref>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception<sp/>&amp;<ref refid="structJSL_1_1NameValuePair" kindref="compound">e</ref>)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a0601a115a1052a39a6621e42ec4d4f3e" kindref="member">CleanupTempFiles</ref>();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a5783bc90550deca94c1790e581fb707d" kindref="member">Error</ref>(<ref refid="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61ae87e52367d118ac8a793c78a53ec9973" kindref="member">PlottingError</ref>,<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>gnuplot<sp/>command<sp/>failed.<sp/>Could<sp/>not<sp/>show<sp/>plot.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="classJSL_1_1gnuplot_1af0ace47c0e36ef49cae6592a8a841926" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Axis&gt;<sp/>&amp;<ref refid="classJSL_1_1gnuplot_1af0ace47c0e36ef49cae6592a8a841926" kindref="member">operator[]</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>];</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="classJSL_1_1gnuplot_1a26eba111f5ff83b852eded604d23fbe2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a26eba111f5ff83b852eded604d23fbe2" kindref="member">SetXRange</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">min</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">max</ref>)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetXRange(<ref refid="structJSL_1_1NameValuePair" kindref="compound">min</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">max</ref>);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179" refid="classJSL_1_1gnuplot_1a39e8bdc9b9bb9e47e4acdd0b17ad5430" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a39e8bdc9b9bb9e47e4acdd0b17ad5430" kindref="member">SetYRange</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">min</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">max</ref>)</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetYRange(<ref refid="structJSL_1_1NameValuePair" kindref="compound">min</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">max</ref>);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183" refid="classJSL_1_1gnuplot_1a1db60fe3e9ee25b86851eba4459e8eca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a1db60fe3e9ee25b86851eba4459e8eca" kindref="member">SetColourRange</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">min</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">max</ref>)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetColourRange(<ref refid="structJSL_1_1NameValuePair" kindref="compound">min</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">max</ref>);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188" refid="classJSL_1_1gnuplot_1af2230b64696435194780c99e8107ac51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1af2230b64696435194780c99e8107ac51" kindref="member">SetXLog</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>)</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetXLog(<ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193" refid="classJSL_1_1gnuplot_1a244f8e993705d7c79cbb37451db39632" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a244f8e993705d7c79cbb37451db39632" kindref="member">SetYLog</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetYLog(<ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198" refid="classJSL_1_1gnuplot_1aefd68670821553e910ca469895370494" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aefd68670821553e910ca469895370494" kindref="member">SetCBLog</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>)</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetCBLog(<ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203" refid="classJSL_1_1gnuplot_1a80699eb05778c88b435ec62a5afe3a5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a80699eb05778c88b435ec62a5afe3a5d" kindref="member">SetXLabel</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">xl</ref>)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetXLabel(<ref refid="structJSL_1_1NameValuePair" kindref="compound">xl</ref>);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208" refid="classJSL_1_1gnuplot_1a741f78103dd76eaff9475351b7f49edd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a741f78103dd76eaff9475351b7f49edd" kindref="member">SetYLabel</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">yl</ref>)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetYLabel(<ref refid="structJSL_1_1NameValuePair" kindref="compound">yl</ref>);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="212" refid="classJSL_1_1gnuplot_1ae3c1833621af3de598d34bc03e0c5fd2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ae3c1833621af3de598d34bc03e0c5fd2" kindref="member">SetCBLabel</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cl</ref>)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetCBLabel(<ref refid="structJSL_1_1NameValuePair" kindref="compound">cl</ref>);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216" refid="classJSL_1_1gnuplot_1a142b566109c123a4a60cfc2da0814e6d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a142b566109c123a4a60cfc2da0814e6d" kindref="member">SetCBLabel</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cl</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">f</ref>)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetCBLabel(<ref refid="structJSL_1_1NameValuePair" kindref="compound">cl</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">f</ref>);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221" refid="classJSL_1_1gnuplot_1aa4b92e98fe9231ed52d1f0c88c3cbd93" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aa4b92e98fe9231ed52d1f0c88c3cbd93" kindref="member">SetXLabel</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">xl</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetXLabel(<ref refid="structJSL_1_1NameValuePair" kindref="compound">xl</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226" refid="classJSL_1_1gnuplot_1a721199548950cfd60fb43d3ac3bc0fe1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a721199548950cfd60fb43d3ac3bc0fe1" kindref="member">SetYLabel</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">yl</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetYLabel(<ref refid="structJSL_1_1NameValuePair" kindref="compound">yl</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230" refid="classJSL_1_1gnuplot_1aec8715b4e01671f44714f7406208e85c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aec8715b4e01671f44714f7406208e85c" kindref="member">SetXTicLabels</ref>(std::vector&lt;std::string&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">vals</ref>)</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetXTicLabels(<ref refid="structJSL_1_1NameValuePair" kindref="compound">vals</ref>);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234" refid="classJSL_1_1gnuplot_1a061e3b33c2698f7334f40aed0b376b09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a061e3b33c2698f7334f40aed0b376b09" kindref="member">SetYTicLabels</ref>(std::vector&lt;std::string&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">vals</ref>)</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetYTicLabels(<ref refid="structJSL_1_1NameValuePair" kindref="compound">vals</ref>);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239" refid="classJSL_1_1gnuplot_1a270b6a2f344a1d102b4eddd8aa47a6e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a270b6a2f344a1d102b4eddd8aa47a6e9" kindref="member">SetLegend</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">state</ref>)</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetLegend(<ref refid="structJSL_1_1NameValuePair" kindref="compound">state</ref>);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="243" refid="classJSL_1_1gnuplot_1a2818a11a95a42d55d241950eefee20a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a2818a11a95a42d55d241950eefee20a3" kindref="member">SetLegendLocation</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">loc</ref>)</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetLegendLocation(<ref refid="structJSL_1_1NameValuePair" kindref="compound">loc</ref>);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="247" refid="classJSL_1_1gnuplot_1af341bd970c54565cc47ec37186f97f9b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1af341bd970c54565cc47ec37186f97f9b" kindref="member">SetLegendColumns</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">cols</ref>)</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetLegendColumns(<ref refid="structJSL_1_1NameValuePair" kindref="compound">cols</ref>);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252" refid="classJSL_1_1gnuplot_1a1bb21de11eb29945e3ce1e158a33834b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a1bb21de11eb29945e3ce1e158a33834b" kindref="member">SetXTime</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>)</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetXTime(<ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="257" refid="classJSL_1_1gnuplot_1ade298a57eb04f9c7e844cf514fd2db86" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ade298a57eb04f9c7e844cf514fd2db86" kindref="member">SetYTime</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>)</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetYTime(<ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="262" refid="classJSL_1_1gnuplot_1a4a1b9834ddc7705a2ebca70514dbc25d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a4a1b9834ddc7705a2ebca70514dbc25d" kindref="member">SetXTicAngle</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>)</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetXTicAngle(<ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="267" refid="classJSL_1_1gnuplot_1a360f2f92bafbc5e9d37098dbc4061f3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a360f2f92bafbc5e9d37098dbc4061f3e" kindref="member">SetYTicAngle</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>)</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetYTicAngle(<ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="271" refid="classJSL_1_1gnuplot_1aa494fa71da94293d08ede848d6d839f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aa494fa71da94293d08ede848d6d839f5" kindref="member">SetXTicGap</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">gap</ref>)</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetXTicGap(<ref refid="structJSL_1_1NameValuePair" kindref="compound">gap</ref>);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275" refid="classJSL_1_1gnuplot_1aac9cb36512358d1de7d28fb774b617d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aac9cb36512358d1de7d28fb774b617d0" kindref="member">SetYTicGap</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">gap</ref>)</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetYTicGap(<ref refid="structJSL_1_1NameValuePair" kindref="compound">gap</ref>);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279" refid="classJSL_1_1gnuplot_1aaf719fec4d5d3e6eab445cc62e366984" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aaf719fec4d5d3e6eab445cc62e366984" kindref="member">SetXTicPowerFormat</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>)</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetXTicPowerFormat(<ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="283" refid="classJSL_1_1gnuplot_1aca49b3755a7ddceea73b0bddd2c0be89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aca49b3755a7ddceea73b0bddd2c0be89" kindref="member">SetYTicPowerFormat</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>)</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetYTicPowerFormat(<ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="287" refid="classJSL_1_1gnuplot_1ae5651ce03f3b2d97b40ef1514f36a03f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ae5651ce03f3b2d97b40ef1514f36a03f" kindref="member">SetGrid</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>)</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetGrid(<ref refid="structJSL_1_1NameValuePair" kindref="compound">val</ref>);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="292" refid="classJSL_1_1gnuplot_1a6cebc934c85d8b6e39950218328f71e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a6cebc934c85d8b6e39950218328f71e3" kindref="member">WindowSize</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">width</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">height</ref>)</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a2426c9fb055e1c69503166958602e2de" kindref="member">defaultSize</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1abd2c1a49e45beb3ac554a58694965be2" kindref="member">windowWidth</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">width</ref>;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1aa0e38b8208be147845e6708b1aa46a04" kindref="member">windowHeight</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">height</ref>;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="classJSL_1_1gnuplot_1a929f817e0c0d2bf119a4aa06ef507289" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a929f817e0c0d2bf119a4aa06ef507289" kindref="member">SetTitle</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">tit</ref>)</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetTitle(<ref refid="structJSL_1_1NameValuePair" kindref="compound">tit</ref>);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="305" refid="classJSL_1_1gnuplot_1a8ece1d633a3978a6d2bcdacd43331b2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a8ece1d633a3978a6d2bcdacd43331b2f" kindref="member">SetTitle</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">tit</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>)</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetTitle(<ref refid="structJSL_1_1NameValuePair" kindref="compound">tit</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311" refid="classJSL_1_1gnuplot_1a3b9f002e0c20b19611b29e459be3581d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a3b9f002e0c20b19611b29e459be3581d" kindref="member">SetSuperTitle</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">tit</ref>)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a16e01fe5ebc78d04cb9683d49c2aee91" kindref="member">superTitle</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">tit</ref>;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="316" refid="classJSL_1_1gnuplot_1a9a2f9350971fb144772b550a8be84073" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a9a2f9350971fb144772b550a8be84073" kindref="member">SetSuperTitle</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">tit</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>)</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a16e01fe5ebc78d04cb9683d49c2aee91" kindref="member">superTitle</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">tit</ref>;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a99581d61b67ad3f0537dca6b041942ba" kindref="member">superTitleFontSize</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323" refid="classJSL_1_1gnuplot_1ad29ef895e0251319e59198fe6d8ade6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1ad29ef895e0251319e59198fe6d8ade6a" kindref="member">SetTerminal</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">t</ref>)</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1aa091157be13eeb60c3193ad06aba9b6f" kindref="member">terminal</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">t</ref>;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="328" refid="classJSL_1_1gnuplot_1a6a166e0499cea89f696db40cbc26d114" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a6a166e0499cea89f696db40cbc26d114" kindref="member">SetOutput</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">out</ref>)</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a631da60df3e3fb00e2d01c87be4da930" kindref="member">output</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">out</ref>;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="333" refid="classJSL_1_1gnuplot_1aed7de1ddfe25a18ff4aafaa55ee62ce8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aed7de1ddfe25a18ff4aafaa55ee62ce8" kindref="member">SetFont</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">f</ref>)</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a4c5db7bfe99161369b4c2d31ad4d7ece" kindref="member">font</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">f</ref>;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337" refid="classJSL_1_1gnuplot_1af8bcc5c6377fba537a1f38b35c9b48bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1af8bcc5c6377fba537a1f38b35c9b48bf" kindref="member">SetColourBar</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">in</ref>)</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetColourBar(<ref refid="structJSL_1_1NameValuePair" kindref="compound">in</ref>);</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="341" refid="classJSL_1_1gnuplot_1a3f5e2a563d6ecb5af32cd2f0521e28f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a3f5e2a563d6ecb5af32cd2f0521e28f2" kindref="member">SetColourMap</ref>(std::vector&lt;std::vector&lt;double&gt;&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgb</ref>)</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetColourMap(<ref refid="structJSL_1_1NameValuePair" kindref="compound">rgb</ref>);</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="345" refid="classJSL_1_1gnuplot_1af25866de5b410e0851a8ee91c5c8f0cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1af25866de5b410e0851a8ee91c5c8f0cd" kindref="member">SetColourMap</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>,<sp/>std::vector&lt;double&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">start</ref>,<sp/>std::vector&lt;double&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">end</ref>)</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetColourMap(<ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">start</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">end</ref>);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="349" refid="classJSL_1_1gnuplot_1a264ee8da3571b8cb120e002fbdd8d130" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a264ee8da3571b8cb120e002fbdd8d130" kindref="member">SetGlobalColourMap</ref>(std::vector&lt;std::vector&lt;double&gt;&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgb</ref>)</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a05ed1200d39f012e829e7a43f472bbaa" kindref="member">GlobalColours</ref>.<ref refid="classJSL_1_1ColourArray_1a2aceaff1f2e5a117a45f7b037148b453" kindref="member">SetColours</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">rgb</ref>);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>&lt;=<sp/><ref refid="classJSL_1_1gnuplot_1a4cb279032f4f688412bea6fb3c2e7289" kindref="member">axis_x_max</ref>;<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>)</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref><sp/>&lt;=<sp/><ref refid="classJSL_1_1gnuplot_1af0aefa22a2dcb30ff3f3b794e3b2749d" kindref="member">axis_y_max</ref>;++<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>)</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>].GlobalColourSet(<ref refid="classJSL_1_1gnuplot_1a05ed1200d39f012e829e7a43f472bbaa" kindref="member">GlobalColours</ref>);</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="360" refid="classJSL_1_1gnuplot_1a00f63f1e08b866f67cbe530dfe8e68de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a00f63f1e08b866f67cbe530dfe8e68de" kindref="member">SetGlobalColourMap</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>,<sp/>std::vector&lt;double&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">start</ref>,<sp/>std::vector&lt;double&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">end</ref>)</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a05ed1200d39f012e829e7a43f472bbaa" kindref="member">GlobalColours</ref>.<ref refid="classJSL_1_1ColourArray_1a2aceaff1f2e5a117a45f7b037148b453" kindref="member">SetColours</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">start</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">end</ref>);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>&lt;=<sp/><ref refid="classJSL_1_1gnuplot_1a4cb279032f4f688412bea6fb3c2e7289" kindref="member">axis_x_max</ref>;<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>)</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref><sp/>&lt;=<sp/><ref refid="classJSL_1_1gnuplot_1af0aefa22a2dcb30ff3f3b794e3b2749d" kindref="member">axis_y_max</ref>;++<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>)</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>].GlobalColourSet(<ref refid="classJSL_1_1gnuplot_1a05ed1200d39f012e829e7a43f472bbaa" kindref="member">GlobalColours</ref>);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="371" refid="classJSL_1_1gnuplot_1a44db9c7322475266928c9829d70e2187" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a44db9c7322475266928c9829d70e2187" kindref="member">SetPalette</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">in</ref>)</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetPalette(<ref refid="structJSL_1_1NameValuePair" kindref="compound">in</ref>);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="376" refid="classJSL_1_1gnuplot_1a8ccee4ee28636d9b9494dba28d26b7d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a8ccee4ee28636d9b9494dba28d26b7d9" kindref="member">SetFontSize</ref>(<ref refid="namespaceJSL_1_1Fonts_1a7a55fcb9c82e5a8c7f98ce1c803d08ee" kindref="member">Fonts::Target</ref><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">target</ref>,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>)</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">target</ref>)</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceJSL_1_1Fonts_1a7a55fcb9c82e5a8c7f98ce1c803d08eead0545c4e33d28a3450f2d7fda228303e" kindref="member">Fonts::Global</ref>:</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1abc845a03e444f2f39bfbfbb3c9a45573" kindref="member">globalFontSize</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>;</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceJSL_1_1Fonts_1a7a55fcb9c82e5a8c7f98ce1c803d08eeacdacd74f88fa721134ee5813ca56b0e3" kindref="member">Fonts::Title</ref>:<sp/></highlight><highlight class="comment">//<sp/>guard<sp/>against<sp/>title<sp/>being<sp/>used<sp/>in<sp/>single<sp/>tile<sp/>mode?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classJSL_1_1gnuplot_1a666ddb205d0cb9c76813e2f8075c1b65" kindref="member">axisCount</ref><sp/>==<sp/>1<sp/>&amp;&amp;<sp/><ref refid="classJSL_1_1gnuplot_1a99581d61b67ad3f0537dca6b041942ba" kindref="member">superTitleFontSize</ref><sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a99581d61b67ad3f0537dca6b041942ba" kindref="member">superTitleFontSize</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetFontSize(<ref refid="structJSL_1_1NameValuePair" kindref="compound">target</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>);</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceJSL_1_1Fonts_1a7a55fcb9c82e5a8c7f98ce1c803d08eea43877ae65c82a120f36e34052714b182" kindref="member">Fonts::SuperTitle</ref>:</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1a99581d61b67ad3f0537dca6b041942ba" kindref="member">superTitleFontSize</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>;</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[<ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>][<ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>].SetFontSize(<ref refid="structJSL_1_1NameValuePair" kindref="compound">target</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>);</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="400" refid="classJSL_1_1gnuplot_1a16e01fe5ebc78d04cb9683d49c2aee91" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classJSL_1_1gnuplot_1a16e01fe5ebc78d04cb9683d49c2aee91" kindref="member">superTitle</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;__null__&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="401" refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;Axis&gt;&gt;<sp/><ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>;<sp/></highlight></codeline>
+<codeline lineno="402" refid="classJSL_1_1gnuplot_1a200e2b9b95ccd38d4f8e019c594b318f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classJSL_1_1gnuplot_1a200e2b9b95ccd38d4f8e019c594b318f" kindref="member">DirName</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="403" refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a102660ecaaece0b2b35e311b530e8b73" kindref="member">axis_x</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="404" refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1acf4f664ab476e047cdbf7f6dd1bfa74e" kindref="member">axis_y</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="405" refid="classJSL_1_1gnuplot_1a4cb279032f4f688412bea6fb3c2e7289" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a4cb279032f4f688412bea6fb3c2e7289" kindref="member">axis_x_max</ref><sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="406" refid="classJSL_1_1gnuplot_1af0aefa22a2dcb30ff3f3b794e3b2749d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1af0aefa22a2dcb30ff3f3b794e3b2749d" kindref="member">axis_y_max</ref><sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="407" refid="classJSL_1_1gnuplot_1a666ddb205d0cb9c76813e2f8075c1b65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a666ddb205d0cb9c76813e2f8075c1b65" kindref="member">axisCount</ref><sp/>=<sp/>1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="408" refid="classJSL_1_1gnuplot_1aa091157be13eeb60c3193ad06aba9b6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classJSL_1_1gnuplot_1aa091157be13eeb60c3193ad06aba9b6f" kindref="member">terminal</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;qt<sp/>0&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="409" refid="classJSL_1_1gnuplot_1a631da60df3e3fb00e2d01c87be4da930" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classJSL_1_1gnuplot_1a631da60df3e3fb00e2d01c87be4da930" kindref="member">output</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;__null__&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="410" refid="classJSL_1_1gnuplot_1a4c5db7bfe99161369b4c2d31ad4d7ece" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classJSL_1_1gnuplot_1a4c5db7bfe99161369b4c2d31ad4d7ece" kindref="member">font</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Geneva&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="411" refid="classJSL_1_1gnuplot_1abc845a03e444f2f39bfbfbb3c9a45573" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1abc845a03e444f2f39bfbfbb3c9a45573" kindref="member">globalFontSize</ref><sp/>=<sp/>14;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="412" refid="classJSL_1_1gnuplot_1a99581d61b67ad3f0537dca6b041942ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a99581d61b67ad3f0537dca6b041942ba" kindref="member">superTitleFontSize</ref><sp/>=<sp/>-1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="413" refid="classJSL_1_1gnuplot_1a2426c9fb055e1c69503166958602e2de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a2426c9fb055e1c69503166958602e2de" kindref="member">defaultSize</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="414" refid="classJSL_1_1gnuplot_1abd2c1a49e45beb3ac554a58694965be2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1abd2c1a49e45beb3ac554a58694965be2" kindref="member">windowWidth</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="415" refid="classJSL_1_1gnuplot_1aa0e38b8208be147845e6708b1aa46a04" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aa0e38b8208be147845e6708b1aa46a04" kindref="member">windowHeight</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="416" refid="classJSL_1_1gnuplot_1a05ed1200d39f012e829e7a43f472bbaa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1ColourArray" kindref="compound">ColourArray</ref><sp/><ref refid="classJSL_1_1gnuplot_1a05ed1200d39f012e829e7a43f472bbaa" kindref="member">GlobalColours</ref>;</highlight></codeline>
+<codeline lineno="418" refid="classJSL_1_1gnuplot_1a0601a115a1052a39a6621e42ec4d4f3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a0601a115a1052a39a6621e42ec4d4f3e" kindref="member">CleanupTempFiles</ref>()</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#ifndef<sp/>GNUPLOT_NO_TIDY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1ae48b92e64fb9d321121df976b770efa6" kindref="member">rm</ref>(<ref refid="classJSL_1_1gnuplot_1a200e2b9b95ccd38d4f8e019c594b318f" kindref="member">DirName</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight></codeline>
+<codeline lineno="426" refid="classJSL_1_1gnuplot_1a275c33fa2dc4fce5a8af1f8d2ec7562d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1a275c33fa2dc4fce5a8af1f8d2ec7562d" kindref="member">InitialiseOutput</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">outName</ref>)</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a47d8cb112d513ee5a3ae38ca6a89743d" kindref="member">initialiseFile</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">outName</ref>);</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">introMessage</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;#This<sp/>is<sp/>a<sp/>temporary<sp/>gnuplot<sp/>script<sp/>constructed<sp/>by<sp/>the<sp/>JSL::gnuplot<sp/>library\n#It<sp/>should<sp/>delete<sp/>itself<sp/>after<sp/>being<sp/>called.<sp/>If<sp/>it<sp/>has<sp/>not,<sp/>then<sp/>an<sp/>error<sp/>has<sp/>occured.<sp/>\n#You<sp/>may<sp/>delete<sp/>this<sp/>file<sp/>and<sp/>the<sp/>directory<sp/>containing<sp/>it<sp/>without<sp/>problem.\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"></highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">introMessage</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;set<sp/>terminal<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="classJSL_1_1gnuplot_1aa091157be13eeb60c3193ad06aba9b6f" kindref="member">terminal</ref>;</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">introMessage</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>font<sp/>\&quot;&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="classJSL_1_1gnuplot_1a4c5db7bfe99161369b4c2d31ad4d7ece" kindref="member">font</ref><sp/>+<sp/></highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="classJSL_1_1gnuplot_1abc845a03e444f2f39bfbfbb3c9a45573" kindref="member">globalFontSize</ref>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\&quot;&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>needed<sp/>because<sp/>mac<sp/>hates<sp/>me</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classJSL_1_1gnuplot_1a2426c9fb055e1c69503166958602e2de" kindref="member">defaultSize</ref>)</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">introMessage</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>size<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="classJSL_1_1gnuplot_1abd2c1a49e45beb3ac554a58694965be2" kindref="member">windowWidth</ref>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="classJSL_1_1gnuplot_1aa0e38b8208be147845e6708b1aa46a04" kindref="member">windowHeight</ref>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">introMessage</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classJSL_1_1gnuplot_1a631da60df3e3fb00e2d01c87be4da930" kindref="member">output</ref><sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;__null__&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">introMessage</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;set<sp/>output<sp/>\&quot;&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="classJSL_1_1gnuplot_1a631da60df3e3fb00e2d01c87be4da930" kindref="member">output</ref><sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>introMessage<sp/>+=<sp/>&quot;set<sp/>terminal<sp/>cairo\n&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a838b3a913896993bc008408d164ec19d" kindref="member">writeStringToFile</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">outName</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">introMessage</ref>);</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"></highlight></codeline>
+<codeline lineno="448" refid="classJSL_1_1gnuplot_1aa35fd7f6ebe1c18ea39d6cdbb12f8aa0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1gnuplot_1aa35fd7f6ebe1c18ea39d6cdbb12f8aa0" kindref="member">WriteMultiplotToFile</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">gpFile</ref>)</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">multiplotInfo</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\nset<sp/>multiplot<sp/>layout<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">multiplotInfo</ref><sp/>+=<sp/>std::to_string(<ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>.size())<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="classJSL_1_1gnuplot_1ae989349518a66a36b8003506b7af48ea" kindref="member">Axes</ref>[0].<ref refid="structJSL_1_1NameValuePair" kindref="compound">size</ref>());</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classJSL_1_1gnuplot_1a16e01fe5ebc78d04cb9683d49c2aee91" kindref="member">superTitle</ref><sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;__null__&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">multiplotInfo</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>title<sp/>\&quot;&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="classJSL_1_1gnuplot_1a16e01fe5ebc78d04cb9683d49c2aee91" kindref="member">superTitle</ref><sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\&quot;&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespaceJSL_1_1Fonts_1a916d4546aed69a1f4da72a0f172dc4a7" kindref="member">Fonts::SizeString</ref>(<ref refid="classJSL_1_1gnuplot_1a99581d61b67ad3f0537dca6b041942ba" kindref="member">superTitleFontSize</ref>);</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">multiplotInfo</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>multiplotInfo<sp/>+=<sp/>&quot;\\\n&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>multiplotInfo<sp/>+=<sp/>&quot;\tmargins<sp/>0.1,0.98,0.1,0.98<sp/>\\\n\t<sp/>spacing<sp/>0.08,0.08\n\n&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a838b3a913896993bc008408d164ec19d" kindref="member">writeStringToFile</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">gpFile</ref>,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">multiplotInfo</ref>);</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="462"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplotMain.h"/>
+  </compounddef>
+</doxygen>

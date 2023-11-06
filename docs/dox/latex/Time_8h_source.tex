@@ -1,0 +1,74 @@
+\doxysection{Time.\+h}
+\hypertarget{Time_8h_source}{}\label{Time_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/Time.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/Time.h}}
+\mbox{\hyperlink{Time_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespaceJSL_ae58b7096986a16b70a27e1609eff3014}{CurrentTime}}()}
+\DoxyCodeLine{00017\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{now}}\ =\ std::chrono::system\_clock::now();}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::time\_t\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{now\_t}}\ =\ std::chrono::system\_clock::to\_time\_t(\mbox{\hyperlink{structJSL_1_1NameValuePair}{now}});}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::ostringstream\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{out}};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\string~\ out\ <<\ "{}Current\ time\ is:\ "{};}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{out}}\ <<\ std::ctime(\&\mbox{\hyperlink{structJSL_1_1NameValuePair}{now\_t}});}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{out}}.str();}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespaceJSL_ad7ff2220bbab0294b95b9aa85332a222}{FormatDuration}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{timeInSeconds}})}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{divisions}}=\ \{\textcolor{stringliteral}{"{}Day"{}},\ \textcolor{stringliteral}{"{}Hour"{}},\ \textcolor{stringliteral}{"{}Minute"{}},\ \textcolor{stringliteral}{"{}Second"{}}\};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{duration}}\ =\ \{86400,\ 3600,\ 60\ ,\ 1\};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::vector<int>\ chunks\ =\ std::vector(0,divisions.size());}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{nothingAdded}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ std::string\ output\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{timeInSeconds}}\ <\ 0)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{timeInSeconds}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{abs}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{timeInSeconds}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}(negative)\ "{}};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ =\ 0;\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}\ <\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{divisions}}.size();\ ++\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}})}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{v}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{timeInSeconds}}\ /\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{duration}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}];}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{timeInSeconds}}\ -\/=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{v}}\ *\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{duration}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}];}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{v}}\ >\ 0)}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{nothingAdded}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ std::to\_string(\mbox{\hyperlink{structJSL_1_1NameValuePair}{v}})\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{divisions}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{i}}];}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{v}}\ >\ 1)}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}s"{}};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structJSL_1_1NameValuePair}{nothingAdded}})}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ output\ =\ \textcolor{stringliteral}{"{}less\ than\ 1\ second"{}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespaceJSL_ae7af96a0311784e019209221335f76d9}{FormatClock}}(std::chrono::time\_point<std::chrono::system\_clock>\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{start}},\ std::chrono::time\_point<std::chrono::system\_clock>\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{end}})}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ std::chrono::duration<double>\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{diff}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{end}}\ -\/\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{start}};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{seconds}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{diff}}.count();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespaceJSL_ad7ff2220bbab0294b95b9aa85332a222}{FormatDuration}}(\mbox{\hyperlink{structJSL_1_1NameValuePair}{seconds}});}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \}}
+
+\end{DoxyCode}
