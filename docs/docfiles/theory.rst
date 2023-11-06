@@ -4,6 +4,11 @@
 Theory of Operation
 #####################
 
+When a genome is sequenced and aligned against a reference, a number of portions of the DNA can vary drastically vary from the reference - this can be due to normal variations in DNA between individuals, or due to substantial variations such as caused by genetic diseases or cancer. 
+
+One potential structural variation can be that a region of DNA is either duplicated (potentially multiple times) or deleted from one or both copies of a chromosome, resulting in Copy Number Variations. When the size of the region which has been duplicated or deleted is shorter than the length of the reads used to perform the sequencing, this difference can be resolved by the alignment tool. If, however, the anomalous region is *larger* than the average read size, then the tools will instead register this as a variation in coverage, with only the (small number of) reads which cross the boundary between copies being evidence to the contrary.
+
+The image below shows how an increase in coverage is evidence of a duplicated region with respect to the reference.
 
 .. tikz:: A demonstration of coverage-aliased copy numbers
 	
@@ -86,4 +91,32 @@ Theory of Operation
 		(3.1,{\plotheight+0.5}) (3.3,{\plotheight+0.6}) (3.5,{\plotheight+0.4}) (3.8,{\plotheight+0.7}) (4,{\plotheight+0.3}) (4.5,{\plotheight+0.6})  (5,{\plotheight+0.5})    
 		};
 
-Some text here to make it work
+********************
+The Challenge
+********************
+
+	A given coverage file is, however, extremely noisy, even when using high-fidelity long read platforms. Whilst the human eye can pick out certain large scale patterns on a chromosomal scale, the exact criteria for what can be considered a genuine CNV and what is merely noise can be somewhat difficult to distinguish. 
+
+	One potential solution would be to pass a basic smoothing filter over the coverage data, thereby "denoising" it. 
+
+	However, a smoothing operation is in fact antithetical to what we are attempting to find, which is **sharp transition edges** between regions of different multiplicity. A smoothing kernel, by definition, obscures those edges and can entirely eliminate smaller scale transitions should the smoothing length scale be larger than the length scale over which multiplicity can vary.
+
+	The Deforester tool is a method by which these transition edges can be located, without smoothing out all of the information of interest.
+
+********************
+Underlying Theory
+********************
+
+	The Deforester tool (so named because it reduces the "forest" of coverage data into a singular "tree") works on a series of successive Bayesian Inferences. Bayes' Theorem says that, given data :math:`D`, a hypothesis :math:`H_1` is better than the hypothesis :math:`H_2` if it meets the criteria:
+
+	.. math::
+
+		\frac{p(D | H_1) \text{prior}(H_1)}{p(D|H_2) \text{prior}(H_2)} > 1
+
+	For convenience, we often work in logarithmic space, in which case the relationship is more easily expressed as:
+
+	.. math::
+
+		\mathfrak{p}(D|H_1) + \log(\text{prior}(H_1) > \mathfrak{p}(D|H_2) + \log(\text{prior}(H_2)
+
+	Where :math:`\matfrak{p}` is the log-probability of observing the data if the hypothesis were true, and :math:`\text{prior}(H)` is the *prior probability* we have that :math:`H` is true, before we looked at the data.
