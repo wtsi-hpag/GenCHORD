@@ -47,7 +47,7 @@ breathe_projects = {
     }
 breathe_default_project = "deforester"
 breathe_default_members = ('members', 'undoc-members')
-
+tikz_tikzlibraries = {'patterns'}
 latex_elements = {
 'preamble': '\\usepackage{tikz}',
 }
