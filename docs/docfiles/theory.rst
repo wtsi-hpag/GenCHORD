@@ -6,15 +6,14 @@ Theory of Operation
 
 
 .. tikz:: A demonstration of coverage-aliased copy numbers
+	
 	\node[anchor=east] at (0,0.05) {True genome:};
 	\fill (0,0) rectangle (2,0.1);
 	\fill[blue] (2,0) rectangle (3,0.1);
 	\fill[blue,pattern=north west lines, pattern color=blue] (3,0) rectangle (4,0.1);
 	\fill (4,0) rectangle (6,0.1);
-
 	\def\readheight{-1}
 	\node[anchor=east] at (0,{\readheight-0.05}) {Reads:};
-
 	\foreach[count=\i] \x in {0.3,1,1.4,1.8,2.2,2.5,2.8,3.3,3.7,4.1,4.7,5.1,5.3,5.6}
 	{
 		\fill[green!50!black] (\x,\readheight) rectangle ({\x+0.2},{\readheight -0.05});
