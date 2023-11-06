@@ -2,7 +2,9 @@ Data/
 deforest
 # Prerequisites
 *.d
-
+*.vscode
+*.DS*
+Output/
 # Compiled Object files
 *.slo
 *.lo
