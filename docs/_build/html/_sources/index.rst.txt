@@ -4,10 +4,13 @@
 Deforester's Documentation
 ===============================
 
-The JSL ('Jack Standard Library') is a set of tools developed by me (Jack Fraser) as a uniform, useful set of boilerplate code I found myself duplicating across numerous C++ projects. It is probably of no use to anyone else, but if you have found your way here, it is probably from one of the projects which utilised this library. 
+The Deforester is a tool for inferring the average copy-number of large contiguous blocks of sequences within a genome from the raw coverage data, using Bayesian methods to infer the underlying stochastic parameters and hence extract a moving average, which is constrained to integer multiples of a fundamental frequency.
 
-Even more likely, you are in fact me, reading this a year or two down the line wondering "what on Earth did you do?". If so, I am sorry. 
+This tool was designed for analysing Chromothripsis in conjunction with the `steppingStone <https://github.com/wtsi-hpag/steppingStone>`_, but has applications outside of that usecase. 
+
+The tool has been verified to work on data from both long and short read platforms.
 
 .. toctree::
+	docfiles/theory
 	:maxdepth: 2
 	:caption: Contents:

@@ -39,6 +39,7 @@ extensions = [ 'sphinx.ext.autodoc',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.inheritance_diagram',
+	'sphinxcontrib.tikz',
     'breathe'
 ]
 breathe_projects = {
@@ -46,6 +47,11 @@ breathe_projects = {
     }
 breathe_default_project = "deforester"
 breathe_default_members = ('members', 'undoc-members')
+
+latex_elements = {
+'preamble': '\\usepackage{tikz}',
+}
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 

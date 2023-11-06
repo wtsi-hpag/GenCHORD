@@ -15,7 +15,8 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Theory of Operation" href="docfiles/theory.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -23,6 +24,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="docfiles/theory.html" title="Theory of Operation"
+             accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">Deforester 0.1 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Deforester’s Documentation</a></li> 
       </ul>
@@ -35,9 +39,14 @@
             
   <section id="deforester-s-documentation">
 <h1>Deforester’s Documentation<a class="headerlink" href="#deforester-s-documentation" title="Link to this heading">¶</a></h1>
-<p>The JSL (‘Jack Standard Library’) is a set of tools developed by me (Jack Fraser) as a uniform, useful set of boilerplate code I found myself duplicating across numerous C++ projects. It is probably of no use to anyone else, but if you have found your way here, it is probably from one of the projects which utilised this library.</p>
-<p>Even more likely, you are in fact me, reading this a year or two down the line wondering “what on Earth did you do?”. If so, I am sorry.</p>
+<p>The Deforester is a tool for inferring the average copy-number of large contiguous blocks of sequences within a genome from the raw coverage data, using Bayesian methods to infer the underlying stochastic parameters and hence extract a moving average, which is constrained to integer multiples of a fundamental frequency.</p>
+<p>This tool was designed for analysing Chromothripsis in conjunction with the <a class="reference external" href="https://github.com/wtsi-hpag/steppingStone">steppingStone</a>, but has applications outside of that usecase.</p>
+<p>The tool has been verified to work on data from both long and short read platforms.</p>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docfiles/theory.html">Theory of Operation</a></li>
+</ul>
 </div>
 </section>
 
@@ -48,6 +57,11 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="docfiles/theory.html"
+                          title="next chapter">Theory of Operation</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -75,6 +89,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="docfiles/theory.html" title="Theory of Operation"
+             >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">Deforester 0.1 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Deforester’s Documentation</a></li> 
       </ul>
