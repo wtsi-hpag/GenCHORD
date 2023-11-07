@@ -3,11 +3,11 @@
 #include <mutex>
 #include <vector>
 #include <iostream>
-#include "data.h"
+#include "../data.h"
 #include <algorithm>
 #include <random>
-#include "Transitions.h"
-#include "HarmonicFunctions.h"
+#include "../Transitions.h"
+#include "../HarmonicBayes/HarmonicFunctions.h"
 class ErroredBinomial;
 
 

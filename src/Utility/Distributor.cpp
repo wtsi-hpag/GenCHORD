@@ -1,5 +1,4 @@
 #include "Distributor.h"
-#include "NegativeBinomial.h"
 
 std::mutex mtx;
 

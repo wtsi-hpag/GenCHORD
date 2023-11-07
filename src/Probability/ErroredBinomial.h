@@ -1,40 +1,14 @@
 #pragma once
 #include <vector>
-#include "logFactorial.h"
-#include "basicFunctions.h"
+#include "../Utility/logFactorial.h"
+#include "../Utility/basicFunctions.h"
 #include <iostream>
-#include "Distributor.h"
+#include "../Utility/Distributor.h"
+#include "NegativeBinomial.h"
+#include "TruncatedGaussian.h"
 #include <algorithm>
 
 class Distributor;
-
-class NegativeBinomial
-{
-	private:
-		double Sigma;
-		int Kmax;
-		LogFactorial LogFac;
-		int Resolution;
-	public:
-		double dMu;
-		double muMax;
-		std::vector<std::vector<double>> PureData;
-		
-		NegativeBinomial(int kMax, int resolution,double maxMu);
-		void Populate(double sigma);
-		// ~NegativeBinomial();
-};
-
-class TruncatedGaussian
-{
-	private:
-	public:
-		int Truncator;
-		std::vector<std::vector<double>> PureData;
-		int KMax;
-		TruncatedGaussian(int kMax, int bounder);
-		void Populate(double gamma);
-};
 
 struct EB_Bracket
 {
@@ -81,4 +55,3 @@ class ErroredBinomial
 
 		double GetProb(int q, int k);
 };
-

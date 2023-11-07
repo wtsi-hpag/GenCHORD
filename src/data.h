@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "basicFunctions.h"
-#include "JSL.h"
+#include "Utility/basicFunctions.h"
+#include "../libs/JSL/JSL.h"
 
 #define chr_int int //change this definition to long long int for very long chromsomed individuals
 
@@ -43,20 +43,6 @@ struct Chromosome
 		}
 	}
 };
-
-
-// void GapCheck(std::string dataFile)
-// {
-// 	long long int i = 0;
-// 	std::vector<std::string> name;
-// 	std::vector<chr_int> idx;
-// 	std::vector<int> coverage;
-
-// 	forLineVectorIn(target, ' ',
-// 		std::string name = FILE_LINE_VECTOR[0];
-// 		std::string 
-// 	);
-// }
 
 
 struct Data

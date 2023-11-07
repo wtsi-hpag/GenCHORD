@@ -24,7 +24,7 @@ DEPENDENCY_OPTIONS =  -MM -std=c++17 -Ilibs/JSL -pthread
 #-- Do not edit below this line --
 
 # Subdirs to search for additional source files
-SUBDIRS := $(shell ls src | grep "\/" )
+SUBDIRS := $(shell ls -F src  | grep "\/" )
 DIRS := ./ $(SUBDIRS)
 SOURCE_FILES := $(foreach d, $(DIRS), $(wildcard src/$(d)*.cpp) )
 

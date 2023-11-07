@@ -1,5 +1,5 @@
 #pragma once
-#include "JSL.h"
+#include "../libs/JSL/JSL.h"
 
 extern bool globalRegress;
 class Settings

@@ -1,8 +1,8 @@
 #pragma once
-#include "settings.h"
-#include "Transitions.h"
-#include "data.h"
-#include "NegativeBinomial.h"
+#include "../settings.h"
+#include "../Transitions.h"
+#include "../data.h"
+#include "../Probability/ErroredBinomial.h"
 
 class ErroredBinomial;
 

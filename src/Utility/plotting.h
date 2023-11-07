@@ -1,8 +1,8 @@
 #pragma once
-#include "JSL.h"
-#include "data.h"
-#include "Transitions.h"
-#include "settings.h"
+#include "../../libs/JSL/JSL.h"
+#include "../data.h"
+#include "../Transitions.h"
+#include "../settings.h"
 extern int nPlot;
 void basicPlot(JSL::gnuplot & gp,Data & d,int chrom);
 
