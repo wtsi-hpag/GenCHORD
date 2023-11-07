@@ -77,7 +77,7 @@ class Tree
 			{
 				//work out best assignment
 				int bestQ = -1;
-				int L = 50000;
+				int L = 5000;
 				double bestScore;
 
 				
@@ -96,7 +96,7 @@ class Tree
 
 						if (testQ != q)
 						{
-							testScore += -2;
+							testScore += -0.2;
 						}
 						if (testQ != 2)
 						{
@@ -115,7 +115,10 @@ class Tree
 
 
 				// std::cout << "Pushing " << bestQ << " to " << q << std::endl;
-				Paths[q] = PreviousPaths[bestQ];
+				if (bestQ!= q)
+				{
+					Paths[q] = PreviousPaths[bestQ];
+				}
 				Paths[q].Add(coord,q,bestScore);
 			}
 		}
