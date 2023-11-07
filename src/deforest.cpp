@@ -1,4 +1,4 @@
-// #define GNUPLOT_NO_TIDY
+#define GNUPLOT_NO_TIDY
 #include "../libs/JSL/JSL.h"
 #include "Utility/plotting.h"
 #include "Utility/basicFunctions.h"
@@ -6,6 +6,8 @@
 // #include "basicSmooth.h"
 #include "Utility/logFactorial.h"
 #include "HarmonicBayes/harmonicFit.h"
+
+#include "HarmonicTree/tree.h"
 #include "settings.h"
 #include <chrono>
 using namespace std::chrono;
@@ -33,9 +35,11 @@ int main(int argc, char**argv)
 	if (!settings.PlotOnly)
 	{
 		d = Data(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
-		HarmonicFit(d,settings);
-		settings.DataFile = settings.OutputName;
-		OutputPlot(d,settings);
+
+		TreeAssign(d,settings);
+		// HarmonicFit(d,settings);
+		// settings.DataFile = settings.OutputName;
+		// OutputPlot(d,settings);
 	}
 	else
 	{
