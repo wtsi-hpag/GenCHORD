@@ -15,40 +15,39 @@ int nPlot = 8;
 bool globalRegress = true;
 int main(int argc, char**argv)
 {
-	std::cout << ale(5,10) << std::endl;
-	// JSL::Argument<std::string> configFile("__none__","config",argc,argv);
+	JSL::Argument<std::string> configFile("__none__","config",argc,argv);
 
-	// Settings settings;
-	// if (configFile.Value == "__none__")
-	// {
-	// 	settings.Initialise(argc,argv);
-	// }
-	// else
-	// {
-	// 	settings.Initialise(configFile.Value);
-	// }
-	// globalVerbose = !settings.Quiet;
-	// Log("==========================================\n\tCoverage Deforesting\n==========================================" << std::endl);
+	Settings settings;
+	if (configFile.Value == "__none__")
+	{
+		settings.Initialise(argc,argv);
+	}
+	else
+	{
+		settings.Initialise(configFile.Value);
+	}
+	globalVerbose = !settings.Quiet;
+	Log("==========================================\n\tCoverage Deforesting\n==========================================" << std::endl);
 	
-	// Data d;
-	// if (!settings.PlotOnly)
-	// {
-	// 	d = Data(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
-	// 	HarmonicFit(d,settings);
-	// 	settings.DataFile = settings.OutputName;
-	// 	OutputPlot(d,settings);
-	// }
-	// else
-	// {
-	// 	if (settings.ComparePlot == "__none__")
-	// 	{
-	// 		OutputPlot(d,settings);
-	// 	}
-	// 	else
-	// 	{
-	// 		ComparisonPlots(settings);
-	// 	}
-	// }
+	Data d;
+	if (!settings.PlotOnly)
+	{
+		d = Data(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
+		HarmonicFit(d,settings);
+		settings.DataFile = settings.OutputName;
+		OutputPlot(d,settings);
+	}
+	else
+	{
+		if (settings.ComparePlot == "__none__")
+		{
+			OutputPlot(d,settings);
+		}
+		else
+		{
+			ComparisonPlots(settings);
+		}
+	}
 
-	// Log("Deforest routine completed. Have a nice day.\n\n")
+	Log("Deforest routine completed. Have a nice day.\n\n")
 }
