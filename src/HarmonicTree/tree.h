@@ -77,7 +77,7 @@ class Tree
 			{
 				//work out best assignment
 				int bestQ = -1;
-				int L = 5000;
+				int L = 50000;
 				double bestScore;
 
 				
@@ -96,11 +96,11 @@ class Tree
 
 						if (testQ != q)
 						{
-							testScore += -0.2;
+							testScore += -1;
 						}
 						if (testQ != 2)
 						{
-							testScore += log(0.99);
+							testScore += log(0.4);
 						}
 						// if ()
 						if (forceFirst || testScore > bestScore)
@@ -143,8 +143,8 @@ class Tree
 
 void TreeAssign(Data & d, Settings & s)
 {
-	double nu = 30.5;
-	double gamma = 5;
+	double nu = 30;
+	double gamma = 1;
 	int cm = 1;//d.Chromosomes.size();
 	for (int c = 0; c < cm; ++c)
 	{

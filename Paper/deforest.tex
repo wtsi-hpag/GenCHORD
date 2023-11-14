@@ -6,8 +6,9 @@
 \usepackage[greek,english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usetikzlibrary{decorations.pathreplacing,calligraphy,patterns}
-\usepackage{../Papers/JML}
+\usepackage{../../Papers/JML}
 
 
 
@@ -301,6 +302,204 @@
 					\item Start with $\nu = 1$ (or other small value)
 					\item Assign $q$s across the dataset without using 
 				\end{itemize}
+
+
+		\subsection{Attempt 4: Harmonic Network}
+
+
+			The Harmonic fitting method shows a vast improvement over the previous iteration - however it still suffers from a number of drawbacks, mostly associated with the somewhat dubious means by which the Bayesian tests were `bootstrapped' from each other (technically each successive probability should be fully conditioned on the previous set, rather than just stuffing that all into a simplistic prior).
+
+			The Harmonic Network method is an attempt to a) make the assignment robust and mathematically sound and b) devise a method which is conceptually easier to understand and follow. 
+
+			For this reason, we therefore find it much more convenient to think of the assignment of the harmonics to the genome as a \textit{network}, such that finding the optimal assignment is equivalent to finding the shortest path through the network.
+
+			\begin{figure}
+				\begin{center}
+					\resizebox{\linewidth}{!}{ 
+					\begin{tikzpicture}
+						
+						\node[anchor=east] at (-2,0) {Data:};
+						\draw (0,0)--++(3,0);
+						\node at (3.5,0) {\large ...};
+						\draw (4,0)--++(3,0);
+						\def\w{0.65}
+						\foreach \i in {1,...,3}
+						{
+							% \draw[fill=white] (\i-1,0) circle (0.35);
+							\draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+							\node at (\i-1,0) {$k_\i$};
+						}
+						
+						
+						\foreach \i in {1,...,2}
+						{
+							\draw[fill=white] ({\i+4-\w/2},{\w/2})--({\i+4+\w/2},{\w/2})--({\i+4+\w/2},{-\w/2})--({\i+4-\w/2},{-\w/2})--cycle;
+							\node at ({4+\i},0) {$k_{L+\i}$};
+						}
+						
+						\def\fac{0.85}
+						
+						\foreach \q in {0,...,4}
+						{
+							\def\y{\fac*\q+1}
+							\if\q2
+							\else
+								\draw[dashed,blue] (1,{2*\fac+1})--(6,\y);
+							\fi
+							\if\q1
+							\else
+							\draw[dotted,red] (0,{1*\fac+1})--(5,\y);
+							\fi
+							% \if\q4
+							% \else
+							% \draw[dashdotted,green] (0,{4*\fac+1})--(5,\y);
+							% \fi
+
+						}
+						\foreach \q in {0,...,4}
+						{
+							\def\y{\fac*\q+1}
+							\draw (-0.95,{2*\fac+1})--(-0.35,\y)--(2.75,\y);
+							\draw (4.25,\y)--(6,\y);
+							\node[anchor=east] at (-2,\y) {$q=\q$};
+							\foreach \i in {1,...,4}
+							{
+								\if\i4
+									\def\c{gray!10!white}
+									\draw[\c] (\i-1.5,\y)--++(2,0);
+									\draw[\c,fill=white] (\i-0.5,\y) circle (0.35);
+								\else
+									\draw[fill=white] (\i-1,\y) circle (0.35);
+									% \draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+									\node at (\i-1,\y) {\tiny $p_{\i\q}$};
+								\fi
+								
+							}
+							\foreach \i in {1,...,3}
+							{
+								\if\i3
+									\def\c{gray!10!white}
+									\draw[\c] (\i+3,\y)--++(1,0)--(8,{2*\fac+1});
+									\draw[\c,fill=white] (\i+4,\y) circle (0.35);
+								\else
+									\draw[fill=white] (\i+4,\y) circle (0.35);
+									\node at (\i+4,\y) {\tiny $p_{L+\i,\q}$};
+								\fi
+								% \draw[fill=white] ({\i+4-\w/2},{\w/2})--({\i+4+\w/2},{\w/2})--({\i+4+\w/2},{-\w/2})--({\i+4-\w/2},{-\w/2})--cycle;
+								% \node at ({4+\i},0) {$k_{L+\i}$};
+							}
+							
+						}
+						\draw[fill=white] (-1.25,{2*\fac+1}) circle (0.35);
+						\node at (-1.25,{2*\fac+1}) {Start};
+						\draw[fill=white] (8.25,{2*\fac+1}) circle (0.35);
+						\node at (8.25,{2*\fac+1}) {End};
+
+
+						
+					\end{tikzpicture}
+					}
+					\caption{An example of a harmonic network -- only two `jump vertices' are shown (in red and blue) for clarity. In the full network, every node $p_{iq}$ is connected to $p_{i+1,q}$ and $p_{i+L,k\neq q}$. The graph is directional - vertices can only be traversed from left to right.}
+				\end{center}
+			\end{figure}
+
+
+			\begin{figure}
+				\begin{center}
+					\resizebox{\linewidth}{!}{ 
+					\begin{tikzpicture}
+						
+					%%network 
+						\node[anchor=east] at (-2,0) {Data:};
+						\draw (0,0)--++(7,0);
+						\def\w{0.65}
+						\foreach[count=\i] \j in {10,9,11,6,5,7,22,20}
+						{
+							% \draw[fill=white] (\i-1,0) circle (0.35);
+							\draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+							\node at (\i-1,0) {$\j$};
+						}
+						
+						
+						
+						\def\fac{0.85}
+						\foreach \q in {0,...,4}
+						{
+							\def\y{\fac*\q+1}
+							\draw[black!30!white] (-0.95,{2*\fac+1})--(-0.35,\y)--(7.25,\y)--(8,{2*\fac+1});
+
+							\foreach \i in {0,...,5}
+							{
+								\foreach \qq in {0,...,4}
+								{
+									\if\q\qq
+
+									\else
+										\draw[black!30!white] (\i,{\q*\fac+1})--(\i+2,{\qq*\fac+1});
+									\fi
+								}
+							}
+						}
+
+						\draw[red,thick] (-0.95,{2*\fac+1})--(2.25,{2*\fac+1})--(3.75,{\fac+1})--(5,{\fac+1})--++(0.3,0)--(6.65,{4*\fac+1})--(7.25,{4*\fac+1})--(8,{2*\fac+1});
+						
+						\foreach \q in {0,...,4}
+						{
+							\def\y{\fac*\q+1}
+							% \draw (4.25,\y)--(6,\y);
+							\node[anchor=east] at (-2,\y) {$q=\q$};
+							\foreach \i in {1,...,8}
+							{
+								
+								\draw[fill=white] (\i-1,\y) circle (0.35);
+								% \draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+								\node at (\i-1,\y) {\tiny $p_{\i\q}$};
+			
+							}
+							
+							
+						}
+						\draw[fill=white] (-1.25,{2*\fac+1}) circle (0.35);
+						\node at (-1.25,{2*\fac+1}) {Start};
+						\draw[fill=white] (8.25,{2*\fac+1}) circle (0.35);
+						\node at (8.25,{2*\fac+1}) {End};
+
+					%%plot
+						\begin{axis}[width=9.75cm,xlabel={Base Coordinate},ylabel={Coverage},at={(-0.5cm,-8cm)},scatter/classes={%
+							a={mark=o,fill=black}}]
+							\addplot[only marks,scatter src=explicit symbolic] table[row sep=crcr]{
+								x y label \\
+								1 10 a\\
+								2 10 a\\
+								3 11 a\\
+								4 6 a\\
+								5 5 a\\
+								6 7 a\\
+								7 22 a\\
+								8 20 a\\
+							};
+
+							\addplot[red] table[row sep=crcr]{
+								x y label \\
+								1 10 a\\
+								2 10 a\\
+								3 10 a\\
+								3.5 10 a\\
+								3.5 5 a\\
+								5 5 a\\
+								6 5 a\\
+								6.5 5 a\\
+								6.5 20 a\\
+								8 20 a\\
+							};
+							
+							
+						\end{axis}
+					\end{tikzpicture}
+					}
+					\caption{(Top panel) A demonstration of an optimal path through a network with $L=2$ and $\nu=5$, given some example coverage data. (Bottom panel) a projection of this path back onto the coverage distribution. For aesthetic reasons we have placed the transitions at half-integers -- in practice non-integer values of base index are meaningless.}
+				\end{center}
+			\end{figure}
 		% \section{Harmonic Tree}
 
 		% 	The Harmonic approach shows a vast improvement over the other methods -- however it still has a number of issues -- primarily revolving around the `smoothing' aspect. Simply put: the most obvious (continuous) ways of enforcing smoothness tends to be to `bind' subsequent points together with a 'cost function' associated with moving away from the surrounding points. 
@@ -357,20 +556,20 @@
 		% 		\caption{A demonstration of how the different probability models assign slightly different values of the resonance $q$ given otherwise identical parameters -- as expected, this mostly occurs at the borders of where a transition occurs. The only truly notable difference is the `Error Prone Method', in which we sum over nearby $k^\prime$, in that this permits non-zero values of $k$ to be considered for the zeroth order resonance -- the other methods preclude considering any $k>0$ (or any gap containing $k>0$) as the zeroth resonance, which can lead the model to assume that deleted regions have not been deleted.}
 		% 	\end{figure}
 
-	\subsubsection{An Alternative Formulation}
+	% \subsubsection{An Alternative Formulation}
 
-			We have formulated this approach in terms of a series of Bayesian Inferences -- though this is far from the only way to think about what we are doing here. 
+	% 		We have formulated this approach in terms of a series of Bayesian Inferences -- though this is far from the only way to think about what we are doing here. 
 
-			An equally valid approach would be to consider this as a curve fitting exercise, where the functional form we are attempting to fit is:
+	% 		An equally valid approach would be to consider this as a curve fitting exercise, where the functional form we are attempting to fit is:
 
-			\begin{spalign}
-				f(x| \{q_i, \nu, t_i \}) & = \nu \left(q_0 + \sum_i^N (q_i - q_{i-1}) \theta(x - t_i)) \right)
-				\\
-				q_i \in \mathbb{Z}_0
-				\\
-				\nu, t_i \in \mathbb{R}
-			\end{spalign}
-			That is, the function can be thought of a series of Heaviside Step functions ($\theta(x)$) - the Harmonic restriction can clearly be seen once again in the restriction that $q \in \mathbb{Z}_0$, i.e. it must be an integer (or zero).
+	% 		\begin{spalign}
+	% 			f(x| \{q_i, \nu, t_i \}) & = \nu \left(q_0 + \sum_i^N (q_i - q_{i-1}) \theta(x - t_i)) \right)
+	% 			\\
+	% 			q_i \in \mathbb{Z}_0
+	% 			\\
+	% 			\nu, t_i \in \mathbb{R}
+	% 		\end{spalign}
+	% 		That is, the function can be thought of a series of Heaviside Step functions ($\theta(x)$) - the Harmonic restriction can clearly be seen once again in the restriction that $q \in \mathbb{Z}_0$, i.e. it must be an integer (or zero).
 
-			The mechanism for finding the most likely value of the curve parameters is identical to those we have previously discussed, however by fixing $N$ as some large number this provides a fixed-length encoding, ideal for input into a neural network.
+	% 		The mechanism for finding the most likely value of the curve parameters is identical to those we have previously discussed, however by fixing $N$ as some large number this provides a fixed-length encoding, ideal for input into a neural network.
 \end{document}

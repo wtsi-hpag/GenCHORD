@@ -128,27 +128,185 @@ Underlying Theory
 Algorithmic Overview
 ======================
 
-	As a brief summary of the algorithm used to compute the `tree` from the raw data:
+	.. tikz:: A demonstration of the network-based approach
+
+		\node[anchor=east] at (-2,0) {Data:};
+		\draw (0,0)--++(3,0);
+		\node at (3.5,0) {\large ...};
+		\draw (4,0)--++(3,0);
+		\def\w{0.65}
+		\foreach \i in {1,...,3}
+		{
+			% \draw[fill=white] (\i-1,0) circle (0.35);
+			\draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+			\node at (\i-1,0) {$k_\i$};
+		}
+		\foreach \i in {1,...,2}
+		{
+			\draw[fill=white] ({\i+4-\w/2},{\w/2})--({\i+4+\w/2},{\w/2})--({\i+4+\w/2},{-\w/2})--({\i+4-\w/2},{-\w/2})--cycle;
+			\node at ({4+\i},0) {$k_{L+\i}$};
+		}
+		\def\fac{0.85}
+		\foreach \q in {0,...,4}
+		{
+			\def\y{\fac*\q+1}
+			\if\q2
+			\else
+				\draw[dashed,blue] (1,{2*\fac+1})--(6,\y);
+			\fi
+			\if\q1
+			\else
+			\draw[dotted,red] (0,{1*\fac+1})--(5,\y);
+			\fi
+			% \if\q4
+			% \else
+			% \draw[dashdotted,green] (0,{4*\fac+1})--(5,\y);
+			% \fi
+
+		}
+		\foreach \q in {0,...,4}
+		{
+			\def\y{\fac*\q+1}
+			\draw (-0.95,{2*\fac+1})--(-0.35,\y)--(2.75,\y);
+			\draw (4.25,\y)--(6,\y);
+			\node[anchor=east] at (-2,\y) {$q=\q$};
+			\foreach \i in {1,...,4}
+			{
+				\if\i4
+					\def\c{gray!10!white}
+					\draw[\c] (\i-1.5,\y)--++(2,0);
+					\draw[\c,fill=white] (\i-0.5,\y) circle (0.35);
+				\else
+					\draw[fill=white] (\i-1,\y) circle (0.35);
+					% \draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+					\node at (\i-1,\y) {\tiny $p_{\i\q}$};
+				\fi
+				
+			}
+			\foreach \i in {1,...,3}
+			{
+				\if\i3
+					\def\c{gray!10!white}
+					\draw[\c] (\i+3,\y)--++(1,0)--(8,{2*\fac+1});
+					\draw[\c,fill=white] (\i+4,\y) circle (0.35);
+				\else
+					\draw[fill=white] (\i+4,\y) circle (0.35);
+					\node at (\i+4,\y) {\tiny $p_{L+\i,\q}$};
+				\fi
+				% \draw[fill=white] ({\i+4-\w/2},{\w/2})--({\i+4+\w/2},{\w/2})--({\i+4+\w/2},{-\w/2})--({\i+4-\w/2},{-\w/2})--cycle;
+				% \node at ({4+\i},0) {$k_{L+\i}$};
+			}
+			
+		}
+		\draw[fill=white] (-1.25,{2*\fac+1}) circle (0.35);
+		\node at (-1.25,{2*\fac+1}) {Start};
+		\draw[fill=white] (8.25,{2*\fac+1}) circle (0.35);
+		\node at (8.25,{2*\fac+1}) {End};
+
+		As a brief summary of the algorithm used to compute the `tree` from the raw data:
 
 	- First, compute the most likely value of the hyperparameters of the model (:math:`\gamma, \sigma, \nu`)
-	- Iterate through the genome, one chromosome at a time
-		- Iterate through each chromosome, one base at a time
-		- At each base :math:`i`, compute the most likely harmonic for the range :math:`[i,i+L]`
-			- If the harmonic is the previous base, increment :math:`i \to i+1` and repeat
-			- If the harmonic is different:
-				- Perform a Bayesian test to ensure validity
-				- Refined the search window to locate the exact edge location
-				- Increment :math:`i \to i +L` and repeat
+	- Generate a layered network, where each layer corresponds to a given base, and each node in the layer corresponds to a given value of :math:`q`
+		- A node :math:`n_{iq}` is associated with base :math:`i` having mean coverage :math:`q\nu`
+		- From the node :math:`n_{iq}`, you can travel to either :math:`n_{i+1,q}` or :math:`n_{i+L,p\neq q}` 
+			- The vertex :math:`n_{iq} \to n_{i+1q}` has cost :math:`\mathfrak{p}(k_{i+1} = q | \gamma,\sigma,\nu)`
+			- The vertex  :math:`n_{iq} \to n_{i+L,p\neq q}` costs:
+			
+			:math:`\sum_{j=i+1}^{i+L}\mathfrak{p}(k_{j} = p | \gamma,\sigma,\nu) + \text{Prior}(\text{jump})`
 
+	- Compute the minimal path through this network
+	- Convert this path back into coverage/harmonic space
+
+	.. tikz:: An example of an optimal path through a network: the end result of the algorithm
+		\node[anchor=east] at (-2,0) {Data:};
+		\draw (0,0)--++(7,0);
+		\def\w{0.65}
+		\foreach[count=\i] \j in {10,9,11,6,5,7,22,20}
+		{
+			% \draw[fill=white] (\i-1,0) circle (0.35);
+			\draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+			\node at (\i-1,0) {$\j$};
+		}
+		\def\fac{0.85}
+		\foreach \q in {0,...,4}
+		{
+			\def\y{\fac*\q+1}
+			\draw[black!30!white] (-0.95,{2*\fac+1})--(-0.35,\y)--(7.25,\y)--(8,{2*\fac+1});
+			\foreach \i in {0,...,5}
+			{
+				\foreach \qq in {0,...,4}
+				{
+					\if\q\qq
+						\draw (0,0)--(0,0);
+					\else
+						\draw[black!30!white] (\i,{\q*\fac+1})--(\i+2,{\qq*\fac+1});
+					\fi
+				}
+			}
+		}
+		\draw[red,thick] (-0.95,{2*\fac+1})--(2.25,{2*\fac+1})--(3.75,{\fac+1})--(5,{\fac+1})--++(0.3,0)--(6.65,{4*\fac+1})--(7.25,{4*\fac+1})--(8,{2*\fac+1});
+		\foreach \q in {0,...,4}
+		{
+			\def\y{\fac*\q+1}
+			% \draw (4.25,\y)--(6,\y);
+			\node[anchor=east] at (-2,\y) {$q=\q$};
+			\foreach \i in {1,...,8}
+			{		
+				\draw[fill=white] (\i-1,\y) circle (0.35);
+				% \draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+				\node at (\i-1,\y) {\tiny $p_{\i\q}$};
+			}
+		}
+		\draw[fill=white] (-1.25,{2*\fac+1}) circle (0.35);
+		\node at (-1.25,{2*\fac+1}) {Start};
+		\draw[fill=white] (8.25,{2*\fac+1}) circle (0.35);
+		\node at (8.25,{2*\fac+1}) {End};
+		\def\fac{0.85}
+		\foreach \q in {0,...,4}
+		{
+			\def\y{\fac*\q+1}
+			\draw[black!30!white] (-0.95,{2*\fac+1})--(-0.35,\y)--(7.25,\y)--(8,{2*\fac+1});
+			\foreach \i in {0,...,5}
+			{
+				\foreach \qq in {0,...,4}
+				{
+					\if\q\qq
+						\draw (0,0)--(0,0);
+					\else
+						\draw[black!30!white] (\i,{\q*\fac+1})--(\i+2,{\qq*\fac+1});
+					\fi
+				}
+			}
+		}
+		\draw[red,thick] (-0.95,{2*\fac+1})--(2.25,{2*\fac+1})--(3.75,{\fac+1})--(5,{\fac+1})--++(0.3,0)--(6.65,{4*\fac+1})--(7.25,{4*\fac+1})--(8,{2*\fac+1});
+		\foreach \q in {0,...,4}
+		{
+			\def\y{\fac*\q+1}
+			% \draw (4.25,\y)--(6,\y);
+			\node[anchor=east] at (-2,\y) {$q=\q$};
+			\foreach \i in {1,...,8}
+			{		
+				\draw[fill=white] (\i-1,\y) circle (0.35);
+				% \draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+				\node at (\i-1,\y) {\tiny $p_{\i\q}$};
+			}
+		}
+		\draw[fill=white] (-1.25,{2*\fac+1}) circle (0.35);
+		\node at (-1.25,{2*\fac+1}) {Start};
+		\draw[fill=white] (8.25,{2*\fac+1}) circle (0.35);
+		\node at (8.25,{2*\fac+1}) {End};
+		
+			
+	The "jump" vertices are a consequence of our prior which (as we shall see) dictates that we should only consider a transition if it is of sufficient length. This design element is hard-coded into our network.
 
 ===================
 Statistical Model
 ===================
 
-	We must therefore formulate a statistical model and aggregate the knowledge that we have about our system. The following are the basic principles upon which Deforester operates:
+	In order to generate the costs of the vertices, we must therefore formulate a statistical model and aggregate the knowledge that we have about our system. The following are the basic principles upon which Deforester operates:
 
 	- The genome is sampled to a given average depth across all chromosomes, termed the *fundamental frequency*, and denoted :math:`\nu`. We assume that we know this in advance (in practice, we compute the most likely value).
-	- Every section of the genome has a given *multiplicity* or *resonance*, denoted :math:`q`, denoting the copy-number.
+	- Every section of the genome has a given *multiplicity*, *harmonic* or *resonance*, denoted :math:`q` - this is our estimation of the copy-number.
 		- A region with an unresolved CNV is sampled to a depth of :math:`q\nu`.
 		- Most portions of the human genome should have :math:`q = 2`, due to diploidy
 	- The sampling process is noisy
