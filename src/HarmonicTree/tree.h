@@ -1,6 +1,7 @@
 #pragma once
 #include "../data.h"
 #include "../settings.h"
+#include "network.h"
 #include <vector>
 class Path
 {
@@ -141,49 +142,61 @@ class Tree
 };
 
 
+
 void TreeAssign(Data & d, Settings & s)
 {
-	double nu = 30;
-	double gamma = 1;
-	int cm = 1;//d.Chromosomes.size();
-	for (int c = 0; c < cm; ++c)
+
+	std::vector<Network> Ns(d.Chromosomes.size());
+	for (int c = 0; c < d.Chromosomes.size(); ++c)
 	{
-		std::cout << "Assigning chrom " << c+1 << std::endl;
-
-		int chromLength = d.Chromosomes[c].Counts.size();
-		Tree tree(s.Qmax,chromLength,nu,gamma);
-		for (int i = chromLength -1; i >= 0; --i)
-		{
-			tree.AssignStep(d.Chromosomes[c].Idx[i],d.Chromosomes[c].Counts[i]);
-			// std::cout << i << std::endl;
-		}
-
-		auto bp = tree.BestPath();
-
-
-
-		std::vector<int> plotIdx;
-		std::vector<double> plotVal;
-		double prev = 0;
-		int cs = 0;
-		for (int i = 0; i <bp.Index.size();++i)
-		{
-			plotIdx.push_back(bp.Index[i]);
-			plotIdx.push_back(bp.Index[i]);
-
-			plotVal.push_back(prev);
-			// std::cout << "Transition " << bp.Values[i] << "->" << (int)round(prev/nu) << " at " << bp.Index[i] << "(delta = " << abs(bp.Index[i] - cs) << ")"<< std::endl;
-			cs= bp.Index[i];
-			prev = bp.Values[i] * nu;
-			plotVal.push_back(prev);
-
-		}
-		plotIdx.push_back(0);
-		plotVal.push_back(prev);
-
-		JSL::gnuplot gp;
-		gp.Plot(d.Chromosomes[c].Idx,d.Chromosomes[c].Counts);
-		gp.Plot(plotIdx,plotVal);
-		gp.Show();
+		Ns[c] = Network(d,c,s.Qmax);
 	}
+
+	while (true)
+	{
+		std::cout << Ns.size() << "  " << sizeof(Node) << "  " << sizeof(Network) << "  " << alignof(double) << " " << alignof(int) << "  " << alignof(short)<< " " << alignof(Node *)<< std::endl;
+	}
+	// double nu = 30;
+	// double gamma = 1;
+	// int cm = 1;//d.Chromosomes.size();
+	// for (int c = 0; c < cm; ++c)
+	// {
+	// 	std::cout << "Assigning chrom " << c+1 << std::endl;
+
+	// 	int chromLength = d.Chromosomes[c].Counts.size();
+	// 	Tree tree(s.Qmax,chromLength,nu,gamma);
+	// 	for (int i = chromLength -1; i >= 0; --i)
+	// 	{
+	// 		tree.AssignStep(d.Chromosomes[c].Idx[i],d.Chromosomes[c].Counts[i]);
+	// 		// std::cout << i << std::endl;
+	// 	}
+
+	// 	auto bp = tree.BestPath();
+
+
+
+	// 	std::vector<int> plotIdx;
+	// 	std::vector<double> plotVal;
+	// 	double prev = 0;
+	// 	int cs = 0;
+	// 	for (int i = 0; i <bp.Index.size();++i)
+	// 	{
+	// 		plotIdx.push_back(bp.Index[i]);
+	// 		plotIdx.push_back(bp.Index[i]);
+
+	// 		plotVal.push_back(prev);
+	// 		// std::cout << "Transition " << bp.Values[i] << "->" << (int)round(prev/nu) << " at " << bp.Index[i] << "(delta = " << abs(bp.Index[i] - cs) << ")"<< std::endl;
+	// 		cs= bp.Index[i];
+	// 		prev = bp.Values[i] * nu;
+	// 		plotVal.push_back(prev);
+
+	// 	}
+	// 	plotIdx.push_back(0);
+	// 	plotVal.push_back(prev);
+
+	// 	JSL::gnuplot gp;
+	// 	gp.Plot(d.Chromosomes[c].Idx,d.Chromosomes[c].Counts);
+	// 	gp.Plot(plotIdx,plotVal);
+	// 	gp.Show();
+	// }
 }
