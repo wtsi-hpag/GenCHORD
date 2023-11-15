@@ -6,6 +6,8 @@ class Node
 		double Score;
 		Node * Prev;
 		int Idx;
+		double NodeProb;
+		double CumulativeNodeProb=0;
 		short int Q;
 		// bool Connected = false;
 		Node(){}
@@ -16,4 +18,7 @@ class Node
 			Idx = id;
 			Score = 0;
 		}
+
+		
+		// void UpdateProb()
 };

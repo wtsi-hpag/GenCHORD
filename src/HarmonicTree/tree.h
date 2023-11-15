@@ -146,16 +146,155 @@ class Tree
 void TreeAssign(Data & d, Settings & s)
 {
 
-	std::vector<Network> Ns(d.Chromosomes.size());
-	for (int c = 0; c < d.Chromosomes.size(); ++c)
+	// std::vector<Network> Ns(d.Chromosomes.size());
+	
+	double nu = 32;
+	double gamma = 15;
+
+	std::cout << "Attempting a network assign" << std::endl;
+	for (int c = 0; c < 1; ++c)
 	{
-		Ns[c] = Network(d,c,s.Qmax);
+		 Network N(d,c,s.Qmax);
+
+		//assign start of network
+		Node startNode;
+		startNode.Assign(-1,-1);
+		double logContinuityPrior = -5;
+		double logPloidyPrior = log(s.PloidyPrior);
+		for (int q = 0; q < s.Qmax; ++q)
+		{
+			double dist = (q * nu - d.Chromosomes[c].Counts[0])/gamma;
+			double p = -dist * dist;
+			if (q != s.Ploidy)
+			{
+				p += logPloidyPrior;
+			}
+			N.Nodes[0][q].Score = p;
+			N.Nodes[0][q].NodeProb = p;
+			N.Nodes[0][q].CumulativeNodeProb = p;
+			N.Nodes[0][q].Prev = &startNode;
+		}
+		int step = (d.Chromosomes[c].Idx[1] - d.Chromosomes[c].Idx[0]);
+		int L_equiv = s.L/step;
+		std::cout <<"Step = " << step << " so " << s.L << " = " << L_equiv << std::endl;
+		for (int i = 1; i < N.Nodes.size(); ++i)
+		{
+			//obvious connection
+			int chromID = N.Nodes[i][0].Idx;//allows node resolution to be different to data
+
+			for (int q = 0; q < s.Qmax; ++q)
+			{
+				double dist = (q * nu - d.Chromosomes[c].Counts[chromID])/gamma;
+				double nodeProb = -dist*dist;
+				if (q != s.Ploidy)
+				{
+					// std::cout << "noq" << std::endl;
+					nodeProb += logPloidyPrior;
+				}
+				N.Nodes[i][q].NodeProb = nodeProb;
+				N.Nodes[i][q].CumulativeNodeProb = N.Nodes[i-1][q].CumulativeNodeProb + nodeProb;
+				double bestProb = N.Nodes[i-1][q].Score + nodeProb;
+				double stayProb = bestProb;
+				Node * bestConnect = &N.Nodes[i-1][q]; //default is to assume constant is best
+
+				if (i >= L_equiv)
+				{
+					for (int qq = 0; qq < s.Qmax; ++qq)
+					{
+						if (qq != q)
+						{
+							double jumpProb = logContinuityPrior + N.Nodes[i-L_equiv][qq].Score;
+							
+							double qDiff = N.Nodes[i][q].CumulativeNodeProb - N.Nodes[i-L_equiv][q].CumulativeNodeProb;
+
+							jumpProb += qDiff;
+
+							if (jumpProb > bestProb)
+							{
+								bestProb = jumpProb;
+								bestConnect = &N.Nodes[i-L_equiv][qq];
+							}
+						}
+					}
+				}
+				else
+				{
+					// std::cout << "WITHIN L RANGE" << std::endl;
+				}
+				N.Nodes[i][q].Prev = bestConnect;
+				N.Nodes[i][q].Score = bestProb;
+				// if (bestConnect->Q != q)
+				// {
+				// 	std::cout << i << " " << q << " It was the best choice to jump to " << bestConnect->Q << "  " << bestProb << ", staying = " << stayProb <<  std::endl;
+				// }
+			}
+
+			
+		}
+		std::cout << "Completed! I will now delete the network and try again" << std::endl;
+
+
+
+		JSL::gnuplot gp;
+
+		gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
+		// for (int i = 0; i < )
+		auto node = N.GetBestPath();
+		std::vector<int> id;
+		std::vector<int> harmonic;
+		std::vector<double> vals;
+		int prev;
+		while (node->Q != -1)
+		{
+			prev = node->Q;
+			if (id.size() == 0 || harmonic[harmonic.size()-1] != node->Q )
+			{
+				id.push_back(d.Chromosomes[0].Idx[node->Idx]);
+				
+				harmonic.push_back(node->Q);
+				vals.push_back(node->Q*nu);
+				// std::cout << node->Idx << "  " << d.Chromosomes[0].Idx[node->Idx] << "  " << node->Q << std::endl;
+			}
+			node = node->Prev;
+		}
+		// id.push_back(0);
+		// harmonic.push_back(prev);
+		// vals.push_back(prev*nu);
+
+		std::reverse(id.begin(),id.end());
+		std::reverse(harmonic.begin(),harmonic.end());
+		std::reverse(vals.begin(),vals.end());
+		// gp.Scatter(id,vals);
+
+		std::vector<int> plotIdx;
+		std::vector<double> plotVals;
+		double prevID =0;
+		double prevVal = 0;
+		for (int i =0 ; i < vals.size(); ++i)
+		{
+			plotIdx.push_back(prevID);
+			plotVals.push_back(prevVal);
+			prevVal= vals[i];
+			plotIdx.push_back(prevID);
+			plotVals.push_back(prevVal);
+			prevID = id[i];
+			plotIdx.push_back(prevID);
+			plotVals.push_back(prevVal);
+		}
+		gp.Plot(plotIdx,plotVals);
+		gp.Show();
+
 	}
 
-	while (true)
-	{
-		std::cout << Ns.size() << "  " << sizeof(Node) << "  " << sizeof(Network) << "  " << alignof(double) << " " << alignof(int) << "  " << alignof(short)<< " " << alignof(Node *)<< std::endl;
-	}
+	
+
+	// double nu = 30;
+	// double gamma = 1;
+	// for (int i = 0; i < )
+	// while (true)
+	// {
+	// 	std::cout << Ns.size() << "  " << sizeof(Node) << "  " << sizeof(Network) << "  " << alignof(double) << " " << alignof(int) << "  " << alignof(short)<< " " << alignof(Node *)<< std::endl;
+	// }
 	// double nu = 30;
 	// double gamma = 1;
 	// int cm = 1;//d.Chromosomes.size();
