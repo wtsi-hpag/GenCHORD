@@ -45,6 +45,13 @@ class Path
 			QSum = q;
 		}
 
+		void RecordScore(double score, int q, int idx)
+		{
+			Score = score;
+			Idx = idx;
+			CurrentQ =q;
+		}
+
 		void AddStep(double score, int q, int idx,const Path * node,int specIdx)
 		{
 			Score = score;

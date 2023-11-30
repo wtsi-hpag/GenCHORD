@@ -1,14 +1,15 @@
 #include "RollingNetwork.h"
 
-RollingNetwork::RollingNetwork(const Data & d, int assignedChromosome, int qMax, int L)
+RollingNetwork::RollingNetwork(const Data & d, int assignedChromosome, int qMax, int L,bool scan)
 {
-	Initialise(d,assignedChromosome,qMax,L);
+	Initialise(d,assignedChromosome,qMax,L,scan);
 }
 
-void RollingNetwork::Initialise(const Data & d, int assignedChromosome, int qMax, int L)
+void RollingNetwork::Initialise(const Data & d, int assignedChromosome, int qMax, int L,bool scan)
 {
 	Memory = L;
 	Qmax = qMax;
+	ScanMode = scan;
 	int stepSize = (d.Chromosomes[assignedChromosome].Idx[1] - d.Chromosomes[assignedChromosome].Idx[0]);
 	BufferSize = L/stepSize+1; // +1 to allow for either-side grabbing
 	DataSize = d.Chromosomes[assignedChromosome].Counts.size();
@@ -37,8 +38,8 @@ void RollingNetwork::Navigate(const Data & d, double nu, double gamma)
 	// 
 	int k0 = d.Chromosomes[MyChromosome].Counts[0];
 
-	double logContinuityPrior = 0;
-	double logPloidyPrior = log(1);
+	double logContinuityPrior = -10;
+	double logPloidyPrior = log(0.3);
 
 	//reset state to zero
 	for (int i = 1; i < BufferSize; ++i)
@@ -119,8 +120,14 @@ void RollingNetwork::Navigate(const Data & d, double nu, double gamma)
 				}
 
 			}
-
-			Paths[bufferIndex][q].AddStep(BestScore,q,bestIndex,BestPath,bestBack);
+			if (ScanMode)
+			{
+				Paths[bufferIndex][q].RecordScore(BestScore,q,bestIndex);
+			}
+			else
+			{
+				Paths[bufferIndex][q].AddStep(BestScore,q,bestIndex,BestPath,bestBack);
+			}
 			Paths[bufferIndex][q].CumulativeLinearScore = cumProb; // ensure that the linear accumulation stays in the right place
 		}
 

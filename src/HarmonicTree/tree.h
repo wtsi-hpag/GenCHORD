@@ -158,23 +158,37 @@ void RollingAssign(Data & d, Settings & s,JSL::gnuplot & gp)
 
 	for (int c = 0; c < Ns.size(); ++c)
 	{
-		Ns[c].Initialise(d,c,s.Qmax,s.L);
+		Ns[c].Initialise(d,c,s.Qmax,s.L,true);
 	}
 	int count = 0;
-	for (double nus = 1; nus < 20; nus+=10)
+	double bN = -1;
+	double bestScore = -99999999999;
+	for (double nus = 25; nus < 36; nus+=5)
 	{
 		++count;
+	
 		for (int c = 0; c < d.Chromosomes.size(); ++c)
 		{
-			Ns[c].Navigate(d,nu,gamma);
-			// Path best = Ns[c].BestPath();
+			Ns[c].Navigate(d,nus,gamma);
+			Path best = Ns[c].BestPath();
+			if (c == 0)
+			{
+				if (best.Score > bestScore)
+				{
+					bN = nus;
+					bestScore = best.Score;
+				}
+			
+				// std::cout << nus << "  " << best.Score << std::endl;
+			}
 		}
 	}
-
+	
 	auto end = std::chrono::high_resolution_clock::now();
 	std::cout << "Rolling = " << ((double)std::chrono::duration_cast<std::chrono::microseconds>(end-start).count())/(pow(10,6)*count) << std::endl;
-
-	Ns[0].Navigate(d,nu,gamma);
+	std::cout << "\tBest nu = " << bN << std::endl;
+	Ns[0].ScanMode = false;
+	Ns[0].Navigate(d,bN,gamma);
 	Path best = Ns[0].BestPath();
 
 	
@@ -296,59 +310,59 @@ void TreeAssign(Data & d, Settings & s,JSL::gnuplot & gp)
 			
 
 
-			if (nus == 1 && c == 0)
-			{
+			// if (nus == 1 && c == 0)
+			// {
 
-			// gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
-			// for (int i = 0; i < )
-			auto node = N.GetBestPath();
-			std::vector<int> id;
-			std::vector<int> harmonic;
-			std::vector<double> vals;
-			int prev;
-			while (node->Q != -1)
-			{
-				prev = node->Q;
-				if (id.size() == 0 || harmonic[harmonic.size()-1] != node->Q )
-				{
-					id.push_back(d.Chromosomes[0].Idx[node->Idx]);
+			// // gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
+			// // for (int i = 0; i < )
+			// auto node = N.GetBestPath();
+			// std::vector<int> id;
+			// std::vector<int> harmonic;
+			// std::vector<double> vals;
+			// int prev;
+			// while (node->Q != -1)
+			// {
+			// 	prev = node->Q;
+			// 	if (id.size() == 0 || harmonic[harmonic.size()-1] != node->Q )
+			// 	{
+			// 		id.push_back(d.Chromosomes[0].Idx[node->Idx]);
 					
-					harmonic.push_back(node->Q);
-					vals.push_back(node->Q*nu);
-					// std::cout << node->Idx << "  " << d.Chromosomes[0].Idx[node->Idx] << "  " << node->Q << std::endl;
-				}
-				node = node->Prev;
-			}
+			// 		harmonic.push_back(node->Q);
+			// 		vals.push_back(node->Q*nu);
+			// 		// std::cout << node->Idx << "  " << d.Chromosomes[0].Idx[node->Idx] << "  " << node->Q << std::endl;
+			// 	}
+			// 	node = node->Prev;
+			// }
 
-			// id.push_back(0);
-			// harmonic.push_back(prev);
-			// vals.push_back(prev*nu);
+			// // id.push_back(0);
+			// // harmonic.push_back(prev);
+			// // vals.push_back(prev*nu);
 
-			std::reverse(id.begin(),id.end());
-			std::reverse(harmonic.begin(),harmonic.end());
-			std::reverse(vals.begin(),vals.end());
-			// gp.Scatter(id,vals);
+			// std::reverse(id.begin(),id.end());
+			// std::reverse(harmonic.begin(),harmonic.end());
+			// std::reverse(vals.begin(),vals.end());
+			// // gp.Scatter(id,vals);
 
-			std::vector<int> plotIdx;
-			std::vector<double> plotVals;
-			double prevID =0;
-			double prevVal = 0;
-			for (int i =0 ; i < vals.size(); ++i)
-			{
-				plotIdx.push_back(prevID);
-				plotVals.push_back(prevVal);
-				prevVal= vals[i];
-				plotIdx.push_back(prevID);
-				plotVals.push_back(prevVal);
-				prevID = id[i];
-				plotIdx.push_back(prevID);
-				plotVals.push_back(prevVal);
-			}
-			// gp.Scatter(id,vals,JSL::LineProperties::ScatterType(JSL::Star));
-			gp.Plot(plotIdx,plotVals);
-			gp.SetTitle("Brute Force");
-			gp.SetGrid(true);
-			}
+			// std::vector<int> plotIdx;
+			// std::vector<double> plotVals;
+			// double prevID =0;
+			// double prevVal = 0;
+			// for (int i =0 ; i < vals.size(); ++i)
+			// {
+			// 	plotIdx.push_back(prevID);
+			// 	plotVals.push_back(prevVal);
+			// 	prevVal= vals[i];
+			// 	plotIdx.push_back(prevID);
+			// 	plotVals.push_back(prevVal);
+			// 	prevID = id[i];
+			// 	plotIdx.push_back(prevID);
+			// 	plotVals.push_back(prevVal);
+			// }
+			// // gp.Scatter(id,vals,JSL::LineProperties::ScatterType(JSL::Star));
+			// gp.Plot(plotIdx,plotVals);
+			// gp.SetTitle("Brute Force");
+			// gp.SetGrid(true);
+			// }
 			// std::cout << id.size() << std::endl;
 		}
 	}
