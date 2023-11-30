@@ -36,7 +36,11 @@ int main(int argc, char**argv)
 	{
 		d = Data(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
 
-		TreeAssign(d,settings);
+		JSL::gnuplot gp;
+
+		RollingAssign(d,settings,gp);
+		TreeAssign(d,settings,gp);
+		gp.Show();
 		// HarmonicFit(d,settings);
 		// settings.DataFile = settings.OutputName;
 		// OutputPlot(d,settings);

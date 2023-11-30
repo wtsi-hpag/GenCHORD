@@ -3,7 +3,9 @@
 #include "../settings.h"
 #include "network.h"
 #include <vector>
-class Path
+#include <chrono>
+#include "RollingNetwork.h"
+class BasicPath
 {
 	public:
 		double Score;
@@ -14,8 +16,8 @@ class Path
 		int vindex;
 		int prev;
 
-		Path(){};
-		Path(chr_int L)
+		BasicPath(){};
+		BasicPath(chr_int L)
 		{
 			Score = 0;
 			Length = L;
@@ -56,16 +58,16 @@ class Tree
 		std::vector<double> scoreBuffer;
 	public:
 
-		std::vector<Path> Paths;
-		std::vector<Path> PreviousPaths;
+		std::vector<BasicPath> Paths;
+		std::vector<BasicPath> PreviousPaths;
 		int QMax;
 		double Nu;
 		double Gamma;
 		Tree(int qMax, chr_int L, double nu, double gamma)
 		{
 			QMax = qMax;
-			Paths = std::vector<Path>(qMax,L);
-			PreviousPaths = std::vector<Path>(qMax,L);
+			Paths = std::vector<BasicPath>(qMax,L);
+			PreviousPaths = std::vector<BasicPath>(qMax,L);
 			Nu = nu;
 			Gamma = gamma;
 		}
@@ -124,7 +126,7 @@ class Tree
 			}
 		}
 
-		Path BestPath()
+		BasicPath BestPath()
 		{
 			double bestScore = -99999;
 			int bestIdx = 0;
@@ -142,150 +144,214 @@ class Tree
 };
 
 
+double nu = 30.5;
+double gamma = 5;
+void RollingAssign(Data & d, Settings & s,JSL::gnuplot & gp)
+{
 
-void TreeAssign(Data & d, Settings & s)
+	std::cout << "Attempting a network assign" << std::endl;
+	auto start = std::chrono::high_resolution_clock::now();
+
+	std::vector<RollingNetwork> Ns(d.Chromosomes.size());
+
+	for (int c = 0; c < Ns.size(); ++c)
+	{
+		Ns[c].Initialise(d,c,s.Qmax,s.L);
+	}
+	int count = 0;
+	for (double nus = 1; nus < 20; nus+=10)
+	{
+		++count;
+		for (int c = 0; c < d.Chromosomes.size(); ++c)
+		{
+			Ns[c].Navigate(d,nu,gamma);
+			// Path best = Ns[c].BestPath();
+		}
+	}
+
+	auto end = std::chrono::high_resolution_clock::now();
+	std::cout << "Total = " << ((double)std::chrono::duration_cast<std::chrono::microseconds>(end-start).count())/(pow(10,6)*count) << std::endl;
+
+	Ns[0].Navigate(d,nu,gamma);
+	Path best = Ns[0].BestPath();
+
+	
+	std::vector<int> plotIdx = {best.Previous[0].Index};
+	double prev = best.Previous[0].Value * nu;
+	std::vector<double> plotVals = {prev};
+	for (int i =1; i < best.Previous.size(); ++i)
+	{
+		plotIdx.push_back(best.Previous[i].Index);
+		plotVals.push_back(prev);
+		prev = best.Previous[i].Value*nu;
+		plotIdx.push_back(best.Previous[i].Index);
+		plotVals.push_back(prev);
+	}
+
+	// std::cout << JSL::Vector(best.PreviousIdx) << std::endl;
+	// std::cout << JSL::Vector(best.Previous) << std::endl;
+	plotIdx.push_back(d.Chromosomes[0].maxIdx);
+	plotVals.push_back(prev);
+
+	gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
+
+	gp.Plot(plotIdx,plotVals);
+	// gp.Show();
+}
+
+void TreeAssign(Data & d, Settings & s,JSL::gnuplot & gp)
 {
 
 	// std::vector<Network> Ns(d.Chromosomes.size());
-	
-	double nu = 32;
-	double gamma = 15;
 
-	std::cout << "Attempting a network assign" << std::endl;
-	for (int c = 0; c < 1; ++c)
+
+	auto start = std::chrono::high_resolution_clock::now();
+
+	std::vector<Network> Ns(d.Chromosomes.size());
+	for (int c = 0; c < Ns.size(); ++c)
 	{
-		 Network N(d,c,s.Qmax);
+		Ns[c].Init(d,c,s.Qmax);
+	}
 
-		//assign start of network
-		Node startNode;
-		startNode.Assign(-1,-1);
-		double logContinuityPrior = -5;
-		double logPloidyPrior = log(s.PloidyPrior);
-		for (int q = 0; q < s.Qmax; ++q)
+	int count = 0;
+	for (double nus = 1; nus < 20; nus+=2)
+	{
+		++count;
+		for (int c = 0; c < d.Chromosomes.size(); ++c)
 		{
-			double dist = (q * nu - d.Chromosomes[c].Counts[0])/gamma;
-			double p = -dist * dist;
-			if (q != s.Ploidy)
-			{
-				p += logPloidyPrior;
-			}
-			N.Nodes[0][q].Score = p;
-			N.Nodes[0][q].NodeProb = p;
-			N.Nodes[0][q].CumulativeNodeProb = p;
-			N.Nodes[0][q].Prev = &startNode;
-		}
-		int step = (d.Chromosomes[c].Idx[1] - d.Chromosomes[c].Idx[0]);
-		int L_equiv = s.L/step;
-		std::cout <<"Step = " << step << " so " << s.L << " = " << L_equiv << std::endl;
-		for (int i = 1; i < N.Nodes.size(); ++i)
-		{
-			//obvious connection
-			int chromID = N.Nodes[i][0].Idx;//allows node resolution to be different to data
-
+			Network & N = Ns[c];
+			//assign start of network
+			Node startNode;
+			startNode.Assign(-1,-1);
+			double logContinuityPrior = -10;
+			double logPloidyPrior = log(s.PloidyPrior);
 			for (int q = 0; q < s.Qmax; ++q)
 			{
-				double dist = (q * nu - d.Chromosomes[c].Counts[chromID])/gamma;
-				double nodeProb = -dist*dist;
+				int k = d.Chromosomes[c].Counts[0];
+				double dist = (q * nu - k)/gamma;
+				double p = -0.5*dist * dist;
 				if (q != s.Ploidy)
 				{
-					// std::cout << "noq" << std::endl;
-					nodeProb += logPloidyPrior;
+					p += logPloidyPrior;
 				}
-				N.Nodes[i][q].NodeProb = nodeProb;
-				N.Nodes[i][q].CumulativeNodeProb = N.Nodes[i-1][q].CumulativeNodeProb + nodeProb;
-				double bestProb = N.Nodes[i-1][q].Score + nodeProb;
-				double stayProb = bestProb;
-				Node * bestConnect = &N.Nodes[i-1][q]; //default is to assume constant is best
+				N.Nodes[0][q].Score = p;
+				N.Nodes[0][q].NodeProb = p;
+				N.Nodes[0][q].CumulativeNodeProb = p;
+				N.Nodes[0][q].Prev = &startNode;
 
-				if (i >= L_equiv)
+			
+			}
+			int step = (d.Chromosomes[c].Idx[1] - d.Chromosomes[c].Idx[0]);
+			int L_equiv = s.L/step;
+
+			for (int i = 1; i < N.Nodes.size(); ++i)
+			{
+				//obvious connection
+				int chromID = N.Nodes[i][0].Idx;//allows node resolution to be different to data
+				int k =d.Chromosomes[c].Counts[chromID];
+				for (int q = 0; q < s.Qmax; ++q)
 				{
-					for (int qq = 0; qq < s.Qmax; ++qq)
+					double dist = (q * nu - k)/gamma;
+					double nodeProb = -0.5*dist*dist;
+					if (q != s.Ploidy)
 					{
-						if (qq != q)
+						// std::cout << "noq" << std::endl;
+						nodeProb += logPloidyPrior;
+					}
+					N.Nodes[i][q].NodeProb = nodeProb;
+					N.Nodes[i][q].CumulativeNodeProb = N.Nodes[i-1][q].CumulativeNodeProb + nodeProb;
+					double bestProb = N.Nodes[i-1][q].Score + nodeProb;
+					double stayProb = bestProb;
+					Node * bestConnect = &N.Nodes[i-1][q]; //default is to assume constant is best
+					bool jumped=false;
+					if (i >= L_equiv)
+					{
+						for (int qq = 0; qq < s.Qmax; ++qq)
 						{
-							double jumpProb = logContinuityPrior + N.Nodes[i-L_equiv][qq].Score;
-							
-							double qDiff = N.Nodes[i][q].CumulativeNodeProb - N.Nodes[i-L_equiv][q].CumulativeNodeProb;
-
-							jumpProb += qDiff;
-
-							if (jumpProb > bestProb)
+							if (qq != q)
 							{
-								bestProb = jumpProb;
-								bestConnect = &N.Nodes[i-L_equiv][qq];
+								double jumpProb = logContinuityPrior + N.Nodes[i-L_equiv][qq].Score;
+								
+								double qDiff = N.Nodes[i][q].CumulativeNodeProb - N.Nodes[i-L_equiv][q].CumulativeNodeProb;
+
+								jumpProb += qDiff;
+
+								if (jumpProb > bestProb)
+								{
+									jumped=true;
+									bestProb = jumpProb;
+									bestConnect = &N.Nodes[i-L_equiv][qq];
+								}
 							}
 						}
 					}
-				}
-				else
-				{
-					// std::cout << "WITHIN L RANGE" << std::endl;
-				}
-				N.Nodes[i][q].Prev = bestConnect;
-				N.Nodes[i][q].Score = bestProb;
-				// if (bestConnect->Q != q)
-				// {
-				// 	std::cout << i << " " << q << " It was the best choice to jump to " << bestConnect->Q << "  " << bestProb << ", staying = " << stayProb <<  std::endl;
-				// }
-			}
 
+					N.Nodes[i][q].Prev = bestConnect;
+					N.Nodes[i][q].Score = bestProb;
+					
+				}
+			}
 			
-		}
-		std::cout << "Completed! I will now delete the network and try again" << std::endl;
 
 
-
-		JSL::gnuplot gp;
-
-		gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
-		// for (int i = 0; i < )
-		auto node = N.GetBestPath();
-		std::vector<int> id;
-		std::vector<int> harmonic;
-		std::vector<double> vals;
-		int prev;
-		while (node->Q != -1)
-		{
-			prev = node->Q;
-			if (id.size() == 0 || harmonic[harmonic.size()-1] != node->Q )
+			if (nus == 1 && c == 0)
 			{
-				id.push_back(d.Chromosomes[0].Idx[node->Idx]);
-				
-				harmonic.push_back(node->Q);
-				vals.push_back(node->Q*nu);
-				// std::cout << node->Idx << "  " << d.Chromosomes[0].Idx[node->Idx] << "  " << node->Q << std::endl;
+
+			// gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
+			// for (int i = 0; i < )
+			auto node = N.GetBestPath();
+			std::vector<int> id;
+			std::vector<int> harmonic;
+			std::vector<double> vals;
+			int prev;
+			while (node->Q != -1)
+			{
+				prev = node->Q;
+				if (id.size() == 0 || harmonic[harmonic.size()-1] != node->Q )
+				{
+					id.push_back(d.Chromosomes[0].Idx[node->Idx]);
+					
+					harmonic.push_back(node->Q);
+					vals.push_back(node->Q*nu);
+					// std::cout << node->Idx << "  " << d.Chromosomes[0].Idx[node->Idx] << "  " << node->Q << std::endl;
+				}
+				node = node->Prev;
 			}
-			node = node->Prev;
+
+			// id.push_back(0);
+			// harmonic.push_back(prev);
+			// vals.push_back(prev*nu);
+
+			std::reverse(id.begin(),id.end());
+			std::reverse(harmonic.begin(),harmonic.end());
+			std::reverse(vals.begin(),vals.end());
+			// gp.Scatter(id,vals);
+
+			std::vector<int> plotIdx;
+			std::vector<double> plotVals;
+			double prevID =0;
+			double prevVal = 0;
+			for (int i =0 ; i < vals.size(); ++i)
+			{
+				plotIdx.push_back(prevID);
+				plotVals.push_back(prevVal);
+				prevVal= vals[i];
+				plotIdx.push_back(prevID);
+				plotVals.push_back(prevVal);
+				prevID = id[i];
+				plotIdx.push_back(prevID);
+				plotVals.push_back(prevVal);
+			}
+			// gp.Scatter(id,vals,JSL::LineProperties::ScatterType(JSL::Star));
+			gp.Plot(plotIdx,plotVals);
+			gp.SetTitle("Brute Force");
+			gp.SetGrid(true);
+			}
+			// std::cout << id.size() << std::endl;
 		}
-		// id.push_back(0);
-		// harmonic.push_back(prev);
-		// vals.push_back(prev*nu);
-
-		std::reverse(id.begin(),id.end());
-		std::reverse(harmonic.begin(),harmonic.end());
-		std::reverse(vals.begin(),vals.end());
-		// gp.Scatter(id,vals);
-
-		std::vector<int> plotIdx;
-		std::vector<double> plotVals;
-		double prevID =0;
-		double prevVal = 0;
-		for (int i =0 ; i < vals.size(); ++i)
-		{
-			plotIdx.push_back(prevID);
-			plotVals.push_back(prevVal);
-			prevVal= vals[i];
-			plotIdx.push_back(prevID);
-			plotVals.push_back(prevVal);
-			prevID = id[i];
-			plotIdx.push_back(prevID);
-			plotVals.push_back(prevVal);
-		}
-		gp.Plot(plotIdx,plotVals);
-		gp.Show();
-
 	}
-
+	auto end = std::chrono::high_resolution_clock::now();
+	std::cout << ((double)std::chrono::duration_cast<std::chrono::microseconds>(end-start).count())/(pow(10,6)*count) << std::endl;
 	
 
 	// double nu = 30;

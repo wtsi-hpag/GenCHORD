@@ -30,14 +30,21 @@ class Network
 
 		Node *  GetBestPath()
 		{
-			int finalLayer = Nodes.size()-10;
+			int finalLayer = Nodes.size()-1;
 
 			int bestScore = Nodes[finalLayer][0].Score;
 			Node * bestNode = &Nodes[finalLayer][0];
-
+			double p = 0;
 			for (int q = 0; q < QMax; ++q)
 			{
-				std::cout << q << " has " << Nodes[finalLayer][q].Score << std::endl;
+				double score = Nodes[finalLayer][q].Score;
+				// std::cout << "Path " << q << " has " << Nodes[finalLayer][q].Score;
+				// if ( q > 0)
+				// {
+				// 	std::cout << " (delta = " << score - p << ")";
+				// }
+				p = score;
+				
 				if (Nodes[finalLayer][q].Score > bestScore)
 				{
 					bestScore = Nodes[finalLayer][q].Score;

@@ -35,7 +35,7 @@ class Settings
 		void Initialise(int argc, char**argv)
 		{
 			Ploidy = JSL::Argument<int>(2,"ploidy",argc,argv);
-			PloidyPrior= JSL::Argument<double>(0.5,"ploidyPrior",argc,argv);
+			PloidyPrior= JSL::Argument<double>(1,"ploidyPrior",argc,argv);
 			sigmaMin =JSL::Argument<double>(1,"sigmaMin",argc,argv);
 			sigmaMax = JSL::Argument<double>(10,"sigmaMax",argc,argv);
 			sigmaResolution= JSL::Argument<int>(3,"sigmaResolution",argc,argv);
