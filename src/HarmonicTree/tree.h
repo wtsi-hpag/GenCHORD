@@ -5,6 +5,7 @@
 #include <vector>
 #include <chrono>
 #include "RollingNetwork.h"
+
 class BasicPath
 {
 	public:
@@ -146,6 +147,7 @@ class Tree
 
 double nu = 30.5;
 double gamma = 5;
+
 void RollingAssign(Data & d, Settings & s,JSL::gnuplot & gp)
 {
 
@@ -170,21 +172,21 @@ void RollingAssign(Data & d, Settings & s,JSL::gnuplot & gp)
 	}
 
 	auto end = std::chrono::high_resolution_clock::now();
-	std::cout << "Total = " << ((double)std::chrono::duration_cast<std::chrono::microseconds>(end-start).count())/(pow(10,6)*count) << std::endl;
+	std::cout << "Rolling = " << ((double)std::chrono::duration_cast<std::chrono::microseconds>(end-start).count())/(pow(10,6)*count) << std::endl;
 
 	Ns[0].Navigate(d,nu,gamma);
 	Path best = Ns[0].BestPath();
 
 	
-	std::vector<int> plotIdx = {best.Previous[0].Index};
-	double prev = best.Previous[0].Value * nu;
+	std::vector<int> plotIdx = {best.Route[0].Index};
+	double prev = best.Route[0].Value * nu;
 	std::vector<double> plotVals = {prev};
-	for (int i =1; i < best.Previous.size(); ++i)
+	for (int i =1; i < best.Route.size(); ++i)
 	{
-		plotIdx.push_back(best.Previous[i].Index);
+		plotIdx.push_back(best.Route[i].Index);
 		plotVals.push_back(prev);
-		prev = best.Previous[i].Value*nu;
-		plotIdx.push_back(best.Previous[i].Index);
+		prev = best.Route[i].Value*nu;
+		plotIdx.push_back(best.Route[i].Index);
 		plotVals.push_back(prev);
 	}
 
