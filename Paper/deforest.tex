@@ -388,7 +388,7 @@
 					\\
 					 + & u(q_i,q_{i-1})\left( \mathfrak{p}_\text{jump} +  \mathfrak{p}_\infty \sum_{j = i-L}^{i-1} u(q_j,q_{i-1})  \right)\Bigg]
 					 \\
-					 u(a,b) = \begin{cases}
+					 u(a,b)  = & (1-\delta_{ab}) = \begin{cases}
 						0 & \text{a = b}
 						\\
 						1 & \text{else}
@@ -399,30 +399,31 @@
 
 			\subsubsection{Algorithmic Concerns}
 
-				Equations \eqref{E:Probability} and \eqref{E:Prior} provide everything we need to compute the score \eref{E:Score} for a proposed set of $\{q\}$. We therefore now need an algorithm which provides the minimal set.
+				Equations \eqref{E:Probability} and \eqref{E:Prior} provide everything we need to compute the score \eref{E:Score} for a proposed set of $\{q\}$. We therefore now need an algorithm which provides the maximal set (though, as is common in such endeavours, we instead attempt to find the set which minimises $-\mathcal{L}$, an equivalent task, since $\mathcal{L} < 0$ everywhere).
 
 				% The Harmonic fitting method shows a vast improvement over the previous iteration - however it still suffers from a number of drawbacks, mostly associated with the somewhat dubious means by which the Bayesian tests were `bootstrapped' from each other (technically each successive probability should be fully conditioned on the previous set, rather than just stuffing that all into a simplistic prior).
 
 				% The Harmonic Network method is an attempt to a) make the assignment robust and mathematically sound and b) devise a method which is conceptually easier to understand and follow. 
 
-				Provided that we are able to make the assumption that there is some finite $Q$ such that $0 \leq q < Q$ across the entire genome, it is most convenient to think of the assignment of the harmonics to the genome as a \textit{network}, such that finding the optimal assignment is equivalent to finding the shortest path through the network.
+				Provided that we are able to make the assumption that there is some finite $Q$ such that $0 \leq q < Q$ across the entire genome, it is most convenient to think in terms of a \textit{network}, such that an assignment of $\{q\}$ to corresponds to a unique path through the network. Finding the optimal assignment is therefore equivalent to finding the shortest path through this network.
 
 				The network is arranged in a series of layers (not dissimilar in structure to the network diagrams of feedforward neural networks, whence this idea was derived) - each layer corresponding to a given base in the genome and its associated coverage value. The vertices (or `nodes', to continue the FNN analogy) in the layer then correspond to different values of $q$ that might be assigned to that base. In short, a node $n_{iq}$ corresponds to the $i^\text{\th}$ base being assigned a harmonic of $q$.
 
-				The edges between vertices are directional (so ``$a$ is connected to $b$'' means that $a\to b$ is possible, but not $b\to a$), and obey the following rules:
+				The edges between vertices are directional (so ``$a$ is connected to $b$'' means that $a\to b$ is possible, but not $b\to a$), and obey the following rules, which are displayed graphically in Figure \ref{F:Network}:
 				\begin{enumerate}
 					\item The start node is connected to all nodes in the first layer, $n_{0q}~~ 0 \leq q < Q$ 
-					\item The node $n_{iq}$ is connected to $n_{i+1,q}$ (`step edges') and $n_{i+L,j}$ (`jump edges') where $j\neq q$ (provided that $i + L < G$, the genome size)
+					\item The node $n_{iq}$ is connected to $n_{i+1,q}$ (`step edges') and $n_{i+L,j}$ (`jump edges') where $j\neq q$ (provided that $i + L < G$, the genome size -- this prevents `jumping off the edge' of the chromosome)
 					\item The nodes $n_{G-1,q}$ are connected to the End node
 				\end{enumerate}
-
-				Figure \ref{F:Network} demonstrates this network setup graphically. Each step edge (including those from the start node) has a cost:
+				Each step edge (including those from the start node) has a cost:
 				\begin{equation}
 					\text{Cost}(n_{iq} \to n_{i+1,q}) = p_{\vec{\theta}}(k_i | q) + \mathfrak{p}_\text{ploidy} u(q,2)
 				\end{equation}
-				`Jumping' from $n_{iq} \to n_{i+L,j\neq q}$ enforces the requirement that any jumps must be larger than $L$ - traversing along a jump edge corresponds to assigning all nodes $i+1 \to i+L$ to the harmonic $j\neq q$, and hence has an associated cost:
+				A `step-edge' therefore corresponds simply to assigning the associated $q$ to that base/layer.
+
+				The `Jump-edges' from $n_{iq} \to n_{i+L,j\neq q}$ enforce the requirement that any jumps must be larger than $L$, since they are the only edges which connect different $q$ values. Traversing along a jump edge corresponds to assigning all nodes $i+1 \to i+L$ to the harmonic $j\neq q$, and hence has an associated cost:
 				\begin{equation}
-					\text{Cost}(n_{iq} \to n_{i+L,j\neq q}) = \mathfrak{p}_\text{jump} + \sum_{a = i+1}^{i+L} \left( p_{\vec{\theta}}(k_i | q)+ \mathfrak{p}_\text{ploidy} u(q,2) \right)
+					\text{Cost}(n_{iq} \to n_{i+L,j\neq q}) = \mathfrak{p}_\text{jump} + \sum_{a = i+1}^{i+L} \left( p_{\vec{\theta}}(k_i | j)+ \mathfrak{p}_\text{ploidy} u(j,2) \right)
 				\end{equation}
 				Here we have used the shorthand $p_{\vec{\theta}}(k|q) = p(k| q\nu, \sigma,\gamma,K)$, our underlying `Errored Binomial' distribution function.
 
@@ -522,11 +523,11 @@
 
 				However, we note that this network is `semi-local' -- by design, the edges never extend beyond a distance $L$ from the current base. Therefore we only need $LQ$ nodes in memory at once, rather than $GQ$, a drastic reduction in memory footprint: $L = 10^5$ reduces the memory footprint to only 34MB.
 
-				Each node therefore exists on a `conveyor belt', an array of length L+1, with node $n_{iq}$ located at index $C_{i \% (L+1),q}$. The step-connected nodes are at $C_{i-1\% (L+1),q}$ and the jump connected nodes at $C_{(i+1) \% (L+1),q}$, where $a\%b$ is the usual modular remainder operation.
+				Each node therefore exists on a `conveyor belt', an array of length L+1, with node $n_{iq}$ located at index $C_{i \% (L+1),q}$. The step-connected nodes are at $C_{(i-1)\% (L+1),q}$ and the jump connected nodes at $C_{(i+1) \% (L+1),q}$, where $a\%b$ is the usual modular remainder operation. This means that (aside from the `edges' of the conveyor belt), there is remarkable data contiguity.
 
-				The major drawback of this implementation is that -- since the network cannot be retraced by simply backtracking through the pointers -- each node needs to keep a record of its entire shortest path. We amelerioate this concern slightly since we know that most of the path will (by design) be through step-edges, and therefore only need to record and keep the limited number of jump edges -- however, passing these records around is still the limiting factor of this algorithm. 
+				The major drawback of this implementation is that (since the optimal path cannot be retraced by simply backtracking through each node's `best path' pointers) each node needs to keep a record of its entire shortest path. We ameliorate this concern slightly since we know that most of the path will (by design) be through step-edges, and therefore only need to record and keep the limited number of jump edges -- however, passing these records around is still the limiting factor of this algorithm. 
 
-				However, we note that during the search for the value of $\nu$ (during which time many paths are evaluated, searching for the one which minimises $\mathcal{L}$), we only need the final `length' of the path, not the path itself. For the bulk of function calls to the path-tracing algorithm, therefore, we do not need to record the path (only the distances), and hence the runtime difference between the conveyor-belt algorithm and the naive algorithm is negligible, with the memory-footprint nevertheless vastly reduced.
+				However, we note that during the search for the value of $\nu$ (during which time many paths are evaluated, searching for the one which minimises $\mathcal{L}$), we only need the final `length' of the path, not the path itself. For the bulk of function calls to the path-tracing algorithm, therefore, we do not need to record the path - only its length -- and hence the runtime difference between the conveyor-belt algorithm and the naive algorithm is negligible, with the memory-footprint nevertheless vastly reduced.
 
 				\begin{figure}
 					\begin{center}
