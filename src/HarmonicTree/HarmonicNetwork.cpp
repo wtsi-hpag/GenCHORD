@@ -1,11 +1,11 @@
-#include "RollingNetwork.h"
+#include "HarmonicNetwork.h"
 
-RollingNetwork::RollingNetwork(const Data & d, int assignedChromosome, int qMax, int L,bool scan)
+HarmonicNetwork::HarmonicNetwork(const Data & d, int assignedChromosome, int qMax, int L,bool scan)
 {
 	Initialise(d,assignedChromosome,qMax,L,scan);
 }
 
-void RollingNetwork::Initialise(const Data & d, int assignedChromosome, int qMax, int L,bool scan)
+void HarmonicNetwork::Initialise(const Data & d, int assignedChromosome, int qMax, int L,bool scan)
 {
 	Memory = L;
 	Qmax = qMax;
@@ -31,7 +31,7 @@ double logP(int k, int q, double nu, double gamma)
 	return -0.5 * d* d;
 }
 
-void RollingNetwork::Navigate(const Data & d, double nu, double gamma)
+void HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
 {
 
 	//do the initial layer first
@@ -138,7 +138,7 @@ void RollingNetwork::Navigate(const Data & d, double nu, double gamma)
 
 }
 
-Path RollingNetwork::BestPath()
+Path HarmonicNetwork::BestPath()
 {
 	// std::cout << "Attempting to find best path" << std::endl;
 	int finalIdx = (DataSize-1) % BufferSize;

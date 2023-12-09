@@ -1,11 +1,10 @@
-#define GNUPLOT_NO_TIDY
 #include "../libs/JSL/JSL.h"
 #include "Utility/plotting.h"
 #include "Utility/basicFunctions.h"
 #include "data.h"
 // #include "basicSmooth.h"
 #include "Utility/logFactorial.h"
-#include "HarmonicBayes/harmonicFit.h"
+// #include "HarmonicBayes/harmonicFit.h"
 
 #include "HarmonicTree/tree.h"
 #include "settings.h"
@@ -39,7 +38,6 @@ int main(int argc, char**argv)
 		JSL::gnuplot gp;
 
 		RollingAssign(d,settings,gp);
-		TreeAssign(d,settings,gp);
 		gp.Show();
 		// HarmonicFit(d,settings);
 		// settings.DataFile = settings.OutputName;

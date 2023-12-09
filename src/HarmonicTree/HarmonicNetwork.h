@@ -3,11 +3,11 @@
 #include "Path.h"
 #include "../data.h"
 
-class RollingNetwork
+class HarmonicNetwork
 {
 	public:
-		RollingNetwork(){};
-		RollingNetwork(const Data & d, int assignedChromosome, int qMax, int L, bool scan);
+		HarmonicNetwork(){};
+		HarmonicNetwork(const Data & d, int assignedChromosome, int qMax, int L, bool scan);
 
 		void Initialise(const Data & d, int assignedChromosome, int qMax, int L,bool scan);
 
