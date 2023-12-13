@@ -14,14 +14,17 @@ Path GetHarmonics(Data & d, Settings & s,JSL::gnuplot & gp)
 	}
 
 
-	int count = 0;
 	double bN = 30;
 	double bestScore = -99999999999;
-	// JSL::ProgressBar pb(100);
+
+	const int N  = s.nuResolution;
+	JSL::ProgressBar pb(N);
 	
 	Distributor dist(s.ParallelWorkers,d,Ns);
-	for (double nus = d.Mean*0.4; nus < d.Mean*0.6; nus+=0.2*d.Mean/300)
+	int count = 0;
+	for (double nus = d.Mean*0.4; nus < d.Mean*0.6; nus+=0.2*d.Mean/N)
 	{
+		++count;
 		dist.UpdateParameters(nus,gamma);
 		dist.Signal(2);
 		for (int i = 0; i < dist.MainChromAssigment.size(); ++i)
@@ -30,23 +33,13 @@ Path GetHarmonics(Data & d, Settings & s,JSL::gnuplot & gp)
 			Ns[chrom].Navigate(d,nus,gamma);
 		}
 		dist.Gather();
-		// for (int c = 0; c < Ns.size(); ++c)
-		// {
-			
-		// 	Path best = Ns[c].Navigate(d,nus,gamma);
-		// 	if (c == 0)
-		// 	{
-		// 		if (best.Score > bestScore)
-		// 		{
-		// 			bN = nus;
-		// 			bestScore = best.Score;
-		// 		}
-		// 	}
-			
-		// }
-
-
-		// pb.Update(count);
+		Path best = Ns[0].Navigate(d,nus,gamma);
+		if (best.Score > bestScore)
+		{
+			bN = nus;
+			bestScore = best.Score;
+		}
+		pb.Update(count);
 	}
 	Ns[0].ScanMode = false;
 	Ns[0].Navigate(d,bN,gamma);
