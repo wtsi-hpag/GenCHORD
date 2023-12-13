@@ -201,22 +201,6 @@ void Distributor::Harmonic_Task(int id)
 	SetRegister(0,id);
 }
 
-void Distributor::Assignment_Task(int id)
-{
-	for (int chrom : ChromAssignments[id])
-	{
-		ChromosomeAssign(Output,chrom,DataCopy,alpha,EB,L,accelerator,nu);
-	}
-	SetRegister(0,id);
-}
-void Distributor::UpdateAssigner(Transitions * output, double a, int l, int acc, double freq)
-{
-	Output = output;
-	alpha = a;
-	L = l;
-	accelerator = acc;
-	nu = freq;
-}
 void Distributor::UpdateParameters(double nus, double gam)
 {
 	nu = nus;
