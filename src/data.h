@@ -138,8 +138,8 @@ struct Data
 					{
 						moving = memory * moving + (1.0 - memory) * count;
 					}
-					accumulator += count;
-					accumulatorSq += count * count;
+					accumulator += moving;
+					accumulatorSq += moving * moving;
 
 					Chromosomes[chromID].Add(id,round(moving));
 					++j;

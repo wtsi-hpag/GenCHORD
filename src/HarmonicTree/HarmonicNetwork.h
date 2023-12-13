@@ -1,15 +1,16 @@
 #pragma once
 #include <vector>
 #include "Path.h"
+#include "../settings.h"
 #include "../data.h"
 
 class HarmonicNetwork
 {
 	public:
 		HarmonicNetwork(){};
-		HarmonicNetwork(const Data & d, int assignedChromosome, int qMax, int L, bool scan);
+		HarmonicNetwork(const Data & d, int assignedChromosome, const Settings & settings, bool scan);
 
-		void Initialise(const Data & d, int assignedChromosome, int qMax, int L,bool scan);
+		void Initialise(const Data & d, int assignedChromosome, const Settings & settings, bool scan);
 
 
 
@@ -25,5 +26,8 @@ class HarmonicNetwork
 		int BufferSize;
 		chr_int DataSize;
 		int MyChromosome;
+		double logContinuityPrior;
+		double logPloidyPrior;
+		int Ploidy;
 
 };

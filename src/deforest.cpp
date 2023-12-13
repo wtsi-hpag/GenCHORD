@@ -1,12 +1,11 @@
+// #define GNUPLOT_NO_TIDY
 #include "../libs/JSL/JSL.h"
 #include "Utility/plotting.h"
 #include "Utility/basicFunctions.h"
 #include "data.h"
-// #include "basicSmooth.h"
 #include "Utility/logFactorial.h"
-// #include "HarmonicBayes/harmonicFit.h"
 
-#include "HarmonicTree/tree.h"
+#include "HarmonicTree/GetHarmonics.h"
 #include "settings.h"
 #include <chrono>
 using namespace std::chrono;
@@ -31,29 +30,16 @@ int main(int argc, char**argv)
 	Log("==========================================\n\tCoverage Deforesting\n==========================================" << std::endl);
 	
 	Data d;
-	if (!settings.PlotOnly)
-	{
-		d = Data(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
+	
+	JSL::gnuplot gp;
+	d = Data(settings.DataFile,settings.DataThinning,settings.TargetChromosome,settings.MemorySmoothing);
+	gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);		
+	auto path = GetHarmonics(d,settings,gp);
 
-		JSL::gnuplot gp;
-
-		RollingAssign(d,settings,gp);
-		gp.Show();
-		// HarmonicFit(d,settings);
-		// settings.DataFile = settings.OutputName;
-		// OutputPlot(d,settings);
-	}
-	else
-	{
-		if (settings.ComparePlot == "__none__")
-		{
-			OutputPlot(d,settings);
-		}
-		else
-		{
-			ComparisonPlots(settings);
-		}
-	}
+	TransitionPlot(gp,d,path,"Harmonic nu=" + std::to_string(path.Nu));
+	
+	gp.SetLegend(true);
+	gp.Show();
 
 	Log("Deforest routine completed. Have a nice day.\n\n")
 }

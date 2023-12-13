@@ -1,19 +1,23 @@
 #include "HarmonicNetwork.h"
 
-HarmonicNetwork::HarmonicNetwork(const Data & d, int assignedChromosome, int qMax, int L,bool scan)
+HarmonicNetwork::HarmonicNetwork(const Data & d, int assignedChromosome,const Settings & s,bool scan)
 {
-	Initialise(d,assignedChromosome,qMax,L,scan);
+	Initialise(d,assignedChromosome,s,scan);
 }
 
-void HarmonicNetwork::Initialise(const Data & d, int assignedChromosome, int qMax, int L,bool scan)
+void HarmonicNetwork::Initialise(const Data & d, int assignedChromosome, const Settings & s,bool scan)
 {
-	Memory = L;
-	Qmax = qMax;
+	Memory = s.L;
+	Qmax = s.Qmax;
 	ScanMode = scan;
 	int stepSize = (d.Chromosomes[assignedChromosome].Idx[1] - d.Chromosomes[assignedChromosome].Idx[0]);
-	BufferSize = L/stepSize+1; // +1 to allow for either-side grabbing
+	BufferSize = s.L/stepSize+1; // +1 to allow for either-side grabbing
 	DataSize = d.Chromosomes[assignedChromosome].Counts.size();
 	MyChromosome = assignedChromosome;
+
+	logPloidyPrior = log(s.PloidyPrior);
+	logContinuityPrior = log(s.ContinuityPrior);
+	Ploidy = s.Ploidy;
 	Paths.resize(BufferSize);
 
 	for (int i = 0; i < BufferSize; ++i)
@@ -28,7 +32,8 @@ double logP(int k, int q, double nu, double gamma)
 {
 	double d = (k - q*nu)/gamma;
 
-	return -0.5 * d* d;
+	return log(1.0/(M_PI * gamma * (1 + d*d)));
+	// return -0.5 * d* d;
 }
 
 void HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
@@ -38,21 +43,11 @@ void HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
 	// 
 	int k0 = d.Chromosomes[MyChromosome].Counts[0];
 
-	double logContinuityPrior = -10;
-	double logPloidyPrior = log(0.3);
 
-	//reset state to zero
-	for (int i = 1; i < BufferSize; ++i)
-	{
-		for (int q = 0; q < Qmax; ++q)
-		{
-			Paths[i][q].InitialStep(-1,-1);
-		}
-	}
 	for (int q = 0; q < Qmax; ++q)
 	{
 		double score = logP(k0,q,nu,gamma);
-		if (q != 2) // set the ploidy settings better
+		if (q != Ploidy) // set the ploidy settings better
 		{
 			score += logPloidyPrior;
 		}

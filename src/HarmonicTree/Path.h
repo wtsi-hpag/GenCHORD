@@ -18,11 +18,11 @@ class Path
 	public:
 		double Score;
 		double CumulativeLinearScore;
-		double Hash;
 		int CurrentQ;
 		int Idx;
 		int CoordSum = -1;
 		int QSum = -1;
+		double Nu;
 		std::vector<Coordinate> Route;
 		// std::vector<int> PreviousIdx;
 		Path()

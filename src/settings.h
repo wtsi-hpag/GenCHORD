@@ -19,7 +19,7 @@ class Settings
 		double Gamma;
 		int Qmax;
 		int L;
-		double alpha;
+		double ContinuityPrior;
 
 		std::string OutputName;
 		std::string TargetChromosome;
@@ -47,7 +47,7 @@ class Settings
 			Gamma =  JSL::Argument<double>(-1,"gamma",argc,argv);
 			Qmax = JSL::Argument<int>(10,"Qmax",argc,argv);
 			L = JSL::Argument<int>(100000,"L",argc,argv);
-			alpha = JSL::Argument<double>(1e-2,"alpha",argc,argv);
+			ContinuityPrior = JSL::Argument<double>(1e-2,"alpha",argc,argv);
 			TargetChromosome = JSL::Argument<std::string>("all","c",argc,argv);
 			DataFile = JSL::Argument<std::string>("_no_file_provided_","f",argc,argv);
 			DataThinning = JSL::Argument<int>(1,"thin",argc,argv);
@@ -71,7 +71,7 @@ class Settings
 			Gamma =  JSL::Argument<double>(5,"gamma",configFile,' ');
 			Qmax = JSL::Argument<int>(10,"Qmax",configFile,' ');
 			L = JSL::Argument<int>(100000,"L",configFile,' ');
-			alpha = JSL::Argument<double>(1e-2,"alpha",configFile,' ');
+			ContinuityPrior = JSL::Argument<double>(1e-2,"alpha",configFile,' ');
 			TargetChromosome = JSL::Argument<std::string>("all","c",configFile,' ');
 			DataFile = JSL::Argument<std::string>("_no_file_provided_","f",configFile,' ');
 			DataThinning = JSL::Argument<int>(1,"thin",configFile,' ');

@@ -55,7 +55,7 @@ void HarmonicFit(Data & d, const Settings & settings)
 	int L = settings.L;
 	int res = 0.25*qMax * nuMax;
 	
-	double alpha = settings.alpha;
+	double alpha = settings.ContinuityPrior;
 
 	Transitions best;
 	
