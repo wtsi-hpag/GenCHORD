@@ -1,4 +1,4 @@
-#define GNUPLOT_NO_TIDY
+// #define GNUPLOT_NO_TIDY
 #include "../libs/JSL/JSL.h"
 #include "Utility/plotting.h"
 #include "Utility/basicFunctions.h"
