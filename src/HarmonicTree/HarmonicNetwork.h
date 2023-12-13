@@ -4,6 +4,7 @@
 #include "../settings.h"
 #include "../data.h"
 
+
 class HarmonicNetwork
 {
 	public:
@@ -14,7 +15,7 @@ class HarmonicNetwork
 
 
 
-		void Navigate(const Data & d, double nu, double gamma);
+		Path Navigate(const Data & d, double nu, double gamma);
 
 		Path BestPath();
 		bool ScanMode;

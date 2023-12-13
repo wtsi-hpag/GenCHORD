@@ -86,7 +86,7 @@ ShuffReturn OptimizeDistrubution(Data & d, int nWork)
 }
 
 
-Distributor::Distributor(int nWorkers, Data & d) : DataCopy(d)
+Distributor::Distributor(int nWorkers, Data & d, std::vector<HarmonicNetwork> & ns) : DataCopy(d), Ns(ns)
 {
 	if (nWorkers > 0)
 		Log("\tSetting up asynchronous pool"<<std::endl;);
@@ -169,7 +169,7 @@ void Distributor::Worker(int id)
 			}
 			case 2:
 			{
-				Assignment_Task(id);
+				Harmonic_Task(id);
 				break;
 			}
 			default:
@@ -188,6 +188,19 @@ void Distributor::EB_Task(int id)
 	SetRegister(0,id);
 }
 
+void Distributor::Harmonic_Task(int id)
+{
+	// std::cout << "Worker " << id << "attempting loop " << nu << std::endl;
+	for (int chrom : ChromAssignments[id])
+	{
+		// ChromosomeAssign(Output,chrom,DataCopy,alpha,EB,L,accelerator,nu);
+		// std::cout << "Accessing " << id << "  " << chrom << std::endl;
+
+		// Ns->at(chrom).Navigate(DataCopy,nu,gamma);
+	}
+	SetRegister(0,id);
+}
+
 void Distributor::Assignment_Task(int id)
 {
 	for (int chrom : ChromAssignments[id])
@@ -203,6 +216,11 @@ void Distributor::UpdateAssigner(Transitions * output, double a, int l, int acc,
 	L = l;
 	accelerator = acc;
 	nu = freq;
+}
+void Distributor::UpdateParameters(double nus, double gam)
+{
+	nu = nus;
+	gamma = gam;
 }
 void Distributor::Signal(int value)
 {

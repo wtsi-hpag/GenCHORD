@@ -22,5 +22,5 @@ void TransitionPlot(JSL::gnuplot & gp,const Data & d, Path path, std::string leg
 	plotIdx.push_back(d.Chromosomes[0].maxIdx);
 	plotVals.push_back(prev);
 
-	gp.Plot(plotIdx,plotVals);
+	gp.Plot(plotIdx,plotVals,JSL::LineProperties::Legend(legend));
 }

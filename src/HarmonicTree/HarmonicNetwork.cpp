@@ -36,7 +36,7 @@ double logP(int k, int q, double nu, double gamma)
 	// return -0.5 * d* d;
 }
 
-void HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
+Path HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
 {
 
 	//do the initial layer first
@@ -47,12 +47,10 @@ void HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
 	for (int q = 0; q < Qmax; ++q)
 	{
 		double score = logP(k0,q,nu,gamma);
-		if (q != Ploidy) // set the ploidy settings better
+		if (q != Ploidy)
 		{
 			score += logPloidyPrior;
 		}
-		// Paths[0][q].AddStep(score,q,0);
-		// Paths[0][q].CumulativeLinearScore = score;
 		Paths[0][q].InitialStep(score,q);
 
 	}
@@ -73,7 +71,7 @@ void HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
 		for (int q = 0; q < Qmax; ++q)
 		{
 			double nodeProb = logP(k,q,nu,gamma);
-			if (q!= 2)
+			if (q!= Ploidy)
 			{
 				nodeProb += logPloidyPrior;
 			}
@@ -81,9 +79,9 @@ void HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
 			double BestScore = BestPath->Score + nodeProb;
 			chr_int bestBack = -1;
 			chr_int bestIndex = d.Chromosomes[MyChromosome].Idx[i];
-			// std::cout << "\t" << BestPath->Score << "  " << nodeProb << "  " << BestScore << std::endl;
 			double cumProb = BestPath->CumulativeLinearScore + nodeProb;
 			bool jumped=false;
+			
 			//do some additional checking
 			if (i >= BufferSize-1)
 			{
@@ -108,12 +106,9 @@ void HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
 							jumped =true;
 							BestPath = &Paths[jumpIndex][qq];
 							bestBack = Paths[jumpIndex][qq].Idx;
-							// std::cout << "Gonna jump " << std::endl;
 						}
-
 					}
 				}
-
 			}
 			if (ScanMode)
 			{
@@ -124,13 +119,10 @@ void HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
 				Paths[bufferIndex][q].AddStep(BestScore,q,bestIndex,BestPath,bestBack);
 			}
 			Paths[bufferIndex][q].CumulativeLinearScore = cumProb; // ensure that the linear accumulation stays in the right place
-		}
-
-		
-		// std::cout << i << "   " << std::setprecision(10) <<  Paths[bufferIndex][1].Score << "  " << Paths[bufferIndex][1].CumulativeLinearScore << std::endl;
+		}	
 	}
 
-
+	return BestPath();
 }
 
 Path HarmonicNetwork::BestPath()
@@ -144,14 +136,6 @@ Path HarmonicNetwork::BestPath()
 	for (int q = 0; q < Qmax; ++q)
 	{
 		double score = Paths[finalIdx][q].Score;
-
-		// std::cout << "Path " << q << " has " << score;
-
-		// if (q > 0)
-		// {
-		// 	std::cout << " (delta = " << score - p << ")";
-		// }
-		// std::cout << std::endl;
 		p = score;
 		if (q == 0 || score > bestScore)
 		{

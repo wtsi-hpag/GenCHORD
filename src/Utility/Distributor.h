@@ -8,6 +8,7 @@
 #include <random>
 #include "../Transitions.h"
 #include "../HarmonicBayes/HarmonicFunctions.h"
+#include "../HarmonicTree/HarmonicNetwork.h"
 class ErroredBinomial;
 
 
@@ -25,6 +26,8 @@ class Distributor
 		void EB_Task(int id);
 		
 		void Assignment_Task(int id);
+
+		void Harmonic_Task(int id);
 		void SpoolDown(int id);
 		int CheckRegister(int id);
 		void SetRegister(int value, int id);
@@ -34,9 +37,11 @@ class Distributor
 		int L;
 		int accelerator;
 		double nu;
+		double gamma;
 	public:
 		std::vector<int> MainChromAssigment;
 		ErroredBinomial * EB;
+		std::vector<HarmonicNetwork> & Ns;
 		Transitions * Output;
 		int WorkerCount;
 		void Signal(int value);
@@ -44,9 +49,9 @@ class Distributor
 		void UpdateEB(ErroredBinomial * eb);
 		void UpdateAssigner(Transitions * Output, double alpha, int L, int accelerator, double nu);
 		
+		void UpdateParameters(double nu, double gamma);
 		
-		
-		Distributor(int nWorkers, Data & d);
+		Distributor(int nWorkers, Data & d,std::vector<HarmonicNetwork> & Ns);
 
 		~Distributor();
 };
