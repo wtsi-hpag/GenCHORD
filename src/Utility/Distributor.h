@@ -3,7 +3,7 @@
 #include <mutex>
 #include <vector>
 #include <iostream>
-#include "../data.h"
+#include "../DataFrame/data.h"
 #include <algorithm>
 #include <random>
 #include "../Transitions.h"

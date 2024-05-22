@@ -32,51 +32,51 @@ class Settings
 		int ParallelWorkers;
 		Settings(){};
 
+
+	
+
 		void Initialise(int argc, char**argv)
 		{
-			Ploidy = JSL::Argument<int>(2,"ploidy",argc,argv);
-			PloidyPrior= JSL::Argument<double>(1,"ploidyPrior",argc,argv);
-			sigmaMin =JSL::Argument<double>(1,"sigmaMin",argc,argv);
-			sigmaMax = JSL::Argument<double>(10,"sigmaMax",argc,argv);
-			sigmaResolution= JSL::Argument<int>(3,"sigmaResolution",argc,argv);
-			nuResolution = JSL::Argument<int>(100,"nuResolution",argc,argv);
-			gammaMin =JSL::Argument<double>(0.1,"gammaMin",argc,argv);
-			gammaMax = JSL::Argument<double>(10,"gammaMax",argc,argv);
-			gammaResolution= JSL::Argument<int>(5,"gammaResolution",argc,argv);
-			Accelerator = JSL::Argument<int>(1,"accelerate",argc,argv);
-			Gamma =  JSL::Argument<double>(-1,"gamma",argc,argv);
-			Qmax = JSL::Argument<int>(10,"Qmax",argc,argv);
-			L = JSL::Argument<int>(100000,"L",argc,argv);
-			ContinuityPrior = JSL::Argument<double>(1e-2,"alpha",argc,argv);
-			TargetChromosome = JSL::Argument<std::string>("all","c",argc,argv);
-			DataFile = JSL::Argument<std::string>("_no_file_provided_","f",argc,argv);
-			DataThinning = JSL::Argument<int>(1,"thin",argc,argv);
-			Quiet = JSL::Toggle(false,"q",argc,argv);
-			OutputName = JSL::Argument<std::string>("output","o",argc,argv);
-			ParallelWorkers = JSL::Argument<int>(0,"worker",argc,argv);
-			PlotOnly = JSL::Toggle(false,"plot",argc,argv);
-			ComparePlot = JSL::Argument<std::string>("__none__","compare",argc,argv);
+			InitialiseParams(argc,argv);
 
-			MemorySmoothing = JSL::Argument<double>(0,"smooth",argc,argv);
+			Quiet = JSL::Toggle(false,"q",argc,argv); //flags can only be used with the command-arg interface, not with config files
 		}
 		void Initialise(std::string configFile)
 		{
-			Ploidy = JSL::Argument<int>(2,"ploidy",configFile,' ');
-			PloidyPrior= JSL::Argument<double>(0.5,"ploidyPrior",configFile,' ');
-			sigmaMin =JSL::Argument<double>(1,"sigmaMin",configFile,' ');
-			sigmaMax = JSL::Argument<double>(10,"sigmaMax",configFile,' ');
-			sigmaResolution= JSL::Argument<int>(8,"sigmaResolution",configFile,' ');
-			nuResolution = JSL::Argument<int>(100,"nuResolution",configFile,' ');
-			Accelerator = JSL::Argument<int>(2,"accelerate",configFile,' ');
-			Gamma =  JSL::Argument<double>(5,"gamma",configFile,' ');
-			Qmax = JSL::Argument<int>(10,"Qmax",configFile,' ');
-			L = JSL::Argument<int>(100000,"L",configFile,' ');
-			ContinuityPrior = JSL::Argument<double>(1e-2,"alpha",configFile,' ');
-			TargetChromosome = JSL::Argument<std::string>("all","c",configFile,' ');
-			DataFile = JSL::Argument<std::string>("_no_file_provided_","f",configFile,' ');
-			DataThinning = JSL::Argument<int>(1,"thin",configFile,' ');
-			Quiet = JSL::Argument<bool>(false,"q",configFile,' ');
-			OutputName = JSL::Argument<std::string>("output","o",configFile, ' ');
-			ParallelWorkers = JSL::Argument<int>(0,"worker",configFile,' ');
+			InitialiseParams(configFile,' ');
 		}
+
+	private:
+
+			template<class T, class U>
+			void InitialiseParams(T a, U b)
+			{
+				Ploidy = JSL::Argument<int>(2,"ploidy",a,b);
+				PloidyPrior= JSL::Argument<double>(1,"ploidyPrior",a,b);
+				sigmaMin =JSL::Argument<double>(1,"sigmaMin",a,b);
+				sigmaMax = JSL::Argument<double>(10,"sigmaMax",a,b);
+				sigmaResolution= JSL::Argument<int>(3,"sigmaResolution",a,b);
+				nuResolution = JSL::Argument<int>(100,"nuResolution",a,b);
+				gammaMin =JSL::Argument<double>(0.1,"gammaMin",a,b);
+				gammaMax = JSL::Argument<double>(10,"gammaMax",a,b);
+				gammaResolution= JSL::Argument<int>(5,"gammaResolution",a,b);
+				Accelerator = JSL::Argument<int>(1,"accelerate",a,b);
+				Gamma =  JSL::Argument<double>(-1,"gamma",a,b);
+				Qmax = JSL::Argument<int>(10,"Qmax",a,b);
+				L = JSL::Argument<int>(100000,"L",a,b);
+				ContinuityPrior = JSL::Argument<double>(1e-2,"alpha",a,b);
+				TargetChromosome = JSL::Argument<std::string>("all","c",a,b);
+				DataFile = JSL::Argument<std::string>("_no_file_provided_","f",a,b);
+				DataThinning = JSL::Argument<int>(1,"thin",a,b);
+				
+				OutputName = JSL::Argument<std::string>("output","o",a,b);
+				ParallelWorkers = JSL::Argument<int>(0,"worker",a,b);
+				ComparePlot = JSL::Argument<std::string>("__none__","compare",a,b);
+
+				MemorySmoothing = JSL::Argument<double>(0,"smooth",a,b);
+				Quiet = JSL::Argument<bool>(false,"quiet",a,b);
+			}
+
+			
+			
 };	
