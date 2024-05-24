@@ -25,7 +25,7 @@ int main(int argc, char**argv)
 	//load the data file -- either from file, or from a pipe
 	// Data d(settings);
 
-	auto model = Models::Gaussian(25,2,-2,50,30);
+	auto model = Models::Gaussian(25,2,-2,50,60);
 	
 	int Kmax = 73;
 	std::vector<double> ws = {0.2,0.8,0.0};
