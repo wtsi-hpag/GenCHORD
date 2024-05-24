@@ -1,15 +1,15 @@
 // #define GNUPLOT_NO_TIDY
 #include "../libs/JSL/JSL.h"
-// #include "Utility/plotting.h"
 #include "Utility/basicFunctions.h"
 #include "DataFrame/data.h"
-#include "Utility/logFactorial.h"
+#include "ParameterInference/GlobalInference.h"
+// #include "Utility/plotting.h"
+// #include "Utility/logFactorial.h"
 
-// #include "HarmonicTree/GetHarmonics.h"
 #include "settings.h"
 #include <chrono>
 using namespace std::chrono;
-LogFactorial LogFac; //initialise the functor object
+// LogFactorial LogFac; //initialise the functor object
 
 int main(int argc, char**argv)
 {
@@ -23,14 +23,21 @@ int main(int argc, char**argv)
 	
 
 	//load the data file -- either from file, or from a pipe
-	Data d(settings);
+	// Data d(settings);
 
+	auto model = Models::Gaussian(25,2,-2,50,30);
 	
-	
-	JSL::gnuplot gp;
 
-	gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
-	gp.Show();
+	std::vector<double> ws = {0.0,1,0.0};
+
+	auto d = model.Draw(2000000,ws,530);
+
+
+	GlobalInference(model,d,settings,530,3);
+	// JSL::gnuplot gp;
+
+	// gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
+	// gp.Show();
 	
 	// auto path = GetHarmonics(d,settings,gp);
 

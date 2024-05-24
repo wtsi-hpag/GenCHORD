@@ -52,7 +52,7 @@ Data::Data(Settings & settings)
 		truncated += Chromosomes[i].RemoveSpuriousData(LudicrousValue);
 		File.MaxCoverage = std::max(File.MaxCoverage,Chromosomes[i].maxK);
 	}
-	File.MaxCoverage = std::min(LudicrousValue,File.MaxCoverage);
+	maxK = std::min(LudicrousValue,File.MaxCoverage);
 	Log("\tI am asserting that any coverage above " << LudicrousValue << " is spurious. " << truncated << " Datapoints were affected\n")
 	Log("\tSpoofed " << File.SpoofedData << " missing entries as gaps\n\tA total of " << File.LoadedData << " datapoints loaded\n\tData has global coverage  "<< Mean << "±" << Deviation  << "\n\tMaximum coverage value is " << File.MaxCoverage<< std::endl;);
 

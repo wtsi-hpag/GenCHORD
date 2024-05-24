@@ -658,37 +658,51 @@
 			\end{spalign}
 			Where $w_q$ are the weights associated with each of the subpopulations; rather than assignined each base to a given $q$ were are fitting them as an aggregate population.	The Bayesian score associated with data binned such that $N_k$ is the number of bases assigned the coverage $k$ is then:
 			\begin{align}
-				\mathcal{L}_\text{global} & = \text{LogPrior}(\vec{\theta}) + \sum_k N_k \ln\left(p_\text{global}(k|\vec{\theta})\right)
+				\mathcal{L}_\text{global} & = \mathcal{P}(\vec{\theta}) + \sum_k N_k \ln\left(p_\text{global}(k|\vec{\theta})\right)
 				\\
-				& =\text{LogPrior}(\vec{\theta}) + \sum_k N_k \ln\left(p_{\vec{\theta}}(k|q)\right) - N \ln\left(\sum_k p_{\vec{\theta}}(k|q)\right) 
+				& =\mathcal{P}(\vec{\theta}) + \sum_k N_k \ln\left(\sum_q w_q p_{\vec{\theta}}(k|q)\right) - N \ln\left(\sum_k \sum_q w_q p_{\vec{\theta}}(k|q)\right) 
 			\end{align}
 			Where $N = \sum_k N_k$ is the total number of observations. The parameters are then optimised using the gradients:
 			\begin{spalign}
-				\pdiv{\mathcal{L}}{\theta_i} = \pdiv{\text{LogPrior}(\vec{\theta})}{\theta_i} + \sum_k \left(\frac{N_K}{p_k} - \frac{N}{\sum_{k} p_k}\right) \pdiv{p_k}{\theta_i}
+				\pdiv{\mathcal{L}}{\theta_i} = \pdiv{\mathcal{P}}{\theta_i} + \sum_k \sum_q\left(\frac{N_K}{\sum_q w_q p(k|q)} - \frac{N}{\sum_{k,q} w_q p(k|q)}\right) w_q\pdiv{p(k|q)}{\theta_i}
 			\end{spalign}
-			Where (using the notation that $B_{kq} = {NB}\left(k; \frac{(q\nu)^2}{\sigma^2}, \frac{q\nu}{q\nu + \sigma^2}\right) $, $E_k = {NB}\left(k; \frac{\mu_e^2}{\sigma_e^2}\right)$, $r_e = \frac{\mu_e^2}{\sigma_e^2}$, $p_e = \frac{\mu_e}{\mu_e + \sigma_e^2}$, $r_q = \frac{\nu^2 q^2}{\sigma^2}$ and $p_q = \frac{q\nu}{q\nu + \sigma^2}$)
+			Using the shorthand
+			\begin{equation}
+				R_k = \left(\frac{N_K}{\sum_q w_q p(k|q)} - \frac{N}{\sum_{k,q} w_q p(k|q)}\right)
+			\end{equation}
+			This can be simplified to
 			\begin{spalign}
-				\pdiv{p_k}{\gamma} & = {E}_k - \sum_q w_q {B}_{kq}
+				\pdiv{\mathcal{L}}{\theta_i} & = \pdiv{\mathcal{P}}{\theta_i} + \sum_k \sum_q R_k  w_q\pdiv{p(k|q)}{\theta_i}
 				\\
-				\pdiv{p_k}{z_j} & = (1-\gamma) w_j \left[ B_{kj} - \sum_q w_q B_{kq} \right]
-				\\
-				\pdiv{p_k}{\mu_e} & = \gamma E_k \Big[ \frac{2\mu_e}{\sigma_e^2} \left(\psi\left(k + r_e\right) + \ln\left(p_e\right) - \psi\left(r_e\right) \right)
-				\\
-				&~~-\frac{\sigma_e^2}{(\mu_e + \sigma_e^2)^2} \frac{p_e (k+r_e) - r_e}{p_e^2} \Big]
-				\\
-				\pdiv{p_e}{\sigma_e} & = 2\gamma E_k \Big[ \frac{\sigma_e}{(\mu_e + \sigma_e^2)^2} \frac{p_e (k+r_e) - r_e}{p_e^2} 
-				\\
-				& ~~- 2\frac{\mu_e^2}{\sigma_e^3} \left(\psi\left(k + r_e\right) + \ln\left(p_e\right) - \psi\left(r_e\right) \right)\Big]
+				\pdiv{\mathcal{L}}{w_q} & = \pdiv{\mathcal{P}}{w_q} + \sum_k R_k  p(k|q)
 			\end{spalign}
+			However, since we must maintain that $\sum_q w_q = 1$ and $0 < w_q < 1$, it is convenient to reparameterise this as $w_i = e^{z_i}/\sum_j e^{z_j}$, such that
 			\begin{spalign}
-				\pdiv{p_e}{\nu} & = (1-\gamma) \sum_q w_q B_{kq}  \Big[ \frac{2\nu q^2}{\sigma^2} \left(\psi\left(k + r_q\right) + \ln\left(p_q\right) - \psi\left(r_q\right) \right)
-				\\
-				&~~-\frac{\sigma^2}{(q\nu + \sigma^2)^2} \frac{p_q (k+r_q) - r_q}{p_q^2} \Big]
-				\\
-				\pdiv{p_e}{\sigma} & = 2(1-\gamma) \sum_q w_q B_{kq} \Big[ \frac{\sigma}{(q\nu + \sigma^2)^2} \frac{p_q (k+r_q) - r_q}{p_q^2} 
-				\\
-				& ~~- 2\frac{q^2\nu^2}{\sigma^3} \left(\psi\left(k + r_q\right) + \ln\left(p_q\right) - \psi\left(r_q\right) \right)\Big]
+				\pdiv{L}{z_i} & = w_i \left(\pdiv{\mathcal{P}}{w_i} + \sum_k R_k p(k|q) - \sum_j w_j \left[\pdiv{\mathcal{P}}{w_j} + \sum_k R_k p(k|j)\right]\right)
 			\end{spalign}
+			% Where (using the notation that $B_{kq} = {NB}\left(k; \frac{(q\nu)^2}{\sigma^2}, \frac{q\nu}{q\nu + \sigma^2}\right) $, $E_k = {NB}\left(k; \frac{\mu_e^2}{\sigma_e^2}\right)$, $r_e = \frac{\mu_e^2}{\sigma_e^2}$, $p_e = \frac{\mu_e}{\mu_e + \sigma_e^2}$, $r_q = \frac{\nu^2 q^2}{\sigma^2}$ and $p_q = \frac{q\nu}{q\nu + \sigma^2}$)
+			% \begin{spalign}
+			% 	\pdiv{p_k}{\gamma} & = {E}_k - \sum_q w_q {B}_{kq}
+			% 	\\
+			% 	\pdiv{p_k}{z_j} & = (1-\gamma) w_j \left[ B_{kj} - \sum_q w_q B_{kq} \right]
+			% 	\\
+			% 	\pdiv{p_k}{\mu_e} & = \gamma E_k \Big[ \frac{2\mu_e}{\sigma_e^2} \left(\psi\left(k + r_e\right) + \ln\left(p_e\right) - \psi\left(r_e\right) \right)
+			% 	\\
+			% 	&~~-\frac{\sigma_e^2}{(\mu_e + \sigma_e^2)^2} \frac{p_e (k+r_e) - r_e}{p_e^2} \Big]
+			% 	\\
+			% 	\pdiv{p_e}{\sigma_e} & = 2\gamma E_k \Big[ \frac{\sigma_e}{(\mu_e + \sigma_e^2)^2} \frac{p_e (k+r_e) - r_e}{p_e^2} 
+			% 	\\
+			% 	& ~~- 2\frac{\mu_e^2}{\sigma_e^3} \left(\psi\left(k + r_e\right) + \ln\left(p_e\right) - \psi\left(r_e\right) \right)\Big]
+			% \end{spalign}
+			% \begin{spalign}
+			% 	\pdiv{p_e}{\nu} & = (1-\gamma) \sum_q w_q B_{kq}  \Big[ \frac{2\nu q^2}{\sigma^2} \left(\psi\left(k + r_q\right) + \ln\left(p_q\right) - \psi\left(r_q\right) \right)
+			% 	\\
+			% 	&~~-\frac{\sigma^2}{(q\nu + \sigma^2)^2} \frac{p_q (k+r_q) - r_q}{p_q^2} \Big]
+			% 	\\
+			% 	\pdiv{p_e}{\sigma} & = 2(1-\gamma) \sum_q w_q B_{kq} \Big[ \frac{\sigma}{(q\nu + \sigma^2)^2} \frac{p_q (k+r_q) - r_q}{p_q^2} 
+			% 	\\
+			% 	& ~~- 2\frac{q^2\nu^2}{\sigma^3} \left(\psi\left(k + r_q\right) + \ln\left(p_q\right) - \psi\left(r_q\right) \right)\Big]
+			% \end{spalign}
 			
 		% \section{Harmonic Tree}
 

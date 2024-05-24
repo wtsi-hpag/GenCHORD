@@ -30,17 +30,14 @@ struct FileReading
 class Data
 {
 	public:
-		double mean;
 		std::vector<ChromosomeCoverage> Chromosomes;
-		int maxK=0;
+		int maxK;
 		double Mean;
 		double Deviation;
 		bool Loaded;
 		Data();
 
 		Data(Settings & settings);
-
-		Data(std::string target, int thinning, std::string targetChromosome,double smoothing);
 
 	private:
 
