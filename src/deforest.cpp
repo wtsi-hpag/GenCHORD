@@ -27,13 +27,14 @@ int main(int argc, char**argv)
 
 	auto model = Models::Gaussian(25,2,-2,50,30);
 	
+	int Kmax = 73;
+	std::vector<double> ws = {0.2,0.8,0.0};
+	model.Normalise(Kmax,ws);
 
-	std::vector<double> ws = {0.0,1,0.0};
-
-	auto d = model.Draw(2000000,ws,530);
+	auto d = model.Draw(20000000,ws,Kmax);
 
 
-	GlobalInference(model,d,settings,530,3);
+	GlobalInference(model,d,settings,Kmax,3);
 	// JSL::gnuplot gp;
 
 	// gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
