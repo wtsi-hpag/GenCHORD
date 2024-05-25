@@ -23,18 +23,18 @@ int main(int argc, char**argv)
 	
 
 	//load the data file -- either from file, or from a pipe
-	// Data d(settings);
+	Data d(settings);
 
-	auto model = Models::Gaussian(25,2,-2,50,60);
+	auto model = Models::Gaussian(25,2,-1,50,60);
 	
-	int Kmax = 73;
-	std::vector<double> ws = {0.2,0.8,0.0};
+	int Kmax = 373;
+	std::vector<double> ws = {0.2,0.6,0.1,0.2};
 	model.Normalise(Kmax,ws);
 
-	auto d = model.Draw(20000000,ws,Kmax);
+	// auto d = model.Draw(2000000,ws,Kmax);
 
 
-	GlobalInference(model,d,settings,Kmax,3);
+	GlobalInference(model,d,settings,Kmax,14);
 	// JSL::gnuplot gp;
 
 	// gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
