@@ -23,15 +23,15 @@ int main(int argc, char**argv)
 	
 
 	//load the data file -- either from file, or from a pipe
-	Data d(settings);
+	// Data d(settings);
 
-	auto model = Models::Gaussian(25,2,-1,50,60);
+	auto model = Models::Gaussian(25,2,-1,50,160);
 	
-	int Kmax = 373;
-	std::vector<double> ws = {0.2,0.6,0.1,0.2};
+	int Kmax = 150;
+	std::vector<double> ws = {0.1,0.6,0.1,0.2};
 	model.Normalise(Kmax,ws);
 
-	// auto d = model.Draw(2000000,ws,Kmax);
+	auto d = model.Draw(2000000,ws,Kmax);
 
 
 	GlobalInference(model,d,settings,Kmax,14);
