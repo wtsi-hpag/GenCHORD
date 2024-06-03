@@ -1,5 +1,5 @@
-// #define GNUPLOT_NO_TIDY
 #include "../libs/JSL/JSL.h"
+// #define GNUPLOT_NO_TIDY
 #include "Utility/basicFunctions.h"
 #include "DataFrame/data.h"
 #include "ParameterInference/GlobalInference.h"
@@ -23,22 +23,25 @@ int main(int argc, char**argv)
 	
 
 	//load the data file -- either from file, or from a pipe
-	// Data d(settings);
-
-	auto model = Models::Gaussian(25,2,-1,50,160);
+	Data d(settings);
+	int Kmax = std::min(280,d.maxK);
+	// int Kmax = 200;
+	auto model = Models::NegativeBinomial(25,5,-3,100,0.1);
 	
-	int Kmax = 150;
-	std::vector<double> ws = {0.1,0.6,0.1,0.2};
+	std::vector<double> ws = {0.1,0.05,0.65,0.2};
 	model.Normalise(Kmax,ws);
 
-	auto d = model.Draw(2000000,ws,Kmax);
+	// auto d = model.Draw(12000000,ws,Kmax);
 
-
-	GlobalInference(model,d,settings,Kmax,14);
-	// JSL::gnuplot gp;
-
-	// gp.Plot(d.Chromosomes[0].Idx,d.Chromosomes[0].Counts);
-	// gp.Show();
+	// JSL::gnuplot;
+	// gp.Plot(d.Chromosomes[0])
+	JSL::gnuplot gp;
+	
+	settings.MemorySmoothing = 0.999;
+	Data d2(settings);
+	gp.Plot(d2.Chromosomes[0].Idx,d2.Chromosomes[0].Counts);
+	gp.Show();
+	GlobalInference(model,d,settings,Kmax,10);
 	
 	// auto path = GetHarmonics(d,settings,gp);
 

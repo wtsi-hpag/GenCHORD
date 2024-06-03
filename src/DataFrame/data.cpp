@@ -69,6 +69,8 @@ void Data::PrepareForLoading()
 	File.LoadedData = 0;
 	File.SpoofedData = 0;
 	File.MaxCoverage = 0;
+	File.CoverageSquareSum =0;
+	File.CoverageSum = 0;
 }	
 
 
