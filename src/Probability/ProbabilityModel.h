@@ -4,54 +4,61 @@
 #include <vector>
 #include <iostream>
 
-struct MuSigmaPair
+struct Dual
 {
-	double Mu;
-	double Sigma;
-	MuSigmaPair(){
-		Mu = 0;
-		Sigma = 0;
+	double X;
+	double Y;
+	Dual(){
+		X = 0;
+		Y = 0;
 	}
-	MuSigmaPair(double m, double s)
+	Dual(double x, double y)
 	{
-		Mu = m;
-		Sigma = s;
+		X = x;
+		Y = y;
 	}
 };
 
 class ProbabilityModel
 {
 	public:
-		int Dimensionality;
-		ProbabilityModel(int dimensions);
+		ProbabilityModel();
+		ProbabilityModel(int kMax, int Qmax);
+		void SetDimensionality(int kMax, int Qmax);
+		Dual GetDimensionality();
+		void SetSignalParameters(double mu, double sigma);
+		void SetSignalParameters(Dual input);
+		void SetNoiseParameters(double mu, double sigma, double gamma);
+		void SetNoiseParametersFromObserved(double mu,double sigma, double gamma);
 
-		virtual double logNoise(int k);
 
-		virtual double logSignal(int k, int q);
+		
 	
-		double logP(int k, int q,bool withCorrections);
-
+		double getLogNoise(int k);
+		double getLogSignal(int k,int q);
 		double logP(int k, int q);
-		void FillGrid(std::vector<std::vector<double>> & grid);
+		
+		void SetGrids();
 
-		void SetParameters(std::vector<double> v);
 
-		void Normalise(int kMax, std::vector<double> & weights);
-
-		std::vector<double> GlobalPrediction(int kMax, std::vector<double> & weights);
-		std::vector<double> Parameters;
+		void GlobalLogPrediction(std::vector<double> & output, const std::vector<double> & weights);
 
 		Data Draw(int n,std::vector<double> ws, int kMax)
 		{
+			SetDimensionality(kMax,ws.size()-1);
+			std::cout << MaxK << "  " << MaxQ << std::endl;
 			ws = JSL::Vector(ws)/JSL::Vector(ws).Sum();
 			std::vector<int> ks = JSL::Vector::intspace(0,kMax,1);
 
-			auto probs = GlobalPrediction(kMax,ws);
+			SetGrids();
+			std::vector<double> probs(ks.size());
+			GlobalLogPrediction(probs,ws);
+
 			std::vector<double> cumsum(probs.size(),0);
-			cumsum[0] = probs[0];
+			cumsum[0] = exp(probs[0]);
 			for (int i = 1; i < ks.size(); ++i)
 			{
-				cumsum[i] = cumsum[i-1] + probs[i];
+				cumsum[i] = cumsum[i-1] + exp(probs[i]);
 			}
 			double fin = cumsum[ks.size()-1];
 			ChromosomeCoverage c;
@@ -80,15 +87,11 @@ class ProbabilityModel
 		}
 
 
-
-		double NoiseNormalisation;
-		std::vector<double> Normalisation;
-
-		int NoiseResolution = 150;
+		int NoiseResolution = 180;
 		double NoiseMeanMin=1;
-		double NoiseMeanMax = 170;
+		double NoiseMeanMax = 150;
 		double NoiseSigmaMin = 0.01;
-		double NoiseSigmaMax = 60;
+		double NoiseSigmaMax = 70;
 
 		double SignalMean;
 		double SignalSigma;
@@ -97,19 +100,33 @@ class ProbabilityModel
 		double NoiseMean;
 		double NoiseSigma;
 
-		void SetNoiseParameters_Observed(double weight, double observedMean, double observedSigma);
-		void ComputeNoiseConversionChart(int kMax);
+		void ComputeNoiseConversionChart();
 	protected:
+		virtual double logNoise(int k);
+		virtual double logSignal(int k, int q);
+		int MaxK;
+		int MaxQ;
+
+		double logNoiseWeight;
+		double logSignalWeight;
 
 		double inferredMeanMin;
 		double inferredMeanMax;
 		double inferredSigmaMin;
 		double inferredSigmaMax;
-		std::vector<std::vector<MuSigmaPair>> NoiseGrid;
+		
+		
+		void SetNoiseGrid();
+		void SetSignalGrids();
+		std::vector<std::vector<Dual>> NoiseGrid;
 
-		MuSigmaPair GetMuSigma(double mean, double sigma);
+		Dual GetMuSigma(double mean, double sigma);
 
-		MuSigmaPair ComputeMoments(int kMax);
+		Dual ComputeNoiseMoments();
+
+
+		std::vector<double> Noise;
+		std::vector<std::vector<double>> Signal;
 
 };
 
@@ -123,21 +140,17 @@ namespace Models
 	class Gaussian : public ProbabilityModel
 	{
 		public:
-			Gaussian() : ProbabilityModel(2){};
-			Gaussian(double mu, double sigma,double eta, double mu_e,double sigma_e): ProbabilityModel(5)
+			Gaussian() : ProbabilityModel(){};
+			Gaussian(double mu, double sigma,double eta, double mu_e,double sigma_e): ProbabilityModel()
 			{
-				SignalMean = mu;
-				SignalSigma = sigma;
-				NoiseWeight = exp(eta);
-				NoiseMean = mu_e;
-				NoiseSigma = sigma_e;
+				SetSignalParameters(mu,sigma);
+				SetNoiseParameters(mu_e,sigma_e,exp(eta));
 			}
 
 			double logNoise(int k)
 			{
 				double mu_noise = NoiseMean;
 				double sigma_noise =NoiseSigma;
-				// std::cout << mu_noise << "  " << sigma_noise << std::endl;
 				return -halflog2pi -log(sigma_noise)- 0.5 * pow((k - mu_noise)/sigma_noise,2);
 			}
 
@@ -145,10 +158,7 @@ namespace Models
 			{
 				double mu = q * SignalMean;
 				double sigma = SignalSigma;
-				if (q == 0)
-				{
-					sigma/=2;
-				}
+			
 				return -halflog2pi -log(sigma)- 0.5 * pow((k - mu)/sigma,2);
 
 			}
@@ -158,14 +168,11 @@ namespace Models
 	class NegativeBinomial : public ProbabilityModel
 	{
 		public:
-			NegativeBinomial() : ProbabilityModel(2){};
-			NegativeBinomial(double mu, double sigma,double eta, double mu_e,double sigma_e): ProbabilityModel(5)
+			NegativeBinomial() : ProbabilityModel(){};
+			NegativeBinomial(double mu, double sigma,double eta, double mu_e,double sigma_e): ProbabilityModel()
 			{
-				SignalMean = mu;
-				SignalSigma = sigma;
-				NoiseWeight = exp(eta);
-				NoiseMean = mu_e;
-				NoiseSigma = sigma_e;
+				SetSignalParameters(mu,sigma);
+				SetNoiseParameters(mu_e,sigma_e,exp(eta));
 			}
 
 			double logNoise(int k)
@@ -189,7 +196,7 @@ namespace Models
 				double sigma = SignalSigma;
 				if (q == 0)
 				{
-					mu = sigma/10;
+					mu = std::min(SignalMean/5,sigma/5);
 				}
 				double v = sigma*sigma;
 				double r = mu*mu/v;

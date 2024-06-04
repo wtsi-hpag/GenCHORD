@@ -1,9 +1,24 @@
 #include "ProbabilityModel.h"
 
-
-ProbabilityModel::ProbabilityModel(int dimensions)
+ProbabilityModel::ProbabilityModel()
 {
-	Dimensionality = dimensions;
+
+}
+ProbabilityModel::ProbabilityModel(int kmax, int qmax)
+{
+	SetDimensionality(kmax,qmax);
+}
+void ProbabilityModel::SetDimensionality(int kmax, int qmax)
+{
+	MaxK = kmax;
+	MaxQ = qmax;
+
+	Noise = std::vector<double>(kmax+1,0.0);
+	Signal = std::vector<std::vector<double>>(kmax+1,std::vector<double>(qmax+1,0.0));
+}
+Dual ProbabilityModel::GetDimensionality()
+{
+	return Dual(MaxK,MaxQ);
 }
 
 double ProbabilityModel::logNoise(int k)
@@ -16,17 +31,69 @@ double ProbabilityModel::logSignal(int k, int q)
 	return -99999;
 }
 
-
-void ProbabilityModel::SetNoiseParameters_Observed(double weight, double mean, double sigma)
+void ProbabilityModel::SetSignalParameters(double mu, double sigma)
 {
-	NoiseWeight = weight;
+	SignalMean = mu;
+	SignalSigma = sigma;
+}
+void ProbabilityModel::SetSignalParameters(Dual input)
+{
+	SetSignalParameters(input.X,input.Y);
+}
+void ProbabilityModel::SetNoiseParameters(double mu, double sigma, double gamma)
+{
 
-	auto ms = GetMuSigma(mean,sigma);
-	NoiseMean = ms.Mu; //GetMu(mean,sigma);
-	NoiseSigma = ms.Sigma;//GetSigma(mini,minj,sigma);
+	NoiseMean = mu;
+	NoiseSigma = sigma;
+	NoiseWeight = std::max(1e-100,gamma);
+	logNoiseWeight = log(NoiseWeight);
+	logSignalWeight = log(1.0 - NoiseWeight);
 }
 
-MuSigmaPair ProbabilityModel::GetMuSigma(double muObs, double sigmaObs)
+void ProbabilityModel::SetGrids()
+{
+	SetNoiseGrid();
+	SetSignalGrids();
+}
+void ProbabilityModel::SetNoiseGrid()
+{
+	double noiseNorm = -999999999;
+	for (int k = 0; k <=MaxK; ++k)
+	{
+		Noise[k] = logNoise(k);
+		noiseNorm = ale(noiseNorm,Noise[k]);
+	}
+	for (int k = 0; k <=MaxK; ++k)
+	{
+		Noise[k] -= noiseNorm;
+	}
+}
+void ProbabilityModel::SetSignalGrids()
+{
+	for (int q = 0; q<=MaxQ; ++q)
+	{
+		double noiseNorm = -99999999999;
+		for (int k = 0; k <=MaxK; ++k)
+		{
+			Signal[k][q] = logSignal(k,q);
+			noiseNorm = ale(noiseNorm,Signal[k][q]);
+		}
+		for (int k = 0; k <=MaxK; ++k)
+		{
+			Signal[k][q] -= noiseNorm;
+		}
+	}
+}
+
+
+
+void ProbabilityModel::SetNoiseParametersFromObserved(double mean, double sigma, double weight)
+{
+	auto ms = GetMuSigma(mean,sigma);
+	SetNoiseParameters(ms.X,ms.Y,weight);
+}
+
+Dual ProbabilityModel::GetMuSigma(double muObs, double sigmaObs)
 {
 	double dmu = (inferredMeanMax-inferredMeanMin)/NoiseResolution;
 	double dsig = (inferredSigmaMax-inferredSigmaMin)/NoiseResolution;
@@ -53,46 +120,42 @@ MuSigmaPair ProbabilityModel::GetMuSigma(double muObs, double sigmaObs)
 	auto m3 = NoiseGrid[mu_coord][sigma_coord+1];
 	auto m4 = NoiseGrid[mu_coord+1][sigma_coord+1];
 
-	double muLower = m1.Mu + (m2.Mu - m1.Mu) *muInterp;
-	double sigmaLower = m1.Sigma + (m2.Sigma - m2.Sigma)*muInterp;
+	double muLower = m1.X + (m2.X - m1.X) *muInterp;
+	double sigmaLower = m1.Y + (m2.Y - m2.Y)*muInterp;
 
-	double muUpper = m3.Mu + (m4.Mu - m3.Mu)*muInterp;
-	double sigmaUpper = m3.Sigma + (m4.Sigma - m4.Sigma)*muInterp;
+	double muUpper = m3.X + (m4.X - m3.X)*muInterp;
+	double sigmaUpper = m3.Y + (m4.Y - m4.Y)*muInterp;
 
 	double mu = muLower + (muUpper - muLower) * sigmaInterp;
 	double sigma = sigmaLower + (sigmaUpper - sigmaLower)*sigmaInterp;
-
-	// std::cout << "\t\tI think mean should be " << muObs << " I think this is given by " << m1.Mu << " " << m2.Mu << " " << m3.Mu << " " << m4.Mu << " " << mu << std::endl;
-	// std::cout << "\t\tI think var should be " << sigmaObs << " I think this is given by " << m1.Sigma << " " << m2.Sigma << " " << m3.Sigma << " " << m4.Sigma << " " << sigma << std::endl;
-	return MuSigmaPair(mu,sigma);
+	return Dual(mu,sigma);
 
 }
 
 
 
-MuSigmaPair ProbabilityModel::ComputeMoments(int kMax)
+Dual ProbabilityModel::ComputeNoiseMoments()
 {
 	double s = 0;
 	double sq = 0;
 
-	for (int k = 0; k <= kMax; ++k)
+	for (int k = 0; k <= MaxK; ++k)
 	{
-		double p = exp(logNoise(k) - NoiseNormalisation);
+		double p = exp(Noise[k]);
 		s += k*p;
 		sq += k*k*p;
 	}
 	
-	return MuSigmaPair(s,sqrt(sq-s*s));
+	return Dual(s,sqrt(sq-s*s));
 }
 
-void ProbabilityModel::ComputeNoiseConversionChart(int kMax)
+void ProbabilityModel::ComputeNoiseConversionChart()
 {
 	double origMu = NoiseMean;
 	double origSigma = NoiseSigma;
-	std::vector<double> spoofws(0);
 
 
-	std::vector<std::vector<MuSigmaPair>> SampleGrid(NoiseResolution);
+	std::vector<std::vector<Dual>> SampleGrid(NoiseResolution);
 	NoiseGrid.resize(NoiseResolution);
 
 
@@ -113,12 +176,12 @@ void ProbabilityModel::ComputeNoiseConversionChart(int kMax)
 			//iniitial guesses
 			NoiseMean = trueMu;
 			NoiseSigma = trueSigma;
-			Normalise(kMax,spoofws);
+			SetNoiseGrid();
 			
-			SampleGrid[nm][ns] = ComputeMoments(kMax);
+			SampleGrid[nm][ns] = ComputeNoiseMoments();
 
-			double mu = SampleGrid[nm][ns].Mu;
-			double sigma = SampleGrid[nm][ns].Sigma;
+			double mu = SampleGrid[nm][ns].X;
+			double sigma = SampleGrid[nm][ns].Y;
 
 			if (mu > maxMu)
 			{
@@ -161,8 +224,8 @@ void ProbabilityModel::ComputeNoiseConversionChart(int kMax)
 			{
 				for (int j = 0; j < NoiseResolution; ++j)
 				{
-					double d1 = (SampleGrid[i][j].Mu - observedMu);
-					double d2 = (SampleGrid[i][j].Sigma - observedSigma);
+					double d1 = (SampleGrid[i][j].X - observedMu);
+					double d2 = (SampleGrid[i][j].Y - observedSigma);
 
 					double d = d1*d1 + d2*d2;
 					if (d < mind)
@@ -193,15 +256,15 @@ void ProbabilityModel::ComputeNoiseConversionChart(int kMax)
 			double muZero = NoiseMeanMin + mini*dmu;
 			double sigZero = NoiseSigmaMin + minj*dsig;
 
-			double muInterp = (SampleGrid[mini][minj].Mu - observedMu)/ (SampleGrid[mini+1][minj].Mu - (SampleGrid[mini][minj].Mu - muZero));
-			double sigmaInterp = (SampleGrid[mini][minj].Sigma - observedSigma)/(SampleGrid[mini][minj+1].Sigma - (SampleGrid[mini][minj].Sigma - muZero));
+			double muInterp = (SampleGrid[mini][minj].X - observedMu)/ (SampleGrid[mini+1][minj].X - (SampleGrid[mini][minj].X - muZero));
+			double sigmaInterp = (SampleGrid[mini][minj].Y - observedSigma)/(SampleGrid[mini][minj+1].Y - (SampleGrid[mini][minj].Y - muZero));
 			// double 
 			muInterp = std::min(1.2,std::max(muInterp,-0.2));
 			sigmaInterp= std::min(1.2,std::max(sigmaInterp,-0.2));
 
 			double predictMu = std::min(NoiseMeanMax,std::max(NoiseMeanMin,muZero + dmu * muInterp));
 			double predictSigma = std::min(NoiseSigmaMax,std::max(NoiseSigmaMin,sigZero + dsig * sigmaInterp));
-			NoiseGrid[nm][ns] = MuSigmaPair(predictMu,predictSigma);
+			NoiseGrid[nm][ns] = Dual(predictMu,predictSigma);
 
 			PB.Update(nm,ns);
 		}
@@ -212,80 +275,42 @@ void ProbabilityModel::ComputeNoiseConversionChart(int kMax)
 }
 
 
-
+double ProbabilityModel::getLogNoise(int k)
+{
+	return Noise[k];
+}
+double ProbabilityModel::getLogSignal(int k, int q)
+{
+	return Signal[k][q];
+}
 double ProbabilityModel::logP(int k, int q)
 {
-	return logP(k,q,true);
-}
-double ProbabilityModel::logP(int k, int q,bool withCorrections)
-{
-	double noiseWeighting = log(std::max(NoiseWeight,1e-100));
-	double signalWeighting = log(1.0 - NoiseWeight);
-	double signal = logSignal(k,q);
-	double noise = logNoise(k);
-
-	if (withCorrections)
-	{
-		signal -= Normalisation[q];
-		noise -= NoiseNormalisation;
-	}
-	return ale(noiseWeighting+noise, signalWeighting+signal);
+	// return Noise[k];
+	return ale(logNoiseWeight + Noise[k], logSignalWeight + Signal[k][q]);
 }
 
-void ProbabilityModel::SetParameters(std::vector<double> v)
+void ProbabilityModel::GlobalLogPrediction(std::vector<double> & out, const std::vector<double> & weights)
 {
-	Parameters = v;
-}
-
-
-void ProbabilityModel::Normalise(int kMax, std::vector<double> & weights)
-{
-	if (Normalisation.size() != weights.size())
+	if (out.size() != MaxK+1)
 	{
-		Normalisation = std::vector<double>(weights.size(),0.0);
+		std::cout << "ERROR! Kmax of probability and output do not match. Ensuring Kmax is set properly is crucial for probability normalisation." << std::endl;
+		exit(5);
 	}
 
-	NoiseNormalisation = -999999;
-	for (int q = 0; q < Normalisation.size(); ++q)
+	for (int k = 0; k <= MaxK; ++k)
 	{
-		Normalisation[q] = -9999999;
-	}
-	for (int k = 0; k <= kMax; ++k)
-	{
-		NoiseNormalisation = ale(NoiseNormalisation,logNoise(k));
-		for (int q = 0; q < Normalisation.size(); ++q)
+		for (int q = 0; q < weights.size(); ++q)
 		{
-			Normalisation[q] = ale(Normalisation[q],logSignal(k,q));
+		
+			double p_kq = log(weights[q]) +  logP(k,q);
+			if (q == 0)
+			{
+				out[k] = p_kq;
+			}
+			else
+			{
+				out[k] = ale(p_kq,out[k]);
+			}
 		}
 	}
-
-}
-
-void ProbabilityModel::FillGrid(std::vector<std::vector<double>> & grid)
-{
-	double noiseWeighting = log(std::max(NoiseWeight,1e-100));
-	double signalWeighting = log(1.0 - NoiseWeight);
-	for (int k = 0; k < grid.size(); ++k)
-	{
-		for (int q = 0; q < grid[k].size(); ++q)
-		{
-			grid[k][q] = logP(k,q);
-		}
-	}
-}
-
-std::vector<double> ProbabilityModel::GlobalPrediction(int kMax, std::vector<double> & weights)
-{
-	std::vector<double> out(kMax+1,0.0);
-	double noiseWeighting = log(std::max(NoiseWeight,1e-100));
-	double signalWeighting = log(1.0 - NoiseWeight);
-	for (int q = 0; q < weights.size(); ++q)
-	{
-		for (int k = 0; k <= kMax; ++k)
-		{
-			double logp = logP(k,q);
-			out[k] += weights[q] * exp(logp);
-		}
-	}
-	return out;
 }

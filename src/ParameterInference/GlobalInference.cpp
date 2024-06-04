@@ -32,14 +32,29 @@ struct Helper
 		for (int i = 0; i < ws.size(); ++i)
 		{
 			int ddip = abs(i-2);
-			ws[i] = pow(3,-ddip);
+			ws[i] = pow(4,-ddip);
 			s+=ws[i];
 		}
 		for (int i = 0; i < ws.size(); ++i)
 		{
 			ws[i] /= s;
 		}
-
+	}
+	void NudgeWeights()
+	{
+		double s= 0;
+		for (int i = 0; i < ws.size(); ++i)
+		{
+			int ddip = abs(i-2);
+			double t1= pow(4,-ddip);
+			double mem = 0.7;
+			ws[i] = mem * ws[i] + (1.0 - mem) * t1;
+			s+=ws[i];
+		}
+		for (int i = 0; i < ws.size(); ++i)
+		{
+			ws[i] /= s;
+		}
 	}
 	void ComputeHs(ProbabilityModel & p)
 	{
@@ -52,7 +67,7 @@ struct Helper
 			
 			for (int k = 0; k < kdim; ++k)
 			{
-				hs[q][k] = p.logP(k,q,true) + logWq;
+				hs[q][k] = p.logP(k,q) + logWq;
 				hSums[k] = ale(hSums[k],hs[q][k]);
 			}
 		}
@@ -63,7 +78,7 @@ struct Helper
 		}
 	}
 
-void ComputeEtas(ProbabilityModel & p)
+	void ComputeEtas(ProbabilityModel & p)
 	{
 		double sigSum = -99999;
 		double noiseSum = -99999;
@@ -73,36 +88,34 @@ void ComputeEtas(ProbabilityModel & p)
 		double runSum = 0;
 		for (int k =0; k < kdim; ++k)
 		{
-			double e = noiseWeight + p.logNoise(k) - p.NoiseNormalisation;
-			double s = -999999;
+			double e = noiseWeight + p.getLogNoise(k);
+			double s = e;
 			for (int q = 0; q < hs.size(); ++q)
 			{
-				s= ale(s,signalWeight + log(ws[q]) + p.logSignal(k,q) - p.Normalisation[q]) ;
+				s= ale(s,signalWeight + log(ws[q]) + p.getLogSignal(k,q)) ;
 			}
-			es[k] = e - ale(e,s);
+			es[k] = e - s;
 		}
 	}
 };
 
-std::vector<double> ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int kMax, int Qmax,int res)
+std::vector<double> ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int kMax, int Qmax,int res, Helper & assist)
 {
 	// p.NoiseMean = 15;//p.SignalMean;
 	// p.NoiseSigma =30;//2*p.NoiseMean;
 
-	// std::vector<double> weights(Qmax+1,1);
-	// for (int i = 0; i <= Qmax; ++i)
-	// {
-	// 	double ddip = abs(i-2);
-	// 	weights[i] = weights[2]/pow(5,ddip);
-	// }
-	p.NoiseWeight = exp(-2);
-	Helper assist(Nks,Qmax);
-	assist.SetWeights();
+	double w1 = 0.6;
+	double mod1 = w1 * p.NoiseMean + (1.0 - w1) * 9;
+	double mod2 = w1 * p.NoiseSigma + (1.0 - w1) * 1;
+	double mod3 = w1 * p.NoiseWeight + (1.0 - w1) * exp(-1);
+	p.SetNoiseParameters(mod1,mod2,mod3);
+
+	assist.NudgeWeights();
 	for (int l = 0; l < res; ++l)
 	{
 
-		p.Normalise(kMax,assist.ws);
-		//determine the updated weights
+		p.SetGrids();
+		// //determine the updated weights
 		
 		assist.ComputeHs(p);
 		assist.ComputeEtas(p);
@@ -130,7 +143,7 @@ std::vector<double> ParameterRelaxation(ProbabilityModel & p, const std::vector<
 		}
 		for (int k = 0; k < assist.kdim; ++k)
 		{
-			double p = exp(assist.es[k]) * Nks[k]/(assist.N * newGamma);
+			double p = exp(assist.es[k]) * Nks[k]/(assist.N*newGamma);
 			newNoiseMean +=  p*k;
 			newNoiseSigma += p*k*k;
 		}
@@ -139,56 +152,62 @@ std::vector<double> ParameterRelaxation(ProbabilityModel & p, const std::vector<
 		double oldMu = p.NoiseMean;
 		double oldSigma = p.NoiseSigma;
 		double oldGamma =p.NoiseWeight;
-		p.SetNoiseParameters_Observed(newGamma,newNoiseMean,newNoiseSigma);
-
+		p.SetNoiseParametersFromObserved(newNoiseMean,newNoiseSigma,newGamma);
 		diff += pow((oldMu-p.NoiseMean)/oldMu,2) + pow((oldSigma -p.NoiseSigma)/oldSigma,2) + pow((oldGamma - p.NoiseWeight)/oldGamma,2);
 
 
-		diff = sqrt(diff);
+		diff = sqrt(diff/(3 + assist.ws.size()));
 
 		L_glob = l;
 		if (l > res/5 && diff < 0.03)
 		{
 			break;
-		}
-		
-		// std::cout << "\t" << l << " " << newGamma << "  " << p.NoiseMean << "  " << p.NoiseSigma << std::endl;
+		}	
 	}
 	return assist.ws;
 }
 
 
 
-double ComputeScore(ProbabilityModel & p, const std::vector<int> & Nks, std::vector<double> & ws, int kMax,bool usePriors)
+std::vector<double> probContainer;
+double ComputeScore(ProbabilityModel & p, const std::vector<int> & Nks, std::vector<double> & ws, int kMax)
 {
-	p.Normalise(kMax,ws);
-	auto probs = p.GlobalPrediction(kMax,ws);
+	p.SetGrids();
+	probContainer.resize(kMax+1);
+	p.GlobalLogPrediction(probContainer,ws);
 	double score = 0;
 	int nSum = 0;
 	for (int k = 0; k <Nks.size(); ++k)
 	{
-		score += Nks[k] * log(std::max(1e-100,probs[k]));
+		score += Nks[k] * probContainer[k];
 		nSum += Nks[k];
 	}
 	double prior =0;
-	double nNonDiploid =  (1.0 - ws[2]) * nSum;
-	double nonDiploidPenalty = -0.00*nNonDiploid;
 
-	prior += nonDiploidPenalty;
-	// if (p.NoiseWeight > 0.25)
-	// {
-	// 	double nNoise = (p.NoiseWeight-0.25) * nSum;
-	// 	double noisePenalty = -0.1 * nNoise;
-	// 	prior += noisePenalty;
-	// }
-
-	// std::cout << p.NoiseMean << "  " << p.NoiseSigma << "  " << score << std::endl;
+	double maxw = 0;
+	int maxq = 0;
+	for (int q = 0; q < ws.size(); ++q)
+	{
+		if (ws[q] > maxw)
+		{
+			maxq = q;
+			maxw = ws[q];
+		}
+	}
+	if (maxq != 2)
+	{
+		double nNonDiploid =  (ws[maxq] - ws[2]) * nSum;
+		double nonDiploidPenalty = -0.01*nNonDiploid;
+		prior += nonDiploidPenalty;
+	}
 	return score + prior;
 }
 
 
 void GlobalInference(ProbabilityModel & p, const Data & data, const Settings & settings, int kMax,int Qmax)
 {
+	p.SetDimensionality(kMax,Qmax);
+	p.ComputeNoiseConversionChart();
 	std::vector<int> Nks(kMax+1,0);
 	for (int c = 0; c < data.Chromosomes.size(); ++c)
 	{
@@ -201,20 +220,19 @@ void GlobalInference(ProbabilityModel & p, const Data & data, const Settings & s
 			}
 		}
 	}
-	p.ComputeNoiseConversionChart(kMax);
-	int ModelDimension = p.Dimensionality;
-	int TotalDimensionality = ModelDimension + Qmax+1;
+	Helper assist(Nks,Qmax);
 	
-	JSL::Vector Position(TotalDimensionality);
+	assist.SetWeights();
+
 	
-	p.SignalMean = 25;
-	p.SignalSigma = 2;
+	// p.SignalMean = 25;
+	// p.SignalSigma = 2;
 	
 
-	// std::vector<double> mus = JSL::Vector::linspace(data.Mean/3,data.Mean,121);
-	std::vector<double> mus = JSL::Vector::linspace(12,28,35);
-	std::vector<double> sigmas = JSL::Vector::linspace(20,43,48);
-	std::cout << "Testing " << data.Mean/3 << "  < mu < " << data.Mean * 1.1 << std::endl;
+	// std::vector<double> mus = JSL::Vector::linspace(15,25,151);
+	std::vector<double> mus = JSL::Vector::linspace(data.Mean/3,data.Mean,155);
+	std::vector<double> sigmas = JSL::Vector::linspace(0.2,40,80);
+	std::cout << "Testing " << mus[0] << "  < mu < " << mus[mus.size()-1] << std::endl;
 	
 	int N = JSL::Vector(Nks).Sum();
 	double perfectScore = -N*log(N);
@@ -226,6 +244,7 @@ void GlobalInference(ProbabilityModel & p, const Data & data, const Settings & s
 		}
 	}
 
+	bool found = false;
 	double bestScore = -9e10;
 	double bestMu;
 	double bestSig;
@@ -244,17 +263,18 @@ void GlobalInference(ProbabilityModel & p, const Data & data, const Settings & s
 		
 		for (int j = 0; j < sigmas.size(); ++j)
 		{
-			p.NoiseMean = 5;
+			p.NoiseMean = 1;// mus[i];
 			p.NoiseSigma = 3;
 			p.SignalMean = mus[i];
 			p.SignalSigma = sigmas[j];
-			auto ws = ParameterRelaxation(p,Nks,kMax,Qmax,150);
+			auto ws = ParameterRelaxation(p,Nks,kMax,Qmax,18,assist);
 			L = lMem * L + (1.0 - lMem) * L_glob;
-			double score = ComputeScore(p,Nks,ws,kMax,true) - perfectScore;
+			double score = ComputeScore(p,Nks,ws,kMax) - perfectScore;
 			scores[j][i] = abs(score);
 			// std::cout << p.SignalMean << " " << p.SignalSigma << "  " << score << std::endl;
-			if (score > bestScore)
+			if (!found || score > bestScore)
 			{
+				found = true;
 				// std::cout << "new best score " << score << std::endl;
 				bestScore = score;
 				bestMu = p.SignalMean;
@@ -273,25 +293,27 @@ void GlobalInference(ProbabilityModel & p, const Data & data, const Settings & s
 	
 	p.SignalMean = bestMu;
 	p.SignalSigma = bestSig;
-	p.NoiseMean = 5;
-	p.NoiseSigma = 3;
-	auto ws = ParameterRelaxation(p,Nks,kMax,Qmax,150);
-	double trueScore = ComputeScore(p,Nks,ws,kMax,false);
+	auto ws = ParameterRelaxation(p,Nks,kMax,Qmax,150,assist);
+	p.SetGrids();
+	double trueScore = ComputeScore(p,Nks,ws,kMax);
 	std::cout << "Inferred parameters " << std::endl;
 	std::cout << "\tmu_e: \t" << p.NoiseMean << "\n\tsig_e:\t" << p.NoiseSigma << "\n\tgamma:\t" << p.NoiseWeight << std::endl;
 	std::cout << "\tws: \t" << JSL::Vector(ws) << std::endl;
-	std::cout << "\tInferred score " << ComputeScore(p,Nks,ws,kMax,true) - perfectScore<< std::endl;
+	std::cout << "\tInferred score " << ComputeScore(p,Nks,ws,kMax) - perfectScore<< std::endl;
+	
+	
 	JSL::gnuplot gp;
-	std::vector<int> ks;
-	ks = JSL::Vector::intspace(0,kMax,1);
+	std::vector<int> ks = JSL::Vector::intspace(0,kMax,1);
 
 	gp.SetMultiplot(2,1);
 	gp.Scatter(ks,Nks);
-	auto probs = p.GlobalPrediction(kMax,ws);
+	std::vector<double> probs(ks.size());
+	p.GlobalLogPrediction(probs,assist.ws);
 	
+	double logN = log(assist.N);
 	for (int k = 0; k < probs.size(); ++k)
 	{
-		probs[k] *= N;
+		probs[k] = exp(logN + probs[k]);
 		if (probs[k] < 0.1)
 		{
 			probs[k] = 0;
@@ -303,42 +325,10 @@ void GlobalInference(ProbabilityModel & p, const Data & data, const Settings & s
 	gp.Plot(ks,Nks);
 	gp.Plot(ks,probs);
 	gp.SetYLog(true);
-	std::ostringstream os;
-	// os << "Old-Deforest (Gaussian) -- Statistical Deviation Score " << abs(trueScore - perfectScore);
-	os << "New-Deforest (Negative Binomial) -- Statistical Deviation Score " << abs(trueScore - perfectScore);
-	std::string title = os.str();
-	std::cout << "TIT" << title << std::endl;
-	gp.SetSuperTitle(title);
-	gp.SetPersistence(true);
 	gp.Show();
 
 	JSL::gnuplot gp2;
 	gp2.Map(mus, sigmas,scores);
 	gp2.SetCBLog(true);
 	gp2.Show();
-
-
-	
-	// auto prediction = p.GlobalPrediction(ks,assist.ws);
-	// prediction =  JSL::Vector(prediction)/JSL::Vector(prediction).Sum();
-	// std::cout << JSL::Vector(prediction).Sum() << std::endl;
-
-
-	
-	
-	// JSL::gnuplot gp;
-	// gp.SetMultiplot(2,1);
-	// gp.Scatter(ks,Nks);
-	// gp.Plot(ks,prediction);
-	// // gp.SetXRange(0,100);
-	// gp.SetYLog(true);
-
-	// gp.SetAxis(1);
-	// gp.Plot(ks,Nks);
-	// gp.Plot(ks,prediction);
-	// // gp.SetXRange(0,100);
-	// gp.Show();
-	
-
-
 }
