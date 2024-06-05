@@ -3,13 +3,17 @@
 #include "Utility/basicFunctions.h"
 #include "DataFrame/data.h"
 #include "ParameterInference/GlobalInference.h"
-// #include "Utility/plotting.h"
+#include "Utility/plotting.h"
 // #include "Utility/logFactorial.h"
 
+#include "HarmonicTree/GetHarmonics.h"
 #include "settings.h"
 #include <chrono>
 using namespace std::chrono;
 // LogFactorial LogFac; //initialise the functor object
+
+
+
 
 int main(int argc, char**argv)
 {
@@ -24,26 +28,33 @@ int main(int argc, char**argv)
 
 	//load the data file -- either from file, or from a pipe
 	Data d(settings);
-	int Kmax = std::min(150,d.maxK);
-	int qmax = 10;
-	// int Kmax = 200;
-	auto model = Models::NegativeBinomial(25,5,-3,100,10);
-	std::vector<double> ws = {0.1,0.05,0.65,0.2};
 
-	// auto d = model.Draw(100000,ws,Kmax);
+	Log("Preparing probability models:\n")
+	int Kmax = 2*d.Mean + d.Deviation;
+	int qmax = settings.Qmax;
+	auto model = Models::NegativeBinomial();
 
-	// JSL::gnuplot;
-	// gp.Plot(d.Chromosomes[0])
-	// JSL::gnuplot gp;
+	NormaliseModel(model,d,settings, Kmax,qmax);
+
+	// model.SetSignalParameters(11.60,5.33);
+	// model.SetNoiseParameters(10.1452,4.7,0.30);
 	
-	// settings.DataThinning = 1e5;
+	Kmax = d.maxK;
+	model.SetDimensionality(Kmax,qmax);
+	model.SetGrids();
+
+
+	Log("Beginning network navigation" << std::endl;)
+	auto path = GetHarmonics(d,settings,model);
+	JSL::gnuplot gp;
+
+	settings.MemorySmoothing = 0.999;
 	// Data d2(settings);
-	// gp.Plot(d2.Chromosomes[0].Idx,d2.Chromosomes[0].Counts);
-	// gp.Show();
-	GlobalInference(model,d,settings, Kmax,qmax);
-	
-	// auto path = GetHarmonics(d,settings,gp);
 
+	basicPlot(gp,d,0);
+	TransitionPlot(gp,d,path,"test");
+	gp.SetPersistence(true);
+	gp.Show();
 
 	Log("Deforest routine completed. Have a nice day.\n\n")
 }

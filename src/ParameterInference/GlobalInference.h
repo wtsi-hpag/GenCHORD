@@ -6,4 +6,4 @@
 
 
 
-void GlobalInference(ProbabilityModel & p, const Data & data, const Settings & settings, int kMax, int Qmax);
+void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & settings, int kMax, int Qmax);

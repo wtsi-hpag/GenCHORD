@@ -72,7 +72,7 @@ class Settings
 				Accelerator = JSL::Argument<int>(1,"accelerate",a,b);
 				Gamma =  JSL::Argument<double>(-1,"gamma",a,b);
 				Qmax = JSL::Argument<int>(10,"Qmax",a,b);
-				L = JSL::Argument<int>(100000,"L",a,b);
+				L = JSL::Argument<int>(10000,"L",a,b);
 				ContinuityPrior = JSL::Argument<double>(1e-2,"alpha",a,b);
 				TargetChromosome = JSL::Argument<std::string>("all","c",a,b);
 

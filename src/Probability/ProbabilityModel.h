@@ -99,6 +99,8 @@ class ProbabilityModel
 		double NoiseWeight;
 		double NoiseMean;
 		double NoiseSigma;
+		double logNoiseWeight;
+		double logSignalWeight;
 
 		void ComputeNoiseConversionChart();
 	protected:
@@ -107,9 +109,7 @@ class ProbabilityModel
 		int MaxK;
 		int MaxQ;
 
-		double logNoiseWeight;
-		double logSignalWeight;
-
+		
 		double inferredMeanMin;
 		double inferredMeanMax;
 		double inferredSigmaMin;
@@ -196,7 +196,7 @@ namespace Models
 				double sigma = SignalSigma;
 				if (q == 0)
 				{
-					mu = std::min(SignalMean/5,sigma/5);
+					mu = 1;
 				}
 				double v = sigma*sigma;
 				double r = mu*mu/v;

@@ -45,7 +45,7 @@ Data::Data(Settings & settings)
 	Deviation = sqrt(File.CoverageSquareSum/ File.LoadedData - Mean * Mean);
 
 	//do some corrections
-	int LudicrousValue = Mean + 20*Deviation;
+	int LudicrousValue = Mean + 10*Deviation;
 	int truncated = 0;
 	for (int i = 0; i < Chromosomes.size(); ++i)
 	{
@@ -53,12 +53,12 @@ Data::Data(Settings & settings)
 		File.MaxCoverage = std::max(File.MaxCoverage,Chromosomes[i].maxK);
 	}
 	maxK = std::min(LudicrousValue,File.MaxCoverage);
-	Log("\tI am asserting that any coverage above " << LudicrousValue << " is spurious. " << truncated << " Datapoints were affected\n")
+	Log("\tAsserting that coverage above " << LudicrousValue << " is spurious. " << truncated << " Datapoints were affected\n")
 	Log("\tSpoofed " << File.SpoofedData << " missing entries as gaps\n\tA total of " << File.LoadedData << " datapoints loaded\n\tData has global coverage  "<< Mean << "±" << Deviation  << "\n\tMaximum coverage value is " << File.MaxCoverage<< std::endl;);
 
 
 	Loaded = true;
-	std::cout << "I found " << File.LoadedData << " points" << std::endl;
+	std::cout << "\t" << File.LoadedData << " points loaded in total" << std::endl;
 }
 
 void Data::PrepareForLoading()

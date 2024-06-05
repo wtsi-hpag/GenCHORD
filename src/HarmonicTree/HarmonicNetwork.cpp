@@ -27,26 +27,25 @@ void HarmonicNetwork::Initialise(const Data & d, int assignedChromosome, const S
 }
 
 
-//some initial overload of the probability function
-double logP(int k, int q, double nu, double gamma)
+// //some initial overload of the probability function
+// double logP(int k, int q, double nu, double gamma)
+// {
+// 	double d = (k - q*nu)/gamma;
+
+// 	return log(1.0/(M_PI * gamma * (1 + d*d)));
+// 	// return -0.5 * d* d;
+// }
+
+Path HarmonicNetwork::Navigate(const Data & d, ProbabilityModel & prob)
 {
-	double d = (k - q*nu)/gamma;
-
-	return log(1.0/(M_PI * gamma * (1 + d*d)));
-	// return -0.5 * d* d;
-}
-
-Path HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
-{
-
 	//do the initial layer first
 	// 
 	int k0 = d.Chromosomes[MyChromosome].Counts[0];
-
+	
 
 	for (int q = 0; q < Qmax; ++q)
 	{
-		double score = logP(k0,q,nu,gamma);
+		double score = prob.logP(k0,q);
 		if (q != Ploidy)
 		{
 			score += logPloidyPrior;
@@ -70,7 +69,7 @@ Path HarmonicNetwork::Navigate(const Data & d, double nu, double gamma)
 		//start by grabbing the simple continuity option
 		for (int q = 0; q < Qmax; ++q)
 		{
-			double nodeProb = logP(k,q,nu,gamma);
+			double nodeProb = prob.logP(k,q);
 			if (q!= Ploidy)
 			{
 				nodeProb += logPloidyPrior;

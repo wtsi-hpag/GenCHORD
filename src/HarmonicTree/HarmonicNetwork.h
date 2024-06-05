@@ -3,7 +3,7 @@
 #include "Path.h"
 #include "../settings.h"
 #include "../DataFrame/data.h"
-
+#include "../Probability/ProbabilityModel.h"
 
 class HarmonicNetwork
 {
@@ -15,7 +15,7 @@ class HarmonicNetwork
 
 
 
-		Path Navigate(const Data & d, double nu, double gamma);
+		Path Navigate(const Data & d, ProbabilityModel & prob);
 
 		Path BestPath();
 		bool ScanMode;

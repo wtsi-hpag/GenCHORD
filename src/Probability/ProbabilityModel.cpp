@@ -207,8 +207,7 @@ void ProbabilityModel::ComputeNoiseConversionChart()
 	inferredSigmaMin = minSig;
 	inferredSigmaMax = maxSig;
 
-	JSL::ProgressBar<2> PB(NoiseResolution,NoiseResolution);
-	Log("Initialising truncated-distribution lookup table\n");
+	Log("\tInitialising truncated-distribution lookup table\n");
 	for (int nm = 0; nm < NoiseResolution; ++nm) 
 	{
 		double observedMu = minMu + nm*(maxMu - minMu)/(NoiseResolution - 1);
@@ -266,10 +265,8 @@ void ProbabilityModel::ComputeNoiseConversionChart()
 			double predictSigma = std::min(NoiseSigmaMax,std::max(NoiseSigmaMin,sigZero + dsig * sigmaInterp));
 			NoiseGrid[nm][ns] = Dual(predictMu,predictSigma);
 
-			PB.Update(nm,ns);
 		}
 	}
-
 	NoiseMean = origMu;
 	NoiseSigma = origSigma;
 }
