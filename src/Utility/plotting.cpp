@@ -6,7 +6,7 @@
 	
 }
 
-void TransitionPlot(JSL::gnuplot & gp,const Data & d, Path path, std::string legend)
+void TransitionPlot(JSL::gnuplot & gp,const ChromosomeCoverage & chrom, Path & path, std::string legend)
 {
 	std::vector<int> plotIdx = {path.Route[0].Index};
 	double prev = path.Route[0].Value * path.Nu;
@@ -19,8 +19,8 @@ void TransitionPlot(JSL::gnuplot & gp,const Data & d, Path path, std::string leg
 		plotIdx.push_back(path.Route[i].Index);
 		plotVals.push_back(prev);
 	}
-	plotIdx.push_back(d.Chromosomes[0].maxIdx);
+	plotIdx.push_back(chrom.maxIdx);
 	plotVals.push_back(prev);
 
-	gp.Plot(plotIdx,plotVals,JSL::LineProperties::Legend(legend));
+	gp.Plot(plotIdx,plotVals,JSL::LineProperties::Legend(legend),JSL::LineProperties::PenSize(3));
 }

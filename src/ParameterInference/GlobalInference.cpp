@@ -114,7 +114,7 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 	{
 		double w1 = 0.2;
 		double mod1 = w1 * p.NoiseMean + (1.0 - w1) * 9;
-		double mod2 = w1 * p.NoiseSigma + (1.0 - w1) * 1;
+		double mod2 = w1 * p.NoiseSigma + (1.0 - w1) * 40;
 		double mod3 = w1 * p.NoiseWeight + (1.0 - w1) * exp(-1);
 		p.SetNoiseParameters(mod1,mod2,mod3);
 
@@ -318,13 +318,12 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	Log("\tOptimal noise model has mu=" << p.NoiseMean << ", sigma=" << p.NoiseSigma << " and has weight " << p.NoiseWeight << "\n");
 	Log("\tOptimal combined model as a deviation score of " << trueScore << "\n");
 
-	std::cout << JSL::Vector(assist.ws) << std::endl;
 	
 	JSL::gnuplot gp;
 	std::vector<int> ks = JSL::Vector::intspace(0,kMax,1);
 
 	gp.SetMultiplot(2,1);
-	gp.Scatter(ks,Nks);
+	namespace lp = JSL::LineProperties;
 	std::vector<double> probs(ks.size());
 	p.GlobalLogPrediction(probs,assist.ws);
 	
@@ -337,11 +336,22 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 			probs[k] = 0;
 		}
 	}
-	gp.Plot(ks,probs);
-
+	gp.Plot(ks,Nks,lp::Legend("Data"));
+	gp.Plot(ks,probs,lp::Legend("Probability Distribution"),lp::PenSize(5));
+	gp.WindowSize(2000,1400);
+	gp.SetTerminal("pngcairo");
+	gp.SetOutput(settings.OutputDirectory + "/probability_model.png");
+	gp.SetXLabel("k");
+	gp.SetYLabel("p_k");
+	gp.SetTitle("Inferred Probability Model");
 	gp.SetAxis(1);
-	gp.Plot(ks,Nks);
-	gp.Plot(ks,probs);
+	gp.WindowSize(2000,1400);
+	gp.SetFontSize(JSL::Fonts::Global,25);
+	gp.SetXLabel("k");
+	gp.SetYLabel("p_k (log scale)");
+	
+	gp.Plot(ks,Nks,lp::Legend("Data"));
+	gp.Plot(ks,probs,lp::Legend("Probability Distribution"),lp::PenSize(5));
 	gp.SetYLog(true);
 
 	std::vector<double> ps(ks.size());
@@ -354,9 +364,10 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 		}
 	}
 	gp.SetAxis(0);
-	gp.Plot(ks,ps,JSL::LineProperties::PenType(JSL::Dash));
+	gp.SetLegend(true);
+	gp.Plot(ks,ps,JSL::LineProperties::PenType(JSL::Dash),JSL::LineProperties::PenSize(3),JSL::LineProperties::Legend("Error Component"));
 	gp.SetAxis(1);
-	gp.Plot(ks,ps,JSL::LineProperties::PenType(JSL::Dash));
+	gp.Plot(ks,ps,JSL::LineProperties::PenType(JSL::Dash),JSL::LineProperties::PenSize(2));
 	for (int q = 0; q < assist.ws.size(); ++q)
 	{
 		for (int k  =0; k < ks.size(); ++k)
@@ -368,15 +379,21 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 			}
 		}
 		gp.SetAxis(0);
-		gp.Plot(ks,ps,JSL::LineProperties::PenType(JSL::Dotted));
+		gp.Plot(ks,ps,JSL::LineProperties::PenType(JSL::Dotted),JSL::LineProperties::PenSize(2));
 		gp.SetAxis(1);
-		gp.Plot(ks,ps,JSL::LineProperties::PenType(JSL::Dotted));
+		gp.Plot(ks,ps,JSL::LineProperties::PenType(JSL::Dotted),JSL::LineProperties::PenSize(2));
 	}
 
 	gp.Show();
 
 	JSL::gnuplot gp2;
+	gp2.WindowSize(2000,1400);
+	gp2.SetFontSize(JSL::Fonts::Global,25);
 	gp2.Map(mus, sigmas,scores);
 	gp2.SetCBLog(true);
+	gp2.SetTerminal("pngcairo");
+	gp2.SetXLabel("mu");
+	gp2.SetYLabel("sigma");
+	gp2.SetOutput(settings.OutputDirectory + "/model_parameters.png");
 	gp2.Show();
 }

@@ -25,10 +25,11 @@ int main(int argc, char**argv)
 	globalVerbose = !settings.Quiet;
 	Log("==========================================\n\tCoverage Deforesting\n==========================================" << std::endl);
 	
-
+	JSL::mkdir(settings.OutputDirectory);
 	//load the data file -- either from file, or from a pipe
 	Data d(settings);
-
+	settings.DataThinning=5e5;
+	Data d2(settings);
 	Log("Preparing probability models:\n")
 	int Kmax = 2*d.Mean + d.Deviation;
 	int qmax = settings.Qmax;
@@ -44,17 +45,55 @@ int main(int argc, char**argv)
 	model.SetGrids();
 
 
-	Log("Beginning network navigation" << std::endl;)
-	auto path = GetHarmonics(d,settings,model);
-	JSL::gnuplot gp;
+	std::vector<double> alphas = {1e-15,1e-10,1e-5,1e-1,1};
+	std::vector<int> L = {(int)1e4,(int)1e5,(int)3e5,(int)6e5,(int)1e6,(int)2e6};
+	std::vector<double> ploidy = {0.01,0.1,0.5,0.9};
+	std::string orig = settings.OutputDirectory;
+	for (int i = 0; i < alphas.size(); ++i)
+	{
+		for (int j = 0; j < L.size(); ++j)
+		{
+			for (int p = 0; p < ploidy.size(); ++p)
+			{
+				settings.ContinuityPrior = alphas[i];
+				settings.L = L[j];
+				settings.PloidyPrior = ploidy[p];
 
-	settings.MemorySmoothing = 0.999;
-	// Data d2(settings);
+				Log("Set parameters to " << alphas[i] << " " << L[j] << " " << ploidy[p] << std::endl;)
+				
+				std::string outStr = "alpha" + std::to_string((int)abs(log10(alphas[i]))) + "_L" + std::to_string((int)(10*log10(L[j]))) + "_prior" + std::to_string((int)(100*ploidy[p]));
+				settings.OutputDirectory = orig + "/" + outStr + "/";
+				JSL::mkdir(settings.OutputDirectory);
 
-	basicPlot(gp,d,0);
-	TransitionPlot(gp,d,path,"test");
-	gp.SetPersistence(true);
-	gp.Show();
+				Log("Beginning network navigation" << std::endl;)
+				auto paths = GetHarmonics(d,settings,model);
 
-	Log("Deforest routine completed. Have a nice day.\n\n")
+				Log("Navigation complete, writing to output\n")
+				
+				std::string treeFile= "";
+				for (int i = 0; i < paths.size(); ++i)
+				{
+					std::string s = paths[i].TreeOutput(d.Chromosomes[i].Name);
+					treeFile += s;
+					Log("Plotting " << i + 1 <<std::endl;)
+
+					JSL::gnuplot gp;
+					// basicPlot(gp,d2,i);
+					gp.WindowSize(2000,1400);
+					TransitionPlot(gp,d2.Chromosomes[i],paths[i],"Inferred Curve");
+					gp.SetTerminal("pngcairo");
+					gp.SetLegend(true);
+					gp.SetOutput(settings.OutputDirectory + "/" + d.Chromosomes[i].Name + ".png");
+					// gp.SetPersistence(true);
+					gp.Show();
+				}
+				std::string treeFileName = settings.OutputDirectory + "/coverage.tree";
+				JSL::initialiseFile(treeFileName);
+				JSL::writeStringToFile(treeFileName,treeFile);
+
+				Log("\tOutput saved to " << settings.OutputDirectory << "\n");
+			}
+		}
+	}
+	Log("Deforest routine completed.Have a nice day.\n\n")
 }

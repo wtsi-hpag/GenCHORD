@@ -196,7 +196,7 @@ namespace Models
 				double sigma = SignalSigma;
 				if (q == 0)
 				{
-					mu = 1;
+					mu = std::min(sigma/5,SignalMean/10);
 				}
 				double v = sigma*sigma;
 				double r = mu*mu/v;

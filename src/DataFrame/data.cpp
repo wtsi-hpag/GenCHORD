@@ -101,7 +101,7 @@ void Data::ParseLine(const std::vector<std::string> & line, const Settings & set
 
 		if (settings.AllChromosomes || File.ChromSignifier == settings.TargetChromosome)
 		{
-			Log("\tFound Chromosome " << File.CurrentChromosome+1 << " on line " << File.CurrentLine << "\n");
+			// Log("\tFound Chromosome " << File.CurrentChromosome+1 << " on line " << File.CurrentLine << "\n");
 			File.ChromActive = true;
 			File.Chromosome = ChromosomeCoverage(File.ChromSignifier);
 			File.SmoothingAverage = std::stoi(line[2]);
@@ -122,7 +122,7 @@ void Data::ParseLine(const std::vector<std::string> & line, const Settings & set
 
 			if (settings.AllChromosomes || File.ChromSignifier == settings.TargetChromosome)
 			{
-				Log("\tFound Chromosome " << File.CurrentChromosome+1 << " on line " << File.CurrentLine<<"\n");
+				// Log("\tFound Chromosome " << File.CurrentChromosome+1 << " on line " << File.CurrentLine<<"\n");
 				File.ChromActive = true;
 				File.Chromosome = ChromosomeCoverage(File.ChromSignifier);
 			}

@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
-
+#include <sstream>
 struct Coordinate
 {
 	int Index;
@@ -78,5 +78,18 @@ class Path
 			
 			
 			// PreviousIdx.push_back(idx);
+		}
+
+		std::string TreeOutput(std::string chrName)
+		{
+			std::ostringstream os;
+
+			for (int i = 0; i < Route.size(); ++i)
+			{
+				os << chrName << " " << Route[i].Index << " " << Route[i].Value << "\n";
+			}
+			return os.str();
+	
+
 		}
 };

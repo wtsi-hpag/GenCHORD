@@ -7,4 +7,4 @@
 extern int nPlot;
 void basicPlot(JSL::gnuplot & gp,Data & d,int chrom);
 
-void TransitionPlot(JSL::gnuplot & gp,const Data & d, Path path, std::string legend);
+void TransitionPlot(JSL::gnuplot & gp,const ChromosomeCoverage & chrom, Path & path, std::string legend);

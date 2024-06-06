@@ -21,7 +21,7 @@ class Settings
 		int L;
 		double ContinuityPrior;
 
-		std::string OutputName;
+		std::string OutputDirectory;
 		std::string TargetChromosome;
 		bool AllChromosomes;
 		std::string DataFile;
@@ -81,7 +81,7 @@ class Settings
 				DataFile = JSL::Argument<std::string>("_no_file_provided_","f",a,b);
 				DataThinning = JSL::Argument<int>(1,"thin",a,b);
 				
-				OutputName = JSL::Argument<std::string>("output","o",a,b);
+				OutputDirectory = JSL::Argument<std::string>("Output","o",a,b);
 				ParallelWorkers = JSL::Argument<int>(0,"worker",a,b);
 				ComparePlot = JSL::Argument<std::string>("__none__","compare",a,b);
 
