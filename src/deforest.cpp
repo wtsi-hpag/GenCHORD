@@ -28,10 +28,10 @@ int main(int argc, char**argv)
 	JSL::mkdir(settings.OutputDirectory);
 	//load the data file -- either from file, or from a pipe
 	Data d(settings);
-	settings.DataThinning=5e5;
+	settings.DataThinning=1e3;
 	Data d2(settings);
 	Log("Preparing probability models:\n")
-	int Kmax = std::min(250.,2*d.Mean + d.Deviation);
+	int Kmax = 4*d.Mean + d.Deviation;
 	int qmax = settings.Qmax;
 	auto model = Models::NegativeBinomial();
 
@@ -45,9 +45,12 @@ int main(int argc, char**argv)
 	model.SetGrids();
 
 
-	std::vector<double> alphas = {1e-15,1e-10,1e-5,1e-1,1};
-	std::vector<int> L = {(int)1e4,(int)1e5,(int)3e5,(int)6e5,(int)1e6,(int)2e6};
-	std::vector<double> ploidy = {0.01,0.1,0.5,0.9};
+	std::vector<double> alphas = {1e-10};
+	std::vector<int> L = {(int)1e7};
+	std::vector<double> ploidy = {0.1};
+	// std::vector<double> alphas = {1e-15,1e-10,1e-5,1e-1,1};
+	// std::vector<int> L = {(int)1e4,(int)1e5,(int)3e5,(int)6e5,(int)1e6,(int)2e6};
+	// std::vector<double> ploidy = {0.01,0.1,0.5,0.9};
 	std::string orig = settings.OutputDirectory;
 	for (int i = 0; i < alphas.size(); ++i)
 	{
@@ -57,6 +60,7 @@ int main(int argc, char**argv)
 			{
 				settings.ContinuityPrior = alphas[i];
 				settings.L = L[j];
+				
 				settings.PloidyPrior = ploidy[p];
 
 				Log("Set parameters to " << alphas[i] << " " << L[j] << " " << ploidy[p] << std::endl;)
@@ -75,10 +79,10 @@ int main(int argc, char**argv)
 				{
 					std::string s = paths[i].TreeOutput(d.Chromosomes[i].Name);
 					treeFile += s;
-					Log("Plotting " << i + 1 <<std::endl;)
+					Log("\tPlotting " << i + 1 <<std::endl;)
 
 					JSL::gnuplot gp;
-					// basicPlot(gp,d2,i);
+					basicPlot(gp,d2,i);
 					gp.WindowSize(2000,1400);
 					TransitionPlot(gp,d2.Chromosomes[i],paths[i],"Inferred Curve");
 					gp.SetTerminal("pngcairo");

@@ -32,7 +32,7 @@ struct Helper
 		for (int i = 0; i < ws.size(); ++i)
 		{
 			int ddip = abs(i-2);
-			ws[i] = pow(5,-ddip);
+			ws[i] = pow(3,-ddip);
 			s+=ws[i];
 		}
 		for (int i = 0; i < ws.size(); ++i)
@@ -46,7 +46,7 @@ struct Helper
 		for (int i = 0; i < ws.size(); ++i)
 		{
 			int ddip = abs(i-2);
-			double t1= pow(5,-ddip);
+			double t1= pow(3,-ddip);
 			double mem = 0.5;
 			ws[i] = mem * ws[i] + (1.0 - mem) * t1;
 
@@ -113,8 +113,8 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 	if (nudge)
 	{
 		double w1 = 0.2;
-		double mod1 = w1 * p.NoiseMean + (1.0 - w1) * 9;
-		double mod2 = w1 * p.NoiseSigma + (1.0 - w1) * 40;
+		double mod1 = w1 * p.NoiseMean + (1.0 - w1) * 25;
+		double mod2 = w1 * p.NoiseSigma + (1.0 - w1) * 20;
 		double mod3 = w1 * p.NoiseWeight + (1.0 - w1) * exp(-1);
 		p.SetNoiseParameters(mod1,mod2,mod3);
 
@@ -211,6 +211,12 @@ double ComputeScore(ProbabilityModel & p, const std::vector<int> & Nks, std::vec
 		double nonDiploidPenalty = -0.1*nNonDiploid;
 		prior += nonDiploidPenalty;
 	}
+	if (p.NoiseWeight > 0.25)
+	{
+		double nNoiseExcess = (p.NoiseWeight - 0.25) * nSum;
+		double noisePenalty = -0.1*nNoiseExcess;
+		prior += noisePenalty;
+	}
 	return score + prior;
 }
 
@@ -244,8 +250,8 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	
 
 	// std::vector<double> mus = JSL::Vector::linspace(15,25,151);
-	std::vector<double> mus = JSL::Vector::linspace(data.Mean/3,data.Mean/1.5,20);
-	std::vector<double> sigmas = JSL::Vector::linspace(1,40,10);
+	std::vector<double> mus = JSL::Vector::linspace(data.Mean/3,data.Mean/1.5,50);
+	std::vector<double> sigmas = JSL::Vector::linspace(1,25,30);
 	
 	int N = JSL::Vector(Nks).Sum();
 	double perfectScore = -N*log(N);
