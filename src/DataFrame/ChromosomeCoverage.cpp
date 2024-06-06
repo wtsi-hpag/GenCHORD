@@ -1,5 +1,5 @@
 #include "ChromosomeCoverage.h"
-
+#include <iostream>
 int ChromosomeCoverage::RemoveSpuriousData(int maxVal)
 {
 	int truncated = 0;
@@ -22,6 +22,7 @@ void ChromosomeCoverage::Add(chr_int id, int count)
 {
 	Idx.push_back(id);
 	Counts.push_back(count);
+	
 	if (id > maxIdx)
 	{
 		maxIdx = id;

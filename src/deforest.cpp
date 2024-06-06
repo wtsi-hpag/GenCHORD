@@ -12,7 +12,11 @@
 using namespace std::chrono;
 // LogFactorial LogFac; //initialise the functor object
 
-
+template<class T>
+void WriteMeta(std::ostringstream &stream, std::string name,T val)
+{
+	stream << name << ": " << val << "\n";
+}
 
 
 int main(int argc, char**argv)
@@ -28,13 +32,15 @@ int main(int argc, char**argv)
 	JSL::mkdir(settings.OutputDirectory);
 	//load the data file -- either from file, or from a pipe
 	Data d(settings);
-	settings.DataThinning=1e3;
+	
+	settings.DataThinning=1e5;
 	Data d2(settings);
 	Log("Preparing probability models:\n")
 	int Kmax = 4*d.Mean + d.Deviation;
 	int qmax = settings.Qmax;
 	auto model = Models::NegativeBinomial();
 
+	
 	NormaliseModel(model,d,settings, Kmax,qmax);
 
 	// model.SetSignalParameters(11.60,5.33);
@@ -46,7 +52,7 @@ int main(int argc, char**argv)
 
 
 	std::vector<double> alphas = {1e-10};
-	std::vector<int> L = {(int)1e7};
+	std::vector<int> L = {(int)3e5};
 	std::vector<double> ploidy = {0.1};
 	// std::vector<double> alphas = {1e-15,1e-10,1e-5,1e-1,1};
 	// std::vector<int> L = {(int)1e4,(int)1e5,(int)3e5,(int)6e5,(int)1e6,(int)2e6};
@@ -75,6 +81,22 @@ int main(int argc, char**argv)
 				Log("Navigation complete, writing to output\n")
 				
 				std::string treeFile= "";
+
+				std::ostringstream metaData;
+				WriteMeta(metaData,"Data_Origin",settings.DataFile);
+				WriteMeta(metaData,"Chromosome_Mode",settings.TargetChromosome);
+				WriteMeta(metaData,"Harmonic_Frequency",model.SignalMean);
+				WriteMeta(metaData,"Harmonic_Deviation",model.SignalSigma);
+				WriteMeta(metaData,"Noise_Frequency",model.NoiseMean);
+				WriteMeta(metaData,"Noise_Deviation",model.NoiseSigma);
+				WriteMeta(metaData,"Noise_Weight",model.NoiseWeight);
+				WriteMeta(metaData,"Minimum_Jump",settings.L);
+				WriteMeta(metaData,"Continuity_Prior",settings.ContinuityPrior);
+				WriteMeta(metaData,"Ploidy_Prior",settings.PloidyPrior);
+
+				treeFile += metaData.str();
+
+
 				for (int i = 0; i < paths.size(); ++i)
 				{
 					std::string s = paths[i].TreeOutput(d.Chromosomes[i].Name);

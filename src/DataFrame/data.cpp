@@ -77,10 +77,12 @@ void Data::PrepareForLoading()
 void Data::AddData(int index, int coverage, const Settings & settings,bool spoofed)
 {
 	File.SmoothingAverage = settings.MemorySmoothing * File.SmoothingAverage + (1.0 - settings.MemorySmoothing) * coverage;
-	if (File.PreviousIndex % settings.DataThinning == 0)
+	
+	if (index % settings.DataThinning == 0)
 	{
 		int k = round(File.SmoothingAverage);
-		File.Chromosome.Add(File.PreviousIndex,k);
+		
+		File.Chromosome.Add(index,k);
 		File.CoverageSum += File.SmoothingAverage;
 		File.CoverageSquareSum += pow(File.SmoothingAverage,2);
 		++File.LoadedData;
@@ -89,6 +91,7 @@ void Data::AddData(int index, int coverage, const Settings & settings,bool spoof
 			++File.SpoofedData;
 		}
 	}
+	
 }
 
 void Data::ParseLine(const std::vector<std::string> & line, const Settings & settings)
@@ -149,18 +152,21 @@ void Data::ParseLine(const std::vector<std::string> & line, const Settings & set
 			coverage = File.SmoothingAverage;
 		}
 
-		//check that we didn't have something screwy in the first few indices
-		if (index - File.PreviousIndex < File.GapSize)
-		{
-			File.GapSize = index - File.PreviousIndex;
-		}
-		//detect gaps in the file, which occur when many consectutive zeros
-		while (File.GapSize + File.PreviousIndex < index)
-		{
-			File.PreviousIndex += File.GapSize;
-
-			AddData(File.PreviousIndex,0,settings,true);
 		
+		//detect gaps in the file, which occur when many consectutive zeros
+		if (File.CurrentLine > 1)
+		{
+			if (index - File.PreviousIndex < File.GapSize)
+			{
+				File.GapSize = index - File.PreviousIndex;
+			}
+			while (File.GapSize + File.PreviousIndex < index)
+			{
+				File.PreviousIndex += File.GapSize;
+
+				AddData(File.PreviousIndex,0,settings,true);
+			
+			}
 		}
 		AddData(index,coverage,settings,false);
 

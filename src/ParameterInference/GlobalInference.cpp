@@ -32,7 +32,7 @@ struct Helper
 		for (int i = 0; i < ws.size(); ++i)
 		{
 			int ddip = abs(i-2);
-			ws[i] = pow(3,-ddip);
+			ws[i] = pow(10,-ddip);
 			s+=ws[i];
 		}
 		for (int i = 0; i < ws.size(); ++i)
@@ -46,7 +46,7 @@ struct Helper
 		for (int i = 0; i < ws.size(); ++i)
 		{
 			int ddip = abs(i-2);
-			double t1= pow(3,-ddip);
+			double t1= pow(10,-ddip);
 			double mem = 0.5;
 			ws[i] = mem * ws[i] + (1.0 - mem) * t1;
 
@@ -113,9 +113,9 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 	if (nudge)
 	{
 		double w1 = 0.2;
-		double mod1 = w1 * p.NoiseMean + (1.0 - w1) * 25;
-		double mod2 = w1 * p.NoiseSigma + (1.0 - w1) * 20;
-		double mod3 = w1 * p.NoiseWeight + (1.0 - w1) * exp(-1);
+		double mod1 = w1 * p.NoiseMean + (1.0 - w1) * 10;
+		double mod2 = w1 * p.NoiseSigma + (1.0 - w1) * 60;
+		double mod3 = w1 * p.NoiseWeight + (1.0 - w1) * exp(-2);
 		p.SetNoiseParameters(mod1,mod2,mod3);
 
 		assist.NudgeWeights(p.SignalMean);
@@ -250,8 +250,8 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	
 
 	// std::vector<double> mus = JSL::Vector::linspace(15,25,151);
-	std::vector<double> mus = JSL::Vector::linspace(data.Mean/3,data.Mean/1.5,50);
-	std::vector<double> sigmas = JSL::Vector::linspace(1,25,30);
+	std::vector<double> mus = JSL::Vector::linspace(data.Mean/3,data.Mean/1.5,60);
+	std::vector<double> sigmas = JSL::Vector::linspace(1,25,40);
 	
 	int N = JSL::Vector(Nks).Sum();
 	double perfectScore = -N*log(N);
@@ -294,7 +294,7 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 			
 			p.SignalMean = mus[i];
 			p.SignalSigma = sigmas[j];
-			ParameterRelaxation(p,Nks,kMax,Qmax,150,assist,true);
+			ParameterRelaxation(p,Nks,kMax,Qmax,100,assist,true);
 			double score = ComputeScore(p,Nks,assist.ws,kMax) - perfectScore;
 			scores[j][i] = abs(score);
 			if (!found || score > bestScore)

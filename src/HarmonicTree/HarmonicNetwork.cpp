@@ -12,6 +12,9 @@ void HarmonicNetwork::Initialise(const Data & d, int assignedChromosome, const S
 	ScanMode = scan;
 	int stepSize = (d.Chromosomes[assignedChromosome].Idx[1] - d.Chromosomes[assignedChromosome].Idx[0]);
 	BufferSize = s.L/stepSize+1; // +1 to allow for either-side grabbing
+	
+	
+	
 	DataSize = d.Chromosomes[assignedChromosome].Counts.size();
 	MyChromosome = assignedChromosome;
 
