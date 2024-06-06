@@ -144,6 +144,10 @@ void Data::ParseLine(const std::vector<std::string> & line, const Settings & set
 	{
 		chr_int index = std::stoi(line[1]);
 		int coverage = std::stoi(line[2]);
+		if (coverage > 1000)
+		{
+			coverage = File.SmoothingAverage;
+		}
 
 		//detect gaps in the file, which occur when many consectutive zeros
 		while (File.GapSize + File.PreviousIndex < index)

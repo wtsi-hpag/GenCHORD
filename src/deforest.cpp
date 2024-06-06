@@ -31,7 +31,7 @@ int main(int argc, char**argv)
 	settings.DataThinning=5e5;
 	Data d2(settings);
 	Log("Preparing probability models:\n")
-	int Kmax = std::min(250,2*d.Mean + d.Deviation);
+	int Kmax = std::min(250.,2*d.Mean + d.Deviation);
 	int qmax = settings.Qmax;
 	auto model = Models::NegativeBinomial();
 
