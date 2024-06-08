@@ -58,7 +58,7 @@ Data::Data(Settings & settings)
 
 
 	Loaded = true;
-	std::cout << "\t" << File.LoadedData << " points loaded in total" << std::endl;
+	Log("\t" << File.LoadedData << " points loaded in total" << std::endl);
 }
 
 void Data::PrepareForLoading()
