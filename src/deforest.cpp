@@ -51,12 +51,12 @@ int main(int argc, char**argv)
 	model.SetGrids();
 
 
-	// std::vector<double> alphas = {1e-10};
-	// std::vector<int> L = {(int)3e5};
-	// std::vector<double> ploidy = {0.1};
-	std::vector<double> alphas = {1e-15,1e-10,1e-5};
-	std::vector<int> L = {(int)1e5,(int)3e5,(int)6e5,(int)2e6};
-	std::vector<double> ploidy = {0.1,0.5};
+	std::vector<double> alphas = {1e-10};
+	std::vector<int> L = {(int)3e5};
+	std::vector<double> ploidy = {0.5};
+	// std::vector<double> alphas = {1e-15,1e-10,1e-5};
+	// std::vector<int> L = {(int)1e5,(int)3e5,(int)6e5,(int)2e6};
+	// std::vector<double> ploidy = {0.1,0.5};
 	std::string orig = settings.OutputDirectory;
 	for (int i = 0; i < alphas.size(); ++i)
 	{
@@ -89,10 +89,10 @@ int main(int argc, char**argv)
 				WriteMeta(metaData,"Noise_Frequency",model.NoiseMean);
 				WriteMeta(metaData,"Noise_Deviation",model.NoiseSigma);
 				WriteMeta(metaData,"Noise_Weight",model.NoiseWeight);
+				WriteMeta(metaData,"Contamination",JSL::Vector(model.Contamination));
 				WriteMeta(metaData,"Minimum_Jump",settings.L);
 				WriteMeta(metaData,"Continuity_Prior",settings.ContinuityPrior);
 				WriteMeta(metaData,"Ploidy_Prior",settings.PloidyPrior);
-
 				treeFile += metaData.str();
 
 

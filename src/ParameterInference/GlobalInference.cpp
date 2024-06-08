@@ -1,6 +1,5 @@
 #include "GlobalInference.h"
 
-int L_glob;
 struct Helper
 {
 	int N;
@@ -32,7 +31,7 @@ struct Helper
 		for (int i = 0; i < ws.size(); ++i)
 		{
 			int ddip = abs(i-2);
-			ws[i] = pow(10,-ddip);
+			ws[i] = pow(4,-ddip);
 			s+=ws[i];
 		}
 		for (int i = 0; i < ws.size(); ++i)
@@ -46,9 +45,9 @@ struct Helper
 		for (int i = 0; i < ws.size(); ++i)
 		{
 			int ddip = abs(i-2);
-			double t1= pow(10,-ddip);
+			double t1= pow(4,-ddip);
 			double mem = 0.5;
-			ws[i] = mem * ws[i] + (1.0 - mem) * t1;
+			ws[i] = exp(mem * log(ws[i]) + (1.0 - mem) * log(t1));
 
 			if (i * nu > kdim*1.2) //kill off nodes which are outside the given space
 			{
@@ -109,17 +108,23 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 {
 	// p.NoiseMean = 15;//p.SignalMean;
 	// p.NoiseSigma =30;//2*p.NoiseMean;
-
+	p.ClearContamination();
+	double w1 = 0.1;
+	double saveWeight = exp(w1 * log(p.NoiseWeight) + (1.0 - w1)*-4);
+	bool noiseTrigger = false;
 	if (nudge)
 	{
-		double w1 = 0.2;
-		double mod1 = w1 * p.NoiseMean + (1.0 - w1) * 10;
+		double mod1 = w1 * p.NoiseMean + (1.0 - w1) * 20;
 		double mod2 = w1 * p.NoiseSigma + (1.0 - w1) * 60;
-		double mod3 = w1 * p.NoiseWeight + (1.0 - w1) * exp(-2);
+		double mod3 = exp(w1 * log(p.NoiseWeight) + (1.0 - w1)*-2);
 		p.SetNoiseParameters(mod1,mod2,mod3);
 
 		assist.NudgeWeights(p.SignalMean);
 	}
+	double noiseCap = 1e-1;
+	int regainSteps = (res/2 - res/5);
+	double noiseGain = exp(-1.0/regainSteps * log(noiseCap));
+	int timeSinceKicked =0;
 	for (int l = 0; l < res; ++l)
 	{
 
@@ -127,51 +132,94 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 		// //determine the updated weights
 		
 		assist.ComputeHs(p);
-		assist.ComputeEtas(p);
+		
 		double diff = 0;
 
 		for (int q =0; q <=Qmax; ++q)
 		{
 			double newW = 0;
+			double meanMod = 0;
 			for (int i = 0; i < assist.kdim; ++i)
 			{
-				newW += exp(assist.hs[q][i])/assist.N * Nks[i];
+				double p = exp(assist.hs[q][i])/assist.N * Nks[i];
+				meanMod += p*i; 
+				newW += p;
 			}
+			meanMod /= newW;
+			p.SetContamination(q,meanMod);
 			diff += pow((newW - assist.ws[q])/(assist.ws[q]),2);
 			assist.ws[q] = newW;		
 		}
 
-		//determine updated noise weight
-		
-		double newGamma=0;
-		double newNoiseMean = 0;
-		double newNoiseSigma = 0;
-		for (int k = 0; k < assist.kdim; ++k)
+		if (l > 0)
 		{
-			newGamma += Nks[k] * exp(assist.es[k])/assist.N;
-		}
-		for (int k = 0; k < assist.kdim; ++k)
-		{
-			double p = exp(assist.es[k]) * Nks[k]/(assist.N*newGamma);
-			newNoiseMean +=  p*k;
-			newNoiseSigma += p*k*k;
-		}
-		newNoiseSigma = sqrt(newNoiseSigma - newNoiseMean*newNoiseMean);
+			// if (!noiseTrigger)
+			// {
+			// 	noiseTrigger = true;
+			// 	p.NoiseWeight = saveWeight;
+			// }
+			//determine updated noise weight
+			assist.ComputeEtas(p);
+			double newGamma=0;
+			double newNoiseMean = 0;
+			double newNoiseSigma = 0;
+			for (int k = 0; k < assist.kdim; ++k)
+			{
+				newGamma += Nks[k] * exp(assist.es[k])/assist.N;
+			}
+			for (int k = 0; k < assist.kdim; ++k)
+			{
+				double p = exp(assist.es[k]) * Nks[k]/(assist.N*newGamma);
+				newNoiseMean +=  p*k;
+				newNoiseSigma += p*k*k;
+			}
+			newNoiseSigma = sqrt(newNoiseSigma - newNoiseMean*newNoiseMean);
 
-		double oldMu = p.NoiseMean;
-		double oldSigma = p.NoiseSigma;
-		double oldGamma =p.NoiseWeight;
-		p.SetNoiseParametersFromObserved(newNoiseMean,newNoiseSigma,newGamma);
-		diff += pow((oldMu-p.NoiseMean)/oldMu,2) + pow((oldSigma -p.NoiseSigma)/oldSigma,2) + pow((oldGamma - p.NoiseWeight)/oldGamma,2);
+			double oldMu = p.NoiseMean;
+			double oldSigma = p.NoiseSigma;
+			double oldGamma =p.NoiseWeight;
 
+			if (newGamma > noiseCap)
+			{
+				newGamma = noiseCap;
+				
+			}
+			// if (newNoiseSigma < 30)
+			// {
+			// 	newNoiseSigma = 30;
+			// }
+			if (noiseCap < 1)
+			{
+				noiseCap *= noiseGain;
+				noiseCap = std::min(1.0,noiseCap);
+			}
+
+
+			// if (l > res/2 && (newGamma < 5e-2 || newNoiseMean < 3) && timeSinceKicked > 5)
+			// {
+			// 	std::cout << "KICKED" << std::endl;
+			// 	timeSinceKicked = 0;
+			// 	newNoiseSigma = 5;
+			// 	newNoiseMean = p.SignalMean/2;
+			// 	newGamma = 5e-2;
+			// }
+			// else
+			// {
+			// 	++timeSinceKicked;
+			// }
+			p.SetNoiseParametersFromObserved(newNoiseMean,newNoiseSigma,newGamma);
+
+			// double integerDist = abs(round(p.NoiseMean/
+
+			diff += pow((oldMu-p.NoiseMean)/oldMu,2) + pow((oldSigma -p.NoiseSigma)/oldSigma,2) + pow((oldGamma - p.NoiseWeight)/oldGamma,2);
+		}
 
 		diff = sqrt(diff/(3 + assist.ws.size()));
 
-		L_glob = l;
-		if (l > res/3 && diff < 0.02)
-		{
-			break;
-		}	
+		// if (l > res/3 && diff < 0.02)
+		// {
+		// 	break;
+		// }	
 	}
 }
 
@@ -211,9 +259,10 @@ double ComputeScore(ProbabilityModel & p, const std::vector<int> & Nks, std::vec
 		double nonDiploidPenalty = -0.1*nNonDiploid;
 		prior += nonDiploidPenalty;
 	}
-	if (p.NoiseWeight > 0.25)
+	double noiseCrit = 0.1;
+	if (p.NoiseWeight > noiseCrit)
 	{
-		double nNoiseExcess = (p.NoiseWeight - 0.25) * nSum;
+		double nNoiseExcess = (p.NoiseWeight - noiseCrit) * nSum;
 		double noisePenalty = -0.1*nNoiseExcess;
 		prior += noisePenalty;
 	}
@@ -242,16 +291,16 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	
 	assist.SetWeights();
 
-	p.NoiseMean = 9;
-	p.NoiseSigma = 1;
-	p.NoiseWeight = exp(-2);
+	p.NoiseMean = 30;
+	p.NoiseSigma = 30;
+	p.NoiseWeight = exp(-4);
 	// p.SignalMean = 25;
 	// p.SignalSigma = 2;
 	
 
 	// std::vector<double> mus = JSL::Vector::linspace(15,25,151);
-	std::vector<double> mus = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,60);
-	std::vector<double> sigmas = JSL::Vector::linspace(1,15,40);
+	std::vector<double> mus = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,20);
+	std::vector<double> sigmas = JSL::Vector::linspace(1,15,15);
 	
 	int N = JSL::Vector(Nks).Sum();
 	double perfectScore = -N*log(N);
@@ -312,12 +361,12 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 			PB.SetName(1,"\t"+std::to_string(int(bestScore)));
 		}
 	}
-
-	
+	p.ClearContamination();
 	p.SetSignalParameters(bestMu,bestSig);
 	p.SetNoiseParameters(bestNoiseMean,bestNoiseSig,bestNoiseWeight);
 	assist.ws = bestWeights;
 	ParameterRelaxation(p,Nks,kMax,Qmax,250,assist,false);
+	std::cout << JSL::Vector(p.Contamination) << std::endl;
 	p.SetGrids();
 	double trueScore = ComputeScore(p,Nks,assist.ws,kMax) - perfectScore;
 	Log("\tOptimal signal model has nu=" << bestMu << ", sigma=" << bestSig << " with a fraction " << assist.ws[2] *100 << "% of the data assigned as diploid\n");

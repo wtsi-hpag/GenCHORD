@@ -13,6 +13,7 @@ void ProbabilityModel::SetDimensionality(int kmax, int qmax)
 	MaxK = kmax;
 	MaxQ = qmax;
 
+	Contamination.resize(qmax+1);
 	Noise = std::vector<double>(kmax+1,0.0);
 	Signal = std::vector<std::vector<double>>(kmax+1,std::vector<double>(qmax+1,0.0));
 }
@@ -54,6 +55,7 @@ void ProbabilityModel::SetGrids()
 {
 	SetNoiseGrid();
 	SetSignalGrids();
+	// SetConvolutionGrids();
 }
 void ProbabilityModel::SetNoiseGrid()
 {
@@ -75,7 +77,12 @@ void ProbabilityModel::SetSignalGrids()
 		double noiseNorm = -99999999999;
 		for (int k = 0; k <=MaxK; ++k)
 		{
-			Signal[k][q] = logSignal(k,q);
+			int kCorrect = k;
+			if (q != 2 && q != 0)
+			{
+				kCorrect = std::max(0,(int)round(k -Contamination[q]*2*SignalMean));
+			}
+			Signal[k][q] = logSignal(kCorrect,q);
 			noiseNorm = ale(noiseNorm,Signal[k][q]);
 		}
 		for (int k = 0; k <=MaxK; ++k)
@@ -85,8 +92,31 @@ void ProbabilityModel::SetSignalGrids()
 	}
 }
 
+void ProbabilityModel::SetContamination(int q, double targetMean)
+{
+	double currentMean = q * SignalMean;
+	if (q == 0)
+	{
+		Contamination[q] = targetMean;
+	}
+	else
+	{
+		if (targetMean > currentMean)
+		{
+			double impliedCont = (targetMean - currentMean)/(2*SignalMean);
+			if (impliedCont < 0.1)
+			{
+				Contamination[q] = 0.5*Contamination[q] + 0.5*impliedCont;
+			}
+		}
+	}
+}
 
-
+void ProbabilityModel::ClearContamination()
+{
+	std::fill(Contamination.begin(),Contamination.end(),0.);
+	Contamination[1] = 0.1;
+}
 void ProbabilityModel::SetNoiseParametersFromObserved(double mean, double sigma, double weight)
 {
 	auto ms = GetMuSigma(mean,sigma);

@@ -102,6 +102,10 @@ class ProbabilityModel
 		double logNoiseWeight;
 		double logSignalWeight;
 
+		std::vector<double> Contamination;
+
+		void ClearContamination();
+		void SetContamination(int q,double targetMean);
 		void ComputeNoiseConversionChart();
 	protected:
 		virtual double logNoise(int k);
@@ -118,6 +122,7 @@ class ProbabilityModel
 		
 		void SetNoiseGrid();
 		void SetSignalGrids();
+		void SetConvolutionGrids();
 		std::vector<std::vector<Dual>> NoiseGrid;
 
 		Dual GetMuSigma(double mean, double sigma);
@@ -196,8 +201,13 @@ namespace Models
 				double sigma = SignalSigma;
 				if (q == 0)
 				{
-					mu = std::min(sigma/5,SignalMean/10);
+					mu = std::max(Contamination[0]/2,1.);//std::min(sigma/6,SignalMean/8);
+					// sigma /= 2;
 				}
+				// if (q == 1)
+				// {
+				// 	mu*=1.2;
+				// }
 				double v = sigma*sigma;
 				double r = mu*mu/v;
 				double p = mu/(mu + v);
