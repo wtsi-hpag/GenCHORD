@@ -28,7 +28,7 @@ int main(int argc, char**argv)
 	//some pretty introductory text
 	globalVerbose = !settings.Quiet;
 	Log("==========================================\n\tCoverage Deforesting\n==========================================" << std::endl);
-	
+	settings.DataThinning = 1e3;
 	JSL::mkdir(settings.OutputDirectory);
 	//load the data file -- either from file, or from a pipe
 	Data d(settings);
@@ -54,9 +54,9 @@ int main(int argc, char**argv)
 	// std::vector<double> alphas = {1e-10};
 	// std::vector<int> L = {(int)3e5};
 	// std::vector<double> ploidy = {0.1};
-	std::vector<double> alphas = {1e-15,1e-10,1e-5,1};
-	std::vector<int> L = {(int)1e5,(int)3e5,(int)6e5,(int)1e6,(int)2e6};
-	std::vector<double> ploidy = {0.1,0.5,0.9};
+	std::vector<double> alphas = {1e-15,1e-10,1e-5};
+	std::vector<int> L = {(int)1e5,(int)3e5,(int)6e5,(int)2e6};
+	std::vector<double> ploidy = {0.1,0.5};
 	std::string orig = settings.OutputDirectory;
 	for (int i = 0; i < alphas.size(); ++i)
 	{
