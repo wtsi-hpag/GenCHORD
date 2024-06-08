@@ -26,6 +26,7 @@ int main(int argc, char**argv)
 	Settings settings(configFile,argc,argv);
 	
 	//some pretty introductory text
+	std::cout << settings.Quiet << std::endl;
 	globalVerbose = !settings.Quiet;
 	Log("==========================================\n\tCoverage Deforesting\n==========================================" << std::endl);
 	settings.DataThinning = 1e3;

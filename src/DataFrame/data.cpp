@@ -9,20 +9,20 @@ Data::Data()
 Data::Data(Settings & settings)
 {
 	PrepareForLoading();
-	if (JSL::PipedInputFound())
-	{
-		Log("Loading Data in from pipe\n");
-		forLineVectorInPipedInput(settings.DataFileDelimiter,
-			ParseLine(PIPE_LINE_VECTOR,settings);
-		)
+	// if (JSL::PipedInputFound())
+	// {
+	// 	Log("Loading Data in from pipe\n");
+	// 	forLineVectorInPipedInput(settings.DataFileDelimiter,
+	// 		ParseLine(PIPE_LINE_VECTOR,settings);
+	// 	)
 
-		if (File.ChromActive)
-		{
-			Chromosomes.push_back(File.Chromosome);
-		}
-	}
-	else
-	{
+	// 	if (File.ChromActive)
+	// 	{
+	// 		Chromosomes.push_back(File.Chromosome);
+	// 	}
+	// }
+	// else
+	// {
 		if (settings.DataFile != "_no_file_provided_")
 		{
 			Log("Loading Data in from " << settings.DataFile << "\n");
@@ -39,7 +39,7 @@ Data::Data(Settings & settings)
 			std::cout << "\nERROR No Data detected. Please provide a valid data input\n" << std::endl;
 			exit(1);
 		}
-	}
+	// }
 
 	Mean = File.CoverageSum/File.LoadedData;
 	Deviation = sqrt(File.CoverageSquareSum/ File.LoadedData - Mean * Mean);
