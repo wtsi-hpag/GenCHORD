@@ -299,8 +299,8 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	
 
 	// std::vector<double> mus = JSL::Vector::linspace(15,25,151);
-	std::vector<double> mus = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,20);
-	std::vector<double> sigmas = JSL::Vector::linspace(1,15,15);
+	std::vector<double> mus = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,50);
+	std::vector<double> sigmas = JSL::Vector::linspace(1,15,50);
 	
 	int N = JSL::Vector(Nks).Sum();
 	double perfectScore = -N*log(N);
@@ -343,7 +343,7 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 			
 			p.SignalMean = mus[i];
 			p.SignalSigma = sigmas[j];
-			ParameterRelaxation(p,Nks,kMax,Qmax,25,assist,true);
+			ParameterRelaxation(p,Nks,kMax,Qmax,50,assist,true);
 			double score = ComputeScore(p,Nks,assist.ws,kMax) - perfectScore;
 			scores[j][i] = abs(score);
 			if (!found || score > bestScore)
