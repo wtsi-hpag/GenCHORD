@@ -5,29 +5,45 @@ struct Helper
 	int N;
 	int kdim;
 	std::vector<double> ws;
+	int nr;
+	std::vector<std::vector<double>> signal_posterior; //weight 
 
-	std::vector<JSL::Vector> hs; //weight 
-	JSL::Vector hSums;
+	std::vector<double> NoiseGradient;
+	std::vector<double> noise_posterior; //noise weight helper
 
-	JSL::Vector es; //weight 
-	Helper(const std::vector<int> & Nks, int Qmax)
+	std::vector<double> noise_zs;
+	std::vector<double> noise_ms;
+	std::vector<double> noise_vs;
+	Helper(const std::vector<int> & Nks, int Qmax,int noiseRes)
 	{
 		kdim = Nks.size();
 
-		hSums = JSL::Vector(kdim);
-		hs = std::vector<JSL::Vector>(Qmax+1,JSL::Vector(kdim));
+		signal_posterior = std::vector<std::vector<double>>(Qmax+1,JSL::Vector(kdim));
+		noise_posterior = std::vector<double>(kdim);
 		ws.resize(Qmax+1);
-		es = JSL::Vector(kdim);
+
 		N = 0;
+		nr = noiseRes;
+		NoiseGradient.resize(nr);
+		noise_zs.resize(nr);
+		noise_ms.resize(nr);
+		noise_vs.resize(nr);
+
 		for (int k = 0; k < kdim; ++k)
 		{
 			N+= Nks[k];
 		}
 	}
 
-	void SetWeights()
+	void SetWeights(ProbabilityModel & p)
 	{
+		std::fill(noise_ms.begin(),noise_ms.end(),0.0);
+		std::fill(noise_vs.begin(),noise_vs.end(),0.0);
 		double s= 0;
+		// for (int r = 0; r < p.NoiseComponents.size(); ++r)
+		// {
+		// 	s+= exp(p.NoiseComponents[r]);
+		// }
 		for (int i = 0; i < ws.size(); ++i)
 		{
 			int ddip = abs(i-2);
@@ -39,182 +55,229 @@ struct Helper
 			ws[i] /= s;
 		}
 	}
-	void NudgeWeights(double nu)
-	{
-		double s= 0;
-		for (int i = 0; i < ws.size(); ++i)
-		{
-			int ddip = abs(i-2);
-			double t1= pow(4,-ddip);
-			double mem = 0.5;
-			ws[i] = exp(mem * log(ws[i]) + (1.0 - mem) * log(t1));
 
-			if (i * nu > kdim*1.2) //kill off nodes which are outside the given space
+	void ComputePosteriors(ProbabilityModel & p)
+	{
+		for (int k = 0; k < kdim; ++k)
+		{
+			double log_pk = -999999999;
+			double log_sk = -9999999999;
+			for (int q = 0; q < ws.size(); ++q)
 			{
-				ws[i] /= 1e6;
+				double signal = log(ws[q]) + p.getLogSignal(k,q);
+				double total = ale(p.logSignalWeight + signal,p.logNoiseWeight+p.getLogNoise(k));
+				log_pk= ale(log_pk,log(ws[q])+p.logP(k,q));
+				log_sk = ale(log_sk,signal);
+				// std::cout << "\t" <<k << " " << q << " " << p.logP(k,q) << "  " << log_pk << std::endl;
 			}
 
-			s+=ws[i];
-		}
-		for (int i = 0; i < ws.size(); ++i)
-		{
-			ws[i] /= s;
-		}
-	}
-	void ComputeHs(ProbabilityModel & p)
-	{
-		hSums *=0;
-		hSums -= 999999;
-		for (int q = 0; q < ws.size(); ++q)
-		{
-			double logWq = log(ws[q]);
-			double norm = -999999;
-			
-			for (int k = 0; k < kdim; ++k)
+			if (std::isnan(log_pk) || std::isinf(log_pk))
 			{
-				hs[q][k] = p.logP(k,q) + logWq;
-				hSums[k] = ale(hSums[k],hs[q][k]);
+				std::cout << p.logSignalWeight << std::endl;
+				std::cout << JSL::Vector(p.NoiseComponents) << std::endl;
+				std::cout << "SHIT" << std::endl;
+				exit(5);
 			}
+
+			for (int q = 0; q < ws.size(); ++q)
+			{
+				double logWq = log(ws[q]);
+				signal_posterior[q][k] = p.getLogSignal(k,q) + logWq - log_sk;
+			}
+			// for (int r = 0; r < noise_posterior.size(); ++r)
+			// {
+			noise_posterior[k] = p.logNoiseWeight + p.getLogNoise(k) - log_pk;
+			// }
 		}
-		for (int q = 0; q < ws.size(); ++q)
-		{
+		// hSums *=0;
+		// hSums -= 999999;
+		// for (int q = 0; q < ws.size(); ++q)
+		// {
+		// 	double logWq = log(ws[q]);
+		// 	double norm = -999999;
 			
-			hs[q] =hs[q] - hSums;
-		}
+		// 	for (int k = 0; k < kdim; ++k)
+		// 	{
+		// 		hs[q][k] = p.logP(k,q) + logWq;
+		// 		hSums[k] = ale(hSums[k],hs[q][k]);
+		// 	}
+		// }
+		// for (int q = 0; q < ws.size(); ++q)
+		// {
+			
+		// 	hs[q] =hs[q] - hSums;
+		// }
 	}
 
-	void ComputeEtas(ProbabilityModel & p)
+	void ComputeNoiseGradients(ProbabilityModel & p,const std::vector<int> & Nks)
 	{
-		double sigSum = -99999;
-		double noiseSum = -99999;
-		double noiseWeight = log(p.NoiseWeight);
-		double signalWeight = log(1.0 - p.NoiseWeight);
-		
-		double runSum = 0;
+		std::vector<double> temp(nr,-99999999);
+		std::vector<double> prior(nr,0);
+		double globalSum = -9999999999;
+		double priorSum = 0;
 		for (int k =0; k < kdim; ++k)
 		{
-			double e = noiseWeight + p.getLogNoise(k);
-			double s = e;
-			for (int q = 0; q < hs.size(); ++q)
+			double p_k =-99999999;
+			double prior_k = 0;
+			for (int q= 0; q < ws.size(); ++q)
 			{
-				s= ale(s,signalWeight + log(ws[q]) + p.getLogSignal(k,q)) ;
+				double d = (k - q * p.SignalMean)/(p.SignalSigma*0.5);
+				prior_k += exp(-0.5*d*d);
+				p_k = ale(p_k,log(ws[q]) + p.logP(k,q));
 			}
-			es[k] = e - s;
+			int r = p.RFromK(k);
+			double term = log(Nks[k]) - p_k - p.logNoiseWidth[r] + p.NoiseComponents[r];
+			double priorTerm = prior_k * exp(p.NoiseComponents[r]);
+			globalSum = ale(globalSum,term );
+			temp[r] = ale(temp[r],term);
+			prior[r] += priorTerm;
+			priorSum += priorTerm;
 		}
+
+		for (int r =0 ; r < nr; ++r)
+		{
+			double priorTerm = prior[r] - exp(p.NoiseComponents[r]) * priorSum;
+			NoiseGradient[r] = exp(temp[r]) - exp(p.NoiseComponents[r] + globalSum) - 4e-2*N*priorTerm;
+		}
+
+	}
+
+	void UpdateNoiseComponents(ProbabilityModel & p,int l)
+	{
+		double alpha = 0.1;
+		double b1 = 0.7;
+		double b2 = 0.99;
+		double norm = -999999999;
+		double c1 = 1.0/(1.0 - pow(b1,l+1));
+			double c2 = 1.0/(1.0 - pow(b2,l+1));
+		for (int r = 0; r < nr; ++r)
+		{	
+			noise_zs[r] = p.NoiseComponents[r];
+
+			noise_ms[r] = b1*noise_ms[r] + (1.0 - b1)*NoiseGradient[r];
+			noise_vs[r] = b2*noise_vs[r] + (1.0 - b2) * NoiseGradient[r]*NoiseGradient[r];
+			
+			double step = alpha * noise_ms[r]*c1/sqrt(noise_vs[r]*c2 + 1e-20 );
+			noise_zs[r] += step;
+			norm = ale(norm,noise_zs[r]);
+		}
+
+		for (int r =0; r < nr; ++r)
+		{
+			p.NoiseComponents[r] = noise_zs[r] - norm;
+		}
+
 	}
 };
 
 void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int kMax, int Qmax,int res, Helper & assist,bool nudge)
 {
-	// p.NoiseMean = 15;//p.SignalMean;
-	// p.NoiseSigma =30;//2*p.NoiseMean;
 	p.ClearContamination();
-	double w1 = 0.1;
-	double saveWeight = exp(w1 * log(p.NoiseWeight) + (1.0 - w1)*-4);
-	bool noiseTrigger = false;
-	if (nudge)
-	{
-		double mod1 = w1 * p.NoiseMean + (1.0 - w1) * 20;
-		double mod2 = w1 * p.NoiseSigma + (1.0 - w1) * 60;
-		double mod3 = exp(w1 * log(p.NoiseWeight) + (1.0 - w1)*-2);
-		p.SetNoiseParameters(mod1,mod2,mod3);
-
-		assist.NudgeWeights(p.SignalMean);
-	}
+	p.ResetNoise();
+	assist.SetWeights(p);
+	std::vector<double> newNoiseParams(p.NoiseResolution);
 	double noiseCap = 1e-1;
 	int regainSteps = (res/2 - res/5);
 	double noiseGain = exp(-1.0/regainSteps * log(noiseCap));
 	int timeSinceKicked =0;
+	double alpha = 0.1;
+
+	double gammaCap = 1e-2;
+	double gammaGain = 1.5;
 	for (int l = 0; l < res; ++l)
 	{
 
 		p.SetGrids();
 		// //determine the updated weights
-		
-		assist.ComputeHs(p);
+		// std::cout << "posterior" << std::endl;
+		assist.ComputePosteriors(p);
 		
 		double diff = 0;
-
+		double wSum = 0;
 		for (int q =0; q <=Qmax; ++q)
 		{
 			double newW = 0;
 			double meanMod = 0;
+			double newGamma = 0;
 			for (int i = 0; i < assist.kdim; ++i)
 			{
-				double p = exp(assist.hs[q][i])/assist.N * Nks[i];
+				double p = exp(assist.signal_posterior[q][i])/assist.N * Nks[i];
 				meanMod += p*i; 
 				newW += p;
+
 			}
+			wSum += newW;
 			meanMod /= newW;
-			p.SetContamination(q,meanMod);
+			if (q!=2)
+			{
+				p.SetContamination(q,meanMod);
+			}
 			diff += pow((newW - assist.ws[q])/(assist.ws[q]),2);
-			assist.ws[q] = newW;		
+			assist.ws[q] = newW;
 		}
+		
+		// std::cout << newGamma << std::endl;
 
-		if (l > 0)
+		int lWait = 0;
+		if (l >= lWait)
 		{
-			// if (!noiseTrigger)
-			// {
-			// 	noiseTrigger = true;
-			// 	p.NoiseWeight = saveWeight;
-			// }
-			//determine updated noise weight
-			assist.ComputeEtas(p);
-			double newGamma=0;
-			double newNoiseMean = 0;
-			double newNoiseSigma = 0;
-			for (int k = 0; k < assist.kdim; ++k)
+			double newGamma = 0;
+			double posSum = 0;
+			for (int i = 0; i < assist.kdim; ++i)
 			{
-				newGamma += Nks[k] * exp(assist.es[k])/assist.N;
+				newGamma += exp(assist.noise_posterior[i])/assist.N * Nks[i];
 			}
-			for (int k = 0; k < assist.kdim; ++k)
-			{
-				double p = exp(assist.es[k]) * Nks[k]/(assist.N*newGamma);
-				newNoiseMean +=  p*k;
-				newNoiseSigma += p*k*k;
-			}
-			newNoiseSigma = sqrt(newNoiseSigma - newNoiseMean*newNoiseMean);
+			double gammaMem = 0.7;
+			newGamma = gammaMem * exp(p.logNoiseWeight) + (1.0 - gammaMem)*newGamma;
+			newGamma = std::min(gammaCap,newGamma);
+			gammaCap *= gammaGain;
+			p.logNoiseWeight = log(newGamma);
+			p.logSignalWeight = log(1.0 - newGamma);
 
-			double oldMu = p.NoiseMean;
-			double oldSigma = p.NoiseSigma;
-			double oldGamma =p.NoiseWeight;
-
-			if (newGamma > noiseCap)
-			{
-				newGamma = noiseCap;
-				
-			}
-			// if (newNoiseSigma < 30)
-			// {
-			// 	newNoiseSigma = 30;
-			// }
-			if (noiseCap < 1)
-			{
-				noiseCap *= noiseGain;
-				noiseCap = std::min(1.0,noiseCap);
-			}
-
-
-			// if (l > res/2 && (newGamma < 5e-2 || newNoiseMean < 3) && timeSinceKicked > 5)
-			// {
-			// 	std::cout << "KICKED" << std::endl;
-			// 	timeSinceKicked = 0;
-			// 	newNoiseSigma = 5;
-			// 	newNoiseMean = p.SignalMean/2;
-			// 	newGamma = 5e-2;
-			// }
-			// else
-			// {
-			// 	++timeSinceKicked;
-			// }
-			p.SetNoiseParametersFromObserved(newNoiseMean,newNoiseSigma,newGamma);
-
-			// double integerDist = abs(round(p.NoiseMean/
-
-			diff += pow((oldMu-p.NoiseMean)/oldMu,2) + pow((oldSigma -p.NoiseSigma)/oldSigma,2) + pow((oldGamma - p.NoiseWeight)/oldGamma,2);
+			assist.ComputeNoiseGradients(p,Nks);
+			assist.UpdateNoiseComponents(p,l-lWait);
 		}
+		// if (l > 0)
+		// {
+		// 	double gamma = 0;
+		// 	for (int r =0; r < p.NoiseResolution; ++r)
+		// 	{
+		// 		double newW = 0;
+		// 		for (int i = 0; i < assist.kdim; ++i)
+		// 		{
+		// 			newW +=exp(assist.noise_posterior[r][i])/assist.N * Nks[i];
+		// 		}
+		// 		newNoiseParams[r] = newW;
+		// 		gamma += newW;
+				
+		// 	}
+			
+		// 	double norm = gamma + wSum;
+		// 	//enforce normalisation
+		// 	for (int q = 0; q < assist.ws[q]; ++q)
+		// 	{
+		// 		assist.ws[q]/=norm;
+		// 	}
 
-		diff = sqrt(diff/(3 + assist.ws.size()));
+
+		// 	p.SetNoiseComponents(newNoiseParams);
+		// }
+
+		// double wSum = JSL::Vector(assist.ws).Sum();
+		// for (int i = 0; i < p.NoiseResolution; ++i)
+		// {
+		// 	wSum += 
+		// }
+
+		// exit(5);
+		// 	// if (gamma > 0.1)
+		// 	// {
+		// 	// 	double corrector = log(0.1) - log(gamma);
+		// 	// 	for (int )
+		// 	// }
+		// }
+
+		// diff = sqrt(diff/(3 + assist.ws.size()));
 
 		// if (l > res/3 && diff < 0.02)
 		// {
@@ -259,22 +322,21 @@ double ComputeScore(ProbabilityModel & p, const std::vector<int> & Nks, std::vec
 		double nonDiploidPenalty = -0.1*nNonDiploid;
 		prior += nonDiploidPenalty;
 	}
-	double noiseCrit = 0.1;
-	if (p.NoiseWeight > noiseCrit)
-	{
-		double nNoiseExcess = (p.NoiseWeight - noiseCrit) * nSum;
-		double noisePenalty = -0.1*nNoiseExcess;
-		prior += noisePenalty;
-	}
+	// double noiseCrit = 0.1;
+	// if (p.NoiseWeight > noiseCrit)
+	// {
+	// 	double nNoiseExcess = (p.NoiseWeight - noiseCrit) * nSum;
+	// 	double noisePenalty = -0.1*nNoiseExcess;
+	// 	prior += noisePenalty;
+	// }
 	return score + prior;
 }
 
 
 void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & settings, int kMax,int Qmax)
 {
-	
 	p.SetDimensionality(kMax,Qmax);
-	p.ComputeNoiseConversionChart();
+	
 	std::vector<int> Nks(kMax+1,0);
 	for (int c = 0; c < data.Chromosomes.size(); ++c)
 	{
@@ -287,20 +349,14 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 			}
 		}
 	}
-	Helper assist(Nks,Qmax);
+	Helper assist(Nks,Qmax,p.NoiseResolution);
 	
-	assist.SetWeights();
+	assist.SetWeights(p);
 
-	p.NoiseMean = 30;
-	p.NoiseSigma = 30;
-	p.NoiseWeight = exp(-4);
-	// p.SignalMean = 25;
-	// p.SignalSigma = 2;
 	
-
-	// std::vector<double> mus = JSL::Vector::linspace(15,25,151);
+	// std::vector<double> mus = JSL::Vector::linspace(45,65,151);
 	std::vector<double> mus = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,50);
-	std::vector<double> sigmas = JSL::Vector::linspace(1,15,50);
+	std::vector<double> sigmas = JSL::Vector::linspace(1,20,20);
 	
 	int N = JSL::Vector(Nks).Sum();
 	double perfectScore = -N*log(N);
@@ -352,9 +408,6 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 				bestScore = score;
 				bestMu = p.SignalMean;
 				bestSig = p.SignalSigma;
-				bestNoiseMean = p.NoiseMean;
-				bestNoiseSig = p.NoiseSigma;
-				bestNoiseWeight = p.NoiseWeight;
 				bestWeights = assist.ws;
 			}
 			PB.Update(i,j);
@@ -363,14 +416,12 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	}
 	p.ClearContamination();
 	p.SetSignalParameters(bestMu,bestSig);
-	p.SetNoiseParameters(bestNoiseMean,bestNoiseSig,bestNoiseWeight);
 	assist.ws = bestWeights;
 	ParameterRelaxation(p,Nks,kMax,Qmax,250,assist,false);
-	std::cout << JSL::Vector(p.Contamination) << std::endl;
 	p.SetGrids();
 	double trueScore = ComputeScore(p,Nks,assist.ws,kMax) - perfectScore;
 	Log("\tOptimal signal model has nu=" << bestMu << ", sigma=" << bestSig << " with a fraction " << assist.ws[2] *100 << "% of the data assigned as diploid\n");
-	Log("\tOptimal noise model has mu=" << p.NoiseMean << ", sigma=" << p.NoiseSigma << " and has weight " << p.NoiseWeight << "\n");
+	Log("\tOptimal noise model has a weight " << exp(p.logNoiseWeight)<< "\n");
 	Log("\tOptimal combined model as a deviation score of " << trueScore << "\n");
 
 	
@@ -383,8 +434,10 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	p.GlobalLogPrediction(probs,assist.ws);
 	
 	double logN = log(assist.N);
+	double s =-999999;
 	for (int k = 0; k < probs.size(); ++k)
 	{
+		s= ale(probs[k],s);
 		probs[k] = exp(logN + probs[k]);
 		if (probs[k] < 0.1)
 		{
@@ -412,7 +465,7 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	std::vector<double> ps(ks.size());
 	for (int k  =0; k < ks.size(); ++k)
 	{
-		ps[k] = exp(p.logNoiseWeight + p.getLogNoise(k) + logN);
+		ps[k] = exp(p.getLogNoise(k) + logN + p.logNoiseWeight);
 		if (ps[k] < 0.1)
 		{
 			ps[k] = 0;

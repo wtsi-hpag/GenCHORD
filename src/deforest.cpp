@@ -38,7 +38,8 @@ int main(int argc, char**argv)
 	Log("Preparing probability models:\n")
 	int Kmax = 4*d.Mean + d.Deviation;
 	int qmax = settings.Qmax;
-	auto model = Models::NegativeBinomial();
+	int Nr = 150;//Kmax/4;
+	auto model = Models::NegativeBinomial(Nr);
 
 	
 	NormaliseModel(model,d,settings, Kmax,qmax);
@@ -46,14 +47,14 @@ int main(int argc, char**argv)
 	// model.SetSignalParameters(11.60,5.33);
 	// model.SetNoiseParameters(10.1452,4.7,0.30);
 	
-	Kmax = d.maxK;
-	model.SetDimensionality(Kmax,qmax);
+	// Kmax = d.maxK;
+	// model.SetDimensionality(Kmax,qmax);
 	model.SetGrids();
 
 
-	// std::vector<double> alphas = {1e-10};
-	// std::vector<int> L = {(int)3e5};
-	// std::vector<double> ploidy = {0.5};
+	// std::vector<double> alphas = {1e-15};
+	// std::vector<int> L = {(int)4e5};
+	// std::vector<double> ploidy = {0.2};
 	std::vector<double> alphas = {1e-15,1e-10,1e-5};
 	std::vector<int> L = {(int)1e5,(int)3e5,(int)6e5,(int)2e6};
 	std::vector<double> ploidy = {0.1,0.5};
@@ -86,9 +87,6 @@ int main(int argc, char**argv)
 				WriteMeta(metaData,"Chromosome_Mode",settings.TargetChromosome);
 				WriteMeta(metaData,"Harmonic_Frequency",model.SignalMean);
 				WriteMeta(metaData,"Harmonic_Deviation",model.SignalSigma);
-				WriteMeta(metaData,"Noise_Frequency",model.NoiseMean);
-				WriteMeta(metaData,"Noise_Deviation",model.NoiseSigma);
-				WriteMeta(metaData,"Noise_Weight",model.NoiseWeight);
 				WriteMeta(metaData,"Contamination",JSL::Vector(model.Contamination));
 				WriteMeta(metaData,"Minimum_Jump",settings.L);
 				WriteMeta(metaData,"Continuity_Prior",settings.ContinuityPrior);
