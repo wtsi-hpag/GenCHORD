@@ -128,7 +128,7 @@ template <typename T> int sgn(T val) {
 void ProbabilityModel::SetContamination(int q, double targetMean)
 {
 	double old = targetMean;
-	double maxShift = 0.7*SignalMean;
+	double maxShift = 0.45*SignalMean;
 	if (q == 0)
 	{
 		maxShift = 3;

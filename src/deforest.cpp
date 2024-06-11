@@ -102,7 +102,7 @@ int main(int argc, char**argv)
 
 					JSL::gnuplot gp;
 					basicPlot(gp,d2,i);
-					gp.WindowSize(2000,1400);
+					gp.WindowSize(1000,700);
 					TransitionPlot(gp,d2.Chromosomes[i],paths[i],"Inferred Curve");
 					gp.SetTerminal("pngcairo");
 					gp.SetLegend(true);
