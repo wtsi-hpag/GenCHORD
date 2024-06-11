@@ -10,7 +10,7 @@ struct Helper
 
 	std::vector<double> NoiseGradient;
 	std::vector<double> noise_posterior; //noise weight helper
-
+	std::vector<std::vector<double>> mean_posterior;
 	std::vector<double> noise_zs;
 	std::vector<double> noise_ms;
 	std::vector<double> noise_vs;
@@ -19,6 +19,7 @@ struct Helper
 		kdim = Nks.size();
 
 		signal_posterior = std::vector<std::vector<double>>(Qmax+1,JSL::Vector(kdim));
+		mean_posterior = signal_posterior;
 		noise_posterior = std::vector<double>(kdim);
 		ws.resize(Qmax+1);
 
@@ -46,7 +47,7 @@ struct Helper
 		// }
 		for (int i = 0; i < ws.size(); ++i)
 		{
-			int ddip = abs(i-2);
+			double ddip = sqrt(abs(i-2));
 			ws[i] = pow(4,-ddip);
 			s+=ws[i];
 		}
@@ -62,6 +63,7 @@ struct Helper
 		{
 			double log_pk = -999999999;
 			double log_sk = -9999999999;
+
 			for (int q = 0; q < ws.size(); ++q)
 			{
 				double signal = log(ws[q]) + p.getLogSignal(k,q);
@@ -82,7 +84,8 @@ struct Helper
 			for (int q = 0; q < ws.size(); ++q)
 			{
 				double logWq = log(ws[q]);
-				signal_posterior[q][k] = p.getLogSignal(k,q) + logWq - log_sk;
+				signal_posterior[q][k] = p.logP(k,q) + logWq - log_pk;
+				mean_posterior[q][k] = p.getLogSignal(k,q) + logWq - log_sk;
 			}
 			// for (int r = 0; r < noise_posterior.size(); ++r)
 			// {
@@ -121,7 +124,7 @@ struct Helper
 			double prior_k = 0;
 			for (int q= 0; q < ws.size(); ++q)
 			{
-				double d = (k - q * p.SignalMean)/(p.SignalSigma*0.5);
+				double d = (k - q * p.SignalMean)/(p.SignalSigma*0.1);
 				prior_k += exp(-0.5*d*d);
 				p_k = ale(p_k,log(ws[q]) + p.logP(k,q));
 			}
@@ -137,16 +140,17 @@ struct Helper
 		for (int r =0 ; r < nr; ++r)
 		{
 			double priorTerm = prior[r] - exp(p.NoiseComponents[r]) * priorSum;
-			NoiseGradient[r] = exp(temp[r]) - exp(p.NoiseComponents[r] + globalSum) - 5e-3*N*priorTerm;
+			NoiseGradient[r] = exp(temp[r]) - exp(p.NoiseComponents[r] + globalSum) - 5e-1*N*priorTerm;
 		}
 
 	}
 
 	void UpdateNoiseComponents(ProbabilityModel & p,int l)
 	{
-		double alpha = 0.05;
+		double alpha = 0.1 * pow(0.98,l);
+
 		double b1 = 0.7;
-		double b2 = 0.99;
+		double b2 = 0.9;
 		double norm = -999999999;
 		double c1 = 1.0/(1.0 - pow(b1,l+1));
 			double c2 = 1.0/(1.0 - pow(b2,l+1));
@@ -182,8 +186,8 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 	int timeSinceKicked =0;
 	double alpha = 0.1;
 
-	double gammaCap = 1e-3;
-	double gammaGain = 1.5;
+	double gammaCap = 1e-5;
+	double gammaGain = 3;
 	for (int l = 0; l < res; ++l)
 	{
 
@@ -199,15 +203,18 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 			double newW = 0;
 			double meanMod = 0;
 			double newGamma = 0;
+			double meanW = 0;
 			for (int i = 0; i < assist.kdim; ++i)
 			{
 				double p = exp(assist.signal_posterior[q][i])/assist.N * Nks[i];
-				meanMod += p*i; 
 				newW += p;
+				double pM = exp(assist.mean_posterior[q][i])/assist.N * Nks[i];
+				meanW += p;
+				meanMod += pM*i; 
 
 			}
 			wSum += newW;
-			meanMod /= newW;
+			meanMod /= meanW;
 			if (q!=2)
 			{
 				p.SetContamination(q,meanMod);
@@ -227,10 +234,10 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 			{
 				newGamma += exp(assist.noise_posterior[i])/assist.N * Nks[i];
 			}
-			double gammaMem = 0.7;
+			double gammaMem = 0.;
 			newGamma = gammaMem * exp(p.logNoiseWeight) + (1.0 - gammaMem)*newGamma;
 			newGamma = std::min(gammaCap,newGamma);
-			if (gammaCap < 0.05)
+			if (gammaCap < 0.15)
 			{
 				gammaCap *= gammaGain;
 			}
@@ -366,7 +373,7 @@ std::vector<double> NormaliseSet(ProbabilityModel & p, std::vector<int> Nks,int 
 			
 			p.SignalMean = mus[i];
 			p.SignalSigma = sigmas[j];
-			ParameterRelaxation(p,Nks,kMax,Qmax,50,assist,true);
+			ParameterRelaxation(p,Nks,kMax,Qmax,75,assist,true);
 			double score = ComputeScore(p,Nks,assist.ws,kMax) - perfectScore;
 			if (!found || score > bestScore)
 			{
@@ -485,8 +492,8 @@ std::vector<ProbabilityModel> NormaliseModel(ProbabilityModel & p, const Data & 
 	auto ws = NormaliseSet(p,Nks,kMax,Qmax,mus_fullScan,sigmas_fullScan);
 	PlotDistribution(p,ws,Nks,settings,"global");
 	auto pGlobal = p;
-	std::vector<double> mus_SubScan = JSL::Vector::linspace(p.SignalMean*0.9,p.SignalMean*1.1,5);
-	std::vector<double> sigmas_SubScan = JSL::Vector::linspace(p.SignalSigma*0.9,p.SignalSigma*1.1,5);
+	std::vector<double> mus_SubScan = JSL::Vector::linspace(p.SignalMean*0.95,p.SignalMean*1.05,7);
+	std::vector<double> sigmas_SubScan = JSL::Vector::linspace(p.SignalSigma*0.95,p.SignalSigma*1.05,7);
 	std::vector<ProbabilityModel> Distributions;
 	for (int c =0; c < data.Chromosomes.size(); ++c)
 	{
