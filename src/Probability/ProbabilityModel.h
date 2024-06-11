@@ -95,7 +95,6 @@ class ProbabilityModel
 		int NoiseResolution;
 		std::vector<double> NoiseComponents;
 		std::vector<double> logNoiseWidth;
-		std::vector<std::vector<int>> Rho;
 
 		std::vector<double> Contamination;
 
@@ -105,10 +104,10 @@ class ProbabilityModel
 		void ResetNoise();
 		int RFromK(int k);
 		// std::vector<double> KFromR(int r);
+		int MaxK;
 	protected:
 		virtual double logNoise(int k);
 		virtual double logSignal(int k, int q);
-		int MaxK;
 		int MaxQ;
 
 

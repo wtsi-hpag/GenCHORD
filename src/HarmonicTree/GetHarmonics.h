@@ -7,4 +7,4 @@
 #include "../Utility/Distributor.h"
 #include "../Probability/ProbabilityModel.h"
 
-std::vector<Path> GetHarmonics(Data & d, Settings & s,ProbabilityModel & prob);
+std::vector<Path> GetHarmonics(Data & d, Settings & s,std::vector<ProbabilityModel> & prob);

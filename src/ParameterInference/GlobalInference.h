@@ -6,4 +6,4 @@
 
 
 
-void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & settings, int kMax, int Qmax);
+std::vector<ProbabilityModel> NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & settings, int kMax, int Qmax);

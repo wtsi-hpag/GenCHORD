@@ -137,14 +137,14 @@ struct Helper
 		for (int r =0 ; r < nr; ++r)
 		{
 			double priorTerm = prior[r] - exp(p.NoiseComponents[r]) * priorSum;
-			NoiseGradient[r] = exp(temp[r]) - exp(p.NoiseComponents[r] + globalSum) - 4e-2*N*priorTerm;
+			NoiseGradient[r] = exp(temp[r]) - exp(p.NoiseComponents[r] + globalSum) - 5e-3*N*priorTerm;
 		}
 
 	}
 
 	void UpdateNoiseComponents(ProbabilityModel & p,int l)
 	{
-		double alpha = 0.1;
+		double alpha = 0.05;
 		double b1 = 0.7;
 		double b2 = 0.99;
 		double norm = -999999999;
@@ -182,7 +182,7 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 	int timeSinceKicked =0;
 	double alpha = 0.1;
 
-	double gammaCap = 1e-2;
+	double gammaCap = 1e-3;
 	double gammaGain = 1.5;
 	for (int l = 0; l < res; ++l)
 	{
@@ -230,7 +230,10 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 			double gammaMem = 0.7;
 			newGamma = gammaMem * exp(p.logNoiseWeight) + (1.0 - gammaMem)*newGamma;
 			newGamma = std::min(gammaCap,newGamma);
-			gammaCap *= gammaGain;
+			if (gammaCap < 0.05)
+			{
+				gammaCap *= gammaGain;
+			}
 			p.logNoiseWeight = log(newGamma);
 			p.logSignalWeight = log(1.0 - newGamma);
 
@@ -333,33 +336,12 @@ double ComputeScore(ProbabilityModel & p, const std::vector<int> & Nks, std::vec
 }
 
 
-void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & settings, int kMax,int Qmax)
+std::vector<double> NormaliseSet(ProbabilityModel & p, std::vector<int> Nks,int kMax, int Qmax,std::vector<double> & mus, std::vector<double> & sigmas)
 {
-	p.SetDimensionality(kMax,Qmax);
-	
-	std::vector<int> Nks(kMax+1,0);
-	for (int c = 0; c < data.Chromosomes.size(); ++c)
-	{
-		for (int i = 0; i < data.Chromosomes[c].Counts.size(); ++i)
-		{
-			int k = data.Chromosomes[c].Counts[i];
-			if (k<= kMax)
-			{
-				Nks[k] += 1;
-			}
-		}
-	}
 	Helper assist(Nks,Qmax,p.NoiseResolution);
-	
 	assist.SetWeights(p);
 
-	
-	// std::vector<double> mus = JSL::Vector::linspace(45,65,151);
-	std::vector<double> mus = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,50);
-	std::vector<double> sigmas = JSL::Vector::linspace(1,20,20);
-	
-	int N = JSL::Vector(Nks).Sum();
-	double perfectScore = -N*log(N);
+	double perfectScore = -assist.N*log(assist.N);
 	for (int k = 0; k <= kMax; ++k)
 	{
 		if (Nks[k] > 0)
@@ -372,22 +354,7 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	double bestScore = -9e10;
 	double bestMu;
 	double bestSig;
-	double bestNoiseMean;
-	double bestNoiseSig;
-	double bestNoiseWeight;
-	std::vector<double> bestWeights;
-	double diff = 0;
-
-	double shiftMem = 1.0;
-	double mu_e = data.Mean;
-	double sig_e = mu_e;
-	double lMem = 0.99;
-	double L = 0;
-
-	std::vector<std::vector<double>> scores(sigmas.size(),std::vector<double>(mus.size(),0.0));
 	JSL::ProgressBar<2> PB(mus.size(),sigmas.size());
-	int n = 0;
-	Log("\tDetermining global distribution parameters\n")
 	PB.SetName(0,"\t");
 	PB.SetName(1,"\t");
 	for (int i = 0; i < mus.size(); ++i)
@@ -401,39 +368,38 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 			p.SignalSigma = sigmas[j];
 			ParameterRelaxation(p,Nks,kMax,Qmax,50,assist,true);
 			double score = ComputeScore(p,Nks,assist.ws,kMax) - perfectScore;
-			scores[j][i] = abs(score);
 			if (!found || score > bestScore)
 			{
 				found = true;
 				bestScore = score;
 				bestMu = p.SignalMean;
 				bestSig = p.SignalSigma;
-				bestWeights = assist.ws;
 			}
 			PB.Update(i,j);
 			PB.SetName(1,"\t"+std::to_string(int(bestScore)));
 		}
 	}
-	p.ClearContamination();
-	p.SetSignalParameters(bestMu,bestSig);
-	assist.ws = bestWeights;
-	ParameterRelaxation(p,Nks,kMax,Qmax,250,assist,false);
-	p.SetGrids();
-	double trueScore = ComputeScore(p,Nks,assist.ws,kMax) - perfectScore;
-	Log("\tOptimal signal model has nu=" << bestMu << ", sigma=" << bestSig << " with a fraction " << assist.ws[2] *100 << "% of the data assigned as diploid\n");
-	Log("\tOptimal noise model has a weight " << exp(p.logNoiseWeight)<< "\n");
-	Log("\tOptimal combined model as a deviation score of " << trueScore << "\n");
 
-	
+	p.SetSignalParameters(bestMu,bestSig);
+	ParameterRelaxation(p,Nks,kMax,Qmax,250,assist,false);
+	return assist.ws;
+}
+
+void PlotDistribution(ProbabilityModel & p, std::vector<double> ws,const std::vector<int> & Nks, const Settings & settings,std::string subname)
+{
 	JSL::gnuplot gp;
-	std::vector<int> ks = JSL::Vector::intspace(0,kMax,1);
+	std::vector<int> ks = JSL::Vector::intspace(0,p.MaxK,1);
 
 	gp.SetMultiplot(2,1);
 	namespace lp = JSL::LineProperties;
 	std::vector<double> probs(ks.size());
-	p.GlobalLogPrediction(probs,assist.ws);
+	p.GlobalLogPrediction(probs,ws);
 	
-	double logN = log(assist.N);
+	double logN = -99999999;
+	for (int k =0; k < Nks.size(); ++k)
+	{
+		logN = ale(logN,log(Nks[k]));
+	}
 	double s =-999999;
 	for (int k = 0; k < probs.size(); ++k)
 	{
@@ -448,7 +414,7 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	gp.Plot(ks,probs,lp::Legend("Probability Distribution"),lp::PenSize(5));
 	gp.WindowSize(2000,1400);
 	gp.SetTerminal("pngcairo");
-	gp.SetOutput(settings.OutputDirectory + "/probability_model.png");
+	gp.SetOutput(settings.OutputDirectory + "/Distributions/" + subname + "_probability_model.png");
 	gp.SetXLabel("k");
 	gp.SetYLabel("p_k");
 	gp.SetTitle("Inferred Probability Model");
@@ -476,11 +442,11 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	gp.Plot(ks,ps,JSL::LineProperties::PenType(JSL::Dash),JSL::LineProperties::PenSize(3),JSL::LineProperties::Legend("Error Component"));
 	gp.SetAxis(1);
 	gp.Plot(ks,ps,JSL::LineProperties::PenType(JSL::Dash),JSL::LineProperties::PenSize(2));
-	for (int q = 0; q < assist.ws.size(); ++q)
+	for (int q = 0; q < ws.size(); ++q)
 	{
 		for (int k  =0; k < ks.size(); ++k)
 		{
-			ps[k] = exp(p.logSignalWeight + p.getLogSignal(k,q) + logN + log(assist.ws[q]));
+			ps[k] = exp(p.logSignalWeight + p.getLogSignal(k,q) + logN + log(ws[q]));
 			if (ps[k] < 0.1)
 			{
 				ps[k] = 0;
@@ -493,15 +459,57 @@ void NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & se
 	}
 
 	gp.Show();
+}
 
-	JSL::gnuplot gp2;
-	gp2.WindowSize(2000,1400);
-	gp2.SetFontSize(JSL::Fonts::Global,25);
-	gp2.Map(mus, sigmas,scores);
-	gp2.SetCBLog(true);
-	gp2.SetTerminal("pngcairo");
-	gp2.SetXLabel("mu");
-	gp2.SetYLabel("sigma");
-	gp2.SetOutput(settings.OutputDirectory + "/model_parameters.png");
-	gp2.Show();
+std::vector<ProbabilityModel> NormaliseModel(ProbabilityModel & p, const Data & data, const Settings & settings, int kMax,int Qmax)
+{
+	p.SetDimensionality(kMax,Qmax);
+	
+	std::vector<int> Nks(kMax+1,0);
+	for (int c = 0; c < data.Chromosomes.size(); ++c)
+	{
+		for (int i = 0; i < data.Chromosomes[c].Counts.size(); ++i)
+		{
+			int k = data.Chromosomes[c].Counts[i];
+			if (k<= kMax)
+			{
+				Nks[k] += 1;
+			}
+		}
+	}
+	JSL::mkdir(settings.OutputDirectory + "/Distributions/");
+	Log("\tDetermining global distribution parameters\n")
+	std::vector<double> mus_fullScan = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,50);
+	std::vector<double> sigmas_fullScan = JSL::Vector::linspace(1,15,20);
+	
+	auto ws = NormaliseSet(p,Nks,kMax,Qmax,mus_fullScan,sigmas_fullScan);
+	PlotDistribution(p,ws,Nks,settings,"global");
+	auto pGlobal = p;
+	std::vector<double> mus_SubScan = JSL::Vector::linspace(p.SignalMean*0.9,p.SignalMean*1.1,5);
+	std::vector<double> sigmas_SubScan = JSL::Vector::linspace(p.SignalSigma*0.9,p.SignalSigma*1.1,5);
+	std::vector<ProbabilityModel> Distributions;
+	for (int c =0; c < data.Chromosomes.size(); ++c)
+	{
+		Log("\tDetermining paramaters for chromosome " << data.Chromosomes[c].Name << std::endl;)
+
+		std::fill(Nks.begin(),Nks.end(),0);
+		for (int i = 0; i < data.Chromosomes[c].Counts.size(); ++i)
+		{
+			int k = data.Chromosomes[c].Counts[i];
+			if (k<= kMax)
+			{
+				Nks[k] += 1;
+			}
+		}
+
+		ws = NormaliseSet(p,Nks,kMax,Qmax,mus_SubScan,sigmas_SubScan);
+		PlotDistribution(p,ws,Nks,settings,"sub"+data.Chromosomes[c].Name);
+		p.SetGrids();
+		Distributions.push_back(p);
+	}
+
+	
+	
+
+	return Distributions;
 }

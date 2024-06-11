@@ -128,10 +128,10 @@ template <typename T> int sgn(T val) {
 void ProbabilityModel::SetContamination(int q, double targetMean)
 {
 	double old = targetMean;
-	double maxShift = 0.5*SignalMean;
+	double maxShift = 0.7*SignalMean;
 	if (q == 0)
 	{
-		maxShift = 5;
+		maxShift = 3;
 	}
 	double shift = std::min(maxShift,abs(q*SignalMean - targetMean));
 	double amount = shift *sgn(-q*SignalMean +targetMean);

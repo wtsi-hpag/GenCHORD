@@ -38,11 +38,11 @@ int main(int argc, char**argv)
 	Log("Preparing probability models:\n")
 	int Kmax = 4*d.Mean + d.Deviation;
 	int qmax = settings.Qmax;
-	int Nr = 150;//Kmax/4;
+	int Nr = Kmax;
 	auto model = Models::NegativeBinomial(Nr);
 
 	
-	NormaliseModel(model,d,settings, Kmax,qmax);
+	auto models = NormaliseModel(model,d,settings, Kmax,qmax);
 
 	// model.SetSignalParameters(11.60,5.33);
 	// model.SetNoiseParameters(10.1452,4.7,0.30);
@@ -50,14 +50,14 @@ int main(int argc, char**argv)
 	// Kmax = d.maxK;
 	// model.SetDimensionality(Kmax,qmax);
 	model.SetGrids();
-
+	std::cout <<JSL::Vector(model.Contamination) << std::endl;
 
 	// std::vector<double> alphas = {1e-15};
 	// std::vector<int> L = {(int)4e5};
-	// std::vector<double> ploidy = {0.2};
+	// std::vector<double> ploidy = {0.9};
 	std::vector<double> alphas = {1e-15,1e-10,1e-5};
 	std::vector<int> L = {(int)1e5,(int)3e5,(int)6e5,(int)2e6};
-	std::vector<double> ploidy = {0.1,0.5};
+	std::vector<double> ploidy = {0.1,0.5,0.9,0.99};
 	std::string orig = settings.OutputDirectory;
 	for (int i = 0; i < alphas.size(); ++i)
 	{
@@ -76,7 +76,7 @@ int main(int argc, char**argv)
 				JSL::mkdir(settings.OutputDirectory);
 
 				Log("Beginning network navigation" << std::endl;)
-				auto paths = GetHarmonics(d,settings,model);
+				auto paths = GetHarmonics(d,settings,models);
 
 				Log("Navigation complete, writing to output\n")
 				
