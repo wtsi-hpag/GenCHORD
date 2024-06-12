@@ -48,7 +48,7 @@ struct Helper
 		for (int i = 0; i < ws.size(); ++i)
 		{
 			double ddip = sqrt(abs(i-2));
-			ws[i] = pow(4,-ddip);
+			ws[i] = pow(2,-ddip);
 			s+=ws[i];
 		}
 		for (int i = 0; i < ws.size(); ++i)
@@ -121,11 +121,15 @@ struct Helper
 		for (int k =0; k < kdim; ++k)
 		{
 			double p_k =-99999999;
-			double prior_k = 0;
+			double prior_k = k;
+			if (k > 3*p.SignalMean)
+			{
+				prior_k *= k * 1.0/(3*p.SignalMean);
+			}
 			for (int q= 0; q < ws.size(); ++q)
 			{
-				double d = (k - q * p.SignalMean)/(p.SignalSigma*0.1);
-				prior_k += exp(-0.5*d*d);
+				double d = (k - q * p.SignalMean)/(p.SignalSigma*0.3);
+				prior_k += 0.1*exp(-0.5*d*d);
 				p_k = ale(p_k,log(ws[q]) + p.logP(k,q));
 			}
 			int r = p.RFromK(k);
@@ -140,7 +144,7 @@ struct Helper
 		for (int r =0 ; r < nr; ++r)
 		{
 			double priorTerm = prior[r] - exp(p.NoiseComponents[r]) * priorSum;
-			NoiseGradient[r] = exp(temp[r]) - exp(p.NoiseComponents[r] + globalSum) - 5e-1*N*priorTerm;
+			NoiseGradient[r] = exp(temp[r]) - exp(p.NoiseComponents[r] + globalSum) - 1e-4*N*priorTerm;
 		}
 
 	}
@@ -186,7 +190,7 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 	int timeSinceKicked =0;
 	double alpha = 0.1;
 
-	double gammaCap = 1e-5;
+	double gammaCap = 1e-4;
 	double gammaGain = 3;
 	for (int l = 0; l < res; ++l)
 	{
@@ -237,7 +241,7 @@ void ParameterRelaxation(ProbabilityModel & p, const std::vector<int> & Nks, int
 			double gammaMem = 0.;
 			newGamma = gammaMem * exp(p.logNoiseWeight) + (1.0 - gammaMem)*newGamma;
 			newGamma = std::min(gammaCap,newGamma);
-			if (gammaCap < 0.15)
+			if (gammaCap < 0.05)
 			{
 				gammaCap *= gammaGain;
 			}
@@ -487,7 +491,8 @@ std::vector<ProbabilityModel> NormaliseModel(ProbabilityModel & p, const Data & 
 	JSL::mkdir(settings.OutputDirectory + "/Distributions/");
 	Log("\tDetermining global distribution parameters\n")
 	std::vector<double> mus_fullScan = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,50);
-	std::vector<double> sigmas_fullScan = JSL::Vector::linspace(1,15,20);
+	Log("\tScanning between " << mus_fullScan[0] << "  " << mus_fullScan[mus_fullScan.size()-1] << std::endl;);
+	std::vector<double> sigmas_fullScan = JSL::Vector::linspace(1,15,30);
 	
 	auto ws = NormaliseSet(p,Nks,kMax,Qmax,mus_fullScan,sigmas_fullScan);
 	PlotDistribution(p,ws,Nks,settings,"global");

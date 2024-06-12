@@ -34,6 +34,7 @@ int main(int argc, char**argv)
 	Data d(settings);
 	
 	settings.DataThinning=1e5;
+	// settings.MemorySmoothing = 0.99;
 	Data d2(settings);
 	Log("Preparing probability models:\n")
 	int Kmax = 4*d.Mean + d.Deviation;
@@ -50,14 +51,14 @@ int main(int argc, char**argv)
 	// Kmax = d.maxK;
 	// model.SetDimensionality(Kmax,qmax);
 	model.SetGrids();
-	std::cout <<JSL::Vector(model.Contamination) << std::endl;
+	// std::cout <<JSL::Vector(model.Contamination) << std::endl;
 
-	std::vector<double> alphas = {1e-15};
-	std::vector<int> L = {(int)2e6};
-	std::vector<double> ploidy = {0.9};
-	// std::vector<double> alphas = {1e-15,1e-10,1e-5};
-	// std::vector<int> L = {(int)1e5,(int)3e5,(int)6e5,(int)2e6};
-	// std::vector<double> ploidy = {0.1,0.5,0.9,0.99};
+	// std::vector<double> alphas = {1e-15};
+	// std::vector<int> L = {(int)2e6};
+	// std::vector<double> ploidy = {0.9};
+	std::vector<double> alphas = {1e-15,1e-5};
+	std::vector<int> L = {(int)1e5,(int)3e5,(int)8e5,(int)2e6};
+	std::vector<double> ploidy = {0.1,0.5,0.9};
 	std::string orig = settings.OutputDirectory;
 	for (int i = 0; i < alphas.size(); ++i)
 	{
