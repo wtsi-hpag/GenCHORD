@@ -488,21 +488,21 @@ std::vector<ProbabilityModel> NormaliseModel(ProbabilityModel & p, const Data & 
 			}
 		}
 	}
-	JSL::mkdir(settings.OutputDirectory + "/Distributions/");
+	// JSL::mkdir(settings.OutputDirectory + "/Distributions/");
 	Log("\tDetermining global distribution parameters\n")
 	std::vector<double> mus_fullScan = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,50);
 	Log("\tScanning between " << mus_fullScan[0] << "  " << mus_fullScan[mus_fullScan.size()-1] << std::endl;);
 	std::vector<double> sigmas_fullScan = JSL::Vector::linspace(1,15,30);
 	
 	auto ws = NormaliseSet(p,Nks,kMax,Qmax,mus_fullScan,sigmas_fullScan);
-	PlotDistribution(p,ws,Nks,settings,"global");
+	// PlotDistribution(p,ws,Nks,settings,"global");
 	auto pGlobal = p;
 	std::vector<double> mus_SubScan = JSL::Vector::linspace(p.SignalMean*0.95,p.SignalMean*1.05,7);
 	std::vector<double> sigmas_SubScan = JSL::Vector::linspace(p.SignalSigma*0.95,p.SignalSigma*1.05,7);
 	std::vector<ProbabilityModel> Distributions;
 	for (int c =0; c < data.Chromosomes.size(); ++c)
 	{
-		Log("\tDetermining paramaters for chromosome " << data.Chromosomes[c].Name << std::endl;)
+		Log("\tDetermining parameters for chromosome " << data.Chromosomes[c].Name << std::endl;)
 
 		std::fill(Nks.begin(),Nks.end(),0);
 		for (int i = 0; i < data.Chromosomes[c].Counts.size(); ++i)
@@ -515,7 +515,7 @@ std::vector<ProbabilityModel> NormaliseModel(ProbabilityModel & p, const Data & 
 		}
 
 		ws = NormaliseSet(p,Nks,kMax,Qmax,mus_SubScan,sigmas_SubScan);
-		PlotDistribution(p,ws,Nks,settings,"sub"+data.Chromosomes[c].Name);
+		// PlotDistribution(p,ws,Nks,settings,"sub"+data.Chromosomes[c].Name);
 		p.SetGrids();
 		Distributions.push_back(p);
 	}
