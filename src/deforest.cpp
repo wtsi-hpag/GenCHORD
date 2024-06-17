@@ -33,8 +33,8 @@ int main(int argc, char**argv)
 	//load the data file -- either from file, or from a pipe
 	Data d(settings);
 	
-	settings.DataThinning=1e3;
-	settings.MemorySmoothing = 0.999;
+	settings.DataThinning=1e5;
+	// settings.MemorySmoothing = 0.999;
 	Data d2(settings);
 	Log("Preparing probability models:\n")
 	int Kmax = 4*d.Mean + d.Deviation;
@@ -53,12 +53,12 @@ int main(int argc, char**argv)
 	model.SetGrids();
 	// std::cout <<JSL::Vector(model.Contamination) << std::endl;
 
-	// std::vector<double> alphas = {1e-15};
-	// std::vector<int> L = {(int)2e6};
-	// std::vector<double> ploidy = {0.9};
-	std::vector<double> alphas = {1e-15,1e-10,1e-5};
-	std::vector<int> L = {(int)1e5,(int)3e5,(int)8e5,(int)2e6};
-	std::vector<double> ploidy = {0.1,0.5,0.9};
+	std::vector<double> alphas = {1e-15};
+	std::vector<int> L = {(int)2e6,(int)1e6,(int)5e5};
+	std::vector<double> ploidy = {0.5,0.9};
+	// std::vector<double> alphas = {1e-15,1e-10,1e-5};
+	// std::vector<int> L = {(int)1e5,(int)3e5,(int)8e5,(int)2e6};
+	// std::vector<double> ploidy = {0.1,0.5,0.9};
 	std::string orig = settings.OutputDirectory;
 	for (int i = 0; i < alphas.size(); ++i)
 	{
@@ -101,15 +101,15 @@ int main(int argc, char**argv)
 					treeFile += s;
 					Log("\tPlotting " << i + 1 <<std::endl;)
 
-					// JSL::gnuplot gp;
-					// basicPlot(gp,d2,i);
-					// gp.WindowSize(1000,700);
-					// // TransitionPlot(gp,d2.Chromosomes[i],paths[i],"Inferred Curve");
-					// gp.SetTerminal("pngcairo");
-					// gp.SetLegend(true);
-					// gp.SetOutput(settings.OutputDirectory + "/" + d.Chromosomes[i].Name + ".png");
-					// // gp.SetPersistence(true);
-					// gp.Show();
+					JSL::gnuplot gp;
+					basicPlot(gp,d2,i);
+					gp.WindowSize(1000,700);
+					TransitionPlot(gp,d2.Chromosomes[i],paths[i],"Inferred Curve");
+					gp.SetTerminal("pngcairo");
+					gp.SetLegend(true);
+					gp.SetOutput(settings.OutputDirectory + "/" + d.Chromosomes[i].Name + ".png");
+					// gp.SetPersistence(true);
+					gp.Show();
 				}
 				std::string treeFileName = settings.OutputDirectory + "/coverage.tree";
 				JSL::initialiseFile(treeFileName);

@@ -12,7 +12,7 @@
 
 
 
-\title[Deforesting]{Deforesting Coverage Data}
+\title[Deforesting]{Deforester: A Pipeline for Genomic Rearrangement Analysis}
 \author[J. Fraser-Govil]{Jack Fraser-Govil
 }
 
@@ -24,21 +24,19 @@
 	\pagerange{\pageref{firstpage}--\pageref{lastpage}}
 	\maketitle
 	
-	\section{Introduction \& Motivation}
+	\section{Introduction}
 	
-		Coverage data belies a wealth of data -- we have already seen that a hidden set of biases can be seen when considering the coverage-frequency distribution. 
+		Genomic Rearrangements are large-scale Structural Variations (SVs) in an individual's genome - including large-scale deletion, duplication and translocation of megabase-length sequences of DNA,  and often lead to genetic disorders (when present in the germ cells), or cancer (when arising from somatic mutations). 
 
-		In addition, Coverage can also be used to detect the presence of large-scale copy-number variations and other forms of duplication or deletion (which we shall generically call `gains' and `losses'). In the case of losses it is easy to see why this would be the case, it is perhaps less obvious why it happens in the case of gains.
-		
-		Provided the read length is smaller than the scale of the duplications we are interested in, it is generally not possible to infer which copy of a motif a read originated from, and so the alignment does not record this as an insertion/duplication of bases -- it simply assigns them to the original copy in the reference, leading to a spurious over-coverage of the reference, as shown in Figure \ref{Fig:Diagram}.
+		When data from a rearranged sample is sequenced and aligned against a reference the true rearrangement can be lost, especially when the size of the rearranged regions are significantly larger than the read length, since almost all reads will suitably align to the reference, only those reads which bridge the unusual adjacencies contain the information that a rearrangement has occurred.
 
-		Only reads which bridge the gap between consecutive copies would permit us to properly infer the presence of duplication -- however, if the number of duplicates is greater than two, then there are multiple such bridge points, and the problem is highly degenerate and we must rely on the coverage to infer the number of duplications. 
-		
-		The problem with this kind of inference is that Coverage is already inherently stochastic and highly noisy - coverage plots covering any significant portion of the genome are difficult to interpret due to a large degree of shot noise which -- as we have seen -- has a significantly higher dispersion than Poisson shot noise, with the noise changing on (approximately) a per-base resolution. 
+		Reconstructing these rearrangements requires costly analysis, such as a full phased-alignment, which is not only computationally costly, but requires samples be sampled to a very high coverage, as well as sampling technologies such as HiC. We should like to be able to identify, analyse and classify the presence of genomic rearrangements in a simpler fashion.  
 
-		Plots of the base coverage are - to be charitable - hard to interpret, reminiscent of the notorious `Lyman-Alpha forest' in astrophysical spectroscopy. Whilst large-scale trends can (just about) be picked out by eye, we might desire a more rigorous and sophisticated methodology.  
+		To do this, we leverage the knowledge that, where portions of the genome have been duplicated or deleted (which we shall generically call 'gains' and 'losses'), the erroneous alignment leads to variations in the base-coverage reported by the alignment tool, as demonstrated in Figure \ref{Fig:Diagram}.
 
-		The aim of this work is to generate a computational tool which can peer through the `Forest', and see the underlying pattern.
+		Many tools to analyse the copy-number variations exist, however in this work we develop a novel tool tailored for this problem which leverages the power of a Bayesian hypothesis testing to infer a statistically robust denoised copy-number analysis, which is suitable for encoding into a Neural Network, and hence permit accurate detection, analysis, and classification of the genomic rearrangement.
+
+		In short, the aim of this work is to generate a computational tool which can peer through the `forest' of the coverage data, and see the underlying pattern.
 		\begin{figure}
 			\begin{center}
 				\begin{tikzpicture}
@@ -132,15 +130,19 @@
 
 	\section{Mathematical Theory}
 
+		\subsection*{The Data}
+
+			Throughout this work we shall assume that our data takes the form of an ordered sequence of integers, $S = \{k_1,k_2,k_3,...\}$, where $k_i$ corresponds to the coverage reported by the $i^\text{th}$ base in the sequence. $k_i$ is a non-negative integer.
+			
+			We shall have $C$ such sequences, corresponding to the $C$ chromosomes present in the sample, and each sequence is of length $N_c$, the length of the $c^\text{th}$ chromosome. We shall assume that, aside from a prior that the global parameters should be similar\footnote{But not identical, since the coverage depth can vary per-chromosome in even a healthy sampel}, these sequences are to be analysed independently.
+
 		\subsection{Naive Smoothing}
 
-			The most obvious solution is to simply pass a smoothing kernel over the data, and use that to infer the underlying mean function that the data is oscillating around. The Nadarya-Watson (cite?) method uses a kernel function $K_\lambda(x,y) = \frac{1}{\lambda} k\left(\frac{|x-y|}{\lambda}\right)$, and the mean estimate of a set of data $(x_i,y_i)$ is given by:
-			\begin{equation}
-				\hat{m}_\lambda(x) = \frac{\sum_i^n K_\lambda(x,x_i) y_i}{\sum_i K_\lambda(x,x_i) }
-			\end{equation}
-			The kernel should be sufficiently decaying that $K_\lambda(x,y) = 0$ when $|x-y| \gg \lambda$, where $\lambda$ is a characteristic `smoothing lengthscale'.
+			The most obvious solution to denoise the Coverage Data is to simply pass a smoothing kernel over the data, potentially in combination with a binning  and use that to infer the underlying mean function that the data is oscillating around.
 
-			Smoothing in this fashion serves as a generic way to extract a smooth curve from the extremely noisy data present (i.e. the `forest') - however it fails us on a number of grounds:
+			Smoothing in this fashion serves as a generic way to extract a smooth curve from the extremely noisy data present, however it fails us on a number of grounds.
+
+			Firstly, the method is not biologically motivated, and does not leverage any other information we possess about the system. Secondly, this kernel method can act to bias and manipulate the data in unforseen and undesirable ways. Consider a 
 			\begin{itemize}
 				\item It is not biologically motivated (no underlying mechanism present), without regard to any other information we have about the system.
 				\item It reduces the coverage to a smooth curve. This is undesirable because:
