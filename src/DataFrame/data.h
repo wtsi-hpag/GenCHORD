@@ -50,3 +50,4 @@ class Data
 		void AddData(int index, int coverage, const Settings & settings, bool spoofed);
 
 };	
+

@@ -10,6 +10,7 @@ struct ChromosomeCoverage
 	std::string Name;
 	std::vector<chr_int> Idx;
 	std::vector<int> Counts;
+	std::vector<double> SmoothCounts;
 	int maxIdx = 0;
 	int maxK;
 	ChromosomeCoverage(){};
@@ -17,4 +18,5 @@ struct ChromosomeCoverage
 
 	int RemoveSpuriousData(int maxVal);
 	void Add(chr_int id, int count);
+	void Add(chr_int id, int count,double smooth);
 };

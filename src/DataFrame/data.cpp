@@ -84,7 +84,7 @@ void Data::AddData(int index, int coverage, const Settings & settings,bool spoof
 	{
 		int k = round(File.SmoothingAverage);
 		
-		File.Chromosome.Add(index,k);
+		File.Chromosome.Add(index,k,File.SmoothingAverage);
 		File.CoverageSum += File.SmoothingAverage;
 		File.CoverageSquareSum += pow(File.SmoothingAverage,2);
 		++File.LoadedData;

@@ -2,7 +2,7 @@
 
  void basicPlot(JSL::gnuplot & gp,Data & d,int chrom)
 {
-	gp.Plot(d.Chromosomes[chrom].Idx,d.Chromosomes[chrom].Counts,JSL::LineProperties::Legend("Data"),JSL::LineProperties::Colour("black"));
+	gp.Plot(d.Chromosomes[chrom].Idx,d.Chromosomes[chrom].SmoothCounts,JSL::LineProperties::Legend("Data"),JSL::LineProperties::Colour("black"));
 	
 }
 

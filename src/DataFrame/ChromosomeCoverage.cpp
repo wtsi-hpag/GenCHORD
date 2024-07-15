@@ -28,3 +28,13 @@ void ChromosomeCoverage::Add(chr_int id, int count)
 		maxIdx = id;
 	}
 }
+void ChromosomeCoverage::Add(chr_int id, int count,double smooth)
+{
+	Idx.push_back(id);
+	Counts.push_back(count);
+	SmoothCounts.push_back(smooth);
+	if (id > maxIdx)
+	{
+		maxIdx = id;
+	}
+}
