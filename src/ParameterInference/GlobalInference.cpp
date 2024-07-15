@@ -491,15 +491,15 @@ std::vector<ProbabilityModel> NormaliseModel(ProbabilityModel & p, const Data & 
 	}
 	JSL::mkdir(settings.OutputDirectory + "/Distributions/");
 	Log("\tDetermining global distribution parameters\n")
-	std::vector<double> mus_fullScan = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,25);
+	std::vector<double> mus_fullScan = JSL::Vector::linspace(data.Mean/2.5,data.Mean/1.5,100);
 	Log("\tScanning between " << mus_fullScan[0] << "  " << mus_fullScan[mus_fullScan.size()-1] << std::endl;);
-	std::vector<double> sigmas_fullScan = JSL::Vector::linspace(1,15,15);
+	std::vector<double> sigmas_fullScan = JSL::Vector::linspace(0.1,5,85);
 	
 	auto ws = NormaliseSet(p,Nks,kMax,Qmax,mus_fullScan,sigmas_fullScan);
 	PlotDistribution(p,ws,Nks,settings,"global");
 	auto pGlobal = p;
-	std::vector<double> mus_SubScan = JSL::Vector::linspace(p.SignalMean*0.5,p.SignalMean*1.5,11);
-	std::vector<double> sigmas_SubScan = JSL::Vector::linspace(p.SignalSigma*0.5,p.SignalSigma*1.5,11);
+	std::vector<double> mus_SubScan = JSL::Vector::linspace(p.SignalMean*0.5,p.SignalMean*1.5,21);
+	std::vector<double> sigmas_SubScan = JSL::Vector::linspace(p.SignalSigma*0.5,p.SignalSigma*1.5,21);
 	std::vector<ProbabilityModel> Distributions;
 	for (int c =0; c < data.Chromosomes.size(); ++c)
 	{
