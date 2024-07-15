@@ -53,8 +53,8 @@ int main(int argc, char**argv)
 	model.SetGrids();
 	// std::cout <<JSL::Vector(model.Contamination) << std::endl;
 
-	std::vector<double> alphas = {1e-10};
-	std::vector<int> L = {(int)1e5,(int)5e5,(int)1e6,(int)1e4};
+	std::vector<double> alphas = {1e-10,1};
+	std::vector<int> L = {(int)1e5,(int)1e4,(int)3e4,(int)7e4};
 	std::vector<double> ploidy = {0.8};
 	// std::vector<double> alphas = {1e-15,1e-10,1e-5};
 	// std::vector<int> L = {(int)1e5,(int)3e5,(int)8e5,(int)2e6};
