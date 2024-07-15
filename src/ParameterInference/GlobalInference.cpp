@@ -424,6 +424,7 @@ void PlotDistribution(ProbabilityModel & p, std::vector<double> ws,const std::ve
 	}
 	gp.Plot(ks,Nks,lp::Legend("Data"));
 	gp.Plot(ks,probs,lp::Legend("Probability Distribution"),lp::PenSize(5));
+	gp.Plot(ks,Nks,lp::Legend("Data"));
 	gp.WindowSize(1000,700);
 	gp.SetTerminal("pngcairo");
 	gp.SetOutput(settings.OutputDirectory + "/Distributions/" + subname + "_probability_model.png");
