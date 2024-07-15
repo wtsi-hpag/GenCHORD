@@ -41,4 +41,5 @@ void TransitionPlot(JSL::gnuplot & gp,const ChromosomeCoverage & chrom, Path & p
 	gp.Plot(plotIdx,contVals,JSL::LineProperties::Legend("Including Contamination"),JSL::LineProperties::PenSize(3));
 	gp.SetXLabel("Chromosome Index");
 	gp.SetYLabel("Coverage");
+	gp.SetYRange(0,10);
 }

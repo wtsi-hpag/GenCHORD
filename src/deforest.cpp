@@ -34,7 +34,7 @@ int main(int argc, char**argv)
 	Data d(settings);
 	
 	settings.DataThinning=1e5;
-	settings.MemorySmoothing = 0.99;
+	settings.MemorySmoothing = 0;
 	Data d2(settings);
 	Log("Preparing probability models:\n")
 	int Kmax = 4*d.Mean + d.Deviation;
