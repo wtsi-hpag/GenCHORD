@@ -131,7 +131,7 @@ void ProbabilityModel::SetContamination(int q, double targetMean)
 	double maxShift = 0.01*SignalMean;
 	if (q == 0)
 	{
-		maxShift = 0.05;
+		maxShift = 0.2*SignalMean;
 	}
 	double shift = std::min(maxShift,abs(q*SignalMean - targetMean));
 	double amount = shift *sgn(-q*SignalMean +targetMean);
