@@ -10,6 +10,9 @@ std::vector<Path> GetHarmonics(Data & d, Settings & s, std::vector<ProbabilityMo
 	
 	std::vector<Path> out;
 	Log("\tBeginning Traversal\n")
+
+
+
 	for (int c = 0; c < Ns.size(); ++c)
 	{
 		Log("\t\tChromosome " << d.Chromosomes[c].Name << std::endl;)
@@ -18,7 +21,9 @@ std::vector<Path> GetHarmonics(Data & d, Settings & s, std::vector<ProbabilityMo
 		Ns[c].ScanMode = false;
 		Ns[c].Navigate(d,prob[c]);
 		Path best = Ns[c].BestPath();
-		best.Nu = prob[c].SignalMean;	
+		best.Nu = prob[c].SignalMean;
+		best.Eta = prob[c].Contamination;
+		best.Dc = 2;	
 		out.push_back(best);
 	}
 	

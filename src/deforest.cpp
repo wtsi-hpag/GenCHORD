@@ -28,7 +28,7 @@ int main(int argc, char**argv)
 	//some pretty introductory text
 	globalVerbose = !settings.Quiet;
 	Log("==========================================\n\tCoverage Deforesting\n==========================================" << std::endl);
-	settings.DataThinning = 1e3;
+	settings.DataThinning = 1e1;
 	JSL::mkdir(settings.OutputDirectory);
 	//load the data file -- either from file, or from a pipe
 	Data d(settings);
@@ -54,8 +54,8 @@ int main(int argc, char**argv)
 	// std::cout <<JSL::Vector(model.Contamination) << std::endl;
 
 	std::vector<double> alphas = {1e-15};
-	std::vector<int> L = {(int)2e6,(int)1e6,(int)5e5};
-	std::vector<double> ploidy = {0.5,0.9};
+	std::vector<int> L = {(int)5e5};
+	std::vector<double> ploidy = {0.8};
 	// std::vector<double> alphas = {1e-15,1e-10,1e-5};
 	// std::vector<int> L = {(int)1e5,(int)3e5,(int)8e5,(int)2e6};
 	// std::vector<double> ploidy = {0.1,0.5,0.9};
@@ -103,11 +103,11 @@ int main(int argc, char**argv)
 
 					JSL::gnuplot gp;
 					basicPlot(gp,d2,i);
-					gp.WindowSize(1000,700);
+					// gp.WindowSize(1000,700);
 					TransitionPlot(gp,d2.Chromosomes[i],paths[i],"Inferred Curve");
-					gp.SetTerminal("pngcairo");
+					gp.SetTerminal("eps");
 					gp.SetLegend(true);
-					gp.SetOutput(settings.OutputDirectory + "/" + d.Chromosomes[i].Name + ".png");
+					gp.SetOutput(settings.OutputDirectory + "/" + d.Chromosomes[i].Name + ".eps");
 					// gp.SetPersistence(true);
 					gp.Show();
 				}

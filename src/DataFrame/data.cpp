@@ -33,6 +33,8 @@ Data::Data(Settings & settings)
 			{
 				Chromosomes.push_back(File.Chromosome);
 			}
+
+			Chromosomes.resize(8);
 		}
 		else
 		{
@@ -126,6 +128,7 @@ void Data::ParseLine(const std::vector<std::string> & line, const Settings & set
 			if (settings.AllChromosomes || File.ChromSignifier == settings.TargetChromosome)
 			{
 				// Log("\tFound Chromosome " << File.CurrentChromosome+1 << " on line " << File.CurrentLine<<"\n");
+			
 				File.ChromActive = true;
 				File.Chromosome = ChromosomeCoverage(File.ChromSignifier);
 			}

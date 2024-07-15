@@ -498,8 +498,8 @@ std::vector<ProbabilityModel> NormaliseModel(ProbabilityModel & p, const Data & 
 	auto ws = NormaliseSet(p,Nks,kMax,Qmax,mus_fullScan,sigmas_fullScan);
 	PlotDistribution(p,ws,Nks,settings,"global");
 	auto pGlobal = p;
-	std::vector<double> mus_SubScan = JSL::Vector::linspace(p.SignalMean*0.85,p.SignalMean*1.15,11);
-	std::vector<double> sigmas_SubScan = JSL::Vector::linspace(p.SignalSigma*0.85,p.SignalSigma*1.15,11);
+	std::vector<double> mus_SubScan = JSL::Vector::linspace(p.SignalMean*0.5,p.SignalMean*1.5,11);
+	std::vector<double> sigmas_SubScan = JSL::Vector::linspace(p.SignalSigma*0.5,p.SignalSigma*1.5,11);
 	std::vector<ProbabilityModel> Distributions;
 	for (int c =0; c < data.Chromosomes.size(); ++c)
 	{
@@ -518,6 +518,7 @@ std::vector<ProbabilityModel> NormaliseModel(ProbabilityModel & p, const Data & 
 		ws = NormaliseSet(p,Nks,kMax,Qmax,mus_SubScan,sigmas_SubScan);
 		PlotDistribution(p,ws,Nks,settings,"sub"+data.Chromosomes[c].Name);
 		p.SetGrids();
+	
 		Distributions.push_back(p);
 	}
 

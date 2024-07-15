@@ -139,7 +139,7 @@ void ProbabilityModel::SetContamination(int q, double targetMean)
 	
 	// std::cout << q*SignalMean << "  " << old << "  " << shift << "  " << amount << "  " << targetMean << std::endl;
 	double impliedCont = (targetMean - q*SignalMean)/((2-q)*SignalMean);
-	// impliedCont = std::max(0.,std::min(0.5,impliedCont));
+	impliedCont = std::max(0.,impliedCont);
 	Contamination[q] = impliedCont;
 	// if (q == 0)
 	// {

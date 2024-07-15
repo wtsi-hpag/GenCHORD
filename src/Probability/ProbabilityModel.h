@@ -185,7 +185,7 @@ namespace Models
 			{
 				double c= Contamination[q];
 				double mu = (q * (1.0 - c) + 2 *c)* SignalMean;
-				mu = std::max(0.1,mu);
+				mu = std::max(0.05,mu);
 				double sigma = SignalSigma;
 				// if (q == 0)
 				// {

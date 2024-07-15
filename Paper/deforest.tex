@@ -1,6 +1,4 @@
-\documentclass[fleqn,usenatbib]{mnras}
-
-
+\documentclass[fleqn,usenatbib]{acmart}
 \usepackage{newtxtext,newtxmath}
 \usepackage{pict2e}
 \usepackage[greek,english]{babel}
@@ -8,37 +6,91 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usetikzlibrary{decorations.pathreplacing,calligraphy,patterns}
-\usepackage{../../Papers/JML}
+% \usepackage{../../Papers/JML}
+%%%%% copying the contents of the Jack Markup Library here for transport
+	\usepackage{environ}
+	\renewcommand{\d}{\mathrm d}
+	\newcommand{\eref}[1]{Eq. \eqref{#1}}
+	\renewcommand{\div}[2]{\frac{\d #1}{\d #2} }
+	\newcommand{\pdiv}[2]{\frac{\partial #1}{\partial #2}}
+	\def\LLR
+	{
+		~~\Longleftrightarrow~~
+	}
+	\def\LR
+	{
+		~~~\Longrightarrow~~~
+	}
+
+	\NewEnviron{spalign}
+	{
+		\begin{align}
+			\begin{split}
+				\BODY
+			\end{split}
+		\end{align}
+	}
 
 
-
-\title[Deforesting]{Deforester: A Pipeline for Genomic Rearrangement Analysis}
-\author[J. Fraser-Govil]{Jack Fraser-Govil
+%%%% continuing on from here
+\bibliographystyle{unsrtnat}
+\citestyle{acmnumeric}
+\title[GeneCHORD]{\codename{}: A Pipeline for Genomic Rearrangement Analysis}
+\author{Jack Fraser-Govil}
+\author{Ronnie Crawford}
+\affiliation{
+   \institution{Wellcome Sanger Institute}
+   \city{Hinxton}
+   \country{United Kingdom}
+%    \postcode{CB10 1RQ}
 }
-
+\author{Max Stammnitz}
+\author{Elizabeth Murchison}
+\affiliation{
+   \institution{University of Cambridge}
+   \city{Cambridge}
+   \country{United Kingdom}
+%    \postcode{CB10 1RQ}
+}
+\author{Zemin Ning}
+\affiliation{
+   \institution{Wellcome Sanger Institute}
+   \city{Hinxton}
+   \country{United Kingdom}
+   \postcode{CB10 1RQ}
+}
 \def\commentVisible{1}
+
+\def\codename{\textit{GenCHORD}}
+
 
 \begin{document}
 
-	\label{firstpage}
-	\pagerange{\pageref{firstpage}--\pageref{lastpage}}
-	\maketitle
+	% \label{firstpage}
 	
+	\begin{abstract}
+		We present \codename{}, a specialised step-detection algorithm suitable for detecting large-scale copy number variations from the coverage data of a sequenced, aligned genome. This algorithm is specifically tuned for detecting Structural Variations which arise during chromothripsis-induced cancer, and so permits a high degree of data reduction, whilst preserving pertinent features for cancer classification. We describe the underlying statistical and algorithmic model, demonstrate the ability of the to preserve, compress and encode information such that a simple Machine Learning model can classify and identify subtypes of Devil Facial Tumour Disease, a cancer affecting \textit{Sarcophilus harrisii}, the Tasmanian Devil, and discuss how this tool may be used in future.   
+	\end{abstract}
+	\maketitle
+
+	\newcommand\new[1]
+	{
+		{\color{red} #1}
+	}
+
 	\section{Introduction}
 	
-		Genomic Rearrangements are large-scale Structural Variations (SVs) in an individual's genome - including large-scale deletion, duplication and translocation of megabase-length sequences of DNA,  and often lead to genetic disorders (when present in the germ cells), or cancer (when arising from somatic mutations). 
+		{The term} Genomic Rearrangements refer to large-scale Structural Variations (SVs) amongst individual genomes; including large-scale deletion, insertion, duplication and translocation of megabase-length sequences of DNA,  and often lead to genetic disorders (when present in the germ cells), or cancer (when arising from somatic mutations). When a Genomically Rearranged sample is sequenced and aligned against a reference the true sequences novel adjacencies can be obscured, especially when the size of the rearranged regions are significantly larger than the read length. This is because the majority of  reads will still align to the reference despite the fact that their spatial location within the genome has been altered: only those reads which bridge the unusual adjacencies contain the information that a rearrangement has occurred.
 
-		When data from a rearranged sample is sequenced and aligned against a reference the true rearrangement can be lost, especially when the size of the rearranged regions are significantly larger than the read length, since almost all reads will suitably align to the reference, only those reads which bridge the unusual adjacencies contain the information that a rearrangement has occurred.
+		Reconstructing these rearrangements requires complex analysis, such as a haplotype phased-assembly , which is not only computationally costly, but requires the DNA be sequenced to a very high coverage, as well techniques such as Hi-C\cite{Ijaz2024}. We should like to be able to identify, analyse and classify the presence of genomic rearrangements in a simpler fashion.  
 
-		Reconstructing these rearrangements requires costly analysis, such as a full phased-alignment, which is not only computationally costly, but requires samples be sampled to a very high coverage, as well as sampling technologies such as HiC. We should like to be able to identify, analyse and classify the presence of genomic rearrangements in a simpler fashion.  
+		To do this, we leverage the knowledge that chromothripsis-induced rearrangements are often associated with highly variable copy-number variations\cite{Ijaz2024,Chromo2011}. Where portions of the genome have been duplicated or deleted (generically termed 'gains' and 'losses'), the erroneous alignment leads to variations in the base-coverage reported by the alignment tool, as demonstrated in Figure \ref{Fig:Diagram}. {The locations of regions which have undergone gains and losses corresponds strongly to the edges of the regions which have been rearranged.}
 
-		To do this, we leverage the knowledge that, where portions of the genome have been duplicated or deleted (which we shall generically call 'gains' and 'losses'), the erroneous alignment leads to variations in the base-coverage reported by the alignment tool, as demonstrated in Figure \ref{Fig:Diagram}.
+		Many tools to analyse the copy-number variations exist, however in this work we develop \textbf{Gen}ome \textbf{C}overage \textbf{H}armonic \textbf{O}ptimiser, \textbf{R}educer and \textbf{D}e-noiser (\codename{}), a novel tool tailored for this problem which leverages the power of a Bayesian hypothesis testing to infer a statistically robust denoised copy-number analysis, which is suitable for encoding into a Neural Network, and hence permit accurate detection, analysis, and classification of the genomic rearrangement.
 
-		Many tools to analyse the copy-number variations exist, however in this work we develop a novel tool tailored for this problem which leverages the power of a Bayesian hypothesis testing to infer a statistically robust denoised copy-number analysis, which is suitable for encoding into a Neural Network, and hence permit accurate detection, analysis, and classification of the genomic rearrangement.
-
-		In short, the aim of this work is to generate a computational tool which can peer through the `forest' of the coverage data, and see the underlying pattern.
 		\begin{figure}
 			\begin{center}
+				\resizebox{!}{5cm}{ 
 				\begin{tikzpicture}
 					\node[anchor=east] at (0,0.05) {True genome:};
 					\fill (0,0) rectangle (2,0.1);
@@ -124,427 +176,204 @@
 						(2,{\plotheight+1.3})  (2.1,{\plotheight+1.1})  (2.4,{\plotheight+1.4})  (2.6,{\plotheight+1.45}) (2.8,{\plotheight+1.3})	(3,{\plotheight+1.3})  
 						(3.1,{\plotheight+0.5}) (3.3,{\plotheight+0.6}) (3.5,{\plotheight+0.4}) (3.8,{\plotheight+0.7}) (4,{\plotheight+0.3}) (4.5,{\plotheight+0.6})  (5,{\plotheight+0.5})    
 						};
+
+					\node[anchor=north] at (2.5,\plotheight) {Chromosome Index};
+					\node[anchor=south,rotate=90] at (0,{\plotheight+0.75}) {Coverage};
 				\end{tikzpicture}
-			\end{center}\caption{A depiction of duplication leading to a higher coverage. The blue hatched region is duplicated with respect to the reference, but since the reads are much shorter than the duplicated region, they cannot be properly assigned as duplicates, instead leading to a higher coverage rate.}\label{Fig:Diagram}
+				}
+			\end{center}\caption{A depiction of duplication leading to a higher coverage. The blue hatched region is duplicated with respect to the reference, but since the reads are much shorter than the duplicated region, they manifest as a higher coverage rate.}\label{Fig:Diagram}
 		\end{figure}
 
-	\section{Mathematical Theory}
+	\section{Statistical Theory \& Algorithm}
 
 		\subsection*{The Data}
 
-			Throughout this work we shall assume that our data takes the form of an ordered sequence of integers, $S = \{k_1,k_2,k_3,...\}$, where $k_i$ corresponds to the coverage reported by the $i^\text{th}$ base in the sequence. $k_i$ is a non-negative integer.
+			Throughout this work we shall assume that our data is the coverage (per-base sequencing depth) extracted from an aligned BAM file\footnote{such as with the samtools \textit{depth} command}. Our data therefore takes the form of an ordered sequence of integers, $S = \{k_1,k_2,k_3,...\}$, where $k_i$ is a nonnegative integer corresponding to the coverage reported by the $i^\text{th}$ base in the sequence.
 			
-			We shall have $C$ such sequences, corresponding to the $C$ chromosomes present in the sample, and each sequence is of length $N_c$, the length of the $c^\text{th}$ chromosome. We shall assume that, aside from a prior that the global parameters should be similar\footnote{But not identical, since the coverage depth can vary per-chromosome in even a healthy sampel}, these sequences are to be analysed independently.
+			We shall have $C$ such sequences, corresponding to the $C$ {distinct} chromosomes present in the sample. Each sequence is of length $N_c$ (the length of the $c^\text{th}$ chromosome). We shall assume that, aside from a prior that the global parameters should be similar\footnote{But not identical, since the coverage depth can vary per-chromosome in even a healthy sample}, these sequences are to be analysed independently.
 
-		\subsection{Naive Smoothing}
+			The values of $k$ are distributed around a central value by a degree of noise arising from biological variation and experimental error in the pipeline. Where this central value undergoes a drastic, discontinuous change is indicative of the beginning of a gain or a loss, and hence (in the context of chromothripsis) a region which has undergone rearrangement.
 
-			The most obvious solution to denoise the Coverage Data is to simply pass a smoothing kernel over the data, potentially in combination with a binning  and use that to infer the underlying mean function that the data is oscillating around.
+		\subsection{Smoothing \& Binning}
 
-			Smoothing in this fashion serves as a generic way to extract a smooth curve from the extremely noisy data present, however it fails us on a number of grounds.
-
-			Firstly, the method is not biologically motivated, and does not leverage any other information we possess about the system. Secondly, this kernel method can act to bias and manipulate the data in unforseen and undesirable ways. Consider a 
-			\begin{itemize}
-				\item It is not biologically motivated (no underlying mechanism present), without regard to any other information we have about the system.
-				\item It reduces the coverage to a smooth curve. This is undesirable because:
-				\begin{itemize}
-					\item It gives us no indication about where the gains and losses begin or end (the quantity of real interest to us) -- we would need to do some more statistical post-processing in order to infer the edges of the transitions. The smoothing only helps human eyes see things, it does not particularly help in our numerical affairs.
-					\item The action of the kernel is (by definition) to smooth out sharp transitions. However -- when a transition occurs we \textit{expect} it to be a sharp transition. The kernel method necessarily smooths out these edges -- it is difficult to distinguish between `noise' and `genuine transitions'.
-				\end{itemize}
-			\end{itemize}
-
-		% \subsection{Poisson Fitting}
-
-		% 	A more scientific (and less `let's just draw a line through the data') method would exploit the fact that we know the data should (more or less) follow a Poisson distribution. The advantage (other than just aesthetic) of this over the mean-smoothing approach is that the Poisson distribution (and indeed, any realistic coverage distribution) is asymmetric around the peak value -- the Poisson covers the semi-infinite interval $[0,\infty]$. Therefore, although we should expect the sample mean of a Poisson to be equal to the Poisson Parameter $\lambda$, deviations away from this are asymmetric in a way that the Kernel smoothing mechanism might have trouble with.
+			{The most obvious solution to denoise the Coverage Data is to simply pass a smoothing kernel over the data, potentially in combination with a binning algorithm, and use that to infer the underlying mean function that the data is oscillating around. Smoothing in this fashion serves as a generic way to extract a smooth curve from the extremely noisy data present, however it fails us on a number of grounds. Most importantly, this method can act to bias and manipulate the data in unforeseen and undesirable ways. Anecdotally, we found many occasions where the severity of an inferred deletion or duplication could be manipulated by altering the analysis lengthscale. }
 			
-		% 	From previous work we know that the distribution is non-Poissonic on a global scale (i.e. the entire chromosome/genome). However, we might hypothesise that the distribution is obeyed \textit{locally}, but with variations in the mean of the distribution over the spatial extent of the chromosome. In this case, the probability distribution of the coverage at index $i$ is:
-		% 	\begin{equation}
-		% 		p(k,i) = \frac{\left[\lambda(i)\right]^k e^{-\lambda(i)}}{k!}
-		% 	\end{equation}
-		% 	The deforestation exercise therefore reduces to inferring the behaviour of $\lambda$, given the observed distribution.
-
-		% 	We assume that we have some way of parameterising the function $\lambda(i) = \lambda(i,\vec{\theta})$, and so we wish to infer the parameters $\theta$ which maximise the following Likelihood:
-		% 	\begin{spalign}
-		% 		\mathcal{L}(\vec{\theta},\{i,y_i\}) & = \sum_i \left[ y_i \ln(\lambda(i|\vec{\theta})) - \lambda(i|\vec{\theta}) - \ln(y_i!) \right] + \text{Prior}(\vec{\theta})
-		% 		\\
-		% 		& = \text{const} + \sum_i \left[ y_i \ln(\lambda(i|\vec{\theta})) - \lambda(i|\vec{\theta})\right] + \text{Prior}(\vec{\theta})
-		% 	\end{spalign}
-		% 	This has gradient:
-		% 	\begin{equation}
-		% 		\pdiv{\mathcal{L}}{\vec{\theta}} = \sum_i \left( \frac{y_i}{\lambda(i|\vec{\theta})} - 1\right) \pdiv{\lambda(i|\vec{\theta})}{\vec{\theta}}
-		% 	\end{equation}
-		% 	Hence a basic gradient descent method can easily find the most likely distribution -- modulo some prior which enforces smoothness. 
-
-		% 	This, however, has a similar problem to the Naive fitting method: when the Prior is weak, it is just as noisy as the data. When the prior is strong, it simply smooths over all but the largest deviations, and does not have sharp transition edges which would allow us to identify the position of gains and losses.
-
-		% 	\subsubsection{A Note On Priors}
-				
-		% 		The most obvious Prior for imposing the kind of smoothness we are looking for is something on the form:
-		% 		\begin{equation}
-		% 			\log\text{Prior}(\lambda(\theta)) = - \sum_i \frac{(\lambda_i - \lambda_{i-1})^2}{\ell^2}
-		% 		\end{equation}
-
-		% 		This works, insofar as it imposes a penalty whenever subsequent values of $\lambda$ are far apart from each other, and smaller when they are close together -- but has the problem of `fine tuning': the prior has a `strength' as an external parameter, which then controls the `spikiness' of the output curve. By selecting this value appropriately, the user is able to either make the output ust as much of a forest as the input data, or perfectly smooth: and anything in between. 
-
-		% 		The user is then left to fine tune the dials of this parameter until they get something they would find acceptable. The problem with this is that it invariably leaves the user projecting their own expectations on the input -- you only get out what you put in. 
-
-		% 		In such a case, a Bayesian statistician would say that we have formulated our Prior poorly -- it has a free parameter (the strength), over which we have actually no prior knowledge. In fact, on further examination the strength (formulated as a length scale over which the binding happens) isn't even the quantity we are wishing to constrain since -- as we have already noted -- we don't even want a smooth output curve.
-			
-			
-		% 		We must therefore ask what it is we wish our smoothing-prior to do since it evidently isn't `smoothing' -- since we are looking for a highly discontinuous output function! We want our prior to be such that it causes the model to disregard small-scale oscillations in the coverage as merely being noise. Smoothing length scales had this as a side effect -- but with the unfortunate side effect that they also smoothed over what we (probably) believe to be sharp, discontinuous edges. 
-
-		% \subsection{Attempt 3: Harmonic Fitting}
-
-		% 	The problem with the prior attempts is that they attempt to fit some continuous function to the data, in the hope of elucidating some distinct upward and downward steps in the data, which represent `gains' and `losses' -- in so doing they are messy and noisy, and only marginally easier to interpret than the raw data. 
-
-		% 	We should like a method which actually assigns discrete values, and hence makes it easier to mechanistically identify regions of gains and losses in the genome. We should also like the Priors which we place on the models to be relevant to the quantities which we are actually studying: rather than attempting to smooth out noise via some arcane length scale, we should instead place strict boundaries on what we do and do not consider relevant.
-
-		% 	We propose the following solution, which takes inspiration from the `harmonics' observed in musical instruments: when you play an `A' on a piano, you do not merely produce a pure tone at 440Hz, but a superposition of \textit{harmonics} of that tone: at 880Hz, 1320HZ and so on. 
-
-		% 	So it is with our hypothesis: we are asserting that there is a single, mean coverage depth but that, due to the effects of normal heterogeneity and subsequent gains and losses, parts of the genome are being amplified or suppressed. This results in `harmonics' of the mean coverage depth: integer multiples of the `fundamental harmonic'
-
-		% 	Hence, we should only fit a single frequency, but with the knowledge that each datapoint should then be fit to a integer harmonic of that frequency.
-
-		% 	The model probability of a datapoint occuring due to the $q^\text{th}$ harmonic of some fundamental frequency $\nu$ is:
-		% 	\begin{spalign}
-		% 		p(k|\nu) = \left(\frac{\left[q\nu\right]^k e^{-q\nu}}{k!}\right)
-		% 	\end{spalign}
-		% 	Therefore the likelihood of a given harmonic $q \in \mathbb{N}$ ($q$ must be a non-negative integer to satisfy the harmonic constraint) is:
-		% 	\begin{spalign}
-		% 		\mathcal{H}(q) &= p(q|k,\nu) 
-		% 		\\
-		% 		& = \frac{p(k|q,\nu) p(q)}{p(k)}
-		% 		\\
-		% 		& = \frac{\left[q\nu\right]^k e^{-q\nu}}{k!} \times \text{Prior}(q)
-		% 	\end{spalign}
-		% 	The most likely value of $q$ can therefore be found by a simple integer search: this is technically an infinite task, but we can restrict ourselves to a finite subset via our prior.		This is a statement of Bayesian maximum Likelihood: we search for the most likely value of $q$, which is determined both by the data and our knowledge of what a reasonable value of $q$ is. The restriction of $q$ to the natural numbers (which we define to include 0) is the `harmonic' assumption: everything should exist in multiples of the fundamental frequency.
-
-		% 	We expect that most sequences in the DNA will have $q = 2$, i.e. they occur only once on each copy of the chromosome. A deletion (or a heterozygous sequence) on one chromosome will give $q = 1$, and a deletion on both chromosomes give $q = 0$. An amplification likewise gives $q = 3$ if the sequence is duplicated on one only chromosome and so on.
-			
-		% 	It is worth noting that we are detecting the absolute multiplicity, rather than the relative: Motifs which have multiplicity in the reference (such as in the centromere or telomere) will show up as high-$q$ values, and low $q$ values will appear where mis-alignment has occurred. Therefore motifs which are already repetitive but which have suffered gains or losses will move from one $q$ to another -- we will only be able to detect these regions by comparing to a healthy sample. 
-
-
-		% 	\subsubsection{Improving the model}
-
-		% 		We have formulated a basic probability assignment model using harmonics but if we were to apply this directly to the data we would find a number of problems since, at the moment, it applies only on a resolution of an individual base. A base with a coverage of 2 might be assigned a $q = 0$ (or not, as we shall see), whilst every other adjacent base has a $q = 10$ -- we need to be able to account for noise. 
-
-		% 		The simplest way to do this is to discretise the data and find the most likely value of $q$ for a block of bases of some length $L$, assign that a $q$ and then move onto the next block. This has the problem that any transitions which occur in the middle of the block might get missed, and so the `position' of the transition is dependent on the resolution of the model which is less than desirable. 
-
-		% 		We shall find a way around this by a proper formulation of our Prior.
-
-		
-		% 		We also note that in a region where a deletion has genuinely occurred there might still be `peaks' in the coverage due to spurious alignment or contamination from a small population of cells without the total deletion which ruins our `pure harmonic' assumption. This is a problem since even in the case of a `block' of datapoints over a total deletion is total, the probability model will never be able to pull down a region containing non-zero data to a value of $q=0$: a prior cannot force something impossible to become possible!
-
-		% 		We must therefore refine our probability model slightly. 
-
-		% 	\subsubsection{Error-Prone Probability Model}
-
-		% 		There are two possible sources of additional noise which we handle slightly differently. The first source of noise is an inherent deviation from the underlying Poisson assumption - this follows from our previous work that the distribution is highly non-Poisson for a variety of reasons: we term this \textit{process noise}, and it is a fundamental part of the underlying biology. The second source is \textit{experimental noise} - contamination from different cell populations, misalignments and so on.
-
-		% 		The process noise we model by assuming that the underlying Probability model is, instead of being a pure-Poisson, marginalised against a Gamma distribution with mean $\mu$ and variance $\sigma^2$ (in the common parameterisation this is $(\alpha,\beta) = \left(\frac{\mu^2}{\sigma^2}, \frac{\mu}{\beta^2}\right)$):
-		% 		\begin{spalign}
-		% 			p(k|\mu,\sigma) & = \int_0^\infty p(k|\lambda) p(\lambda|\mu,\sigma) \d \lambda 
-		% 			\\
-		% 			& = {NB}\left(k; \frac{\mu^2}{\sigma^2}, \frac{\mu}{\mu + \sigma^2} \right)
-		% 			\\
-		% 			& \left( NB(k,r,p) = \frac{\Gamma(k+r)}{k! \Gamma(r)} (1-p)^k p^r \right)
-		% 		\end{spalign}
-		% 		Where $NB(k;n,r)$ is the usual Negative Binomial distribution, written in terms of Real (rather than integer) $r$, and $\Gamma(x)$ is the usual Gamma function. This resulting distribution has mean $\mu = q\nu$ (recall: this was the mean value of the coverage depth) but variance $\mu + \sigma^2$ - and so we see that our distribution is Poisson-esque, albeit with a higher variance.
-
-		% 		The Harmonic assumption is therefore embedded in this internal function: $\mu_i = q \nu$, where $q$ is an integer. We assume that $\sigma^2$ is a global constant.
-
-		% 		However, although this has the effect of broadening the tails of the distribution (and hence making the inference much more accepting of deviations away from the expected mean), it does not help the $q=0$ problem, since $NB(k,0,p) > 0$ only if $k = 0$. In order for that, we must sum over the probability that $k$ was assigned erroneously:
-				
-		% 		The probability that $p(k_\text{obs}|q)$ is therefore found from:
-
-		% 		\begin{equation}
-		% 			p(k_\text{obs}|k,\nu,\sigma^2) =\left( \sum_{k} {NB}\left(k; \frac{q^2\nu^2}{\sigma^2}, \frac{q\nu}{q\nu + \sigma^2} \right) \times p(k_\text{obs}|k)\right)
-		% 		\end{equation}
-
-		% 		For simplicity's sake, it is probably easiest to use the $L_1$ kernel:
-		% 		\begin{equation}
-		% 			p(k_\text{obs}|k) = \mathcal{N}\exp(-\gamma |k_\text{obs} - k|)
-		% 		\end{equation}
-
-		% 	\subsubsection{The Prior}
-
-		% 		In order to properly formulate a Prior, we must first give some thought about exactly what question we are trying to answer. We are trying to ascertain the `harmonic' at each index of the genome, given the observed coverage -- but we want the model to disregard small-scale oscillations in the coverage as merely being noise. Smoothing length scales had this as a side effect -- but with the unfortunate side effect that they also smoothed over what we (probably) believe to be sharp, discontinuous edges. 
-
-		% 		Let us therefore use this as a strict prior: there should be no oscillations on a scale shorter than some enforced length scale $L$ - we assert that any gains or losses which span $L$ bases or fewer are merely noise. Any determination if a change in harmonic has occurred must therefore consider \textit{at least} $L$ bases. 
-
-		% 		A standard Bayesian hypothesis can be formulated at the index $i$ to determine if there has been a transition by considering the Hypothesis ``the harmonic on the domain $[q,q+L]$ is equal to $q_i$'', and testing all reasonable values of $q_i$ (we suggest between 0 and 10 as being reasonable values). The odds-Likelihood of a transition is then:
-		% 		\begin{equation}
-		% 			p(\text{transition } q_{i-1} \to q) = \frac{p(D_i\to D_{i+L| q})}{p(D_i\to D_{i+L| q_{i-1}})} \times \text{Prior}(q | q_{i-1})
-		% 		\end{equation}
-		% 		It simply suffices to find if any of these terms is greater than 1 and, if any, which is the largest: this is the assigned value of $q$. The prior then allows us to penalise `marginal' jumps by only assigned jumps when the evidence reaches a threshold:
-		% 		\begin{equation}
-		% 			\text{Prior}(q | q_{i-1}) = \begin{cases} 0 < \alpha \leq 1 & \text{ if } q = q_{i-1}
-		% 			\\
-		% 		1 & \text{else}\end{cases}
-		% 		\end{equation}
-		% 		The case where $\alpha \approx 1$ means we accept a transition when the evidence is very marginal, $\alpha \ll 1$ means we require an overwhelming amount of evidence. Given some of the other post-processing that we will be doing (to locate transition edges more precisely), and provided $L$ is sufficiently large that most spurious jumps will be eliminated, we use $\alpha = 0.5$ as a good first port of call.
-
-		% 		Should we find that $q \neq q_{i-1}$, we have therefore been able to robustly identify that there is a transition in the region $[i,i+L]$ - but it is not true that the transition edge is at $i$ -- if $\alpha = 1$ the transition is probably somewhere in the middle of the region, whilst as $\alpha \to 0$ it gets closer to $i$. To robustly identify the edge of the transition we need to do a second hypothesis test -- that the transition $q_{i-1} \to q$ occurs at an index $j$, the Likelihood of which is computed as:
-		% 		\begin{equation}
-		% 			\mathfrak{p}(\text{transition at} j | i, \text{data, }D) = p(D_i \to D_{j-1} | q_{-1} ) \times p(D_j \to D_{j + L} | q)
-		% 		\end{equation}
-		% 		I.e., we sucessively compute the probability that every point left of $j$ is at the original $q=q_{i-1}$, and every point to the right is at the new value of $q$: the one with the highest value of $\mathfrak{p}$ is where we assign $j$.
-
-
-		% 	\subsubsection{Initial Frequency Detection}
-
-		% 		The most important free variable in our model is $\nu$, the fundamental frequency of the model. 
-
-		% 		If we erroneously assign $\nu$, the model produce results which veer towards the nonsensical since the majority of the data will lie off-harmonic, and so the model will place transitions at more or less spurious points. We can mitigate some of this problem by a gradient descent approach -- however we note that due to the discontinuous nature of the assignments that this is only useful if our initial guess is good. 
-
-		% 		We can also trivially see that there is a high degree of degeneracy in the assignment of $\nu$ since $\nu \to \nu/10$, $q \to 10q$ produces identical results -- albeit at the cost of reducing the power of our Harmonic approach, since it relies on the fact that the harmonics are highly distinct -- our prior in this case is that the majority of the genome should have $q=2$, being a normal non-heterogenous DNA sequence.
-
-
-		% 		We propose that the following algorithm would identify the best possible starting value for $\nu$:
-		% 		\begin{itemize}
-		% 			\item Start with $\nu = 1$ (or other small value)
-		% 			\item Assign $q$s across the dataset without using 
-		% 		\end{itemize}
+	
 
 
 		\subsection{Harmonic Fitting}
 
-			The primary problem with the na\"ive smoothing approach was that it (by definition) \textit{smoothed out} the data, in order that we might more easily spot \textit{discontinuities} in the data. These two points -- smoothing and discontinuities -- stand in direct opposition to each other, and so the method is inherently flawed.
+			% The primary problem with the na\"ive smoothing approach was that it (by definition) \textit{smoothed out} the data, in order that we might more easily spot \textit{discontinuities} in the data. These two points -- smoothing and discontinuities -- stand in direct opposition to each other, and so the method is inherently flawed.
 
-			We should therefore attempt to identify the discontinuities straight from the dataset. This, in essence is a form of \textit{step detection}, a well known problem in signal processing. However, whilst there exist several out-of-the-box algorithms which might provide us with robust detections, we note that knowledge about the form of the data can be leveraged to provide a significantly more powerful and biologically meaningful inference. 
+			We should therefore attempt to identify the coverage-discontinuities directly from the dataset. This, in essence is a form of \textit{step detection}, a well known problem in signal processing. However, whilst there exist several out-of-the-box algorithms which might provide us with robust detections, we note that knowledge about the form of the data can be leveraged to provide a significantly more powerful and biologically meaningful inference. 
 			
 			\subsubsection{Model Assumptions}
 			
-				We use the following knowledge and assertions as the underpinnings of our model:
+				We use the following knowledge and assertions as the underpinnings of our model.
 
-				\begin{enumerate}
-					\item The distribution of coverage, $k$, is approximately Poisson-like, around some central value $\lambda$
-					\item The value of $\lambda$ is constant across a chromosome, except during gains or losses, where it changes discontinuously
-					\item The gains and losses occur throughout the sample (i.e. no subclonality)
-					\begin{itemize}
-						\item As a result, duplication or deletion of a region results in $\lambda$ changing by integer multiples (`harmonics', denoted as $q$) of an underlying `fundamental frequency', $\nu$.
-						\item Most of the sample should have a harmonic of $q = 2$ - normal human diploidy.
-					\end{itemize}
-					\item Discontinuities must be separated by at least a distance $L$ on the linear genome, else they would have been resolved by the alignment.
-					\item There is some error in the alignment method\footnote{This is most important in regions of deletion, since $\lambda = 0$ is very difficult to infer if even a single read is misaligned into a deleted region}, such that a base assigned coverage $k_\text{obs}$ actually had coverage $k_\text{true}$.
-					\item We should prefer a model with fewer jumps to one with more, all else being equal.
-				\end{enumerate}
+				Firstly, as argued in Appendix \ref{A:Theory}, we assume that the coverage, $k$, is distributed according to a (slightly modified) Negative Binomial probability mass function, which is characterised by the mean $\mu$ and variation $\sigma^2_\text{model} = \mu + \sigma^2$, where $\sigma^2 > 0$ is the variation associated with the biological variability.
+	
+				% That is, $\mathcal{P}$ is the Negative Binomial distribution with mean equal to the mean of the error function, $\mu_\text{model} = \mu$, and the variance equal to $\sigma^2_\text{model} = \mu + \sigma^2$. We will use $\sigma$, rather than $\sigma_\text{model}$ throughout as it is independent of the mean and is only constrained to be positive, rather than $\sigma_\text{NB} > \mu$.
+				
+				We assume that the mean $\mu$ is constant across a chromosome, except during gains or losses, where it changes discontinuously{, variations in sampling frequency (such as those induced by GC bias) are accounted for by the (generous) error rate of the probability model}. If we assume that the gains and losses we are identifying occur in all cells within the sample (i.e. no contamination or subclonality), then $\mu$ can only ever be integer multiples of the single-homolog coverage depth, $\nu$, such that $\mu = q \nu$, where $q$ is a non-negative integer equal to the multiplicity of the domain. We have a strong prior that most of the data should lie at $q = d_c$, the normal ploidy of the creature ($d$ can vary per chromosome, for example, the sex chromosomes, or in cases where the sample is known \textit{a priori} to be aneuploid).
+
+				We know that discontinuities must be separated by at least a distance $L$ on the linear genome, else they would have been resolved by the alignment tool. {However, we do not know where these lengths $L$ begin or end, so a 
+				strict binning is not sufficient.}
+
 			
-				The key assumption here is iii: the assumption that changes in coverage occur in \textbf{integer steps} of the fundamental frequency $\nu$, such that the average coverage in a region is always $q \nu$, where $q$ is our integer `harmonic'. It is this distinction which makes our step-detection algorithm highly distinct from other methods. 
+				{The task of detecting the `steps', therefore, requires that we assign each base a value of $q$, the multiplicity (or `harmonic', in signal processing terms) of the base: gains and losses are trivially detectable wherever this integer value changes, in doing so we should ensure that our prior knowledge and model restrictions are obeyed. In Appendix \ref{A:Model} we produce a statistical model, \eref{E:Score} which permits us to assign a statistical score to a given set of proposed $\{q\}$ values for a genome.}
 
-				It is worth noting that we are only able to detect the \textit{absolute} harmonic, rather than the relative: Motifs which have multiplicity in the reference (such as in the centromere or telomere) will show up as high-$q$ values, and low $q$ values will appear where mis-alignment has occurred. Therefore motifs which are already repetitive but which have suffered gains or losses will move from one $q$ to another -- we will only be able to detect these regions by comparing to a healthy sample. 
+			\subsubsection{Effects of Subclonality and Contamination}
+
+				Should the biological sample contain some cells which do not contain the same mutation - either as a function of subclonality in the mutation, or contamination of the sample with healthy cells\footnote{We shall term both mechanisms 'contamination', as they manifest similarly in the data} - we shall see a violation of one of our assumptions: the value of $\mu$ will not lie at integer multiples of $\nu$. When this effect is small, it does not meaningfully affect our analysis. At high degrees of contamination, however, it can blur the distinction between different values of $q$, and the classifier will struggle to reliably assign a harmonic since it will interpret the sample as lying halfway between two $q$ values -- something it is forbidden to include. 
 				
-				The task of detecting the `steps', therefore, requires that we assign each base a value of $q$: gains and losses are trivially detectable wherever this integer value changes.
-
-			\subsubsection{Statistical Model}
-
-				In order to assign the values of $\{q\}$ to a set of genome coverage data $\{k\}$, we must find a way of assigning a statistical score, $\mathcal{L}$ to a proposed set of harmonics, $\{q\}$. The task of step-detection then reduces to finding the value of $\{q\}$ which maximises $\mathcal{L}$, and is therefore the most likely given the observed data.
-
-				We make the standard assumption that the coverage $k_i$ of the $i^\text{th}$ base is drawn independently and identically from an underlying distribution function (\textit{iid}), which is a function of the fundamental frequency, $\nu$, and the harmonic, $q_i$. Bases are statistically connected through the \textit{prior} function, which encodes many of the points outlined in the previous section. 
 				
-				As a result of the \textit{iid} assumption, the global score can be found to be:
-
-				\begin{equation}
-					\mathcal{L}(\{q\} | \{k\}, \nu) = \sum_i \mathfrak{p}\left(k_i | q_i, \nu \right) + \text{Prior}(\{q\}) \label{E:Score}
-				\end{equation}
-
-				This is an indirect statement of standard Bayesian Maximum Posterior methodology - the quantity $\mathfrak{p}$ is the log-probability of observing the data $k_i$ given the harmonic $q_i$ and parameter $\nu$. 
-
-				The probability $p(k_i | q_i,nu)$ can be formulated from our assumptions - namely that we are looking for an `error prone', Poisson-like distribution. There are two possible sources of additional noise which we handle slightly differently. The first source of noise is an inherent deviation from the underlying Poisson assumption - this follows from our previous work that the distribution is highly non-Poisson for a variety of reasons: we term this \textit{process noise}, and it is a fundamental part of the underlying biology. .
-
-				The process noise we model by assuming that the underlying Probability model is, instead of being a pure-Poisson, marginalised against a Gamma distribution with mean $\mu$ and variance $\sigma^2$ (in the common parameterisation this is $(\alpha,\beta) = \left(\frac{\mu^2}{\sigma^2}, \frac{\mu}{\sigma^2}\right)$):
+				{We model this behaviour (whilst retaining the power of the integer-assumption) by making a simplifying assumption:} that the degree of contamination is small and constant across the chromosome, and always tends to bias the coverage back towards the expected ploidy of the sample. If the degree of contamination is $\eta$, then we find that the expected 'contamination-biased frequency' is
 				\begin{spalign}
-					p(k|\mu,\sigma) & = \int_0^\infty p(k|\lambda) p(\lambda|\mu,\sigma) \d \lambda 
+					\mu^\prime_q & = \left[ (1-\eta)q + \eta d_c \right] \nu
 					\\
-					& = {NB}\left(k; \frac{\mu^2}{\sigma^2}, \frac{\mu}{\mu + \sigma^2} \right)
-					\\
-					& \left( NB(k,r,p) = \frac{\Gamma(k+r)}{k! \Gamma(r)} (1-p)^k p^r \right)
+					& = q^\prime\nu ~~~~~~~~\LLR~~~~~~~ q^\prime =  (1-\eta)q + \eta d_c
 				\end{spalign}
-				Where $NB(k;n,r)$ is the usual Negative Binomial distribution, written in terms of Real (rather than integer) $r$, and $\Gamma(x)$ is the usual Gamma function. The Harmonic assumption is embedded in the assumption tha we will always use $\mu_i = q \nu$, where $q$ is an integer.
-				
-				The second source is \textit{experimental noise} - contamination from different cell populations, misalignments and so on. From empirical observation of the underlying distribution function, we make the ansatz that there is another NB distribution which generates coverage values with a mean $\mu_e$ and a variance $\sigma_e > \sigma$.
-				\begin{spalign}
-					p_\text{noise}(k|\mu_e,\sigma_e)& = {NB}\left(k; \frac{\mu_e^2}{\sigma_e^2}, \frac{\mu_e}{\mu_e + \sigma_e^2} \right)
-				\end{spalign}
+				The effects of subclonality can therefore modelled by everywhere replacing $q$ with $q^\prime(q,\eta)$.
 
-				The probability that a given base with observed coverage $k$ was generated by the $q^\text{th}$ harmonic is then equal to:
-				\begin{spalign}
-					p_{\vec{\theta}}(k|q) & =p(k|q,\nu,\sigma,\gamma,\mu_e,\sigma_e)
-					\\
-					& = (1-\gamma){NB}\left(k; \frac{(q\nu)^2}{\sigma^2}, \frac{q\nu}{q\nu + \sigma^2} \right) + \gamma {NB}\left(k; \frac{\mu_e^2}{\sigma_e^2}, \frac{\mu_e}{\mu_e + \sigma_e^2} \right)
-				\end{spalign}
 
-				
-				% \begin{equation}
-				% 	p(k|\mu,\sigma,\gamma,K) = (1- \gamma)  {NB}\left(k; \frac{\mu^2}{\sigma^2}, \frac{\mu}{\mu + \sigma^2} \right) + \begin{cases} \frac{\gamma}{K} & k < K \\ 0 &\text{else}\end{cases}\label{E:Probability}
-				% \end{equation}
-				
-				% This resulting distribution has mean $\langle k \rangle = (1-\gamma)\mu + \frac{\gamma K}{2}$ -- so long as $\mu \gg \gamma K$, this therefore will closely resemble the sample mean. However, when $\mu = 0$ it has the desirable property of allowing a non-zero sample mean.
+			\subsection{The \codename{} Algorithm}
+			\begin{figure}
+				\begin{center}
+					\resizebox{!}{5cm}{ 
+					\begin{tikzpicture}
+						
+						\node[anchor=east] at (-2,0) {Data:};
+						\draw (0,0)--++(3,0);
+						\node at (3.5,0) {\large ...};
+						\draw (4,0)--++(3,0);
+						\def\w{0.65}
+						\foreach \i in {1,...,3}
+						{
+							% \draw[fill=white] (\i-1,0) circle (0.35);
+							\draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+							\node at (\i-1,0) {$k_\i$};
+						}
+						
+						
+						\foreach \i in {1,...,2}
+						{
+							\draw[fill=white] ({\i+4-\w/2},{\w/2})--({\i+4+\w/2},{\w/2})--({\i+4+\w/2},{-\w/2})--({\i+4-\w/2},{-\w/2})--cycle;
+							\node at ({4+\i},0) {$k_{L+\i}$};
+						}
+						
+						\def\fac{0.85}
+						
+						\foreach \q in {0,...,4}
+						{
+							\def\y{\fac*\q+1}
+							\if\q2
+							\else
+								\draw[dashed,blue] (1,{2*\fac+1})--(6,\y);
+							\fi
+							\if\q1
+							\else
+							\draw[dotted,red] (0,{1*\fac+1})--(5,\y);
+							\fi
+							% \if\q4
+							% \else
+							% \draw[dashdotted,green] (0,{4*\fac+1})--(5,\y);
+							% \fi
 
-				%  We assume that $\sigma^2$, $K$ and $\gamma$ are a global constants.
+						}
+						\foreach \q in {0,...,4}
+						{
+							\def\y{\fac*\q+1}
+							\draw (-0.95,{2*\fac+1})--(-0.35,\y)--(2.75,\y);
+							\draw (4.25,\y)--(6,\y);
+							\node[anchor=east] at (-2,\y) {$q=\q$};
+							\foreach \i in {1,...,4}
+							{
+								\if\i4
+									\def\c{gray!10!white}
+									\draw[\c] (\i-1.5,\y)--++(2,0);
+									\draw[\c,fill=white] (\i-0.5,\y) circle (0.35);
+								\else
+									\draw[fill=white] (\i-1,\y) circle (0.35);
+									% \draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
+									\node at (\i-1,\y) {\tiny $p_{\i\q}$};
+								\fi
+								
+							}
+							\foreach \i in {1,...,3}
+							{
+								\if\i3
+									\def\c{gray!10!white}
+									\draw[\c] (\i+3,\y)--++(1,0)--(8,{2*\fac+1});
+									\draw[\c,fill=white] (\i+4,\y) circle (0.35);
+								\else
+									\draw[fill=white] (\i+4,\y) circle (0.35);
+									\node at (\i+4,\y) {\tiny $p_{L+\i,\q}$};
+								\fi
+								% \draw[fill=white] ({\i+4-\w/2},{\w/2})--({\i+4+\w/2},{\w/2})--({\i+4+\w/2},{-\w/2})--({\i+4-\w/2},{-\w/2})--cycle;
+								% \node at ({4+\i},0) {$k_{L+\i}$};
+							}
+							
+						}
+						\draw[fill=white] (-1.25,{2*\fac+1}) circle (0.35);
+						\node at (-1.25,{2*\fac+1}) {Start};
+						\draw[fill=white] (8.25,{2*\fac+1}) circle (0.35);
+						\node at (8.25,{2*\fac+1}) {End};
 
-				Figure \ref{Fig:Distributions} shows some examples of this distribution (the `Errored-Binomial') compared to the basic Poisson Distribution and the Negative Binomial distribution, demonstrating its desirable properties.
 
-				\begin{figure}
-							\includegraphics*[width=\linewidth,keepaspectratio=true]{Distribution.png}
-							\caption{Various distribution functions: Poisson, Negative Binomial (NB) and our `Errored-Binomial' (EB) are shown with various parameters, and $\mu =30$ (top panel) and $\mu = 0$ (lower panel). The key feature of the EB distribution is that it resembles the NB distribution near the peak, but has wider wings -- most notably when $\mu = 0$ (corresponding to total deletion), where the Poisson and NB distributions are zero everywhere except $k=0$, whilst the EB distribution permits non-zero values. As a result, the EB-distribution has a mean slightly greater than zero -- $\mu$ refers to the `true sampling' mean, rather than the observed.}\label{Fig:Distributions}
-						\end{figure}
+						
+					\end{tikzpicture}
+					}
+					\caption{An example of a harmonic network -- only two sets of `jump edges' are shown (in red and blue) for clarity. In the full network, every node $p_{iq}$ is connected to $p_{i+1,q}$ and $p_{i+L,k\neq q}$. The graph is directional - vertices can only be traversed from left to right.}\label{F:Network}
+				\end{center}
 			
-				Finally, we must formulate a suitable prior, which enforces the remainder of our assumptions, namely:
-				\begin{enumerate}
-					\item Consecutive values of $q_i$ should be similar
-					\item Changes in $q_i$ can only happen over a large distance
-					\item Most of the genome should be at $q_i = 2$ (equal to the ploidy)
-				\end{enumerate}
-				Therefore, we propose:
-				\begin{spalign}
-					\text{Prior}(\{q\})   = & \sum_i \Bigg[  \mathfrak{p}_\text{ploidy} u(q_i,2)  
-					\\
-					 + & u(q_i,q_{i-1})\left( \mathfrak{p}_\text{jump} +  \mathfrak{p}_\infty \sum_{j = i-L}^{i-1} u(q_j,q_{i-1})  \right)\Bigg]
-					 \\
-					 u(a,b)  = & (1-\delta_{ab}) = \begin{cases}
-						0 & \text{a = b}
-						\\
-						1 & \text{else}
-					 \end{cases}\label{E:Prior}
-				\end{spalign}
-				The terms in the prior therefore act (in order), to penalise every base which is not at the expected diploid level by an amount $\mathfrak{p}_\text{diploid}$, penalise every jump between dissimilar $q$s by an amount $\mathfrak{p}_\text{jump}$ and to penalise jumps which occur within a distance $L$ of another jump by an amount $\mathfrak{p}_\infty$, which is a number\footnote{A surreal number, in fact} $\approx -\infty$, but which has the property $0 \times \mathfrak{p}_\infty = 0$ -- rather than a penalty, this therefore acts as a \textit{forbiddance}, discarding models with such jumps.
+			\end{figure}
 
-
-			\subsubsection{Algorithmic Concerns}
-
-				Equations \eqref{E:Probability} and \eqref{E:Prior} provide everything we need to compute the score \eref{E:Score} for a proposed set of $\{q\}$. We therefore now need an algorithm which provides the maximal set (though, as is common in such endeavours, we instead attempt to find the set which minimises $-\mathcal{L}$, an equivalent task, since $\mathcal{L} < 0$ everywhere).
-
+				After determining the value of the free parameters (discussed in Appendix \ref{A:Parameters}), Equations \eqref{E:NormBin} and \eqref{E:Prior} provide everything we need to compute the score \eref{E:Score} for a proposed set of $\{q\}$. The task of detecting the most likely (subject to our priors) set of copy-numbers is therefore equivalent to identifying the set of $\{q\}$ which maximise \eref{E:Score}. This is an integer optimisation problem, with the limiting factor that the dimensionality of the solution is equal to the chromosome size.
 				% The Harmonic fitting method shows a vast improvement over the previous iteration - however it still suffers from a number of drawbacks, mostly associated with the somewhat dubious means by which the Bayesian tests were `bootstrapped' from each other (technically each successive probability should be fully conditioned on the previous set, rather than just stuffing that all into a simplistic prior).
 
 				% The Harmonic Network method is an attempt to a) make the assignment robust and mathematically sound and b) devise a method which is conceptually easier to understand and follow. 
 
-				Provided that we are able to make the assumption that there is some finite $Q$ such that $0 \leq q < Q$ across the entire genome, it is most convenient to think in terms of a \textit{network}, such that an assignment of $\{q\}$ to corresponds to a unique path through the network. Finding the optimal assignment is therefore equivalent to finding the shortest path through this network.
+				Provided that we are able to make the assumption that there is some finite $Q$ such that $0 \leq q < Q$ across the entire genome, it is most convenient to think in terms of a \textit{network}, such that an assignment of $\{q\}$ corresponds to a unique path through the network: the optimal path is the one with the highest score.
 
-				The network is arranged in a series of layers (not dissimilar in structure to the network diagrams of feedforward neural networks, whence this idea was derived) - each layer corresponding to a given base in the genome and its associated coverage value. The vertices (or `nodes', to continue the FNN analogy) in the layer then correspond to different values of $q$ that might be assigned to that base. In short, a node $n_{iq}$ corresponds to the $i^\text{\th}$ base being assigned a harmonic of $q$.
+				The network is arranged in a series of layers (not dissimilar in appearance to the network diagrams of feedforward neural networks), each layer corresponding to a given base in the genome. The vertices (or `nodes') in the layer then correspond to different values of $q$ that might be assigned to that base. In short, a path which passes a node $n_{iq}$ corresponds to the $i^\text{th}$ base being assigned a harmonic of $q$.
 
-				The edges between vertices are directional (so ``$a$ is connected to $b$'' means that $a\to b$ is possible, but not $b\to a$), and obey the following rules, which are displayed graphically in Figure \ref{F:Network}:
+				The edges between vertices are directional, and obey the following rules, which are displayed graphically in Figure \ref{F:Network}:
 				\begin{enumerate}
-					\item The start node is connected to all nodes in the first layer, $n_{0q}~~ 0 \leq q < Q$ 
-					\item The node $n_{iq}$ is connected to $n_{i+1,q}$ (`step edges') and $n_{i+L,j}$ (`jump edges') where $j\neq q$ (provided that $i + L < G$, the genome size -- this prevents `jumping off the edge' of the chromosome)
+					\item The start node is connected to all nodes in the first layer, $n_{0,0\leq q < Q}$ 
+					\item The node $n_{i,q}$ is connected to nodes $n_{j>i}$ through \textit{step edges} and \textit{jump edges}
+					\begin{itemize}
+						\item Step Edges connect $n_{i,q} \to n_{i+1,q}$, i.e. the same harmonic in the next layer. Step edges have a cost equal to
+						\begin{equation}
+							\text{Cost}(n_{iq} \to n_{i+1,q}) = p_{\vec{\theta}}(k_{i+1} | q) + \begin{cases} 0 & q = d_c \\  \mathfrak{p}_\text{ploidy} & \text{else} \end{cases}
+						\end{equation}
+						That is, they incur a cost equal to the posterior probability that $k_{i+1}$ arises from the same $q$ as $k_i$, the $\mathfrak{p}_\text{ploidy}$ is the prior probability that the $q$ is equal to the normal ploidy.
+						\item Jump Edges connect $n_{i,q} \to n_{i+L,j\neq q}$, i.e. a different harmonic in a layer $L$ further along. This enforces the prior restriction that changes in $q$ must be above a certain length ($L$) in order to be considered valid. Jump Edges incur a cost equal to the posterior probabilty of assigning \textit{all} $k_{j}$ for $i < j \leq i + L$ to the new harmonic, and so the statistics must favour all of these $k$-values being assigned the same $q$ in order to consider a change in $q$ likely.
+						\begin{equation}
+							\text{Cost}(n_{iq} \to n_{i+L,j\neq q}) =\sum_{a = i+1}^{i+L} \left( p_{\vec{\theta}}(k_i | j) \right) +  \mathfrak{p}_\text{jump} + L \times  \begin{cases} 0 & j = d_c \\  \mathfrak{p}_\text{ploidy} & \text{else} \end{cases}
+						\end{equation}
+						We emphasise again that a path $n_{i,q} \to n_{i+L,j\neq q}$ means that $q_{i+1},....,q_{i+L}$ are all assigned the harmonic $j$, and that this is the only means by which a jump $q\to (j\neq q)$ is possible.
+					\end{itemize}
 					\item The nodes $n_{G-1,q}$ are connected to the End node
 				\end{enumerate}
-				Each step edge (including those from the start node) has a cost:
-				\begin{equation}
-					\text{Cost}(n_{iq} \to n_{i+1,q}) = p_{\vec{\theta}}(k_i | q) + \mathfrak{p}_\text{ploidy} u(q,2)
-				\end{equation}
-				A `step-edge' therefore corresponds simply to assigning the associated $q$ to that base/layer.
+				
+				Here we have used the shorthand $p_{\vec{\theta}}(k|q) = p(k| q^\prime\nu, \eta,\sigma,\gamma)$, our underlying distribution function given in \eref{E:NormBin}. From these rules it is a simple matter of using a basic shortest-path algorithm\footnote{{We are actually looking for the longest path, but minimising $|\mathcal{L}|$ is equal to maximising $\mathcal{L}$, so the distinction is trivial}}, using the associated cost of each node as the distance: step through each layer and compute the shortest path to each node in that layer, and then iterate until the end node is reached -- the longest path through this network corresponds to a unique $\{q\}$, which is then necessarily the one which maximses $\mathcal{L}$. An example of such a minimal path is shown in Fig. \ref{F:Path}.
 
-				The `Jump-edges' from $n_{iq} \to n_{i+L,j\neq q}$ enforce the requirement that any jumps must be larger than $L$, since they are the only edges which connect different $q$ values. Traversing along a jump edge corresponds to assigning all nodes $i+1 \to i+L$ to the harmonic $j\neq q$, and hence has an associated cost:
-				\begin{equation}
-					\text{Cost}(n_{iq} \to n_{i+L,j\neq q}) = \mathfrak{p}_\text{jump} + \sum_{a = i+1}^{i+L} \left( p_{\vec{\theta}}(k_i | j)+ \mathfrak{p}_\text{ploidy} u(j,2) \right)
-				\end{equation}
-				Here we have used the shorthand $p_{\vec{\theta}}(k|q) = p(k| q\nu, \sigma,\gamma,K)$, our underlying `Errored Binomial' distribution function.
+				
+				
+				The runtime of this algorithm scales as $\mathcal{O}(Q^2 G)$, where $Q$ is the maximum harmonic and $G$ is the number of bases being evaluated. However, if we naively construct this network in-memory it occupies a space $m Q G$, where $m$ is the memory footprint of an individual node. {A conservative estimate of the naive implementation gives the memory requirements (for a human genome) of $\approx$650GB, well beyond what most consumer devices are capable of. We note, however, that the network is only semi-local -- the network does not need any information more recent than the previous $L+1$ nodes, and so the network can be constructed on-the-fly. With $L=10^5$, this reduces the memory requirements to a mere $\approx 35$MB. }
+				
+				% Assuming that $Q = 20$ and each node must know its score, $q$-value and a pointer to the previous node, this gives a conservative estimate of 646GB of active memory to construct a network for the entire human genome -- well beyond what most consumer devices are capable of. 
 
-				From these rules it is a simple matter of using a basic shortest-path algorithm: step through each layer and compute the shortest path to each node in that layer, and then iterate until the end node is reached -- the shortest path through this network corresponds to a unique $\{q\}$, which is then necessarily the one which minimises $\mathcal{L}$. An example of such a minimal path is shown in Fig. \ref{F:Path}.
+				% However, we note that this network is `semi-local' -- by design, the edges never extend beyond a distance $L$ from the current base. By placing node node $n_{iq}$ at index $C_{i \% (L+1),q}$, we only need $LQ$ nodes in memory at once, rather than $GQ$, a drastic reduction in memory footprint: $L = 10^5$ reduces the memory footprint to only 34MB.
 
-				\begin{figure}
-					\begin{center}
-						\resizebox{\linewidth}{!}{ 
-						\begin{tikzpicture}
-							
-							\node[anchor=east] at (-2,0) {Data:};
-							\draw (0,0)--++(3,0);
-							\node at (3.5,0) {\large ...};
-							\draw (4,0)--++(3,0);
-							\def\w{0.65}
-							\foreach \i in {1,...,3}
-							{
-								% \draw[fill=white] (\i-1,0) circle (0.35);
-								\draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
-								\node at (\i-1,0) {$k_\i$};
-							}
-							
-							
-							\foreach \i in {1,...,2}
-							{
-								\draw[fill=white] ({\i+4-\w/2},{\w/2})--({\i+4+\w/2},{\w/2})--({\i+4+\w/2},{-\w/2})--({\i+4-\w/2},{-\w/2})--cycle;
-								\node at ({4+\i},0) {$k_{L+\i}$};
-							}
-							
-							\def\fac{0.85}
-							
-							\foreach \q in {0,...,4}
-							{
-								\def\y{\fac*\q+1}
-								\if\q2
-								\else
-									\draw[dashed,blue] (1,{2*\fac+1})--(6,\y);
-								\fi
-								\if\q1
-								\else
-								\draw[dotted,red] (0,{1*\fac+1})--(5,\y);
-								\fi
-								% \if\q4
-								% \else
-								% \draw[dashdotted,green] (0,{4*\fac+1})--(5,\y);
-								% \fi
+				
 
-							}
-							\foreach \q in {0,...,4}
-							{
-								\def\y{\fac*\q+1}
-								\draw (-0.95,{2*\fac+1})--(-0.35,\y)--(2.75,\y);
-								\draw (4.25,\y)--(6,\y);
-								\node[anchor=east] at (-2,\y) {$q=\q$};
-								\foreach \i in {1,...,4}
-								{
-									\if\i4
-										\def\c{gray!10!white}
-										\draw[\c] (\i-1.5,\y)--++(2,0);
-										\draw[\c,fill=white] (\i-0.5,\y) circle (0.35);
-									\else
-										\draw[fill=white] (\i-1,\y) circle (0.35);
-										% \draw[fill=white] ({\i-1-\w/2},{\w/2})--({\i-1+\w/2},{\w/2})--({\i-1+\w/2},{-\w/2})--({\i-1-\w/2},{-\w/2})--cycle;
-										\node at (\i-1,\y) {\tiny $p_{\i\q}$};
-									\fi
-									
-								}
-								\foreach \i in {1,...,3}
-								{
-									\if\i3
-										\def\c{gray!10!white}
-										\draw[\c] (\i+3,\y)--++(1,0)--(8,{2*\fac+1});
-										\draw[\c,fill=white] (\i+4,\y) circle (0.35);
-									\else
-										\draw[fill=white] (\i+4,\y) circle (0.35);
-										\node at (\i+4,\y) {\tiny $p_{L+\i,\q}$};
-									\fi
-									% \draw[fill=white] ({\i+4-\w/2},{\w/2})--({\i+4+\w/2},{\w/2})--({\i+4+\w/2},{-\w/2})--({\i+4-\w/2},{-\w/2})--cycle;
-									% \node at ({4+\i},0) {$k_{L+\i}$};
-								}
-								
-							}
-							\draw[fill=white] (-1.25,{2*\fac+1}) circle (0.35);
-							\node at (-1.25,{2*\fac+1}) {Start};
-							\draw[fill=white] (8.25,{2*\fac+1}) circle (0.35);
-							\node at (8.25,{2*\fac+1}) {End};
-
-
-							
-						\end{tikzpicture}
-						}
-						\caption{An example of a harmonic network -- only two sets of `jump edges' are shown (in red and blue) for clarity. In the full network, every node $p_{iq}$ is connected to $p_{i+1,q}$ and $p_{i+L,k\neq q}$. The graph is directional - vertices can only be traversed from left to right.}\label{F:Network}
-					\end{center}
-				\end{figure}
-
-				The runtime of this algorithm scales as $\mathcal{O}(Q^2 G)$, where $Q$ is the maximum harmonic and $G$ is the number of bases being evaluated. However, if we naively construct this network in-memory it occupies a space $m Q G$, where $m$ is the memory footprint of an individual node. Assuming that $Q = 20$ and each node must know its score, $q$-value and a pointer to the previous node, this gives a conservative estimate of 646GB of active memory to construct a network for the entire human genome -- well beyond what most consumer devices are capable of. 
-
-				However, we note that this network is `semi-local' -- by design, the edges never extend beyond a distance $L$ from the current base. Therefore we only need $LQ$ nodes in memory at once, rather than $GQ$, a drastic reduction in memory footprint: $L = 10^5$ reduces the memory footprint to only 34MB.
-
-				Each node therefore exists on a `conveyor belt', an array of length L+1, with node $n_{iq}$ located at index $C_{i \% (L+1),q}$. The step-connected nodes are at $C_{(i-1)\% (L+1),q}$ and the jump connected nodes at $C_{(i+1) \% (L+1),q}$, where $a\%b$ is the usual modular remainder operation. This means that (aside from the `edges' of the conveyor belt), there is remarkable data contiguity.
-
-				The major drawback of this implementation is that (since the optimal path cannot be retraced by simply backtracking through each node's `best path' pointers) each node needs to keep a record of its entire shortest path. We ameliorate this concern slightly since we know that most of the path will (by design) be through step-edges, and therefore only need to record and keep the limited number of jump edges -- however, passing these records around is still the limiting factor of this algorithm. 
-
-				However, we note that during the search for the value of $\nu$ (during which time many paths are evaluated, searching for the one which minimises $\mathcal{L}$), we only need the final `length' of the path, not the path itself. For the bulk of function calls to the path-tracing algorithm, therefore, we do not need to record the path - only its length -- and hence the runtime difference between the conveyor-belt algorithm and the naive algorithm is negligible, with the memory-footprint nevertheless vastly reduced.
+				% However, we note that during the search for the value of $\nu$ (during which time many paths are evaluated, searching for the one which minimises $\mathcal{L}$), we only need the final `length' of the path, not the path itself. For the bulk of function calls to the path-tracing algorithm, therefore, we do not need to record the path - only its length -- and hence the runtime difference between the conveyor-belt algorithm and the naive algorithm is negligible, with the memory-footprint nevertheless vastly reduced.
 
 				\begin{figure}
 					\begin{center}
-						\resizebox{\linewidth}{!}{ 
+						\resizebox{!}{7.3cm}{ 
 						\begin{tikzpicture}
 							
 						%%network 
@@ -603,7 +432,7 @@
 							\node at (8.25,{2*\fac+1}) {End};
 
 						%%plot
-							\begin{axis}[width=9.75cm,xlabel={Base Coordinate},ylabel={Coverage},at={(-0.5cm,-8cm)},scatter/classes={%
+							\begin{axis}[width=9.75cm,height=4cm,xlabel={Base Coordinate},ylabel={Coverage},at={(-0.5cm,-3cm)},scatter/classes={%
 								a={mark=o,fill=black}}]
 								\addplot[only marks,scatter src=explicit symbolic] table[row sep=crcr]{
 									x y label \\
@@ -641,141 +470,190 @@
 
 
 
-		\appendix
+			\section{Results of the \codename{}}
+			\begin{figure}
+				\includegraphics[height=6cm]{Figures/human_chr6.eps}
+				\caption{The \codename{} predictions $q\nu$, (blue) for $L=2\times 10^5$bp overlaid onto a human oesophageal cancer sample (OES148, Chromosome 6, a known chromothripsis site). This chromosome has minimal contamination, and so the contamination-corrected curve $q^\prime \nu$ (red) shows only minor deviation. Recall that the blue curve is the most likely (large scale) copy number, and so is equal to an integer multiple, the red curve is the internal model used to derive the value of the blue curve. }\label{F:Human6}
+			\end{figure}
+			\begin{figure}
+				\includegraphics[height=6cm]{Figures/human_chr4.eps}
+				\caption{The \codename{} predictions (blue) overlaid onto a human oesophageal cancer sample (OES148, Chromosome 4), demonstrating how the contamination-modelling shifts the position of the harmonic. Reported values (the blue curve)are always equal to $q \nu$, though the model internally uses $q^\prime \nu$, the contamination is assumed to be a laboratory artefact.}\label{F:Human4}
+			\end{figure}
 
 
-		\section{Parameter Optimisation}
+				\subsection{Human Oesophageal Cancer}
+					In Figures \ref{F:Human6} and \ref{F:Human4} we show the results of the \codename{} algorithm applied to a human oesophageal chromothripsis cancer case, OES148, which was sequenced with {PacBio HiFi, a long-read sequencing technology}. Fig. \ref{F:Human6} is chromosome 6, known to be the main shattering site, and we see that the algorithm is indeed capable of identifying the large-scale changes present. {It is interesting to note which of the deletions the model considered valid - a human might consider the deletions at indices $10^7$, $\approx 10^8$ and $\approx 4 \times 10^8$ as important as those at $1.3\times10^8$ and $\approx 6\times 10^8$, however this is an artefact of the image compression - closer exmaination reveals this first set to be only a thousand bp in width, whilst the set that the algorithm identified are deletions in excess of $10^5$bp. \codename{} has therefore successfully performed as a data-reduction tool, preserving only those features which are most statisticaly meaningful.} 
+					
+					
+					{Fig. \ref{F:Human4} shows chromosome 4 of the same sample.} This chromosome is not thought to be a major chromothripsis site, but we have included it in order to demonstrate the contamination-correction, since there is evidence that the $p$-end of one copy of chromosome 4 is deleted in a majority of cells in the sample, but not all of them -- we see that \codename{} has correctly identified that a partial aneuploidy (with a high degree of contamination) is the most likely explanation for the available data.
+				
+				% \begin{figure}
+				% 	\includegraphics*[width=0.4\linewidth,keepaspectratio=true]{Figures/5.png}\includegraphics*[width=0.4\linewidth,keepaspectratio=true]{Figures/6.png}
+				% \end{figure}
+
+			{
+			\subsection{Machine Learning \& Tasmanian Devils}
+
+				We turn now to the case of Devil Facial Tumour Disease (DFTD), a transmissabel cancer affecting \textit{Sarcophilus harrisii}, the Tasmanian Devil\cite{Murchison2008,Murchison2012}, of which there are two distinct subtypes (DFT1, the original and most prevalent, and DFT2, a more recent, aggressive but rarer form)\cite{DFT22016}, and there is evidence that DFTD is caused by chromothripsis\cite{Deakin2012,Stammnitz2023}. 
+
+				The goal of the \codename{} is not merely to serve as a copy-number analyser for its own sake, but as a preprocessing layer with the goal of converting the extremely large, extremely noisy coverage data into a meaningful encoding for use in Machine Learning. 	Due to the genetic homogeneity of both Tasmanian Devils as a whole, and of DFTD, this provides us with a useful proof-of-concept for \codename{} in coverage-based cancer inference.
+				
+				
+				\codename{} is intended to serve as an initial transformation of the data (an input layer) for traditional Machine Learning methods. The Machine Learning models we present, therefore, are intentionally simple and out-of-the-box, in order to prove that the \codename{} has succeeded in preserving the large scale behaviour of the data over the course of its data reduction. 
+
+				Using a dataset of 177 Tasmanian Devils\cite{Stammnitz2023} sequenced using standard Illumina Short Read sequencing, and annotated as being either 'normal' (i.e. non-cancerous), 'DFT1' or 'DFT2', we transformed the data using \codename{}, and encoded the data into a 20-dimensional feature vector, as described in Appendix \ref{A:Vector}.
+
+				We then used a simple Feedforward Neural Network (5 layers, dimensions 20,30,10,8,3, ReLu activation throughout) as a classifier, including a 50\% dropout layer after the second layer to prevent overfitting. This model is a standard implementation -- the novelty of our method is in the input layer and the feature representation, not the ML model itself.
+
+				In Fig. \ref{F:Classifier} we show the result of the accuracy of this classifier: it exceeded 95\% accuracy everywhere, indicating that the encoding is retaining the information necessary to detect cancer-causing SVs, and to identify which SVs are responsible for which cancer. We note that there were a number of troublesome misclassifications; investigating the dataset revealed a number of low-quality sequences from early in the data collection programme. Future work shall incorporate additional information into the \codename{} output and subsequent encoding to allow the identification of such artefacts, and hence allow the classifier to focus on the cancer signal. 
+
+				Unsupervised methods yielded similarly positive results. In the right panel of Fig. \ref{F:Classifier}, we demonstrate the result of a UMAP clustering\cite{UMAP2018} on a $N=200$ encoding of our dataset. The result is a spectacular dissection of the feature space: aside from two misclassifications, UMAP correctly clustered all of the non-cancerous, DFT1 and DFT2 datasets into isolated clusters. 
+			
+				In addition, we notice that there is additional substructure present: the 'normal' datasets are bifurcated, investigation revealed this to be based solely on the sequencing depth of the sex chromosomes (the normal set contained both male and female Devils); however (since the transmissable cancer is spread primarily through male-male sexual competition), the cancer samples are entirely male. The subtypes within the DFT2 cluster, arises from substructure within DFT2, where two distinct clades have already been identified\cite{Stammnitz2023} - our clusterings match up with the assigned clades with other methods. That the DFT1 cluster is does not similarly split up into the 6 clades identified elsewhere is most likely a feature of our (somewhat naive) encoding, the loci which differentiate the clades would fall within the same spatial bin, and so do not permit the separation of the clades. We have begun work on a more nuanced encoding which would permit such spatial resolution within the encoding.
 
 
-			Although it would be possible to infer the values of $\nu, \sigma,\gamma,\mu_e,\sigma_e$ by optimising them against \eref{E:Score}, this is computationally quite intensive - since it involves multiple passes through the network to explore this multidimensional parameter space. It is therefore much easier to fit these global parameters to the \textit{global distribution} of coverages, before then using them to infer the \textit{local} values of $q_i$.
+				The work in this section is preliminary, and serves only to demonstrate that the \codename{} algorithm has great potential as a data reduction and transformation tool for future Machine Learning work, which we intend to include novel encodings and architectures.
+		
 
-			If we truncate the data to only look at $k$ up to some maximum value $K$, the global distribution function is equal to:
-			\begin{spalign}
-				p_\text{global}(k|\vec{\theta}) & = \sum_q w_q p_{\vec{\theta}}(k|q,K)
-				\\
-				& =  \sum_q w_q \frac{p_{\vec{\theta}}(k|q)}{\sum_{k^\prime = 0}^K p_{\vec{\theta}}(k|q)}
-				% & = \gamma {NB}\left(k; \frac{\mu_e^2}{\sigma_e^2}, \frac{\mu_e}{\mu_e + \sigma_e^2} \right)
-				% \\
-				% & ~~~~~ + (1-\gamma)\sum_q w_q {NB}\left(k; \frac{(q\nu)^2}{\sigma^2}, \frac{q\nu}{q\nu + \sigma^2} \right) 
-			\end{spalign}
-			Where $w_q$ are the weights associated with each of the subpopulations; rather than assignined each base to a given $q$ were are fitting them as an aggregate population.	The Bayesian score associated with data binned such that $N_k$ is the number of bases assigned the coverage $k$ is then:
-			\begin{align}
-				\mathcal{L}_\text{global} & = \mathcal{P}(\vec{\theta}) + \sum_k N_k \ln\left(p_\text{global}(k|\vec{\theta})\right)
-				\\
-				& =\mathcal{P}(\vec{\theta}) + \sum_k N_k \ln\left(\sum_q w_q p_{\vec{\theta}}(k|q)\right) - N \ln\left(\sum_k \sum_q w_q p_{\vec{\theta}}(k|q)\right) 
-			\end{align}
-			Where $N = \sum_k N_k$ is the total number of observations. The parameters are then optimised using the gradients:
-			\begin{spalign}
-				\pdiv{\mathcal{L}}{\theta_i} = \pdiv{\mathcal{P}}{\theta_i} + \sum_k \sum_q\left(\frac{N_K}{\sum_q w_q p(k|q)} - \frac{N}{\sum_{k,q} w_q p(k|q)}\right) w_q\pdiv{p(k|q)}{\theta_i}
-			\end{spalign}
-			Using the shorthand
+				\begin{figure}
+					\includegraphics[width=0.55\linewidth]{Figures/Classifier.png}\includegraphics[width=0.55\linewidth]{Figures/UMAP.png}
+					\caption{(\textit Left: )The accuracy of a 5-layer FNN with a 50\% dropout rate after the second layer. We see a convergence to extremely high prediction accuracy. (\textit{Right}:) a UMAP clustering of the Tasmanian Devil dataset}\label{F:Classifier}
+				\end{figure}
+
+			}
+			\section{Conclusions \& Future Work}
+					
+					In this work we have demonstrated the \textit{\codename{}} algorithm, a powerful data-reduction method based on the principles of step-detection. \codename{} permits us to incorporate the effects of biological variability, contamination and minimum jump-sizes to retain only the most statistically important deviations from the expected ploidy, and works equally well on both long and short read technologies.  \codename{} is publicly available: \url{https://github.com/wtsi-hpag/GenCHORD}
+
+					We have demonstrated that this method permits us to transform the high-dimensional and complex data associated with Tasmanian Devil Facial Tumour Disease into a low-dimensional representation from which a small 5-layer FNN model can learn, with unerring accuracy, to predict the presence and type of cancer. We also showed that the \codename{} preserved information by which an unsupervised method could cluster the cancers into familiar groupings, but also uncover new subtypes, the nature of which we are still investigating. 
+					
+					This proves a useful testbed of \codename{} as a tool for studying cancer, however, the exact properties which make Tasmanian Devils an attractive test case of this method (the genetic homogeneity of the population and near-clonality of the cancer) mean that application to the human case will be far from trivial. 
+
+					Future work on this topic will focus on the encoding methodology and novel ML architecture: how this reduced data can be represented in the machine in such a way to make feature extraction meaningful, explainable and useful for scientific and diagnostic applications. 
+					
+			
+				\bibliography{references.bib}
+			\appendix
+			{\small 
+			\section{Mathematical Theory}\label{A:Theory}
+				\subsection{Negative Binomial}
+					The statistical model $\mathcal{P}$ for the coverage $k$, is derived from the common assumption that the genome is sampled via a Poisson distribution with mean $\lambda$, but where there are biological and experimental errors which change $\lambda$, such that the model is the convolution of a Poisson distribution, and some 'error distribution', which encodes the degree to which $\lambda$ varies. Whilst maximal-entropy arguments might imply a lognormal distribution as the optimal choice, for convenience (since the outcome is analytically computable), we use the Gamma distribution with mean $\mu > 0$ and variance $\sigma^2 > 0$, which gives the Negative Binomial Distribution as our model:
+					\begin{align}
+						\mathcal{P} & = \int_0^\infty \Gamma(\lambda| \mu,\sigma) \text{Poisson}(k|\lambda) \d \lambda \LLR k \sim\text{NB}\left(k; \mu, \mu + \sigma^2\right) 
+					\end{align}
+
+					We make a modification to this model, since it will often be necessary to truncate the probability distribution to some finite $K$ to avoid contamination with short but highly repetitive regions which fall outside the scope of our model. We therefore normalise the model up to this finite $K$:
+					\begin{equation}
+						p(k; \mu, \mu+\sigma^2) = \frac{\text{NB}\left(k; \mu, \mu + \sigma^2\right)}{\sum_{k^\prime = 0}^K \text{NB}\left(k^\prime; \mu, \mu + \sigma^2\right) } \label{E:NormBin}
+					\end{equation}
+
+				\subsection{Statistical Model}\label{A:Model}
+
+					The task of idenitfying breakpoints is equivalent to assigning $\{q\}$-values to a given genome. We must therefore form statistical score $\mathcal{L}(\{q\})$, which is maximised at the most likely set $\{q\}$. We make the standard assumption that the coverage $k_i$ of the $i^\text{th}$ base is drawn independently and identically from an underlying distribution function (\textit{iid}), which is a function of the fundamental frequency, $\nu$, and the harmonic, $q_i$. Bases are statistically connected through the \textit{prior} function, which encodes many of the points outlined in the previous section. As a result of the \textit{iid} assumption, the global score can be found to be:
+			
+					\begin{align}
+						\mathcal{L}(\{q\} | \{k\}, \nu,\sigma,\vec{\theta}) & = \sum_i \mathfrak{p}\left(k_i | q_i, \nu,\sigma \right) + \text{Prior}(\{q\},\vec{\theta}) \label{E:Score}
+					\end{align}
+					Here $\vec{\theta}$ are the hyperparameters of the model. This is an indirect statement of standard Bayesian Maximum Posterior methodology - the quantity $\mathfrak{p}$ is the log-probability of observing the data $k_i$ given the harmonic $q_i$ and parameter $\nu$; as already discussed, this will take the form of a Negative Binomial distribution. Finally, we must formulate a suitable prior, which enforces the remainder of our assumptions, namely:
+					\begin{enumerate}
+						\item Consecutive values of $q_i$ should be similar
+						\item Changes in $q_i$ can only happen over a large distance
+						\item Most of the chromosome $c$ should be at $q_i = d_c$ (equal to the ploidy)
+					\end{enumerate}
+					Therefore, we propose:
+					\begin{spalign}
+						\text{Prior}(\{q\})   = & \sum_i \Bigg[  \mathfrak{p}_\text{ploidy} u(q_i,d_c)  + u(q_i,q_{i-1})\left( \mathfrak{p}_\text{jump} +  \mathfrak{p}_\infty \sum_{j = i-L}^{i-1} u(q_j,q_{i-1})  \right)\Bigg]
+						\\
+						u(a,b)  = & (1-\delta_{ab}) = \begin{cases}
+							0 & {a = b}
+							\\
+							1 & \text{else}
+						\end{cases}\label{E:Prior}
+					\end{spalign}
+					The terms in the prior therefore act (in order), to penalise every base which is not at the expected diploid level by an amount $\mathfrak{p}_\text{diploid}$, penalise every jump between dissimilar $q$s by an amount $\mathfrak{p}_\text{jump}$ and to penalise jumps which occur within a distance $L$ of another jump by an amount $\mathfrak{p}_\infty$, which is a number $\approx -\infty$, but which has the property $0 \times \mathfrak{p}_\infty = 0$ -- rather than a penalty, this therefore acts as a \textit{forbiddance}, discarding models with such jumps.
+
+		\section{Parameter Inference}\label{A:Parameters}
+
+
+			The model presented above has a number of free parameters - notably $\nu$ (the fundamental sampling frequency of the chromosome), $\sigma$ (the standard deviation of the sampling-noise function), $\gamma$ (the degree of alignment noise), $\eta$ (the contamination amount), as well as the functional form of $p_\text{error}$.
+
+			We need to determine these values before we may reliably assign the values of $\{q\}$. To do this efficiently, we shall assign these values based on the global coverage distribution - the counts of all observed coverage values binned into a histogram. To this distribution, we then fit a Negative Binomial Mixture Model using the contamination-biased probability:
 			\begin{equation}
-				R_k = \left(\frac{N_K}{\sum_q w_q p(k|q)} - \frac{N}{\sum_{k,q} w_q p(k|q)}\right)
+				p_\text{global}(k|\vec{\theta}) = \gamma p_\text{error}(k) + (1-\gamma)\sum_{q=0}^Q w_q NB\left(k_i; q^\prime(q,\eta) \nu, \sigma\right)
 			\end{equation}
-			This can be simplified to
-			\begin{spalign}
-				\pdiv{\mathcal{L}}{\theta_i} & = \pdiv{\mathcal{P}}{\theta_i} + \sum_k \sum_q R_k  w_q\pdiv{p(k|q)}{\theta_i}
-				\\
-				\pdiv{\mathcal{L}}{w_q} & = \pdiv{\mathcal{P}}{w_q} + \sum_k R_k  p(k|q)
-			\end{spalign}
-			However, since we must maintain that $\sum_q w_q = 1$ and $0 < w_q < 1$, it is convenient to reparameterise this as $w_i = e^{z_i}/\sum_j e^{z_j}$, such that
-			\begin{spalign}
-				\pdiv{L}{z_i} & = w_i \left(\pdiv{\mathcal{P}}{w_i} + \sum_k R_k p(k|q) - \sum_j w_j \left[\pdiv{\mathcal{P}}{w_j} + \sum_k R_k p(k|j)\right]\right)
-			\end{spalign}
-			% Where (using the notation that $B_{kq} = {NB}\left(k; \frac{(q\nu)^2}{\sigma^2}, \frac{q\nu}{q\nu + \sigma^2}\right) $, $E_k = {NB}\left(k; \frac{\mu_e^2}{\sigma_e^2}\right)$, $r_e = \frac{\mu_e^2}{\sigma_e^2}$, $p_e = \frac{\mu_e}{\mu_e + \sigma_e^2}$, $r_q = \frac{\nu^2 q^2}{\sigma^2}$ and $p_q = \frac{q\nu}{q\nu + \sigma^2}$)
-			% \begin{spalign}
-			% 	\pdiv{p_k}{\gamma} & = {E}_k - \sum_q w_q {B}_{kq}
-			% 	\\
-			% 	\pdiv{p_k}{z_j} & = (1-\gamma) w_j \left[ B_{kj} - \sum_q w_q B_{kq} \right]
-			% 	\\
-			% 	\pdiv{p_k}{\mu_e} & = \gamma E_k \Big[ \frac{2\mu_e}{\sigma_e^2} \left(\psi\left(k + r_e\right) + \ln\left(p_e\right) - \psi\left(r_e\right) \right)
-			% 	\\
-			% 	&~~-\frac{\sigma_e^2}{(\mu_e + \sigma_e^2)^2} \frac{p_e (k+r_e) - r_e}{p_e^2} \Big]
-			% 	\\
-			% 	\pdiv{p_e}{\sigma_e} & = 2\gamma E_k \Big[ \frac{\sigma_e}{(\mu_e + \sigma_e^2)^2} \frac{p_e (k+r_e) - r_e}{p_e^2} 
-			% 	\\
-			% 	& ~~- 2\frac{\mu_e^2}{\sigma_e^3} \left(\psi\left(k + r_e\right) + \ln\left(p_e\right) - \psi\left(r_e\right) \right)\Big]
-			% \end{spalign}
-			% \begin{spalign}
-			% 	\pdiv{p_e}{\nu} & = (1-\gamma) \sum_q w_q B_{kq}  \Big[ \frac{2\nu q^2}{\sigma^2} \left(\psi\left(k + r_q\right) + \ln\left(p_q\right) - \psi\left(r_q\right) \right)
-			% 	\\
-			% 	&~~-\frac{\sigma^2}{(q\nu + \sigma^2)^2} \frac{p_q (k+r_q) - r_q}{p_q^2} \Big]
-			% 	\\
-			% 	\pdiv{p_e}{\sigma} & = 2(1-\gamma) \sum_q w_q B_{kq} \Big[ \frac{\sigma}{(q\nu + \sigma^2)^2} \frac{p_q (k+r_q) - r_q}{p_q^2} 
-			% 	\\
-			% 	& ~~- 2\frac{q^2\nu^2}{\sigma^3} \left(\psi\left(k + r_q\right) + \ln\left(p_q\right) - \psi\left(r_q\right) \right)\Big]
-			% \end{spalign}
+			Where $w_q$ are the population weightings; equal to the fraction of bases which will be assigned to $q$ when the full assignment is performed. \codename{} uses a standard Maximum Posterior Method to infer the maximal value of these parameters given a set of data.
+
+		\section{Feature Vector}\label{A:Vector}
+
+			After the data has been reduced by \codename{}, we encode it into a feature vector $\vec{v}$ of length $N$. Each element of the vector corresponds to a portion of the genome of length $G/N$ where $G$ is the total length of the genome. Each segment is assigned a score based on the presence, $q$-value and length of domains that GeneCHORD had assigned, where a domain is a continuous region of length $\ell$ which has been assigned the same value of $q$. The score associated with a domain $D(\ell,q)$ on chromosome $c$ (which has ploidy $d_c$) is:
+			\begin{equation}
+				S(\ell,q,d_c) = \exp\left(|q - d_c| + \frac{\ell N}{G}\right)
+			\end{equation}
+			The score assigned to each element of the feature vector $\vec{v}$ is then the sum of scores for all domains in the associated portion of the genome.
 			
-		% \section{Harmonic Tree}
 
-		% 	The Harmonic approach shows a vast improvement over the other methods -- however it still has a number of issues -- primarily revolving around the `smoothing' aspect. Simply put: the most obvious (continuous) ways of enforcing smoothness tends to be to `bind' subsequent points together with a 'cost function' associated with moving away from the surrounding points. 
+		}
+		% \section{Parameter Optimisation}
 
-		% 	This works, but has the problem of `fine tuning': the prior has a `strength' as an external parameter, which then controls the `spikiness' of the output curve. By selecting this value appropriately, the user is able to either make the output ust as much of a forest as the input data, or perfectly smooth: and anything in between. 
 
-		% 	The user is then left to fine tune the dials of this parameter until they get something they would find acceptable. The problem with this is that it invariably leaves the user projecting their own expectations on the input -- you only get out what you put in. 
+		% 	Although it would be possible to infer the values of $\nu, \sigma,\gamma,\mu_e,\sigma_e$ by optimising them against \eref{E:Score}, this is computationally quite intensive - since it involves multiple passes through the network to explore this multidimensional parameter space. It is therefore much easier to fit these global parameters to the \textit{global distribution} of coverages, before then using them to infer the \textit{local} values of $q_i$.
 
-		% 	In such a case, a Bayesian statistician would say that we have formulated our Prior poorly -- it has a free parameter (the strength), over which we have actually no prior knowledge. In fact, on further examination the strength (which is usually formulated as a length scale over which the binding happens) isn't even the quantity we are wishing to constrain since!
-			
-		% 	% We might therefore wish to come up with a more mechanistic way of imposing these constraints. We will still have a free parameter(s) (any kind of prior will require this), but we might be able to express them in ways which make the numbers harder to `fudge'. 
-			
-		% 	We must therefore ask what it is we wish our smoothing-prior to do since it evidently isn't `smoothing' -- since we are looking for a highly discontinuous output function! We want our prior to be such that it causes the model to disregard small-scale oscillations in the coverage as merely being noise. Smoothing length scales had this as a side effect -- but with the unfortunate side effect that they also smoothed over what we (probably) believe to be sharp, discontinuous edges. 
-
-		% 	Let us therefore use this as a strict prior: there should be no oscillations on a scale shorter than some enforced length scale $L$ - we assert that any gains or losses which span $L$ bases or fewer are merely noise. Any determination if a change in harmonic has occurred must therefore consider \textit{at least} $L$ bases. 
-
-		% 	A standard Bayesian hypothesis can be formulated at the index $i$ to determine if there has been a transition by considering the Hypothesis ``the harmonic on the domain $[q,q+L]$ is equal to $q_i$'', and testing all reasonable values of $q_i$ (we suggest between 0 and 10 as being reasonable values). The odds-Likelihood of a transition is then:
-		% 	\begin{equation}
-		% 		p(\text{transition } q_{i-1} \to q) = \frac{p(D_i\to D_{i+L| q})}{p(D_i\to D_{i+L| q_{i-1}})} \times \text{Prior}(q | q_{i-1})
-		% 	\end{equation}
-		% 	It simply suffices to find if any of these terms is greater than 1 and, if any, which is the largest: this is the assigned value of $q$. The prior then allows us to penalise `marginal' jumps by only assigned jumps when the evidence reaches a threshold:
-		% 	\begin{equation}
-		% 		\text{Prior}(q | q_{i-1}) = \begin{cases} 0 < \alpha \leq 1 & \text{ if } q = q_{i-1}
+		% 	If we truncate the data to only look at $k$ up to some maximum value $K$, the global distribution function is equal to:
+		% 	\begin{spalign}
+		% 		p_\text{global}(k|\vec{\theta}) & = \sum_q w_q p_{\vec{\theta}}(k|q,K)
 		% 		\\
-		% 	1 & \text{else}\end{cases}
-		% 	\end{equation}
-		% 	The case where $\alpha \approx 1$ means we accept a transition when the evidence is very marginal, $\alpha \ll 1$ means we require an overwhelming amount of evidence. Given some of the other post-processing that we will be doing (to locate transition edges more precisely), and provided $L$ is sufficiently large that most spurious jumps will be eliminated, we use $\alpha = 0.5$ as a good first port of call.
-
-		% 	Should we find that $q \neq q_{i-1}$, we have therefore been able to robustly identify that there is a transition in the region $[i,i+L]$ - but it is not true that the transition edge is at $i$ -- if $\alpha = 1$ the transition is probably somewhere in the middle of the region, whilst as $\alpha \to 0$ it gets closer to $i$. To robustly identify the edge of the transition we need to do a second hypothesis test -- that the transition $q_{i-1} \to q$ occurs at an index $j$, the Likelihood of which is computed as:
-		% 	\begin{equation}
-		% 		\mathfrak{p}(\text{transition at} j | i, \text{data, }D) = p(D_i \to D_{j-1} | q_{-1} ) \times p(D_j \to D_{j + L} | q)
-		% 	\end{equation}
-		% 	I.e., we sucessively compute the probability that every point left of $j$ is at the original $q=q_{i-1}$, and every point to the right is at the new value of $q$: the one with the highest value of $\mathfrak{p}$ is where we assign $j$.
-
-		% 	Having now determined the value of $j$ and $q_j$, we jump to index $j+L$ and continue the search looking for the next transition, repeating this process until each transition has been identified. The only parameters in this model are the minimum size of a transition `block', $L$, and $\alpha$, the amount of evidence needed before we accept that a transition is present in a region. 
-
-		% 	All that remains is to compute the quantity $p(D_i \to D_j)$ - we can do this using either the simple Poisson structure, or the error-accounting methods of the previous section. Since we are assuming that the probabilities are independent (the non-independence being enforced by the structure of our algorithm), it then is a simple matter of computing the product of these terms. In practice, however, it is probably more convenient to compute these in logarithmic space.
-
-		% 	Hence:
+		% 		& =  \sum_q w_q \frac{p_{\vec{\theta}}(k|q)}{\sum_{k^\prime = 0}^K p_{\vec{\theta}}(k|q)}
+		% 		% & = \gamma {NB}\left(k; \frac{\mu_e^2}{\sigma_e^2}, \frac{\mu_e}{\mu_e + \sigma_e^2} \right)
+		% 		% \\
+		% 		% & ~~~~~ + (1-\gamma)\sum_q w_q {NB}\left(k; \frac{(q\nu)^2}{\sigma^2}, \frac{q\nu}{q\nu + \sigma^2} \right) 
+		% 	\end{spalign}
+		% 	Where $w_q$ are the weights associated with each of the subpopulations; rather than assignined each base to a given $q$ were are fitting them as an aggregate population.	The Bayesian score associated with data binned such that $N_k$ is the number of bases assigned the coverage $k$ is then:
 		% 	\begin{align}
-		% 		\mathcal{P}(i|q,q_{i-1}) & = \sum_{n = 0}^{L-1} \log\left( p(D_{i+n} | q) \right) + \log\left(\text{Prior}(q | q_{i-1})\right)
+		% 		\mathcal{L}_\text{global} & = \mathcal{P}(\vec{\theta}) + \sum_k N_k \ln\left(p_\text{global}(k|\vec{\theta})\right)
 		% 		\\
-		% 		p(D_j | q)  & = \sum_{k} {NB}\left(k; \frac{q^2\nu^2}{\sigma^2}, \frac{q\nu}{q\nu + \sigma^2} \right) \times p(D_j|k)
-		% 		\\
-		% 		p(D_j|k) &= \mathcal{N} \exp(-(D_j-k)^2/(2 \gamma^2))
+		% 		& =\mathcal{P}(\vec{\theta}) + \sum_k N_k \ln\left(\sum_q w_q p_{\vec{\theta}}(k|q)\right) - N \ln\left(\sum_k \sum_q w_q p_{\vec{\theta}}(k|q)\right) 
 		% 	\end{align}
-		% 	This model has five parameters: $L$, the minimum transition size, $\alpha$, the evidence weighting, $\nu$ the global fundamental frequency, $\sigma$, the dispersion of the underlying mechanism and $\gamma$, the standard error in the assigned coverage values. Of these, three must be assigned \textit{a priori} by the user: $\alpha$, $L$ and $\gamma$.
+		% 	Where $N = \sum_k N_k$ is the total number of observations. The parameters are then optimised using the gradients:
+		% 	\begin{spalign}
+		% 		\pdiv{\mathcal{L}}{\theta_i} = \pdiv{\mathcal{P}}{\theta_i} + \sum_k \sum_q\left(\frac{N_K}{\sum_q w_q p(k|q)} - \frac{N}{\sum_{k,q} w_q p(k|q)}\right) w_q\pdiv{p(k|q)}{\theta_i}
+		% 	\end{spalign}
+		% 	Using the shorthand
+		% 	\begin{equation}
+		% 		R_k = \left(\frac{N_K}{\sum_q w_q p(k|q)} - \frac{N}{\sum_{k,q} w_q p(k|q)}\right)
+		% 	\end{equation}
+		% 	This can be simplified to
+		% 	\begin{spalign}
+		% 		\pdiv{\mathcal{L}}{\theta_i} & = \pdiv{\mathcal{P}}{\theta_i} + \sum_k \sum_q R_k  w_q\pdiv{p(k|q)}{\theta_i}
+		% 		\\
+		% 		\pdiv{\mathcal{L}}{w_q} & = \pdiv{\mathcal{P}}{w_q} + \sum_k R_k  p(k|q)
+		% 	\end{spalign}
+		% 	However, since we must maintain that $\sum_q w_q = 1$ and $0 < w_q < 1$, it is convenient to reparameterise this as $w_i = e^{z_i}/\sum_j e^{z_j}$, such that
+		% 	\begin{spalign}
+		% 		\pdiv{L}{z_i} & = w_i \left(\pdiv{\mathcal{P}}{w_i} + \sum_k R_k p(k|q) - \sum_j w_j \left[\pdiv{\mathcal{P}}{w_j} + \sum_k R_k p(k|j)\right]\right)
+		% 	\end{spalign}
+		% 	% Where (using the notation that $B_{kq} = {NB}\left(k; \frac{(q\nu)^2}{\sigma^2}, \frac{q\nu}{q\nu + \sigma^2}\right) $, $E_k = {NB}\left(k; \frac{\mu_e^2}{\sigma_e^2}\right)$, $r_e = \frac{\mu_e^2}{\sigma_e^2}$, $p_e = \frac{\mu_e}{\mu_e + \sigma_e^2}$, $r_q = \frac{\nu^2 q^2}{\sigma^2}$ and $p_q = \frac{q\nu}{q\nu + \sigma^2}$)
+		% 	% \begin{spalign}
+		% 	% 	\pdiv{p_k}{\gamma} & = {E}_k - \sum_q w_q {B}_{kq}
+		% 	% 	\\
+		% 	% 	\pdiv{p_k}{z_j} & = (1-\gamma) w_j \left[ B_{kj} - \sum_q w_q B_{kq} \right]
+		% 	% 	\\
+		% 	% 	\pdiv{p_k}{\mu_e} & = \gamma E_k \Big[ \frac{2\mu_e}{\sigma_e^2} \left(\psi\left(k + r_e\right) + \ln\left(p_e\right) - \psi\left(r_e\right) \right)
+		% 	% 	\\
+		% 	% 	&~~-\frac{\sigma_e^2}{(\mu_e + \sigma_e^2)^2} \frac{p_e (k+r_e) - r_e}{p_e^2} \Big]
+		% 	% 	\\
+		% 	% 	\pdiv{p_e}{\sigma_e} & = 2\gamma E_k \Big[ \frac{\sigma_e}{(\mu_e + \sigma_e^2)^2} \frac{p_e (k+r_e) - r_e}{p_e^2} 
+		% 	% 	\\
+		% 	% 	& ~~- 2\frac{\mu_e^2}{\sigma_e^3} \left(\psi\left(k + r_e\right) + \ln\left(p_e\right) - \psi\left(r_e\right) \right)\Big]
+		% 	% \end{spalign}
+		% 	% \begin{spalign}
+		% 	% 	\pdiv{p_e}{\nu} & = (1-\gamma) \sum_q w_q B_{kq}  \Big[ \frac{2\nu q^2}{\sigma^2} \left(\psi\left(k + r_q\right) + \ln\left(p_q\right) - \psi\left(r_q\right) \right)
+		% 	% 	\\
+		% 	% 	&~~-\frac{\sigma^2}{(q\nu + \sigma^2)^2} \frac{p_q (k+r_q) - r_q}{p_q^2} \Big]
+		% 	% 	\\
+		% 	% 	\pdiv{p_e}{\sigma} & = 2(1-\gamma) \sum_q w_q B_{kq} \Big[ \frac{\sigma}{(q\nu + \sigma^2)^2} \frac{p_q (k+r_q) - r_q}{p_q^2} 
+		% 	% 	\\
+		% 	% 	& ~~- 2\frac{q^2\nu^2}{\sigma^3} \left(\psi\left(k + r_q\right) + \ln\left(p_q\right) - \psi\left(r_q\right) \right)\Big]
+		% 	% \end{spalign}
+			
 
-		% 	This computation can be streamlined in many ways: the NB function can be pre-tabulated for every $0 \leq k < k_\text{max}$ $0 \leq q < q_\text{max}$ every time a new $\nu$ and $\sigma$ are formulated since, by definition, they will all be called at least once -- and some values of $k$ will be called many thousands of times. 
-		% 	% We can then assume that all values of $q$ between $i$ and $i+L$ are equal to this value of $q$ - and so we make a jump to $
-
-		% 	\begin{figure}
-		% 		% \includegraphics*[width=\linewidth,keepaspectratio=true]{Figure_1.png}
-		% 		\caption{A demonstration of how the different probability models assign slightly different values of the resonance $q$ given otherwise identical parameters -- as expected, this mostly occurs at the borders of where a transition occurs. The only truly notable difference is the `Error Prone Method', in which we sum over nearby $k^\prime$, in that this permits non-zero values of $k$ to be considered for the zeroth order resonance -- the other methods preclude considering any $k>0$ (or any gap containing $k>0$) as the zeroth resonance, which can lead the model to assume that deleted regions have not been deleted.}
-		% 	\end{figure}
-
-	% \subsubsection{An Alternative Formulation}
-
-	% 		We have formulated this approach in terms of a series of Bayesian Inferences -- though this is far from the only way to think about what we are doing here. 
-
-	% 		An equally valid approach would be to consider this as a curve fitting exercise, where the functional form we are attempting to fit is:
-
-	% 		\begin{spalign}
-	% 			f(x| \{q_i, \nu, t_i \}) & = \nu \left(q_0 + \sum_i^N (q_i - q_{i-1}) \theta(x - t_i)) \right)
-	% 			\\s
-	% 			q_i \in \mathbb{Z}_0
-	% 			\\
-	% 			\nu, t_i \in \mathbb{R}
-	% 		\end{spalign}
-	% 		That is, the function can be thought of a series of Heaviside Step functions ($\theta(x)$) - the Harmonic restriction can clearly be seen once again in the restriction that $q \in \mathbb{Z}_0$, i.e. it must be an integer (or zero).
-
-	% 		The mechanism for finding the most likely value of the curve parameters is identical to those we have previously discussed, however by fixing $N$ as some large number this provides a fixed-length encoding, ideal for input into a neural network.
 \end{document}

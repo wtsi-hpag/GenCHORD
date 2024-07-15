@@ -23,6 +23,8 @@ class Path
 		int CoordSum = -1;
 		int QSum = -1;
 		double Nu;
+		std::vector<double> Eta;
+		int Dc = 2;
 		std::vector<Coordinate> Route;
 		// std::vector<int> PreviousIdx;
 		Path()
