@@ -28,13 +28,13 @@ int main(int argc, char**argv)
 	//some pretty introductory text
 	globalVerbose = !settings.Quiet;
 	Log("==========================================\n\tCoverage Deforesting\n==========================================" << std::endl);
-	settings.DataThinning = 1e3;
+	settings.DataThinning = 1e2;
 	JSL::mkdir(settings.OutputDirectory);
 	//load the data file -- either from file, or from a pipe
 	Data d(settings);
 	
 	settings.DataThinning=1e5;
-	settings.MemorySmoothing = 0;
+	settings.MemorySmoothing = 0.99;
 	Data d2(settings);
 	Log("Preparing probability models:\n")
 	int Kmax = 4*d.Mean + d.Deviation;
