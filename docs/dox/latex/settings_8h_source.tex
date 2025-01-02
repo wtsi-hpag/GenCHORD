@@ -1,0 +1,88 @@
+\doxysection{settings.\+h}
+\hypertarget{settings_8h_source}{}\label{settings_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/src/settings.h@{/Users/jf20/Documents/Genomics/Deforest/src/settings.h}}
+\mbox{\hyperlink{settings_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{JSL_8h}{JSL.h}}"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{settings_8h_a2a1436a9541174a0649321204d235e14}{globalRegress}};}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSettings}{Settings}}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSettings_aa89fd531c9299807c5825bc8532ccffe}{Ploidy}};}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSettings_ab793ae70dfc6f07252934c0f41ec7268}{PloidyPrior}};}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSettings_a50dd8265698935aecf1061bb6fc8d1d9}{sigmaMin}};}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSettings_ae0eb533bdecfa27343d6d4442dd7d6a1}{sigmaMax}};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSettings_a99a453425535f63cfc434f4fbeba63fd}{sigmaResolution}};}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSettings_a871122d38126740463ece2a4597c5576}{nuResolution}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSettings_a07f895fffb07dbf175a318ae454a7646}{gammaMin}};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSettings_a839b60657b6274f5c2d6e790787a5661}{gammaMax}};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSettings_a64fe814939b941d6fa5372a411329f6a}{gammaResolution}};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSettings_acc41c456ed12f8acca98df2def6cd3ff}{Accelerator}};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSettings_a8fa40e17cda2a56838be34ccfacb9af1}{Gamma}};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSettings_ae500cd5efd43bf1af1b8b712721dd5b3}{Qmax}};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSettings_a2bef7bef504e306eb9eff8c7311d6540}{L}};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSettings_a8b3721d24a5417caa0f2ad6f5eb85782}{alpha}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classSettings_ab94ee7585302bae3d528f805842db32c}{OutputName}};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classSettings_abd6865989f92a172dd41628cf8a18532}{TargetChromosome}};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classSettings_a5c971192e52358765e2f659e76d0c201}{DataFile}};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSettings_a6d01f3557bf7da203fbfbaffc19d84da}{DataThinning}};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSettings_a8403e8fdb0ed972fccacef62c8b5c7c1}{Quiet}};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSettings_aa0465b5ff421f9d0bfdb6cc774aaca6a}{PlotOnly}};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classSettings_a5bc27b86a0b29053fb6c55eb274781fd}{ComparePlot}};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSettings_a11b8b17f953420b3c8dea63713412189}{MemorySmoothing}};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSettings_a3b57bbe1b89b28a2028e8aaae8802ce6}{ParallelWorkers}};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_ab7169a6eefce79566dd07db3b1e5e967}{Settings}}()\{\};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSettings_a48d7d61ba5df525b10cd89f5375a47ad}{Initialise}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}**argv)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_aa89fd531c9299807c5825bc8532ccffe}{Ploidy}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(2,\textcolor{stringliteral}{"{}ploidy"{}},argc,argv);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_ab793ae70dfc6f07252934c0f41ec7268}{PloidyPrior}}=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(0.5,\textcolor{stringliteral}{"{}ploidyPrior"{}},argc,argv);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a50dd8265698935aecf1061bb6fc8d1d9}{sigmaMin}}\ =\mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(1,\textcolor{stringliteral}{"{}sigmaMin"{}},argc,argv);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_ae0eb533bdecfa27343d6d4442dd7d6a1}{sigmaMax}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(10,\textcolor{stringliteral}{"{}sigmaMax"{}},argc,argv);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a99a453425535f63cfc434f4fbeba63fd}{sigmaResolution}}=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(3,\textcolor{stringliteral}{"{}sigmaResolution"{}},argc,argv);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a871122d38126740463ece2a4597c5576}{nuResolution}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(100,\textcolor{stringliteral}{"{}nuResolution"{}},argc,argv);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a07f895fffb07dbf175a318ae454a7646}{gammaMin}}\ =\mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(0.1,\textcolor{stringliteral}{"{}gammaMin"{}},argc,argv);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a839b60657b6274f5c2d6e790787a5661}{gammaMax}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(10,\textcolor{stringliteral}{"{}gammaMax"{}},argc,argv);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a64fe814939b941d6fa5372a411329f6a}{gammaResolution}}=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(5,\textcolor{stringliteral}{"{}gammaResolution"{}},argc,argv);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_acc41c456ed12f8acca98df2def6cd3ff}{Accelerator}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(1,\textcolor{stringliteral}{"{}accelerate"{}},argc,argv);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a8fa40e17cda2a56838be34ccfacb9af1}{Gamma}}\ =\ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(-\/1,\textcolor{stringliteral}{"{}gamma"{}},argc,argv);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_ae500cd5efd43bf1af1b8b712721dd5b3}{Qmax}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(10,\textcolor{stringliteral}{"{}Qmax"{}},argc,argv);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a2bef7bef504e306eb9eff8c7311d6540}{L}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(100000,\textcolor{stringliteral}{"{}L"{}},argc,argv);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a8b3721d24a5417caa0f2ad6f5eb85782}{alpha}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(1e-\/2,\textcolor{stringliteral}{"{}alpha"{}},argc,argv);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_abd6865989f92a172dd41628cf8a18532}{TargetChromosome}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<std::string>}}(\textcolor{stringliteral}{"{}all"{}},\textcolor{stringliteral}{"{}c"{}},argc,argv);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a5c971192e52358765e2f659e76d0c201}{DataFile}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<std::string>}}(\textcolor{stringliteral}{"{}\_no\_file\_provided\_"{}},\textcolor{stringliteral}{"{}f"{}},argc,argv);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a6d01f3557bf7da203fbfbaffc19d84da}{DataThinning}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(1,\textcolor{stringliteral}{"{}thin"{}},argc,argv);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a8403e8fdb0ed972fccacef62c8b5c7c1}{Quiet}}\ =\ \mbox{\hyperlink{classJSL_1_1Toggle}{JSL::Toggle}}(\textcolor{keyword}{false},\textcolor{stringliteral}{"{}q"{}},argc,argv);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_ab94ee7585302bae3d528f805842db32c}{OutputName}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<std::string>}}(\textcolor{stringliteral}{"{}output"{}},\textcolor{stringliteral}{"{}o"{}},argc,argv);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a3b57bbe1b89b28a2028e8aaae8802ce6}{ParallelWorkers}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(0,\textcolor{stringliteral}{"{}worker"{}},argc,argv);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_aa0465b5ff421f9d0bfdb6cc774aaca6a}{PlotOnly}}\ =\ \mbox{\hyperlink{classJSL_1_1Toggle}{JSL::Toggle}}(\textcolor{keyword}{false},\textcolor{stringliteral}{"{}plot"{}},argc,argv);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a5bc27b86a0b29053fb6c55eb274781fd}{ComparePlot}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<std::string>}}(\textcolor{stringliteral}{"{}\_\_none\_\_"{}},\textcolor{stringliteral}{"{}compare"{}},argc,argv);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a11b8b17f953420b3c8dea63713412189}{MemorySmoothing}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(0,\textcolor{stringliteral}{"{}smooth"{}},argc,argv);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSettings_a65725eea2c0cec426d5844de9ed61028}{Initialise}}(std::string\ configFile)}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_aa89fd531c9299807c5825bc8532ccffe}{Ploidy}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(2,\textcolor{stringliteral}{"{}ploidy"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_ab793ae70dfc6f07252934c0f41ec7268}{PloidyPrior}}=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(0.5,\textcolor{stringliteral}{"{}ploidyPrior"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a50dd8265698935aecf1061bb6fc8d1d9}{sigmaMin}}\ =\mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(1,\textcolor{stringliteral}{"{}sigmaMin"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_ae0eb533bdecfa27343d6d4442dd7d6a1}{sigmaMax}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(10,\textcolor{stringliteral}{"{}sigmaMax"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a99a453425535f63cfc434f4fbeba63fd}{sigmaResolution}}=\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(8,\textcolor{stringliteral}{"{}sigmaResolution"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a871122d38126740463ece2a4597c5576}{nuResolution}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(100,\textcolor{stringliteral}{"{}nuResolution"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_acc41c456ed12f8acca98df2def6cd3ff}{Accelerator}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(2,\textcolor{stringliteral}{"{}accelerate"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a8fa40e17cda2a56838be34ccfacb9af1}{Gamma}}\ =\ \ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(5,\textcolor{stringliteral}{"{}gamma"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_ae500cd5efd43bf1af1b8b712721dd5b3}{Qmax}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(10,\textcolor{stringliteral}{"{}Qmax"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a2bef7bef504e306eb9eff8c7311d6540}{L}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(100000,\textcolor{stringliteral}{"{}L"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a8b3721d24a5417caa0f2ad6f5eb85782}{alpha}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<double>}}(1e-\/2,\textcolor{stringliteral}{"{}alpha"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_abd6865989f92a172dd41628cf8a18532}{TargetChromosome}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<std::string>}}(\textcolor{stringliteral}{"{}all"{}},\textcolor{stringliteral}{"{}c"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a5c971192e52358765e2f659e76d0c201}{DataFile}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<std::string>}}(\textcolor{stringliteral}{"{}\_no\_file\_provided\_"{}},\textcolor{stringliteral}{"{}f"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a6d01f3557bf7da203fbfbaffc19d84da}{DataThinning}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(1,\textcolor{stringliteral}{"{}thin"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a8403e8fdb0ed972fccacef62c8b5c7c1}{Quiet}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<bool>}}(\textcolor{keyword}{false},\textcolor{stringliteral}{"{}q"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_ab94ee7585302bae3d528f805842db32c}{OutputName}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<std::string>}}(\textcolor{stringliteral}{"{}output"{}},\textcolor{stringliteral}{"{}o"{}},configFile,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSettings_a3b57bbe1b89b28a2028e8aaae8802ce6}{ParallelWorkers}}\ =\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{JSL::Argument<int>}}(0,\textcolor{stringliteral}{"{}worker"{}},configFile,\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \};\ \ }
+
+\end{DoxyCode}

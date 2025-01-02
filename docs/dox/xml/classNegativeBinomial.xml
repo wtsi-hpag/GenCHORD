@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classNegativeBinomial" kind="class" language="C++" prot="public">
+    <compoundname>NegativeBinomial</compoundname>
+    <includes refid="NegativeBinomial_8h" local="no">NegativeBinomial.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classNegativeBinomial_1a63b682b73f10b071eab47233ddcd331b" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double NegativeBinomial::Sigma</definition>
+        <argsstring></argsstring>
+        <name>Sigma</name>
+        <qualifiedname>NegativeBinomial::Sigma</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="14" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classNegativeBinomial_1a374f8d76d604ae2c0a256c1edfa9571e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NegativeBinomial::Kmax</definition>
+        <argsstring></argsstring>
+        <name>Kmax</name>
+        <qualifiedname>NegativeBinomial::Kmax</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="15" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classNegativeBinomial_1a975162aa6b403530a8b1a04f7d3c7844" prot="private" static="no" mutable="no">
+        <type><ref refid="classLogFactorial" kindref="compound">LogFactorial</ref></type>
+        <definition>LogFactorial NegativeBinomial::LogFac</definition>
+        <argsstring></argsstring>
+        <name>LogFac</name>
+        <qualifiedname>NegativeBinomial::LogFac</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="16" column="14" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classNegativeBinomial_1ab53adc81020714e4ade9d139c8d6dca9" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NegativeBinomial::Resolution</definition>
+        <argsstring></argsstring>
+        <name>Resolution</name>
+        <qualifiedname>NegativeBinomial::Resolution</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="17" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classNegativeBinomial_1a6dded189af1c3d6185b6edb67eb8bc68" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double NegativeBinomial::dMu</definition>
+        <argsstring></argsstring>
+        <name>dMu</name>
+        <qualifiedname>NegativeBinomial::dMu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="19" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classNegativeBinomial_1a906b226360d91cbd7c43380efac888a3" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double NegativeBinomial::muMax</definition>
+        <argsstring></argsstring>
+        <name>muMax</name>
+        <qualifiedname>NegativeBinomial::muMax</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="20" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classNegativeBinomial_1a5762d7a6445d95dfb90624803c70a695" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; double &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;double&gt; &gt; NegativeBinomial::PureData</definition>
+        <argsstring></argsstring>
+        <name>PureData</name>
+        <qualifiedname>NegativeBinomial::PureData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="21" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classNegativeBinomial_1aeaf581ddff07d64f873df05b4c012207" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NegativeBinomial::NegativeBinomial</definition>
+        <argsstring>(int kMax, int resolution, double maxMu)</argsstring>
+        <name>NegativeBinomial</name>
+        <qualifiedname>NegativeBinomial::NegativeBinomial</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>kMax</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>resolution</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>maxMu</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="23" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classNegativeBinomial_1a111cd4ef1eb422ae3683187c9cb42c76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NegativeBinomial::Populate</definition>
+        <argsstring>(double sigma)</argsstring>
+        <name>Populate</name>
+        <qualifiedname>NegativeBinomial::Populate</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>sigma</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="24" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>LogFactorial</label>
+        <link refid="classLogFactorial"/>
+      </node>
+      <node id="1">
+        <label>NegativeBinomial</label>
+        <link refid="classNegativeBinomial"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>LogFac</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="11" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="12" bodyend="26"/>
+    <listofallmembers>
+      <member refid="classNegativeBinomial_1a6dded189af1c3d6185b6edb67eb8bc68" prot="public" virt="non-virtual"><scope>NegativeBinomial</scope><name>dMu</name></member>
+      <member refid="classNegativeBinomial_1a374f8d76d604ae2c0a256c1edfa9571e" prot="private" virt="non-virtual"><scope>NegativeBinomial</scope><name>Kmax</name></member>
+      <member refid="classNegativeBinomial_1a975162aa6b403530a8b1a04f7d3c7844" prot="private" virt="non-virtual"><scope>NegativeBinomial</scope><name>LogFac</name></member>
+      <member refid="classNegativeBinomial_1a906b226360d91cbd7c43380efac888a3" prot="public" virt="non-virtual"><scope>NegativeBinomial</scope><name>muMax</name></member>
+      <member refid="classNegativeBinomial_1aeaf581ddff07d64f873df05b4c012207" prot="public" virt="non-virtual"><scope>NegativeBinomial</scope><name>NegativeBinomial</name></member>
+      <member refid="classNegativeBinomial_1a111cd4ef1eb422ae3683187c9cb42c76" prot="public" virt="non-virtual"><scope>NegativeBinomial</scope><name>Populate</name></member>
+      <member refid="classNegativeBinomial_1a5762d7a6445d95dfb90624803c70a695" prot="public" virt="non-virtual"><scope>NegativeBinomial</scope><name>PureData</name></member>
+      <member refid="classNegativeBinomial_1ab53adc81020714e4ade9d139c8d6dca9" prot="private" virt="non-virtual"><scope>NegativeBinomial</scope><name>Resolution</name></member>
+      <member refid="classNegativeBinomial_1a63b682b73f10b071eab47233ddcd331b" prot="private" virt="non-virtual"><scope>NegativeBinomial</scope><name>Sigma</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

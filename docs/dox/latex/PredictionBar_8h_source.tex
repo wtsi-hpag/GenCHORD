@@ -1,0 +1,122 @@
+\doxysection{Prediction\+Bar.\+h}
+\hypertarget{PredictionBar_8h_source}{}\label{PredictionBar_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h}}
+\mbox{\hyperlink{PredictionBar_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ProgressBar_8h}{ProgressBar.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../Strings/Time.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ }
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ Dimension\ =\ 1,\ \textcolor{keywordtype}{char}\ Symbol\ =\ '\#',\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ MaxHashes\ =20>}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classJSL_1_1PredictionBar}{PredictionBar}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classJSL_1_1ProgressBar}{ProgressBar}}<Dimension,true,Symbol,MaxHashes>}
+\DoxyCodeLine{00010\ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...\ Ts>}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PredictionBar_a3d7378cd862a27eb7454f82a25b539d5}{PredictionBar}}(Ts...\ targetCounts)\ :\ \mbox{\hyperlink{classJSL_1_1ProgressBar}{ProgressBar}}<Dimension,true,Symbol,MaxHashes>(targetCounts...)}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PredictionBar_a6542fe38254fc02337cbd8bf060d0386}{Start}}\ =\ std::chrono::system\_clock::now();}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PredictionBar_ad8c4e114c3c4ef2bc355af7cc10b19a8}{UpdateTime}}\ =\ \mbox{\hyperlink{classJSL_1_1PredictionBar_a6542fe38254fc02337cbd8bf060d0386}{Start}};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...\ Ts>}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PredictionBar_a1984b831cd0e821f4edebe3b24c25e47}{Update}}(Ts...\ positions)}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(\textcolor{keyword}{sizeof}...(positions)\ ==\ Dimension);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a913055a04bad40dbbf66f0f8247bb8b0}{reprintNeeded}}\ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a73c79e8e00905454aa2853b39d8143b6}{UnrollPositions}}(0,positions...);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PredictionBar_a1f572d3120ffbaac844fea94bdef0df9}{ComputeTime}}();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//only\ reprint\ the\ bar\ if\ something\ has\ changed}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a913055a04bad40dbbf66f0f8247bb8b0}{reprintNeeded}})}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PredictionBar_ab0b2554e099a042a310f1d21eaf9dbe2}{PrintPositions\_DeleteMode}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ std::chrono::time\_point<std::chrono::system\_clock>\ \mbox{\hyperlink{classJSL_1_1PredictionBar_a6542fe38254fc02337cbd8bf060d0386}{Start}};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ std::chrono::time\_point<std::chrono::system\_clock>\ \mbox{\hyperlink{classJSL_1_1PredictionBar_ad8c4e114c3c4ef2bc355af7cc10b19a8}{UpdateTime}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classJSL_1_1PredictionBar_ad3a39ff342d601bb866c06f0dbc75de7}{CurrentDuration}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classJSL_1_1PredictionBar_af9b118baf197404500d844ac9a8c4ab7}{Prediction}}\ =\ 0;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classJSL_1_1PredictionBar_abef77bb45fe8dcff131ec5195b7d13e8}{prevProgress}}\ =\ 0;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PredictionBar_a1f572d3120ffbaac844fea94bdef0df9}{ComputeTime}}()}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::chrono::time\_point<std::chrono::system\_clock>\ Now\ =\ std::chrono::system\_clock::now();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::chrono::duration<double,std::ratio<1,1>>\ totalDuration\ =\ Now\ -\/\ \mbox{\hyperlink{classJSL_1_1PredictionBar_a6542fe38254fc02337cbd8bf060d0386}{Start}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::chrono::duration<double,std::ratio<1,1>>\ updateDuration\ =\ Now\ -\/\ \mbox{\hyperlink{classJSL_1_1PredictionBar_ad8c4e114c3c4ef2bc355af7cc10b19a8}{UpdateTime}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PredictionBar_ad3a39ff342d601bb866c06f0dbc75de7}{CurrentDuration}}\ =\ totalDuration.count();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (updateDuration.count()\ >\ 1)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a913055a04bad40dbbf66f0f8247bb8b0}{reprintNeeded}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a913055a04bad40dbbf66f0f8247bb8b0}{reprintNeeded}})}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UpdateTime\ =\ Now;\ \textcolor{comment}{//\ also\ catches\ reprints\ due\ to\ altered\ barstates!}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ totalProg\ =\ 0;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ next\ =\ 1;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ Dimension;\ ++i)}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ prog\ =\ this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a8ab0aeecd87eaa2754a5a58aea3cca51}{BarProgress}}[i]\ *\ (this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a4fabdafceac14f4fbbb3e364578f6e1c}{BarTargets}}[i]-\/1)/(this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a4fabdafceac14f4fbbb3e364578f6e1c}{BarTargets}}[i]);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ totalProg\ +=\ prog\ *\ next;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ next\ =\ next/(this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a4fabdafceac14f4fbbb3e364578f6e1c}{BarTargets}}[i]);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ i\ <<\ "{}\ \ "{}\ <<\ prog\ <<\ "{}\ \ "{}\ <<\ next\ <<\ "{}\ \ "{}\ <<\ totalProg\ <<\ std::endl;}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ globalRate\ =\ totalProg/totalDuration.count();}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ stepRate\ =\ (totalProg\ -\/\ \mbox{\hyperlink{classJSL_1_1PredictionBar_abef77bb45fe8dcff131ec5195b7d13e8}{prevProgress}})/updateDuration.count();}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ w\ =\ 0.5;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ meanRate\ =\ (1.0\ -\/\ w)*globalRate\ +\ w*stepRate;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ anticipate\ =\ std::max(0.0,\mbox{\hyperlink{classJSL_1_1PredictionBar_af9b118baf197404500d844ac9a8c4ab7}{Prediction}}\ -\/\ updateDuration.count());}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mem\ =\ 0.99;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ activePrediction\ =\ (1.0\ -\/\ totalProg)/meanRate;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (activePrediction\ >\ anticipate)}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mem\ =\ 0.5;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}Anticiapting\ "{}\ <<\ Prediction\ <<\ "{}\ -\/\ "{}\ <<\ updateDuration.count()\ <<\ "{}\ =\ "{}\ <<\ Prediction\ -\/\ updateDuration.count()\ <<\ "{}\ =\ "{}\ <<\ anticipate\ <<\ "{}\ actively\ "{}\ <<\ activePrediction\ <<\ "{}\ av\ =\ "{}\ <<\ mem\ *\ anticipate\ +\ (1.0\ -\/\ mem)*activePrediction<<\ "{}\(\backslash\)n\(\backslash\)n\(\backslash\)n\(\backslash\)n"{};}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PredictionBar_af9b118baf197404500d844ac9a8c4ab7}{Prediction}}\ =\ mem\ *\ anticipate\ +\ (1.0\ -\/\ mem)*activePrediction;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}Estimated\ "{}\ <<\ totalProg\ <<\ "{}\ through\ at\ rates\ "{}\ <<\ globalRate\ <<\ "{}\ \ \ "{}\ <<\ stepRate\ <<\ "{}\(\backslash\)n\(\backslash\)n\(\backslash\)n\(\backslash\)n"{};}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJSL_1_1PredictionBar_abef77bb45fe8dcff131ec5195b7d13e8}{prevProgress}}\ =\ totalProg;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJSL_1_1PredictionBar_ab0b2554e099a042a310f1d21eaf9dbe2}{PrintPositions\_DeleteMode}}()}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a7354c455382575329326bedfd210957e}{firstPrint}})}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_adafc5d517ac0dc23b9761bce1d68f953}{ClearScreen}}();}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a7354c455382575329326bedfd210957e}{firstPrint}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ Dimension;\ ++i)}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ newHashes\ =\ this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_a0798094501860753307f92eafa464b4f}{Hashes}}[i];}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_ab85ccf4638d649d88becf47e2af83525}{Names}}.size()\ >\ 0)}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setw(this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_ae3160fd31be03fadd4c92a0906f64f79}{bufferWidth}})\ \ <<\ this-\/>\mbox{\hyperlink{classJSL_1_1ProgressBar_ab85ccf4638d649d88becf47e2af83525}{Names}}[i]<<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}["{}}\ <<\ std::string(newHashes,Symbol)\ <<\ std::string(MaxHashes\ -\/\ newHashes,\textcolor{charliteral}{'\ '})\ <<\ \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ Dimension\ -\/\ 1)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ ETR:\ "{}}\ <<\ \mbox{\hyperlink{namespaceJSL_ad7ff2220bbab0294b95b9aa85332a222}{FormatDuration}}(\mbox{\hyperlink{classJSL_1_1PredictionBar_af9b118baf197404500d844ac9a8c4ab7}{Prediction}});}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (i\ ==\ 0)}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ std::cout\ <<\ "{}\ "{}\ <<\ (int)(100*prevProgress)\ <<\ "{}\%"{}\ <<\ "{}\ in\ "{}\ <<\ JSL::FormatDuration(CurrentDuration);}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \}}
+
+\end{DoxyCode}

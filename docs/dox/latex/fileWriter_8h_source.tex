@@ -1,0 +1,142 @@
+\doxysection{file\+Writer.\+h}
+\hypertarget{fileWriter_8h_source}{}\label{fileWriter_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h}}
+\mbox{\hyperlink{fileWriter_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}string.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}../System/System.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00008\ \{\ \ \ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_a47d8cb112d513ee5a3ae38ca6a89743d}{initialiseFile}}(\textcolor{keyword}{const}\ std::string\ \&\ filename)}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::fstream\ file;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ file.open(filename,std::ios::out);\ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_a838b3a913896993bc008408d164ec19d}{writeStringToFile}}(\textcolor{keyword}{const}\ std::string\ \&\ filename,\ \textcolor{keyword}{const}\ std::string\ \&\ content)}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ std::fstream\ file;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ file.open(filename,\ std::ios::app);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ file\ <<\ content;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_a1d611217d83275af846cbc091ff98f53}{writeVectorToFile}}(\textcolor{keyword}{const}\ std::string\ \&\ filename,\ \textcolor{keyword}{const}\ std::vector<T>\ \&\ contentVector,\ \textcolor{keyword}{const}\ std::string\ \&\ delimiter,\ \textcolor{keywordtype}{bool}\ includeTerminalLineBreak)}
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ std::fstream\ file;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ file.open(filename,std::ios::app);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ contentVector.size();\ ++i)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ contentVector[i];}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ contentVector.size()\ -\/\ 1)}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ delimiter;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (includeTerminalLineBreak)}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00061\ \ \ \ \ \}\ }
+\DoxyCodeLine{00062\ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{namespace\ }internal}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Ts>}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_1_1internal_a7d30ff3799fac0a4594525b50b8c5ba6}{variadicVectorPrint}}(std::fstream\&\ os,\ \textcolor{keyword}{const}\ std::string\ \&\ delimiter,\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keyword}{const}\ std::vector<T>\&\ first,\ \textcolor{keyword}{const}\ std::vector<Ts>\&...\ args)}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ std::setprecision(10)\ <<\ first[i];}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\textcolor{keyword}{sizeof}...(args)\ >\ 0)}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os\ \ <<delimiter;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_1_1internal_a7d30ff3799fac0a4594525b50b8c5ba6}{variadicVectorPrint}}(os,delimiter,i,args...);\ \textcolor{comment}{//\ shunts\ the\ remaining\ args\ one\ element\ over,\ so\ the\ second\ element\ becomes\ "{}first"{},\ and\ hence\ recursively\ loops\ until\ no\ elements\ left\ in\ args}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...Ts>}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_1_1internal_acf34245ed74263da6fd864feaed681ed}{variadicLengthEquality}}(\textcolor{keywordtype}{size\_t}\ length,\ \textcolor{keyword}{const}\ std::vector<T>\ \&\ first,\ \textcolor{keyword}{const}\ std::vector<Ts>\&...args)}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\textcolor{keyword}{sizeof}...(args)\ >\ 0)}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (first.size()\ ==\ length)\ \&\&\ \ \mbox{\hyperlink{namespaceJSL_1_1internal_acf34245ed74263da6fd864feaed681ed}{variadicLengthEquality}}(length,args...);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ first.size()\ ==\ length;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Ts>}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_a425710dc6536490f1c1d6a5ce621f0e3}{writeMultiVectorToFile}}(\textcolor{keyword}{const}\ std::string\ \&\ filename,\ \textcolor{keyword}{const}\ std::string\ \&\ delimiter,\ \textcolor{keyword}{const}\ std::vector<T>\&\ v1,\ \textcolor{keyword}{const}\ std::vector<Ts>\&...\ \ vecs)}
+\DoxyCodeLine{00106\ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \ \textcolor{keyword}{constexpr}\ (\textcolor{keyword}{sizeof}...(vecs)\ >\ 0)}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ allEqual\ =\ \mbox{\hyperlink{namespaceJSL_1_1internal_acf34245ed74263da6fd864feaed681ed}{internal::variadicLengthEquality}}(v1.size(),vecs...);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a1a7afe30fd764dc4151982a2631f08d3}{Assert}}(\textcolor{stringliteral}{"{}All\ vectors\ in\ writeMultiVectorToFile\ should\ be\ of\ the\ same\ length"{}},allEqual);}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N\ =\ v1.size();}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ std::fstream\ file;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ file.open(filename,std::ios::app);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N;\ ++i)}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_1_1internal_a7d30ff3799fac0a4594525b50b8c5ba6}{internal::variadicVectorPrint}}(file,delimiter,i,v1,vecs...);\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00121\ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_ae790600d9f16e338cfc8b50cd1bfc8f4}{writeMatrixToFile}}(\textcolor{keyword}{const}\ std::string\ \&\ filename,\ \textcolor{keyword}{const}\ std::vector<std::vector<T>>\ contentMatrix,\ \textcolor{keyword}{const}\ std::string\ \&\ columnDelimiter,\ \textcolor{keyword}{const}\ std::string\ \&\ rowDelimiter)}
+\DoxyCodeLine{00133\ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ std::fstream\ file;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ file.open(filename,std::ios::app);}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::vector<T>\ contentRow\ :\ contentMatrix)}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ contentRow.size();\ ++i)}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ contentRow[i];}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ contentRow.size()\ -\/\ 1)}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ columnDelimiter;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ rowDelimiter;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00150\ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T,\ \textcolor{keyword}{class}\ R,\ \textcolor{keyword}{class}\ S>}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_a245ac3bfe113c110491342bf2bb602fc}{writeHeatMapToFile}}(\textcolor{keyword}{const}\ std::string\ \&\ filename,\ \textcolor{keyword}{const}\ std::vector<R>\ \&\ x,\ \textcolor{keyword}{const}\ std::vector<S>\ \&\ y,\ \textcolor{keyword}{const}\ std::vector<std::vector<T>>\ z,\ \textcolor{keyword}{const}\ std::string\ \&\ columnDelimiter)}
+\DoxyCodeLine{00158\ \ \ \ \ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ std::fstream\ file;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ file.open(filename,std::ios::app);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =0\ ;\ i\ <\ x.size();\ ++i)}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ y.size();\ ++j)}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ x[i]\ <<\ columnDelimiter\ <<\ y[j]\ <<\ columnDelimiter\ <<\ z[j][i]\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00171\ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \}}
+
+\end{DoxyCode}

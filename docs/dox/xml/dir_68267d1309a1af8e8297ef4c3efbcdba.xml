@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>/Users/jf20/Documents/Genomics/Deforest/src</compoundname>
+    <innerfile refid="basicFunctions_8h">basicFunctions.h</innerfile>
+    <innerfile refid="data_8h">data.h</innerfile>
+    <innerfile refid="Distributor_8h">Distributor.h</innerfile>
+    <innerfile refid="harmonicFit_8h">harmonicFit.h</innerfile>
+    <innerfile refid="HarmonicFunctions_8h">HarmonicFunctions.h</innerfile>
+    <innerfile refid="logFactorial_8h">logFactorial.h</innerfile>
+    <innerfile refid="NegativeBinomial_8h">NegativeBinomial.h</innerfile>
+    <innerfile refid="plotting_8h">plotting.h</innerfile>
+    <innerfile refid="settings_8h">settings.h</innerfile>
+    <innerfile refid="Transitions_8h">Transitions.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/"/>
+  </compounddef>
+</doxygen>

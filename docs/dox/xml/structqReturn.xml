@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structqReturn" kind="struct" language="C++" prot="public">
+    <compoundname>qReturn</compoundname>
+    <includes refid="HarmonicFunctions_8h" local="no">HarmonicFunctions.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structqReturn_1a1fd3cb45fa28fa2485d4d52dae82838c" prot="public" static="no" mutable="no">
+        <type><ref refid="data_8h_1a3f3ed9a0a71dadb45244e663340fea39" kindref="member">chr_int</ref></type>
+        <definition>chr_int qReturn::idx</definition>
+        <argsstring></argsstring>
+        <name>idx</name>
+        <qualifiedname>qReturn::idx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" line="13" column="9" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structqReturn_1ad69b4ca66bb6398d3f87a05be6969fef" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int qReturn::Q</definition>
+        <argsstring></argsstring>
+        <name>Q</name>
+        <qualifiedname>qReturn::Q</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" line="14" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structqReturn_1ac473498acb2e53c5e95f7436b746314f" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double qReturn::Score</definition>
+        <argsstring></argsstring>
+        <name>Score</name>
+        <qualifiedname>qReturn::Score</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" line="15" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structqReturn_1a9e39ef518fa81dcccf6885fbf1ee783b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>qReturn::qReturn</definition>
+        <argsstring>(int q, double s)</argsstring>
+        <name>qReturn</name>
+        <qualifiedname>qReturn::qReturn</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>q</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" line="16" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" bodystart="16" bodyend="16"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" line="11" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h" bodystart="12" bodyend="17"/>
+    <listofallmembers>
+      <member refid="structqReturn_1a1fd3cb45fa28fa2485d4d52dae82838c" prot="public" virt="non-virtual"><scope>qReturn</scope><name>idx</name></member>
+      <member refid="structqReturn_1ad69b4ca66bb6398d3f87a05be6969fef" prot="public" virt="non-virtual"><scope>qReturn</scope><name>Q</name></member>
+      <member refid="structqReturn_1a9e39ef518fa81dcccf6885fbf1ee783b" prot="public" virt="non-virtual"><scope>qReturn</scope><name>qReturn</name></member>
+      <member refid="structqReturn_1ac473498acb2e53c5e95f7436b746314f" prot="public" virt="non-virtual"><scope>qReturn</scope><name>Score</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

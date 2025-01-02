@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structEB__Bracket" kind="struct" language="C++" prot="public">
+    <compoundname>EB_Bracket</compoundname>
+    <includes refid="NegativeBinomial_8h" local="no">NegativeBinomial.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEB__Bracket_1a1fdce4fcbe76daf7b0454726b9c93799" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; EB_Bracket::Top</definition>
+        <argsstring></argsstring>
+        <name>Top</name>
+        <qualifiedname>EB_Bracket::Top</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="41" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEB__Bracket_1ae2f696c745af49377f785e180a5d01f8" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; EB_Bracket::Bottom</definition>
+        <argsstring></argsstring>
+        <name>Bottom</name>
+        <qualifiedname>EB_Bracket::Bottom</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="42" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEB__Bracket_1aafe1eb60fe81135e8899642a4965900b" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; EB_Bracket::Interpolate</definition>
+        <argsstring></argsstring>
+        <name>Interpolate</name>
+        <qualifiedname>EB_Bracket::Interpolate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="43" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structEB__Bracket_1a2d10a85282f15013735eb9978ee3f0b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>EB_Bracket::EB_Bracket</definition>
+        <argsstring>(int q)</argsstring>
+        <name>EB_Bracket</name>
+        <qualifiedname>EB_Bracket::EB_Bracket</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="44" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="44" bodyend="49"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="39" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="40" bodyend="50"/>
+    <listofallmembers>
+      <member refid="structEB__Bracket_1ae2f696c745af49377f785e180a5d01f8" prot="public" virt="non-virtual"><scope>EB_Bracket</scope><name>Bottom</name></member>
+      <member refid="structEB__Bracket_1a2d10a85282f15013735eb9978ee3f0b9" prot="public" virt="non-virtual"><scope>EB_Bracket</scope><name>EB_Bracket</name></member>
+      <member refid="structEB__Bracket_1aafe1eb60fe81135e8899642a4965900b" prot="public" virt="non-virtual"><scope>EB_Bracket</scope><name>Interpolate</name></member>
+      <member refid="structEB__Bracket_1a1fdce4fcbe76daf7b0454726b9c93799" prot="public" virt="non-virtual"><scope>EB_Bracket</scope><name>Top</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

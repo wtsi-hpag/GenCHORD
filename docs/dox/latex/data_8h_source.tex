@@ -1,0 +1,193 @@
+\doxysection{data.\+h}
+\hypertarget{data_8h_source}{}\label{data_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/src/data.h@{/Users/jf20/Documents/Genomics/Deforest/src/data.h}}
+\mbox{\hyperlink{data_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{basicFunctions_8h}{basicFunctions.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{JSL_8h}{JSL.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ chr\_int\ int\ }\textcolor{comment}{//change\ this\ definition\ to\ long\ long\ int\ for\ very\ long\ chromsomed\ individuals}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structChromosome}{Chromosome}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ std::string\ \mbox{\hyperlink{structChromosome_a7fdd30ba67f25d6b2389493cf421c68d}{Name}};}
+\DoxyCodeLine{00012\ \ \ \ \ std::vector<chr\_int>\ \mbox{\hyperlink{structChromosome_a3bbc1ddd5c0f227abea3cf3bbcef5a59}{Idx}};}
+\DoxyCodeLine{00013\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structChromosome_af230d1c518e95c708a9ef467a0633437}{Counts}};}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structChromosome_a326ae3d548ad41f9cd7bd4b18f681b80}{maxIdx}}\ =\ 0;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structChromosome_a104bc6d0f476a927a22f915b22fad179}{maxK}};}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{structChromosome_a7eb065b8aa3799e0cca4608e2d3606b7}{Chromosome}}()\{\};}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{structChromosome_a6cb3af49b22b99d1b307035cbd3ed02c}{Chromosome}}(std::string\ name)\{\mbox{\hyperlink{structChromosome_a7fdd30ba67f25d6b2389493cf421c68d}{Name}}\ =\ name;\}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structChromosome_a0298c1efdcc60a6f0e23481fba5f1435}{GetMaxK}}(\textcolor{keywordtype}{int}\ maxVal)}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ truncated\ =\ 0;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{structChromosome_af230d1c518e95c708a9ef467a0633437}{Counts}}.size();\ ++i)}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structChromosome_af230d1c518e95c708a9ef467a0633437}{Counts}}[i]\ >\ maxVal)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structChromosome_af230d1c518e95c708a9ef467a0633437}{Counts}}[i]\ =\ maxVal;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++truncated;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0\ ||\ \mbox{\hyperlink{structChromosome_af230d1c518e95c708a9ef467a0633437}{Counts}}[i]\ >\ \mbox{\hyperlink{structChromosome_a104bc6d0f476a927a22f915b22fad179}{maxK}})}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structChromosome_a104bc6d0f476a927a22f915b22fad179}{maxK}}\ =\ \mbox{\hyperlink{structChromosome_af230d1c518e95c708a9ef467a0633437}{Counts}}[i];}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ truncated;}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structChromosome_a1f997dfe08c00d88dc0d12180b73a920}{Add}}(\mbox{\hyperlink{data_8h_a3f3ed9a0a71dadb45244e663340fea39}{chr\_int}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ count)}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structChromosome_a3bbc1ddd5c0f227abea3cf3bbcef5a59}{Idx}}.push\_back(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structChromosome_af230d1c518e95c708a9ef467a0633437}{Counts}}.push\_back(count);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ >\ \mbox{\hyperlink{structChromosome_a326ae3d548ad41f9cd7bd4b18f681b80}{maxIdx}})}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structChromosome_a326ae3d548ad41f9cd7bd4b18f681b80}{maxIdx}}\ =\ id;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ void\ GapCheck(std::string\ dataFile)}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ \ long\ long\ int\ i\ =\ 0;}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ \ std::vector<std::string>\ name;}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ \ std::vector<chr\_int>\ idx;}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ \ std::vector<int>\ coverage;}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ \ forLineVectorIn(target,\ '\ ',}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ \ \ \ \ \ std::string\ name\ =\ FILE\_LINE\_VECTOR[0];}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ \ \ \ \ \ std::string\ }}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ \ );}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structData}{Data}}}
+\DoxyCodeLine{00063\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structData_a7ad2de659f404df8290d2fba1b970095}{mean}};}
+\DoxyCodeLine{00065\ \ \ \ \ std::vector<Chromosome>\ \mbox{\hyperlink{structData_a93eac1fd44e701d561f1c10bea8a460c}{Chromosomes}};}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structData_aad2e93695b5d1080f0bb33b2abf53c73}{maxK}}=0;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structData_a0daa50fb852e841db2cc3c2c31e50c30}{Mean}};}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structData_a2feb9fa7a6e490c8b083abfee01c7fd2}{Deviation}};}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structData_a52f3b7b3b046389e5a10fd6b7fd30993}{Loaded}};}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{structData_af11f741cb7f587e2e495452a8905a22a}{Data}}()}
+\DoxyCodeLine{00071\ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData_a52f3b7b3b046389e5a10fd6b7fd30993}{Loaded}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{structData_a02a051ae029483d76facd0d7916f5305}{Data}}(std::string\ target,\ \textcolor{keywordtype}{int}\ thinning,\ std::string\ targetChromosome,\textcolor{keywordtype}{double}\ smoothing)}
+\DoxyCodeLine{00075\ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData_a52f3b7b3b046389e5a10fd6b7fd30993}{Loaded}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{basicFunctions_8h_ae9ae64d8a840f96015ae5e1421199248}{Log}}(\textcolor{stringliteral}{"{}Loading\ data\ from\ "{}}\ <<\ target\ \ <<\ std::endl)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ \textcolor{comment}{//reasonable\ to\ assume\ total\ genome\ length\ exceeds\ INT\_MAX,\ even\ if\ chr\_int\_max\ does\ not}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ j\ =\ 0;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ accumulator\ =\ 0;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ accumulatorSq\ =\ 0;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ chromID\ =\ -\/1;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ detectingNormalGap\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{data_8h_a3f3ed9a0a71dadb45244e663340fea39}{chr\_int}}\ normalGap;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{data_8h_a3f3ed9a0a71dadb45244e663340fea39}{chr\_int}}\ prev\ =\ -\/1;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ spoofCount\ =\ 0;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ s\ =\ 0;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ std::string\ currentFlag\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ moving\ =\ 0;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ memory\ =\ smoothing;\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ first\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{LineReader_8h_abdfa973ea7dd7efb90a74e8ec636f5ed}{forLineVectorIn}}(target,\ \textcolor{charliteral}{'\ '},}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ ++s;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ chromFlag\ =\ FILE\_LINE\_VECTOR[0];}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chromFlag\ ==\ targetChromosome\ ||\ targetChromosome\ ==\ \textcolor{stringliteral}{"{}all"{}}\ )}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chromID\ ==\ -\/1\ ||\ chromFlag\ !=\ currentFlag)}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ 0;\ \textcolor{comment}{//reset\ the\ thinning\ counter\ on\ a\ new\ chrom\ -\/\ prevents\ weird\ offsets}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData_a93eac1fd44e701d561f1c10bea8a460c}{Chromosomes}}.push\_back(\mbox{\hyperlink{structChromosome}{Chromosome}}(chromFlag));}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentFlag\ =\ chromFlag;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{basicFunctions_8h_ae9ae64d8a840f96015ae5e1421199248}{Log}}(\textcolor{stringliteral}{"{}\(\backslash\)tLoading\ "{}}\ <<\ chromFlag\ <<\ \textcolor{stringliteral}{"{}\ at\ file\ line\ "{}}\ <<\ s\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++chromID;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//spoof\ in\ expected\ zeros\ if\ there\ are\ gaps\ in\ the\ coverage\ file}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{data_8h_a3f3ed9a0a71dadb45244e663340fea39}{chr\_int}}\ \textcolor{keywordtype}{id}=std::stoi(FILE\_LINE\_VECTOR[1]);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ gap\ =\ 0;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (detectingNormalGap\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prev\ >\ -\/1)}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ normalGap\ =\ \textcolor{keywordtype}{id}\ -\/\ prev;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detectingNormalGap\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gap\ =\ \textcolor{keywordtype}{id}\ -\/\ prev;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gap\ !=\ normalGap)}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ spoofer\ =\ prev+normalGap;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (spoofer\ <\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moving\ *=\ memory;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ \%\ thinning\ ==\ 0\ )}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData_a93eac1fd44e701d561f1c10bea8a460c}{Chromosomes}}[chromID].Add(spoofer,moving);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++spoofCount;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++j;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++i;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spoofer\ +=\ normalGap;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prev\ =\ id;}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ \%\ thinning\ ==\ 0\ )}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ std::stoi(FILE\_LINE\_VECTOR[2]);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first)}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moving\ =\ count;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moving\ =\ memory\ *\ moving\ +\ (1.0\ -\/\ memory)\ *\ count;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ accumulator\ +=\ count;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ accumulatorSq\ +=\ count\ *\ count;}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData_a93eac1fd44e701d561f1c10bea8a460c}{Chromosomes}}[chromID].Add(\textcolor{keywordtype}{id},round(moving));}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++j;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (round(moving)\ >\ \mbox{\hyperlink{structData_aad2e93695b5d1080f0bb33b2abf53c73}{maxK}})}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData_aad2e93695b5d1080f0bb33b2abf53c73}{maxK}}\ =\ round(moving);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++i;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData_a0daa50fb852e841db2cc3c2c31e50c30}{Mean}}\ =\ accumulator/j;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData_a2feb9fa7a6e490c8b083abfee01c7fd2}{Deviation}}\ =\ sqrt(accumulatorSq/j\ -\/\ \mbox{\hyperlink{structData_a0daa50fb852e841db2cc3c2c31e50c30}{Mean}}\ *\ \mbox{\hyperlink{structData_a0daa50fb852e841db2cc3c2c31e50c30}{Mean}});\ }
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ LudicrousValue\ =\ \mbox{\hyperlink{structData_a0daa50fb852e841db2cc3c2c31e50c30}{Mean}}\ +\ 20*\mbox{\hyperlink{structData_a2feb9fa7a6e490c8b083abfee01c7fd2}{Deviation}};}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ truncated\ =\ 0;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{structData_a93eac1fd44e701d561f1c10bea8a460c}{Chromosomes}}.size();\ ++i)}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ truncated\ +=\ \mbox{\hyperlink{structData_a93eac1fd44e701d561f1c10bea8a460c}{Chromosomes}}[i].GetMaxK(LudicrousValue);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structData_aad2e93695b5d1080f0bb33b2abf53c73}{maxK}}\ >\ LudicrousValue)}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData_aad2e93695b5d1080f0bb33b2abf53c73}{maxK}}\ =\ LudicrousValue;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{basicFunctions_8h_ae9ae64d8a840f96015ae5e1421199248}{Log}}(\textcolor{stringliteral}{"{}\(\backslash\)tI\ am\ asserting\ that\ any\ coverage\ above\ "{}}\ <<\ LudicrousValue\ <<\ \textcolor{stringliteral}{"{}\ is\ spurious.\ "{}}\ <<\ truncated\ <<\ \textcolor{stringliteral}{"{}\ Datapoints\ were\ affected\(\backslash\)n"{}})}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{basicFunctions_8h_ae9ae64d8a840f96015ae5e1421199248}{Log}}(\textcolor{stringliteral}{"{}\(\backslash\)tSpoofed\ "{}}\ <<\ spoofCount\ <<\ \textcolor{stringliteral}{"{}\ missing\ entries\ as\ gaps\(\backslash\)n\(\backslash\)tLoaded\ of\ "{}}\ <<\ j\ <<\ \textcolor{stringliteral}{"{}\ datapoints\(\backslash\)n\(\backslash\)tData\ has\ global\ coverage\ \ "{}}<<\ \mbox{\hyperlink{structData_a0daa50fb852e841db2cc3c2c31e50c30}{Mean}}\ <<\ \textcolor{stringliteral}{"{}±"{}}\ <<\ \mbox{\hyperlink{structData_a2feb9fa7a6e490c8b083abfee01c7fd2}{Deviation}}\ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)tMaximum\ coverage\ value\ is\ "{}}\ <<\ \mbox{\hyperlink{structData_aad2e93695b5d1080f0bb33b2abf53c73}{maxK}}\ <<\ std::endl;);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \};}
+
+\end{DoxyCode}

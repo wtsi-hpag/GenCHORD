@@ -1,0 +1,2820 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="namespaceJSL" kind="namespace" language="C++">
+    <compoundname>JSL</compoundname>
+    <innerclass refid="classJSL_1_1Argument" prot="public">JSL::Argument</innerclass>
+    <innerclass refid="classJSL_1_1ArgumentInterface" prot="public">JSL::ArgumentInterface</innerclass>
+    <innerclass refid="classJSL_1_1Axis" prot="public">JSL::Axis</innerclass>
+    <innerclass refid="classJSL_1_1ColourArray" prot="public">JSL::ColourArray</innerclass>
+    <innerclass refid="classJSL_1_1gnuplot" prot="public">JSL::gnuplot</innerclass>
+    <innerclass refid="classJSL_1_1Matrix" prot="public">JSL::Matrix</innerclass>
+    <innerclass refid="structJSL_1_1mkdirReturn" prot="public">JSL::mkdirReturn</innerclass>
+    <innerclass refid="structJSL_1_1NameValuePair" prot="public">JSL::NameValuePair</innerclass>
+    <innerclass refid="classJSL_1_1PlotData" prot="public">JSL::PlotData</innerclass>
+    <innerclass refid="classJSL_1_1PredictionBar" prot="public">JSL::PredictionBar</innerclass>
+    <innerclass refid="classJSL_1_1ProgressBar" prot="public">JSL::ProgressBar</innerclass>
+    <innerclass refid="classJSL_1_1Toggle" prot="public">JSL::Toggle</innerclass>
+    <innerclass refid="classJSL_1_1UnitTest" prot="public">JSL::UnitTest</innerclass>
+    <innerclass refid="classJSL_1_1Vector" prot="public">JSL::Vector</innerclass>
+    <innernamespace refid="namespaceJSL_1_1Fonts">JSL::Fonts</innernamespace>
+    <innernamespace refid="namespaceJSL_1_1internal">JSL::internal</innernamespace>
+    <innernamespace refid="namespaceJSL_1_1LineProperties">JSL::LineProperties</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceJSL_1a871354b683a8bee0151dbfbbde49beda" prot="public" static="no" strong="no">
+        <type></type>
+        <name>PlotType</name>
+        <qualifiedname>JSL::PlotType</qualifiedname>
+        <enumvalue id="namespaceJSL_1a871354b683a8bee0151dbfbbde49bedaafa1098e16302d619cc16c6117128c7e2" prot="public">
+          <name>Line</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a871354b683a8bee0151dbfbbde49bedaa523747d04b06019ae6db545703793d22" prot="public">
+          <name>ScatterPoint</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a871354b683a8bee0151dbfbbde49bedaa18063242b9bed054d8672dd4efb6cd33" prot="public">
+          <name>BarChart</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a871354b683a8bee0151dbfbbde49bedaa5411aeb3b0211480c96c5d14e5e41e53" prot="public">
+          <name>SurfaceMap</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h" line="6" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h" bodystart="6" bodyend="6"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceJSL_1ad5aeae8cb562d6f38c724cbdc51d81f8" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Property</name>
+        <qualifiedname>JSL::Property</qualifiedname>
+        <enumvalue id="namespaceJSL_1ad5aeae8cb562d6f38c724cbdc51d81f8ae7660181e67b34cc8012e44899358c0a" prot="public">
+          <name>Colour</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1ad5aeae8cb562d6f38c724cbdc51d81f8a22d189b48d50314bdd20b34e9a40e4a5" prot="public">
+          <name>PenSize</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1ad5aeae8cb562d6f38c724cbdc51d81f8ab516e098813c27967b8e649b94f98db8" prot="public">
+          <name>PenType</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1ad5aeae8cb562d6f38c724cbdc51d81f8afadeba2e8b035dc3c761f416c88a293d" prot="public">
+          <name>Legend</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h" line="7" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h" bodystart="7" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceJSL_1acbabfae0b320d418d49485b7c50bc355" prot="public" static="no" strong="no">
+        <type></type>
+        <name>LineType</name>
+        <qualifiedname>JSL::LineType</qualifiedname>
+        <enumvalue id="namespaceJSL_1acbabfae0b320d418d49485b7c50bc355aaf6d64d28f76aa54961a419d3d9e17b5" prot="public">
+          <name>Solid</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1acbabfae0b320d418d49485b7c50bc355a5d77703e9d097677886b897d9a2eeb62" prot="public">
+          <name>Dash</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1acbabfae0b320d418d49485b7c50bc355af0b887cb0d75c330317bc843146bfc92" prot="public">
+          <name>DashDot</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1acbabfae0b320d418d49485b7c50bc355ac3cd9b153ce73b7d8dd0485ae186379d" prot="public">
+          <name>Dotted</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1acbabfae0b320d418d49485b7c50bc355a48afd9609abb3d990c826b2c74850d3e" prot="public">
+          <name>DashDotDot</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h" line="8" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h" bodystart="8" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526" prot="public" static="no" strong="no">
+        <type></type>
+        <name>ScatterType</name>
+        <qualifiedname>JSL::ScatterType</qualifiedname>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526a7d6491e51b0151fad51114bdc9fe0006" prot="public">
+          <name>Dot</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526ac54fadde63eae4fbfb5090af9e2c8c68" prot="public">
+          <name>Plus</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526af2349f50039f930d90a39a689282aaf8" prot="public">
+          <name>Cross</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526a3d4283b7785e19142f43a8d705f45128" prot="public">
+          <name>Star</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526af5af415948dea41c775febe11df59707" prot="public">
+          <name>OpenSquare</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526ab2977a42bdf7f8cafd62d56eb573d71a" prot="public">
+          <name>FilledSquare</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526a24102e043f642c5aadf0a5184838e065" prot="public">
+          <name>OpenCircle</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526a1e5a2218783d5197e73aab6b16f3add3" prot="public">
+          <name>FilledCircle</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526a163fb60ab5d5beca95d7afa4c97d6fda" prot="public">
+          <name>OpenDelta</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526abc2204e7d338e5c0f3c5b524c3250352" prot="public">
+          <name>FilledDelta</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526ae6f313a61f49260feabbe0252daebf39" prot="public">
+          <name>OpenNabla</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526ac57738c0de5dcd2b52aedd0ac353fcd8" prot="public">
+          <name>FilledNabla</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526aede7da49ec9867bc58a9883ac6f7fd12" prot="public">
+          <name>OpenDiamond</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a086efb36ddb107d45961a6b46932c526a9ba302e97b23281952e4e194387808b2" prot="public">
+          <name>FilledDiamond</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h" line="9" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h" bodystart="9" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61" prot="public" static="no" strong="no">
+        <type></type>
+        <name>ErrorCode</name>
+        <qualifiedname>JSL::ErrorCode</qualifiedname>
+        <enumvalue id="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61a0a229ef32833c9a64ed38080ba87b196" prot="public">
+          <name>JSLError</name>
+          <briefdescription>
+<para>Global error term. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61ab2e398994d8ffbb8c17109c9ec85ed30" prot="public">
+          <name>SystemError</name>
+          <briefdescription>
+<para>Used when something really went bad, like a failed <ref refid="namespaceJSL_1a5cd4ed117decf1140104ad8566b589ac" kindref="member">JSL::systemCall</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61afec2ceb4545826a8594a9dc7a7b1c702" prot="public">
+          <name>OverrunError</name>
+          <briefdescription>
+<para><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> Access overruns, bad memory requests. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61a007fec64442c721c18380cb70c51a443" prot="public">
+          <name>FailedAssertion</name>
+          <briefdescription>
+<para>As the name implies, failed assertions. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61a7da39e712d8960d161fbef3305d793a4" prot="public">
+          <name>IOError</name>
+          <briefdescription>
+<para>Errors induced by file. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61ae87e52367d118ac8a793c78a53ec9973" prot="public">
+          <name>PlottingError</name>
+          <briefdescription>
+<para>Unique error induced by <ref refid="classJSL_1_1gnuplot" kindref="compound">JSL::gnuplot</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>A list of recognised <ref refid="namespaceJSL" kindref="compound">JSL</ref> errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/error.h" line="10" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/error.h" bodystart="10" bodyend="16"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceJSL_1a2822caa026c439b483c262bb5edf30aa" prot="public" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>const bool JSL::DEFAULT_TOGGLE_VALUE</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_TOGGLE_VALUE</name>
+        <qualifiedname>JSL::DEFAULT_TOGGLE_VALUE</qualifiedname>
+        <initializer>= <ref refid="structJSL_1_1NameValuePair" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Toggle.h" line="6" column="12" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Toggle.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceJSL_1a606f5a286ccd4cf3d860d2efde2eac82" prot="public" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; std::string &gt;</type>
+        <definition>const std::vector&lt;std::string&gt; JSL::ErrorNames</definition>
+        <argsstring></argsstring>
+        <name>ErrorNames</name>
+        <qualifiedname>JSL::ErrorNames</qualifiedname>
+        <initializer>= {&quot;ERROR&quot;, &quot;SYSTEM <ref refid="structJSL_1_1NameValuePair" kindref="compound">ERROR&quot;</ref>, &quot;OVERRUN <ref refid="structJSL_1_1NameValuePair" kindref="compound">ERROR&quot;</ref>, &quot;FAILED <ref refid="structJSL_1_1NameValuePair" kindref="compound">ASSERTION&quot;</ref>,&quot;IOError&quot;, &quot;GNUPLOT <ref refid="structJSL_1_1NameValuePair" kindref="compound">ERROR&quot;</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/error.h" line="17" column="19" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/error.h" bodystart="17" bodyend="17"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceJSL_1a428e6ac7fa22e5c5aa3bceb9e17fe970" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::FindXInY</definition>
+        <argsstring>(T x, const std::vector&lt; T &gt; &amp;y)</argsstring>
+        <name>FindXInY</name>
+        <qualifiedname>JSL::FindXInY</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Gets first id such that y[id] == x, assuming that exact equality is well defined (see double override). If no such id exists, returns negative value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to be searched for</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector to search through </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The index of the first element in the array which matches x. Value is negative if no match found </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Array/VectorSearches.h" line="10" column="12" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Array/VectorSearches.h" bodystart="10" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ab806e537ccfdea16b7d194d77cdb307e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::FindXInY</definition>
+        <argsstring>(double x, const std::vector&lt; double &gt; &amp;y, double tolerance)</argsstring>
+        <name>FindXInY</name>
+        <qualifiedname>JSL::FindXInY</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>tolerance</declname>
+        </param>
+        <briefdescription>
+<para>Gets first id such that (y[id]- x)/x &lt; tolerance. If no such id exists, returns negative value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to be searched for</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector to search through</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tolerance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The fractional difference permitted between two double values for them to be declared &quot;approximately equal&quot; </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The index of the first element in the array which matches x. Value is negative if no match found </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Array/VectorSearches.h" line="23" column="12" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Array/VectorSearches.h" bodystart="23" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a1d104ebd2bbb9ec6eade1abbb59fa84e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">size_t</ref> &gt;</type>
+        <definition>std::vector&lt; size_t &gt; JSL::SortIndices</definition>
+        <argsstring>(const std::vector&lt; T &gt; &amp;v)</argsstring>
+        <name>SortIndices</name>
+        <qualifiedname>JSL::SortIndices</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the sorted index array associated with a vector - not the sorted array itself<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of objects where the less than operator is defined </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a sorted index-vector y such that v[y[0]] is the smallest value in the array, v[y[1]] is the next, and so on. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Array/VectorSearches.h" line="40" column="21" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Array/VectorSearches.h" bodystart="40" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a6e3dd386e7ab4be6fae6e0bdf8c98e91" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::UpperBoundLocator</definition>
+        <argsstring>(double val, const std::vector&lt; double &gt; &amp;valArray)</argsstring>
+        <name>UpperBoundLocator</name>
+        <qualifiedname>JSL::UpperBoundLocator</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt; &amp;</type>
+          <declname>valArray</declname>
+        </param>
+        <briefdescription>
+<para>Similar to FindXInY except where you do not expect an exact match. Searches through an (assumed sorted) vector and locates the first value greater than or equal to the target value, else returns the index of the final value in the array. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Array/VectorSearches.h" line="61" column="12" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Array/VectorSearches.h" bodystart="61" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a96050c622f5d29373cdc4a5ebb216b47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; JSL::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const Argument&lt; T &gt; a)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>JSL::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Argument" kindref="compound">Argument</ref>&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+<para>Provides an explicit instruction for how to infer outputting the arg-value. This works (temperamentally) without this function, but strings (well-known for being fiddly here) can sometimes mess it up, so providing explicit instruction works for the best. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Argument.h" line="211" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Argument.h" bodystart="211" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a405f53748ca024b70694b0534cfcf4a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::jumpLineUp</definition>
+        <argsstring>()</argsstring>
+        <name>jumpLineUp</name>
+        <qualifiedname>JSL::jumpLineUp</qualifiedname>
+        <briefdescription>
+<para>Deletes the last linebreak character, jumping the cursor up one line. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/clearScreen.h" line="7" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/clearScreen.h" bodystart="7" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a071b279ad5267ce66ff86c614952a3ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::clearScreen</definition>
+        <argsstring>()</argsstring>
+        <name>clearScreen</name>
+        <qualifiedname>JSL::clearScreen</qualifiedname>
+        <briefdescription>
+<para>Equivalent to calling the &quot;clear&quot; command on the shell, removes all text on the terminal, and returns the cursor to the home position. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/clearScreen.h" line="12" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/clearScreen.h" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ae38780f94d60045b904b289eb3ab8eda" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::deleteLine</definition>
+        <argsstring>()</argsstring>
+        <name>deleteLine</name>
+        <qualifiedname>JSL::deleteLine</qualifiedname>
+        <briefdescription>
+<para>Removes the last line of text, moving the cursor from its current position, to the beginning of the line. If you want to remove the linebreak which caused that line to exist in the first place, must be followed up with <ref refid="namespaceJSL_1a405f53748ca024b70694b0534cfcf4a3" kindref="member">jumpLineUp()</ref>. ALternatively, if a linebreak has been printed and you want to delete that line <emphasis>first</emphasis>, you must call <ref refid="namespaceJSL_1a405f53748ca024b70694b0534cfcf4a3" kindref="member">jumpLineUp()</ref> before <ref refid="namespaceJSL_1ae38780f94d60045b904b289eb3ab8eda" kindref="member">deleteLine()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/clearScreen.h" line="17" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/clearScreen.h" bodystart="17" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a47d8cb112d513ee5a3ae38ca6a89743d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::initialiseFile</definition>
+        <argsstring>(const std::string &amp;filename)</argsstring>
+        <name>initialiseFile</name>
+        <qualifiedname>JSL::initialiseFile</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a blank file at the specified location, overwriting any other file at the given location <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The file which the system will attempt to open </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" line="13" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" bodystart="13" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a838b3a913896993bc008408d164ec19d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::writeStringToFile</definition>
+        <argsstring>(const std::string &amp;filename, const std::string &amp;content)</argsstring>
+        <name>writeStringToFile</name>
+        <qualifiedname>JSL::writeStringToFile</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>content</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Opens the provided file and appends the provided string to the file, before closing it. If the file does not exist, it creates it. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target file location </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>content</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The desired string to be appended to the file (accepts control characters) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" line="26" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" bodystart="26" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a1d611217d83275af846cbc091ff98f53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::writeVectorToFile</definition>
+        <argsstring>(const std::string &amp;filename, const std::vector&lt; T &gt; &amp;contentVector, const std::string &amp;delimiter, bool includeTerminalLineBreak)</argsstring>
+        <name>writeVectorToFile</name>
+        <qualifiedname>JSL::writeVectorToFile</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>contentVector</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>delimiter</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>includeTerminalLineBreak</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>As with writeStringToFile, but accepts a vector of templated entities. The writing loops over the vector and writes them one at a time, separated by the delimiter object <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target file location </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>contentVector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of templated objects to be written to file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delimiter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The character(s) to be written after every entry of contentVector <emphasis>except</emphasis> the final entry </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>includeTerminalLineBreak</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, appends a linebreak character at the end of the vector. Useful for sequentially writing rows of data to file. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" line="42" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" bodystart="42" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a425710dc6536490f1c1d6a5ce621f0e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::writeMultiVectorToFile</definition>
+        <argsstring>(const std::string &amp;filename, const std::string &amp;delimiter, const std::vector&lt; T &gt; &amp;v1, const std::vector&lt; Ts &gt; &amp;... vecs)</argsstring>
+        <name>writeMultiVectorToFile</name>
+        <qualifiedname>JSL::writeMultiVectorToFile</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>delimiter</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>v1</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">Ts</ref> &gt; &amp;...</type>
+          <declname>vecs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>As with writeVectorToFile, but accepts arbitrary vectors of templated entities. The writing loops over the length of the vectors (which must all be the same length), and writes them sequentially, separated by the delimiter, and a linebreak at the end of each row - i.e v1[0], v2[0], v3[0], ... (linebreak) v1[1], v2[1], ... etc. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target file location </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delimiter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The character(s) to be written after every individual vecs entry <emphasis>except</emphasis> the final entry on each row, which is a linebreak. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>v1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first vector to be written to file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vecs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A variadic template for any number (including 0) of additional vectors, of any type (said type must have support for the streaming operator, &lt;&lt;). All vecs must be the same length </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" line="105" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" bodystart="105" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ae790600d9f16e338cfc8b50cd1bfc8f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::writeMatrixToFile</definition>
+        <argsstring>(const std::string &amp;filename, const std::vector&lt; std::vector&lt; T &gt; &gt; contentMatrix, const std::string &amp;columnDelimiter, const std::string &amp;rowDelimiter)</argsstring>
+        <name>writeMatrixToFile</name>
+        <qualifiedname>JSL::writeMatrixToFile</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt; &gt;</type>
+          <declname>contentMatrix</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>columnDelimiter</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>rowDelimiter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>As with writeStringToFile and writeVectorToFile, but accepts a vector&lt;vector&gt; of templated entities. The writing loops over the outer vector (the rows), and then at each step, the inner vectors(the columns). Writing them one at a time, separated by the delimiter objects. Objects need not be square matrices to be successfully written. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target file location </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>contentMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector&lt;vector&gt; of templated objects to be written to file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>columnDelimiter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The character(s) to be written after every individual entry <emphasis>except</emphasis> the final entry in each row </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rowRelimiter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The character(s) to be written at the end of each row <emphasis>including</emphasis> the final row. This will probably be a linebreak! </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" line="132" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" bodystart="132" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a245ac3bfe113c110491342bf2bb602fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class R</type>
+          </param>
+          <param>
+            <type>class S</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::writeHeatMapToFile</definition>
+        <argsstring>(const std::string &amp;filename, const std::vector&lt; R &gt; &amp;x, const std::vector&lt; S &gt; &amp;y, const std::vector&lt; std::vector&lt; T &gt; &gt; z, const std::string &amp;columnDelimiter)</argsstring>
+        <name>writeHeatMapToFile</name>
+        <qualifiedname>JSL::writeHeatMapToFile</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">R</ref> &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">S</ref> &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::vector&lt; std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">T</ref> &gt; &gt;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>columnDelimiter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A funciton similar to writeMatrix, but customised to the dumb format required for gnuplot heatmaps with their additional weird linebreak everytime the x-value changes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" line="157" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/fileWriter.h" bodystart="157" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a7885f51066f38fb013d8065b97a3013d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::jfglatex</definition>
+        <argsstring>(std::string filename, std::string compilename, bool openfile, bool quietmode)</argsstring>
+        <name>jfglatex</name>
+        <qualifiedname>JSL::jfglatex</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>compilename</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>openfile</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>quietmode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/jfglatex.h" line="8" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/jfglatex.h" bodystart="8" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1aed873f557a849265f2197aa7a98d0da4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::LineCount</definition>
+        <argsstring>(std::string file)</argsstring>
+        <name>LineCount</name>
+        <qualifiedname>JSL::LineCount</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/lineCounter.h" line="8" column="12" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/lineCounter.h" bodystart="8" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a1752cd7c6e1134da51e9307527e0d788" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::locationExists</definition>
+        <argsstring>(const std::string &amp;filename)</argsstring>
+        <name>locationExists</name>
+        <qualifiedname>JSL::locationExists</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks for the existence of the provided file location, works on both files and directories. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the name of the file or directory to be checked </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if location exists (and is accessible), false if not </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/locationExists.h" line="14" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/locationExists.h" bodystart="14" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1abf525d02b8c49f21ef7faa68b7571f93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1mkdirReturn" kindref="compound">mkdirReturn</ref></type>
+        <definition>mkdirReturn JSL::mkdir</definition>
+        <argsstring>(std::string directory)</argsstring>
+        <name>mkdir</name>
+        <qualifiedname>JSL::mkdir</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>directory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks the status of the target directory, if it does not exist, attempts to create it. Works wherever the <computeroutput>mkdir</computeroutput> command is installed. <linebreak/>
+ <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>directory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path (relative or absolute) to the desired directory </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="structJSL_1_1mkdirReturn" kindref="compound">mkdirReturn</ref> object detailing the success + associated messages for the request </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/mkdir.h" line="24" column="20" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/mkdir.h" bodystart="24" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a28ff6f134180e7d98a22629381cedc1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+        <definition>std::vector&lt; double &gt; JSL::rgb_to_hsv</definition>
+        <argsstring>(std::vector&lt; double &gt; rgb)</argsstring>
+        <name>rgb_to_hsv</name>
+        <qualifiedname>JSL::rgb_to_hsv</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+          <declname>rgb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="6" column="20" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="6" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a756feffb8dbaced50b21d33d25a416d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+        <definition>std::vector&lt; double &gt; JSL::hsv_to_rgb</definition>
+        <argsstring>(std::vector&lt; double &gt; hsv)</argsstring>
+        <name>hsv_to_rgb</name>
+        <qualifiedname>JSL::hsv_to_rgb</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+          <declname>hsv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="42" column="20" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="42" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a682c8bb3fff54370f38dcb16794fc7c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::operator==</definition>
+        <argsstring>(const Matrix &amp;lhs, const Matrix &amp;rhs)</argsstring>
+        <name>operator==</name>
+        <qualifiedname>JSL::operator==</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>An overloaded equality checker. Checks size, then checks each entry - quick for finding mismatches, but requires full sweep to confirm total equality. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first matrix</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to be compared to lhs for equality </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True, if equal, false if not </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="371" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="371" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a8b19814a4b6cb667d1e27133acc38513" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::operator!=</definition>
+        <argsstring>(const Matrix &amp;lhs, const Matrix &amp;rhs)</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>JSL::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Simply returns the inverse of the equality operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first matrix</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to be compared to lhs for equality </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>False if equal, true if not </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="392" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="392" bodyend="395"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a38d1bbf23dc57ec028ea8d91a9688957" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::MatrixSizesEqual</definition>
+        <argsstring>(const Matrix &amp;m1, const Matrix &amp;m2)</argsstring>
+        <name>MatrixSizesEqual</name>
+        <qualifiedname>JSL::MatrixSizesEqual</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>m1</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>m2</declname>
+        </param>
+        <briefdescription>
+<para>Confirms the sizes (i.e. row count and column count) of the matrices are equal. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first matrix</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to be compared to lhs for size equality </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True, if equal in size, false if not </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="398" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="398" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ad1bcc74167579ecff71209bf8c9c47a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix JSL::operator+</definition>
+        <argsstring>(const Matrix &amp;lhs, const Matrix &amp;rhs)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>JSL::operator+</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Performs obvious matrix addition (a+b)_ij = a_ij + b_ij. Throws an error if the matrices are not the same size. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first vector to be summed</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second vector to be summed (order is irrelevant) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The vector lhs + rhs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="404" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="404" bodyend="421"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a4f1a2a224c7f6a8c57627b03594cd89f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix JSL::operator-</definition>
+        <argsstring>(const Matrix &amp;lhs, const Matrix &amp;rhs)</argsstring>
+        <name>operator-</name>
+        <qualifiedname>JSL::operator-</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Performs obvious matrix subtraction (a-b)_ij = a_ij - b_ij. Throws an error if the matrices are not the same size. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first vector</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector to be subtracted from the first </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The matrix lhs - rhs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="423" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="423" bodyend="440"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ad779a68a2d565490f76dd16adfc3091e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix JSL::operator+</definition>
+        <argsstring>(const Matrix &amp;lhs, const double &amp;scalar)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>JSL::operator+</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+<para>Adds the value of scalar to every element in the matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The matrix to be summed</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar to be added element-wise </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The matrix lhs + scalar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="443" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="443" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a95d670e99aed43f857d8ba5e6f3d7897" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix JSL::operator*</definition>
+        <argsstring>(const Matrix &amp;lhs, const Matrix &amp;rhs)</argsstring>
+        <name>operator*</name>
+        <qualifiedname>JSL::operator*</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Performs standard matix multiplication, (AB)_ij = A_ik B_kj. Only works on matrices of compatible sizes, and left-right ordering matters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The left hand size of the multiplication</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>right hand side of the multiplication </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The product lhs * rhs accordingto standard matrix product rules. Size of output is lhs.Rows by rhs.Columns </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="459" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="459" bodyend="480"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a823f5e48d384320644698917c0a1c85c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::operator*</definition>
+        <argsstring>(const Matrix &amp;lhs, const Vector &amp;rhs)</argsstring>
+        <name>operator*</name>
+        <qualifiedname>JSL::operator*</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Multiplies a vector by the matrix, following the rule (Av)_i = A_ij v_j. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The matrix operating on the matrix</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector to be operated upon </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The product (lhs * rhs), which is a <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> the same size as rhs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="483" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="483" bodyend="503"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a5f6c1988cf84b088617e0f12fc1e98da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix JSL::operator+</definition>
+        <argsstring>(const double &amp;scalar, const Matrix &amp;rhs)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>JSL::operator+</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Exactly equivalent to <ref refid="namespaceJSL_1ad779a68a2d565490f76dd16adfc3091e" kindref="member">JSL::operator+(const Matrix &amp;lhs, const double &amp;scalar)</ref>, just swapped around. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar to be added element-wise</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The matrix to be summed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The scalar + rhs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="506" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="506" bodyend="509"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a6d5304adbdadcb062246266f4ece24a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix JSL::operator-</definition>
+        <argsstring>(const Matrix &amp;lhs, const double &amp;scalar)</argsstring>
+        <name>operator-</name>
+        <qualifiedname>JSL::operator-</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+<para>Subtracts the value of scalar to every element in the <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base matrix</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar to be subtracted from the base matrix element wise </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The vector lhs - scalar. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="511" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="511" bodyend="514"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a80fcd230a03dd81f1c37fec030619bf9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix JSL::operator*</definition>
+        <argsstring>(const double &amp;scalar, const Matrix &amp;rhs)</argsstring>
+        <name>operator*</name>
+        <qualifiedname>JSL::operator*</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Naive element-wise scalar multiplication. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to multiply elements by</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The matrix to multiply </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The pointwise product of the elements of rhs and the scalar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="518" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="518" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a69548e09ba5835ee87ac4d28907b5435" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix JSL::operator*</definition>
+        <argsstring>(const Matrix &amp;lhs, const double &amp;scalar)</argsstring>
+        <name>operator*</name>
+        <qualifiedname>JSL::operator*</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+<para>Alias of <ref refid="namespaceJSL_1a5f6c1988cf84b088617e0f12fc1e98da" kindref="member">JSL::operator+(const double &amp;scalar,const Matrix &amp;rhs)</ref> with the operation order swapped around. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The matrix to multiply</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to multiply elements by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The pointwise product of the elements of lhs and the scalar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="533" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="533" bodyend="536"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ab1f3153179f59c59a0c2a5e553889eb1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix JSL::operator/</definition>
+        <argsstring>(const Matrix &amp;lhs, const double &amp;scalar)</argsstring>
+        <name>operator/</name>
+        <qualifiedname>JSL::operator/</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+<para>Essentially an alias for <ref refid="namespaceJSL_1a5f6c1988cf84b088617e0f12fc1e98da" kindref="member">JSL::operator+(const double &amp;scalar,const Matrix &amp;rhs)</ref> with the scalar set to one-over itself, i.e. pointwise division of the provided matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The matrix to divide</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to divide elements by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The pointwise divisor of the elements of lhs and the scalar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="539" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="539" bodyend="546"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1aebaffa5dc8073b816908a9708a36b7bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix JSL::operator-</definition>
+        <argsstring>(const double &amp;scalar, const Matrix &amp;rhs)</argsstring>
+        <name>operator-</name>
+        <qualifiedname>JSL::operator-</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>A slightly odd operation (included for completeness) - adds the value of scalar to the negative of the elements of the vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value which acts as a base</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector which will be subtracted elementwise from the base scalar </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The vector scalar - rhs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="548" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="548" bodyend="551"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a7e357c34e91d1eb03c15ca437a285ea1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; JSL::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const Matrix &amp;obj)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>JSL::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Calls <ref refid="classJSL_1_1Matrix_1abcf44559767ab6939851f0d3b60c6fa8" kindref="member">JSL::Matrix::to_string()</ref> and then passes it to the provided stream, enabling sweet, smooth output such as std::cout &lt;&lt; M &lt;&lt; std::endl. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream capable of parsing strings</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="classJSL_1_1Matrix" kindref="compound">Matrix</ref> object to be inserted into the stream for output </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the modified stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" line="555" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/matrix.h" bodystart="555" bodyend="559"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a017f24cfdf73ecc218aab718c1badd89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+        <definition>double JSL::FractionBounder</definition>
+        <argsstring>(double a)</argsstring>
+        <name>FractionBounder</name>
+        <qualifiedname>JSL::FractionBounder</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+<para>A useful function when one knows a value needs to be between 0 and 1. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to be tested </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>min(max(0,a),1), i.e., if 0 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/MiscFunctions.h" line="6" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/MiscFunctions.h" bodystart="6" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1aeae64b7e0cfdc1ab5f35cca90c32d9f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+        <definition>double JSL::VectorDotProduct</definition>
+        <argsstring>(const Vector &amp;lhs, const Vector &amp;rhs)</argsstring>
+        <name>VectorDotProduct</name>
+        <qualifiedname>JSL::VectorDotProduct</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>The standard dot product on R^n. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> 1,</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> 2 (order irrelevant) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The sum (lhs_i * rhs_i) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="486" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="486" bodyend="498" declfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" declline="15" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1aa7816eb0cd81b74241ce460237990e70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::VectorCrossProduct</definition>
+        <argsstring>(const Vector &amp;lhs, const Vector &amp;rhs)</argsstring>
+        <name>VectorCrossProduct</name>
+        <qualifiedname>JSL::VectorCrossProduct</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>The standard cross product <ndash/> only defined on R^3 (throws an error else) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> 1</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> 2 (order relevant - using standard conventions <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> 1 x <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> 2) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> cross product of inputs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="501" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="501" bodyend="516" declfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" declline="16" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a09355c91f84fd99d4634bf9189fef51d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+        <definition>double JSL::AngleBetweenVectors</definition>
+        <argsstring>(const Vector &amp;lhs, const Vector &amp;rhs)</argsstring>
+        <name>AngleBetweenVectors</name>
+        <qualifiedname>JSL::AngleBetweenVectors</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Uses <ref refid="classJSL_1_1Vector_1aa8af717591f5548ff471b6e4b28d7f9c" kindref="member">Vector::Norm()</ref> and <ref refid="namespaceJSL_1aeae64b7e0cfdc1ab5f35cca90c32d9f6" kindref="member">VectorDotProduct()</ref> to extract an angle between the vectors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> 1,</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> 2 (order irrelevant) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The angle between the two vectors (between 0 and M_PI) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="519" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="519" bodyend="532" declfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" declline="17" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a7fad54be308ccb76f68933d91c3c542f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::operator==</definition>
+        <argsstring>(const Vector &amp;lhs, const Vector &amp;rhs)</argsstring>
+        <name>operator==</name>
+        <qualifiedname>JSL::operator==</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="355" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="355" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a394a4f9cee0747c76d1190b0365c7b5a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::operator!=</definition>
+        <argsstring>(const Vector &amp;lhs, const Vector &amp;rhs)</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>JSL::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="372" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="372" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ae6530b77174d0dfae8e0d6e2a810f672" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::operator+</definition>
+        <argsstring>(const Vector &amp;lhs, const Vector &amp;rhs)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>JSL::operator+</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Performs obvious vector addition (a+b)_i = a_i + b_i. Throws an error if the vectors are not the same size. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first vector to be summed</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second vector to be summed (order is irrelevant) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The vector lhs + rhs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="378" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="378" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a1d8393f2865dc23e7975ad041e341ba5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::operator-</definition>
+        <argsstring>(const Vector &amp;lhs, const Vector &amp;rhs)</argsstring>
+        <name>operator-</name>
+        <qualifiedname>JSL::operator-</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Performs obvious vector subtraction (a-b)_i = a_i - b_i. Throws an error if the vectors are not the same size. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base vector</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector to be subtracted from the base vector (order does matter!) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The vector lhs - rhs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="394" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="394" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a4b293e2ac3df51113e80022cb3c2ac99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::operator+</definition>
+        <argsstring>(const Vector &amp;lhs, const double &amp;scalar)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>JSL::operator+</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+<para>Adds the value of scalar to every element in the vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector to be summed</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar to be added element-wise </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The vector lhs + scalar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="411" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="411" bodyend="421"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ac5ceabb8b9e657c5e2d0faf9b20a36e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::operator+</definition>
+        <argsstring>(const double &amp;scalar, const Vector &amp;rhs)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>JSL::operator+</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Exactly equivalent to <ref refid="namespaceJSL_1a4b293e2ac3df51113e80022cb3c2ac99" kindref="member">JSL::operator+(const Vector &amp;lhs, const double &amp;scalar)</ref>, just swapped around. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar to be added element-wise</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector to be summed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The scalar + rhs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="424" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="424" bodyend="427"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ac6bd9311dd73aa6227d826bdb94e748d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::operator-</definition>
+        <argsstring>(const Vector &amp;lhs, const double &amp;scalar)</argsstring>
+        <name>operator-</name>
+        <qualifiedname>JSL::operator-</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+<para>Subtracts the value of scalar to every element in the vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base vector</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar to be subtracted from the base vector element wise </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The vector lhs - scalar. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="429" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="429" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ab3d17c5cc03a2048e8637d2054fbc138" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::operator-</definition>
+        <argsstring>(const double &amp;scalar, const Vector &amp;rhs)</argsstring>
+        <name>operator-</name>
+        <qualifiedname>JSL::operator-</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>A slightly odd operation (included for completeness) - adds the value of scalar to the negative of the elements of the vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value which acts as a base</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector which will be subtracted elementwise from the base scalar </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The vector scalar - rhs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="435" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="435" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ab4eefbed468f275164855895335b8a29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::operator*</definition>
+        <argsstring>(const double &amp;scalar, const Vector &amp;rhs)</argsstring>
+        <name>operator*</name>
+        <qualifiedname>JSL::operator*</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Naive element-wise scalar multiplication. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to multiply elements by</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector to multiply </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The pointwise product of the elements of rhs and the scalar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="448" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="448" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1afc5e092de4a9bdc5795d40ee0f51c7b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::operator*</definition>
+        <argsstring>(const Vector &amp;lhs, const double &amp;scalar)</argsstring>
+        <name>operator*</name>
+        <qualifiedname>JSL::operator*</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+<para>Alias of <ref refid="namespaceJSL_1ac5ceabb8b9e657c5e2d0faf9b20a36e8" kindref="member">JSL::operator+(const double &amp;scalar,const Vector &amp;rhs)</ref> with the operation order swapped around. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector to multiply</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to multiply elements by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The pointwise product of the elements of lhs and the scalar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="459" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="459" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a1427fd44260592b7d65d27946969fba1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::operator/</definition>
+        <argsstring>(const Vector &amp;lhs, const double &amp;scalar)</argsstring>
+        <name>operator/</name>
+        <qualifiedname>JSL::operator/</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &amp;</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+<para>Essentially an alias for <ref refid="namespaceJSL_1ac5ceabb8b9e657c5e2d0faf9b20a36e8" kindref="member">JSL::operator+(const double &amp;scalar,const Vector &amp;rhs)</ref> with the scalar set to one-over itself, i.e. pointwise division of the provided vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector to divide</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to divide elements by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The pointwise divisor of the elements of lhs and the scalar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="465" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="465" bodyend="472"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a6fd4487b0a8ac5713df4a37079287913" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::Hadamard</definition>
+        <argsstring>(const Vector &amp;lhs, const Vector &amp;rhs)</argsstring>
+        <name>Hadamard</name>
+        <qualifiedname>JSL::Hadamard</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Executes the pointwise (Hadamard) product of two vectors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first vector to be multiplied</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second vector to be multiplied (order is irrelevant) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The vector (lhs * rhs)_i = lhs_i * rhs_i </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="475" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="475" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ad01cc2984ad2ce5a85fb31960835dd04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; JSL::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const Vector &amp;obj)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>JSL::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Calls <ref refid="classJSL_1_1Vector_1a73579b4a194cc924341806a5d9ea3817" kindref="member">JSL::Vector::to_string()</ref> and then passes it to the provided stream, enabling sweet, smooth output such as std::cout &lt;&lt; v1 &lt;&lt; std::endl. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream capable of parsing strings</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector object to be inserted into the stream for output </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the modified stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="535" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="535" bodyend="539"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a941b0093a8d1298a0dc0c4403f63a826" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::ElementWiseOperation</definition>
+        <argsstring>(Vector input, double(*function)(double))</argsstring>
+        <name>ElementWiseOperation</name>
+        <qualifiedname>JSL::ElementWiseOperation</qualifiedname>
+        <param>
+          <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref>(*)(<ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref>)</type>
+          <declname>function</declname>
+        </param>
+        <briefdescription>
+<para>A nice way to perform a simple function on every element of a vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector on which the operation will be performed</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>function</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a funciton which accepts and returns a double. Can also be a lambda function. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The vector y such that y_i = f(x_i) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="542" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="542" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a84d56be27b8b9b13e6ab8a3c61236ee3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::log10</definition>
+        <argsstring>(const Vector &amp;input)</argsstring>
+        <name>log10</name>
+        <qualifiedname>JSL::log10</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="552" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="552" bodyend="560"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a66c1c8f6c27fe101b0731477de5535b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref></type>
+        <definition>Vector JSL::power</definition>
+        <argsstring>(double base, const Vector &amp;exponent)</argsstring>
+        <name>power</name>
+        <qualifiedname>JSL::power</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> <ref refid="classJSL_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>exponent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" line="562" column="15" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Maths/vector.h" bodystart="562" bodyend="571"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1aa37a5ffd99a34e2f12377c9f00b31c50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; JSL::split</definition>
+        <argsstring>(const std::string &amp;s, char delimiter)</argsstring>
+        <name>split</name>
+        <qualifiedname>JSL::split</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">char</ref></type>
+          <declname>delimiter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Splits the string based on the chosen delimiter. Repeated delimiters are ignored. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input string to be split (unchanged) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delimiter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delimiting character </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector of non-empty strings. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/split.h" line="14" column="20" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/split.h" bodystart="14" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ae58b7096986a16b70a27e1609eff3014" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string JSL::CurrentTime</definition>
+        <argsstring>()</argsstring>
+        <name>CurrentTime</name>
+        <qualifiedname>JSL::CurrentTime</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get current system time in a readable format (note: was previously called PrintCurrentTime) <simplesect kind="return"><para>A string of the readable format <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/Time.h" line="16" column="20" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/Time.h" bodystart="16" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ad7ff2220bbab0294b95b9aa85332a222" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string JSL::FormatDuration</definition>
+        <argsstring>(int timeInSeconds)</argsstring>
+        <name>FormatDuration</name>
+        <qualifiedname>JSL::FormatDuration</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>timeInSeconds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Given a duration in seconds, convert it into standard Day/Hour/Minute/Second formatted string. Times less than 1 second are reported as &quot;less than 1 second&quot; <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeInSeconds</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The time to be converted </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A human-readable string equal to the input </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/Time.h" line="31" column="20" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/Time.h" bodystart="31" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ae7af96a0311784e019209221335f76d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string JSL::FormatClock</definition>
+        <argsstring>(std::chrono::time_point&lt; std::chrono::system_clock &gt; start, std::chrono::time_point&lt; std::chrono::system_clock &gt; end)</argsstring>
+        <name>FormatClock</name>
+        <qualifiedname>JSL::FormatClock</qualifiedname>
+        <param>
+          <type>std::chrono::time_point&lt; std::chrono::system_clock &gt;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>std::chrono::time_point&lt; std::chrono::system_clock &gt;</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calls <ref refid="namespaceJSL_1ad7ff2220bbab0294b95b9aa85332a222" kindref="member">FormatDuration()</ref> on the duration of the start and endpoints of a <computeroutput>chrono</computeroutput> stopwatch. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <computeroutput>chrono</computeroutput> object representing the start of the duration </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The corresponding end-point <computeroutput>chrono</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/Time.h" line="73" column="20" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Strings/Time.h" bodystart="73" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Assert</definition>
+        <argsstring>(std::string assertionMessage, Ts... args)</argsstring>
+        <name>Assert</name>
+        <qualifiedname>JSL::Assert</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>assertionMessage</declname>
+        </param>
+        <param>
+          <type>Ts...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A function which checks that a stated set of conditions are met, and throws a <ref refid="namespaceJSL_1a5783bc90550deca94c1790e581fb707d" kindref="member">JSL::Error</ref> if they are not. Variadic function, and so accepts an arbitrary number of conditions without impact on runtime.<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>assertionMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message that gets printed out if the assertion fails. Also useful for internal documentation of code</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of booleans to be checked </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/assert.h" line="30" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/assert.h" bodystart="30" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a5783bc90550deca94c1790e581fb707d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Error</definition>
+        <argsstring>(ErrorCode code, const std::string &amp;message)</argsstring>
+        <name>Error</name>
+        <qualifiedname>JSL::Error</qualifiedname>
+        <param>
+          <type><ref refid="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61" kindref="member">ErrorCode</ref></type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An easy way to package throwing errors using the throw command.<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>One of <ref refid="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61" kindref="member">JSL::ErrorCode</ref> to help identify the cause</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The output message </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/error.h" line="22" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/error.h" bodystart="22" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a0241a3cc1fa4dd4d319ab8686d1cfaa3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::Error</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>Error</name>
+        <qualifiedname>JSL::Error</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>The default version of <ref refid="namespaceJSL_1a5783bc90550deca94c1790e581fb707d" kindref="member">Error(ErrorCode code, const std::string &amp; message)</ref>, throwing <ref refid="namespaceJSL_1a5059dbafa288b9b3beac1746f4acae61a0a229ef32833c9a64ed38080ba87b196" kindref="member">JSL::JSLError</ref> as the identifier code. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The error message passed to the throw command. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/error.h" line="29" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/error.h" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1addbf4a35e1d5a856d7c301e1e5829c2f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+        <definition>bool JSL::PipedInputFound</definition>
+        <argsstring>()</argsstring>
+        <name>PipedInputFound</name>
+        <qualifiedname>JSL::PipedInputFound</qualifiedname>
+        <briefdescription>
+<para>An alias for an isatty command, given a easier to remember name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the program called with piped input (either via | or &lt;). Does not work on Windows. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/readPipe.h" line="33" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/readPipe.h" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ac54b96d9c3678069d34aa56f4a3b3a0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string JSL::readPipedInputString</definition>
+        <argsstring>()</argsstring>
+        <name>readPipedInputString</name>
+        <qualifiedname>JSL::readPipedInputString</qualifiedname>
+        <briefdescription>
+<para>Performs the most basic readin --&gt; saves the piped input to a string, and returns it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/readPipe.h" line="39" column="20" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/readPipe.h" bodystart="39" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1ae48b92e64fb9d321121df976b770efa6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::rm</definition>
+        <argsstring>(std::string location, bool recursive)</argsstring>
+        <name>rm</name>
+        <qualifiedname>JSL::rm</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>location</declname>
+        </param>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">bool</ref></type>
+          <declname>recursive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calls a system-rm on the provided location, and attempts to remove it. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target location on which rm is called </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>recursive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, appends -r to the command, and so removes all subdirectories etc. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/rm.h" line="15" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/rm.h" bodystart="15" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceJSL_1a5cd4ed117decf1140104ad8566b589ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::systemCall</definition>
+        <argsstring>(const std::string &amp;command)</argsstring>
+        <name>systemCall</name>
+        <qualifiedname>JSL::systemCall</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+<para>Uses C++&apos;s std::system to run a command given by the inpt string, and checks for errors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The command to be executed by the system&apos;s default command processor (/bin/bash, cmd.exe etc) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/systemCall.h" line="9" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/systemCall.h" bodystart="9" bodyend="17"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Array/VectorSearches.h" line="6" column="1"/>
+  </compounddef>
+</doxygen>

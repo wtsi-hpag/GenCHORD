@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['dash_0',['Dash',['../namespaceJSL.html#acbabfae0b320d418d49485b7c50bc355a5d77703e9d097677886b897d9a2eeb62',1,'JSL']]],
+  ['dashdot_1',['DashDot',['../namespaceJSL.html#acbabfae0b320d418d49485b7c50bc355af0b887cb0d75c330317bc843146bfc92',1,'JSL']]],
+  ['dashdotdot_2',['DashDotDot',['../namespaceJSL.html#acbabfae0b320d418d49485b7c50bc355a48afd9609abb3d990c826b2c74850d3e',1,'JSL']]],
+  ['dashtype_3',['dashType',['../classJSL_1_1PlotData.html#ab84555b21166659535d130f84ac74b42',1,'JSL::PlotData']]],
+  ['data_4',['data',['../classJSL_1_1Vector.html#aec102ab8391080ddaedeb4605ef40c5c',1,'JSL::Vector::Data'],['../structData.html',1,'Data'],['../classJSL_1_1Axis.html#a493f7f5899d5e867ade59af8e10e95bd',1,'JSL::Axis::Data'],['../classJSL_1_1Matrix.html#a446d23ba93238f3e2dfc79a3a4d5eb7e',1,'JSL::Matrix::Data'],['../structData.html#a02a051ae029483d76facd0d7916f5305',1,'Data::Data()'],['../classLogFactorial.html#a1e3e2197f809b03f1baa84355d8f1261',1,'LogFactorial::Data'],['../classErroredBinomial.html#ac039018ba0cd2611010528dfafdfc4b5',1,'ErroredBinomial::Data'],['../structData.html#af11f741cb7f587e2e495452a8905a22a',1,'Data::Data()']]],
+  ['data_2eh_5',['data.h',['../data_8h.html',1,'']]],
+  ['datacopy_6',['DataCopy',['../classDistributor.html#a7e30d51de95f0a7633d85302a34fbc44',1,'Distributor']]],
+  ['datadir_7',['DataDir',['../classJSL_1_1Axis.html#a01db63a8d0674c821172dd3bc720fc7e',1,'JSL::Axis']]],
+  ['datafile_8',['datafile',['../classTreeMeta.html#a6a90e91eb62f64b52ae8153408260574',1,'TreeMeta::DataFile'],['../classSettings.html#a5c971192e52358765e2f659e76d0c201',1,'Settings::DataFile']]],
+  ['dataidx_9',['DataIdx',['../classJSL_1_1Axis.html#acca070c88101d07fd42e35a606849e1f',1,'JSL::Axis']]],
+  ['datalocation_10',['DataLocation',['../classJSL_1_1PlotData.html#a59b333717ba98216efcd19499eacc6d9',1,'JSL::PlotData']]],
+  ['datathinning_11',['DataThinning',['../classSettings.html#a6d01f3557bf7da203fbfbaffc19d84da',1,'Settings']]],
+  ['default_5ftoggle_5fvalue_12',['DEFAULT_TOGGLE_VALUE',['../namespaceJSL.html#a2822caa026c439b483c262bb5edf30aa',1,'JSL']]],
+  ['defaultinit_13',['DefaultInit',['../classJSL_1_1PlotData.html#ab25bd54000960736d1c2687fc52b8bcc',1,'JSL::PlotData']]],
+  ['defaultsize_14',['defaultSize',['../classJSL_1_1gnuplot.html#a2426c9fb055e1c69503166958602e2de',1,'JSL::gnuplot']]],
+  ['deleteline_15',['deleteLine',['../namespaceJSL.html#ae38780f94d60045b904b289eb3ab8eda',1,'JSL']]],
+  ['deviation_16',['Deviation',['../structData.html#a2feb9fa7a6e490c8b083abfee01c7fd2',1,'Data']]],
+  ['dirname_17',['DirName',['../classJSL_1_1gnuplot.html#a200e2b9b95ccd38d4f8e019c594b318f',1,'JSL::gnuplot']]],
+  ['display_2eh_18',['Display.h',['../Display_8h.html',1,'']]],
+  ['distributor_19',['distributor',['../classDistributor.html#abd21bd9d68f5757f1631247984fcb74c',1,'Distributor::Distributor()'],['../classDistributor.html',1,'Distributor']]],
+  ['distributor_2eh_20',['Distributor.h',['../Distributor_8h.html',1,'']]],
+  ['dmu_21',['dMu',['../classNegativeBinomial.html#a6dded189af1c3d6185b6edb67eb8bc68',1,'NegativeBinomial']]],
+  ['dot_22',['dot',['../classJSL_1_1Vector.html#a60660b5a26e0ddace46f31699834b671',1,'JSL::Vector::Dot()'],['../namespaceJSL.html#a086efb36ddb107d45961a6b46932c526a7d6491e51b0151fad51114bdc9fe0006',1,'JSL::Dot']]],
+  ['dotted_23',['Dotted',['../namespaceJSL.html#acbabfae0b320d418d49485b7c50bc355ac3cd9b153ce73b7d8dd0485ae186379d',1,'JSL']]]
+];

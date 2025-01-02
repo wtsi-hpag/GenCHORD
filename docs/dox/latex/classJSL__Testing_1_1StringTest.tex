@@ -1,0 +1,78 @@
+\doxysection{JSL\+\_\+\+Testing\+::String\+Test Class Reference}
+\hypertarget{classJSL__Testing_1_1StringTest}{}\label{classJSL__Testing_1_1StringTest}\index{JSL\_Testing::StringTest@{JSL\_Testing::StringTest}}
+
+
+{\ttfamily \#include $<$Testing\+\_\+\+Unit\+Tests.\+h$>$}
+
+Inheritance diagram for JSL\+\_\+\+Testing\+::String\+Test\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classJSL__Testing_1_1StringTest}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJSL__Testing_1_1StringTest_a5be5ef071697a4e106c1a1e51ded1cf6}{String\+Test}} ()
+\item 
+void \mbox{\hyperlink{classJSL__Testing_1_1StringTest_ada0409cd10e3f09788994a9115331ff7}{Run\+\_\+\+Test}} ()
+\begin{DoxyCompactList}\small\item\em All children which want to take advantage of the \doxylink{classJSL_1_1UnitTest_aabec19b081be8a428f12e4b5e3dc2a9c}{Buffered\+Test()} command should have the bulk of their testing within this command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classJSL_1_1UnitTest}{JSL\+::\+Unit\+Test}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJSL_1_1UnitTest_aa3bc8d5c99696d5bc6e63b8da358a0ed}{Unit\+Test}} ()
+\begin{DoxyCompactList}\small\item\em Constructor class. Initialises the system to a failing state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1UnitTest_aabec19b081be8a428f12e4b5e3dc2a9c}{Buffered\+Test}} ()
+\begin{DoxyCompactList}\small\item\em Calls the overridden function \doxylink{classJSL_1_1UnitTest_aa8369ab1ce2a537bff2ea7e1c8818490}{Run\+\_\+\+Test()} within a try-\/catch loop. Provides an extra level of safety and diagnostics for any unhandled exceptions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1UnitTest_a39e1076dd985334ce21606ae2a383f70}{Results}} ()
+\begin{DoxyCompactList}\small\item\em Prints the results of the testing to the terminal and prints the contents of Message\+Buffer line-\/by-\/line. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Data Fields inherited from \mbox{\hyperlink{classJSL_1_1UnitTest}{JSL\+::\+Unit\+Test}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classJSL_1_1UnitTest_a53c19424147e72fa6392470627f15049}{Name}}
+\begin{DoxyCompactList}\small\item\em The name by which the \doxylink{classJSL_1_1UnitTest}{Unit\+Test} refers to itself. This should be fairly descriptive, to help locating the failing unit test (don\textquotesingle{}t give them all the same name!) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1UnitTest_afac1f363a8406fad39316ee772a837a9}{Passed}}
+\begin{DoxyCompactList}\small\item\em If true, the \doxylink{classJSL_1_1UnitTest}{Unit\+Test} is considered successful, and no errors are thrown. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{classJSL_1_1UnitTest_a54dc4908d757c7f523be12a4275e595c}{Non\+Critical\+Failure}}
+\begin{DoxyCompactList}\small\item\em If true, the \doxylink{classJSL_1_1UnitTest}{Unit\+Test} will only throw warnings, rather than exist, when an error is encountered. Default is false. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classJSL_1_1UnitTest_a3dcc71e7e8f72f0f07b8fc552b777ad8}{Message\+Buffer}}
+\begin{DoxyCompactList}\small\item\em A message buffer which is output when \doxylink{classJSL_1_1UnitTest_a39e1076dd985334ce21606ae2a383f70}{Results()} is called, giving updates on the progress of the test. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classJSL_1_1UnitTest}{JSL\+::\+Unit\+Test}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1UnitTest_a3629d1bca071da7a2af6b7de29be1430}{basic\+Condition\+Check}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{condition}}, std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{successmessage}}, std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{failuremessage}})
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{classJSL_1_1UnitTest_a53ede0c6b420eaf64faf752c0518340e}{basic\+Condition\+Check}} (\mbox{\hyperlink{structJSL_1_1NameValuePair}{bool}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{condition}}, std\+::string \mbox{\hyperlink{structJSL_1_1NameValuePair}{message\+Framework}})
+\begin{DoxyCompactList}\small\item\em An override of the other function, preventing dual-\/typing of basic output messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classJSL__Testing_1_1StringTest_a5be5ef071697a4e106c1a1e51ded1cf6}\label{classJSL__Testing_1_1StringTest_a5be5ef071697a4e106c1a1e51ded1cf6} 
+\index{JSL\_Testing::StringTest@{JSL\_Testing::StringTest}!StringTest@{StringTest}}
+\index{StringTest@{StringTest}!JSL\_Testing::StringTest@{JSL\_Testing::StringTest}}
+\doxysubsubsection{\texorpdfstring{StringTest()}{StringTest()}}
+{\footnotesize\ttfamily JSL\+\_\+\+Testing\+::\+String\+Test\+::\+String\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classJSL__Testing_1_1StringTest_ada0409cd10e3f09788994a9115331ff7}\label{classJSL__Testing_1_1StringTest_ada0409cd10e3f09788994a9115331ff7} 
+\index{JSL\_Testing::StringTest@{JSL\_Testing::StringTest}!Run\_Test@{Run\_Test}}
+\index{Run\_Test@{Run\_Test}!JSL\_Testing::StringTest@{JSL\_Testing::StringTest}}
+\doxysubsubsection{\texorpdfstring{Run\_Test()}{Run\_Test()}}
+{\footnotesize\ttfamily void JSL\+\_\+\+Testing\+::\+String\+Test\+::\+Run\+\_\+\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+All children which want to take advantage of the \doxylink{classJSL_1_1UnitTest_aabec19b081be8a428f12e4b5e3dc2a9c}{Buffered\+Test()} command should have the bulk of their testing within this command. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classJSL_1_1UnitTest_aa8369ab1ce2a537bff2ea7e1c8818490}{JSL\+::\+Unit\+Test}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/libs/\+JSL/\+Testing/\mbox{\hyperlink{Testing__UnitTests_8h}{Testing\+\_\+\+Unit\+Tests.\+h}}\end{DoxyCompactItemize}

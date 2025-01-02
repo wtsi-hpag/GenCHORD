@@ -1,0 +1,698 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="NegativeBinomial_8h" kind="file" language="C++">
+    <compoundname>NegativeBinomial.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes refid="logFactorial_8h" local="yes">logFactorial.h</includes>
+    <includes refid="basicFunctions_8h" local="yes">basicFunctions.h</includes>
+    <includes local="no">iostream</includes>
+    <includes refid="Distributor_8h" local="yes">Distributor.h</includes>
+    <includes local="no">algorithm</includes>
+    <includedby refid="HarmonicFunctions_8h" local="yes">/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h</includedby>
+    <includedby refid="harmonicFit_8h" local="yes">/Users/jf20/Documents/Genomics/Deforest/src/harmonicFit.h</includedby>
+    <incdepgraph>
+      <node id="50">
+        <label>Array/Array.h</label>
+        <link refid="Array_8h"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>VectorSearches.h</label>
+        <link refid="VectorSearches_8h"/>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>Argument.h</label>
+        <link refid="Argument_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>CommandArgs/CommandArgs.h</label>
+        <link refid="CommandArgs_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>Toggle.h</label>
+        <link refid="Toggle_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>Display/Display.h</label>
+        <link refid="Display_8h"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>PredictionBar.h</label>
+        <link refid="PredictionBar_8h"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>ProgressBar.h</label>
+        <link refid="ProgressBar_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>clearScreen.h</label>
+        <link refid="clearScreen_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>FileIO/FileIO.h</label>
+        <link refid="FileIO_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>LineReader.h</label>
+        <link refid="LineReader_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>fileWriter.h</label>
+        <link refid="fileWriter_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>jfglatex.h</label>
+        <link refid="jfglatex_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>lineCounter.h</label>
+        <link refid="lineCounter_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>../FileIO/locationExists.h</label>
+        <link refid="locationExists_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>mkdir.h</label>
+        <link refid="mkdir_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>JSL.h</label>
+        <link refid="JSL_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>Maths/Maths.h</label>
+        <link refid="Maths_8h"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>MiscFunctions.h</label>
+        <link refid="MiscFunctions_8h"/>
+      </node>
+      <node id="47">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>vector.h</label>
+        <link refid="vector_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>Strings/Strings.h</label>
+        <link refid="Strings_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>Time.h</label>
+        <link refid="Time_8h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>../Strings/split.h</label>
+        <link refid="split_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>../System/System.h</label>
+        <link refid="System_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>error.h</label>
+        <link refid="error_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>readPipe.h</label>
+        <link refid="readPipe_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>rm.h</label>
+        <link refid="rm_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>systemCall.h</label>
+        <link refid="systemCall_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>PlotData.h</label>
+        <link refid="PlotData_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>axis.h</label>
+        <link refid="axis_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>colorArray.h</label>
+        <link refid="colorArray_8h"/>
+      </node>
+      <node id="53">
+        <label>gnuplot/gnuplot.h</label>
+        <link refid="gnuplot_8h"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>gnuplotMain.h</label>
+        <link refid="gnuplotMain_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Distributor.h</label>
+        <link refid="Distributor_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>HarmonicFunctions.h</label>
+        <link refid="HarmonicFunctions_8h"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h</label>
+        <link refid="NegativeBinomial_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>Transitions.h</label>
+        <link refid="Transitions_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>basicFunctions.h</label>
+        <link refid="basicFunctions_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>data.h</label>
+        <link refid="data_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>logFactorial.h</label>
+        <link refid="logFactorial_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>settings.h</label>
+        <link refid="settings_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>algorithm</label>
+      </node>
+      <node id="48">
+        <label>cassert</label>
+      </node>
+      <node id="38">
+        <label>chrono</label>
+      </node>
+      <node id="43">
+        <label>cmath</label>
+      </node>
+      <node id="20">
+        <label>dirent.h</label>
+      </node>
+      <node id="15">
+        <label>fstream</label>
+      </node>
+      <node id="32">
+        <label>iomanip</label>
+      </node>
+      <node id="6">
+        <label>iostream</label>
+      </node>
+      <node id="34">
+        <label>limits</label>
+      </node>
+      <node id="4">
+        <label>math.h</label>
+      </node>
+      <node id="9">
+        <label>mutex</label>
+      </node>
+      <node id="52">
+        <label>numeric</label>
+      </node>
+      <node id="46">
+        <label>ostream</label>
+      </node>
+      <node id="62">
+        <label>random</label>
+      </node>
+      <node id="17">
+        <label>sstream</label>
+      </node>
+      <node id="23">
+        <label>stdexcept</label>
+      </node>
+      <node id="11">
+        <label>string</label>
+      </node>
+      <node id="31">
+        <label>string.h</label>
+      </node>
+      <node id="22">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="8">
+        <label>thread</label>
+      </node>
+      <node id="28">
+        <label>unistd.h</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h</label>
+        <link refid="Distributor_8h"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h</label>
+        <link refid="HarmonicFunctions_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h</label>
+        <link refid="NegativeBinomial_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/harmonicFit.h</label>
+        <link refid="harmonicFit_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classNegativeBinomial" prot="public">NegativeBinomial</innerclass>
+    <innerclass refid="classTruncatedGaussian" prot="public">TruncatedGaussian</innerclass>
+    <innerclass refid="structEB__Bracket" prot="public">EB_Bracket</innerclass>
+    <innerclass refid="classErroredBinomial" prot="public">ErroredBinomial</innerclass>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="NegativeBinomial_8h_1ab100bf2217331ec3cb44188c833e7df4" prot="public" static="no" extern="yes" mutable="no">
+        <type>int</type>
+        <definition>int nWorkers</definition>
+        <argsstring></argsstring>
+        <name>nWorkers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="52" column="12" declfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" declline="52" declcolumn="12"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logFactorial_8h" kindref="compound">logFactorial.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="basicFunctions_8h" kindref="compound">basicFunctions.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Distributor_8h" kindref="compound">Distributor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDistributor" kindref="compound">Distributor</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classNegativeBinomial" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classNegativeBinomial" kindref="compound">NegativeBinomial</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14" refid="classNegativeBinomial_1a63b682b73f10b071eab47233ddcd331b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classNegativeBinomial_1a63b682b73f10b071eab47233ddcd331b" kindref="member">Sigma</ref>;</highlight></codeline>
+<codeline lineno="15" refid="classNegativeBinomial_1a374f8d76d604ae2c0a256c1edfa9571e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classNegativeBinomial_1a374f8d76d604ae2c0a256c1edfa9571e" kindref="member">Kmax</ref>;</highlight></codeline>
+<codeline lineno="16" refid="classNegativeBinomial_1a975162aa6b403530a8b1a04f7d3c7844" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLogFactorial" kindref="compound">LogFactorial</ref><sp/><ref refid="classNegativeBinomial_1a975162aa6b403530a8b1a04f7d3c7844" kindref="member">LogFac</ref>;</highlight></codeline>
+<codeline lineno="17" refid="classNegativeBinomial_1ab53adc81020714e4ade9d139c8d6dca9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classNegativeBinomial_1ab53adc81020714e4ade9d139c8d6dca9" kindref="member">Resolution</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19" refid="classNegativeBinomial_1a6dded189af1c3d6185b6edb67eb8bc68" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classNegativeBinomial_1a6dded189af1c3d6185b6edb67eb8bc68" kindref="member">dMu</ref>;</highlight></codeline>
+<codeline lineno="20" refid="classNegativeBinomial_1a906b226360d91cbd7c43380efac888a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classNegativeBinomial_1a906b226360d91cbd7c43380efac888a3" kindref="member">muMax</ref>;</highlight></codeline>
+<codeline lineno="21" refid="classNegativeBinomial_1a5762d7a6445d95dfb90624803c70a695" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;double&gt;&gt;<sp/><ref refid="classNegativeBinomial_1a5762d7a6445d95dfb90624803c70a695" kindref="member">PureData</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23" refid="classNegativeBinomial_1aeaf581ddff07d64f873df05b4c012207" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNegativeBinomial_1aeaf581ddff07d64f873df05b4c012207" kindref="member">NegativeBinomial</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kMax,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resolution,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>maxMu);</highlight></codeline>
+<codeline lineno="24" refid="classNegativeBinomial_1a111cd4ef1eb422ae3683187c9cb42c76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNegativeBinomial_1a111cd4ef1eb422ae3683187c9cb42c76" kindref="member">Populate</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sigma);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>~NegativeBinomial();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classTruncatedGaussian" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTruncatedGaussian" kindref="compound">TruncatedGaussian</ref></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32" refid="classTruncatedGaussian_1ae3b869451126b73a4bcfb573afe11d15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTruncatedGaussian_1ae3b869451126b73a4bcfb573afe11d15" kindref="member">Truncator</ref>;</highlight></codeline>
+<codeline lineno="33" refid="classTruncatedGaussian_1a5f014175e3f954938da80b94cef9055a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;double&gt;&gt;<sp/><ref refid="classTruncatedGaussian_1a5f014175e3f954938da80b94cef9055a" kindref="member">PureData</ref>;</highlight></codeline>
+<codeline lineno="34" refid="classTruncatedGaussian_1a054d5d5d43e949ab8a28cd2f75bb0a56" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTruncatedGaussian_1a054d5d5d43e949ab8a28cd2f75bb0a56" kindref="member">KMax</ref>;</highlight></codeline>
+<codeline lineno="35" refid="classTruncatedGaussian_1aab11db81ba5f6990331b1a82fa89dfd3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTruncatedGaussian_1aab11db81ba5f6990331b1a82fa89dfd3" kindref="member">TruncatedGaussian</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kMax,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bounder);</highlight></codeline>
+<codeline lineno="36" refid="classTruncatedGaussian_1a154446e8f03f6933fb00d60943758a6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTruncatedGaussian_1a154446e8f03f6933fb00d60943758a6f" kindref="member">Populate</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>gamma);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="structEB__Bracket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structEB__Bracket" kindref="compound">EB_Bracket</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41" refid="structEB__Bracket_1a1fdce4fcbe76daf7b0454726b9c93799" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;<sp/><ref refid="structEB__Bracket_1a1fdce4fcbe76daf7b0454726b9c93799" kindref="member">Top</ref>;</highlight></codeline>
+<codeline lineno="42" refid="structEB__Bracket_1ae2f696c745af49377f785e180a5d01f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;<sp/><ref refid="structEB__Bracket_1ae2f696c745af49377f785e180a5d01f8" kindref="member">Bottom</ref>;</highlight></codeline>
+<codeline lineno="43" refid="structEB__Bracket_1aafe1eb60fe81135e8899642a4965900b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;double&gt;<sp/><ref refid="structEB__Bracket_1aafe1eb60fe81135e8899642a4965900b" kindref="member">Interpolate</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44" refid="structEB__Bracket_1a2d10a85282f15013735eb9978ee3f0b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structEB__Bracket_1a2d10a85282f15013735eb9978ee3f0b9" kindref="member">EB_Bracket</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>q)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structEB__Bracket_1a1fdce4fcbe76daf7b0454726b9c93799" kindref="member">Top</ref>.resize(q);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structEB__Bracket_1ae2f696c745af49377f785e180a5d01f8" kindref="member">Bottom</ref>.resize(q);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structEB__Bracket_1aafe1eb60fe81135e8899642a4965900b" kindref="member">Interpolate</ref>.resize(q);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NegativeBinomial_8h_1ab100bf2217331ec3cb44188c833e7df4" kindref="member">nWorkers</ref>;</highlight></codeline>
+<codeline lineno="53" refid="classErroredBinomial" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classErroredBinomial" kindref="compound">ErroredBinomial</ref></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="56" refid="classErroredBinomial_1ab16dcfb8aed605c0a4758fdba6dd9560" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1ab16dcfb8aed605c0a4758fdba6dd9560" kindref="member">nWorkers</ref>;</highlight></codeline>
+<codeline lineno="57" refid="classErroredBinomial_1a64ecfeb4d79191580640d28fc46ac27a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTruncatedGaussian" kindref="compound">TruncatedGaussian</ref><sp/><ref refid="classErroredBinomial_1a64ecfeb4d79191580640d28fc46ac27a" kindref="member">TG</ref>;</highlight></codeline>
+<codeline lineno="58" refid="classErroredBinomial_1a6182e2247ca1986cac6ba399f4b51529" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structEB__Bracket" kindref="compound">EB_Bracket</ref><sp/><ref refid="classErroredBinomial_1a6182e2247ca1986cac6ba399f4b51529" kindref="member">CurrentBracket</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60" refid="classErroredBinomial_1a605659f79977a313d749284ccbaf2cdc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1a605659f79977a313d749284ccbaf2cdc" kindref="member">Kmax</ref>;</highlight></codeline>
+<codeline lineno="61" refid="classErroredBinomial_1ab2b1551e2f4eb819963f143ab952a1b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1ab2b1551e2f4eb819963f143ab952a1b7" kindref="member">Bounder</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>void<sp/>Worker(int<sp/>id);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::vector&lt;int&gt;<sp/>WorkerStatus;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::vector&lt;std::thread&gt;<sp/>Threads;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classErroredBinomial_1a5d810f878deba2df83046e142ac3fa07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1a5d810f878deba2df83046e142ac3fa07" kindref="member">masterStart</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="69" refid="classErroredBinomial_1ac039018ba0cd2611010528dfafdfc4b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;double&gt;&gt;<sp/><ref refid="classErroredBinomial_1ac039018ba0cd2611010528dfafdfc4b5" kindref="member">Data</ref>;</highlight></codeline>
+<codeline lineno="70" refid="classErroredBinomial_1a4276ddb38d014a3a6b8a6ad40e44a5fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNegativeBinomial" kindref="compound">NegativeBinomial</ref><sp/><ref refid="classErroredBinomial_1a4276ddb38d014a3a6b8a6ad40e44a5fb" kindref="member">NB</ref>;</highlight></codeline>
+<codeline lineno="71" refid="classErroredBinomial_1aa7788dd9ce425031418a23f933a071ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1aa7788dd9ce425031418a23f933a071ed" kindref="member">Resolution</ref>;</highlight></codeline>
+<codeline lineno="72" refid="classErroredBinomial_1a65ceb20240d1950bf230c5ff0bc3c65e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1a65ceb20240d1950bf230c5ff0bc3c65e" kindref="member">Sigma</ref>;</highlight></codeline>
+<codeline lineno="73" refid="classErroredBinomial_1aa5866c60af39a3903c890238411bb0a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1aa5866c60af39a3903c890238411bb0a6" kindref="member">qMax</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75" refid="classErroredBinomial_1a08b440709d6207a95d49921b686a1c6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classErroredBinomial_1a08b440709d6207a95d49921b686a1c6c" kindref="member">ErroredBinomial</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kMax,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>res,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bounder,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1aa5866c60af39a3903c890238411bb0a6" kindref="member">qMax</ref>,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>muMax,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1ab16dcfb8aed605c0a4758fdba6dd9560" kindref="member">nWorkers</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>void<sp/>CloseThreads();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classErroredBinomial_1ad2560e5bae4050525978993040c932d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1ad2560e5bae4050525978993040c932d0" kindref="member">PopulateChunk</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resMin,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resMax);</highlight></codeline>
+<codeline lineno="78" refid="classErroredBinomial_1ad1af2ef0969f81597b017323f6bd079c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1ad1af2ef0969f81597b017323f6bd079c" kindref="member">Populate</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>gamma,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sigma,<sp/><ref refid="classDistributor" kindref="compound">Distributor</ref><sp/>&amp;<sp/>dist);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classErroredBinomial_1a7b4ba932092fae5511a532f2fa593be1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1a7b4ba932092fae5511a532f2fa593be1" kindref="member">SetBracket</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>nu);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classErroredBinomial_1a6de40808745eba4da73eeb3b8eb124cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classErroredBinomial_1a6de40808745eba4da73eeb3b8eb124cb" kindref="member">GetProb</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>q,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h"/>
+  </compounddef>
+</doxygen>

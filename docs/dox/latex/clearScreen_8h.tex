@@ -1,0 +1,17 @@
+\doxysection{/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/libs/\+JSL/\+Display/clear\+Screen.h File Reference}
+\hypertarget{clearScreen_8h}{}\label{clearScreen_8h}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/clearScreen.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/clearScreen.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceJSL}{JSL}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{namespaceJSL_a405f53748ca024b70694b0534cfcf4a3}{JSL\+::jump\+Line\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Deletes the last linebreak character, jumping the cursor up one line. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{namespaceJSL_a071b279ad5267ce66ff86c614952a3ed}{JSL\+::clear\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Equivalent to calling the "{}clear"{} command on the shell, removes all text on the terminal, and returns the cursor to the home position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structJSL_1_1NameValuePair}{void}} \mbox{\hyperlink{namespaceJSL_ae38780f94d60045b904b289eb3ab8eda}{JSL\+::delete\+Line}} ()
+\begin{DoxyCompactList}\small\item\em Removes the last line of text, moving the cursor from its current position, to the beginning of the line. If you want to remove the linebreak which caused that line to exist in the first place, must be followed up with \doxylink{namespaceJSL_a405f53748ca024b70694b0534cfcf4a3}{jump\+Line\+Up()}. ALternatively, if a linebreak has been printed and you want to delete that line {\itshape first}, you must call \doxylink{namespaceJSL_a405f53748ca024b70694b0534cfcf4a3}{jump\+Line\+Up()} before \doxylink{namespaceJSL_ae38780f94d60045b904b289eb3ab8eda}{delete\+Line()}. \end{DoxyCompactList}\end{DoxyCompactItemize}

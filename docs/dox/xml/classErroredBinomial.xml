@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classErroredBinomial" kind="class" language="C++" prot="public">
+    <compoundname>ErroredBinomial</compoundname>
+    <includes refid="NegativeBinomial_8h" local="no">NegativeBinomial.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classErroredBinomial_1ab16dcfb8aed605c0a4758fdba6dd9560" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ErroredBinomial::nWorkers</definition>
+        <argsstring></argsstring>
+        <name>nWorkers</name>
+        <qualifiedname>ErroredBinomial::nWorkers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="56" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classErroredBinomial_1a64ecfeb4d79191580640d28fc46ac27a" prot="private" static="no" mutable="no">
+        <type><ref refid="classTruncatedGaussian" kindref="compound">TruncatedGaussian</ref></type>
+        <definition>TruncatedGaussian ErroredBinomial::TG</definition>
+        <argsstring></argsstring>
+        <name>TG</name>
+        <qualifiedname>ErroredBinomial::TG</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="57" column="19" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classErroredBinomial_1a6182e2247ca1986cac6ba399f4b51529" prot="private" static="no" mutable="no">
+        <type><ref refid="structEB__Bracket" kindref="compound">EB_Bracket</ref></type>
+        <definition>EB_Bracket ErroredBinomial::CurrentBracket</definition>
+        <argsstring></argsstring>
+        <name>CurrentBracket</name>
+        <qualifiedname>ErroredBinomial::CurrentBracket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="58" column="12" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classErroredBinomial_1a605659f79977a313d749284ccbaf2cdc" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ErroredBinomial::Kmax</definition>
+        <argsstring></argsstring>
+        <name>Kmax</name>
+        <qualifiedname>ErroredBinomial::Kmax</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="60" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classErroredBinomial_1ab2b1551e2f4eb819963f143ab952a1b7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ErroredBinomial::Bounder</definition>
+        <argsstring></argsstring>
+        <name>Bounder</name>
+        <qualifiedname>ErroredBinomial::Bounder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="61" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classErroredBinomial_1a5d810f878deba2df83046e142ac3fa07" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ErroredBinomial::masterStart</definition>
+        <argsstring></argsstring>
+        <name>masterStart</name>
+        <qualifiedname>ErroredBinomial::masterStart</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="67" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classErroredBinomial_1ac039018ba0cd2611010528dfafdfc4b5" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; double &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;double&gt; &gt; ErroredBinomial::Data</definition>
+        <argsstring></argsstring>
+        <name>Data</name>
+        <qualifiedname>ErroredBinomial::Data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="69" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classErroredBinomial_1a4276ddb38d014a3a6b8a6ad40e44a5fb" prot="public" static="no" mutable="no">
+        <type><ref refid="classNegativeBinomial" kindref="compound">NegativeBinomial</ref></type>
+        <definition>NegativeBinomial ErroredBinomial::NB</definition>
+        <argsstring></argsstring>
+        <name>NB</name>
+        <qualifiedname>ErroredBinomial::NB</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="70" column="18" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classErroredBinomial_1aa7788dd9ce425031418a23f933a071ed" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ErroredBinomial::Resolution</definition>
+        <argsstring></argsstring>
+        <name>Resolution</name>
+        <qualifiedname>ErroredBinomial::Resolution</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="71" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classErroredBinomial_1a65ceb20240d1950bf230c5ff0bc3c65e" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ErroredBinomial::Sigma</definition>
+        <argsstring></argsstring>
+        <name>Sigma</name>
+        <qualifiedname>ErroredBinomial::Sigma</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="72" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classErroredBinomial_1aa5866c60af39a3903c890238411bb0a6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ErroredBinomial::qMax</definition>
+        <argsstring></argsstring>
+        <name>qMax</name>
+        <qualifiedname>ErroredBinomial::qMax</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="73" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classErroredBinomial_1a08b440709d6207a95d49921b686a1c6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ErroredBinomial::ErroredBinomial</definition>
+        <argsstring>(int kMax, int res, int bounder, int qMax, double muMax, int nWorkers)</argsstring>
+        <name>ErroredBinomial</name>
+        <qualifiedname>ErroredBinomial::ErroredBinomial</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>kMax</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>res</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bounder</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>qMax</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>muMax</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nWorkers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="75" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classErroredBinomial_1ad2560e5bae4050525978993040c932d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ErroredBinomial::PopulateChunk</definition>
+        <argsstring>(int resMin, int resMax)</argsstring>
+        <name>PopulateChunk</name>
+        <qualifiedname>ErroredBinomial::PopulateChunk</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>resMin</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>resMax</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="77" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classErroredBinomial_1ad1af2ef0969f81597b017323f6bd079c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ErroredBinomial::Populate</definition>
+        <argsstring>(double gamma, double sigma, Distributor &amp;dist)</argsstring>
+        <name>Populate</name>
+        <qualifiedname>ErroredBinomial::Populate</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>gamma</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>sigma</declname>
+        </param>
+        <param>
+          <type><ref refid="classDistributor" kindref="compound">Distributor</ref> &amp;</type>
+          <declname>dist</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="78" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classErroredBinomial_1a7b4ba932092fae5511a532f2fa593be1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ErroredBinomial::SetBracket</definition>
+        <argsstring>(double nu)</argsstring>
+        <name>SetBracket</name>
+        <qualifiedname>ErroredBinomial::SetBracket</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>nu</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="80" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classErroredBinomial_1a6de40808745eba4da73eeb3b8eb124cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ErroredBinomial::GetProb</definition>
+        <argsstring>(int q, int k)</argsstring>
+        <name>GetProb</name>
+        <qualifiedname>ErroredBinomial::GetProb</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>q</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="82" column="8"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>EB_Bracket</label>
+        <link refid="structEB__Bracket"/>
+      </node>
+      <node id="1">
+        <label>ErroredBinomial</label>
+        <link refid="classErroredBinomial"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>TG</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>CurrentBracket</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>NB</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>LogFactorial</label>
+        <link refid="classLogFactorial"/>
+      </node>
+      <node id="4">
+        <label>NegativeBinomial</label>
+        <link refid="classNegativeBinomial"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>LogFac</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TruncatedGaussian</label>
+        <link refid="classTruncatedGaussian"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" line="53" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h" bodystart="54" bodyend="83"/>
+    <listofallmembers>
+      <member refid="classErroredBinomial_1ab2b1551e2f4eb819963f143ab952a1b7" prot="private" virt="non-virtual"><scope>ErroredBinomial</scope><name>Bounder</name></member>
+      <member refid="classErroredBinomial_1a6182e2247ca1986cac6ba399f4b51529" prot="private" virt="non-virtual"><scope>ErroredBinomial</scope><name>CurrentBracket</name></member>
+      <member refid="classErroredBinomial_1ac039018ba0cd2611010528dfafdfc4b5" prot="public" virt="non-virtual"><scope>ErroredBinomial</scope><name>Data</name></member>
+      <member refid="classErroredBinomial_1a08b440709d6207a95d49921b686a1c6c" prot="public" virt="non-virtual"><scope>ErroredBinomial</scope><name>ErroredBinomial</name></member>
+      <member refid="classErroredBinomial_1a6de40808745eba4da73eeb3b8eb124cb" prot="public" virt="non-virtual"><scope>ErroredBinomial</scope><name>GetProb</name></member>
+      <member refid="classErroredBinomial_1a605659f79977a313d749284ccbaf2cdc" prot="private" virt="non-virtual"><scope>ErroredBinomial</scope><name>Kmax</name></member>
+      <member refid="classErroredBinomial_1a5d810f878deba2df83046e142ac3fa07" prot="private" virt="non-virtual"><scope>ErroredBinomial</scope><name>masterStart</name></member>
+      <member refid="classErroredBinomial_1a4276ddb38d014a3a6b8a6ad40e44a5fb" prot="public" virt="non-virtual"><scope>ErroredBinomial</scope><name>NB</name></member>
+      <member refid="classErroredBinomial_1ab16dcfb8aed605c0a4758fdba6dd9560" prot="private" virt="non-virtual"><scope>ErroredBinomial</scope><name>nWorkers</name></member>
+      <member refid="classErroredBinomial_1ad1af2ef0969f81597b017323f6bd079c" prot="public" virt="non-virtual"><scope>ErroredBinomial</scope><name>Populate</name></member>
+      <member refid="classErroredBinomial_1ad2560e5bae4050525978993040c932d0" prot="public" virt="non-virtual"><scope>ErroredBinomial</scope><name>PopulateChunk</name></member>
+      <member refid="classErroredBinomial_1aa5866c60af39a3903c890238411bb0a6" prot="public" virt="non-virtual"><scope>ErroredBinomial</scope><name>qMax</name></member>
+      <member refid="classErroredBinomial_1aa7788dd9ce425031418a23f933a071ed" prot="public" virt="non-virtual"><scope>ErroredBinomial</scope><name>Resolution</name></member>
+      <member refid="classErroredBinomial_1a7b4ba932092fae5511a532f2fa593be1" prot="public" virt="non-virtual"><scope>ErroredBinomial</scope><name>SetBracket</name></member>
+      <member refid="classErroredBinomial_1a65ceb20240d1950bf230c5ff0bc3c65e" prot="public" virt="non-virtual"><scope>ErroredBinomial</scope><name>Sigma</name></member>
+      <member refid="classErroredBinomial_1a64ecfeb4d79191580640d28fc46ac27a" prot="private" virt="non-virtual"><scope>ErroredBinomial</scope><name>TG</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

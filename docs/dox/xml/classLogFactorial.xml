@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classLogFactorial" kind="class" language="C++" prot="public">
+    <compoundname>LogFactorial</compoundname>
+    <includes refid="logFactorial_8h" local="no">logFactorial.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classLogFactorial_1a06be3f54e43c34ee36cbbf8e5c1c3d39" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int LogFactorial::CurrentMax</definition>
+        <argsstring></argsstring>
+        <name>CurrentMax</name>
+        <qualifiedname>LogFactorial::CurrentMax</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" line="21" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLogFactorial_1a1e3e2197f809b03f1baa84355d8f1261" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; LogFactorial::Data</definition>
+        <argsstring></argsstring>
+        <name>Data</name>
+        <qualifiedname>LogFactorial::Data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" line="22" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classLogFactorial_1a97f2f6b4de38bfb927247048f2ba5953" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LogFactorial::LogFactorial</definition>
+        <argsstring>()</argsstring>
+        <name>LogFactorial</name>
+        <qualifiedname>LogFactorial::LogFactorial</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" line="7" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" bodystart="7" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classLogFactorial_1a098fb5756b91300bff77c0bc9f77860b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double LogFactorial::operator()</definition>
+        <argsstring>(int k)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>LogFactorial::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" line="11" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" bodystart="11" bodyend="19"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classLogFactorial_1add78a7f913db194761c1bdcb2b821017" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LogFactorial::Populate</definition>
+        <argsstring>(int end)</argsstring>
+        <name>Populate</name>
+        <qualifiedname>LogFactorial::Populate</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" line="23" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" bodystart="23" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" line="4" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/logFactorial.h" bodystart="5" bodyend="38"/>
+    <listofallmembers>
+      <member refid="classLogFactorial_1a06be3f54e43c34ee36cbbf8e5c1c3d39" prot="private" virt="non-virtual"><scope>LogFactorial</scope><name>CurrentMax</name></member>
+      <member refid="classLogFactorial_1a1e3e2197f809b03f1baa84355d8f1261" prot="private" virt="non-virtual"><scope>LogFactorial</scope><name>Data</name></member>
+      <member refid="classLogFactorial_1a97f2f6b4de38bfb927247048f2ba5953" prot="public" virt="non-virtual"><scope>LogFactorial</scope><name>LogFactorial</name></member>
+      <member refid="classLogFactorial_1a098fb5756b91300bff77c0bc9f77860b" prot="public" virt="non-virtual"><scope>LogFactorial</scope><name>operator()</name></member>
+      <member refid="classLogFactorial_1add78a7f913db194761c1bdcb2b821017" prot="private" virt="non-virtual"><scope>LogFactorial</scope><name>Populate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

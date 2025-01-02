@@ -1,0 +1,35 @@
+\doxysection{error.\+h}
+\hypertarget{error_8h_source}{}\label{error_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/error.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/System/error.h}}
+\mbox{\hyperlink{error_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceJSL_a5059dbafa288b9b3beac1746f4acae61}{ErrorCode}}\ \{\mbox{\hyperlink{namespaceJSL_a5059dbafa288b9b3beac1746f4acae61a0a229ef32833c9a64ed38080ba87b196}{JSLError}},\ }
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5059dbafa288b9b3beac1746f4acae61ab2e398994d8ffbb8c17109c9ec85ed30}{SystemError}},\ }
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5059dbafa288b9b3beac1746f4acae61afec2ceb4545826a8594a9dc7a7b1c702}{OverrunError}},\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5059dbafa288b9b3beac1746f4acae61a007fec64442c721c18380cb70c51a443}{FailedAssertion}},\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5059dbafa288b9b3beac1746f4acae61a7da39e712d8960d161fbef3305d793a4}{IOError}},\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5059dbafa288b9b3beac1746f4acae61ae87e52367d118ac8a793c78a53ec9973}{PlottingError}}\ }
+\DoxyCodeLine{00016\ \ \ \ \ \};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \mbox{\hyperlink{namespaceJSL_a606f5a286ccd4cf3d860d2efde2eac82}{ErrorNames}}\ =\ \{\textcolor{stringliteral}{"{}ERROR"{}},\ \textcolor{stringliteral}{"{}SYSTEM\ ERROR"{}},\ \textcolor{stringliteral}{"{}OVERRUN\ ERROR"{}},\ \textcolor{stringliteral}{"{}FAILED\ ASSERTION"{}},\textcolor{stringliteral}{"{}IOError"{}},\ \textcolor{stringliteral}{"{}GNUPLOT\ ERROR"{}}\};}
+\DoxyCodeLine{00018\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceJSL_a5783bc90550deca94c1790e581fb707d}{Error}}(\mbox{\hyperlink{namespaceJSL_a5059dbafa288b9b3beac1746f4acae61}{ErrorCode}}\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{code}},\ \textcolor{keyword}{const}\ std::string\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{message}})}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{newmessage}}\ =\ \textcolor{stringliteral}{"{}\(\backslash\)nJSL\ "{}}\ +\ \mbox{\hyperlink{namespaceJSL_a606f5a286ccd4cf3d860d2efde2eac82}{ErrorNames}}[\mbox{\hyperlink{structJSL_1_1NameValuePair}{code}}]\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{message}}\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\mbox{\hyperlink{structJSL_1_1NameValuePair}{newmessage}});}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceJSL_a5783bc90550deca94c1790e581fb707d}{Error}}(\textcolor{keyword}{const}\ std::string\ \&\ \mbox{\hyperlink{structJSL_1_1NameValuePair}{message}})}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceJSL_a5783bc90550deca94c1790e581fb707d}{Error}}(\mbox{\hyperlink{namespaceJSL_a5059dbafa288b9b3beac1746f4acae61a0a229ef32833c9a64ed38080ba87b196}{JSLError}},\mbox{\hyperlink{structJSL_1_1NameValuePair}{message}});}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}

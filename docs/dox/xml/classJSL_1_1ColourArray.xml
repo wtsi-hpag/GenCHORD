@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classJSL_1_1ColourArray" kind="class" language="C++" prot="public">
+    <compoundname>JSL::ColourArray</compoundname>
+    <includes refid="colorArray_8h" local="no">colorArray.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classJSL_1_1ColourArray_1a415ccc2772d40b61167c23b709fa7626" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <definition>int JSL::ColourArray::Index</definition>
+        <argsstring></argsstring>
+        <name>Index</name>
+        <qualifiedname>JSL::ColourArray::Index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="150" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;double&gt; &gt; JSL::ColourArray::ColourList</definition>
+        <argsstring></argsstring>
+        <name>ColourList</name>
+        <qualifiedname>JSL::ColourArray::ColourList</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="151" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1ColourArray_1a0bae94a389963878383249e1d4b32344" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string JSL::ColourArray::prevColour</definition>
+        <argsstring></argsstring>
+        <name>prevColour</name>
+        <qualifiedname>JSL::ColourArray::prevColour</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="152" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classJSL_1_1ColourArray_1a24b6de7f6b9d4f26c0225eb5575e4a1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+        <definition>std::vector&lt; double &gt; JSL::ColourArray::GetNextColour</definition>
+        <argsstring>()</argsstring>
+        <name>GetNextColour</name>
+        <qualifiedname>JSL::ColourArray::GetNextColour</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="84" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="84" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1ColourArray_1aedd1dc83007560c75a6dafd6d4f2644d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string JSL::ColourArray::HoldColour</definition>
+        <argsstring>()</argsstring>
+        <name>HoldColour</name>
+        <qualifiedname>JSL::ColourArray::HoldColour</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="90" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1ColourArray_1af535b7cf785fa39cab1394e832250a0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>JSL::ColourArray::ColourArray</definition>
+        <argsstring>()</argsstring>
+        <name>ColourArray</name>
+        <qualifiedname>JSL::ColourArray::ColourArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="94" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="94" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1ColourArray_1a47e98ec919ab6bc36a4602983449e833" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::ColourArray::Save</definition>
+        <argsstring>(std::string color)</argsstring>
+        <name>Save</name>
+        <qualifiedname>JSL::ColourArray::Save</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="112" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="112" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1ColourArray_1a2aceaff1f2e5a117a45f7b037148b453" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::ColourArray::SetColours</definition>
+        <argsstring>(std::vector&lt; std::vector&lt; double &gt; &gt; rgbArray)</argsstring>
+        <name>SetColours</name>
+        <qualifiedname>JSL::ColourArray::SetColours</qualifiedname>
+        <param>
+          <type>std::vector&lt; std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt; &gt;</type>
+          <declname>rgbArray</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="117" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="117" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1ColourArray_1a549085329ca285035a31c45fbc88132b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::ColourArray::SetColours</definition>
+        <argsstring>(int n, std::vector&lt; double &gt; start, std::vector&lt; double &gt; end)</argsstring>
+        <name>SetColours</name>
+        <qualifiedname>JSL::ColourArray::SetColours</qualifiedname>
+        <param>
+          <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref> &gt;</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="132" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="132" bodyend="148"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" line="80" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h" bodystart="81" bodyend="153"/>
+    <listofallmembers>
+      <member refid="classJSL_1_1ColourArray_1af535b7cf785fa39cab1394e832250a0b" prot="public" virt="non-virtual"><scope>JSL::ColourArray</scope><name>ColourArray</name></member>
+      <member refid="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" prot="private" virt="non-virtual"><scope>JSL::ColourArray</scope><name>ColourList</name></member>
+      <member refid="classJSL_1_1ColourArray_1a24b6de7f6b9d4f26c0225eb5575e4a1e" prot="public" virt="non-virtual"><scope>JSL::ColourArray</scope><name>GetNextColour</name></member>
+      <member refid="classJSL_1_1ColourArray_1aedd1dc83007560c75a6dafd6d4f2644d" prot="public" virt="non-virtual"><scope>JSL::ColourArray</scope><name>HoldColour</name></member>
+      <member refid="classJSL_1_1ColourArray_1a415ccc2772d40b61167c23b709fa7626" prot="private" virt="non-virtual"><scope>JSL::ColourArray</scope><name>Index</name></member>
+      <member refid="classJSL_1_1ColourArray_1a0bae94a389963878383249e1d4b32344" prot="private" virt="non-virtual"><scope>JSL::ColourArray</scope><name>prevColour</name></member>
+      <member refid="classJSL_1_1ColourArray_1a47e98ec919ab6bc36a4602983449e833" prot="public" virt="non-virtual"><scope>JSL::ColourArray</scope><name>Save</name></member>
+      <member refid="classJSL_1_1ColourArray_1a2aceaff1f2e5a117a45f7b037148b453" prot="public" virt="non-virtual"><scope>JSL::ColourArray</scope><name>SetColours</name></member>
+      <member refid="classJSL_1_1ColourArray_1a549085329ca285035a31c45fbc88132b" prot="public" virt="non-virtual"><scope>JSL::ColourArray</scope><name>SetColours</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

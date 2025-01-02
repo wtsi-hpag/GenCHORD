@@ -1,0 +1,29 @@
+\doxysection{Harmonic\+Functions.\+h}
+\hypertarget{HarmonicFunctions_8h_source}{}\label{HarmonicFunctions_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h@{/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h}}
+\mbox{\hyperlink{HarmonicFunctions_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{settings_8h}{settings.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Transitions_8h}{Transitions.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{data_8h}{data.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{NegativeBinomial_8h}{NegativeBinomial.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classErroredBinomial}{ErroredBinomial}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{HarmonicFunctions_8h_a0cd7d405fe3d494a6a1ff2e2cd2fad42}{Ploidy}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{HarmonicFunctions_8h_af7f54c236f9de96756056edec9d6ceb1}{logPloidyPrior}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structqReturn}{qReturn}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{data_8h_a3f3ed9a0a71dadb45244e663340fea39}{chr\_int}}\ \mbox{\hyperlink{structqReturn_a1fd3cb45fa28fa2485d4d52dae82838c}{idx}};}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structqReturn_ad69b4ca66bb6398d3f87a05be6969fef}{Q}};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structqReturn_ac473498acb2e53c5e95f7436b746314f}{Score}};}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{structqReturn_a9e39ef518fa81dcccf6885fbf1ee783b}{qReturn}}(\textcolor{keywordtype}{int}\ q,\ \textcolor{keywordtype}{double}\ s):\ \mbox{\hyperlink{structqReturn_ad69b4ca66bb6398d3f87a05be6969fef}{Q}}(q),\ \mbox{\hyperlink{structqReturn_ac473498acb2e53c5e95f7436b746314f}{Score}}(s)\{\};}
+\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \mbox{\hyperlink{structqReturn}{qReturn}}\ \mbox{\hyperlink{HarmonicFunctions_8h_a1355a0c530cdddd0d949b0c2f2d70cf8}{bestQ}}(\textcolor{keywordtype}{int}\ chrom,\textcolor{keywordtype}{int}\ iStart,\textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ maxIdx,\ \textcolor{keywordtype}{double}\ currentQ,\ \textcolor{keywordtype}{double}\ alpha,\ \mbox{\hyperlink{classErroredBinomial}{ErroredBinomial}}\ *\ EB,\ \mbox{\hyperlink{structData}{Data}}\ \&\ d,\ \textcolor{keywordtype}{int}\ accelerator);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \mbox{\hyperlink{structqReturn}{qReturn}}\ \mbox{\hyperlink{HarmonicFunctions_8h_a41dde6e6bb134120baf530fa0c2e1233}{EdgeFinder}}(\textcolor{keywordtype}{int}\ chrom,\textcolor{keywordtype}{int}\ iStart,\ \textcolor{keywordtype}{int}\ L,\ \textcolor{keywordtype}{int}\ originalQ,\ \mbox{\hyperlink{structData}{Data}}\ \&\ d,\ \mbox{\hyperlink{classErroredBinomial}{ErroredBinomial}}\ *\ EB,\ \textcolor{keywordtype}{double}\ alpha,\ \textcolor{keywordtype}{int}\ accelerator);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{HarmonicFunctions_8h_a0e0f7f15d93e1026b6a5acd6212b8504}{ChromosomeAssign}}(\mbox{\hyperlink{structTransitions}{Transitions}}\ *\ output,\ \textcolor{keywordtype}{int}\ chrom,\ \mbox{\hyperlink{structData}{Data}}\ \&\ d,\textcolor{keywordtype}{double}\ alpha,\ \mbox{\hyperlink{classErroredBinomial}{ErroredBinomial}}\ *\ EB,\ \textcolor{keywordtype}{int}\ L,\ \textcolor{keywordtype}{int}\ accelerator,\textcolor{keywordtype}{double}\ nu);}
+
+\end{DoxyCode}

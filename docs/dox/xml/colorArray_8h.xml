@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="colorArray_8h" kind="file" language="C++">
+    <compoundname>colorArray.h</compoundname>
+    <includedby refid="PlotData_8h" local="yes">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h</includedby>
+    <includedby refid="axis_8h" local="yes">/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h</includedby>
+    <invincdepgraph>
+      <node id="5">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/JSL.h</label>
+        <link refid="JSL_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Testing/Testing.h</label>
+        <link refid="Testing_8h"/>
+      </node>
+      <node id="6">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Testing/Testing_UnitTests.h</label>
+        <link refid="Testing__UnitTests_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/PlotData.h</label>
+        <link refid="PlotData_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/axis.h</label>
+        <link refid="axis_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h</label>
+        <link refid="colorArray_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplot.h</label>
+        <link refid="gnuplot_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/gnuplotMain.h</label>
+        <link refid="gnuplotMain_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h</label>
+        <link refid="Distributor_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h</label>
+        <link refid="HarmonicFunctions_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h</label>
+        <link refid="NegativeBinomial_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h</label>
+        <link refid="Transitions_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/data.h</label>
+        <link refid="data_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/harmonicFit.h</label>
+        <link refid="harmonicFit_8h"/>
+      </node>
+      <node id="14">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/plotting.h</label>
+        <link refid="plotting_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>/Users/jf20/Documents/Genomics/Deforest/src/settings.h</label>
+        <link refid="settings_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classJSL_1_1ColourArray" prot="public">JSL::ColourArray</innerclass>
+    <innernamespace refid="namespaceJSL">JSL</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceJSL" kindref="compound">JSL</ref></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="namespaceJSL_1a28ff6f134180e7d98a22629381cedc1e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/><ref refid="namespaceJSL_1a28ff6f134180e7d98a22629381cedc1e" kindref="member">rgb_to_hsv</ref>(std::vector&lt;double&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgb</ref>)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgb</ref>[0];</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgb</ref>[1];</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgb</ref>[2];</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">maxCol</ref><sp/>=<sp/>std::max(<ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref>,std::max(<ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref>));</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">minCol</ref><sp/>=<sp/>std::min(<ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref>,std::min(<ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref>));</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">maxCol</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">diff</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">maxCol</ref><sp/>-<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">minCol</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">diff</ref><sp/>&gt;<sp/>1<ref refid="structJSL_1_1NameValuePair" kindref="compound">e</ref>-3)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref><sp/>==<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref>)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref><sp/>=<sp/>60<sp/>*<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref>-<ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref>)/<ref refid="structJSL_1_1NameValuePair" kindref="compound">diff</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref><sp/>==<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref>)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref><sp/>=<sp/>60*<sp/>(<sp/>2.0<sp/>+<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref>-<ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref>)/<ref refid="structJSL_1_1NameValuePair" kindref="compound">diff</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref><sp/>==<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref>)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref><sp/>=<sp/>60<sp/>*<sp/>(4.0<sp/>+<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref>-<ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref>)/<ref refid="structJSL_1_1NameValuePair" kindref="compound">diff</ref>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">s</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref><sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">s</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">diff</ref>/<ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">s</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref>};</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42" refid="namespaceJSL_1a756feffb8dbaced50b21d33d25a416d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/><ref refid="namespaceJSL_1a756feffb8dbaced50b21d33d25a416d6" kindref="member">hsv_to_rgb</ref>(std::vector&lt;double&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsv</ref>)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsv</ref>[0];</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">s</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsv</ref>[1];</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsv</ref>[2];</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref><sp/>=0,<ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref>=0,<ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref>=0;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">c</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref><sp/>*<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">s</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hP</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref>/60;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">modTerm</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref>/60<sp/>-<sp/>2<sp/>*<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">floor</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref>/120);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">c</ref>*<sp/>(1.0<sp/>-<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">abs</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">modTerm</ref><sp/>-<sp/>1));</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="structJSL_1_1NameValuePair" kindref="compound">hP</ref>)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">c</ref>;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">c</ref>;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref><sp/>=<sp/>0;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">c</ref>;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref><sp/>=<sp/>0;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">c</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref><sp/>=<sp/>0;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">c</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>5:</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">c</ref>;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref><sp/>=<sp/>0;<sp/><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">x</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">m</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref><sp/>-<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">c</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<ref refid="structJSL_1_1NameValuePair" kindref="compound">r</ref>+<ref refid="structJSL_1_1NameValuePair" kindref="compound">m</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">g</ref>+<ref refid="structJSL_1_1NameValuePair" kindref="compound">m</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">b</ref>+<ref refid="structJSL_1_1NameValuePair" kindref="compound">m</ref>};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classJSL_1_1ColourArray" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classJSL_1_1ColourArray" kindref="compound">ColourArray</ref></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="84" refid="classJSL_1_1ColourArray_1a24b6de7f6b9d4f26c0225eb5575e4a1e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;double&gt;<sp/><ref refid="classJSL_1_1ColourArray_1a24b6de7f6b9d4f26c0225eb5575e4a1e" kindref="member">GetNextColour</ref>()</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++<ref refid="classJSL_1_1ColourArray_1a415ccc2772d40b61167c23b709fa7626" kindref="member">Index</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" kindref="member">ColourList</ref>[(<ref refid="classJSL_1_1ColourArray_1a415ccc2772d40b61167c23b709fa7626" kindref="member">Index</ref>-1)<sp/>%<sp/><ref refid="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" kindref="member">ColourList</ref>.size()];</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1ColourArray_1a0bae94a389963878383249e1d4b32344" kindref="member">prevColour</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;black&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90" refid="classJSL_1_1ColourArray_1aedd1dc83007560c75a6dafd6d4f2644d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classJSL_1_1ColourArray_1aedd1dc83007560c75a6dafd6d4f2644d" kindref="member">HoldColour</ref>()</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1ColourArray_1a0bae94a389963878383249e1d4b32344" kindref="member">prevColour</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94" refid="classJSL_1_1ColourArray_1af535b7cf785fa39cab1394e832250a0b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1ColourArray_1af535b7cf785fa39cab1394e832250a0b" kindref="member">ColourArray</ref>()</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1ColourArray_1a415ccc2772d40b61167c23b709fa7626" kindref="member">Index</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" kindref="member">ColourList</ref><sp/>=<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/>{0,<sp/>0.447,<sp/>0.741},</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.85,<sp/>0.325,0.098},</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.929,<sp/><sp/>0.694<sp/>,0.125},</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.494,<sp/>0.184<sp/>,<sp/><sp/>0.556},</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.466,<sp/>0.674,<sp/><sp/>0.188},</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.301,<sp/>0.745,<sp/>0.933},</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.635,<sp/>0.078,0.184},</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0,0.1,0.8},</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.6,0,0},</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0,0.6,0},</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>{0.3,0.5,0},</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.5,0,0.5},</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0,0.5,0.5},</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112" refid="classJSL_1_1ColourArray_1a47e98ec919ab6bc36a4602983449e833" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1ColourArray_1a47e98ec919ab6bc36a4602983449e833" kindref="member">Save</ref>(std::string<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">color</ref>)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1ColourArray_1a0bae94a389963878383249e1d4b32344" kindref="member">prevColour</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">color</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="117" refid="classJSL_1_1ColourArray_1a2aceaff1f2e5a117a45f7b037148b453" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1ColourArray_1a2aceaff1f2e5a117a45f7b037148b453" kindref="member">SetColours</ref>(std::vector&lt;std::vector&lt;double&gt;&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgbArray</ref>)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" kindref="member">ColourList</ref>.resize(<ref refid="structJSL_1_1NameValuePair" kindref="compound">rgbArray</ref>.size());</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>=0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>&lt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgbArray</ref>.size();<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgbArray</ref>.size();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">JSL::Assert</ref>(</highlight><highlight class="stringliteral">&quot;RGB<sp/>arrays<sp/>must<sp/>have<sp/>length<sp/>3&quot;</highlight><highlight class="normal">,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref><sp/>==<sp/>3);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref><sp/>&lt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>;<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">JSL::Assert</ref>(</highlight><highlight class="stringliteral">&quot;This<sp/>function<sp/>accepts<sp/>only<sp/>rgb<sp/>values<sp/>in<sp/>the<sp/>range<sp/>0<sp/>&lt;=<sp/>x<sp/>&lt;=<sp/>1&quot;</highlight><highlight class="normal">,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgbArray</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>]<sp/>&gt;=<sp/>0,<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgbArray</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>][<ref refid="structJSL_1_1NameValuePair" kindref="compound">j</ref>]<sp/>&lt;=<sp/>1);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" kindref="member">ColourList</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>]<sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">rgbArray</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>];</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="classJSL_1_1ColourArray_1a549085329ca285035a31c45fbc88132b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1ColourArray_1a549085329ca285035a31c45fbc88132b" kindref="member">SetColours</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>,<sp/>std::vector&lt;double&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">start</ref>,<sp/>std::vector&lt;double&gt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">end</ref>)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" kindref="member">ColourList</ref>.resize(<ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceJSL_1a1a7afe30fd764dc4151982a2631f08d3" kindref="member">JSL::Assert</ref>(</highlight><highlight class="stringliteral">&quot;RGB<sp/>arrays<sp/>must<sp/>be<sp/>of<sp/>length<sp/>3&quot;</highlight><highlight class="normal">,<ref refid="structJSL_1_1NameValuePair" kindref="compound">start</ref>.size()==3,<ref refid="structJSL_1_1NameValuePair" kindref="compound">end</ref>.size()==3);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvStart</ref><sp/>=<sp/><ref refid="namespaceJSL_1a28ff6f134180e7d98a22629381cedc1e" kindref="member">rgb_to_hsv</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">start</ref>);<sp/></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvEnd</ref><sp/>=<sp/><ref refid="namespaceJSL_1a28ff6f134180e7d98a22629381cedc1e" kindref="member">rgb_to_hsv</ref>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">end</ref>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>=<sp/>0;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref><sp/>&lt;<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>;<sp/>++<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvStart</ref>[0]<sp/>+<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref>)<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>/(<ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>-1)<sp/>*<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvEnd</ref>[0]<sp/>-<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvStart</ref>[0]);<sp/></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">s</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvStart</ref>[1]<sp/>+<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref>)<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>/(<ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>-1)<sp/>*<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvEnd</ref>[1]<sp/>-<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvStart</ref>[1]);<sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref><sp/>=<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvStart</ref>[2]<sp/>+<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref>)<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>/(<ref refid="structJSL_1_1NameValuePair" kindref="compound">n</ref>-1)<sp/>*<sp/>(<ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvEnd</ref>[2]<sp/>-<sp/><ref refid="structJSL_1_1NameValuePair" kindref="compound">hsvStart</ref>[2]);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" kindref="member">ColourList</ref>[<ref refid="structJSL_1_1NameValuePair" kindref="compound">i</ref>]<sp/>=<sp/><ref refid="namespaceJSL_1a756feffb8dbaced50b21d33d25a416d6" kindref="member">hsv_to_rgb</ref>({<ref refid="structJSL_1_1NameValuePair" kindref="compound">h</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">s</ref>,<ref refid="structJSL_1_1NameValuePair" kindref="compound">v</ref>});</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>exit(10);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="150" refid="classJSL_1_1ColourArray_1a415ccc2772d40b61167c23b709fa7626" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classJSL_1_1ColourArray_1a415ccc2772d40b61167c23b709fa7626" kindref="member">Index</ref>;</highlight></codeline>
+<codeline lineno="151" refid="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;double&gt;&gt;<sp/><ref refid="classJSL_1_1ColourArray_1a917ceae1a74396a84c033563baa1e14d" kindref="member">ColourList</ref>;</highlight></codeline>
+<codeline lineno="152" refid="classJSL_1_1ColourArray_1a0bae94a389963878383249e1d4b32344" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classJSL_1_1ColourArray_1a0bae94a389963878383249e1d4b32344" kindref="member">prevColour</ref>;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/gnuplot/colorArray.h"/>
+  </compounddef>
+</doxygen>

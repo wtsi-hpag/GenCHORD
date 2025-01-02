@@ -1,0 +1,63 @@
+\doxysection{/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/src/\+Harmonic\+Functions.h File Reference}
+\hypertarget{HarmonicFunctions_8h}{}\label{HarmonicFunctions_8h}\index{/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h@{/Users/jf20/Documents/Genomics/Deforest/src/HarmonicFunctions.h}}
+{\ttfamily \#include "{}settings.\+h"{}}\newline
+{\ttfamily \#include "{}Transitions.\+h"{}}\newline
+{\ttfamily \#include "{}data.\+h"{}}\newline
+{\ttfamily \#include "{}Negative\+Binomial.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structqReturn}{q\+Return}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structqReturn}{q\+Return}} \mbox{\hyperlink{HarmonicFunctions_8h_a1355a0c530cdddd0d949b0c2f2d70cf8}{bestQ}} (int chrom, int i\+Start, long long int max\+Idx, double currentQ, double alpha, \mbox{\hyperlink{classErroredBinomial}{Errored\+Binomial}} \texorpdfstring{$\ast$}{*}EB, \mbox{\hyperlink{structData}{Data}} \&d, int accelerator)
+\item 
+\mbox{\hyperlink{structqReturn}{q\+Return}} \mbox{\hyperlink{HarmonicFunctions_8h_a41dde6e6bb134120baf530fa0c2e1233}{Edge\+Finder}} (int chrom, int i\+Start, int L, int originalQ, \mbox{\hyperlink{structData}{Data}} \&d, \mbox{\hyperlink{classErroredBinomial}{Errored\+Binomial}} \texorpdfstring{$\ast$}{*}EB, double alpha, int accelerator)
+\item 
+void \mbox{\hyperlink{HarmonicFunctions_8h_a0e0f7f15d93e1026b6a5acd6212b8504}{Chromosome\+Assign}} (\mbox{\hyperlink{structTransitions}{Transitions}} \texorpdfstring{$\ast$}{*}output, int chrom, \mbox{\hyperlink{structData}{Data}} \&d, double alpha, \mbox{\hyperlink{classErroredBinomial}{Errored\+Binomial}} \texorpdfstring{$\ast$}{*}EB, int L, int accelerator, double nu)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{HarmonicFunctions_8h_a0cd7d405fe3d494a6a1ff2e2cd2fad42}{Ploidy}}
+\item 
+double \mbox{\hyperlink{HarmonicFunctions_8h_af7f54c236f9de96756056edec9d6ceb1}{log\+Ploidy\+Prior}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{HarmonicFunctions_8h_a1355a0c530cdddd0d949b0c2f2d70cf8}\label{HarmonicFunctions_8h_a1355a0c530cdddd0d949b0c2f2d70cf8} 
+\index{HarmonicFunctions.h@{HarmonicFunctions.h}!bestQ@{bestQ}}
+\index{bestQ@{bestQ}!HarmonicFunctions.h@{HarmonicFunctions.h}}
+\doxysubsubsection{\texorpdfstring{bestQ()}{bestQ()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structqReturn}{q\+Return}} bestQ (\begin{DoxyParamCaption}\item[{int}]{chrom,  }\item[{int}]{i\+Start,  }\item[{long long int}]{max\+Idx,  }\item[{double}]{currentQ,  }\item[{double}]{alpha,  }\item[{\mbox{\hyperlink{classErroredBinomial}{Errored\+Binomial}} \texorpdfstring{$\ast$}{*}}]{EB,  }\item[{\mbox{\hyperlink{structData}{Data}} \&}]{d,  }\item[{int}]{accelerator }\end{DoxyParamCaption})}
+
+\Hypertarget{HarmonicFunctions_8h_a0e0f7f15d93e1026b6a5acd6212b8504}\label{HarmonicFunctions_8h_a0e0f7f15d93e1026b6a5acd6212b8504} 
+\index{HarmonicFunctions.h@{HarmonicFunctions.h}!ChromosomeAssign@{ChromosomeAssign}}
+\index{ChromosomeAssign@{ChromosomeAssign}!HarmonicFunctions.h@{HarmonicFunctions.h}}
+\doxysubsubsection{\texorpdfstring{ChromosomeAssign()}{ChromosomeAssign()}}
+{\footnotesize\ttfamily void Chromosome\+Assign (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTransitions}{Transitions}} \texorpdfstring{$\ast$}{*}}]{output,  }\item[{int}]{chrom,  }\item[{\mbox{\hyperlink{structData}{Data}} \&}]{d,  }\item[{double}]{alpha,  }\item[{\mbox{\hyperlink{classErroredBinomial}{Errored\+Binomial}} \texorpdfstring{$\ast$}{*}}]{EB,  }\item[{int}]{L,  }\item[{int}]{accelerator,  }\item[{double}]{nu }\end{DoxyParamCaption})}
+
+\Hypertarget{HarmonicFunctions_8h_a41dde6e6bb134120baf530fa0c2e1233}\label{HarmonicFunctions_8h_a41dde6e6bb134120baf530fa0c2e1233} 
+\index{HarmonicFunctions.h@{HarmonicFunctions.h}!EdgeFinder@{EdgeFinder}}
+\index{EdgeFinder@{EdgeFinder}!HarmonicFunctions.h@{HarmonicFunctions.h}}
+\doxysubsubsection{\texorpdfstring{EdgeFinder()}{EdgeFinder()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structqReturn}{q\+Return}} Edge\+Finder (\begin{DoxyParamCaption}\item[{int}]{chrom,  }\item[{int}]{i\+Start,  }\item[{int}]{L,  }\item[{int}]{originalQ,  }\item[{\mbox{\hyperlink{structData}{Data}} \&}]{d,  }\item[{\mbox{\hyperlink{classErroredBinomial}{Errored\+Binomial}} \texorpdfstring{$\ast$}{*}}]{EB,  }\item[{double}]{alpha,  }\item[{int}]{accelerator }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{HarmonicFunctions_8h_af7f54c236f9de96756056edec9d6ceb1}\label{HarmonicFunctions_8h_af7f54c236f9de96756056edec9d6ceb1} 
+\index{HarmonicFunctions.h@{HarmonicFunctions.h}!logPloidyPrior@{logPloidyPrior}}
+\index{logPloidyPrior@{logPloidyPrior}!HarmonicFunctions.h@{HarmonicFunctions.h}}
+\doxysubsubsection{\texorpdfstring{logPloidyPrior}{logPloidyPrior}}
+{\footnotesize\ttfamily double log\+Ploidy\+Prior\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{HarmonicFunctions_8h_a0cd7d405fe3d494a6a1ff2e2cd2fad42}\label{HarmonicFunctions_8h_a0cd7d405fe3d494a6a1ff2e2cd2fad42} 
+\index{HarmonicFunctions.h@{HarmonicFunctions.h}!Ploidy@{Ploidy}}
+\index{Ploidy@{Ploidy}!HarmonicFunctions.h@{HarmonicFunctions.h}}
+\doxysubsubsection{\texorpdfstring{Ploidy}{Ploidy}}
+{\footnotesize\ttfamily int Ploidy\hspace{0.3cm}{\ttfamily [extern]}}
+

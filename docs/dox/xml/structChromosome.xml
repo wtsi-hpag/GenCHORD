@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structChromosome" kind="struct" language="C++" prot="public">
+    <compoundname>Chromosome</compoundname>
+    <includes refid="data_8h" local="no">data.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structChromosome_1a7fdd30ba67f25d6b2389493cf421c68d" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Chromosome::Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <qualifiedname>Chromosome::Name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="11" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structChromosome_1a3bbc1ddd5c0f227abea3cf3bbcef5a59" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="data_8h_1a3f3ed9a0a71dadb45244e663340fea39" kindref="member">chr_int</ref> &gt;</type>
+        <definition>std::vector&lt;chr_int&gt; Chromosome::Idx</definition>
+        <argsstring></argsstring>
+        <name>Idx</name>
+        <qualifiedname>Chromosome::Idx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="12" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structChromosome_1af230d1c518e95c708a9ef467a0633437" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; Chromosome::Counts</definition>
+        <argsstring></argsstring>
+        <name>Counts</name>
+        <qualifiedname>Chromosome::Counts</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="13" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structChromosome_1a326ae3d548ad41f9cd7bd4b18f681b80" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Chromosome::maxIdx</definition>
+        <argsstring></argsstring>
+        <name>maxIdx</name>
+        <qualifiedname>Chromosome::maxIdx</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="14" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structChromosome_1a104bc6d0f476a927a22f915b22fad179" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Chromosome::maxK</definition>
+        <argsstring></argsstring>
+        <name>maxK</name>
+        <qualifiedname>Chromosome::maxK</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="15" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structChromosome_1a7eb065b8aa3799e0cca4608e2d3606b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Chromosome::Chromosome</definition>
+        <argsstring>()</argsstring>
+        <name>Chromosome</name>
+        <qualifiedname>Chromosome::Chromosome</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="16" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="16" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="structChromosome_1a6cb3af49b22b99d1b307035cbd3ed02c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Chromosome::Chromosome</definition>
+        <argsstring>(std::string name)</argsstring>
+        <name>Chromosome</name>
+        <qualifiedname>Chromosome::Chromosome</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="17" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="17" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="structChromosome_1a0298c1efdcc60a6f0e23481fba5f1435" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Chromosome::GetMaxK</definition>
+        <argsstring>(int maxVal)</argsstring>
+        <name>GetMaxK</name>
+        <qualifiedname>Chromosome::GetMaxK</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>maxVal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="19" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="19" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="structChromosome_1a1f997dfe08c00d88dc0d12180b73a920" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Chromosome::Add</definition>
+        <argsstring>(chr_int id, int count)</argsstring>
+        <name>Add</name>
+        <qualifiedname>Chromosome::Add</qualifiedname>
+        <param>
+          <type><ref refid="data_8h_1a3f3ed9a0a71dadb45244e663340fea39" kindref="member">chr_int</ref></type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="36" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="36" bodyend="44"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="9" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="10" bodyend="45"/>
+    <listofallmembers>
+      <member refid="structChromosome_1a1f997dfe08c00d88dc0d12180b73a920" prot="public" virt="non-virtual"><scope>Chromosome</scope><name>Add</name></member>
+      <member refid="structChromosome_1a7eb065b8aa3799e0cca4608e2d3606b7" prot="public" virt="non-virtual"><scope>Chromosome</scope><name>Chromosome</name></member>
+      <member refid="structChromosome_1a6cb3af49b22b99d1b307035cbd3ed02c" prot="public" virt="non-virtual"><scope>Chromosome</scope><name>Chromosome</name></member>
+      <member refid="structChromosome_1af230d1c518e95c708a9ef467a0633437" prot="public" virt="non-virtual"><scope>Chromosome</scope><name>Counts</name></member>
+      <member refid="structChromosome_1a0298c1efdcc60a6f0e23481fba5f1435" prot="public" virt="non-virtual"><scope>Chromosome</scope><name>GetMaxK</name></member>
+      <member refid="structChromosome_1a3bbc1ddd5c0f227abea3cf3bbcef5a59" prot="public" virt="non-virtual"><scope>Chromosome</scope><name>Idx</name></member>
+      <member refid="structChromosome_1a326ae3d548ad41f9cd7bd4b18f681b80" prot="public" virt="non-virtual"><scope>Chromosome</scope><name>maxIdx</name></member>
+      <member refid="structChromosome_1a104bc6d0f476a927a22f915b22fad179" prot="public" virt="non-virtual"><scope>Chromosome</scope><name>maxK</name></member>
+      <member refid="structChromosome_1a7fdd30ba67f25d6b2389493cf421c68d" prot="public" virt="non-virtual"><scope>Chromosome</scope><name>Name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

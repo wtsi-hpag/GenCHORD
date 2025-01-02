@@ -1,0 +1,90 @@
+\doxysection{Negative\+Binomial.\+h}
+\hypertarget{NegativeBinomial_8h_source}{}\label{NegativeBinomial_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h@{/Users/jf20/Documents/Genomics/Deforest/src/NegativeBinomial.h}}
+\mbox{\hyperlink{NegativeBinomial_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{logFactorial_8h}{logFactorial.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{basicFunctions_8h}{basicFunctions.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Distributor_8h}{Distributor.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDistributor}{Distributor}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classNegativeBinomial}{NegativeBinomial}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classNegativeBinomial_a63b682b73f10b071eab47233ddcd331b}{Sigma}};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classNegativeBinomial_a374f8d76d604ae2c0a256c1edfa9571e}{Kmax}};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogFactorial}{LogFactorial}}\ \mbox{\hyperlink{classNegativeBinomial_a975162aa6b403530a8b1a04f7d3c7844}{LogFac}};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classNegativeBinomial_ab53adc81020714e4ade9d139c8d6dca9}{Resolution}};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classNegativeBinomial_a6dded189af1c3d6185b6edb67eb8bc68}{dMu}};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classNegativeBinomial_a906b226360d91cbd7c43380efac888a3}{muMax}};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::vector<std::vector<double>>\ \mbox{\hyperlink{classNegativeBinomial_a5762d7a6445d95dfb90624803c70a695}{PureData}};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classNegativeBinomial_aeaf581ddff07d64f873df05b4c012207}{NegativeBinomial}}(\textcolor{keywordtype}{int}\ kMax,\ \textcolor{keywordtype}{int}\ resolution,\textcolor{keywordtype}{double}\ maxMu);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classNegativeBinomial_a111cd4ef1eb422ae3683187c9cb42c76}{Populate}}(\textcolor{keywordtype}{double}\ sigma);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \string~NegativeBinomial();}}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTruncatedGaussian}{TruncatedGaussian}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTruncatedGaussian_ae3b869451126b73a4bcfb573afe11d15}{Truncator}};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ std::vector<std::vector<double>>\ \mbox{\hyperlink{classTruncatedGaussian_a5f014175e3f954938da80b94cef9055a}{PureData}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTruncatedGaussian_a054d5d5d43e949ab8a28cd2f75bb0a56}{KMax}};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTruncatedGaussian_aab11db81ba5f6990331b1a82fa89dfd3}{TruncatedGaussian}}(\textcolor{keywordtype}{int}\ kMax,\ \textcolor{keywordtype}{int}\ bounder);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTruncatedGaussian_a154446e8f03f6933fb00d60943758a6f}{Populate}}(\textcolor{keywordtype}{double}\ gamma);}
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structEB__Bracket}{EB\_Bracket}}}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structEB__Bracket_a1fdce4fcbe76daf7b0454726b9c93799}{Top}};}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structEB__Bracket_ae2f696c745af49377f785e180a5d01f8}{Bottom}};}
+\DoxyCodeLine{00043\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{structEB__Bracket_aafe1eb60fe81135e8899642a4965900b}{Interpolate}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{structEB__Bracket_a2d10a85282f15013735eb9978ee3f0b9}{EB\_Bracket}}(\textcolor{keywordtype}{int}\ q)}
+\DoxyCodeLine{00045\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structEB__Bracket_a1fdce4fcbe76daf7b0454726b9c93799}{Top}}.resize(q);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structEB__Bracket_ae2f696c745af49377f785e180a5d01f8}{Bottom}}.resize(q);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structEB__Bracket_aafe1eb60fe81135e8899642a4965900b}{Interpolate}}.resize(q);}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{NegativeBinomial_8h_ab100bf2217331ec3cb44188c833e7df4}{nWorkers}};}
+\DoxyCodeLine{00053\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classErroredBinomial}{ErroredBinomial}}}
+\DoxyCodeLine{00054\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classErroredBinomial_ab16dcfb8aed605c0a4758fdba6dd9560}{nWorkers}};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTruncatedGaussian}{TruncatedGaussian}}\ \mbox{\hyperlink{classErroredBinomial_a64ecfeb4d79191580640d28fc46ac27a}{TG}};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structEB__Bracket}{EB\_Bracket}}\ \mbox{\hyperlink{classErroredBinomial_a6182e2247ca1986cac6ba399f4b51529}{CurrentBracket}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classErroredBinomial_a605659f79977a313d749284ccbaf2cdc}{Kmax}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classErroredBinomial_ab2b1551e2f4eb819963f143ab952a1b7}{Bounder}};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ void\ Worker(int\ id);}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::vector<int>\ WorkerStatus;}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::vector<std::thread>\ Threads;}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classErroredBinomial_a5d810f878deba2df83046e142ac3fa07}{masterStart}}\ =\ 0;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ std::vector<std::vector<double>>\ \mbox{\hyperlink{classErroredBinomial_ac039018ba0cd2611010528dfafdfc4b5}{Data}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classNegativeBinomial}{NegativeBinomial}}\ \mbox{\hyperlink{classErroredBinomial_a4276ddb38d014a3a6b8a6ad40e44a5fb}{NB}};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classErroredBinomial_aa7788dd9ce425031418a23f933a071ed}{Resolution}};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classErroredBinomial_a65ceb20240d1950bf230c5ff0bc3c65e}{Sigma}};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classErroredBinomial_aa5866c60af39a3903c890238411bb0a6}{qMax}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classErroredBinomial_a08b440709d6207a95d49921b686a1c6c}{ErroredBinomial}}(\textcolor{keywordtype}{int}\ kMax,\ \textcolor{keywordtype}{int}\ res,\ \textcolor{keywordtype}{int}\ bounder,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classErroredBinomial_aa5866c60af39a3903c890238411bb0a6}{qMax}},\textcolor{keywordtype}{double}\ muMax,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classErroredBinomial_ab16dcfb8aed605c0a4758fdba6dd9560}{nWorkers}});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ void\ CloseThreads();}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classErroredBinomial_ad2560e5bae4050525978993040c932d0}{PopulateChunk}}(\textcolor{keywordtype}{int}\ resMin,\ \textcolor{keywordtype}{int}\ resMax);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classErroredBinomial_ad1af2ef0969f81597b017323f6bd079c}{Populate}}(\textcolor{keywordtype}{double}\ gamma,\ \textcolor{keywordtype}{double}\ sigma,\ \mbox{\hyperlink{classDistributor}{Distributor}}\ \&\ dist);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classErroredBinomial_a7b4ba932092fae5511a532f2fa593be1}{SetBracket}}(\textcolor{keywordtype}{double}\ nu);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classErroredBinomial_a6de40808745eba4da73eeb3b8eb124cb}{GetProb}}(\textcolor{keywordtype}{int}\ q,\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ }
+
+\end{DoxyCode}

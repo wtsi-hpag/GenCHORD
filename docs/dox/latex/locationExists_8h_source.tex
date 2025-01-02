@@ -1,0 +1,21 @@
+\doxysection{location\+Exists.\+h}
+\hypertarget{locationExists_8h_source}{}\label{locationExists_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/locationExists.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/FileIO/locationExists.h}}
+\mbox{\hyperlink{locationExists_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceJSL}{JSL}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{bool}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespaceJSL_a1752cd7c6e1134da51e9307527e0d788}{locationExists}}(\textcolor{keyword}{const}\ std::string\ \&\ filename)}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }stat\ buffer;\ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (stat\ (filename.c\_str(),\ \&buffer)\ ==\ 0);\ }
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}

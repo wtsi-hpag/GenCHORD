@@ -1,0 +1,42 @@
+\doxysection{plotting.\+h}
+\hypertarget{plotting_8h_source}{}\label{plotting_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/src/plotting.h@{/Users/jf20/Documents/Genomics/Deforest/src/plotting.h}}
+\mbox{\hyperlink{plotting_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{JSL_8h}{JSL.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{data_8h}{data.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Transitions_8h}{Transitions.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{settings_8h}{settings.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{plotting_8h_a8a2336d5099b1838af1b36d7a0555430}{nPlot}};}
+\DoxyCodeLine{00007\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{plotting_8h_a4eb6909f54bc251eb7e2c560b9aba3a9}{basicPlot}}(\mbox{\hyperlink{classJSL_1_1gnuplot}{JSL::gnuplot}}\ \&\ gp,\mbox{\hyperlink{structData}{Data}}\ \&\ d,\textcolor{keywordtype}{int}\ chrom);}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{plotting_8h_ac6b15fc3a755ef6d617499ae7fd981e5}{TransitionPlot}}(\mbox{\hyperlink{classJSL_1_1gnuplot}{JSL::gnuplot}}\ \&\ gp,std::vector<chr\_int>\ idx,\ std::vector<double>\ freq,\textcolor{keywordtype}{double}\ nuCorrect,std::string\ legend);}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{plotting_8h_a8882d9011d7c6db8f503823742e97517}{recoverMeta}}(\mbox{\hyperlink{classSettings}{Settings}}\ \&\ settings);}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTreeMeta}{TreeMeta}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classTreeMeta_a6a90e91eb62f64b52ae8153408260574}{DataFile}};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classTreeMeta_a9822c369fdbdccfbb3deee63aef5ad91}{Nu}};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classTreeMeta_a48fb16d62b2c6868ce0c845b394945a1}{Sigma}};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classTreeMeta_a6341e1f31ba51f02ed2b86207b8f608b}{Gamma}};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTreeMeta_a045f847fad484e607ee885ad2bbc8be1}{L}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTreeMeta_a6b17f1b20c1f005eeb1dd9d51f1f480f}{TreeMeta}}(\mbox{\hyperlink{classSettings}{Settings}}\ \&\ s);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \mbox{\hyperlink{classTreeMeta_a0f5cd00d2b56e0fe513a9b8858f2670b}{Harmonic}};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::vector<std::vector<double>>\ \mbox{\hyperlink{classTreeMeta_a3af5fc186769662cc60faec1a9d7c4eb}{Frequency}};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::vector<std::vector<chr\_int>>\ \mbox{\hyperlink{classTreeMeta_a23096e592ba8ee1ab24f61507b5e9a8e}{Idx}};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{classTreeMeta_abaf273605c3923a38886a97b13992ebd}{Name}};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classTreeMeta_a7e78f1690abb4344f9eea11e1c4ea73e}{TrueChrom}};}
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{plotting_8h_a11d847562ce70e71deeb1b028afca42f}{TransitionFrame}}(\mbox{\hyperlink{structData}{Data}}\ \&\ d,\ \mbox{\hyperlink{classSettings}{Settings}}\ \&\ settings,\ std::vector<chr\_int>\ idx,\ std::vector<double>\ freq,\ \textcolor{keywordtype}{int}\ c,\textcolor{keywordtype}{bool}\ instantPlot);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{plotting_8h_a285836345349fd051e651d1b4a274d96}{OutputPlot}}(\mbox{\hyperlink{structData}{Data}}\ \&\ d,\mbox{\hyperlink{classSettings}{Settings}}\ \&\ settings);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{plotting_8h_a350486641f8e5e69113d5b1c1e088ae4}{ComparisonPlots}}(\mbox{\hyperlink{classSettings}{Settings}}\ \&\ settings);}
+
+\end{DoxyCode}

@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classJSL_1_1PredictionBar" kind="class" language="C++" prot="public">
+    <compoundname>JSL::PredictionBar</compoundname>
+    <basecompoundref refid="classJSL_1_1ProgressBar" prot="public" virt="non-virtual">JSL::ProgressBar&lt; 1, true, &apos;#&apos;, 20 &gt;</basecompoundref>
+    <includes refid="PredictionBar_8h" local="no">PredictionBar.h</includes>
+    <templateparamlist>
+      <param>
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <declname>Dimension</declname>
+        <defname>Dimension</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">char</ref></type>
+        <declname>Symbol</declname>
+        <defname>Symbol</defname>
+        <defval>&apos;#&apos;</defval>
+      </param>
+      <param>
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">unsigned</ref> <ref refid="structJSL_1_1NameValuePair" kindref="compound">int</ref></type>
+        <declname>MaxHashes</declname>
+        <defname>MaxHashes</defname>
+        <defval>20</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classJSL_1_1PredictionBar_1a6542fe38254fc02337cbd8bf060d0386" prot="private" static="no" mutable="no">
+        <type>std::chrono::time_point&lt; std::chrono::system_clock &gt;</type>
+        <definition>std::chrono::time_point&lt;std::chrono::system_clock&gt; JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;::Start</definition>
+        <argsstring></argsstring>
+        <name>Start</name>
+        <qualifiedname>JSL::PredictionBar::Start</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" line="37" column="25" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1PredictionBar_1ad8c4e114c3c4ef2bc355af7cc10b19a8" prot="private" static="no" mutable="no">
+        <type>std::chrono::time_point&lt; std::chrono::system_clock &gt;</type>
+        <definition>std::chrono::time_point&lt;std::chrono::system_clock&gt; JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;::UpdateTime</definition>
+        <argsstring></argsstring>
+        <name>UpdateTime</name>
+        <qualifiedname>JSL::PredictionBar::UpdateTime</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" line="38" column="25" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1PredictionBar_1ad3a39ff342d601bb866c06f0dbc75de7" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+        <definition>double JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;::CurrentDuration</definition>
+        <argsstring></argsstring>
+        <name>CurrentDuration</name>
+        <qualifiedname>JSL::PredictionBar::CurrentDuration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" line="39" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1PredictionBar_1af9b118baf197404500d844ac9a8c4ab7" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+        <definition>double JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;::Prediction</definition>
+        <argsstring></argsstring>
+        <name>Prediction</name>
+        <qualifiedname>JSL::PredictionBar::Prediction</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" line="40" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classJSL_1_1PredictionBar_1abef77bb45fe8dcff131ec5195b7d13e8" prot="private" static="no" mutable="no">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">double</ref></type>
+        <definition>double JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;::prevProgress</definition>
+        <argsstring></argsstring>
+        <name>prevProgress</name>
+        <qualifiedname>JSL::PredictionBar::prevProgress</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" line="41" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classJSL_1_1PredictionBar_1a3d7378cd862a27eb7454f82a25b539d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;::PredictionBar</definition>
+        <argsstring>(Ts... targetCounts)</argsstring>
+        <name>PredictionBar</name>
+        <qualifiedname>JSL::PredictionBar::PredictionBar</qualifiedname>
+        <param>
+          <type>Ts...</type>
+          <declname>targetCounts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" line="14" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" bodystart="14" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1PredictionBar_1a1984b831cd0e821f4edebe3b24c25e47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;::Update</definition>
+        <argsstring>(Ts... positions)</argsstring>
+        <name>Update</name>
+        <qualifiedname>JSL::PredictionBar::Update</qualifiedname>
+        <param>
+          <type>Ts...</type>
+          <declname>positions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" line="22" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" bodystart="22" bodyend="34"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classJSL_1_1PredictionBar_1a1f572d3120ffbaac844fea94bdef0df9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>void JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;::ComputeTime</definition>
+        <argsstring>()</argsstring>
+        <name>ComputeTime</name>
+        <qualifiedname>JSL::PredictionBar::ComputeTime</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" line="42" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" bodystart="42" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classJSL_1_1PredictionBar_1ab0b2554e099a042a310f1d21eaf9dbe2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="structJSL_1_1NameValuePair" kindref="compound">void</ref></type>
+        <definition>virtual void JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;::PrintPositions_DeleteMode</definition>
+        <argsstring>()</argsstring>
+        <name>PrintPositions_DeleteMode</name>
+        <qualifiedname>JSL::PredictionBar::PrintPositions_DeleteMode</qualifiedname>
+        <reimplements refid="classJSL_1_1ProgressBar_1a982ed7fb5d898e838b3685509d609b23">PrintPositions_DeleteMode</reimplements>
+        <briefdescription>
+<para>The version of Printing which happens if DeleteMode is true <ndash/> clears the previous bars using ANSI codes, then overwrites them with the new values. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" line="86" column="14" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" bodystart="86" bodyend="112"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;</label>
+        <link refid="classJSL_1_1PredictionBar"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>JSL::ProgressBar&lt; Dimension, DeleteMode, Symbol, MaxHashes &gt;</label>
+        <link refid="classJSL_1_1ProgressBar"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>JSL::PredictionBar&lt; Dimension, Symbol, MaxHashes &gt;</label>
+        <link refid="classJSL_1_1PredictionBar"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>JSL::ProgressBar&lt; Dimension, DeleteMode, Symbol, MaxHashes &gt;</label>
+        <link refid="classJSL_1_1ProgressBar"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" line="9" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/libs/JSL/Display/PredictionBar.h" bodystart="10" bodyend="113"/>
+    <listofallmembers>
+      <member refid="classJSL_1_1ProgressBar_1a8ab0aeecd87eaa2754a5a58aea3cca51" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>BarProgress</name></member>
+      <member refid="classJSL_1_1ProgressBar_1a4fabdafceac14f4fbbb3e364578f6e1c" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>BarTargets</name></member>
+      <member refid="classJSL_1_1ProgressBar_1ae3160fd31be03fadd4c92a0906f64f79" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>bufferWidth</name></member>
+      <member refid="classJSL_1_1ProgressBar_1a5fa7f8ced9592b0cea5a366157332eff" prot="public" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>Clear</name></member>
+      <member refid="classJSL_1_1ProgressBar_1adafc5d517ac0dc23b9761bce1d68f953" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>ClearScreen</name></member>
+      <member refid="classJSL_1_1PredictionBar_1a1f572d3120ffbaac844fea94bdef0df9" prot="private" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>ComputeTime</name></member>
+      <member refid="classJSL_1_1PredictionBar_1ad3a39ff342d601bb866c06f0dbc75de7" prot="private" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>CurrentDuration</name></member>
+      <member refid="classJSL_1_1ProgressBar_1a7354c455382575329326bedfd210957e" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>firstPrint</name></member>
+      <member refid="classJSL_1_1ProgressBar_1a0798094501860753307f92eafa464b4f" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>Hashes</name></member>
+      <member refid="classJSL_1_1ProgressBar_1ab85ccf4638d649d88becf47e2af83525" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>Names</name></member>
+      <member refid="classJSL_1_1PredictionBar_1af9b118baf197404500d844ac9a8c4ab7" prot="private" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>Prediction</name></member>
+      <member refid="classJSL_1_1PredictionBar_1a3d7378cd862a27eb7454f82a25b539d5" prot="public" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>PredictionBar</name></member>
+      <member refid="classJSL_1_1ProgressBar_1a3439198bd34393a92cfbc9067247be4a" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>prevHashes</name></member>
+      <member refid="classJSL_1_1PredictionBar_1abef77bb45fe8dcff131ec5195b7d13e8" prot="private" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>prevProgress</name></member>
+      <member refid="classJSL_1_1PredictionBar_1ab0b2554e099a042a310f1d21eaf9dbe2" prot="private" virt="virtual"><scope>JSL::PredictionBar</scope><name>PrintPositions_DeleteMode</name></member>
+      <member refid="classJSL_1_1ProgressBar_1a5dba8513809faf0a0f9a315b1f527314" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>PrintPositions_RetainMode</name></member>
+      <member refid="classJSL_1_1ProgressBar_1a387540b26d9e8cef6ef694e78ca21d05" prot="public" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>ProgressBar</name></member>
+      <member refid="classJSL_1_1ProgressBar_1a913055a04bad40dbbf66f0f8247bb8b0" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>reprintNeeded</name></member>
+      <member refid="classJSL_1_1ProgressBar_1ade149b634fe82923f5a284ba34045fbc" prot="public" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>SetName</name></member>
+      <member refid="classJSL_1_1ProgressBar_1ad02946ede96408489d672d15ab200958" prot="public" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>SetName</name></member>
+      <member refid="classJSL_1_1ProgressBar_1ac434128522cfdfe01a2d9c791188c8ec" prot="public" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>SetName</name></member>
+      <member refid="classJSL_1_1PredictionBar_1a6542fe38254fc02337cbd8bf060d0386" prot="private" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>Start</name></member>
+      <member refid="classJSL_1_1ProgressBar_1a7088deecfe936d4eaba784cff05270f4" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>UnpackTargets</name></member>
+      <member refid="classJSL_1_1ProgressBar_1a73c79e8e00905454aa2853b39d8143b6" prot="protected" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>UnrollPositions</name></member>
+      <member refid="classJSL_1_1PredictionBar_1a1984b831cd0e821f4edebe3b24c25e47" prot="public" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>Update</name></member>
+      <member refid="classJSL_1_1PredictionBar_1ad8c4e114c3c4ef2bc355af7cc10b19a8" prot="private" virt="non-virtual"><scope>JSL::PredictionBar</scope><name>UpdateTime</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

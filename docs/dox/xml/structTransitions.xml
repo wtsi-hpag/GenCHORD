@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structTransitions" kind="struct" language="C++" prot="public">
+    <compoundname>Transitions</compoundname>
+    <includes refid="Transitions_8h" local="no">Transitions.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTransitions_1a1af24026edc1b2a74822de3c1894eeb9" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structChromTransitions" kindref="compound">ChromTransitions</ref> &gt;</type>
+        <definition>std::vector&lt;ChromTransitions&gt; Transitions::List</definition>
+        <argsstring></argsstring>
+        <name>List</name>
+        <qualifiedname>Transitions::List</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="14" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTransitions_1acff009240bf52922ba0c4c51dfe8385b" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Transitions::Nu</definition>
+        <argsstring></argsstring>
+        <name>Nu</name>
+        <qualifiedname>Transitions::Nu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="15" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTransitions_1a0dc8e7a95889f70ab870f7661eed9f29" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Transitions::Gamma</definition>
+        <argsstring></argsstring>
+        <name>Gamma</name>
+        <qualifiedname>Transitions::Gamma</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="16" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTransitions_1acabf76314795e43cdbfb4400f30b3cd7" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Transitions::Sigma</definition>
+        <argsstring></argsstring>
+        <name>Sigma</name>
+        <qualifiedname>Transitions::Sigma</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="17" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTransitions_1ae2446c197603a8247f2e70d166acb823" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Transitions::Score</definition>
+        <argsstring></argsstring>
+        <name>Score</name>
+        <qualifiedname>Transitions::Score</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="18" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTransitions_1af96d7b6a2b00135dddde4a8ad82da793" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Transitions::Transitions</definition>
+        <argsstring>()</argsstring>
+        <name>Transitions</name>
+        <qualifiedname>Transitions::Transitions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="19" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="19" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="structTransitions_1a34acf2aaea0efdb4ccc9bb53dbf301a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Transitions::Transitions</definition>
+        <argsstring>(int n)</argsstring>
+        <name>Transitions</name>
+        <qualifiedname>Transitions::Transitions</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="20" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="20" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="structTransitions_1aaf8b690d6312e1df2965c00f3559451a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Transitions::Add</definition>
+        <argsstring>(int chrom, chr_int index, double nu, double sigma, int q)</argsstring>
+        <name>Add</name>
+        <qualifiedname>Transitions::Add</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>chrom</declname>
+        </param>
+        <param>
+          <type><ref refid="data_8h_1a3f3ed9a0a71dadb45244e663340fea39" kindref="member">chr_int</ref></type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>nu</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>sigma</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="24" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="24" bodyend="31"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" line="12" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h" bodystart="13" bodyend="58"/>
+    <listofallmembers>
+      <member refid="structTransitions_1aaf8b690d6312e1df2965c00f3559451a" prot="public" virt="non-virtual"><scope>Transitions</scope><name>Add</name></member>
+      <member refid="structTransitions_1a0dc8e7a95889f70ab870f7661eed9f29" prot="public" virt="non-virtual"><scope>Transitions</scope><name>Gamma</name></member>
+      <member refid="structTransitions_1a1af24026edc1b2a74822de3c1894eeb9" prot="public" virt="non-virtual"><scope>Transitions</scope><name>List</name></member>
+      <member refid="structTransitions_1acff009240bf52922ba0c4c51dfe8385b" prot="public" virt="non-virtual"><scope>Transitions</scope><name>Nu</name></member>
+      <member refid="structTransitions_1ae2446c197603a8247f2e70d166acb823" prot="public" virt="non-virtual"><scope>Transitions</scope><name>Score</name></member>
+      <member refid="structTransitions_1acabf76314795e43cdbfb4400f30b3cd7" prot="public" virt="non-virtual"><scope>Transitions</scope><name>Sigma</name></member>
+      <member refid="structTransitions_1af96d7b6a2b00135dddde4a8ad82da793" prot="public" virt="non-virtual"><scope>Transitions</scope><name>Transitions</name></member>
+      <member refid="structTransitions_1a34acf2aaea0efdb4ccc9bb53dbf301a6" prot="public" virt="non-virtual"><scope>Transitions</scope><name>Transitions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,64 @@
+\doxysection{Transitions.\+h}
+\hypertarget{Transitions_8h_source}{}\label{Transitions_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h@{/Users/jf20/Documents/Genomics/Deforest/src/Transitions.h}}
+\mbox{\hyperlink{Transitions_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{data_8h}{data.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structChromTransitions}{ChromTransitions}}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ std::vector<chr\_int>\ \mbox{\hyperlink{structChromTransitions_aaf1b7b4b01f5d4b887a14f78dd16dda2}{Index}};}
+\DoxyCodeLine{00008\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structChromTransitions_a3964b1c0f7dd06afbabefa3ba83eaa1a}{Resonance}};}
+\DoxyCodeLine{00009\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{structChromTransitions_afa85e8fe9ba3ec34ea8c315493cbace8}{Frequency}};}
+\DoxyCodeLine{00010\ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTransitions}{Transitions}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ std::vector<ChromTransitions>\ \mbox{\hyperlink{structTransitions_a1af24026edc1b2a74822de3c1894eeb9}{List}};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structTransitions_acff009240bf52922ba0c4c51dfe8385b}{Nu}};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structTransitions_a0dc8e7a95889f70ab870f7661eed9f29}{Gamma}};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structTransitions_acabf76314795e43cdbfb4400f30b3cd7}{Sigma}};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structTransitions_ae2446c197603a8247f2e70d166acb823}{Score}};}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{structTransitions_af96d7b6a2b00135dddde4a8ad82da793}{Transitions}}()\{\};}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{structTransitions_a34acf2aaea0efdb4ccc9bb53dbf301a6}{Transitions}}(\textcolor{keywordtype}{int}\ n)}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTransitions_a1af24026edc1b2a74822de3c1894eeb9}{List}}.resize(n);}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structTransitions_aaf8b690d6312e1df2965c00f3559451a}{Add}}(\textcolor{keywordtype}{int}\ chrom,\mbox{\hyperlink{data_8h_a3f3ed9a0a71dadb45244e663340fea39}{chr\_int}}\ index,\ \textcolor{keywordtype}{double}\ nu,\ \textcolor{keywordtype}{double}\ sigma,\textcolor{keywordtype}{int}\ q)}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTransitions_a1af24026edc1b2a74822de3c1894eeb9}{List}}[chrom].Index.push\_back(index);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTransitions_a1af24026edc1b2a74822de3c1894eeb9}{List}}[chrom].Resonance.push\_back(q);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTransitions_a1af24026edc1b2a74822de3c1894eeb9}{List}}[chrom].Frequency.push\_back(q*nu);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTransitions_acff009240bf52922ba0c4c51dfe8385b}{Nu}}\ =\ nu;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTransitions_acabf76314795e43cdbfb4400f30b3cd7}{Sigma}}\ =\ sigma;}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ void\ Plot(JSL::gnuplot\ \&\ gp,Data\ \&\ d)}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ \ std::vector<std::vector<chr\_int>>\ idx(List.size());}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ \ std::vector<std::vector<double>>\ freq(List.size());}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ \ for\ (int\ c\ =\ 0;\ c\ <\ List.size();\ ++c)}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ chr\_int\ maxIdx\ =\ d.Chromosomes[c].maxIdx;}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ for\ (int\ i\ =0;\ i\ <\ List[c].Index.size();\ ++i)}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \{}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ if\ (i\ >\ 0)}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ idx[c].push\_back(List[c].Index[i]);}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ freq[c].push\_back(List[c].Frequency[i-\/1]);}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ res.push\_back(List[c].Resonance[i-\/1]);}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ idx[c].push\_back(List[c].Index[i]);}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ freq[c].push\_back(List[c].Frequency[i]);}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ //\ res.push\_back(List[c].Resonance[i]);}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ idx[c].push\_back(maxIdx);}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ freq[c].push\_back(freq[c][freq[c].size()-\/1]);}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ //\ res.push\_back(res[res.size()-\/1]);}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ \ TransitionPlot(idx,freq,gp);}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00058\ \};}
+
+\end{DoxyCode}

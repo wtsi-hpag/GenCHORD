@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classSettings" kind="class" language="C++" prot="public">
+    <compoundname>Settings</compoundname>
+    <includes refid="settings_8h" local="no">settings.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classSettings_1aa89fd531c9299807c5825bc8532ccffe" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Settings::Ploidy</definition>
+        <argsstring></argsstring>
+        <name>Ploidy</name>
+        <qualifiedname>Settings::Ploidy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="8" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1ab793ae70dfc6f07252934c0f41ec7268" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Settings::PloidyPrior</definition>
+        <argsstring></argsstring>
+        <name>PloidyPrior</name>
+        <qualifiedname>Settings::PloidyPrior</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="9" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a50dd8265698935aecf1061bb6fc8d1d9" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Settings::sigmaMin</definition>
+        <argsstring></argsstring>
+        <name>sigmaMin</name>
+        <qualifiedname>Settings::sigmaMin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="10" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1ae0eb533bdecfa27343d6d4442dd7d6a1" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Settings::sigmaMax</definition>
+        <argsstring></argsstring>
+        <name>sigmaMax</name>
+        <qualifiedname>Settings::sigmaMax</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="11" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a99a453425535f63cfc434f4fbeba63fd" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Settings::sigmaResolution</definition>
+        <argsstring></argsstring>
+        <name>sigmaResolution</name>
+        <qualifiedname>Settings::sigmaResolution</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="12" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a871122d38126740463ece2a4597c5576" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Settings::nuResolution</definition>
+        <argsstring></argsstring>
+        <name>nuResolution</name>
+        <qualifiedname>Settings::nuResolution</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="13" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a07f895fffb07dbf175a318ae454a7646" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Settings::gammaMin</definition>
+        <argsstring></argsstring>
+        <name>gammaMin</name>
+        <qualifiedname>Settings::gammaMin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="15" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a839b60657b6274f5c2d6e790787a5661" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Settings::gammaMax</definition>
+        <argsstring></argsstring>
+        <name>gammaMax</name>
+        <qualifiedname>Settings::gammaMax</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="16" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a64fe814939b941d6fa5372a411329f6a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Settings::gammaResolution</definition>
+        <argsstring></argsstring>
+        <name>gammaResolution</name>
+        <qualifiedname>Settings::gammaResolution</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="17" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1acc41c456ed12f8acca98df2def6cd3ff" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Settings::Accelerator</definition>
+        <argsstring></argsstring>
+        <name>Accelerator</name>
+        <qualifiedname>Settings::Accelerator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="18" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a8fa40e17cda2a56838be34ccfacb9af1" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Settings::Gamma</definition>
+        <argsstring></argsstring>
+        <name>Gamma</name>
+        <qualifiedname>Settings::Gamma</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="19" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1ae500cd5efd43bf1af1b8b712721dd5b3" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Settings::Qmax</definition>
+        <argsstring></argsstring>
+        <name>Qmax</name>
+        <qualifiedname>Settings::Qmax</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="20" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a2bef7bef504e306eb9eff8c7311d6540" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Settings::L</definition>
+        <argsstring></argsstring>
+        <name>L</name>
+        <qualifiedname>Settings::L</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="21" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a8b3721d24a5417caa0f2ad6f5eb85782" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Settings::alpha</definition>
+        <argsstring></argsstring>
+        <name>alpha</name>
+        <qualifiedname>Settings::alpha</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="22" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1ab94ee7585302bae3d528f805842db32c" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Settings::OutputName</definition>
+        <argsstring></argsstring>
+        <name>OutputName</name>
+        <qualifiedname>Settings::OutputName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="24" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1abd6865989f92a172dd41628cf8a18532" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Settings::TargetChromosome</definition>
+        <argsstring></argsstring>
+        <name>TargetChromosome</name>
+        <qualifiedname>Settings::TargetChromosome</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="25" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a5c971192e52358765e2f659e76d0c201" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Settings::DataFile</definition>
+        <argsstring></argsstring>
+        <name>DataFile</name>
+        <qualifiedname>Settings::DataFile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="26" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a6d01f3557bf7da203fbfbaffc19d84da" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Settings::DataThinning</definition>
+        <argsstring></argsstring>
+        <name>DataThinning</name>
+        <qualifiedname>Settings::DataThinning</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="27" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a8403e8fdb0ed972fccacef62c8b5c7c1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Settings::Quiet</definition>
+        <argsstring></argsstring>
+        <name>Quiet</name>
+        <qualifiedname>Settings::Quiet</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="28" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1aa0465b5ff421f9d0bfdb6cc774aaca6a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Settings::PlotOnly</definition>
+        <argsstring></argsstring>
+        <name>PlotOnly</name>
+        <qualifiedname>Settings::PlotOnly</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="29" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a5bc27b86a0b29053fb6c55eb274781fd" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Settings::ComparePlot</definition>
+        <argsstring></argsstring>
+        <name>ComparePlot</name>
+        <qualifiedname>Settings::ComparePlot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="30" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a11b8b17f953420b3c8dea63713412189" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Settings::MemorySmoothing</definition>
+        <argsstring></argsstring>
+        <name>MemorySmoothing</name>
+        <qualifiedname>Settings::MemorySmoothing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="31" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSettings_1a3b57bbe1b89b28a2028e8aaae8802ce6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Settings::ParallelWorkers</definition>
+        <argsstring></argsstring>
+        <name>ParallelWorkers</name>
+        <qualifiedname>Settings::ParallelWorkers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="32" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSettings_1ab7169a6eefce79566dd07db3b1e5e967" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Settings::Settings</definition>
+        <argsstring>()</argsstring>
+        <name>Settings</name>
+        <qualifiedname>Settings::Settings</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="33" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classSettings_1a48d7d61ba5df525b10cd89f5375a47ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Settings::Initialise</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>Initialise</name>
+        <qualifiedname>Settings::Initialise</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="35" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="35" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classSettings_1a65725eea2c0cec426d5844de9ed61028" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Settings::Initialise</definition>
+        <argsstring>(std::string configFile)</argsstring>
+        <name>Initialise</name>
+        <qualifiedname>Settings::Initialise</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>configFile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="62" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="62" bodyend="81"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" line="5" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/settings.h" bodystart="6" bodyend="82"/>
+    <listofallmembers>
+      <member refid="classSettings_1acc41c456ed12f8acca98df2def6cd3ff" prot="public" virt="non-virtual"><scope>Settings</scope><name>Accelerator</name></member>
+      <member refid="classSettings_1a8b3721d24a5417caa0f2ad6f5eb85782" prot="public" virt="non-virtual"><scope>Settings</scope><name>alpha</name></member>
+      <member refid="classSettings_1a5bc27b86a0b29053fb6c55eb274781fd" prot="public" virt="non-virtual"><scope>Settings</scope><name>ComparePlot</name></member>
+      <member refid="classSettings_1a5c971192e52358765e2f659e76d0c201" prot="public" virt="non-virtual"><scope>Settings</scope><name>DataFile</name></member>
+      <member refid="classSettings_1a6d01f3557bf7da203fbfbaffc19d84da" prot="public" virt="non-virtual"><scope>Settings</scope><name>DataThinning</name></member>
+      <member refid="classSettings_1a8fa40e17cda2a56838be34ccfacb9af1" prot="public" virt="non-virtual"><scope>Settings</scope><name>Gamma</name></member>
+      <member refid="classSettings_1a839b60657b6274f5c2d6e790787a5661" prot="public" virt="non-virtual"><scope>Settings</scope><name>gammaMax</name></member>
+      <member refid="classSettings_1a07f895fffb07dbf175a318ae454a7646" prot="public" virt="non-virtual"><scope>Settings</scope><name>gammaMin</name></member>
+      <member refid="classSettings_1a64fe814939b941d6fa5372a411329f6a" prot="public" virt="non-virtual"><scope>Settings</scope><name>gammaResolution</name></member>
+      <member refid="classSettings_1a48d7d61ba5df525b10cd89f5375a47ad" prot="public" virt="non-virtual"><scope>Settings</scope><name>Initialise</name></member>
+      <member refid="classSettings_1a65725eea2c0cec426d5844de9ed61028" prot="public" virt="non-virtual"><scope>Settings</scope><name>Initialise</name></member>
+      <member refid="classSettings_1a2bef7bef504e306eb9eff8c7311d6540" prot="public" virt="non-virtual"><scope>Settings</scope><name>L</name></member>
+      <member refid="classSettings_1a11b8b17f953420b3c8dea63713412189" prot="public" virt="non-virtual"><scope>Settings</scope><name>MemorySmoothing</name></member>
+      <member refid="classSettings_1a871122d38126740463ece2a4597c5576" prot="public" virt="non-virtual"><scope>Settings</scope><name>nuResolution</name></member>
+      <member refid="classSettings_1ab94ee7585302bae3d528f805842db32c" prot="public" virt="non-virtual"><scope>Settings</scope><name>OutputName</name></member>
+      <member refid="classSettings_1a3b57bbe1b89b28a2028e8aaae8802ce6" prot="public" virt="non-virtual"><scope>Settings</scope><name>ParallelWorkers</name></member>
+      <member refid="classSettings_1aa89fd531c9299807c5825bc8532ccffe" prot="public" virt="non-virtual"><scope>Settings</scope><name>Ploidy</name></member>
+      <member refid="classSettings_1ab793ae70dfc6f07252934c0f41ec7268" prot="public" virt="non-virtual"><scope>Settings</scope><name>PloidyPrior</name></member>
+      <member refid="classSettings_1aa0465b5ff421f9d0bfdb6cc774aaca6a" prot="public" virt="non-virtual"><scope>Settings</scope><name>PlotOnly</name></member>
+      <member refid="classSettings_1ae500cd5efd43bf1af1b8b712721dd5b3" prot="public" virt="non-virtual"><scope>Settings</scope><name>Qmax</name></member>
+      <member refid="classSettings_1a8403e8fdb0ed972fccacef62c8b5c7c1" prot="public" virt="non-virtual"><scope>Settings</scope><name>Quiet</name></member>
+      <member refid="classSettings_1ab7169a6eefce79566dd07db3b1e5e967" prot="public" virt="non-virtual"><scope>Settings</scope><name>Settings</name></member>
+      <member refid="classSettings_1ae0eb533bdecfa27343d6d4442dd7d6a1" prot="public" virt="non-virtual"><scope>Settings</scope><name>sigmaMax</name></member>
+      <member refid="classSettings_1a50dd8265698935aecf1061bb6fc8d1d9" prot="public" virt="non-virtual"><scope>Settings</scope><name>sigmaMin</name></member>
+      <member refid="classSettings_1a99a453425535f63cfc434f4fbeba63fd" prot="public" virt="non-virtual"><scope>Settings</scope><name>sigmaResolution</name></member>
+      <member refid="classSettings_1abd6865989f92a172dd41628cf8a18532" prot="public" virt="non-virtual"><scope>Settings</scope><name>TargetChromosome</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

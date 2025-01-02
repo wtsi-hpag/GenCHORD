@@ -1,0 +1,58 @@
+\doxysection{Distributor.\+h}
+\hypertarget{Distributor_8h_source}{}\label{Distributor_8h_source}\index{/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h@{/Users/jf20/Documents/Genomics/Deforest/src/Distributor.h}}
+\mbox{\hyperlink{Distributor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{data_8h}{data.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Transitions_8h}{Transitions.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{HarmonicFunctions_8h}{HarmonicFunctions.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classErroredBinomial}{ErroredBinomial}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDistributor}{Distributor}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classDistributor_aa68612f1af8bb860fd0fd3e9cde2c5a8}{Register}};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::vector<std::thread>\ \mbox{\hyperlink{classDistributor_a9e40bdfe952682af3f1fe3df9da6deea}{Threads}};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDistributor_a7d44525cb713f5a39d0686a46df56e18}{Worker}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classDistributor_a30c2552d2b49a39b9888eed3f56d8c82}{ebStart}};}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classDistributor_a1cb4ab602dc59da2f074732697ae153e}{ebEnd}};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDistributor_a3ccf88b3b370a34d867d559ffcd0148a}{EB\_Task}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDistributor_a4899a90489bbf29087c6114d13a8e0d5}{Assignment\_Task}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDistributor_a9d38af8686e8d386116dedf18709e3c6}{SpoolDown}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDistributor_aff43d57595aa9f844bfdde33bdabb85f}{CheckRegister}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDistributor_a340af027357abe54b41c72d1015d8b1f}{SetRegister}}(\textcolor{keywordtype}{int}\ value,\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structData}{Data}}\ \&\ \mbox{\hyperlink{classDistributor_a7e30d51de95f0a7633d85302a34fbc44}{DataCopy}};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \mbox{\hyperlink{classDistributor_a6560644471bf9971f0b513f51d029c0e}{ChromAssignments}};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classDistributor_a3959469a0ebc958253a3f070011626d0}{alpha}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDistributor_accec77fcb1e05ccca8a78f76913c7138}{L}};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDistributor_ac773fd794cfd2df838b55b89f30d2400}{accelerator}};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classDistributor_af4e4fe3e2b365cb85a09a6ffa032ba2e}{nu}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classDistributor_afe07bb1c9563b4d360828d4cff072968}{MainChromAssigment}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classErroredBinomial}{ErroredBinomial}}\ *\ \mbox{\hyperlink{classDistributor_a9c68919030af9e0eee749c8a292d5c19}{EB}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTransitions}{Transitions}}\ *\ \mbox{\hyperlink{classDistributor_a46710d125cbf0edd3a8c84bbe3d66710}{Output}};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDistributor_ab7fdcd7aaef29094caeda49cdd865b46}{WorkerCount}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDistributor_aa02fcbe32e15ec6f3e1354b6da14a7b5}{Signal}}(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDistributor_a54ad9297d61154f3f56fa2863b9ca67a}{Gather}}();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDistributor_ada6ec906e1f36364f780dbcff26260ce}{UpdateEB}}(\mbox{\hyperlink{classErroredBinomial}{ErroredBinomial}}\ *\ eb);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDistributor_aa644bc97597a582f8bfd58acba36ce6a}{UpdateAssigner}}(\mbox{\hyperlink{structTransitions}{Transitions}}\ *\ \mbox{\hyperlink{classDistributor_a46710d125cbf0edd3a8c84bbe3d66710}{Output}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classDistributor_a3959469a0ebc958253a3f070011626d0}{alpha}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDistributor_accec77fcb1e05ccca8a78f76913c7138}{L}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDistributor_ac773fd794cfd2df838b55b89f30d2400}{accelerator}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classDistributor_af4e4fe3e2b365cb85a09a6ffa032ba2e}{nu}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDistributor_abd21bd9d68f5757f1631247984fcb74c}{Distributor}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{NegativeBinomial_8h_ab100bf2217331ec3cb44188c833e7df4}{nWorkers}},\ \mbox{\hyperlink{structData}{Data}}\ \&\ d);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDistributor_a661281a8c58cc1bc1b135b15910030c1}{\string~Distributor}}();}
+\DoxyCodeLine{00052\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,24 @@
+\doxysection{/\+Users/jf20/\+Documents/\+Genomics/\+Deforest/libs/\+JSL/\+Command\+Args/\+Argument.h File Reference}
+\hypertarget{Argument_8h}{}\label{Argument_8h}\index{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Argument.h@{/Users/jf20/Documents/Genomics/Deforest/libs/JSL/CommandArgs/Argument.h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include "{}../\+File\+IO/\+File\+IO.\+h"{}}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classJSL_1_1ArgumentInterface}{JSL\+::\+Argument\+Interface}}
+\item 
+class \mbox{\hyperlink{classJSL_1_1Argument}{JSL\+::\+Argument$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceJSL}{JSL}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{structJSL_1_1NameValuePair}{class}} \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ }\\std\+::ostream \& \mbox{\hyperlink{namespaceJSL_a96050c622f5d29373cdc4a5ebb216b47}{JSL\+::operator$<$$<$}} (std\+::ostream \&\mbox{\hyperlink{structJSL_1_1NameValuePair}{os}}, \mbox{\hyperlink{structJSL_1_1NameValuePair}{const}} \mbox{\hyperlink{classJSL_1_1Argument}{Argument}}$<$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{T}} $>$ \mbox{\hyperlink{structJSL_1_1NameValuePair}{a}})
+\begin{DoxyCompactList}\small\item\em Provides an explicit instruction for how to infer outputting the arg-\/value. This works (temperamentally) without this function, but strings (well-\/known for being fiddly here) can sometimes mess it up, so providing explicit instruction works for the best. \end{DoxyCompactList}\end{DoxyCompactItemize}

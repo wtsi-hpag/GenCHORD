@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structData" kind="struct" language="C++" prot="public">
+    <compoundname>Data</compoundname>
+    <includes refid="data_8h" local="no">data.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structData_1a7ad2de659f404df8290d2fba1b970095" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Data::mean</definition>
+        <argsstring></argsstring>
+        <name>mean</name>
+        <qualifiedname>Data::mean</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="64" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structData_1a93eac1fd44e701d561f1c10bea8a460c" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structChromosome" kindref="compound">Chromosome</ref> &gt;</type>
+        <definition>std::vector&lt;Chromosome&gt; Data::Chromosomes</definition>
+        <argsstring></argsstring>
+        <name>Chromosomes</name>
+        <qualifiedname>Data::Chromosomes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="65" column="13" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structData_1aad2e93695b5d1080f0bb33b2abf53c73" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Data::maxK</definition>
+        <argsstring></argsstring>
+        <name>maxK</name>
+        <qualifiedname>Data::maxK</qualifiedname>
+        <initializer>=0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="66" column="5" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structData_1a0daa50fb852e841db2cc3c2c31e50c30" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Data::Mean</definition>
+        <argsstring></argsstring>
+        <name>Mean</name>
+        <qualifiedname>Data::Mean</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="67" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structData_1a2feb9fa7a6e490c8b083abfee01c7fd2" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Data::Deviation</definition>
+        <argsstring></argsstring>
+        <name>Deviation</name>
+        <qualifiedname>Data::Deviation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="68" column="8" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structData_1a52f3b7b3b046389e5a10fd6b7fd30993" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Data::Loaded</definition>
+        <argsstring></argsstring>
+        <name>Loaded</name>
+        <qualifiedname>Data::Loaded</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="69" column="6" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structData_1af11f741cb7f587e2e495452a8905a22a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Data::Data</definition>
+        <argsstring>()</argsstring>
+        <name>Data</name>
+        <qualifiedname>Data::Data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="70" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="70" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="structData_1a02a051ae029483d76facd0d7916f5305" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Data::Data</definition>
+        <argsstring>(std::string target, int thinning, std::string targetChromosome, double smoothing)</argsstring>
+        <name>Data</name>
+        <qualifiedname>Data::Data</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>thinning</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>targetChromosome</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>smoothing</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="74" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="74" bodyend="186"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jf20/Documents/Genomics/Deforest/src/data.h" line="62" column="1" bodyfile="/Users/jf20/Documents/Genomics/Deforest/src/data.h" bodystart="63" bodyend="187"/>
+    <listofallmembers>
+      <member refid="structData_1a93eac1fd44e701d561f1c10bea8a460c" prot="public" virt="non-virtual"><scope>Data</scope><name>Chromosomes</name></member>
+      <member refid="structData_1af11f741cb7f587e2e495452a8905a22a" prot="public" virt="non-virtual"><scope>Data</scope><name>Data</name></member>
+      <member refid="structData_1a02a051ae029483d76facd0d7916f5305" prot="public" virt="non-virtual"><scope>Data</scope><name>Data</name></member>
+      <member refid="structData_1a2feb9fa7a6e490c8b083abfee01c7fd2" prot="public" virt="non-virtual"><scope>Data</scope><name>Deviation</name></member>
+      <member refid="structData_1a52f3b7b3b046389e5a10fd6b7fd30993" prot="public" virt="non-virtual"><scope>Data</scope><name>Loaded</name></member>
+      <member refid="structData_1aad2e93695b5d1080f0bb33b2abf53c73" prot="public" virt="non-virtual"><scope>Data</scope><name>maxK</name></member>
+      <member refid="structData_1a7ad2de659f404df8290d2fba1b970095" prot="public" virt="non-virtual"><scope>Data</scope><name>mean</name></member>
+      <member refid="structData_1a0daa50fb852e841db2cc3c2c31e50c30" prot="public" virt="non-virtual"><scope>Data</scope><name>Mean</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
