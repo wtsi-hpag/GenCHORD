@@ -1,5 +1,5 @@
 # Project Name (executable)
-PROJECT = deforest
+PROJECT = genchord
 # Compiler
 CC = g++
 
