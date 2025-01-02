@@ -845,4 +845,61 @@
 					& =  (1-\gamma) w_q (D-q)\nu \frac{F\exp(-\lambda_q)}{(1 + \exp(-\lambda_q))^2}\left[ \frac{1}{\sum_{k^\prime} \text{NB}(k^\prime)}  \pdiv{\text{NB}(k)}{\mu} - \frac{\text{NB}(k)}{\left(\sum_{k^\prime} \text{NB}(k^\prime)\right)^2}  \sum_{k^\prime} \pdiv{\text{NB}(k^\prime)}{\mu}\right]
 				\end{align*}
 
+
+	\section{Generating Functions}
+
+		Let us consider an alternative track.   
+
+		Up until this point, we have been assuming that we can access the statics through point observations $(k_1,k_2,k_3)$; but for acceleration reasons, we have been omitting data points, and only working with $(k_1,k_{10},k_{20})$.
+
+		What if there is an easier (and more reliable) way? Instead of omitting datapoints, we preprocess them to compute the \textit{mean} across the acceleration window, $(\bar{k}_1, \bar{k}_{N+1},\bar{k}_{2N+1})$ where 
+		\begin{equation}
+			\bar{k}_i = \frac{1}{N}\sum_{j=i}^{i+N} k_j
+		\end{equation}
+		We lose one nice facet, which is that $\bar{k}_i$ is no longer an integer (though $N\bar{k}$ is, so we can still store on an indexed array). If $N$ is suitably large, then we can simply use the Central Limit Theorem to immediately assert that:
+		\begin{equation}
+			k\sim p(\mu,\sigma) ~~~ \Longleftrightarrow~~~ (\bar{k} - \mu)\sqrt{N} \sim \mathcal{N}(0,\sigma)
+		\end{equation}
+		However, in our case we might want to have $N$ smaller than the region where the CLT applies - and equally, since we can observe that the distributions remain discrete and asymmetrical, there is significant value in computing the distribution of the mean properly. 
+
+		We must therefore ask, given we know $p(k)$, how can we find $p(\sum_i k_i)$? Once we have this, we can compute the distribution of the mean and the variance.
+
+		\subsection{Fourier Transforms \& Generating Functions}
+
+			The traditional way to compute $p(x_1 + x_2 | p(x))$ is to use a convolution:
+			\begin{equation}
+				p^\prime(z) =  \int_{-\infty}^{\infty} p(z-y)p(y) \d y
+			\end{equation}
+			However, when computing the mean of $n$ numbers drawn from the same distribution, this will rapidly become unfeasible:
+			\begin{equation}
+				p^{n}(z) =  \int_{-\infty}^{\infty} \d y_1 p(z - y_1)  \int_{-\infty}^{\infty} \d y_2 p(z - y_1 - y_2)  \int_{-\infty}^{\infty} \d y_3 p(z - y_1 - y_2 - y_3) \hdots  \int_{-\infty}^{\infty} \d y_{n-1} p(z - \sum_j y_j)p(y_{n-1})
+			\end{equation}
+			It is therefore significantly more practical to use the Convolution Theorem:
+			\begin{equation}
+				\mathcal{F}[f * g](x) = \mathcal{F}[f](x) \mathcal{F}[g](x)
+			\end{equation}
+			Where $\mathcal{F}[f](x)$ is the Fourier Transform of $f$:
+			\begin{equation}
+				\mathcal{F}[f](x) = \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^\infty f(k) e^{ikx} \d k
+			\end{equation}
+			That is, Convolutions in `probability space' equate to multiplications in `generator space'. This makes computing the distributions of the mean easier to write in arbitrary form:
+			\begin{equation}
+				N \mu_{N} \sim \mathcal{F}^{-1}\left[ \left( \mathcal{F}[p(k)] \right)^N \right]
+			\end{equation}
+			That is, all we need to do is compute the Fourier Transform of $p(k)$, raise it to the $N^\text{th}$ power, and then reverse the transform. This isn't necessarily something that can be done analytically, but numerically it is rather simple to approximate.
+
+			\subsubsection{Probability Mass Function}
+
+				The above discussion works in the context of continuous probability distribution functions, $p(x)$. We do not have such a function; instead we have a probability mass function $\mathfrak{p}(k)$. We can interconvert with the use of a Dirac Comb:
+				\begin{equation}
+					p(k) = \sum_{k^\prime = 0}^\infty \mathfrak{p}(k) \delta(k - k^\prime)
+				\end{equation}
+				\def\p{\mathfrak{p}}
+				The Generating Function of this is therefore:
+				\begin{spalign}
+					\widehat{f} & = \frac{1}{\sqrt{2\pi}}\int_{\infty}^\infty p(k) \exp(i k x)
+					\\
+					& = \frac{1}{\sqrt{2\pi}} \sum_{k^\prime = 0}^\infty \p(k^\prime) \exp(i k^\prime x) 
+				\end{spalign}
+
 \end{document}
