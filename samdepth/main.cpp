@@ -3,7 +3,7 @@
 
 std::vector<int> getHops(int argc, char ** argv)
 {
-	std::vector<int> hops = {10,100,1000};
+	std::vector<int> hops = {100,1000,10000};
 	for (int k = 1; k < argc; ++k)
 	{
 		try
@@ -85,7 +85,7 @@ int main(int argc, char ** argv)
 
 	std::string prev = "";
 	forLineInPipedInput(
-		std::vector<std::string> vec = JSL::split(PIPE_LINE,' ');
+		std::vector<std::string> vec = JSL::split(PIPE_LINE,'\t');
 		// if (vec.size() != 3)
 		// {
 
