@@ -1,72 +1,91 @@
-# Project Name (executable)
-PROJECT = genchord
+## This is a custom makefile built with the help of an LLM because I don't know how makefiles work and have been using the same one for 10 years. 
+## I am told that it robustly compiles two distinct executables (MAIN and PREPROCESS) at the same time. 
+## Fingers crossed.
+
+# Project Names
+MAIN_PROJECT = genchord
+PREPROCESS_PROJECT = depthsplitter
+
 # Compiler
 CC = g++
 
-# Run Options       
-COMMANDLINE_OPTIONS = /dev/ttyS0
+# Compiler and Linker Options
+CXXFLAGS = -std=c++17 -pthread -O3 -w -Ilibs/JSL
+LDFLAGS = -lpthread
 
-# Compiler options during compilation
-COMPILE_OPTIONS =  -std=c++17 -pthread -O3 -w  -Ilibs/JSL
-#Header include directories
-HEADERS = 
-#Libraries for linking
-LIBS = -lpthread
+# Dependency Flags
+DEPFLAGS = -MMD -MP
 
-# Dependency options
-DEPENDENCY_OPTIONS =  -MM -std=c++17 -Ilibs/JSL -pthread
+# Source and Build Directories
+MAIN_SRC_DIR = src
+PREPROCESS_SRC_DIR = samdepth
+BUILD_DIR = build
 
-
-
+### DON'T EDIT BELOW HERE
 
 
+# Find all source files
+MAIN_SOURCE_FILES := $(shell find $(MAIN_SRC_DIR) -name "*.cpp")
+PREPROCESS_SOURCE_FILES := $(shell find $(PREPROCESS_SRC_DIR) -name "*.cpp")
 
-#-- Do not edit below this line --
+# Generate object files
+MAIN_OBJECTS := $(patsubst $(MAIN_SRC_DIR)/%.cpp, $(BUILD_DIR)/main/%.o, $(MAIN_SOURCE_FILES))
+PREPROCESS_OBJECTS := $(patsubst $(PREPROCESS_SRC_DIR)/%.cpp, $(BUILD_DIR)/preprocess/%.o, $(PREPROCESS_SOURCE_FILES))
 
-# Subdirs to search for additional source files
-SUBDIRS := $(shell ls -F src  | grep "\/" )
-DIRS := ./ $(SUBDIRS)
-SOURCE_FILES := $(foreach d, $(DIRS), $(wildcard src/$(d)*.cpp) )
+# Dependency Files
+MAIN_DEPS := $(MAIN_OBJECTS:.o=.d)
+PREPROCESS_DEPS := $(PREPROCESS_OBJECTS:.o=.d)
 
-# Create an object file of every cpp file
-OBJECTS = $(patsubst %.cpp, %.o, $(SOURCE_FILES))
+# Default Target: Build both projects
+.PHONY: all
+all: $(MAIN_PROJECT) $(PREPROCESS_PROJECT)
 
-# Dependencies
-DEPENDENCIES = $(patsubst %.cpp, %.d, $(SOURCE_FILES))
+# Build Main Project
+$(MAIN_PROJECT): $(MAIN_OBJECTS)
+	@echo "Linking $(MAIN_PROJECT)..."
+	$(CC) -o $@ $^ $(LDFLAGS)
 
-# Create .d files
-%.d: %.cpp
-	$(CC) $(DEPENDENCY_OPTIONS) $< -MT "$*.o $*.d" -MF $*.d
+# Build Preprocess Project
+$(PREPROCESS_PROJECT): $(PREPROCESS_OBJECTS)
+	@echo "Linking $(PREPROCESS_PROJECT)..."
+	$(CC) -o $@ $^ $(LDFLAGS)
 
-# Make $(PROJECT) the default target
-all: $(DEPENDENCIES) $(PROJECT)
+# Compile Main Source Files
+$(BUILD_DIR)/main/%.o: $(MAIN_SRC_DIR)/%.cpp
+	@mkdir -p $(dir $@)
+	@echo "Compiling $< for $(MAIN_PROJECT)..."
+	$(CC) $(CXXFLAGS) $(DEPFLAGS) -c -o $@ $<
 
-$(PROJECT): $(OBJECTS)
-	$(CC) -o $(PROJECT) $(OBJECTS) $(LIBS)
+# Compile Preprocess Source Files
+$(BUILD_DIR)/preprocess/%.o: $(PREPROCESS_SRC_DIR)/%.cpp
+	@mkdir -p $(dir $@)
+	@echo "Compiling $< for $(PREPROCESS_PROJECT)..."
+	$(CC) $(CXXFLAGS) $(DEPFLAGS) -c -o $@ $<
 
-# Include dependencies (if there are any)
-ifneq "$(strip $(DEPENDENCIES))" ""
-  include $(DEPENDENCIES)
-endif
+# Include Dependencies
+-include $(MAIN_DEPS)
+-include $(PREPROCESS_DEPS)
 
-# Compile every cpp file to an object
-%.o: %.cpp
-	$(CC) -c $(COMPILE_OPTIONS) -o $@ $< $(HEADERS)
+# Run Main Project
+.PHONY: run-main
+run-main: $(MAIN_PROJECT)
+	./$(MAIN_PROJECT)
 
-# Build & Run Project
-run: $(PROJECT)
-	./$(PROJECT) 
+# Run Preprocess Project
+.PHONY: run-preprocess
+run-preprocess: $(PREPROCESS_PROJECT)
+	./$(PREPROCESS_PROJECT)
 
-# Clean & Debug
-.PHONY: makefile-debug
-makefile-debug:
-
+# Clean Targets
 .PHONY: clean
 clean:
-	rm -f $(PROJECT) $(OBJECTS)
+	@echo "Cleaning up..."
+	rm -rf $(MAIN_PROJECT) $(PREPROCESS_PROJECT) $(BUILD_DIR)
 
 .PHONY: depclean
 depclean:
-	rm -f $(DEPENDENCIES)
+	@echo "Removing dependency files..."
+	rm -f $(MAIN_DEPS) $(PREPROCESS_DEPS)
 
+.PHONY: clean-all
 clean-all: clean depclean
