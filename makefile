@@ -10,7 +10,7 @@ PREPROCESS_PROJECT = depthsplitter
 CC = g++
 
 # Compiler and Linker Options
-CXXFLAGS = -std=c++17 -pthread -O3 -w -Ilibs/JSL
+CXXFLAGS = -std=c++20 -pthread -O3 -w -Ilibs/JSL
 LDFLAGS = -lpthread
 
 # Dependency Flags

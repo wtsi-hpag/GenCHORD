@@ -1,5 +1,7 @@
 Data/
 genchord
+depthsplitter
+
 *.d
 *.vscode
 *.DS*

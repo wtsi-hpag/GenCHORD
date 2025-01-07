@@ -1,133 +1,103 @@
 #include <iostream>
+#include <stdexcept>
 #include "JSL.h"
-
-std::vector<int> getHops(int argc, char ** argv)
+#include "Aggregator.h"
+#include <filesystem>
+std::vector<int> getWindows(int argc, char ** argv)
 {
-	std::vector<int> hops = {10,100,1000};
+	std::vector<int> windows = {100,1000,10000};
 	for (int k = 1; k < argc; ++k)
 	{
 		try
 		{
 			int q = std::stoi(argv[k]);
-			if (JSL::FindXInY(q,hops) == -1)
+			if (JSL::FindXInY(q,windows) == -1)
 			{
-				hops.push_back(q);
+				windows.push_back(q);
 			}
 		}
 		catch (...)
 		{
-			//don't
+			//don't do anything -- errors will most likely be arising from other command line arguments 
 		}
 	}
-	return hops;
+	return windows;
 }
 
-struct Hopper
-{
-	std::ofstream File;
-	int Counter;
-	int Sum;
-	int HopSize;
-	long long int Position;
-
-	Hopper(int hop)
-	{
-		HopSize = hop;
-	}
-	void NewFile(std::string fileName)
-	{
-		File.close();
-		File.open(fileName);
-		Counter = 0;
-		Sum = 0;
-		Position = 0;
-	}
-	void Close()
-	{
-		File.close();
-	}
-	void Update(int idx, int k)
-	{
-		if (Position == 0)
-		{
-			Position = idx;
-		}
-		Sum += k;
-		Counter += 1;
-		if (Counter == HopSize)
-		{
-			File << Position << " " << Sum << "\n";
-			Counter = 0;
-			Sum = 0;
-			Position = 0;
-		}
-	}
-};
 
 int main(int argc, char ** argv)
 {
-	
 	if (!JSL::PipedInputFound())
 	{
-		std::cout << "Please pipe in the output from a samtools depth command" << std::endl;
-		return -1;
+		std::cerr << "DEPTHSPLITTER ERROR: Please pipe in the output from a samtools depth command" << std::endl;
+		return 1;
 	}
-
-	JSL::Argument<std::string> Target("output","o",argc,argv);
-	auto hops = getHops(argc,argv);
-
-	JSL::mkdir(Target.Value);
-	std::vector<Hopper> crawler;
-	for (auto hop : hops)
+	try
 	{
-		crawler.push_back(Hopper(hop));
-	}
+		JSL::Argument<std::string> Target("output","o",argc,argv);
+		JSL::Argument<std::string> Delimiter("\t","delim",argc,argv);
 
-	std::string prev = "";
-	forLineInPipedInput(
-		std::vector<std::string> vec = JSL::split(PIPE_LINE,' ');
-		// if (vec.size() != 3)
-		// {
+		auto windows = getWindows(argc,argv);
 
-		// }
-		if (vec[0] != prev)
+		//the complicated archiving bit
+		auto split = Target.Value.find_last_of('/');
+		std::string directory = Target.Value.substr(0,split+1);
+		std::string name = Target.Value.substr(split+1);
+		if (directory.size() > 0)
 		{
-			prev= vec[0];
+			JSL::mkdir(directory);
+		}
 
+		std::ofstream tar(Target.Value + ".gcd",std::ios::binary);
+		std::vector<Aggregator> crawler;
+
+		for (auto window : windows)
+		{
+			crawler.push_back(Aggregator(window,tar));
+		}
+		std::string prev = "";
+
+		char delim = Delimiter.Value[0];
+		forLineInPipedInput(
+			std::vector<std::string> vec = JSL::split(PIPE_LINE,delim);
+			if (vec.size() != 3)
+			{
+				throw std::runtime_error("Expected samtools depth format of tab-delimited 3-column output. You likely got the wrong delimiter");
+			}
+			if (vec[0] != prev)
+			{
+				prev= vec[0];
+
+				for (int i = 0; i < crawler.size(); ++i)
+				{
+					std::string name = prev + "_" + std::to_string(windows[i]) + ".dat";
+					crawler[i].NewFile(name);
+				}
+			}
+			int idx = std::stoi(vec[1]);
+			int k = std::stoi(vec[2]);
 			for (int i = 0; i < crawler.size(); ++i)
 			{
-				std::string name = Target.Value + "/" + prev + "_" + std::to_string(hops[i]) + ".dat";
-				crawler[i].NewFile(name);
+				crawler[i].Update(idx,k);
 			}
-		}
-		int idx = std::stoi(vec[1]);
-		int k = std::stoi(vec[2]);
+
+		);
+	
+
+	
+
 		for (int i = 0; i < crawler.size(); ++i)
 		{
-			crawler[i].Update(idx,k);
-		}
+			crawler[i].Close();
+		}	
 
-	);
-
-	for (int i = 0; i < crawler.size(); ++i)
-	{
-		crawler[i].Close();
-	}	
-
-	//the complicated archiving bit
-	auto split = Target.Value.find_last_of('/');
-	std::string directory = Target.Value.substr(0,split+1);
-	std::string name = Target.Value.substr(split+1);
-	std::string dirString = " ";
-	if (directory.size() > 0)
-	{
-		dirString = " -C " + directory + " ";
-	}
-	std::string cmd = "tar -cf " + Target.Value + ".gcd" + dirString + name + "; rm -r " + Target.Value;
-
-	system(cmd.c_str());
+		tar_to_stream_tail(tar);
 		
-	
-	return 0;
-	
+		return 0;
+	}
+	catch (const std::exception& e) 
+	{
+		std::cerr << "ERROR: " << e.what() << std::endl;
+		return 1;
+	}
 }
