@@ -5,6 +5,7 @@ namespace JAR
 	Archive::Archive(std::string archivePath) : Archive(archivePath, std::ios::in | std::ios::out){}
 	Archive::Archive(std::string archivePath, std::ios_base::openmode mode)
 	{	
+		Name = archivePath;
 		Stream.open(archivePath, mode | std::ios::binary);
 		IndexBuilt = false;
 		HasWritten = false;
@@ -138,5 +139,17 @@ namespace JAR
 			.filename{file},
 			.data{std::as_bytes(std::span<const char>{data})},
 		});
+	}
+
+	// void Archive::StreamFile(std::string fileName, std::function<void(std::string)> data_callback)
+	
+	std::string Archive::Text(std::string fileName)
+	{
+		std::string buffer = "";
+		StreamFile<std::string>(fileName,[&](std::string block)
+		{
+			buffer += block;
+		});
+		return buffer;
 	}
 }

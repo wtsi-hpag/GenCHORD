@@ -38,7 +38,8 @@ int main(int argc, char ** argv)
 		std::vector<std::string> q = Vault.ListFiles();
 		for (std::string file : q)
 		{
-			std::cout << file << std::endl;
+			std::string s = Vault.Text(file);
+			std::cout << file << " " << s.size() << std::endl;
 		}
 
 		std::cerr << "DEPTHSPLITTER ERROR: Please pipe in the output from a samtools depth command" << std::endl;

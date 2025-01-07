@@ -46,6 +46,7 @@ namespace JAR
 			constexpr static size_t BLOCK_SIZE = 512;
 			bool IndexBuilt;
 			bool HasWritten;
+			std::string Name;
 			void BuildIndex();
 			bool ReadBlock(char*buffer);
 			void WriteCleanup(unsigned int tail_length = 512u * 2u);
@@ -58,6 +59,33 @@ namespace JAR
 			std::vector<std::string> ListFiles();
 			void Write(WriteMetaData &&input);
 			void Write(const std::string & fileName, const std::string & data);
+			std::string Text(std::string file);
+
+			//this is templated in case you ever want to stream things directly into non-string lines for whatever reason
+			template<class T>
+			void StreamFile(std::string fileName, std::function<void(T)> data_callback)
+			{
+				static_assert(std::is_constructible<T, const char*, size_t>::value, "T must be constructible from char* and size_t");
+    
+				auto it = FileIndex.find(fileName);
+				if (it == FileIndex.end())
+				{
+					throw std::runtime_error("File not found in archive. File: " + fileName + " Archive: " + Name + "\n");
+				}
+				ReadMetaData meta = it->second;
+
+				Stream.seekg(meta.data_offset);
+				size_t remainingSize = meta.file_size;
+				char buffer[BLOCK_SIZE];
+
+				while (remainingSize > 0)
+				{
+					size_t chunk_size = std::min(remainingSize, BLOCK_SIZE);
+					Stream.read(buffer, chunk_size);
+					data_callback(T(buffer,buffer+chunk_size));
+					remainingSize -= chunk_size;
+				}
+			};
 
 			Archive(const Archive&) = delete;
 			Archive& operator=(const Archive&) = delete;
