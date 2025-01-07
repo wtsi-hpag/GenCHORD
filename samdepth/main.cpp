@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include "JSL.h"
 #include "Aggregator.h"
+#include "Archiver.h"
 #include <filesystem>
 std::vector<int> getWindows(int argc, char ** argv)
 {
@@ -29,6 +30,17 @@ int main(int argc, char ** argv)
 {
 	if (!JSL::PipedInputFound())
 	{
+
+		JSL::Argument<std::string> Target("output","o",argc,argv);
+		 std::string archive_path = Target.Value + ".gcd";
+      
+	  	JAR::Archive Vault(archive_path);
+		std::vector<std::string> q = Vault.ListFiles();
+		for (std::string file : q)
+		{
+			std::cout << file << std::endl;
+		}
+
 		std::cerr << "DEPTHSPLITTER ERROR: Please pipe in the output from a samtools depth command" << std::endl;
 		return 1;
 	}
@@ -48,7 +60,8 @@ int main(int argc, char ** argv)
 			JSL::mkdir(directory);
 		}
 
-		std::ofstream tar(Target.Value + ".gcd",std::ios::binary);
+		// std::ofstream tar(Target.Value + ".gcd",std::ios::binary);
+		JAR::Archive tar(Target.Value + ".gcd",std::ios::out);
 		std::vector<Aggregator> crawler;
 
 		for (auto window : windows)
@@ -67,7 +80,7 @@ int main(int argc, char ** argv)
 			if (vec[0] != prev)
 			{
 				prev= vec[0];
-
+				std::cout << "Starting analysis of " << prev << std::endl;
 				for (int i = 0; i < crawler.size(); ++i)
 				{
 					std::string name = prev + "_" + std::to_string(windows[i]) + ".dat";
@@ -88,11 +101,9 @@ int main(int argc, char ** argv)
 
 		for (int i = 0; i < crawler.size(); ++i)
 		{
-			crawler[i].Close();
+			crawler[i].Flush();
 		}	
 
-		tar_to_stream_tail(tar);
-		
 		return 0;
 	}
 	catch (const std::exception& e) 
