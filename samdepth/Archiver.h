@@ -1,8 +1,9 @@
-//// The write-to-tar portion of this code (i.e. the Write command and the WriteMetaData) is 
-// a heavily modified form of the code provided by `Armchar-Software'
-// Git link: https://github.com/Armchair-Software/tar_to_stream/
-/// Original code provided under an MIT License 
-//// The read-from-tar and the OO implementation were written by JFG-2025.
+// The Write command and WriteMetaData structure are (verbatim, aside from some name changes) derived from 
+// the `tar_to_stream` project by Armchair-Software, available at:
+// https://github.com/Armchair-Software/tar_to_stream/
+//
+// The original code is provided under the MIT License (https://opensource.org/licenses/MIT).
+// The Read functions and object-oriented implementation were written by JFG-2025.
 
 #pragma once
 #include <span>

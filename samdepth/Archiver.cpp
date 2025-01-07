@@ -27,7 +27,6 @@ namespace JAR
 
 	void Archive::WriteCleanup(unsigned int tail_length)
 	{
-		std::cout << "OUTPUTTING!" << std::endl;
 		/// TAR archives expect a tail of null bytes at the end - min of 512 * 2, but implementations often add more
 		Stream << std::string(tail_length, '\0');
 	}
