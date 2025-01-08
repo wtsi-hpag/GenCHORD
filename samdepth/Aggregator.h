@@ -6,6 +6,7 @@ struct Aggregator
 	std::string File;
 	int Counter;
 	int Sum;
+	int SqSum;
 	int HopSize;
 	long long int Position;
 	int BufferCount = 0;
@@ -25,6 +26,7 @@ struct Aggregator
 		File = fileName;
 		Counter = 0;
 		Sum = 0;
+		SqSum = 0;
 		Position = 0;	
 	}
 	
@@ -35,13 +37,15 @@ struct Aggregator
 			Position = idx;
 		}
 		Sum += k;
+		SqSum += k*k;
 		Counter += 1;
 		if (Counter == HopSize)
 		{
-			buffer << Position << " " << Sum << "\n";
+			buffer << Position << " " << Sum << " " << SqSum << "\n";
 			BufferCount +=1;
 			Counter = 0;
 			Sum = 0;
+			SqSum = 0;
 			Position = 0;
 		}
 	}
