@@ -1,11 +1,18 @@
 #include <iostream>
 #include "JSL.h"
+#include "Utility/Log.h"
+#include "settings.h"
+
+
 int main(int argc, char ** argv)
 {
-	JSL::Argument<std::string> Input("Data/Aaron.dat","-f");
-	std::string command = "cat " + Input.Value + " | ./depthsplitter";
+	// process settings
 
-	system(command.c_str());
+	LOGCFG.headers = true; 
+	LOGCFG.level = DEBUG;
 
+	Settings settings(argc,argv);
+
+	std::cout << settings.Ploidy << " " << settings.OutputDirectory << " " << settings.Test << std::endl;
 	return 0;
 }
