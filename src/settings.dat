@@ -3,4 +3,3 @@ std::string DataFile _no_file_ file #The input datafile to be read
 int AccumulationFactor 100 accumulate #The size of the Accumulation Window
 std::string OutputDirectory Output output 
 bool CreateArchive 1 archive #Controls if an archive file is created 
-int Test 10	"testy"

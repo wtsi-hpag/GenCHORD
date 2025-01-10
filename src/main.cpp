@@ -11,8 +11,9 @@ int main(int argc, char ** argv)
 	LOGCFG.headers = true; 
 	LOGCFG.level = DEBUG;
 
-	Settings settings(argc,argv);
+	// Settings settings(argc,argv);
+	Settings.Configure(argc,argv);
 
-	std::cout << settings.Ploidy << " " << settings.OutputDirectory << " " << settings.Test << std::endl;
+	std::cout << Settings.Ploidy << " " << Settings.OutputDirectory << " " << std::endl;
 	return 0;
 }

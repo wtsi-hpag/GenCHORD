@@ -30,7 +30,7 @@ def ReadSettings():
 	return settings
 
 def FormatSettingsFile(settings):
-	prelude = '''#pragma once\n#include \"Utility/Log.h\"
+	prelude = '''#pragma once\n#include \"JSL.h\"
 /*
 	IMPORTANT! 
 	Settings are defined programmatically in settings.dat, and this file is then constructed using the settingBuilder.py file. 

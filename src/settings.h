@@ -1,5 +1,5 @@
 #pragma once
-#include "Utility/Log.h"
+#include "JSL.h"
 /*
 	IMPORTANT! 
 	Settings are defined programmatically in settings.dat, and this file is then constructed using the settingBuilder.py file. 
@@ -12,9 +12,8 @@
 	Setting(int,AccumulationFactor,100,"accumulate")  /*The size of the Accumulation Window*/\
 	Setting(std::string,OutputDirectory,"Output","output")\
 	Setting(bool,CreateArchive,1,"archive")  /*Controls if an archive file is created*/\
-	Setting(int,Test,10,"testy")\
 
-class Settings
+class SettingsObject
 {
 	public:
 		#define Setting(type, name, defaultValue, cmdArg) type name;
@@ -22,7 +21,13 @@ class Settings
 		#undef Setting
 
 		// Constructor
-		Settings(int argc, char** argv)
+		SettingsObject(){};
+		SettingsObject(int argc, char** argv)
+		{
+			Configure(argc,argv);
+		}
+		
+		void Configure(int argc, char**argv)
 		{
 			std::string configFile = JSL::Argument<std::string>("__none__","config",argc,argv);
 			if (configFile.size() == 0 || configFile == "__none__")
@@ -43,3 +48,5 @@ class Settings
 			#undef Setting
 		}
 };
+
+extern SettingsObject Settings;
