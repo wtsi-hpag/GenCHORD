@@ -39,7 +39,7 @@ PREPROCESS_DEPS := $(PREPROCESS_OBJECTS:.o=.d)
 
 # Default Target: Build both projects
 .PHONY: all
-all: settings $(MAIN_PROJECT) $(PREPROCESS_PROJECT)
+all: $(MAIN_PROJECT) $(PREPROCESS_PROJECT)
 
 # Build Main Project
 $(MAIN_PROJECT): $(MAIN_OBJECTS)
@@ -67,10 +67,6 @@ $(BUILD_DIR)/preprocess/%.o: $(PREPROCESS_SRC_DIR)/%.cpp
 -include $(MAIN_DEPS)
 -include $(PREPROCESS_DEPS)
 
-
-.PHONY: settings
-settings: 
-	@python3 src/settingBuilder.py
 
 
 # Run Main Project

@@ -5,16 +5,16 @@ void structlog::SetLevel(int i)
 	LOG(INFO) << "Testing " << i << "\n";
 	switch(i){
 		case 0: 
-			level=ERROR;
+			level=ERROR; break;
 		case 1:
-			level=WARN;
+			level=WARN;break;
 		case 2:
-			level=INFO;
+			level=INFO;break;
 		case 3:
-			level=DEBUG;
+			level=DEBUG;break;
 		default:
 			LOG(WARN) << "\"" << i << "\" is not a valid logging level (0-3). Default to INFO.\n";
-			level=INFO;
+			level=INFO;break;
 	}
 }
 
