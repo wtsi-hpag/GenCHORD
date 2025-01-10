@@ -12,6 +12,8 @@
 	Setting(int,AccumulationFactor,100,"accumulate")  /*The size of the Accumulation Window*/\
 	Setting(std::string,OutputDirectory,"Output","output")\
 	Setting(bool,CreateArchive,1,"archive")  /*Controls if an archive file is created*/\
+	Setting(int,LogLevel,1,"log")  /*The logging level (0=errors only, 1 = errors + warnings, 2=general info, 3=debug mode)*/\
+	Setting(bool,LogHeaders,1,"loghead")  /*Controls if the logging headers are printed*/\
 
 class SettingsObject
 {

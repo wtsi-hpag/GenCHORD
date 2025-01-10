@@ -23,6 +23,8 @@ enum typelog {
 struct structlog {
     bool headers = false;
     typelog level = WARN;
+
+    void SetLevel(int i);
 };
 
 extern structlog LOGCFG;
@@ -38,14 +40,14 @@ public:
     }
     ~LOG() {
         if(opened) {
-            cout << endl;
+            clog << endl;
         }
         opened = false;
     }
     template<class T>
     LOG &operator<<(const T &msg) {
         if(msglevel <= LOGCFG.level) {
-            cout << msg;
+            clog << msg;
             opened = true;
         }
         return *this;

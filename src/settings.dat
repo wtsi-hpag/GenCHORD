@@ -3,3 +3,5 @@ std::string DataFile _no_file_ file #The input datafile to be read
 int AccumulationFactor 100 accumulate #The size of the Accumulation Window
 std::string OutputDirectory Output output 
 bool CreateArchive 1 archive #Controls if an archive file is created 
+int LogLevel 1 log #The logging level (0=errors only, 1 = errors + warnings, 2=general info, 3=debug mode)
+bool LogHeaders 1 loghead #Controls if the logging headers are printed
