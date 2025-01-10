@@ -14,11 +14,11 @@
 	Setting(int,Ploidy,2,"ploidy")  /*The (assumed) default ploidy of the genome.*/\
 	Setting(std::string,DataFile,"_no_file_","file")  /*The input datafile to be read*/\
 	Setting(int,AccumulationFactor,100,"accumulate")  /*The size of the Accumulation Window*/\
-	Setting(std::string,OutputDirectory,"Output","output")\
+	Setting(std::string,Output,"genchord_output","output")\
 	Setting(bool,CreateArchive,1,"archive")  /*Controls if an archive file is created*/\
 	Setting(int,LogLevel,2,"log")  /*The logging level (0=errors only, 1 = errors + warnings, 2=general info, 3=debug mode)*/\
+	Setting(char,StreamDelimiter,'\t',"delim")	\
 	Setting(bool,LogHeaders,1,"loghead")  /*Controls if the logging headers are printed*/\
-	Setting(char,StreamDelimiter,'\t',"stream")	\
 
 
 // Do not edit anything below this line!

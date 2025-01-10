@@ -46,17 +46,22 @@ namespace JAR
 			constexpr static size_t BLOCK_SIZE = 512;
 			bool IndexBuilt;
 			bool HasWritten;
+			bool OpenedStream;
+			std::ios_base::openmode Mode;
 			std::string Name;
 			void BuildIndex();
+			void OpenStream();
 			bool ReadBlock(char*buffer);
 			void WriteCleanup(unsigned int tail_length = 512u * 2u);
 			// void ActivateStream(std::string archivePath, std::ios_base::openmode mode);
 		public:
+			Archive();
 			Archive(std::string archivePath);
 			Archive(std::string archivePath, std::ios_base::openmode mode);
 
 			~Archive();
 			std::vector<std::string> ListFiles();
+			void Open(std::string archivePath, std::ios_base::openmode mode);
 			void Write(WriteMetaData &&input);
 			void Write(const std::string & fileName, const std::string & data);
 			std::string Text(std::string file);

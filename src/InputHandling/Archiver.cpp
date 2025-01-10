@@ -2,16 +2,28 @@
 
 namespace JAR
 {
+	Archive::Archive(){OpenedStream = false;};
 	Archive::Archive(std::string archivePath) : Archive(archivePath, std::ios::in | std::ios::out){}
-	Archive::Archive(std::string archivePath, std::ios_base::openmode mode)
+	Archive::Archive(std::string archivePath, std::ios_base::openmode mode) : Name(archivePath), Mode(mode)
 	{	
+		OpenedStream = false;
+		// Open(archivePath,mode);
+	}
+	//doesn't actually open it, since opening occurs on a delay when the first write happens....
+	void Archive::Open(std::string archivePath, std::ios_base::openmode mode)
+	{
 		Name = archivePath;
-		Stream.open(archivePath, mode | std::ios::binary);
+		Mode =mode;
+	}
+	void Archive::OpenStream()
+	{
+		OpenedStream = true;
+		Stream.open(Name, Mode | std::ios::binary);
 		IndexBuilt = false;
 		HasWritten = false;
 		if (!Stream.is_open()) 
 		{
-			throw std::runtime_error("Failed to open archive: " + archivePath);
+			throw std::runtime_error("Failed to open archive: " + Name);
 		}
 	}
 	Archive::~Archive()
@@ -53,6 +65,10 @@ namespace JAR
 	}
 	void Archive::BuildIndex()
 	{
+		if (!OpenedStream)
+		{
+			OpenStream();
+		}
 		char header[BLOCK_SIZE];
         while (ReadBlock(header)) 
 		{
@@ -85,6 +101,12 @@ namespace JAR
     }
 	void Archive::Write(WriteMetaData &&file)
 	{
+		if (!OpenedStream)
+		{
+			OpenStream();
+
+			
+		}
 		/// Read a "file" in memory, and write it as a TAR archive to the stream
 		struct {                                                                      // offset
 			char name[100]{};                                                           //   0    filename

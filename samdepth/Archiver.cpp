@@ -2,9 +2,14 @@
 
 namespace JAR
 {
+	Archive::Archive(){};
 	Archive::Archive(std::string archivePath) : Archive(archivePath, std::ios::in | std::ios::out){}
 	Archive::Archive(std::string archivePath, std::ios_base::openmode mode)
 	{	
+		Open(archivePath,mode);
+	}
+	void Archive::Open(std::string archivePath, std::ios_base::openmode mode)
+	{
 		Name = archivePath;
 		Stream.open(archivePath, mode | std::ios::binary);
 		IndexBuilt = false;
