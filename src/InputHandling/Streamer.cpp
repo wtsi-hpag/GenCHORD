@@ -57,6 +57,20 @@ void ShellExecute(std::string cmd)
 	}
 }
 
+void ArchiveReader()
+{
+	JAR::Archive archive(Settings.DataFile,std::ios::in);
+
+	auto v = archive.ListFiles();
+	std::ostringstream log;
+	log << "Archive found " << v.size() << " files within";
+	for (auto file : v)
+	{
+		log << "\n\t" << file;
+	}
+	LOG(DEBUG) << log.str();
+}
+
 void FileReader()
 {
 	LOG(INFO) << "File input detected, determining how to open file";
@@ -68,25 +82,24 @@ void FileReader()
 	auto file = Settings.DataFile;
 	
 	std::string fileExtension = JSL::split(file,'.').back();
-	if (fileExtension == "bam")
+	if (fileExtension == "bam" || fileExtension == "cram" || fileExtension == "sam")
 	{
-		LOG(INFO) << ".bam extension detected, calling samtools depth";
+		LOG(INFO) << "." << fileExtension << " extension detected, calling samtools depth";
 		ShellExecute("samtools depth " + file);
 	}
 	else if (fileExtension == "gca")
 	{
 		LOG(INFO) << ".gca (GenCHORD Archive) file detected. Extracting";
+		ArchiveReader();
 	}
 	else
 	{
 		LOG(WARN) << "Unrecognised file extension. Attempting to read as text file";
 		ShellExecute("cat " + file);
 	}
-
-
-	
-	
 }
+
+
 void ParseData()
 {
 	LOG(INFO) << "Beginning parsing of input data";

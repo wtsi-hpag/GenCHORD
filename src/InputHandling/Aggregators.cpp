@@ -33,7 +33,6 @@ std::vector<CoverageArray> AggregateStream(std::istream& inputStream)
 	{
 		LOG(INFO) << "Archive file not being created; reading stream into memory";
 	}
-	std::cout << Settings.AccumulationFactor << std::endl;
 	int accumulator = Settings.AccumulationFactor;
 	char delim = Settings.StreamDelimiter;
 	LOG(DEBUG) << "Stream delimiter is '" << delim << "', accumulation factor=" << accumulator;
@@ -59,13 +58,13 @@ std::vector<CoverageArray> AggregateStream(std::istream& inputStream)
 		if (line[0] != previousChromosome)
 		{
 			LOG(INFO) << "Scanning new chromosome " << line[0];
+			previousChromosome = line[0];
 			for (int i = 0; i < crawler.size(); ++i)
 			{
 				std::string name = previousChromosome + "_" + std::to_string(standardWindows[i]) + ".dat";
 				crawler[i].NewFile(name);
 			}
 			data.push_back(CoverageArray());
-			previousChromosome = line[0];
 			chr+=1;
 			cidx = -1;
 			count = 0;

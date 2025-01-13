@@ -15,7 +15,7 @@
 #include <functional>
 #include <cstring>
 #include <stdexcept>
-
+#include "../Utility/Log.h"
 namespace JAR
 {
 	struct ReadMetaData
