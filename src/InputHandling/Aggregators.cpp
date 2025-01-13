@@ -8,7 +8,7 @@ void SplitCheck(const std::string & line,int n)
 	}
 }
 
-std::vector<CoverageArray> AggregateStream(std::istream& inputStream)
+DataHolder AggregateStream(std::istream& inputStream)
 {
 	
 	std::ostringstream chromosomeManifest("");
@@ -38,7 +38,7 @@ std::vector<CoverageArray> AggregateStream(std::istream& inputStream)
 	LOG(DEBUG) << "Stream delimiter is '" << delim << "', accumulation factor=" << accumulator;
 
 	//initialise output vector
-	std::vector<CoverageArray> data;
+	DataHolder data;
 
 	//various counters and trackers
 	int count = 0; //the counterpart to accumulator

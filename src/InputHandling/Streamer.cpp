@@ -26,7 +26,7 @@ class PopenBuffer : public std::streambuf
 };
 
 
-void PipeReader()
+DataHolder PipeReader()
 {
 	LOG(INFO) << "Detecting Data Stream. Switching to Piped Input Mode";
 	if (Settings.DataFile != "_no_file_")
@@ -34,11 +34,11 @@ void PipeReader()
 		LOG(WARN) << "Multiple input methods provided (input stream & '" << Settings.DataFile << "').\n\tData Stream has priority";
 	}
 
-	AggregateStream(std::cin);
+	return AggregateStream(std::cin);
 
 }
 
-void ShellExecute(std::string cmd)
+DataHolder ShellExecute(std::string cmd)
 {
 	// std::string cmd = "cat Data/Aaron.dat";
 	LOG(DEBUG) << "Calling popen with command '" << cmd << "'";
@@ -49,16 +49,17 @@ void ShellExecute(std::string cmd)
 	}
 	PopenBuffer tmp(pipe);
 	std::istream stream(&tmp);
-	AggregateStream(stream);
+	auto out = AggregateStream(stream);
 	auto exit = pclose(pipe);
 	if (WEXITSTATUS(exit) != 0)
 	{
 		throw std::runtime_error("Command (" + cmd +") returned a non-zero exit code");
 	}
+	return out;
 }
 
 
-void ArchiveReader()
+DataHolder ArchiveReader()
 {
 	JAR::Archive archive(Settings.DataFile,std::ios::in);
 
@@ -119,23 +120,18 @@ void ArchiveReader()
 		throw runtime_error("No files were found in the archive which matched your specifications");
 	}
 
+	DataHolder output;
 	std::vector<std::tuple<dnaindex,int,int>> chromVector;
 	for (auto file: relevantFiles)
 	{
-		// chromVector.resize(0);
 		LOG(INFO) << "Processing chromosome file " << file;
 		archive.ReadTabular(file,chromVector,' ');
-
-		for (int i = 0; i < std::min((int)1e5,(int)chromVector.size()); ++i)
-		{
-			LOG(DEBUG) << std::get<0>(chromVector[i]) << " " << std::get<1>(chromVector[i]) << " " << std::get<2>(chromVector[i]);
-		}
+		output.push_back(CoverageArray(chromVector));
 	}
-
-
+	return output;
 }
 
-void FileReader()
+DataHolder FileReader()
 {
 	LOG(INFO) << "File input detected, determining how to open file";
 
@@ -164,21 +160,22 @@ void FileReader()
 }
 
 
-void ParseData()
+DataHolder ParseData()
 {
+
 	LOG(INFO) << "Beginning parsing of input data";
 
 	if (JSL::PipedInputFound())
 	{
-		PipeReader();
+		return PipeReader();
 	}
 	else if (Settings.DataFile != "_no_file_")
 	{
-		FileReader();
+		return FileReader();
 	}
 	else
 	{
-		LOG(WARN) << "No data was provided for analysis.";
+		throw runtime_error("No data was provided for analysis.");
 	}
 
 }

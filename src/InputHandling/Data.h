@@ -1,5 +1,8 @@
 #pragma once
 #include <vector>
+
+
+
 typedef unsigned long long int dnaindex; 
 class Datum
 {
@@ -8,12 +11,15 @@ class Datum
 		unsigned int SquareSum;
 		dnaindex Index;
 		Datum(): Coverage(0), Index(0), SquareSum(0){};
-		Datum(int idx, int k): Coverage(k), Index(idx), SquareSum(k*k){}
+		Datum(dnaindex idx, int k): Coverage(k), Index(idx), SquareSum(k*k){};
+		Datum(dnaindex idx, int k, int kSq) : Index(idx), Coverage(k), SquareSum(kSq){};
 };
 
 class CoverageArray
 {
 	public:
+		CoverageArray(){Data.resize(0);};
+		CoverageArray(const std::vector<std::tuple<dnaindex, int, int>> & data);
 		Datum operator [](int i) const {return Data[i];};
 		Datum & operator[](int i) {return Data[i];};
 		void AddData(dnaindex Index,unsigned int k);
@@ -22,3 +28,5 @@ class CoverageArray
 		std::vector<Datum> Data;
 
 };
+
+typedef std::vector<CoverageArray> DataHolder;

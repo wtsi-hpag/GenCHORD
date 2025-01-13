@@ -14,7 +14,7 @@
 const std::string MANIFEST_FILE_NAME = "chromosome.manifest";
 const char ARCHIVE_DELIMITER = ' ';
 //the basic function which scans over the input stream and saves it to memory. No archiving or other fancy business
-std::vector<CoverageArray> AggregateStream(std::istream & inputStream);
+DataHolder AggregateStream(std::istream & inputStream);
 
 
 struct Aggregator

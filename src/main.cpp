@@ -30,7 +30,7 @@ int main(int argc, char ** argv)
 		ConfigureLogging();
 		WelcomeWagon();
  
-		ParseData();
+		DataHolder Data = ParseData();
 	}
 	catch (const std::exception& e) 
 	{
