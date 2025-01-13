@@ -1,5 +1,19 @@
 #include <fstream>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <stdexcept>
 #include "Archiver.h"
+#include "Data.h"
+#include "../settings.h"
+#include "../Utility/Log.h"
+#include "Archiver.h"
+//the basic function which scans over the input stream and saves it to memory. No archiving or other fancy business
+std::vector<CoverageArray> AggregateStream(std::istream & inputStream);
+
+
 struct Aggregator
 {
 	JAR::Archive & Tar;
