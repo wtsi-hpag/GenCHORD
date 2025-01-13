@@ -10,9 +10,11 @@
 #include <string_view>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <unordered_map>
 #include <functional>
+#include <tuple>
 #include <cstring>
 #include <stdexcept>
 #include "../Utility/Log.h"
@@ -91,6 +93,64 @@ namespace JAR
 					remainingSize -= chunk_size;
 				}
 			};
+
+		
+			template<typename... ColumnTypes>
+			void ReadTabular(const std::string & fileName, std::vector<std::tuple<ColumnTypes...>> & rows, char delimiter=' ')
+			{	
+				constexpr size_t numColumns = sizeof...(ColumnTypes); // Number of columns expected, evaluated at compile time
+				rows.clear();
+
+				std::string overflow;
+
+				   StreamFile<std::string>(fileName, [&](const std::string& block) {
+						std::istringstream blockStream(overflow + block);
+						overflow.clear();
+						std::string line;
+
+						while (std::getline(blockStream, line))
+						{
+
+							if (line.empty()) continue; // Skip empty lines
+
+							 // Check if this line might be incomplete (if block ends without a newline)
+							if (blockStream.eof() && block.back() != '\n') {
+								overflow = line; // Save the incomplete line
+								break;
+							}
+							std::istringstream lineStream(line);
+							std::string token;
+							std::tuple<ColumnTypes...> row;
+							size_t columnIndex = 0;
+
+							// Lambda to parse each token
+							auto parseToken = [&](auto& columnValue) {
+								
+								if (std::getline(lineStream, token, delimiter)) {
+									std::istringstream tokenStream(token);
+									tokenStream >> columnValue;
+									if (tokenStream.fail()) {
+										throw std::runtime_error("Failed to parse value in column " + std::to_string(columnIndex));
+									}
+								} else {
+									throw std::runtime_error("Insufficient columns in line: " + line);
+								}
+								columnIndex++;
+							};
+							// Apply the parse function to each element of the tuple
+							std::apply([&](auto&... columnValues) { (parseToken(columnValues), ...); }, row);
+
+							if (std::getline(lineStream, token, delimiter)) {
+								throw std::runtime_error("Too many columns in line: " + line);
+							}
+
+							rows.push_back(std::move(row));
+						}
+				   }
+				);
+
+
+			}
 
 			Archive(const Archive&) = delete;
 			Archive& operator=(const Archive&) = delete;

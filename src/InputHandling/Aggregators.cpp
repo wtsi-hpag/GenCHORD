@@ -11,7 +11,7 @@ void SplitCheck(const std::string & line,int n)
 std::vector<CoverageArray> AggregateStream(std::istream& inputStream)
 {
 	
-
+	std::ostringstream chromosomeManifest("");
 	std::vector<int> standardWindows = {100,1000,10000};
 	if (JSL::FindXInY(Settings.AccumulationFactor,standardWindows) == -1)
 	{
@@ -57,8 +57,8 @@ std::vector<CoverageArray> AggregateStream(std::istream& inputStream)
 		int k = std::stoi(line[2]);
 		if (line[0] != previousChromosome)
 		{
-			LOG(INFO) << "Scanning new chromosome " << line[0];
 			previousChromosome = line[0];
+			chromosomeManifest << previousChromosome << "\n";
 			for (int i = 0; i < crawler.size(); ++i)
 			{
 				std::string name = previousChromosome + "_" + std::to_string(standardWindows[i]) + ".dat";
@@ -68,6 +68,7 @@ std::vector<CoverageArray> AggregateStream(std::istream& inputStream)
 			chr+=1;
 			cidx = -1;
 			count = 0;
+			LOG(INFO) << "Scanning new chromosome " << line[0];
 			
 		}	
 		if (count % accumulator == 0)
@@ -87,9 +88,14 @@ std::vector<CoverageArray> AggregateStream(std::istream& inputStream)
 			crawler[i].Update(idx,k);
 		}
 	}
-	for (int i = 0; i < crawler.size(); ++i)
+	if (Settings.CreateArchive)
 	{
-		crawler[i].Flush();
+		LOG(INFO) << "Writing manifest to file";
+		tar.Write(MANIFEST_FILE_NAME,chromosomeManifest.str());
+		for (int i = 0; i < crawler.size(); ++i)
+		{
+			crawler[i].Flush();
+		}
 	}
 	return data;
 }

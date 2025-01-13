@@ -10,6 +10,9 @@
 #include "../settings.h"
 #include "../Utility/Log.h"
 #include "Archiver.h"
+
+const std::string MANIFEST_FILE_NAME = "chromosome.manifest";
+const char ARCHIVE_DELIMITER = ' ';
 //the basic function which scans over the input stream and saves it to memory. No archiving or other fancy business
 std::vector<CoverageArray> AggregateStream(std::istream & inputStream);
 
@@ -55,7 +58,7 @@ struct Aggregator
 		Counter += 1;
 		if (Counter == HopSize)
 		{
-			buffer << Position << " " << Sum << " " << SqSum << "\n";
+			buffer << Position << ARCHIVE_DELIMITER << Sum << ARCHIVE_DELIMITER << SqSum << "\n";
 			BufferCount +=1;
 			Counter = 0;
 			Sum = 0;

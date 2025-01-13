@@ -108,11 +108,11 @@ namespace JAR
             Stream.seekg(data_blocks * BLOCK_SIZE, std::ios::cur);
         }
 		IndexBuilt = true;
-		LOG(DEBUG) << "Successfully constructed an index of the archive."
+		LOG(DEBUG) << "Successfully constructed an index of the archive.";
     }
 	void Archive::Write(WriteMetaData &&file)
 	{
-		LOG(DEBUG) << "Writing data chunk directly into archive.";
+		// LOG(DEBUG) << "Writing data chunk directly into archive.";
 		if (!OpenedStream)
 		{
 			OpenStream();			
@@ -138,7 +138,6 @@ namespace JAR
 			char padding[12]{};                                                         // 500    padding to reach 512 block size
 		} header;                                                                     // 512
 
-		LOG(DEBUG) << "\tWriting header details";
 		file.filemode.insert(file.filemode.begin(), 7 - file.filemode.length(), '0'); // zero-pad the file mode
 
 		std::strncpy(header.name,  file.filename.c_str(), sizeof(header.name ) - 1);  // leave one char for the final null
@@ -158,7 +157,6 @@ namespace JAR
 			}
 			sprintf(header.chksum, "%06o", checksum_value);
 		}
-		LOG(DEBUG) << "\t\tWriting main data chunk";
 		size_t const padding{(512u - file.data.size() % 512) & 511u};
 		Stream<< std::string_view{header.name, sizeof(header)}
 				<< std::string_view{reinterpret_cast<char const*>(file.data.data()), file.data.size()}
@@ -187,4 +185,6 @@ namespace JAR
 		});
 		return buffer;
 	}
+
+	
 }

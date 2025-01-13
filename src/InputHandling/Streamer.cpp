@@ -57,18 +57,82 @@ void ShellExecute(std::string cmd)
 	}
 }
 
+
 void ArchiveReader()
 {
 	JAR::Archive archive(Settings.DataFile,std::ios::in);
 
-	auto v = archive.ListFiles();
-	std::ostringstream log;
-	log << "Archive found " << v.size() << " files within";
-	for (auto file : v)
+	auto archiveFiles = archive.ListFiles();
+	if (archiveFiles.size() == 0)
 	{
+		throw runtime_error("There are no files found within the requested datafile '" + Settings.DataFile + "'.\n\tAre you sure it is a valid GenCHORD Archive file?");
+	}
+	std::ostringstream log;
+	log << "Archive found " << archiveFiles.size() << " files within";
+	bool manifestPresent = false;
+	for (auto file : archiveFiles)
+	{
+		if (file == MANIFEST_FILE_NAME)
+		{
+			manifestPresent = true;
+		}
 		log << "\n\t" << file;
 	}
 	LOG(DEBUG) << log.str();
+
+	std::vector<std::string> relevantFiles;
+	if (manifestPresent)
+	{
+		LOG(INFO) << "Found manifest file";
+		
+		std::vector<std::string> chroms = JSL::split(archive.Text(MANIFEST_FILE_NAME),'\n');
+		for (auto q : chroms)
+		{
+			std::string targetFile = q + "_" + std::to_string(Settings.AccumulationFactor) + ".dat";
+			if (JSL::FindXInY(targetFile,archiveFiles) == -1)
+			{
+				throw runtime_error(Settings.DataFile + " does not contain the file " + targetFile + "\n\tThere are two potential causes for this.\n\t\t1. A corrupted or incomplete archive \n\t\t2. A non-archived accumulation factor (" + std::to_string(Settings.AccumulationFactor) + ").\n\tYou will need to rerun with the original .bam/.sam file");
+			}
+
+			relevantFiles.push_back(targetFile);
+		}
+	}
+	else
+	{
+		LOG(WARN)  << "WARNING! No manifest file (" << MANIFEST_FILE_NAME << ") found within the archive " << Settings.DataFile << "\n\tChromosomes will be analysed in a random order";
+
+		std::regex re("[_.]");
+		for (auto file : archiveFiles)
+		{
+			
+			std::sregex_token_iterator first{file.begin(), file.end(), re, -1}, last;//the '-1' is what makes the regex split (-1 := what was not matched)
+			std::vector<std::string> tokens{first, last};
+			if (tokens.size() == 3 && std::stoi(tokens[1]) == Settings.AccumulationFactor)
+			{
+				relevantFiles.push_back(file);
+			}
+		}
+	}
+
+	if (relevantFiles.size() == 0)
+	{
+		throw runtime_error("No files were found in the archive which matched your specifications");
+	}
+
+	std::vector<std::tuple<dnaindex,int,int>> chromVector;
+	for (auto file: relevantFiles)
+	{
+		// chromVector.resize(0);
+		LOG(INFO) << "Processing chromosome file " << file;
+		archive.ReadTabular(file,chromVector,' ');
+
+		for (int i = 0; i < std::min((int)1e5,(int)chromVector.size()); ++i)
+		{
+			LOG(DEBUG) << std::get<0>(chromVector[i]) << " " << std::get<1>(chromVector[i]) << " " << std::get<2>(chromVector[i]);
+		}
+	}
+
+
 }
 
 void FileReader()
