@@ -8,6 +8,22 @@ void SplitCheck(const std::string & line,int n)
 	}
 }
 
+void parseLine(const std::string& line, char delim, std::string& chromosome, dnaindex& idx, int& k) {
+    size_t firstDelim = line.find(delim);
+    if (firstDelim == std::string::npos) throw std::runtime_error("Malformed line: " + line);
+
+    size_t secondDelim = line.find(delim, firstDelim + 1);
+    if (secondDelim == std::string::npos) throw std::runtime_error("Malformed line: " + line);
+
+    chromosome = line.substr(0, firstDelim);
+
+    auto idxParseResult = std::from_chars(line.data() + firstDelim + 1, line.data() + secondDelim, idx);
+    if (idxParseResult.ec != std::errc()) throw std::runtime_error("Failed to parse idx");
+
+    auto kParseResult = std::from_chars(line.data() + secondDelim + 1, line.data() + line.size(), k);
+    if (kParseResult.ec != std::errc()) throw std::runtime_error("Failed to parse k");
+}
+
 DataHolder AggregateStream(std::istream& inputStream)
 {
 	
@@ -38,7 +54,7 @@ DataHolder AggregateStream(std::istream& inputStream)
 	LOG(DEBUG) << "Stream delimiter is '" << delim << "', accumulation factor=" << accumulator;
 
 	//initialise output vector
-	DataHolder data;
+	std::vector<CoverageArray> data;
 
 	//various counters and trackers
 	int count = 0; //the counterpart to accumulator
@@ -49,15 +65,21 @@ DataHolder AggregateStream(std::istream& inputStream)
 	std::string PIPE_LINE;
 	while (std::getline(inputStream,PIPE_LINE))
 	{
-		std::vector<std::string> line = JSL::split(PIPE_LINE,delim);
 
-		SplitCheck(PIPE_LINE,line.size());
+		std::string chromosome;
+        dnaindex idx;
+        int k;
 
-		dnaindex idx = std::stoll(line[1]);
-		int k = std::stoi(line[2]);
-		if (line[0] != previousChromosome)
+        parseLine(PIPE_LINE, Settings.StreamDelimiter, chromosome, idx, k);
+		// std::vector<std::string> line = JSL::split(PIPE_LINE,delim);
+
+		// SplitCheck(PIPE_LINE,line.size());
+
+		// dnaindex idx = std::stoll(line[1]);
+		// int k = std::stoi(line[2]);
+		if (chromosome != previousChromosome)
 		{
-			previousChromosome = line[0];
+			previousChromosome = chromosome;
 			chromosomeManifest << previousChromosome << "\n";
 			for (int i = 0; i < crawler.size(); ++i)
 			{
@@ -68,21 +90,23 @@ DataHolder AggregateStream(std::istream& inputStream)
 			chr+=1;
 			cidx = -1;
 			count = 0;
-			LOG(INFO) << "Scanning new chromosome " << line[0];
+			LOG(INFO) << "Scanning new chromosome " << chromosome;
 			
 		}	
-		if (count % accumulator == 0)
+
+		if (count == 0)
 		{
-			cidx += 1;
-			data[chr].AddData(idx,k);
-			count = 1;
-		}
+			++cidx;
+			data[chr].AddData(idx, k);
+		} 
 		else
 		{
 			data[chr][cidx].Coverage += k;
-			data[chr][cidx].SquareSum += k*k;
-			++count;
+			data[chr][cidx].SquareSum += k * k;
 		}
+		count = (count + 1) % accumulator;
+
+
 		for (int i = 0; i < crawler.size(); ++i)
 		{
 			crawler[i].Update(idx,k);
