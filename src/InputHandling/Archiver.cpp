@@ -9,6 +9,7 @@ namespace JAR
 		OpenedStream = false;
 		// Open(archivePath,mode);
 	}
+	// std::ios::ap
 	//doesn't actually open it, since opening occurs on a delay when the first write happens....
 	void Archive::Open(std::string archivePath, std::ios_base::openmode mode)
 	{

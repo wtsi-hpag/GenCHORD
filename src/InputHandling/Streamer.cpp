@@ -145,17 +145,17 @@ DataHolder FileReader()
 	if (fileExtension == "bam" || fileExtension == "cram" || fileExtension == "sam")
 	{
 		LOG(INFO) << "." << fileExtension << " extension detected, calling samtools depth";
-		ShellExecute("samtools depth " + file);
+		return ShellExecute("samtools depth " + file);
 	}
 	else if (fileExtension == "gca")
 	{
 		LOG(INFO) << ".gca (GenCHORD Archive) file detected. Extracting";
-		ArchiveReader();
+		return ArchiveReader();
 	}
 	else
 	{
 		LOG(WARN) << "Unrecognised file extension. Attempting to read as text file";
-		ShellExecute("cat " + file);
+		return ShellExecute("cat " + file);
 	}
 }
 

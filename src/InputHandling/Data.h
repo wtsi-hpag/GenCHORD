@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 
-
+#include "../Utility/Log.h"
 
 typedef unsigned long long int dnaindex; 
 class Datum
@@ -23,6 +23,7 @@ class CoverageArray
 		Datum operator [](int i) const {return Data[i];};
 		Datum & operator[](int i) {return Data[i];};
 		void AddData(dnaindex Index,unsigned int k);
+		int Size();
 		// void AccumulateData(dna)
 	private:
 		std::vector<Datum> Data;

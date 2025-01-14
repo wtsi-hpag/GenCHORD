@@ -25,6 +25,7 @@ struct Aggregator
 	int Sum;
 	int SqSum;
 	int HopSize;
+	
 	long long int Position;
 	int BufferCount = 0;
 	std::ostringstream buffer;
