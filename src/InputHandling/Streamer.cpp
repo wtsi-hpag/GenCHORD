@@ -125,8 +125,9 @@ DataHolder ArchiveReader()
 	for (auto file: relevantFiles)
 	{
 		LOG(INFO) << "Processing chromosome file " << file;
+		auto name = JSL::split(file,'_')[0];
 		archive.ReadTabular(file,chromVector,' ');
-		output.push_back(CoverageArray(chromVector));
+		output.Append(name,chromVector);
 	}
 	return output;
 }

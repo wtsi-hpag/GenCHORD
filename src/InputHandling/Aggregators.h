@@ -69,6 +69,7 @@ struct Aggregator
 	}
 	void Flush()
 	{
+		LOG(DEBUG) << "Flushing string of size " << buffer.str().size() << " to " << File;
 		BufferCount = 0;
 		Tar.Write(File,buffer.str());
 	}

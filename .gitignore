@@ -1,6 +1,7 @@
 Data/
 genchord
-depthsplitter
+
+*.gca
 
 *.d
 *.vscode

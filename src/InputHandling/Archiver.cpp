@@ -175,8 +175,6 @@ namespace JAR
 		});
 	}
 
-	// void Archive::StreamFile(std::string fileName, std::function<void(std::string)> data_callback)
-	
 	std::string Archive::Text(std::string fileName)
 	{
 		std::string buffer = "";

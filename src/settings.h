@@ -19,7 +19,7 @@
 	Setting(int,LogLevel,2,"log")  /*The logging level (0=errors only, 1 = errors + warnings, 2=general info, 3=debug mode)*/\
 	Setting(char,StreamDelimiter,'\t',"delim")	\
 	Setting(bool,LogHeaders,1,"loghead")  /*Controls if the logging headers are printed*/\
-
+	Setting(int,PlotBinFactor,1,"plotbin") \
 
 // Do not edit anything below this line!
 class SettingsObject

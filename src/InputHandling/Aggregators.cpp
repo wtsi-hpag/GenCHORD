@@ -71,12 +71,6 @@ DataHolder AggregateStream(std::istream& inputStream)
         int k;
 
         parseLine(PIPE_LINE, Settings.StreamDelimiter, chromosome, idx, k);
-		// std::vector<std::string> line = JSL::split(PIPE_LINE,delim);
-
-		// SplitCheck(PIPE_LINE,line.size());
-
-		// dnaindex idx = std::stoll(line[1]);
-		// int k = std::stoi(line[2]);
 		if (chromosome != previousChromosome)
 		{
 			previousChromosome = chromosome;
@@ -86,11 +80,16 @@ DataHolder AggregateStream(std::istream& inputStream)
 				std::string name = previousChromosome + "_" + std::to_string(standardWindows[i]) + ".dat";
 				crawler[i].NewFile(name);
 			}
-			data.push_back(CoverageArray());
+			if (count != 0)
+			{
+				data[chr].FlagTruncated(); //remove underfull elements
+			}
+			data.push_back(CoverageArray(chromosome));
 			chr+=1;
 			cidx = -1;
+			
+			LOG(INFO) << "Scanning new chromosome " << chromosome << " " << count;
 			count = 0;
-			LOG(INFO) << "Scanning new chromosome " << chromosome;
 			
 		}	
 
@@ -112,14 +111,19 @@ DataHolder AggregateStream(std::istream& inputStream)
 			crawler[i].Update(idx,k);
 		}
 	}
+	if (count != 0)
+	{
+		data[chr].FlagTruncated(); //remove underfull elements
+	}
 	if (Settings.CreateArchive)
 	{
-		LOG(INFO) << "Writing manifest to file";
-		tar.Write(MANIFEST_FILE_NAME,chromosomeManifest.str());
+		
 		for (int i = 0; i < crawler.size(); ++i)
 		{
 			crawler[i].Flush();
 		}
+		LOG(INFO) << "Writing manifest to file";
+		tar.Write(MANIFEST_FILE_NAME,chromosomeManifest.str());
 	}
 	return data;
 }
