@@ -121,7 +121,7 @@ DataHolder ArchiveReader()
 	}
 
 	DataHolder output;
-	std::vector<std::tuple<dnaindex,int,int>> chromVector;
+	std::vector<std::tuple<dnaindex,lint, lint>> chromVector;
 	for (auto file: relevantFiles)
 	{
 		LOG(INFO) << "Processing chromosome file " << file;

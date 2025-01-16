@@ -8,6 +8,8 @@ void ConfigureLogging()
 {
 	LOGCFG.headers = Settings.LogHeaders;
 	LOGCFG.SetLevel(Settings.LogLevel);
+
+	
 }
 
 void WelcomeWagon()
@@ -18,7 +20,17 @@ void WelcomeWagon()
 	std::string subtitle = "Harmonic Genomic Rearrangement Analysis\n";
 	int off = n - (int)((-title.size() + subtitle.size() -1)/2);
 	LOG(INFO) << "\n" <<std::string(n,'=') << title <<  std::string(n,'=') << "\n" << std::string(off,' ') << subtitle;
+
 	LOGCFG.headers = Settings.LogHeaders;
+
+	if (Settings.LogLevel > 2)
+	{
+		LOG(INFO) << "Logging level set to " << Settings.LogLevel;
+		LOG(ERROR) << "\tErrors appear like this";
+		LOG(WARN) << "\tWarnings appear like this";
+		LOG(INFO) << "\tInformation appears like this";
+		LOG(DEBUG) << "\tDebug output appears like this";	
+	}
 }
 
 int main(int argc, char ** argv)

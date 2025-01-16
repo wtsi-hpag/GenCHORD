@@ -88,7 +88,7 @@ DataHolder AggregateStream(std::istream& inputStream)
 			chr+=1;
 			cidx = -1;
 			
-			LOG(INFO) << "Scanning new chromosome " << chromosome << " " << count;
+			LOG(INFO) << "Scanning new chromosome: " << chromosome;
 			count = 0;
 			
 		}	
@@ -101,7 +101,7 @@ DataHolder AggregateStream(std::istream& inputStream)
 		else
 		{
 			data[chr][cidx].Coverage += k;
-			data[chr][cidx].SquareSum += k * k;
+			data[chr][cidx].SquareSum += pow(k,2);
 		}
 		count = (count + 1) % accumulator;
 

@@ -22,8 +22,8 @@ struct Aggregator
 	JAR::Archive & Tar;
 	std::string File;
 	int Counter;
-	int Sum;
-	int SqSum;
+	lint Sum;
+	lint SqSum;
 	int HopSize;
 	
 	long long int Position;
@@ -55,11 +55,19 @@ struct Aggregator
 			Position = idx;
 		}
 		Sum += k;
-		SqSum += k*k;
+		SqSum += pow(k,2);
+		if (SqSum < 0)
+		{
+			throw overflow_error("Aggregation Squaresum has overflown");
+		}
 		Counter += 1;
 		if (Counter == HopSize)
 		{
+			
 			buffer << Position << ARCHIVE_DELIMITER << Sum << ARCHIVE_DELIMITER << SqSum << "\n";
+			
+			double err = abs( pow((double)Sum,2) - (double)SqSum);
+
 			BufferCount +=1;
 			Counter = 0;
 			Sum = 0;

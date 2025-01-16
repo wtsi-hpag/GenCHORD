@@ -6,10 +6,10 @@ void CoverageArray::AddData(dnaindex idx, unsigned int k)
 }
 void CoverageArray::FlagTruncated()
 {
-	// Data.pop_back();
+	Data.pop_back();
 }
 
-CoverageArray::CoverageArray(const std::string & name, const std::vector<std::tuple<dnaindex, int, int>> & data) : Name(name)
+CoverageArray::CoverageArray(const std::string & name, const std::vector<std::tuple<dnaindex, lint, lint>> & data) : Name(name)
 {
 	Data.resize(data.size());
 	for (int i = 0; i < data.size(); ++i)
@@ -24,17 +24,21 @@ int CoverageArray::size()
 double CoverageArray::GetMean()
 {
 	double mu = 0;
+	double aggSq = 0;
 	double muSq = 0;
 	for (int i = 0; i < Data.size(); ++i)
 	{
 		mu += Data[i].Coverage;
+		aggSq += pow((double)Data[i].Coverage,2);
 		muSq += Data[i].SquareSum;
 	}
-	// Mean = mu/Data.size();
-	// double trueMean = Mean/Settings.AccumulationFactor;
-	// Variance = muSq/(Data.size()*Settings.AccumulationFactor) - trueMean * trueMean;
-	LOG(DEBUG) << "Sum " << mu << " sqSum " << muSq << " var " << muSq/(Data.size()) - pow(mu/Data.size(),2);
-	return Mean;
+	AggregateMean = mu/Data.size();
+	RawMean = AggregateMean / Settings.AccumulationFactor;
+
+	AggregateVariance = aggSq/Data.size() - pow(AggregateMean,2);
+	RawVariance = muSq/(Data.size() * Settings.AccumulationFactor) - pow(RawMean,2);
+	LOG(INFO) << "Chromosome " << Name << " Profile\tAggregate: " << AggregateMean << "±" << sqrt(AggregateVariance)/AggregateMean * 100 << "%\tRaw: " << RawMean << "±" << sqrt(RawVariance)/RawMean*100 << "%";
+	return RawMean;
 
 }
 
@@ -46,7 +50,7 @@ DataHolder::DataHolder(const std::vector<CoverageArray> & input) : data(input)
 {
 
 }
-void DataHolder::Append(const std::string & name, const std::vector<std::tuple<dnaindex,int,int>> & element)
+void DataHolder::Append(const std::string & name, const std::vector<std::tuple<dnaindex,lint,lint>> & element)
 {
 	data.emplace_back(CoverageArray(name, element));
 }
@@ -81,13 +85,26 @@ std::vector<int> DataHolder::Histogram()
 
 void DataHolder::Analyse()
 {
+	int c = 0;
+	while (c < data.size())
+	{
+		if (data[c].size() > 0)
+		{
+			++c;
+		}
+		else
+		{
+			LOG(WARN) << "Chromosome " << data[c].Name << " has no data associated with it and has been removed.\n\tThis is not an error if you expect it to be shorter than the accumulation factor ("<< Settings.AccumulationFactor << "). \n\tOtherwise this is an indicator of a malformed datafile.";
+			data.erase(data.begin()+c);
+		}
+	}
 	double muTotal = 0;
 	double sqTotal = 0;
 	double longTotal = 0;
 	for (int c = 0; c < data.size(); ++c)
 	{
 		data[c].GetMean();
-		// LOG(INFO) << "Chromosome " << data[c].Name << " has aggregate " << data[c].Mean << "±" << sqrt(data[c].Variance) << " corresponding to mean coverage " << data[c].Mean / Settings.AccumulationFactor;
+		
 		// int n = data[c].size();
 		// muTotal += data[c].Mean * n;
 		// longTotal += n;
