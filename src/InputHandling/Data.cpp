@@ -79,7 +79,7 @@ void CoverageArray::Statistics()
 	// }
 	// hist.resize(cutoff);
 	
-	LOG(INFO) << "Chr: "<<Name << "\tAggregate: " << std::setprecision(5) << AggregateMean<< " ± " << std::setprecision(4) << sqrt(AggregateVariance)/AggregateMean * 100 << "%\tRaw: " << std::setprecision(5) << RawMean << " ± " << std::setprecision(4) << sqrt(RawVariance)/RawMean*100 << "%";
+	LOG(INFO) << "Chr: "<<Name << "\tAggregate: " << std::setprecision(5) << AggregateMean<< " ± " << std::setprecision(4) << sqrt(AggregateVariance)/AggregateMean * 100 << "%\tRaw: " << std::setprecision(5) << RawMean << " ± " << std::setprecision(4) << sqrt(RawVariance)/RawMean*100 << "%\t maxK " << maxK;
 }
 
 DataHolder::DataHolder()
