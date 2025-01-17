@@ -26,7 +26,7 @@ void WelcomeWagon()
 
 	LOGCFG.headers = Settings.LogHeaders;
 
-	if (Settings.LogLevel > 2)
+	if (Settings.LogLevel > 1)
 	{
 		LOG(INFO) << "Logging level set to " << Settings.LogLevel;
 		LOG(ERROR) << "\tErrors appear like this";

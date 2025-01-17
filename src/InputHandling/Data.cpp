@@ -49,19 +49,17 @@ void CoverageArray::Statistics()
 			maxK = k;
 		}
 
-		if (k >= hist.size())
-		{
-			hist.resize(k,0);
-		}
-		hist[k]+=1;
+		// if (k >= hist.size())
+		// {
+		// 	LOG(DEBUG) << "increasing size to " << k;
+		// 	hist.resize(k,0);
+		// }
+		// hist[k]+=1;
 		// LOG(DEBUG) << hist[k];
 		mu += k;
 		aggSq += pow((double)k,2);
 		muSq += Data[i].SquareSum;
-		if (i %1000 == 0)
-		{
-			LOG(DEBUG) << i << " " << mu;
-		}
+		
 	}
 	AggregateMean = mu/Data.size();
 	RawMean = AggregateMean / Settings.AccumulationFactor;
@@ -69,17 +67,17 @@ void CoverageArray::Statistics()
 	AggregateVariance = aggSq/Data.size() - pow(AggregateMean,2);
 	RawVariance = muSq/(Data.size() * Settings.AccumulationFactor) - pow(RawMean,2);
 	
-	LOG(DEBUG) << "Beginning hist analysis " << maxK;
-	double target = Settings.TruncationFactor;
-	int cutoff = 0;
-	double cumsum = hist[cutoff] * 1.0/Data.size();
-	while (cutoff < hist.size() && cumsum < target)
-	{
+	// LOG(DEBUG) << "Beginning hist analysis " << maxK;
+	// double target = Settings.TruncationFactor;
+	// int cutoff = 0;
+	// double cumsum = hist[cutoff] * 1.0/Data.size();
+	// while (cutoff < hist.size() && cumsum < target)
+	// {
 
-		cumsum += hist[cutoff] * 1.0/Data.size();
-		cutoff +=1;
-	}
-	hist.resize(cutoff);
+	// 	cumsum += hist[cutoff] * 1.0/Data.size();
+	// 	cutoff +=1;
+	// }
+	// hist.resize(cutoff);
 	
 	LOG(INFO) << "Chr: "<<Name << "\tAggregate: " << std::setprecision(5) << AggregateMean<< " ± " << std::setprecision(4) << sqrt(AggregateVariance)/AggregateMean * 100 << "%\tRaw: " << std::setprecision(5) << RawMean << " ± " << std::setprecision(4) << sqrt(RawVariance)/RawMean*100 << "%";
 }
