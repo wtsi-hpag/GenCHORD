@@ -98,7 +98,6 @@ DataHolder AggregateStream(std::istream& inputStream)
         parseLine(PIPE_LINE, Settings.StreamDelimiter, chromosome, idx, k);
 		if (chromosome != previousChromosome)
 		{
-			previousChromosome = chromosome;
 
 			//clean up old chromosome
 			if (validChromosome)
@@ -107,8 +106,13 @@ DataHolder AggregateStream(std::istream& inputStream)
 				{
 					data[chr].FlagTruncated(); //remove underfull elements
 				}
+				for (int i = 0; i < crawler.size(); ++i)
+				{
+					crawler[i].Flush();
+				}
 				
 			}
+			previousChromosome = chromosome;
 			//analyse the new one
 			validChromosome = (chromosome.find(Settings.IgnoreChromosomeFlag) == std::string::npos);
 			if (!validChromosome)
@@ -154,13 +158,11 @@ DataHolder AggregateStream(std::istream& inputStream)
 		{
 			data[chr].FlagTruncated(); //remove underfull elements
 		}
-		if (Settings.CreateArchive)
-		{
+
 			
-			for (int i = 0; i < crawler.size(); ++i)
-			{
-				crawler[i].Flush();
-			}
+		for (int i = 0; i < crawler.size(); ++i)
+		{
+			crawler[i].Flush();
 		}
 	}
 
