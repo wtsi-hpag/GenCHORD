@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include <vector>
+
 #include "../settings.h"
 #include "../Utility/Log.h"
 
