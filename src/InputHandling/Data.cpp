@@ -58,6 +58,10 @@ void CoverageArray::Statistics()
 		mu += k;
 		aggSq += pow((double)k,2);
 		muSq += Data[i].SquareSum;
+		if (i %1000 == 0)
+		{
+			LOG(DEBUG) << i << " " << mu;
+		}
 	}
 	AggregateMean = mu/Data.size();
 	RawMean = AggregateMean / Settings.AccumulationFactor;
@@ -65,7 +69,7 @@ void CoverageArray::Statistics()
 	AggregateVariance = aggSq/Data.size() - pow(AggregateMean,2);
 	RawVariance = muSq/(Data.size() * Settings.AccumulationFactor) - pow(RawMean,2);
 	
-
+	LOG(DEBUG) << "Beginning hist analysis " << maxK;
 	double target = Settings.TruncationFactor;
 	int cutoff = 0;
 	double cumsum = hist[cutoff] * 1.0/Data.size();
@@ -141,6 +145,7 @@ void DataHolder::Analyse()
 	double longTotal = 0;
 	for (int c = 0; c < data.size(); ++c)
 	{
+		LOG(DEBUG) << "Running stats for" << data[c].Name;
 		data[c].Statistics();
 		
 		// int n = data[c].size();
