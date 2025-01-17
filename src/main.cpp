@@ -77,7 +77,7 @@ int main(int argc, char ** argv)
 	// 	gp.SetYRange(0.5,1e3);
 	// 	gp.Show();
 		
-	// }
+	}
 	catch (const std::exception& e) 
 	{
 		LOG(ERROR) << "CRITICAL\n\t" << e.what();
