@@ -21,9 +21,9 @@
 	Setting(bool,LogHeaders,1,"loghead")  /*Controls if the logging headers are printed*/\
 	Setting(int,PlotBinFactor,1,"plotbin") \
 	Setting(double,TruncationFactor,0.999,"truncate")/*Controls the amount of high-coverage tail which is truncated*/\
-
+	Setting(int,DataGap,1,"datagap")/*the expected gap between genome indices in the input file*/\
 // Do not edit anything below this line!
-class SettingsObject
+class SettingsObject		
 {
 	public:
 		#define Setting(type, name, defaultValue, cmdArg) type name;

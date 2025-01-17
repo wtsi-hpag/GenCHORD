@@ -44,8 +44,8 @@ int main(int argc, char ** argv)
  
 		DataHolder Data = ParseData();
 		LOG(DEBUG) << "Data received in main";
-		Data.Analyse();
-		auto vec = Data.Histogram();
+		// Data.Analyse();
+		// auto vec = Data.Histogram();
 		
 		// std::vector<int> x = JSL::Vector::intspace(0,vec.size()-1,1);
 		// LOG(DEBUG) << vec.size() << " " << x.size();

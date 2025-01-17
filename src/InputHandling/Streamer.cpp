@@ -146,7 +146,7 @@ DataHolder FileReader()
 	if (fileExtension == "bam" || fileExtension == "cram" || fileExtension == "sam")
 	{
 		LOG(INFO) << "." << fileExtension << " extension detected, calling samtools depth";
-		return ShellExecute("samtools depth -a " + file);
+		return ShellExecute("samtools depth " + file);
 	}
 	else if (fileExtension == "gca")
 	{

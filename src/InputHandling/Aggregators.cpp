@@ -8,7 +8,7 @@ void SplitCheck(const std::string & line,int n)
 	}
 }
 
-void parseLine(const std::string& line, char delim, std::string& chromosome, dnaindex& idx, int& k) {
+void parseLine(const std::string& line, char delim, std::string& chromosome, dnaindex& idx, unsigned int& k) {
     size_t firstDelim = line.find(delim);
     if (firstDelim == std::string::npos) throw std::runtime_error("Malformed line: " + line);
 
@@ -22,6 +22,27 @@ void parseLine(const std::string& line, char delim, std::string& chromosome, dna
 
     auto kParseResult = std::from_chars(line.data() + secondDelim + 1, line.data() + line.size(), k);
     if (kParseResult.ec != std::errc()) throw std::runtime_error("Failed to parse k");
+}
+
+void addLine(CoverageArray & data, std::vector<Aggregator> & crawler, int & cidx, int & count, dnaindex & idx, unsigned int &k)
+{
+	if (count == 0)
+	{
+		++cidx;
+		data.AddData(idx, k);
+	} 
+	else
+	{
+		data[cidx].Coverage += k;
+		data[cidx].SquareSum += pow(k,2);
+	}
+	count = (count + 1) % Settings.AccumulationFactor;
+
+
+	for (int i = 0; i < crawler.size(); ++i)
+	{
+		crawler[i].Update(idx,k);
+	}
 }
 
 DataHolder AggregateStream(std::istream& inputStream)
@@ -61,14 +82,16 @@ DataHolder AggregateStream(std::istream& inputStream)
 	int chr = -1; //index of current chromosome
 	int cidx = 0; //data index within current chromosome (distinct from base index: cidx = idx % accumulator) 
 	std::string previousChromosome = "";
-	
+	int gap = Settings.DataGap;
+	dnaindex prevIndex = -gap;
 	std::string PIPE_LINE;
+	unsigned int zero = 0;
 	while (std::getline(inputStream,PIPE_LINE))
 	{
 
 		std::string chromosome;
         dnaindex idx;
-        int k;
+        unsigned int k;
 
         parseLine(PIPE_LINE, Settings.StreamDelimiter, chromosome, idx, k);
 		if (chromosome != previousChromosome)
@@ -87,29 +110,23 @@ DataHolder AggregateStream(std::istream& inputStream)
 			data.push_back(CoverageArray(chromosome));
 			chr+=1;
 			cidx = -1;
+			prevIndex = -gap;
 			
 			LOG(INFO) << "Scanning new chromosome: " << chromosome;
 			count = 0;
 			
 		}	
 
-		if (count == 0)
-		{
-			++cidx;
-			data[chr].AddData(idx, k);
-		} 
-		else
-		{
-			data[chr][cidx].Coverage += k;
-			data[chr][cidx].SquareSum += pow(k,2);
-		}
-		count = (count + 1) % accumulator;
 
-
-		for (int i = 0; i < crawler.size(); ++i)
+		prevIndex+=gap;
+		while (prevIndex < idx)
 		{
-			crawler[i].Update(idx,k);
+			addLine(data[chr],crawler,cidx,count,prevIndex,zero);
+			prevIndex+=gap;
 		}
+		addLine(data[chr],crawler,cidx,count,idx,k);
+
+		
 	}
 	if (count != 0)
 	{
