@@ -14,7 +14,10 @@ CoverageArray::CoverageArray(const std::string & name, const std::vector<std::tu
 	Data.resize(data.size());
 	for (int i = 0; i < data.size(); ++i)
 	{
-		Data[i] = Datum(std::get<0>(data[i]),std::get<1>(data[i]),std::get<2>(data[i]));
+		dnaindex idx = std::get<0>(data[i]);
+		lint k = std::get<1>(data[i]);
+		lint k2 = std::get<2>(data[i]);
+		Data[i] = Datum(idx,k,k2);
 	}
 }
 int CoverageArray::size()
