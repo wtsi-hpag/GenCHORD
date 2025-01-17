@@ -9,7 +9,7 @@ void CoverageArray::FlagTruncated()
 	Data.pop_back();
 }
 
-CoverageArray::CoverageArray(const std::string & name, const std::vector<std::tuple<dnaindex, lint, lint>> & data) : Name(name)
+CoverageArray::CoverageArray(const std::string & name, std::vector<std::tuple<dnaindex, lint, lint>> & data) : Name(name)
 {
 	Data.resize(data.size());
 	for (int i = 0; i < data.size(); ++i)
@@ -80,7 +80,7 @@ DataHolder::DataHolder(const std::vector<CoverageArray> & input) : data(input)
 {
 
 }
-void DataHolder::Append(const std::string & name, const std::vector<std::tuple<dnaindex,lint,lint>> & element)
+void DataHolder::Append(const std::string & name, std::vector<std::tuple<dnaindex,lint,lint>> & element)
 {
 	data.emplace_back(CoverageArray(name, element));
 }
