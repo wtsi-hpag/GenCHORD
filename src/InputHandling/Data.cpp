@@ -21,15 +21,31 @@ int CoverageArray::size()
 {
 	return Data.size();
 }
-double CoverageArray::GetMean()
+void CoverageArray::Statistics()
 {
 	double mu = 0;
 	double aggSq = 0;
 	double muSq = 0;
+	int logVal = 2;
+	double lv = log(logVal);
+	std::vector<int> hist(100,0);
+	lint maxK = 0;
 	for (int i = 0; i < Data.size(); ++i)
 	{
-		mu += Data[i].Coverage;
-		aggSq += pow((double)Data[i].Coverage,2);
+		lint k = Data[i].Coverage;
+		if (k > maxK)
+		{
+			maxK = k;
+		}
+
+		if (k >= hist.size())
+		{
+			hist.resize(k,0);
+		}
+		hist[k]+=1;
+		// LOG(DEBUG) << hist[k];
+		mu += k;
+		aggSq += pow((double)k,2);
 		muSq += Data[i].SquareSum;
 	}
 	AggregateMean = mu/Data.size();
@@ -37,9 +53,20 @@ double CoverageArray::GetMean()
 
 	AggregateVariance = aggSq/Data.size() - pow(AggregateMean,2);
 	RawVariance = muSq/(Data.size() * Settings.AccumulationFactor) - pow(RawMean,2);
-	LOG(INFO) << "Chromosome " << Name << " Profile\tAggregate: " << AggregateMean << "±" << sqrt(AggregateVariance)/AggregateMean * 100 << "%\tRaw: " << RawMean << "±" << sqrt(RawVariance)/RawMean*100 << "%";
-	return RawMean;
+	
 
+	double target = Settings.TruncationFactor;
+	int cutoff = 0;
+	double cumsum = hist[cutoff] * 1.0/Data.size();
+	while (cutoff < hist.size() && cumsum < target)
+	{
+
+		cumsum += hist[cutoff] * 1.0/Data.size();
+		cutoff +=1;
+	}
+	hist.resize(cutoff);
+	
+	LOG(INFO) << "Chr: "<<Name << "\tAggregate: " << std::setprecision(5) << AggregateMean<< " ± " << std::setprecision(4) << sqrt(AggregateVariance)/AggregateMean * 100 << "%\tRaw: " << std::setprecision(5) << RawMean << " ± " << std::setprecision(4) << sqrt(RawVariance)/RawMean*100 << "%";
 }
 
 DataHolder::DataHolder()
@@ -88,13 +115,13 @@ void DataHolder::Analyse()
 	int c = 0;
 	while (c < data.size())
 	{
-		if (data[c].size() > 0)
+		if (data[c].size() > 1)
 		{
 			++c;
 		}
 		else
 		{
-			LOG(WARN) << "Chromosome " << data[c].Name << " has no data associated with it and has been removed.\n\tThis is not an error if you expect it to be shorter than the accumulation factor ("<< Settings.AccumulationFactor << "). \n\tOtherwise this is an indicator of a malformed datafile.";
+			LOG(WARN) << "Chromosome " << data[c].Name << " has insufficient associated with it and has been removed.\n\tThis is not an error if you expect it to be shorter than twice the accumulation factor ("<< Settings.AccumulationFactor << "). \n\tOtherwise this is an indicator of a malformed datafile.";
 			data.erase(data.begin()+c);
 		}
 	}
@@ -103,7 +130,7 @@ void DataHolder::Analyse()
 	double longTotal = 0;
 	for (int c = 0; c < data.size(); ++c)
 	{
-		data[c].GetMean();
+		data[c].Statistics();
 		
 		// int n = data[c].size();
 		// muTotal += data[c].Mean * n;

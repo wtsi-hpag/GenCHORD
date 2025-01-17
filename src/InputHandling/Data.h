@@ -28,7 +28,7 @@ class CoverageArray
 		Datum & operator[](int i) {return Data[i];};
 		void AddData(dnaindex Index,unsigned int k);
 		int size();
-		double GetMean();
+		void Statistics();
 		double AggregateMean;
 		double AggregateVariance;
 		double RawMean;

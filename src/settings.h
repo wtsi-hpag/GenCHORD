@@ -20,6 +20,7 @@
 	Setting(char,StreamDelimiter,'\t',"delim")	\
 	Setting(bool,LogHeaders,1,"loghead")  /*Controls if the logging headers are printed*/\
 	Setting(int,PlotBinFactor,1,"plotbin") \
+	Setting(double,TruncationFactor,0.999,"truncate")/*Controls the amount of high-coverage tail which is truncated*/\
 
 // Do not edit anything below this line!
 class SettingsObject
