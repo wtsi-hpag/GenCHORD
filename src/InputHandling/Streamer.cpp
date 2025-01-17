@@ -3,7 +3,6 @@
 #include "Aggregators.h"
 
 
-
 // Helper functor to adapt `FILE*` to `std::istream`
 class PopenBuffer : public std::streambuf
 {
@@ -28,12 +27,14 @@ class PopenBuffer : public std::streambuf
 
 DataHolder PipeReader()
 {
+	
 	LOG(INFO) << "Detecting Data Stream. Switching to Piped Input Mode";
 	if (Settings.DataFile != "_no_file_")
 	{
 		LOG(WARN) << "Multiple input methods provided (input stream & '" << Settings.DataFile << "').\n\tData Stream has priority";
 	}
-
+	std::ios_base::sync_with_stdio(false);
+	std::cin.rdbuf()->pubsetbuf(new char[1024 * 1024], 1024 * 1024); // 1 MB buffer
 	return AggregateStream(std::cin);
 
 }

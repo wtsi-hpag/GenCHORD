@@ -9,6 +9,17 @@ void CoverageArray::FlagTruncated()
 	Data.pop_back();
 }
 
+XY<lint, lint> CoverageArray::GetCoverage(int skipFactor)
+{
+	XY<lint, lint> out;
+	// std::vector<lint> out(Data.size()/skipFactor);
+	for (int i = 0; i < Data.size(); i+=skipFactor)
+	{
+		out.Add(Data[i].Index,Data[i].Coverage);
+	}
+	return out;
+}
+
 CoverageArray::CoverageArray(const std::string & name, const std::vector<std::tuple<dnaindex, lint, lint>> & data) : Name(name)
 {
 	Data.resize(data.size());
@@ -139,4 +150,9 @@ void DataHolder::Analyse()
 	}
 
 
+}
+
+size_t DataHolder::size()
+{
+	return data.size();
 }

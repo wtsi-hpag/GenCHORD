@@ -40,7 +40,7 @@ public:
     }
     ~LOG() {
         if(opened) {
-            clog << endl;
+            clog << "\033[0m" <<endl;
         }
         opened = false;
     }

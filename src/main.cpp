@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "JSL.h"
 #include "Utility/Log.h"
 #include "settings.h"
@@ -6,6 +7,8 @@
 
 void ConfigureLogging()
 {
+	std::ios_base::sync_with_stdio(false);
+
 	LOGCFG.headers = Settings.LogHeaders;
 	LOGCFG.SetLevel(Settings.LogLevel);
 
@@ -36,6 +39,8 @@ void WelcomeWagon()
 int main(int argc, char ** argv)
 {
 
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(nullptr);
 	try
 	{
 		Settings.Configure(argc,argv);
@@ -44,7 +49,23 @@ int main(int argc, char ** argv)
  
 		DataHolder Data = ParseData();
 		LOG(DEBUG) << "Data received in main";
-		// Data.Analyse();
+		Data.Analyse();
+
+
+		// for (int i = 0; i < Data.size(); ++i)
+		// {
+		// 	int skipFactor = max(1, Data[i].size()/5000);
+		// 	LOG(WARN) << skipFactor;
+		// 	auto cov = Data[i].GetCoverage(skipFactor);
+		// 	// std::vector<int> x = JSL::Vector::intspace(0,cov.size()*skipFactor-1,skipFactor);
+			
+		// 	JSL::gnuplot gp;
+		// 	gp.SetTitle(Data[i].Name);
+		// 	gp.Plot(cov.X,cov.Y);
+		// 	gp.SetYRange(0,Data[i].AggregateMean*2);
+		// 	gp.Show();
+		// }
+		
 		// auto vec = Data.Histogram();
 		
 		// std::vector<int> x = JSL::Vector::intspace(0,vec.size()-1,1);

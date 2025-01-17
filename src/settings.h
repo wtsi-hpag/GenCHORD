@@ -22,6 +22,7 @@
 	Setting(int,PlotBinFactor,1,"plotbin") \
 	Setting(double,TruncationFactor,0.999,"truncate")/*Controls the amount of high-coverage tail which is truncated*/\
 	Setting(int,DataGap,1,"datagap")/*the expected gap between genome indices in the input file*/\
+	Setting(std::string,IgnoreChromosomeFlag,"CACPNN","ignore")\
 // Do not edit anything below this line!
 class SettingsObject		
 {

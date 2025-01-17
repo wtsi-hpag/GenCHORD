@@ -38,7 +38,6 @@ void addLine(CoverageArray & data, std::vector<Aggregator> & crawler, int & cidx
 	}
 	count = (count + 1) % Settings.AccumulationFactor;
 
-
 	for (int i = 0; i < crawler.size(); ++i)
 	{
 		crawler[i].Update(idx,k);
@@ -47,7 +46,6 @@ void addLine(CoverageArray & data, std::vector<Aggregator> & crawler, int & cidx
 
 DataHolder AggregateStream(std::istream& inputStream)
 {
-	
 	std::ostringstream chromosomeManifest("");
 	std::vector<int> standardWindows = {100,1000,10000};
 	if (JSL::FindXInY(Settings.AccumulationFactor,standardWindows) == -1)
@@ -61,10 +59,13 @@ DataHolder AggregateStream(std::istream& inputStream)
 		LOG(INFO) << "Creating archive during memory read process";
 		std::string outname = Settings.Output + ".gca";
 		tar.Open(outname,std::ios::out);
+		
 		for (auto window : standardWindows)
 		{
 			crawler.push_back(Aggregator(window,tar));
+			
 		}
+		
 	}
 	else
 	{
@@ -86,6 +87,7 @@ DataHolder AggregateStream(std::istream& inputStream)
 	dnaindex prevIndex = -gap;
 	std::string PIPE_LINE;
 	unsigned int zero = 0;
+	bool validChromosome = false;
 	while (std::getline(inputStream,PIPE_LINE))
 	{
 
@@ -97,48 +99,74 @@ DataHolder AggregateStream(std::istream& inputStream)
 		if (chromosome != previousChromosome)
 		{
 			previousChromosome = chromosome;
-			chromosomeManifest << previousChromosome << "\n";
-			for (int i = 0; i < crawler.size(); ++i)
+
+			//clean up old chromosome
+			if (validChromosome)
 			{
-				std::string name = previousChromosome + "_" + std::to_string(standardWindows[i]) + ".dat";
-				crawler[i].NewFile(name);
+				if (count != 0)
+				{
+					data[chr].FlagTruncated(); //remove underfull elements
+				}
+				
 			}
-			if (count != 0)
+			//analyse the new one
+			validChromosome = (chromosome.find(Settings.IgnoreChromosomeFlag) == std::string::npos);
+			if (!validChromosome)
 			{
-				data[chr].FlagTruncated(); //remove underfull elements
+				LOG(WARN) << "Ignoring chromosome " << chromosome << " (contains flag " << Settings.IgnoreChromosomeFlag << ")";
+				validChromosome = false;
 			}
-			data.push_back(CoverageArray(chromosome));
-			chr+=1;
-			cidx = -1;
-			prevIndex = -gap;
+			else
+			{
+				data.push_back(CoverageArray(chromosome));
+
+				chromosomeManifest << previousChromosome << "\n";
+				for (int i = 0; i < crawler.size(); ++i)
+				{
+					std::string name = chromosome + "_" + std::to_string(standardWindows[i]) + ".dat";
+					crawler[i].NewFile(name);
+				}
 			
-			LOG(INFO) << "Scanning new chromosome: " << chromosome;
-			count = 0;
+				chr+=1;
+				cidx = -1;
+				prevIndex = -gap;
+				LOG(INFO) << "Scanning new chromosome: " << chromosome;
+				count = 0;
+			}
 			
 		}	
-
-
-		prevIndex+=gap;
-		while (prevIndex < idx)
+		if (validChromosome)
 		{
-			addLine(data[chr],crawler,cidx,count,prevIndex,zero);
 			prevIndex+=gap;
+			while (prevIndex < idx)
+			{
+				addLine(data[chr],crawler,cidx,count,prevIndex,zero);
+				prevIndex+=gap;
+			}
+			addLine(data[chr],crawler,cidx,count,idx,k);
 		}
-		addLine(data[chr],crawler,cidx,count,idx,k);
+	}
 
-		
-	}
-	if (count != 0)
+	//finish off the currently open chromosome
+	if (validChromosome)
 	{
-		data[chr].FlagTruncated(); //remove underfull elements
+		if (count != 0)
+		{
+			data[chr].FlagTruncated(); //remove underfull elements
+		}
+		if (Settings.CreateArchive)
+		{
+			
+			for (int i = 0; i < crawler.size(); ++i)
+			{
+				crawler[i].Flush();
+			}
+		}
 	}
+
+	//finalise the archive creation stuff
 	if (Settings.CreateArchive)
 	{
-		
-		for (int i = 0; i < crawler.size(); ++i)
-		{
-			crawler[i].Flush();
-		}
 		LOG(INFO) << "Writing manifest to file";
 		tar.Write(MANIFEST_FILE_NAME,chromosomeManifest.str());
 	}

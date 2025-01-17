@@ -25,7 +25,7 @@ struct Aggregator
 	lint Sum;
 	lint SqSum;
 	int HopSize;
-	
+	lint Size;
 	long long int Position;
 	int BufferCount = 0;
 	std::ostringstream buffer;
@@ -45,11 +45,13 @@ struct Aggregator
 		Counter = 0;
 		Sum = 0;
 		SqSum = 0;
+		Size = 0;
 		Position = 0;	
 	}
 	
 	void Update(int idx, int k)
 	{
+		
 		if (Position == 0)
 		{
 			Position = idx;
@@ -63,7 +65,7 @@ struct Aggregator
 		Counter += 1;
 		if (Counter == HopSize)
 		{
-			
+			++Size;
 			buffer << Position << ARCHIVE_DELIMITER << Sum << ARCHIVE_DELIMITER << SqSum << "\n";
 			
 			double err = abs( pow((double)Sum,2) - (double)SqSum);
@@ -77,7 +79,7 @@ struct Aggregator
 	}
 	void Flush()
 	{
-		LOG(DEBUG) << "Flushing string of size " << buffer.str().size() << " to " << File;
+		LOG(DEBUG) << "Flushing string of size " << buffer.str().size() << " (" << Size << " lines) to " << File;
 		BufferCount = 0;
 		Tar.Write(File,buffer.str());
 	}

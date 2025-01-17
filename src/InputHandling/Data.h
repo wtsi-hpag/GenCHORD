@@ -8,6 +8,15 @@
 typedef unsigned long long int lint;
 typedef lint dnaindex; 
 
+template<class Xtype, class Ytype> 
+struct XY
+{
+	std::vector<Xtype> X;
+	std::vector<Ytype> Y;
+	XY(int size=0){X.resize(size); Y.resize(size);}
+	void Add(Xtype x, Ytype y){X.push_back(x); Y.push_back(y);}
+	void Resize(int n){X.resize(n); Y.resize(n);}
+};
 class Datum
 {
 	public:
@@ -36,6 +45,7 @@ class CoverageArray
 		double RawMean;
 		double RawVariance;
 		void FlagTruncated();
+		XY<lint,lint> GetCoverage(int skipFactor=1);
 	private:
 		std::vector<Datum> Data;
 
@@ -53,7 +63,7 @@ class DataHolder
 		CoverageArray & operator[](int i){return data[i];};
 		std::vector<int> Histogram();
 		std::vector<int> Histogram(int chromosome);
-
+		size_t size();
 		void Analyse();
 	private:
 		std::vector<CoverageArray> data;
