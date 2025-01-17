@@ -5,8 +5,8 @@
 #include "../settings.h"
 #include "../Utility/Log.h"
 
-typedef unsigned long long int lint;
-typedef unsigned long long int dnaindex; 
+typedef unsigned int lint;
+typedef unsigned int dnaindex; 
 
 class Datum
 {
