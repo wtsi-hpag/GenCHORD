@@ -1,6 +1,4 @@
-#include "Streamer.h"
-#include "Data.h"
-#include "Aggregators.h"
+#include "ParseHandler.h"
 
 
 // Helper functor to adapt `FILE*` to `std::istream`
@@ -35,7 +33,7 @@ DataHolder PipeReader()
 	}
 	std::ios_base::sync_with_stdio(false);
 	std::cin.rdbuf()->pubsetbuf(new char[1024 * 1024], 1024 * 1024); // 1 MB buffer
-	return AggregateStream(std::cin);
+	return ParseRawInput(std::cin);
 
 }
 
@@ -50,7 +48,7 @@ DataHolder ShellExecute(std::string cmd)
 	}
 	PopenBuffer tmp(pipe);
 	std::istream stream(&tmp);
-	auto out = AggregateStream(stream);
+	auto out = ParseRawInput(stream);
 	auto exit = pclose(pipe);
 	if (WEXITSTATUS(exit) != 0)
 	{

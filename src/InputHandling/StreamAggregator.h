@@ -5,19 +5,15 @@
 #include <fstream>
 #include <vector>
 #include <stdexcept>
-#include "Archiver.h"
 #include "Data.h"
 #include "../settings.h"
 #include "../Utility/Log.h"
 #include "Archiver.h"
 
-const std::string MANIFEST_FILE_NAME = "chromosome.manifest";
 const char ARCHIVE_DELIMITER = ' ';
-//the basic function which scans over the input stream and saves it to memory. No archiving or other fancy business
-DataHolder AggregateStream(std::istream & inputStream);
 
 
-struct Aggregator
+struct StreamAggregator
 {
 	JAR::Archive & Tar;
 	std::string File;
@@ -30,7 +26,7 @@ struct Aggregator
 	int BufferCount = 0;
 	std::ostringstream buffer;
 
-	Aggregator(int hop,JAR::Archive & tarStream) : Tar(tarStream)
+	StreamAggregator(int hop,JAR::Archive & tarStream) : Tar(tarStream)
 	{
 		HopSize = hop;
 	}

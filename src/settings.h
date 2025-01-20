@@ -23,6 +23,8 @@
 	Setting(double,TruncationFactor,0.999,"truncate")/*Controls the amount of high-coverage tail which is truncated*/\
 	Setting(int,DataGap,1,"datagap")/*the expected gap between genome indices in the input file*/\
 	Setting(std::string,IgnoreChromosomeFlag,"CACP","ignore")\
+	Setting(int,AutocorrelationLength,10,"autocorr")/*The (approximate) lengthscale over which the coverage data are not independent*/\
+
 // Do not edit anything below this line!
 class SettingsObject		
 {

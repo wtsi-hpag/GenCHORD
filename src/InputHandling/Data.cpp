@@ -99,7 +99,7 @@ void DataHolder::internalHistogram(int c, std::vector<int> & output)
 {
 	for (int i = 0; i < data[c].size(); ++i)
 	{
-		int k = data[c][i].Coverage;
+		int k = data[c][i].Coverage/Settings.AccumulationFactor;
 		if (k >= output.size())
 		{
 			output.resize(k+1,0);

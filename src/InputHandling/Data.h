@@ -26,6 +26,12 @@ class Datum
 		Datum(): Coverage(0), Index(0), SquareSum(0){};
 		Datum(dnaindex idx, lint k): Coverage(k), Index(idx), SquareSum(pow(k,2)){};
 		Datum(dnaindex idx, lint k, lint kSq) : Index(idx), Coverage(k), SquareSum(kSq){};
+		void Set(dnaindex idx, lint k)
+		{
+			Index = idx;
+			Coverage = k;
+			SquareSum = pow(k,2);
+		}
 };
 
 class CoverageArray

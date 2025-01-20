@@ -3,7 +3,7 @@
 #include "JSL.h"
 #include "Utility/Log.h"
 #include "settings.h"
-#include "InputHandling/Streamer.h"
+#include "InputHandling/ParseHandler.h"
 
 void ConfigureLogging()
 {
@@ -52,30 +52,30 @@ int main(int argc, char ** argv)
 		Data.Analyse();
 
 
-	// 	for (int i = 0; i < Data.size(); ++i)
-	// 	{
-	// 		int skipFactor = max(1, Data[i].size()/5000);
-	// 		LOG(WARN) << skipFactor;
-	// 		auto cov = Data[i].GetCoverage(skipFactor);
-	// 		// std::vector<int> x = JSL::Vector::intspace(0,cov.size()*skipFactor-1,skipFactor);
+		// for (int i = 0; i < Data.size(); ++i)
+		// {
+		// 	int skipFactor = max(1, Data[i].size()/5000);
+		// 	LOG(WARN) << skipFactor;
+		// 	auto cov = Data[i].GetCoverage(skipFactor);
+		// 	// std::vector<int> x = JSL::Vector::intspace(0,cov.size()*skipFactor-1,skipFactor);
 			
-	// 		JSL::gnuplot gp;
-	// 		gp.SetTitle(Data[i].Name);
-	// 		gp.Plot(cov.X,cov.Y);
-	// 		gp.SetYRange(0,Data[i].AggregateMean*2);
-	// 		gp.Show();
-	// 	}
+		// 	JSL::gnuplot gp;
+		// 	gp.SetTitle(Data[i].Name);
+		// 	gp.Plot(cov.X,cov.Y);
+		// 	gp.SetYRange(0,Data[i].AggregateMean*2);
+		// 	gp.Show();
+		// }
 		
-	// 	auto vec = Data.Histogram();
+		auto vec = Data.Histogram();
 		
-	// 	std::vector<int> x = JSL::Vector::intspace(0,vec.size()-1,1);
-	// 	LOG(DEBUG) << vec.size() << " " << x.size();
-	// 	JSL::gnuplot gp;
-	// 	gp.Plot(x,vec);
-	// 	gp.SetYLog(true);
-	// 	gp.SetXLog(true);
-	// 	gp.SetYRange(0.5,1e3);
-	// 	gp.Show();
+		std::vector<int> x = JSL::Vector::intspace(0,vec.size()-1,1);
+		LOG(DEBUG) << vec.size() << " " << x.size();
+		JSL::gnuplot gp;
+		gp.Plot(x,vec);
+		gp.SetYLog(true);
+		gp.SetXLog(true);
+		// gp.SetYRange(0.5,1e3);
+		gp.Show();
 		
 	}
 	catch (const std::exception& e) 

@@ -1,20 +1,18 @@
-#include "Aggregators.h"
+#include "RawFileParser.h"
 
-void SplitCheck(const std::string & line,int n)
+void parseLine(const std::string& line, char delim, std::string& chromosome, dnaindex& idx, unsigned int& k) 
 {
-	if (n != 3)
-	{
-		throw std::runtime_error("Error reading line '" + line + "'Line splits into" + std::to_string(line.size()) + " fields. Expected 3 fields corresponding to samtools depth output. You likely got the wrong delimiter");
-	}
-}
-
-void parseLine(const std::string& line, char delim, std::string& chromosome, dnaindex& idx, unsigned int& k) {
     size_t firstDelim = line.find(delim);
-    if (firstDelim == std::string::npos) throw std::runtime_error("Malformed line: " + line);
+    if (firstDelim == std::string::npos)
+	{
+		throw std::runtime_error("Malformed line: " + line);
+	}
 
     size_t secondDelim = line.find(delim, firstDelim + 1);
-    if (secondDelim == std::string::npos) throw std::runtime_error("Malformed line: " + line);
-
+    if (secondDelim == std::string::npos)
+	{
+		throw std::runtime_error("Malformed line: " + line);
+	}
     chromosome = line.substr(0, firstDelim);
 
     auto idxParseResult = std::from_chars(line.data() + firstDelim + 1, line.data() + secondDelim, idx);
@@ -24,7 +22,7 @@ void parseLine(const std::string& line, char delim, std::string& chromosome, dna
     if (kParseResult.ec != std::errc()) throw std::runtime_error("Failed to parse k");
 }
 
-void addLine(CoverageArray & data, std::vector<Aggregator> & crawler, int & cidx, int & count, dnaindex & idx, unsigned int &k)
+void addLine(CoverageArray & data, std::vector<StreamAggregator> & crawler, int & cidx, int & count, dnaindex & idx, unsigned int &k)
 {
 	if (count == 0)
 	{
@@ -44,7 +42,7 @@ void addLine(CoverageArray & data, std::vector<Aggregator> & crawler, int & cidx
 	}
 }
 
-DataHolder AggregateStream(std::istream& inputStream)
+DataHolder ParseRawInput(std::istream& inputStream)
 {
 	std::ostringstream chromosomeManifest("");
 	std::vector<int> standardWindows = {100,1000,10000};
@@ -52,7 +50,7 @@ DataHolder AggregateStream(std::istream& inputStream)
 	{
 		standardWindows.push_back(Settings.AccumulationFactor);
 	}
-	std::vector<Aggregator> crawler;
+	std::vector<StreamAggregator> crawler;
 	JAR::Archive tar;
 	if (Settings.CreateArchive)
 	{
@@ -62,7 +60,7 @@ DataHolder AggregateStream(std::istream& inputStream)
 		
 		for (auto window : standardWindows)
 		{
-			crawler.push_back(Aggregator(window,tar));
+			crawler.push_back(StreamAggregator(window,tar));
 			
 		}
 		
@@ -88,6 +86,7 @@ DataHolder AggregateStream(std::istream& inputStream)
 	std::string PIPE_LINE;
 	unsigned int zero = 0;
 	bool validChromosome = false;
+	
 	while (std::getline(inputStream,PIPE_LINE))
 	{
 
