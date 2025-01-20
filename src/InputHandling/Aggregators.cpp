@@ -1,7 +1,9 @@
 #include "RawFileParser.h"
+unsigned int zero = 0; //useful to have because casting sometimes causes issues
 
 void parseLine(const std::string& line, char delim, std::string& chromosome, dnaindex& idx, unsigned int& k) 
 {
+	//check the file delimiters
     size_t firstDelim = line.find(delim);
     if (firstDelim == std::string::npos)
 	{
@@ -13,28 +15,34 @@ void parseLine(const std::string& line, char delim, std::string& chromosome, dna
 	{
 		throw std::runtime_error("Malformed line: " + line);
 	}
+
+	//parse the results into the containers (throwing errors if broken)
     chromosome = line.substr(0, firstDelim);
-
     auto idxParseResult = std::from_chars(line.data() + firstDelim + 1, line.data() + secondDelim, idx);
-    if (idxParseResult.ec != std::errc()) throw std::runtime_error("Failed to parse idx");
-
+    if (idxParseResult.ec != std::errc())
+	{
+		throw std::runtime_error("Failed to parse idx");
+	}
     auto kParseResult = std::from_chars(line.data() + secondDelim + 1, line.data() + line.size(), k);
-    if (kParseResult.ec != std::errc()) throw std::runtime_error("Failed to parse k");
+    if (kParseResult.ec != std::errc()) 
+	{
+		throw std::runtime_error("Failed to parse k");
+	}
 }
 
-void addLine(CoverageArray & data, std::vector<StreamAggregator> & crawler, int & cidx, int & count, dnaindex & idx, unsigned int &k)
+void addLine(CoverageArray & data, std::vector<StreamAggregator> & crawler, Counters & count, dnaindex & idx, unsigned int &k)
 {
-	if (count == 0)
+	if (count.SumCount== 0)
 	{
-		++cidx;
+		++count.DataIndex;
 		data.AddData(idx, k);
 	} 
 	else
 	{
-		data[cidx].Coverage += k;
-		data[cidx].SquareSum += pow(k,2);
+		data[count.DataIndex].Coverage += k;
+		data[count.DataIndex].SquareSum += pow(k,2);
 	}
-	count = (count + 1) % Settings.AccumulationFactor;
+	count.SumCount = (count.SumCount + 1) % Settings.AccumulationFactor;
 
 	for (int i = 0; i < crawler.size(); ++i)
 	{
@@ -42,19 +50,17 @@ void addLine(CoverageArray & data, std::vector<StreamAggregator> & crawler, int 
 	}
 }
 
-DataHolder ParseRawInput(std::istream& inputStream)
+void InitialiseArchive(std::vector<StreamAggregator> & crawler, JAR::Archive & tar)
 {
-	std::ostringstream chromosomeManifest("");
-	std::vector<int> standardWindows = {100,1000,10000};
-	if (JSL::FindXInY(Settings.AccumulationFactor,standardWindows) == -1)
-	{
-		standardWindows.push_back(Settings.AccumulationFactor);
-	}
-	std::vector<StreamAggregator> crawler;
-	JAR::Archive tar;
 	if (Settings.CreateArchive)
 	{
 		LOG(INFO) << "Creating archive during memory read process";
+		
+		std::vector<int> standardWindows = {100,1000,10000};
+		if (JSL::FindXInY(Settings.AccumulationFactor,standardWindows) == -1)
+		{
+			standardWindows.push_back(Settings.AccumulationFactor);
+		}
 		std::string outname = Settings.Output + ".gca";
 		tar.Open(outname,std::ios::out);
 		
@@ -69,55 +75,78 @@ DataHolder ParseRawInput(std::istream& inputStream)
 	{
 		LOG(INFO) << "Archive file not being created; reading stream into memory";
 	}
+}
+
+void StatefulReader::ChromosomeCleanup()
+{
+	if (Count.SumCount != 0)
+	{
+		Data[count.ChromosomeCount].FlagTruncated(); //remove underfull elements
+	}
+	for (int i = 0; i < Crawler.size(); ++i)
+	{
+		Crawler[i].Flush();
+	}
+}
+
+void StatefulReader::CheckNewChromosome(std::string chromosome)
+{
+	return (chromosome.find(Settings.IgnoreChromosomeFlag) == std::string::npos);
+}
+
+
+
+
+DataHolder ParseRawInput(std::istream& inputStream)
+{
+	std::ostringstream chromosomeManifest("");
+	
+	std::vector<StreamAggregator> crawler;
+	JAR::Archive tar;
+	InitialiseArchive(crawler,tar);
+	std::vector<CoverageArray> data;
+
+	StatefulReader Reader(data,crawler,tar,Settings.DataGap);
+
+
 	int accumulator = Settings.AccumulationFactor;
 	char delim = Settings.StreamDelimiter;
 	LOG(DEBUG) << "Stream delimiter is '" << delim << "', accumulation factor=" << accumulator;
 
 	//initialise output vector
-	std::vector<CoverageArray> data;
 
-	//various counters and trackers
-	int count = 0; //the counterpart to accumulator
-	int chr = -1; //index of current chromosome
-	int cidx = 0; //data index within current chromosome (distinct from base index: cidx = idx % accumulator) 
+	Counters count;
+
 	std::string previousChromosome = "";
 	int gap = Settings.DataGap;
 	dnaindex prevIndex = -gap;
-	std::string PIPE_LINE;
-	unsigned int zero = 0;
+	
 	bool validChromosome = false;
 	
+	std::string PIPE_LINE;
 	while (std::getline(inputStream,PIPE_LINE))
 	{
-
 		std::string chromosome;
         dnaindex idx;
         unsigned int k;
 
         parseLine(PIPE_LINE, Settings.StreamDelimiter, chromosome, idx, k);
+
+		//SNIP HERE
 		if (chromosome != previousChromosome)
 		{
-
 			//clean up old chromosome
 			if (validChromosome)
 			{
-				if (count != 0)
-				{
-					data[chr].FlagTruncated(); //remove underfull elements
-				}
-				for (int i = 0; i < crawler.size(); ++i)
-				{
-					crawler[i].Flush();
-				}
-				
+				ChromosomeCleanup(data,crawler,count);	
 			}
-			previousChromosome = chromosome;
-			//analyse the new one
-			validChromosome = (chromosome.find(Settings.IgnoreChromosomeFlag) == std::string::npos);
+
+			
+			//check & initialise a new chromosome entity
+			validChromosome = IsValidChromosome(chromosome);
 			if (!validChromosome)
 			{
 				LOG(WARN) << "Ignoring chromosome " << chromosome << " (contains flag " << Settings.IgnoreChromosomeFlag << ")";
-				validChromosome = false;
 			}
 			else
 			{
@@ -126,16 +155,16 @@ DataHolder ParseRawInput(std::istream& inputStream)
 				chromosomeManifest << previousChromosome << "\n";
 				for (int i = 0; i < crawler.size(); ++i)
 				{
-					std::string name = chromosome + "_" + std::to_string(standardWindows[i]) + ".dat";
+					std::string name = chromosome + "_" + std::to_string(crawler[i].HopSize) + ".dat";
 					crawler[i].NewFile(name);
 				}
 			
-				chr+=1;
-				cidx = -1;
+				count.ChromosomeReset();
 				prevIndex = -gap;
 				LOG(INFO) << "Scanning new chromosome: " << chromosome;
-				count = 0;
 			}
+
+			previousChromosome = chromosome;
 			
 		}	
 		if (validChromosome)
@@ -143,19 +172,20 @@ DataHolder ParseRawInput(std::istream& inputStream)
 			prevIndex+=gap;
 			while (prevIndex < idx)
 			{
-				addLine(data[chr],crawler,cidx,count,prevIndex,zero);
+				addLine(data[count.ChromosomeCount],crawler,count,prevIndex,zero);
 				prevIndex+=gap;
 			}
-			addLine(data[chr],crawler,cidx,count,idx,k);
+			addLine(data[count.ChromosomeCount],crawler,count,idx,k);
 		}
 	}
+	//to here
 
 	//finish off the currently open chromosome
 	if (validChromosome)
 	{
-		if (count != 0)
+		if (count.SumCount != 0)
 		{
-			data[chr].FlagTruncated(); //remove underfull elements
+			data[count.ChromosomeCount].FlagTruncated(); //remove underfull elements
 		}
 
 			
