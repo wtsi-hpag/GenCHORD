@@ -95,6 +95,11 @@ void DataHolder::Append(const std::string & name, const std::vector<std::tuple<d
 	data.emplace_back(CoverageArray(name, element));
 }
 
+void DataHolder::NewChromosome()
+{
+	data.emplace_back(CoverageArray());
+}
+
 void DataHolder::internalHistogram(int c, std::vector<int> & output)
 {
 	for (int i = 0; i < data[c].size(); ++i)

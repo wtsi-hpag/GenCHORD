@@ -64,6 +64,7 @@ class DataHolder
 	public: 
 		DataHolder();
 		DataHolder(const std::vector<CoverageArray> & data);
+		void NewChromosome();
 		void Append(const std::string & name, const std::vector<std::tuple<dnaindex,lint,lint>> & element);	
 		CoverageArray operator[](int i) const {return data[i];};
 		CoverageArray & operator[](int i){return data[i];};
