@@ -6,7 +6,7 @@ StatefulReader::StatefulReader(DataHolder & data) : Data(data)
 	Count = Counters();
 	chromosomeManifest.str("");
 	PreviousChromosome = "";
-	ReadingValidChromosome = true;
+	ReadingValidChromosome = false;
 	ExpectedGap = Settings.DataGap;
 	PreviousIndex = -ExpectedGap;
 
@@ -119,20 +119,24 @@ void StatefulReader::AddLine(const std::string & chromosome, const dnaindex & id
 
 void StatefulReader::ProcessLine(const dnaindex & idx, const lint & k)
 {
-	auto & target = Data[Count.ChromosomeCount];
-	if (Count.SumCount == 0)
+	if (Count.IndependenceCount == 0)
 	{
-		++Count.DataIndex;
-		target.AddData(idx,k);
+		auto & target = Data[Count.ChromosomeCount];
+		if (Count.SumCount == 0)
+		{
+			++Count.DataIndex;
+			target.AddData(idx,k);
+		}
+		else
+		{
+			target[Count.DataIndex].Coverage += k;
+			target[Count.DataIndex].SquareSum += pow(k,2);
+		}
+		Count.SumCount = (Count.SumCount + 1) % Settings.AccumulationFactor;
+		for (auto & crawl : Crawler)
+		{
+			crawl.Update(idx,k);
+		}
 	}
-	else
-	{
-		target[Count.DataIndex].Coverage += k;
-		target[Count.DataIndex].SquareSum += pow(k,2);
-	}
-	Count.SumCount = (Count.SumCount + 1) % Settings.AccumulationFactor;
-	for (auto & crawl : Crawler)
-	{
-		crawl.Update(idx,k);
-	}
+	Count.IndependenceCount = (Count.IndependenceCount + 1) % Settings.AutocorrelationLength;
 }
