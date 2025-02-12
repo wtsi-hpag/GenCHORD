@@ -51,31 +51,11 @@ int main(int argc, char ** argv)
 		DataHolder Data = ParseData();
 		LOG(DEBUG) << "Data received in main";
 		Data.Analyse();
+		auto hist = Data.Histogram();
 
-		Settings.AccumulationFactor = 1;
-		Model P(Settings.AccumulationFactor*100,6,Settings.AccumulationFactor);
-		P.Parameters.Nu = 10;
-		P.Parameters.Variance = 120;
-		P.Parameters.Epsilon = 1e-10;
-		P.Parameters.Weight = {0,1,0,0,0,0};
-		P.Parameters.Contamination = {0.1,0,0,0,0,0};
-		// P.Kmax = Settings.AccumulationFactor * 100;
-		// P.NHarmonic = 6;
+		Model P(hist.size(),6,Settings.AccumulationFactor);
 		P.Compute();
-		std::vector<double> ks = JSL::Vector::intspace(0,P.Kmax,1);
-		std::vector<double> ps(ks.size());
-		double q =0;
-		for (int k = 0; k < ks.size(); ++k)
-		{
-			ps[k] = exp(P[k]);
-			q += ps[k];
-			// LOG(DEBUG) << k << " " << ps[k] << " " << q;
-		}
-		JSL::gnuplot gp;
-		gp.Plot(ks,ps);
-		gp.SetGrid(true);
-		// gp.SetYLog(true);
-		gp.Show();
+		LOG(DEBUG) << P.Score(hist);
 
 	}
 	catch (const std::exception& e) 
