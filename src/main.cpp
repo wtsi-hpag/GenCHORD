@@ -4,6 +4,7 @@
 #include "Utility/Log.h"
 #include "settings.h"
 #include "InputHandling/ParseHandler.h"
+#include "Probability/Model.h"
 
 void ConfigureLogging()
 {
@@ -51,32 +52,31 @@ int main(int argc, char ** argv)
 		LOG(DEBUG) << "Data received in main";
 		Data.Analyse();
 
-
-		// for (int i = 0; i < Data.size(); ++i)
-		// {
-		// 	int skipFactor = max(1, Data[i].size()/5000);
-		// 	LOG(WARN) << skipFactor;
-		// 	auto cov = Data[i].GetCoverage(skipFactor);
-		// 	// std::vector<int> x = JSL::Vector::intspace(0,cov.size()*skipFactor-1,skipFactor);
-			
-		// 	JSL::gnuplot gp;
-		// 	gp.SetTitle(Data[i].Name);
-		// 	gp.Plot(cov.X,cov.Y);
-		// 	gp.SetYRange(0,Data[i].AggregateMean*2);
-		// 	gp.Show();
-		// }
-		
-		auto vec = Data.Histogram();
-		
-		std::vector<int> x = JSL::Vector::intspace(0,vec.size()-1,1);
-		LOG(DEBUG) << vec.size() << " " << x.size();
+		Settings.AccumulationFactor = 1;
+		Model P(Settings.AccumulationFactor*100,6,Settings.AccumulationFactor);
+		P.Parameters.Nu = 10;
+		P.Parameters.Variance = 120;
+		P.Parameters.Epsilon = 1e-10;
+		P.Parameters.Weight = {0,1,0,0,0,0};
+		P.Parameters.Contamination = {0.1,0,0,0,0,0};
+		// P.Kmax = Settings.AccumulationFactor * 100;
+		// P.NHarmonic = 6;
+		P.Compute();
+		std::vector<double> ks = JSL::Vector::intspace(0,P.Kmax,1);
+		std::vector<double> ps(ks.size());
+		double q =0;
+		for (int k = 0; k < ks.size(); ++k)
+		{
+			ps[k] = exp(P[k]);
+			q += ps[k];
+			// LOG(DEBUG) << k << " " << ps[k] << " " << q;
+		}
 		JSL::gnuplot gp;
-		gp.Plot(x,vec);
-		gp.SetYLog(true);
-		gp.SetXLog(true);
-		// gp.SetYRange(0.5,1e3);
+		gp.Plot(ks,ps);
+		gp.SetGrid(true);
+		// gp.SetYLog(true);
 		gp.Show();
-		
+
 	}
 	catch (const std::exception& e) 
 	{

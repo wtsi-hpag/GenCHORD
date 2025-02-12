@@ -24,6 +24,9 @@
 	Setting(int,DataGap,1,"datagap")/*the expected gap between genome indices in the input file*/\
 	Setting(std::string,IgnoreChromosomeFlag,"CACP","ignore")\
 	Setting(int,AutocorrelationLength,10,"autocorr")/*The (approximate) lengthscale over which the coverage data are not independent*/\
+	Setting(double, ErrorMax,1e-3,"epsilon") /*the maximum permitted error rate during inference*/ \
+	Setting(double, ContaminationMin,-0.1,"cont-min") /* the lower deviation of contamination*/ \
+	Setting(double, ContaminationMax,0.1,"cont-max") /*The upper deviation of contamination*/\
 
 // Do not edit anything below this line!
 class SettingsObject		
