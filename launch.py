@@ -3,7 +3,7 @@ import subprocess
 from itertools import islice
 
 # CONFIGURATION
-SH_MOVE_FILE = "../../zn1/ed15/Devil/Data_Upload/BAMs/cancer"
+SH_MOVE_FILE = "../../zn1/ed15/Devil/Data_Upload/BAMs/cancer/sh.move"
 N = 10  # Number of parallel screen sessions
 COMMAND_TEMPLATE = "echo '{filename} to {cancer_type}'"  # Replace with your command
 
