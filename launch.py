@@ -7,7 +7,7 @@ ROOT = "../../zn1/ed15/Devil/Data_Upload/BAMs/cancer/"
 SH_MOVE_FILE = f"{ROOT}sh.move"
 
 N = 15  # Number of parallel screen sessions
-COMMAND_TEMPLATE = "echo './genchord -f " + ROOT + "{filename}.bam -output Archives/HighQuality/{cancer_type}/{filename}'"  # Replace with your command
+COMMAND_TEMPLATE = "echo './genchord -f " + ROOT + "{filename}.bam -output Archives/HighQuality/{cancer_type}/{filename} -process 1'"  # Replace with your command
 
 def read_file(filename):
     """Read the file and parse mv commands into (filename, cancer_type) pairs."""
