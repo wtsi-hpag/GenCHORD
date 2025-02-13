@@ -27,6 +27,7 @@
 	Setting(double, ErrorMax,1e-3,"epsilon") /*the maximum permitted error rate during inference*/ \
 	Setting(double, ContaminationMin,-0.1,"cont-min") /* the lower deviation of contamination*/ \
 	Setting(double, ContaminationMax,0.1,"cont-max") /*The upper deviation of contamination*/\
+	Setting(bool,ProcessMode,false,"process") /*activates a special mode which only reads in files*/\
 
 // Do not edit anything below this line!
 class SettingsObject		

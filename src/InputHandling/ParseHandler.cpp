@@ -83,7 +83,7 @@ DataHolder ArchiveReader()
 	std::vector<std::string> relevantFiles;
 	if (manifestPresent)
 	{
-		LOG(INFO) << "Found manifest file";
+		LOG(DEBUG) << "Found manifest file";
 		
 		std::vector<std::string> chroms = JSL::split(archive.Text(MANIFEST_FILE_NAME),'\n');
 		for (auto q : chroms)
@@ -121,9 +121,10 @@ DataHolder ArchiveReader()
 
 	DataHolder output;
 	std::vector<std::tuple<dnaindex,lint, lint>> chromVector;
+	LOG(DEBUG) << "Beginning file read";
 	for (auto file: relevantFiles)
 	{
-		LOG(INFO) << "Processing chromosome file " << file;
+		LOG(DEBUG) << "\tOpening file " << file;
 		auto name = JSL::split(file,'_')[0];
 		archive.ReadTabular(file,chromVector,' ');
 		output.Append(name,chromVector);
@@ -133,7 +134,7 @@ DataHolder ArchiveReader()
 
 DataHolder FileReader()
 {
-	LOG(INFO) << "File input detected, determining how to open file";
+	LOG(DEBUG) << "File input detected, determining how to open file";
 
 	if (!StringIsSanitised(Settings.DataFile))
 	{
@@ -150,6 +151,10 @@ DataHolder FileReader()
 	else if (fileExtension == "gca")
 	{
 		LOG(INFO) << ".gca (GenCHORD Archive) file detected. Extracting";
+		if (Settings.ProcessMode)
+		{
+			LOG(WARN) << ".gca files are already archives. PROCESS MODE has no effect on existing archives";
+		}
 		return ArchiveReader();
 	}
 	else

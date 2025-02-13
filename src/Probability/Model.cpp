@@ -106,10 +106,6 @@ void Model::Compute()
 		ProbabilityArray[k] = ale(sigFrac + ProbabilityArray[k], eFrac + LogError(k));
 		Normalisation = ale(Normalisation,ProbabilityArray[k]);
 	}
-	// for (int k = 0; k <= Kmax; ++k)
-	// {
-	// 	ProbabilityArray[k] -= Normalisation;
-	// }
 }
 
 double Model::Score(const std::vector<int> & histogram)

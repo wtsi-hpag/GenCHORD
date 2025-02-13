@@ -37,6 +37,18 @@ void WelcomeWagon()
 	}
 }
 
+void ProcessFunction()
+{
+	LOG(INFO) << "PROCESS MODE\n\tIn this mode, data is read in and processed, but no further action is taken.";
+	if (!Settings.CreateArchive)
+	{
+		LOG(WARN) << "Archiving mode is deactivated. No Archive will be created.";
+	}
+	DataHolder Data = ParseData();
+	LOG(INFO) << "Parsing complete. This completes PROCESS MODE.";
+	return;
+}
+
 int main(int argc, char ** argv)
 {
 
@@ -48,26 +60,23 @@ int main(int argc, char ** argv)
 		ConfigureLogging();
 		WelcomeWagon();
  
-		DataHolder Data = ParseData();
-		LOG(DEBUG) << "Data received in main";
-		Data.Analyse();
-		auto hist = Data.Histogram();
 
-		double s= 0;
-		Model P(hist.size(),6,Settings.AccumulationFactor);
-		for (int i = 0; i < 10000;++i)
+		if (Settings.ProcessMode)
 		{
-			P.Compute();
-			s+= P.Score(hist);
-		// LOG(DEBUG) << P.Score(hist);
+			ProcessFunction();
 		}
-		LOG(DEBUG) << s;
+		// DataHolder Data = ParseData();
+		// LOG(DEBUG) << "Data received in main";
+		// Data.Analyse();
+		// auto hist = Data.Histogram();
+
+		
 	}
 	catch (const std::exception& e) 
 	{
 		LOG(ERROR) << "CRITICAL\n\t" << e.what();
 		return 1;
 	}
-	LOG(INFO) << "GenCHORD Complete, Goodbye";
+	LOG(INFO) << "GenCHORD Complete, Goodbye.";
 	return 0;
 }
