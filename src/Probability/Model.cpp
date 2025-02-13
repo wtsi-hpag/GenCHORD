@@ -5,7 +5,6 @@ void ModelParameters::Transform(const OptimiserParameters &in)
 	Nu = exp(in.x);
 	Variance= exp(in.y);
 	Epsilon = Settings.ErrorMax/ ( 1 + exp(-in.phi));
-	LOG(WARN) << Epsilon;
 	double s = 0;
 	int Q = in.z.size();
 	if (Q != Weight.size())
@@ -51,7 +50,7 @@ Model::Model(int kmax, int Q, int S)
 		logK[k] = prev;
 	}
 	SetParameters(OptimiserParameters(Q));
-	LOG(DEBUG) << "Model Initialised with dimensions " << Q << "x" << kmax+1;
+	LOG(INFO) << "Probability Model Initialised with dimensions " << Q << "x" << kmax+1;
 
 }
 
@@ -107,11 +106,10 @@ void Model::Compute()
 		ProbabilityArray[k] = ale(sigFrac + ProbabilityArray[k], eFrac + LogError(k));
 		Normalisation = ale(Normalisation,ProbabilityArray[k]);
 	}
-	for (int k = 0; k <= Kmax; ++k)
-	{
-		ProbabilityArray[k] -= Normalisation;
-	}
-// LOG(WARN) << Normalisation;
+	// for (int k = 0; k <= Kmax; ++k)
+	// {
+	// 	ProbabilityArray[k] -= Normalisation;
+	// }
 }
 
 double Model::Score(const std::vector<int> & histogram)
@@ -119,7 +117,7 @@ double Model::Score(const std::vector<int> & histogram)
 	double score = Prior();
 	for (int k = 0; k < ProbabilityArray.size(); ++k)
 	{
-		score += histogram[k] * (ProbabilityArray[k]);
+		score += histogram[k] * (ProbabilityArray[k] - Normalisation);
 	}
 	return score;
 }
