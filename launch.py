@@ -27,8 +27,8 @@ def create_screen_script(index, files):
         # f.write("cd /file/location\n")  # Change to the appropriate directory
         for filename, cancer_type in files:
             command = COMMAND_TEMPLATE.format(filename=filename, cancer_type=cancer_type)
-            f.write(f"{command} &\n")  # Run each command in the background
-        f.write("wait\n")  # Wait for all commands to finish before exiting
+            f.write(f"{command} \n")  # Run each command in the background
+        # f.write("wait\n")  # Wait for all commands qto finish before exiting
     os.chmod(script_name, 0o755)
     return script_name
 
