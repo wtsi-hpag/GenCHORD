@@ -28,12 +28,23 @@ struct ModelParameters
 	void Transform(const OptimiserParameters & in);
 };
 
+struct lgammaLookup
+{
+	int Resolution;
+	int Maximum;
+	double Delta;
+	std::vector<double> values;
+	double operator[](double s) const;
+	void Initialise(int max,int res);
+};
+
 class Model
 {
 	private:
 		std::vector<double> ProbabilityArray;
 		std::vector<double> logK;
 		std::vector<std::vector<double>>logB;
+		lgammaLookup logGamma;
 	public: 
 		int Kmax;
 		int NHarmonic;

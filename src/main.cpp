@@ -53,10 +53,15 @@ int main(int argc, char ** argv)
 		Data.Analyse();
 		auto hist = Data.Histogram();
 
+		double s= 0;
 		Model P(hist.size(),6,Settings.AccumulationFactor);
-		P.Compute();
-		LOG(DEBUG) << P.Score(hist);
-
+		for (int i = 0; i < 2000;++i)
+		{
+			P.Compute();
+			s+= P.Score(hist);
+		// LOG(DEBUG) << P.Score(hist);
+		}
+		LOG(DEBUG) << s;
 	}
 	catch (const std::exception& e) 
 	{

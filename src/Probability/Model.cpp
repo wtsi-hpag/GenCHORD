@@ -1,5 +1,26 @@
 #include "Model.h"
 
+void lgammaLookup::Initialise(int max, int res)
+{
+	Resolution = res;
+	Maximum = max;
+	// LOG(Max)
+	values.resize(res);
+	Delta = max/(res - 1);
+	for (int i  =0; i < res; ++i)
+	{
+		double x = i* Delta;
+		values[x] = lgamma(x);
+	}	
+}
+double lgammaLookup::operator[](double s) const{
+	double div = s/Delta;
+	int lower = min(div,Maximum-1.0);
+	double interp = (div - lower);
+	return values[lower] + (values[lower+1] - values[lower+1])*interp;
+}
+
+
 void ModelParameters::Transform(const OptimiserParameters &in)
 {
 	Nu = exp(in.x);
@@ -50,13 +71,16 @@ Model::Model(int kmax, int Q, int S)
 		prev += log(k);
 		logK[k] = prev;
 	}
+	logGamma.Initialise(kmax*2,1000);
 	SetParameters(OptimiserParameters(Q));
 	LOG(DEBUG) << "Model Initialised with dimensions " << Q << "x" << kmax+1;
+
 }
 
 void Model::SetParameters(const OptimiserParameters & input)
 {
 	Parameters.Transform(input);
+	// Compute();
 }
 
 double Model::LogError(int k)
@@ -76,6 +100,10 @@ void Model::Compute()
 		for (int k =0; k<= Kmax; ++k)
 		{
 			double logNB = lgamma(k + r) - lgamma(r) - logK[k] + r * logp + k * log1mp;
+			double logNBFake = logGamma[k+r] - logGamma[r] -logK[k] + r*logp + k*log1mp;
+
+			LOG(DEBUG) << logNB << " " <<logNBFake << " " << (logNB - logNBFake)/logNB;
+
 			logB[q][k] = logNB;
 			if (q == 0)
 			{
