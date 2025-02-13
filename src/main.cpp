@@ -55,7 +55,7 @@ int main(int argc, char ** argv)
 
 		double s= 0;
 		Model P(hist.size(),6,Settings.AccumulationFactor);
-		for (int i = 0; i < 2000;++i)
+		for (int i = 0; i < 10000;++i)
 		{
 			P.Compute();
 			s+= P.Score(hist);

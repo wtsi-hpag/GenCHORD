@@ -1,32 +1,11 @@
 #include "Model.h"
 
-void lgammaLookup::Initialise(int max, int res)
-{
-	Resolution = res;
-	Maximum = max;
-	// LOG(Max)
-	values.resize(res);
-	Delta = max/(res - 1);
-	for (int i  =0; i < res; ++i)
-	{
-		double x = i* Delta;
-		values[x] = lgamma(x);
-	}	
-}
-double lgammaLookup::operator[](double s) const{
-	double div = s/Delta;
-	int lower = min(div,Maximum-1.0);
-	double interp = (div - lower);
-	return values[lower] + (values[lower+1] - values[lower+1])*interp;
-}
-
-
 void ModelParameters::Transform(const OptimiserParameters &in)
 {
 	Nu = exp(in.x);
 	Variance= exp(in.y);
 	Epsilon = Settings.ErrorMax/ ( 1 + exp(-in.phi));
-	
+	LOG(WARN) << Epsilon;
 	double s = 0;
 	int Q = in.z.size();
 	if (Q != Weight.size())
@@ -71,7 +50,6 @@ Model::Model(int kmax, int Q, int S)
 		prev += log(k);
 		logK[k] = prev;
 	}
-	logGamma.Initialise(kmax*2,10000);
 	SetParameters(OptimiserParameters(Q));
 	LOG(DEBUG) << "Model Initialised with dimensions " << Q << "x" << kmax+1;
 
@@ -85,7 +63,7 @@ void Model::SetParameters(const OptimiserParameters & input)
 
 double Model::LogError(int k)
 {
-	return -log(Kmax);
+	return -log(Kmax+1.);
 }
 void Model::Compute()
 {
@@ -94,47 +72,46 @@ void Model::Compute()
 		double muq = (q + Parameters.Contamination[q]) * Parameters.Nu;
 		double r = muq*muq/Parameters.Variance * Sum;
 		double p = muq/(muq + Parameters.Variance);
-		double logp = log(p);
+		double rlogp = r*log(p);
 		double log1mp = log1p(-p);
 		double logW = log(Parameters.Weight[q]+1e-100);
+
+		//accumulates logs as an efficient trick for computing lgamma(k+r) - lgamma(r)
+		double logsum = 0;
 		for (int k =0; k<= Kmax; ++k)
 		{
-			double logNB = lgamma(k + r) - lgamma(r) - logK[k] + r * logp + k * log1mp;
-			double logNBFake = logGamma[k+r] - logGamma[r] -logK[k] + r*logp + k*log1mp;
-
-			LOG(DEBUG) << setprecision(10) <<logNB << " " <<logNBFake << " " << (logNB - logNBFake)/logNB;
+			// double logNB = lgamma(k + r) - lgamma(r) - logK[k] + rlogp + k * log1mp;
+			double logNB = logsum - logK[k] + rlogp + k*log1mp;
+			logsum += log(k+r);
 
 			logB[q][k] = logNB;
+			double contribution = logW + logNB;
 			if (q == 0)
 			{
-				ProbabilityArray[k] = logW + logNB;
+				ProbabilityArray[k] = contribution;
 			}
 			else
 			{
-				ProbabilityArray[k] = ale(logW + logNB,ProbabilityArray[k]);
+				ProbabilityArray[k] = ale(contribution,ProbabilityArray[k]);
 			}
 		}
 	}
+	
 
 	double sigFrac = log1p(-Parameters.Epsilon);
 	double eFrac = log(Parameters.Epsilon);
 	double s = 0;
+	Normalisation = -9e99;
 	for (int k = 0; k<= Kmax; ++k)
 	{
 		ProbabilityArray[k] = ale(sigFrac + ProbabilityArray[k], eFrac + LogError(k));
-		if (k == 0)
-		{
-			s = ProbabilityArray[k];
-		}
-		else
-		{
-			s = ale(ProbabilityArray[k],s);
-		}
+		Normalisation = ale(Normalisation,ProbabilityArray[k]);
 	}
-	for (int k = 0; k<= Kmax; ++k)
+	for (int k = 0; k <= Kmax; ++k)
 	{
-		ProbabilityArray[k] -= s;
+		ProbabilityArray[k] -= Normalisation;
 	}
+// LOG(WARN) << Normalisation;
 }
 
 double Model::Score(const std::vector<int> & histogram)
@@ -142,7 +119,7 @@ double Model::Score(const std::vector<int> & histogram)
 	double score = Prior();
 	for (int k = 0; k < ProbabilityArray.size(); ++k)
 	{
-		score += histogram[k] * ProbabilityArray[k];
+		score += histogram[k] * (ProbabilityArray[k]);
 	}
 	return score;
 }
