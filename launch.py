@@ -36,7 +36,7 @@ def launch_screens(scripts):
     """Launch screen sessions running the generated scripts."""
     for i, script in enumerate(scripts):
         screen_name = f"cancer_task_{i}"
-        subprocess.run(["screen", "-dmS", screen_name, "-c",f"./{script}; exec bash"])
+        subprocess.run(["screen", "-dmS", screen_name, "bash", "-c", f"./{script}; exec bash"])
         print(f"Launched screen: {screen_name} running {script}")
 
 def main():
