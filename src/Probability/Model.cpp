@@ -71,7 +71,7 @@ Model::Model(int kmax, int Q, int S)
 		prev += log(k);
 		logK[k] = prev;
 	}
-	logGamma.Initialise(kmax*2,1000);
+	logGamma.Initialise(kmax*2,10000);
 	SetParameters(OptimiserParameters(Q));
 	LOG(DEBUG) << "Model Initialised with dimensions " << Q << "x" << kmax+1;
 
