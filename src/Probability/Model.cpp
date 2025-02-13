@@ -102,7 +102,7 @@ void Model::Compute()
 			double logNB = lgamma(k + r) - lgamma(r) - logK[k] + r * logp + k * log1mp;
 			double logNBFake = logGamma[k+r] - logGamma[r] -logK[k] + r*logp + k*log1mp;
 
-			LOG(DEBUG) << logNB << " " <<logNBFake << " " << (logNB - logNBFake)/logNB;
+			LOG(DEBUG) << setprecision(10) <<logNB << " " <<logNBFake << " " << (logNB - logNBFake)/logNB;
 
 			logB[q][k] = logNB;
 			if (q == 0)
