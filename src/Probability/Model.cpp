@@ -16,7 +16,7 @@ void ModelParameters::Transform(const OptimiserParameters &in)
 	{
 		auto expz = exp(in.z[q]);
 		s += expz;
-		Weight[q] = s;
+		Weight[q] = expz;
 
 		double dminus = 0;
 		if (q > 0)
@@ -26,12 +26,14 @@ void ModelParameters::Transform(const OptimiserParameters &in)
 		double dplus = Settings.ContaminationMax;
 		Contamination[q] = dminus + (dplus - dminus)/(1 + exp(-in.psi[q]));
 	}
+	Contamination[Settings.Ploidy] =0;
 
 	for (int q= 0; q < Q; ++q)
 	{
 		Weight[q]/= s;
-
 	}
+
+	Eta = 0.1/(1 + exp(-in.h));
 }
 
 Model::Model(int kmax, int Q, int S)
@@ -51,13 +53,12 @@ Model::Model(int kmax, int Q, int S)
 	}
 	SetParameters(OptimiserParameters(Q));
 	LOG(INFO) << "Probability Model Initialised with dimensions " << Q << "x" << kmax+1;
-
 }
 
 void Model::SetParameters(const OptimiserParameters & input)
 {
 	Parameters.Transform(input);
-	// Compute();
+	Compute();
 }
 
 double Model::LogError(int k)
@@ -120,5 +121,26 @@ double Model::Score(const std::vector<int> & histogram)
 
 double Model::Prior()
 {
-	return 0;
+	double base = -1e1*pow(Parameters.Nu-83.0/Settings.Ploidy,2);
+
+	double wplo = Parameters.Weight[Settings.Ploidy];
+	for (int q = 0; q < Parameters.Weight.size(); ++q)
+	{
+		if (Parameters.Weight[q] > wplo)
+		{
+			base -= 1e5*pow(Parameters.Weight[q] - wplo,2);
+		}
+
+		base -= 1e3*pow(Parameters.Contamination[q] - (Settings.Ploidy - q)*Parameters.Eta,2);
+		if (q > 0)
+		{
+			double sep = (Parameters.Contamination[q-1] - Parameters.Contamination[q]);
+			double crit = 1.2;
+			if (sep > crit)
+			{
+				base -= 1e5*pow(sep-crit,2);
+			}
+		}
+	}
+	return base;
 }

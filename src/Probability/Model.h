@@ -1,6 +1,13 @@
 #pragma once
 #include "../settings.h"
 #include "../Utility/ale.h"
+
+static const double v = 1.0/RAND_MAX;
+double inline random(double min, double max)
+{
+	return min + (max - min) * rand()*v;
+}
+
 struct OptimiserParameters
 {
 	double x;
@@ -8,14 +15,29 @@ struct OptimiserParameters
 	std::vector<double> z;
 	double phi;
 	std::vector<double> psi;
-
-	OptimiserParameters(int dim)
+	double h;
+	OptimiserParameters(int dim=0)
 	{
 		x = log(30);
 		y = 0;
 		z = std::vector<double>(dim,0.0);
 		psi = std::vector<double>(dim,0.01);
 		phi =0;
+		h = 0;
+	}
+
+	void Randomise()
+	{
+		x = random(log(10),log(35));
+		y = random(0,8);
+		phi = random(-5,5);
+		h = random(-5,5);
+		for (int i = 0; i < z.size(); ++i)
+		{
+			z[i] = random(-10,10);
+			psi[i] = random(-10,10);
+			psi[Settings.Ploidy] = -100;
+		}
 	}
 };
 
@@ -26,6 +48,7 @@ struct ModelParameters
 	std::vector<double> Weight;
 	double Epsilon;
 	std::vector<double> Contamination;
+	double Eta;
 	void Transform(const OptimiserParameters & in);
 };
 

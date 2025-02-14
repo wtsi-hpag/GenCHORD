@@ -44,7 +44,7 @@ class CoverageArray
 		Datum operator [](int i) const {return Data[i];};
 		Datum & operator[](int i) {return Data[i];};
 		void AddData(dnaindex Index,unsigned int k);
-		int size();
+		int size() const;
 		void Statistics();
 		double AggregateMean;
 		double AggregateVariance;
@@ -68,13 +68,15 @@ class DataHolder
 		void Append(const std::string & name, const std::vector<std::tuple<dnaindex,lint,lint>> & element);	
 		CoverageArray operator[](int i) const {return data[i];};
 		CoverageArray & operator[](int i){return data[i];};
-		std::vector<int> Histogram();
-		std::vector<int> Histogram(int chromosome);
+		std::vector<int> Histogram() const;
+		std::vector<int> Histogram(int chromosome) const;
 		size_t size();
 		void Analyse();
 	private:
 		std::vector<CoverageArray> data;
-		void internalHistogram(int c, std::vector<int> & output);
+		void internalHistogram(int c, std::vector<int> & output) const;
+		bool TruncateMode = true;
+		void TruncateHistogram(std::vector<int> & vec, lint nTotal) const;
 };
 
 // typedef std::vector<CoverageArray> DataHolder;

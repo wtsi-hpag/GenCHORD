@@ -28,7 +28,7 @@ CoverageArray::CoverageArray(const std::string & name, const std::vector<std::tu
 		Data[i] = Datum(std::get<0>(data[i]),std::get<1>(data[i]),std::get<2>(data[i]));
 	}
 }
-int CoverageArray::size()
+int CoverageArray::size() const
 {
 	return Data.size();
 }
@@ -100,11 +100,11 @@ void DataHolder::NewChromosome()
 	data.emplace_back(CoverageArray());
 }
 
-void DataHolder::internalHistogram(int c, std::vector<int> & output)
+void DataHolder::internalHistogram(int c, std::vector<int> & output) const
 {
 	for (int i = 0; i < data[c].size(); ++i)
 	{
-		int k = data[c][i].Coverage/Settings.AccumulationFactor;
+		int k = data[c][i].Coverage;
 		if (k >= output.size())
 		{
 			output.resize(k+1,0);
@@ -112,19 +112,62 @@ void DataHolder::internalHistogram(int c, std::vector<int> & output)
 		output[k] +=1;
 	}
 }
-std::vector<int> DataHolder::Histogram(int c)
+
+void DataHolder::TruncateHistogram(std::vector<int> & vec, lint Ntotal) const
+{
+	int rounded = 0;
+	int cumulative = 0;
+	int gap = 0;
+	bool foundInRound = false;
+	int lastk = -1;
+	for (int k = 0; k < vec.size(); ++k)
+	{
+		cumulative += vec[k];
+		int newrounded = k/Settings.AccumulationFactor;
+		if (newrounded != rounded)
+		{
+			if (!foundInRound)
+			{
+				++gap;
+			}
+			else
+			{
+				gap = 0;
+			}
+			foundInRound = false;
+			rounded = newrounded;
+		}
+		if (vec[k] > 0)
+		{
+			foundInRound = true;	
+			lastk = k;
+		}
+		
+		if (cumulative > 0.95*Ntotal && gap > 4)
+		{
+			int s = vec.size();
+			vec.resize(lastk);
+			LOG(INFO) << "Truncating histogram from " << s << " to " << vec.size() << ". Truncation occurred at " << 100 * cumulative*1.0/Ntotal << "-th percentile";
+			return;
+		}
+	}
+}
+std::vector<int> DataHolder::Histogram(int c) const
 {
 	std::vector<int> output;
 	internalHistogram(c,output);
 	return output;
 }
-std::vector<int> DataHolder::Histogram()
+std::vector<int> DataHolder::Histogram() const
 {
 	std::vector<int> output;
+	lint S = 0;
 	for (int c =0 ; c< data.size(); ++c)
 	{
+		S += data[c].size();
 		internalHistogram(c,output);
 	}
+	TruncateHistogram(output,S);
 	return output;
 }
 

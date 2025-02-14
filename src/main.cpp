@@ -4,8 +4,8 @@
 #include "Utility/Log.h"
 #include "settings.h"
 #include "InputHandling/ParseHandler.h"
-#include "Probability/Model.h"
-
+// #include "Probability/Model.h"
+#include "Probability/AnnealedSampler.h"
 void ConfigureLogging()
 {
 	std::ios_base::sync_with_stdio(false);
@@ -44,9 +44,26 @@ void ProcessFunction()
 	{
 		LOG(WARN) << "Archiving mode is deactivated. No Archive will be created.";
 	}
+	if (Settings.TreeMode)
+	{
+		LOG(WARN) << "PROCESS MODE and TREE MODE active. PROCESS MODE takes priority over TREE MODE";
+		Settings.TreeMode = false;
+	}
 	DataHolder Data = ParseData();
+
 	LOG(INFO) << "Parsing complete. This completes PROCESS MODE.";
 	return;
+}
+
+void TreeFunction()
+{
+	LOG(INFO) << "TREE MODE\n\tThis is the standard mode for genchord. The data will be read in, a probability model fitted, and a GenTree generated";
+	DataHolder Data = ParseData();
+	Data.Analyse();
+
+	AnnealedSampler AS(Data);
+	
+	AS.Fit();
 }
 
 int main(int argc, char ** argv)
@@ -65,12 +82,11 @@ int main(int argc, char ** argv)
 		{
 			ProcessFunction();
 		}
-		// DataHolder Data = ParseData();
-		// LOG(DEBUG) << "Data received in main";
-		// Data.Analyse();
-		// auto hist = Data.Histogram();
 
-		
+		if (Settings.TreeMode)
+		{
+			TreeFunction();
+		}		
 	}
 	catch (const std::exception& e) 
 	{
