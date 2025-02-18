@@ -1,12 +1,8 @@
 #pragma once
 #include "../settings.h"
 #include "../Utility/ale.h"
-
+#include "../Utility/Random.h"
 static const double v = 1.0/RAND_MAX;
-double inline random(double min, double max)
-{
-	return min + (max - min) * rand()*v;
-}
 
 struct OptimiserParameters
 {
@@ -15,29 +11,38 @@ struct OptimiserParameters
 	std::vector<double> z;
 	double phi;
 	std::vector<double> psi;
+	std::vector<double> gamma;
 	double h;
-	OptimiserParameters(int dim=0)
+	OptimiserParameters(int dim=0, int res = 20)
 	{
 		x = log(30);
-		y = 0;
+		y = 5;
 		z = std::vector<double>(dim,0.0);
 		psi = std::vector<double>(dim,0.01);
 		phi =0;
 		h = 0;
+		gamma = std::vector<double>(res,0);
+		// LOG(ERROR)
 	}
-
-	void Randomise()
+	template <typename T>
+	void RandomStep(Random<T> & R, OptimiserParameters & propose,double s = 1)
 	{
-		x = random(log(10),log(35));
-		y = random(0,8);
-		phi = random(-5,5);
-		h = random(-5,5);
+		// double s = 1;
+		propose.x = x + R.Normal(0,s);
+		propose.y = y + R.Normal(0,s);
+		propose.phi = phi + R.Normal(0,s);
+		propose.h =  h + R.Normal(0,s);
 		for (int i = 0; i < z.size(); ++i)
 		{
-			z[i] = random(-10,10);
-			psi[i] = random(-10,10);
-			psi[Settings.Ploidy] = -100;
+			propose.z[i] = z[i] + R.Normal(0,s);
+			propose.psi[i] = psi[i] + R.Normal(0,s);
 		}
+		for (int rho = 0; rho < gamma.size(); ++rho)
+		{
+			propose.gamma[rho] = gamma[rho] + R.Normal(0,s);
+		}
+		propose.psi[Settings.Ploidy] = -100;
+
 	}
 };
 
@@ -49,7 +54,8 @@ struct ModelParameters
 	double Epsilon;
 	std::vector<double> Contamination;
 	double Eta;
-	void Transform(const OptimiserParameters & in);
+	std::vector<double> E;
+	void Transform(const OptimiserParameters & in, int kmax);
 };
 
 class Model
@@ -58,19 +64,20 @@ class Model
 		std::vector<double> ProbabilityArray;
 		std::vector<double> logK;
 		std::vector<std::vector<double>>logB;
+		double eNorm;
+		int ErrorRes;
 	public: 
 		int Kmax;
 		int NHarmonic;
 		int Sum;
 		double Normalisation;
 		ModelParameters Parameters;
-		Model(int kmax, int Q, int S);
+		Model(int kmax, int Q, int S, int res);
 	
 		double Prior();
 		double Score(const std::vector<int> & histogram);
 		double LogError(int k);
 		void Compute();
-		double operator[](int s) const {return ProbabilityArray[s];};
-		double & operator[](int s) {return ProbabilityArray[s];};
+		double operator[](int s) const {return ProbabilityArray[s];}; // deliberately does not have the non-const version. Altering the probability array can only be done by updating the parameters.
 		void SetParameters(const OptimiserParameters & input);
 };

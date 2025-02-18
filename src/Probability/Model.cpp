@@ -1,9 +1,9 @@
 #include "Model.h"
 
-void ModelParameters::Transform(const OptimiserParameters &in)
+void ModelParameters::Transform(const OptimiserParameters &in, int Kmax)
 {
-	Nu = exp(in.x);
-	Variance= exp(in.y);
+	Nu = 1+exp(in.x);
+	Variance= 1+exp(in.y);
 	Epsilon = Settings.ErrorMax/ ( 1 + exp(-in.phi));
 	double s = 0;
 	int Q = in.z.size();
@@ -34,10 +34,38 @@ void ModelParameters::Transform(const OptimiserParameters &in)
 	}
 
 	Eta = 0.1/(1 + exp(-in.h));
+
+	double Enorm = -9e99;
+	int standardWidth = (Kmax+1)/in.gamma.size();
+	double lWidth = log(standardWidth);
+	int residualWidth = (Kmax + 1 - standardWidth * (in.gamma.size()-1));
+	double rWidth = log(residualWidth);
+
+	if (E.size() != in.gamma.size())
+	{
+		E.resize(in.gamma.size());
+	}
+	for (int i = 0; i < in.gamma.size(); ++i)
+	{
+		double width = lWidth;
+		if (i == in.gamma.size() -1)	
+		{
+			width = rWidth;
+		}
+		E[i] = in.gamma[i];
+		Enorm= ale(Enorm,E[i] + width);
+	}
+
+	for (int i = 0; i < in.gamma.size(); ++i)
+	{
+		E[i] -= Enorm;
+	}
+
 }
 
-Model::Model(int kmax, int Q, int S)
+Model::Model(int kmax, int Q, int S, int errorRes)
 {
+	ErrorRes = errorRes;
 	Kmax = kmax;
 	NHarmonic = Q;
 	Sum = S;
@@ -51,22 +79,25 @@ Model::Model(int kmax, int Q, int S)
 		prev += log(k);
 		logK[k] = prev;
 	}
-	SetParameters(OptimiserParameters(Q));
+	SetParameters(OptimiserParameters(Q,errorRes));
 	LOG(INFO) << "Probability Model Initialised with dimensions " << Q << "x" << kmax+1;
 }
 
 void Model::SetParameters(const OptimiserParameters & input)
 {
-	Parameters.Transform(input);
+	Parameters.Transform(input,Kmax);
 	Compute();
 }
 
 double Model::LogError(int k)
 {
-	return -log(Kmax+1.);
+	int rho = min((int)(k *1.0/(Kmax+1)* (ErrorRes)),ErrorRes-1);
+	return Parameters.E[rho];
 }
 void Model::Compute()
 {
+
+	double snorm = -9999;
 	for (int q = 0; q < NHarmonic; ++q)
 	{
 		double muq = (q + Parameters.Contamination[q]) * Parameters.Nu;
@@ -94,6 +125,7 @@ void Model::Compute()
 			{
 				ProbabilityArray[k] = ale(contribution,ProbabilityArray[k]);
 			}
+			snorm = ale(snorm,contribution);
 		}
 	}
 	
@@ -101,11 +133,11 @@ void Model::Compute()
 	double sigFrac = log1p(-Parameters.Epsilon);
 	double eFrac = log(Parameters.Epsilon);
 	double s = 0;
-	Normalisation = -9e99;
+	Normalisation = snorm;
 	for (int k = 0; k<= Kmax; ++k)
 	{
-		ProbabilityArray[k] = ale(sigFrac + ProbabilityArray[k], eFrac + LogError(k));
-		Normalisation = ale(Normalisation,ProbabilityArray[k]);
+		// Normalisation = ale(Normalisation,ProbabilityArray[k]);
+		ProbabilityArray[k] = ale(sigFrac + ProbabilityArray[k]-Normalisation, eFrac + LogError(k));
 	}
 }
 
@@ -114,15 +146,16 @@ double Model::Score(const std::vector<int> & histogram)
 	double score = Prior();
 	for (int k = 0; k < ProbabilityArray.size(); ++k)
 	{
-		score += histogram[k] * (ProbabilityArray[k] - Normalisation);
+		score += histogram[k] * (ProbabilityArray[k]);
 	}
 	return score;
 }
 
 double Model::Prior()
 {
+	// return 0;
 	double base = -1e1*pow(Parameters.Nu-83.0/Settings.Ploidy,2);
-
+	return base;
 	double wplo = Parameters.Weight[Settings.Ploidy];
 	for (int q = 0; q < Parameters.Weight.size(); ++q)
 	{

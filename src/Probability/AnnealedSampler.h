@@ -8,6 +8,7 @@ class AnnealedSampler
 	private:
 		std::vector<int> Histogram;
 		OptimiserParameters Vector;
+		OptimiserParameters Proposed;
 	public:
 		AnnealedSampler(const DataHolder & data);
 

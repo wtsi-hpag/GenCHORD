@@ -6,6 +6,8 @@
 #include "InputHandling/ParseHandler.h"
 // #include "Probability/Model.h"
 #include "Probability/AnnealedSampler.h"
+#include "Utility/Random.h"
+#include "Utility/Timer.h"
 void ConfigureLogging()
 {
 	std::ios_base::sync_with_stdio(false);
@@ -58,6 +60,8 @@ void ProcessFunction()
 void TreeFunction()
 {
 	LOG(INFO) << "TREE MODE\n\tThis is the standard mode for genchord. The data will be read in, a probability model fitted, and a GenTree generated";
+	
+
 	DataHolder Data = ParseData();
 	Data.Analyse();
 
@@ -68,7 +72,7 @@ void TreeFunction()
 
 int main(int argc, char ** argv)
 {
-
+	srand(0);
 	std::ios_base::sync_with_stdio(false);
 	std::cin.tie(nullptr);
 	try
