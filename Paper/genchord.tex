@@ -575,6 +575,8 @@ $^{2}$University of Cambridge, Cambridge, UK\\
 					\end{spalign}
 					Where we emphasise again that $\sigma^2$ is the variance of the perturbation population, not of the Negative Binomial itself. As such, $\sigma^2$ is constrained only to be positive.
 
+					
+
 				\subsubsection{Sums of NB-Distributions}\label{A:Sums}
 					As noted in the main text, however, we are not working with the raw coverage values, but instead with sums of coverage values; $s_i = \sum_j^S k_j$. Conveniently, the Negative Binomial also has the desirable property that it is additive \citep{RHBMaths}, which means that if $X \sim \text{NB}(r,p)$ and $Y \sim \text{NB}(s,p)$, then $X + Y \sim \text{NB}(r + s,p)$. That is, the sum of independent Negative Binomial variables is itself distributed according to a Negative Binomial. 
 
@@ -591,7 +593,17 @@ $^{2}$University of Cambridge, Cambridge, UK\\
 
 					The key value of note for our purposes is that although this scales the mean of the distribution (predictably) by $S$, the standard deviation only scales as $\sqrt{S}$; the distribution therefore becomes more tightly peaked around the maximum. In the case where we are attempting to disentangle a distribution composed of multiple such overlapping distributions, this is a highly desirable property, as it will make the peaks more prominent. We see exactly this behaviour in Fig. \ref{F:Aggregation}.
 
+					\subsubsection{Normalisation}
 
+						Our methods require that our models be fully normalised (i.e. the probabilities sum to 1 over the non-infinite domain of interest). 
+						
+						We therefore ensure that each `harmonic' is individually normalised, defining the maximum value considered by our model as $M$:
+
+						\begin{equation}
+							B_s^q (\mu,\sigma^2) = \frac{\text{NB}(s | S\times r(\mu,\sigma), p(\mu,\sigma))}{\sum_{k=0}^M \text{NB}(k| S\times r(\mu,\sigma), p(\mu,\sigma))}
+						\end{equation}
+
+						This approach (instead of normalising the aggregate model) has the advantage of ensuring that the parameters $\epsilon$ and $w_q$ retain their intuitive meaning inside the domain of interest. 
 				\subsection{Local Model}\label{A:Model}
 					
 					The fundamental assumption of our theoretical model is that there is always an integer number of copies of a sequence, with that integer varying as the copy number varies. Each segment of the genome therefore has a coverage distribution with a mean $q \nu$, where $q$ is the copy-number of that segment, and $\nu$ is some global mean, per-homolog coverage (in analogy to music, we term $\nu$ the `fundamental frequency', and $q$ values `harmonics').
@@ -600,7 +612,7 @@ $^{2}$University of Cambridge, Cambridge, UK\\
 					
 					If we assume that the coverage is indeed distributed according to a Negative Binomial, then the probability of observing a coverage-sum $s$, given a known mean $\mu_q = q\nu$ and variance $\sigma^2$, error rate $\epsilon$ and error function $E(s)$ is simply:
 					\begin{equation}
-						p(s | q, \vec{\theta}) = \epsilon E(s) + (1 - \epsilon) \text{NB}(s| S r(\mu_q,\sigma^2), p(\mu_q,\sigma^2))
+						p(s | q, \vec{\theta}) = \epsilon E(s) + (1 - \epsilon) B_s^q (\mu_q, \sigma^2) \label{E:MixtureModel}
 					\end{equation} 
 					Here $\vec{\theta}$ is compact notation for the parameters of the model: in this instance, $\vec{\theta} = (S,\nu,\sigma^2)$.
 					\subsubsection{Contamination}
@@ -623,11 +635,9 @@ $^{2}$University of Cambridge, Cambridge, UK\\
 						% \end{spalign}
 						% When $\eta = 0$ it is clear that $\mu = q\nu$ as before, and when $\eta = 1$, then $\mu = d \nu$, i.e. the data is so contaminated that it looks like normal-ploidy. This can be made more complex by introducing a unique contamination factor for each $q$ (so $\eta \to \eta_q$), which may be necessary if it is believed that cancer subclonality is a bigger factor than noncancerous contamination. For our purposes, we leave it is a single constant.
 
-						The contaminated model is therefore:
+						The contaminated model is therefore computed exactly as above, but replacing the Negative Binomial $r$ and $p$ parameters with:
 						\begin{spalign}
-							p(s | q, \vec{\theta}) & = \epsilon E(s) + (1 - \epsilon) \text{NB}(s| S r_q, p_q)
-							\\
-							r_q & = \frac{\left(q + \delta-q^2\right)^2 \nu^2}{\sigma^2}
+							r_q & = \frac{\left(q + \delta_q\right)^2 \nu^2}{\sigma^2}
 							\\
 							p_q & = \frac{\left(q +  \delta_q\right)\nu}{\left(q + \delta_q\right)\nu + \sigma^2}\label{E:ContaminatedDist}
 						\end{spalign}
@@ -635,13 +645,56 @@ $^{2}$University of Cambridge, Cambridge, UK\\
 						Although this model is more flexible, it loses the beneficial property that $\eta$ - the contamination fraction - is a biologically meaningful parameter. If possible (i.e. in the case of simple cancers) we would like to recover this property. We achieve this by imposing the following `contamination prior':
 						\begin{spalign}
 							\mathcal{C}(\{\delta_q\}, \eta) & = - \mathfrak{p}_\text{contamination} \sum_q \left( \delta_q - (\mathcal{D} - q) \eta\right)^2 \label{E:ContaminationPrior}
-							\\
-							\pdiv{\mathcal{C}}{\delta_q} & = -  2\mathfrak{p}_\text{contamination} \left( \delta_q - (\mathcal{D} - q) \eta\right)
-							\\
-							\pdiv{\mathcal{C}}{\eta} & =  2\mathfrak{p}_\text{contamination} \sum_q (\mathcal{D} - q) \left( \delta_q - (\mathcal{D} - q) \eta\right)
+							% \\
+							% \pdiv{\mathcal{C}}{\delta_q} & = -  2\mathfrak{p}_\text{contamination} \left( \delta_q - (\mathcal{D} - q) \eta\right)
+							% \\
+							% \pdiv{\mathcal{C}}{\eta} & =  2\mathfrak{p}_\text{contamination} \sum_q (\mathcal{D} - q) \left( \delta_q - (\mathcal{D} - q) \eta\right)
 						\end{spalign}
 						We retain an (approximate) estimate of the Contamination fraction; although it is now only a parameter which appears within the Prior.
 
+					\subsubsection{The Error Function}
+
+						The term $E(s)$ appears in \eref{E:MixtureModel} without further definition aside from being weighted to only contribute a fraction $\epsilon \ll 1$ to the total model. This is our \textit{Error Function}, and allows us to relax our assumption that only `perturbed Negative Binomials' contribute to the distribution. 
+
+						For simplicity, we assume no functional form on the Error Function since it is, by definition, behaviour we have not modelled. We instead approximate this function with a piecewise-constant probability mass function with resolution $R_\epsilon$.
+
+						\begin{equation}
+							E(s) = \begin{cases}
+								\mathcal{E}_0 & 0 \leq s < \Delta_0
+								\\
+								\mathcal{E}_1 & \Delta_0 \leq s < \Delta_0 + \Delta_1
+								\\
+								\vdots
+								\\
+								\mathcal{E}_{R_\epsilon -1} & M +1 - \Delta_{R_\epsilon -1} \leq s \leq M
+							\end{cases}
+						\end{equation}
+						Where the width of each domain ($\Delta_i$) is given by:
+						\begin{equation}
+							\Delta_i = \begin{cases} 
+							\left\lfloor \frac{M+1}{R_\epsilon} + \frac{1}{2} \right\rfloor & 0 \leq i < R_\epsilon -1
+							\\
+							M +1- \Delta_0 (R_\epsilon -1)& i = R_\epsilon -1
+							\end{cases}
+						\end{equation}
+						A more compact notation can be constructed using the `window function', $\Omega(k)$:
+						\begin{spalign}
+							E(s) & = \mathcal{E}_{\Omega(s)}
+							\\
+							\Omega(s) & = \begin{cases}
+								\left\lfloor \frac{s}{\Delta_0} \right\rfloor & s < M+1 - \Delta_{R_\epsilon -1}
+								\\
+								R_{\epsilon} -1 & \text{else}  
+							\end{cases}
+						\end{spalign}
+
+
+						We assume that the Error Function is normalised by construction and therefore satisfied:
+						\begin{equation}
+							\sum_{s=0}^M E(s) = \sum_{i=0}^{R_\epsilon-1} \Delta_i \mathcal{E}_i = 1
+						\end{equation}
+
+						
 					\subsubsection{Bayes' Theorem}
 
 						For each base $i$, the probability of observing coverage-sum $s_i$, given that the current harmonic is $q$ is therefore $p(s_i | q, \vec{\theta})$. From Bayes' theorem, we can then invert this to find the probability $p(q | s_i, \vec{\theta})$; the probability that the harmonic is $q$ given that we have observed $s_i$.
@@ -706,22 +759,18 @@ $^{2}$University of Cambridge, Cambridge, UK\\
 					\begin{spalign}
 						p_\text{global}(s|\vec{\theta}) & = \sum_{q=0}^Q w_q p(s|q,\vec{\theta}) 
 						\\
-						& = \epsilon E(s) + (1-\epsilon) \sum_{q=0}^Q w_q \text{NB}(s | Sr_q, p_q) \label{E:DefinePGlobal}
+						& = \epsilon E(s) + (1-\epsilon) \sum_{q=0}^Q w_q B_s^q \label{E:DefinePGlobal}
 					\end{spalign}
 					Here $w_q$ are the weights of each harmonic in the mixture model; these are (approximately) equal to the fraction of the genome assigned to each $q$. However, unlike in the local model, we have no idea \textit{where} those $q$ values are. The $w_q$ are interpreted as probabilities (i.e. the probability of belonging to members of the mixture), and thus are constrained such that $w_q \geq 0$ and $\sum_q w_q = 1$.
 
-					The truncation up to $M$ necessitates a re-normalisation of the model to ensure that $\sum_s^M p_s = 1$
+					If this condition on $w_q$ holds, and both $E(s)$ and $B_s^q$ are independently normalised on the domain $[0,M]$, it is also guaranteed that $\sum_s p_s = 1$. With this normalisation, we can use Bayes' theorem to set up a likelihood:
 					\begin{equation}
-						\bar{p}_s(\vec{\theta}) = \frac{p_\text{global}(s|\vec{\theta})}{\sum_{r=0}^M p_\text{global}(r|\vec{\theta})}
-					\end{equation}
-					It might seem obvious that we could omit the normalisation and simply sum to `large enough' $M$, but the action of $\log$ is to amplify tiny differences in the tail of the distribution, and so omitting this can lead to non-trivial errors. With this normalisation, we can use Bayes' theorem to set up a likelihood:
-					\begin{equation}
-						\mathcal{L}_\text{global}(\vec{\theta}) = \sum_{s=0}^M N_s \log\left(\bar{p}_s(\vec{\theta})\right) + \text{LogPrior}(\vec{\theta})
+						\mathcal{L}_\text{global}(\vec{\theta}) = \sum_{s=0}^M N_s \log\left({p}_s(\vec{\theta})\right) + \text{LogPrior}(\vec{\theta})
 					\end{equation}
 					
 					This then has the property that:
 					\begin{equation}
-						\pdiv{\mathcal{L}_\text{global}}{\vec{\theta}} = \sum_s^M \left(\frac{N_s}{\bar{p}_s} - \frac{N_\text{total}}{\sum_r {p}_\text{global}(r)}\right) \pdiv{p_\text{global}(s,\vec{\theta})}{\vec{\theta}} \label{E:MainDerivative}
+						\pdiv{\mathcal{L}_\text{global}}{\vec{\theta}} = \sum_s^M \frac{N_s}{{p}_s}  \pdiv{p_\text{global}(s,\vec{\theta})}{\vec{\theta}} + \pdiv{\text{LogPrior}}{\vec{\theta}}\label{E:MainDerivative}
 					\end{equation}
 					
 			
@@ -739,54 +788,66 @@ $^{2}$University of Cambridge, Cambridge, UK\\
 						\\
 						\epsilon & = \frac{e}{1+\exp(-\phi)} && \text{Error rate always between 0 and $e$}
 						\\
+						\mathcal{E}_i & = \frac{\exp{(\rho_i)}}{\sum_{j=0}^{R_\epsilon-1} \Delta_j \exp{(\rho_j)}} && \text{Error function normalised on $[0,M]$}
+						\\
 						\delta_q & = d_- + \frac{d_+ - d_-}{1 + \exp(-\psi_q)} ~~&& \text{Contamination always between $d_-$ and $d_+$}
 						% \eta & = \frac{h}{1 + \exp(-\psi)} && \text{Contamination rate always between 0 and $h$}
 						% & q && m && n
 					\end{alignat}
-
-					The derivatives are (with $B_s^q = \text{NB}(s | S r_q, p_q)$ for convenience)
+					We then define the following intermediary values:
+					\begin{spalign}
+						% \pdiv{B_s^q}{p_q} & = B_s^q \left(\frac{\langle s_q \rangle - s}{(1-p_q)}\right)
+						% \\
+						% \pdiv{B_s^q}{r_q} & = B_s^q S \left(\digamma(s + Sr_q) - \langle \digamma_q \rangle \right) = B_s^q S \gamma_s^q
+						% \\
+						\langle s \rangle_s & = \sum_s s B_s^q
+						\\
+						\langle \digamma \rangle_q & = \sum_s B_s^q \digamma(s + S r_q)
+						\\
+						\tau_s^q & = S r_q \left(\digamma(s + Sr_q) - \langle \digamma_q \rangle \right)
+						\\
+						\lambda_s^q & = p_q \left( \langle s_q \rangle - s\right)
+					\end{spalign}
+					Where $\digamma(x)$ is the (first-order) digamma function. This allows us to write the various derivatives as:
 					\begin{description}
-						\item[Intermediary Values]
+							
+						% \item[\textbf{$q^\text{th}$ Mean}]
+						% \begin{spalign}
+						% 	\pdiv{p_\text{global}(s)}{\mu_q} & =  (1-\epsilon) w_q \left( \frac{2 r_q}{\mu_q} \pdiv{B_s^q}{r_q}  + \frac{p_q(1-p_q)}{mu_q} \pdiv{B_s^q}{p_q}\right) 
+						% 	\\
+						% 	& = \frac{(1-\epsilon)}{\mu_q} w_q B_s^q \left( 2 S r_q \gamma_s^q  + p_q \left(\mu_q S - s\right)\right) 
+						% \end{spalign}
+						\item[\textbf{Fundamental Frequency}]
 						\begin{spalign}
-							\pdiv{B_s^q}{p_q} & = B_s^q \left(\frac{\mu_q S - s}{(1-p_q)}\right)
-							\\
-							\pdiv{B_s^q}{r_q} & = B_s^q S \left(\digamma(s + Sr_q) - \digamma(Sr_q) + \log(p_q) \right) = B_s^q S \gamma_s^q
+							\pdiv{p_\text{global}(s)}{x} & = (1-\epsilon) \sum_q w_q B_s^q \left( 2 \tau_s^q + \lambda_s^q\right) 
 						\end{spalign}
-						($\digamma(x)$ is the (first-order) digamma function.)
-						\item[$q^\text{th}$ Mean]
+						\item[\textbf{Variance}]
 						\begin{spalign}
-							\pdiv{p_\text{global}(s)}{\mu_q} & =  (1-\epsilon) w_q \left( \frac{2 r_q}{\mu_q} \pdiv{B_s^q}{r_q}  + \frac{p_q(1-p_q)}{mu_q} \pdiv{B_s^q}{p_q}\right) 
-							\\
-							& = \frac{(1-\epsilon)}{\mu_q} w_q B_s^q \left( 2 S r_q \gamma_s^q  + p_q \left(\mu_q S - s\right)\right) 
+							\pdiv{p_\text{global}(s)}{y} & = - (1-\epsilon) \sum_q w_q B_s^q \left( \tau_s^q + \lambda_s^q \right) 
 						\end{spalign}
-						\item[Fundamental Frequency]
-						\begin{spalign}
-							\pdiv{p_\text{global}(s)}{x} & = \sum_q \pdiv{\mu_q}{x}\pdiv{p_\text{global}(s)}{\mu_q}
-							\\
-							& = (1-\epsilon) \sum_q w_q B_s^q \left( 2 S r_q \gamma_s^q  + p_q \left(\mu_q S - s\right)\right) 
+						\item[\textbf{Weights}] \begin{spalign}
+							\pdiv{p_\text{global}(s)}{z_q} & = w_q \left(B_s^q - \sum_r w_r B_r^q \right)
 						\end{spalign}
-						\item[Variance]
+						\item[\textbf{Contamination}]
 						\begin{spalign}
-							\pdiv{p_\text{global}(s)}{y} & = \sigma^2 (1-\epsilon) \sum_q w_q \left( -\frac{r_q}{\sigma^2} \pdiv{B_s^q}{r_q}  - \frac{p^2}{\mu} \pdiv{B_s^q}{p_q}\right) 
-							\\
-							& =  - (1-\epsilon) \sum_q w_q B_s^q \left( S r_q \gamma_s^q  + p_q \left(\mu_q S - s\right)\right) 
-						\end{spalign}
-						\item[Contamination]
-						\begin{spalign}
-							\pdiv{p_\text{global}(s)}{\psi_q} & = \div{\delta_q}{\psi_q}\pdiv{\mu_q}{\delta_q}\pdiv{p_\text{global}(s)}{\mu_q}
-							\\
-							& = (1-\epsilon)w_q B_s^q \left( 2 S r_q \gamma_s^q  + p_q \left(\mu_q S - s\right)\right) 
+							\pdiv{p_\text{global}(s)}{\psi_q} & 
+							= (1-\epsilon)w_q B_s^q \left( 2\tau_s^q + \lambda_s^q \right) 
 							\\ & \times \frac{(\delta_q - d_-)(d_+ - \delta_q)}{(d_+ - d_-)(q + \delta_q)}
 							% = (1-\epsilon) \eta(1 - \frac{\eta}{h})\sum_q &\left[ w_q B_s^q \left( 2 S r_q \gamma_s^q  + p_q \left(\mu_q S - s\right)\right) \frac{(\mathcal{D} - q)}{q + (\mathcal{D} - q)\eta} \right]
 						\end{spalign}
-						\item[Weights] \begin{spalign}
-							\pdiv{p_\text{global}(s)}{z_q} & = w_q \left(B_s^q - \sum_r w_r B_r^q \right)
-						\end{spalign}
-						\item[Error Rate]  \begin{spalign}
+						\item[\textbf{Error Rate}]  \begin{spalign}
 							\pdiv{p_\text{global}(s)}{\phi} & = \epsilon \left(1 - \frac{\epsilon}{e} \right) \left( E(s) - \sum_q^Q w_qB_s^q\right)
 						\end{spalign}
+						\item[\textbf{Error Function}]
+						\begin{spalign}
+							\pdiv{p_\text{global}(s)}{\rho_j} = \epsilon \mathcal{E}_{\Omega(s)} \left( \delta_{j,\Omega(s)} - \mathcal{E}_j \Delta_j\right)
+						\end{spalign}
+						(Note here that we are using $\delta_{a,b}$ in the sense of the Kroencker Delta, not the contamination parameter, $\delta_q$)
 					\end{description}
+
+			
 			}
+
 
 
 
@@ -794,6 +855,40 @@ $^{2}$University of Cambridge, Cambridge, UK\\
 
 				\subsection{Parameter Estimation}\label{A:Inference}
 
-					
+				\subsection{Gamma-Digamma Simplification}
+
+					The nature of the Negative Binomial requires that we be able to compute the following (transcendental) functions of the Gamma function ($\Gamma$) and its derivative ($\digamma$):
+					\begin{spalign}
+						f(s) & =  \log\left(\frac{\Gamma(s + r)}{\Gamma(r)}\right) 
+						\\
+						h(s) & =  \digamma(s + r) - \digamma(r)
+					\end{spalign}
+					There exist efficient methods to approximate these functions (for example, the C++ standard \citep{CPPStandard} guarantees the existence of \verb|std::lgamma| to compute $\log(\Gamma(x))$). 
+
+					Our uses, however, require being able to compute these functions for all values of $s$, sequentially, on the domain $[0,M]$. This is a considerable source of computational expenditure, and can be vastly reduced by the use of the following identities, leveraging our knowledge that $s \in \mathbb{N}$ and $r > 0$:
+					\begin{spalign}
+						f(s) &= \begin{cases} 0 & s = 0
+							\\
+							f(s-1) + \log(s-1+r) & \text{else} \end{cases}
+						\\
+						h(s) & = \begin{cases} 0 & s = 0
+							\\
+							h(s-1) + \frac{1}{s - 1 + r} & \text{else} \end{cases}
+					\end{spalign}
+					Although slower for computing \textit{individual} values of $h(s)$ and $f(s)$, this recurrence relation allows us to compute \textit{sequential} values with vastly reduced overhead: replacing expensive $\Gamma$ and $\digamma$ calls with (comparatively) cheap division and logarithms. This can result in speedups in excess of 10x when $S$ is large.
+
+
+				% The Gamma function ($\Gamma$) and its derivative, the digamma function ($\digamma$) are transcendental and relatively costly to compute. However, since $s \in \mathbb{N}$ and $r > 0$ by definition, we can use an alternative representation: 
+				% \begin{spalign}
+				% 	f(s) = \log\left(\frac{\Gamma(s + r)}{\Gamma(r)}\right) & = 
+				% \end{spalign}
+				% For individual computations, this method is vastly slower than the common (and often inbuilt) methods for approximation, especially when $s$ grows large.
+
+				% Our uses, however, require being able to compute these functions for all values of $s$, sequentially, on the domain $[0,M]$, in which case we can convert these into a recurrence relation:
+				% \begin{spalign}
+				% 	a
+				% \end{spalign}
+				
+				% each call to $\Gamma$ is replaced by a logarithm and an addition, whilst $\digamma$ is replaced by a division and an addition.
 			}
 \end{document}

@@ -51,6 +51,7 @@ struct ModelParameters
 	double Nu;
 	double Variance;
 	std::vector<double> Weight;
+	std::vector<double> LogWeight;
 	double Epsilon;
 	std::vector<double> Contamination;
 	double Eta;
@@ -63,6 +64,8 @@ class Model
 	private:
 		std::vector<double> ProbabilityArray;
 		std::vector<double> logK;
+		std::vector<double> Normalisation;
+		
 		std::vector<std::vector<double>>logB;
 		double eNorm;
 		int ErrorRes;
@@ -70,7 +73,6 @@ class Model
 		int Kmax;
 		int NHarmonic;
 		int Sum;
-		double Normalisation;
 		ModelParameters Parameters;
 		Model(int kmax, int Q, int S, int res);
 	
@@ -80,4 +82,5 @@ class Model
 		void Compute();
 		double operator[](int s) const {return ProbabilityArray[s];}; // deliberately does not have the non-const version. Altering the probability array can only be done by updating the parameters.
 		void SetParameters(const OptimiserParameters & input);
+		double Sample(int q, int s)  {return Parameters.LogWeight[q] + logB[q][s] + log1p(-Parameters.Epsilon);}
 };

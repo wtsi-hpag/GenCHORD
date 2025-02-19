@@ -13,9 +13,9 @@ Model AnnealedSampler::Fit()
 
 	Random R;
 	OptimiserParameters best;
-	int Nit = 2000;
-	// std::vector<double> mu;
-	// std::vector<double> scores;
+	int Nit = 20000;
+	std::vector<double> mu;
+	std::vector<double> scores;
 
 	P.SetParameters(Vector);
 	double prevScore = abs(P.Score(Histogram));
@@ -31,9 +31,9 @@ Model AnnealedSampler::Fit()
 		// Vector.x = xs[i];
 		Vector.RandomStep(R,Proposed,stepSize);
 		P.SetParameters(Proposed);
-		// mu.push_back(P.Parameters.Nu);
+		mu.push_back(P.Parameters.Nu);
 		double s = abs(P.Score(Histogram));
-		// scores.push_back(s);
+		scores.push_back(s);
 		double r = R.UniformDouble(0,1);
 
 		
@@ -95,14 +95,14 @@ Model AnnealedSampler::Fit()
 			}
 		}
 		T *= coolRate;
-		stepSize *= 0.999;
+		// stepSize *= 0.999;
 	}
 
-	// JSL::gnuplot gp;
-	// gp.Scatter(mu,scores);
-	// gp.SetYLog(true);
-	// gp.SetXLog(true);
-	// gp.Show();
+	JSL::gnuplot gp;
+	gp.Scatter(mu,scores);
+	gp.SetYLog(true);
+	gp.SetXLog(true);
+	gp.Show();
 
 	Vector = best;
 	P.SetParameters(Vector);
@@ -115,6 +115,7 @@ Model AnnealedSampler::Fit()
 	int N = JSL::Vector(Histogram).Sum();
 	double p = 0;
 	double s = 0;
+	int maxObs = 0;
 	for (int k: ks)
 	{
 		int roundk = k/Settings.AccumulationFactor;
@@ -124,8 +125,16 @@ Model AnnealedSampler::Fit()
 		// s = ale(s,P[k] -P.LogError(k));
 		p += exp(P[k]);
 		s += exp(P.LogError(k));
+		if (plotFreq[roundk] > maxObs)
+		{
+			maxObs = plotFreq[roundk];
+		}
+		if (mod[roundk] > maxObs)
+		{
+			maxObs = mod[roundk];
+		}
 	}
-	LOG(ERROR) << p << " " << s << " " << s/(p);
+	LOG(ERROR) << p << " " << s << " " << s;
 	LOG(WARN) << P.Parameters.Nu << " " << P.Parameters.Variance << " " << P.Parameters.Epsilon;
 	LOG(WARN) << JSL::Vector(P.Parameters.Weight);
 	LOG(WARN) << P.Parameters.Eta << "  " << JSL::Vector(P.Parameters.Contamination);
@@ -134,6 +143,22 @@ Model AnnealedSampler::Fit()
 	gp2.Plot(plotx,plotFreq);
 	gp2.Plot(plotx,mod);
 	gp2.Plot(plotx,err,JSL::LineProperties::PenType(JSL::Dash));
+
+	for (int q = 0; q < P.NHarmonic; ++q)
+	{
+		double p =0;
+		std::vector<double> harmonic(plotx.size());
+		for (int k: ks)
+		{
+			int roundk = k/Settings.AccumulationFactor;
+			harmonic[roundk] +=exp(P.Sample(q,k) + log(N));
+			p += exp(P.Sample(q,k));
+		}
+		LOG(WARN) << "q = " << q << " normed to " << p/((1 - P.Parameters.Epsilon) * P.Parameters.Weight[q]);
+		gp2.Plot(plotx,harmonic,JSL::LineProperties::Legend("q = " + std::to_string(q)),JSL::LineProperties::PenType(JSL::Dotted));
+	}
+	gp2.SetYRange(0.1,maxObs);
+	gp2.SetLegend(true);
 	gp2.SetYLog(true);
 	// gp2.SetXLog(true);
 	gp2.Show();
