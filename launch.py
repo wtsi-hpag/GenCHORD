@@ -7,7 +7,7 @@ ROOT = "/lustre/scratch126/casm/team267ms/sb71/project_dft_low_cov/data/devils_b
 LOWCOV_FILE = f"lowcovindex.dat"  # Updated source file
 
 N = 15  # Number of parallel screen sessions
-COMMAND_TEMPLATE = "echo `./genchord -file " + ROOT + "{filename}.bam -output /Archives/LowQuality/{filename} -process 1'"
+COMMAND_TEMPLATE = "echo \"./genchord -file " + ROOT + "{filename} -output /Archives/LowQuality/{filename_nobam} -process 1\""
 
 
 def read_file(filename):
@@ -29,7 +29,9 @@ def create_screen_script(index, files):
     with open(script_name, "w") as f:
         f.write("#!/bin/bash\n")
         for filename in files:
-            command = COMMAND_TEMPLATE.format(filename=filename)
+            f = filename.split('.')
+            # filename_base = f[0]
+            command = COMMAND_TEMPLATE.format(filename=filename,filename_nobam=f[0])
             f.write(f"{command} \n")
     os.chmod(script_name, 0o755)
     return script_name
