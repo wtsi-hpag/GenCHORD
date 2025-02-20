@@ -7,7 +7,7 @@ ROOT = "/lustre/scratch126/casm/team267ms/sb71/project_dft_low_cov/data/devils_b
 LOWCOV_FILE = f"lowcovindex.dat"  # Updated source file
 
 N = 15  # Number of parallel screen sessions
-COMMAND_TEMPLATE = "echo ./genchord -file " + ROOT + "{filename} -output Archives/LowQuality/{filename_nobam} -process 1"
+COMMAND_TEMPLATE = "./genchord -file " + ROOT + "{filename} -output Archives/LowQuality/{filename_nobam} -process 1"
 
 
 def read_file(filename):
