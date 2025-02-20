@@ -3,8 +3,8 @@ import subprocess
 from itertools import islice
 
 # CONFIGURATION
-ROOT = "../../zn1/ed15/Devil/Data_Upload/BAMs/cancer/"
-LOWCOV_FILE = f"{ROOT}lowcovindex"  # Updated source file
+ROOT = "/lustre/scratch126/casm/team267ms/sb71/project_dft_low_cov/data/devils_bam_7261/"
+LOWCOV_FILE = f"lowcovindex.dat"  # Updated source file
 
 N = 15  # Number of parallel screen sessions
 COMMAND_TEMPLATE = "echo `./genchord -file " + ROOT + "{filename}.bam -output /Archives/LowQuality/{filename} -process 1'"
