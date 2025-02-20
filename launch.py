@@ -29,9 +29,9 @@ def create_screen_script(index, files):
     with open(script_name, "w") as f:
         f.write("#!/bin/bash\n")
         for filename in files:
-            f = filename.split('.')
+            qq= filename.split('.')
             # filename_base = f[0]
-            command = COMMAND_TEMPLATE.format(filename=filename,filename_nobam=f[0])
+            command = COMMAND_TEMPLATE.format(filename=filename,filename_nobam=qq[0])
             f.write(f"{command} \n")
     os.chmod(script_name, 0o755)
     return script_name
