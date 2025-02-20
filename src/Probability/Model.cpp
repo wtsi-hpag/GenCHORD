@@ -168,8 +168,13 @@ double Model::Score(const std::vector<int> & histogram)
 
 double Model::Prior()
 {
-	// return 0;
-	double base = -1e2*pow(Parameters.Nu-83.0/Settings.Ploidy,2);
+	// double base = 0;
+	// if (Parameters.Nu > Kmax * 1.0/Settings.AccumulationFactor)
+	// {
+	// 	base -= pow(base - Kmax *1.0/Settings.AccumulationFactor,2);
+	// }
+	// return base;
+	double base = 0;//-1e1*pow(Parameters.Nu-83.0/Settings.Ploidy,2);
 	// return base;
 	double wplo = Parameters.Weight[Settings.Ploidy];
 	for (int q = 0; q < Parameters.Weight.size(); ++q)

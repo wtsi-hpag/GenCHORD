@@ -13,10 +13,12 @@ Model AnnealedSampler::Fit()
 
 	Random R;
 	OptimiserParameters best;
-	int Nit = 20000;
+	int Nit = 12000;
 	std::vector<double> mu;
 	std::vector<double> scores;
-
+	std::vector<double> acceptance;
+	std::vector<double> Ts;
+	std::vector<double> baseline;
 	P.SetParameters(Vector);
 	double prevScore = abs(P.Score(Histogram));
 	double minScore = prevScore;
@@ -24,10 +26,18 @@ Model AnnealedSampler::Fit()
 	double T = Nit + 10;
 	int overheats = 0;
 	double stepSize = 0.5;
-	double coolRate = pow(T,-1.0/Nit);
+	double finalStepSize = 0.05;
+	double coolRate = pow(T,-2.0/Nit);
+	double stepRate = pow(finalStepSize/stepSize,1.0/Nit);
 	int nansEncountered = 0;
+	double accept = 0;
+	double reject = 0;
+	int timeSinceHeat = 0;
+	int timeSinceQuench = 0;
+	double mem = (1.0 - 100/Nit);
 	for (int i = 0; i < Nit; ++i)
 	{
+		baseline.push_back(i);
 		// Vector.x = xs[i];
 		Vector.RandomStep(R,Proposed,stepSize);
 		P.SetParameters(Proposed);
@@ -60,30 +70,34 @@ Model AnnealedSampler::Fit()
 				prevScore = s;
 				rejectRun = 0;
 				overheats = 0;
+				accept = mem*(accept + 1);
+				// coolRate =  pow(T,-1.0/(Nit-i));
+				timeSinceHeat = max(0,timeSinceHeat -1);
+				timeSinceQuench = max(0,timeSinceQuench-1);
 			}
 			else
 			{
+				reject = mem*(reject + 1);
 				++rejectRun;
-				if (rejectRun >= 40)
+				if (accept/(accept + reject ) < 0.25 && timeSinceHeat > 20)
 				{
 					// Vector = best;
-					LOG(INFO) << i <<" Reheating from T=" << T << " " << stepSize;
-					T *= 100;
+					T *= 10;
 					rejectRun =0;
 					++overheats;
 					stepSize = 0.1;
+					stepRate = pow(finalStepSize/stepSize,2.0/(Nit-i));
 					coolRate =  pow(T,-1.0/(Nit-i));
+					timeSinceHeat =0;
 					// stepSize = min(0.6,stepSize);
 				}
 				if (overheats > 1)
 				{
-					LOG(WARN) << "Overheat risk!";
 					T *= 10;
 					Vector = best;
 					prevScore = minScore;
 					rejectRun = 0;
 					overheats = 0;
-					// stepSize = 0.5;
 				}
 			}
 			
@@ -91,17 +105,46 @@ Model AnnealedSampler::Fit()
 			{
 				minScore = s;
 				best = Vector;
-				LOG(DEBUG) << "New best " << minScore << " " << P.Parameters.Nu;
 			}
 		}
-		T *= coolRate;
-		// stepSize *= 0.999;
+		++timeSinceHeat;
+		++timeSinceQuench;
+		Ts.push_back(T);
+		double moverate = accept/(accept + reject);
+		acceptance.push_back(moverate);
+		if (moverate > 0.5 && timeSinceQuench > 30)
+		{
+			coolRate = max(0.8,coolRate * 0.99);
+			timeSinceQuench = 0;
+		}
+		
+		T = max(1.0,T*coolRate);
+		if (T == 1)
+		{
+			coolRate = 1.01;
+		}
+		stepSize *= stepRate;
+	}
+	LOG(WARN) << "Accepted = " << 100 * accept *1.0/ (accept + reject);
+
+	for (auto & x: scores)
+	{
+		x = 1 + x - minScore;
 	}
 
 	JSL::gnuplot gp;
+	gp.SetMultiplot(3,1);
+	gp.WindowSize(800,600);
 	gp.Scatter(mu,scores);
 	gp.SetYLog(true);
 	gp.SetXLog(true);
+	gp.SetAxis(1);
+	gp.Plot(baseline,acceptance);
+	gp.SetTitle("Acceptance Fraction");
+	gp.SetAxis(2);
+	gp.Plot(baseline,Ts);
+	gp.SetTitle("Temperature");
+	gp.SetYLog(true);
 	gp.Show();
 
 	Vector = best;
