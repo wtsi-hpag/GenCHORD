@@ -3,11 +3,11 @@ import subprocess
 from itertools import islice
 
 # CONFIGURATION
-ROOT = "/lustre/scratch126/casm/team267ms/sb71/project_dft_low_cov/data/devils_bam_7261/"
+ROOT = "/lustre/scratch126/casm/team267ms/sb71/project_dft_low_cov/data/devils_bam_3999_realigned/"
 LOWCOV_FILE = f"lowcovindex.dat"  # Updated source file
 
 N = 15  # Number of parallel screen sessions
-COMMAND_TEMPLATE = "./genchord -file " + ROOT + "{filename} -output Archives/LowQuality/{filename_nobam} -process 1"
+COMMAND_TEMPLATE = "./genchord -file " + ROOT + "{filename} -output Archives/LowQuality/Set2/{filename_nobam} -process 1"
 
 
 def read_file(filename):
