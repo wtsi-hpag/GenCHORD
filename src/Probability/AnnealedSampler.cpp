@@ -1,18 +1,18 @@
 #include "AnnealedSampler.h"
 
-AnnealedSampler::AnnealedSampler(const DataHolder & data)
+
+AnnealedSampler::AnnealedSampler(const DataHolder & data): Vector(Settings.HarmonicCount,Settings.ErrorRes)
 {
 	Histogram = data.Histogram();
-	Vector = OptimiserParameters(7,Settings.ErrorRes);
-	Proposed = OptimiserParameters(7,Settings.ErrorRes);
+	Proposed = StateVector(Settings.HarmonicCount,Settings.ErrorRes);
 }
 
 Model AnnealedSampler::Fit()
 {
-	Model P(Histogram.size()-1,Vector.z.size(),Settings.AccumulationFactor,Settings.ErrorRes);
+	Model P(Histogram.size()-1,Settings.HarmonicCount,Settings.AccumulationFactor,Settings.ErrorRes);
 
 	Random R;
-	OptimiserParameters best;
+	StateVector best;
 	int Nit = 12000;
 	std::vector<double> mu;
 	std::vector<double> scores;
@@ -20,26 +20,21 @@ Model AnnealedSampler::Fit()
 	std::vector<double> Ts;
 	std::vector<double> baseline;
 	P.SetParameters(Vector);
+	
 	double prevScore = abs(P.Score(Histogram));
 	double minScore = prevScore;
-	int rejectRun = 0;
-	double T = Nit + 10;
-	int overheats = 0;
-	double stepSize = 0.5;
-	double finalStepSize = 0.05;
+	double T = abs(prevScore);
+	double stepSize = 0.1;
 	double coolRate = pow(T,-2.0/Nit);
-	double stepRate = pow(finalStepSize/stepSize,1.0/Nit);
 	int nansEncountered = 0;
 	double accept = 0;
-	double reject = 0;
 	int timeSinceHeat = 0;
 	int timeSinceQuench = 0;
-	double mem = (1.0 - 100/Nit);
+	double mem = 1.0 - 50.0/Nit;
 	for (int i = 0; i < Nit; ++i)
 	{
 		baseline.push_back(i);
-		// Vector.x = xs[i];
-		Vector.RandomStep(R,Proposed,stepSize);
+		Vector.Parameters.RandomStep(R,Proposed,stepSize);
 		P.SetParameters(Proposed);
 		mu.push_back(P.Parameters.Nu);
 		double s = abs(P.Score(Histogram));
@@ -54,7 +49,7 @@ Model AnnealedSampler::Fit()
 			if (nansEncountered < 5)
 			{
 				LOG(WARN) << "NAN Encountered in optimisation routine. Attempting to recover.";
-				Vector = best;
+				Vector.Parameters = best;
 				prevScore = minScore;
 			}
 			else
@@ -66,66 +61,65 @@ Model AnnealedSampler::Fit()
 		{
 			if (r < exp(min(0.0,E)))
 			{
-				Vector = Proposed;
+				//accept the proposal
+				Vector.Parameters = Proposed;
 				prevScore = s;
-				rejectRun = 0;
-				overheats = 0;
-				accept = mem*(accept + 1);
-				// coolRate =  pow(T,-1.0/(Nit-i));
-				timeSinceHeat = max(0,timeSinceHeat -1);
-				timeSinceQuench = max(0,timeSinceQuench-1);
+				accept = mem*accept + (1.0 - mem);
+
+				//cool the system if too many positions accepted
+				if (accept > 0.5 && timeSinceQuench > 30)
+				{
+					T/=2;
+					timeSinceQuench = 0;
+					// accept = 0.5;
+				}
 			}
 			else
 			{
-				reject = mem*(reject + 1);
-				++rejectRun;
-				if (accept/(accept + reject ) < 0.25 && timeSinceHeat > 20)
+				accept = mem * accept;
+
+				if (timeSinceHeat > 20)
 				{
-					// Vector = best;
-					T *= 10;
-					rejectRun =0;
-					++overheats;
-					stepSize = 0.1;
-					stepRate = pow(finalStepSize/stepSize,2.0/(Nit-i));
-					coolRate =  pow(T,-1.0/(Nit-i));
-					timeSinceHeat =0;
-					// stepSize = min(0.6,stepSize);
-				}
-				if (overheats > 1)
-				{
-					T *= 10;
-					Vector = best;
-					prevScore = minScore;
-					rejectRun = 0;
-					overheats = 0;
+					//if doing *really badly*, jump to the best score to get back in the mix.
+					if (accept < 0.1)
+					{
+						Vector.Parameters = best;
+						prevScore = minScore;
+						T *= 10;
+						// accept = 0.1;
+					}
+					else if (accept < 0.25)
+					{
+						double minFac = 2;
+						double maxFac = 10;
+						double heatFactor = maxFac - (maxFac - minFac)/Nit * i;
+						T *= heatFactor;
+						coolRate =  pow(T,-1.0/(Nit-i));
+						timeSinceHeat =0;
+						// accept = 0.25;
+					}
 				}
 			}
 			
 			if (s < minScore)
 			{
 				minScore = s;
-				best = Vector;
+				best = Vector.Parameters;
 			}
 		}
 		++timeSinceHeat;
 		++timeSinceQuench;
 		Ts.push_back(T);
-		double moverate = accept/(accept + reject);
-		acceptance.push_back(moverate);
-		if (moverate > 0.5 && timeSinceQuench > 30)
-		{
-			coolRate = max(0.8,coolRate * 0.99);
-			timeSinceQuench = 0;
-		}
+		acceptance.push_back(accept);
+		
 		
 		T = max(1.0,T*coolRate);
 		if (T == 1)
 		{
 			coolRate = 1.01;
 		}
-		stepSize *= stepRate;
 	}
-	LOG(WARN) << "Accepted = " << 100 * accept *1.0/ (accept + reject);
+	LOG(WARN) << "Accepted = " << 100 * accept;
 
 	for (auto & x: scores)
 	{

@@ -7,10 +7,13 @@ class AnnealedSampler
 {
 	private:
 		std::vector<int> Histogram;
-		OptimiserParameters Vector;
-		OptimiserParameters Proposed;
+		OptimiserPack Vector;
+		StateVector Proposed;
+
+		// void Optimise(const DataHolder & data);
 	public:
 		AnnealedSampler(const DataHolder & data);
+
 
 		Model Fit();
 };

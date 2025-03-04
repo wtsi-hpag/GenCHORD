@@ -30,6 +30,7 @@
 	Setting(bool,ProcessMode,false,"process") /*activates a special mode which only reads in files*/\
 	Setting(bool,TreeMode,true,"tree") \
 	Setting(int,ErrorRes,100,"eres") \
+	Setting(int,HarmonicCount,7,"Q") \
 // Do not edit anything below this line!
 class SettingsObject		
 {
