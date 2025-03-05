@@ -16,14 +16,25 @@ StateVector::StateVector(int dim, int res, int acc)
 	AccumulateOrder = acc;
 }
 
+void StateVector::LightCopy(const StateVector & in)
+{
+	x = in.x;
+	y = in.y;
+	z = in.z;
+	phi = in.phi;
+	psi = in.psi;
+	gamma = in.gamma;
+	h = in.h;
+}
+
 void StateVector::SetDefaultValues()
 {
 	x = log(30);
-	y = 2;
+	y = 4;
 	phi = -1;
 	h = -1;
 	std::fill(z.begin(), z.end(),0.0);
-	std::fill(psi.begin(), psi.end(),-1.);
+	std::fill(psi.begin(), psi.end(),0);
 	std::fill(gamma.begin(),gamma.end(),0.0);
 }
 
@@ -51,7 +62,7 @@ void StateVector::ADAMUpdate(const StateVector & firstMoment, const StateVector 
 	const double c1 = 1.0/(1.0 - pow(b1,l));
 	const double c2 = 1.0/(1.0 - pow(b2,l));
 	const double eps = 1e-10; 
-	x += alpha * firstMoment.x * c1 / sqrt(secondMoment.x*c2 + eps);
+	x += 0.1*alpha * firstMoment.x * c1 / sqrt(secondMoment.x*c2 + eps);
 	y += alpha * firstMoment.y * c1 / sqrt(secondMoment.y*c2 + eps);
 	phi += alpha * firstMoment.phi * c1 / sqrt(secondMoment.phi*c2 + eps);
 	h += alpha * firstMoment.h * c1 / sqrt(secondMoment.h*c2 + eps);	
@@ -64,6 +75,11 @@ void StateVector::ADAMUpdate(const StateVector & firstMoment, const StateVector 
 	for (int j = 0; j < gamma.size(); ++j)
 	{
 		gamma[j] += alpha * firstMoment.gamma[j] * c1/sqrt(secondMoment.gamma[j]*c2 + eps);
+	}
+
+	if (x> log(150))
+	{
+		x = log(150);
 	}
 }
 

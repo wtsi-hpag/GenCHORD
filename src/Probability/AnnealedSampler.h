@@ -10,7 +10,7 @@ class AnnealedSampler
 		OptimiserPack Vector;
 		StateVector Proposed;
 
-		// void Optimise(const DataHolder & data);
+		void Optimise(Model & model, int Nsteps);
 	public:
 		AnnealedSampler(const DataHolder & data);
 

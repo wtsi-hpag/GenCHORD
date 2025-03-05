@@ -15,7 +15,7 @@ class StateVector
 		std::vector<double> gamma;
 		double h;
 
-		StateVector(int dim=10, int res = 20, int accumulateOrder = 0);
+		StateVector(int dim, int res, int accumulateOrder=0);
 
 		//templated to allow different random engines to be used.
 		template <typename T>
@@ -44,4 +44,6 @@ class StateVector
 		void ADAMUpdate(const StateVector & firstMoment, const StateVector & secondMoment, double alpha, double b1, double b2, int l);
 
 		void Reset();
+
+		void LightCopy(const StateVector & in);
 };

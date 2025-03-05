@@ -14,6 +14,15 @@ class Model
 		std::vector<std::vector<double>>logB;
 		double eNorm;
 		int ErrorRes;
+		int ErrorWindow(int k);
+		std::vector<double> sMean;
+		std::vector<double> digammaMean;
+		std::vector<double> digammaArray;
+		std::vector<double> contaminationPref;
+
+		std::vector<double> Muq;
+		std::vector<double> Rq;
+		std::vector<double> Pq;
 	public: 
 		int Kmax;
 		int NHarmonic;
@@ -28,5 +37,6 @@ class Model
 		double operator[](int s) const {return ProbabilityArray[s];}; // deliberately does not have the non-const version. Altering the probability array can only be done by updating the parameters.
 		void SetParameters(const OptimiserPack & input);
 		void SetParameters(const StateVector & input);
+		void ComputeGradient(StateVector & grad,const std::vector<int> & histogram);
 		double Sample(int q, int s)  {return Parameters.LogWeight[q] + logB[q][s] + log1p(-Parameters.Epsilon);}
 };

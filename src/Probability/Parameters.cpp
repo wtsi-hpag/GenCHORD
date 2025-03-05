@@ -10,6 +10,8 @@ OptimiserPack::OptimiserPack(StateVector input): Parameters(input), Gradient(inp
 
 }
 
+
+
 void OptimiserPack::AccumulateGradient(double b1, double b2)
 {
 	FirstMoment.Accumulate(Gradient,b1);
@@ -20,19 +22,32 @@ void OptimiserPack::ADAMUpdate(double alpha, double b1, double b2, int l)
 	Parameters.ADAMUpdate(FirstMoment,SecondMoment,alpha,b1,b2,l);
 }
 
-void OptimiserPack::Reset()
+void OptimiserPack::OptimiseReset()
 {
-	
+	Gradient.Reset();
+	FirstMoment.Reset();
+	SecondMoment.Reset();
 }
 
 void ModelParameters::Transform(const OptimiserPack &in, int Kmax)
 {
 	Transform(in.Parameters, Kmax);
 }
+
+void ModelParameters::SetWindows(int Kmax)
+{
+	StandardWidth = floor((Kmax+1)/E.size() + 0.5);
+	logWidth = log(StandardWidth);
+	ResidualWidth = (Kmax + 1 - StandardWidth * (E.size()-1));
+	logRWidth = log(ResidualWidth);
+	
+	WindowSet = true;
+}
+
 void ModelParameters::Transform(const StateVector &in, int Kmax)
 {
-	Nu = 1+exp(in.x);
-	Variance= 1+exp(in.y);
+	Nu = exp(in.x);
+	Variance= exp(in.y);
 	Epsilon = Settings.ErrorMax/ ( 1 + exp(-in.phi));
 	double s = 0;
 	int Q = in.z.size();
@@ -67,21 +82,18 @@ void ModelParameters::Transform(const StateVector &in, int Kmax)
 	Eta = 0.1/(1 + exp(-in.h));
 
 	double Enorm = -9e99;
-	int standardWidth = (Kmax+1)/in.gamma.size();
-	double lWidth = log(standardWidth);
-	int residualWidth = (Kmax + 1 - standardWidth * (in.gamma.size()-1));
-	double rWidth = log(residualWidth);
 
-	if (E.size() != in.gamma.size())
+	if (E.size() != in.gamma.size() || !WindowSet)
 	{
 		E.resize(in.gamma.size());
+		SetWindows(Kmax);
 	}
 	for (int i = 0; i < in.gamma.size(); ++i)
 	{
-		double width = lWidth;
+		double width = logWidth;
 		if (i == in.gamma.size() -1)	
 		{
-			width = rWidth;
+			width = logRWidth;
 		}
 		E[i] = in.gamma[i];
 		Enorm= ale(Enorm,E[i] + width);
@@ -92,5 +104,4 @@ void ModelParameters::Transform(const StateVector &in, int Kmax)
 	{
 		E[i] -= Enorm;
 	}
-
 }
