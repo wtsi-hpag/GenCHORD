@@ -72,11 +72,11 @@ class DataHolder
 		std::vector<int> Histogram(int chromosome) const;
 		size_t size();
 		void Analyse();
+		void TruncateHistogram(std::vector<int> & vec, lint nTotal) const;
 	private:
 		std::vector<CoverageArray> data;
 		void internalHistogram(int c, std::vector<int> & output) const;
 		bool TruncateMode = true;
-		void TruncateHistogram(std::vector<int> & vec, lint nTotal) const;
 };
 
 // typedef std::vector<CoverageArray> DataHolder;

@@ -55,7 +55,7 @@ void PlotModel(JSL::gnuplot & gp, const std::vector<int> Histogram, Model & P, d
 
 }
 
-AnnealedSampler::AnnealedSampler(const DataHolder & data): Vector(Settings.HarmonicCount,Settings.ErrorRes), Proposed(Settings.HarmonicCount,Settings.ErrorRes)
+AnnealedSampler::AnnealedSampler(const DataHolder & data): Vector(Settings.HarmonicCount,Settings.ErrorRes), Proposed(Settings.HarmonicCount,Settings.ErrorRes), Data(data)
 {
 	Histogram = data.Histogram();
 	// Model tempModel(Histogram.size()-1,Settings.HarmonicCount,Settings.AccumulationFactor,Settings.ErrorRes);
@@ -126,7 +126,7 @@ Model AnnealedSampler::Fit()
 			timeSinceOptim = 0;
 			Optimise(P,10 + (300*i)/Nit);
 			
-			T*=100;
+			// T*=100;
 		}
 		mu.push_back(P.Parameters.Nu);
 		double s = abs(P.Score(Histogram));
@@ -242,7 +242,7 @@ Model AnnealedSampler::Fit()
 	
 	PlotModel(gp2,Histogram,P,maxObs,true,"Sampled");
 	double s = P.Score(Histogram);
-	Optimise(P,500);
+	Optimise(P,200);
 	double s2 = P.Score(Histogram);
 	PlotModel(gp2,Histogram,P,maxObs,false,"Optimised");
 	LOG(DEBUG) << "Final improvement " << s << " -> " << s2;
@@ -252,6 +252,7 @@ Model AnnealedSampler::Fit()
 
 void AnnealedSampler::Optimise(Model & model, int Nsteps)
 {
+	auto vCopy = Vector;
 	double alpha = 0.1;
 	double b1 = 0.5;
 	double b2 = 0.9;
@@ -267,4 +268,19 @@ void AnnealedSampler::Optimise(Model & model, int Nsteps)
 		// LOG(DEBUG) << model.Parameters.Nu << "  " << JSL::Vector(Vector.Gradient.psi);
 	}
 	Proposed = Vector.Parameters;
+	Vector = vCopy;
+}
+
+Model AnnealedSampler::FineTune(Model model, int chromosome)
+{
+	Histogram = Data.Histogram(chromosome);
+	Data.TruncateHistogram(Histogram,Data[chromosome].size());
+	JSL::gnuplot gp;
+	double maxObs = 0;
+	PlotModel(gp,Histogram,model,maxObs,true,"Baseline");
+	
+	Optimise(model,100);
+	PlotModel(gp,Histogram,model,maxObs,false,"Fine-Tuned");
+	gp.Show();
+	return model;
 }

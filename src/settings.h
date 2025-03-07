@@ -31,6 +31,10 @@
 	Setting(bool,TreeMode,true,"tree") \
 	Setting(int,ErrorRes,100,"eres") \
 	Setting(int,HarmonicCount,7,"Q") \
+	Setting(int,MinJump,10000,"L") \
+	Setting(double,PloidyPrior,1e-1,"ploidy-prior")\
+
+
 // Do not edit anything below this line!
 class SettingsObject		
 {

@@ -8,6 +8,7 @@
 #include "Probability/AnnealedSampler.h"
 #include "Utility/Random.h"
 #include "Utility/Timer.h"
+#include "Harmonics/HarmonicTree.h"
 void ConfigureLogging()
 {
 	std::ios_base::sync_with_stdio(false);
@@ -67,7 +68,43 @@ void TreeFunction()
 
 	AnnealedSampler AS(Data);
 	
-	AS.Fit();
+	auto model = AS.Fit();
+	model.PrepareHarmonics();
+	LOG(INFO) << "Harmonics prepared";
+	for (int c = 0; c < Data.size(); ++c)
+	{
+		AS.FineTune(model,c);
+		HarmonicTree Network(model,Data,c);
+		auto path = Network.Navigate();
+		LOG(INFO) << "Navigated " << c;
+
+		auto xy = Data[c].GetCoverage();
+		JSL::gnuplot gp;
+		gp.Plot(xy.X,xy.Y);
+		gp.SetTitle("Chromosome " + std::to_string(c));
+		gp.SetYRange(0,model.Kmax+10);
+
+		std::vector<int> x= {0};
+		std::vector<double> y = {0};
+		double prevy = 0;
+		for (auto pos : path.Route)
+		{
+			x.push_back(pos.Index);
+			x.push_back(pos.Index);
+			y.push_back(prevy);
+			int q = pos.Value;
+			prevy = (q + model.Parameters.Contamination[q]) * model.Parameters.Nu * Settings.AccumulationFactor; 
+			LOG(DEBUG) << pos.Index << "  " << pos.Value;
+			y.push_back(prevy);
+		}
+		x.push_back(Data[c][Data[c].size()-1].Index);
+		y.push_back(prevy);
+		gp.Plot(x,y);
+
+		gp.Show();
+	}
+
+
 }
 
 int main(int argc, char ** argv)

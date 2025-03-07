@@ -127,10 +127,35 @@ void Model::Compute()
 		double contribution = eFrac + LogError(k);
 		for (int q = 0; q <NHarmonic; ++q)
 		{
-			contribution = ale(contribution,Parameters.LogWeight[q] + logB[q][k] );
+			contribution = ale(contribution,sigFrac + Parameters.LogWeight[q] + logB[q][k] );
 		}
 		ProbabilityArray[k] = contribution;
 	}
+}
+
+void Model::PrepareHarmonics()
+{
+	HarmonicProbabilityArray.resize(Kmax+1,std::vector<double>(NHarmonic,0.0));
+
+	double sigFrac = log1p(-Parameters.Epsilon);
+	double eFrac = log(Parameters.Epsilon);
+	
+	for (int k = 0; k<= Kmax; ++k)
+	{
+		double error = eFrac + LogError(k);
+		for (int q = 0; q <NHarmonic; ++q)
+		{
+			HarmonicProbabilityArray[k][q] = ale(error,sigFrac + logB[q][k]);
+		}
+	}
+}
+double Model::HarmonicProbability(int k, int q)
+{
+	if (k > Kmax)
+	{
+		k = Kmax;
+	}
+	return HarmonicProbabilityArray[k][q];
 }
 
 double Model::Score(const std::vector<int> & histogram)

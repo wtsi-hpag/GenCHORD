@@ -9,6 +9,7 @@ class Model
 {
 	private:
 		std::vector<double> ProbabilityArray;
+		std::vector<std::vector<double>> HarmonicProbabilityArray;
 		std::vector<double> logK;
 		
 		std::vector<std::vector<double>>logB;
@@ -39,4 +40,6 @@ class Model
 		void SetParameters(const StateVector & input);
 		void ComputeGradient(StateVector & grad,const std::vector<int> & histogram);
 		double Sample(int q, int s)  {return Parameters.LogWeight[q] + logB[q][s] + log1p(-Parameters.Epsilon);}
+		void PrepareHarmonics();
+		double HarmonicProbability(int k, int q);
 };

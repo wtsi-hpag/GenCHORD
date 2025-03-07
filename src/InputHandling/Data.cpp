@@ -143,7 +143,7 @@ void DataHolder::TruncateHistogram(std::vector<int> & vec, lint Ntotal) const
 			lastk = k;
 		}
 		
-		if (cumulative > 0.95*Ntotal && gap > 4)
+		if (cumulative > 0.95*Ntotal && gap > 10)
 		{
 			int s = vec.size();
 			vec.resize(lastk);
