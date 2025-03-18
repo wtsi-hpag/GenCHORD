@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../Settings.h"
+#include "../settings.h"
 #include "../Utility/Random.h"
 class StateVector
 {
