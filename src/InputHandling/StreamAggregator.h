@@ -50,7 +50,7 @@ struct StreamAggregator
 		
 		if (Position == -1)
 		{
-			LOG(DEBUG) << "\t" << HopSize << " " << Crawling position " << idx "  ";
+			LOG(DEBUG) << "\t" << HopSize << " Crawling position " << idx  << "  ";
 			Position = idx;
 		}
 		Sum += k;
