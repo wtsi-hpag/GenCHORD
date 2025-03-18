@@ -3,8 +3,15 @@
 
 void PlotModel(JSL::gnuplot & gp, const std::vector<int> Histogram, Model & P, double & maxObs, bool plotData,std::string title)
 {
+	if (Histogram.size() == 0)
+	{
+		return;
+	}
+	int modelResolution = std::min((int)Histogram.size(),1000);
+
 	std::vector<double> ks = JSL::Vector::intspace(0,Histogram.size()-1,1);
-	std::vector<int> plotx = JSL::Vector::intspace(0,ks.size()/Settings.AccumulationFactor,1);
+	std::vector<int> plotx = JSL::Vector::linspace(0,Histogram.size()-1,modelResolution);
+	double dx = plotx[1] - plotx[0];
 	std::vector<double> mod(plotx.size(),0.0);
 	std::vector<double> err(plotx.size(),0.0);
 	std::vector<double> plotFreq(plotx.size(),0.0);
@@ -13,7 +20,7 @@ void PlotModel(JSL::gnuplot & gp, const std::vector<int> Histogram, Model & P, d
 	double s = 0;
 	for (int k: ks)
 	{
-		int roundk = k/Settings.AccumulationFactor;
+		int roundk = min((int)round(k * 1.0/dx),(int)(plotx.size()-1));
 		mod[roundk] += exp(P[k]);
 		plotFreq[roundk] += Histogram[k]* 1.0/N;
 		err[roundk] += exp(P.LogError(k)) * P.Parameters.Epsilon;
@@ -34,7 +41,9 @@ void PlotModel(JSL::gnuplot & gp, const std::vector<int> Histogram, Model & P, d
 	{
 		gp.Plot(plotx,plotFreq,JSL::LineProperties::Legend("Observed Data"));
 	}
+
 	gp.Plot(plotx,mod,JSL::LineProperties::Legend(title));
+	// gp.Scatter(plotx,mod);
 	// // gp2.Plot(plotx,err,JSL::LineProperties::PenType(JSL::Dash));
 
 	// for (int q = 0; q < P.NHarmonic; ++q)
@@ -52,12 +61,20 @@ void PlotModel(JSL::gnuplot & gp, const std::vector<int> Histogram, Model & P, d
 	gp.SetYRange(0.1/N,1.0);
 	gp.SetLegend(true);
 	gp.SetYLog(true);
+	
+	gp.SetGrid(true);
+	// gp.SetXLog(true);
 
 }
 
 AnnealedSampler::AnnealedSampler(const DataHolder & data): Vector(Settings.HarmonicCount,Settings.ErrorRes), Proposed(Settings.HarmonicCount,Settings.ErrorRes), Data(data)
 {
 	Histogram = data.Histogram();
+	if (Settings.DefaultMean < 0)
+	{
+		Settings.DefaultMean = data.OverallMean;
+		LOG(DEBUG) << "Modifying internal settings " << Settings.DefaultMean;
+	}
 	// Model tempModel(Histogram.size()-1,Settings.HarmonicCount,Settings.AccumulationFactor,Settings.ErrorRes);
 	// tempModel.Parameters.Nu = 45;
 	// tempModel.Parameters.Variance = 10;
@@ -86,7 +103,7 @@ AnnealedSampler::AnnealedSampler(const DataHolder & data): Vector(Settings.Harmo
 Model AnnealedSampler::Fit()
 {
 	Model P(Histogram.size()-1,Settings.HarmonicCount,Settings.AccumulationFactor,Settings.ErrorRes);
-
+	Vector.Parameters.SetDefaultValues();
 	Random R;
 	StateVector best(Settings.HarmonicCount,Settings.ErrorRes);
 	best.SetDefaultValues();
@@ -273,14 +290,16 @@ void AnnealedSampler::Optimise(Model & model, int Nsteps)
 
 Model AnnealedSampler::FineTune(Model model, int chromosome)
 {
+	// LOG(DEBUG) << "Entering FT with " << 
 	Histogram = Data.Histogram(chromosome);
 	Data.TruncateHistogram(Histogram,Data[chromosome].size());
 	JSL::gnuplot gp;
 	double maxObs = 0;
-	PlotModel(gp,Histogram,model,maxObs,true,"Baseline");
+	// PlotModel(gp,Histogram,model,maxObs,true,"Baseline");
 	
 	Optimise(model,100);
-	PlotModel(gp,Histogram,model,maxObs,false,"Fine-Tuned");
-	gp.Show();
+
+	// PlotModel(gp,Histogram,model,maxObs,false,"Fine-Tuned");
+	// gp.Show();
 	return model;
 }

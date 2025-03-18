@@ -33,7 +33,6 @@ Model::Model(int kmax, int Q, int S, int errorRes)
 		prev += log(k);
 		logK[k] = prev;
 	}
-
 	SetParameters(OptimiserPack(Q,errorRes));
 	LOG(INFO) << "Probability Model Initialised with dimensions " << Q << "x" << kmax+1;
 }
@@ -154,6 +153,8 @@ double Model::HarmonicProbability(int k, int q)
 	if (k > Kmax)
 	{
 		k = Kmax;
+		// double sig = lgamma(k + Rq[q]) - lgamma(Rq[q]) + Rq[q] * log(Pq[q])  + k*log(1-Pq[q]);
+		// return ale(log(Parameters.Epsilon) + LogError(Kmax), log1p(-Parameters.Epsilon) + sig); 
 	}
 	return HarmonicProbabilityArray[k][q];
 }
@@ -168,16 +169,17 @@ double Model::Score(const std::vector<int> & histogram)
 	return score;
 }
 
+double alpha = 1e5;
 double Model::Prior()
 {
 	// return 0;
-	// double base = 0;
+	double base = 0;
 	// if (Parameters.Nu > Kmax * 1.0/Settings.AccumulationFactor)
 	// {
 	// 	base -= pow(base - Kmax *1.0/Settings.AccumulationFactor,2);
 	// }
 	// return base;
-	double base = -1e3*pow(Parameters.Nu-83.0/Settings.Ploidy,2);
+	base = -alpha*pow(Parameters.Nu-Settings.DefaultMean/Settings.Ploidy,2);
 	// return base;
 	double wplo = Parameters.Weight[Settings.Ploidy];
 	for (int q = 0; q < Parameters.Weight.size(); ++q)
@@ -187,16 +189,16 @@ double Model::Prior()
 			base -= 1e5*pow(Parameters.Weight[q] - wplo,2);
 		}
 
-		base -= 1e3*pow(Parameters.Contamination[q] - (Settings.Ploidy - q)*Parameters.Eta,2);
-		if (q > 0)
-		{
-			double sep = (Parameters.Contamination[q-1] - Parameters.Contamination[q]);
-			double crit = 1.2;
-			if (sep > crit)
-			{
-				base -= 1e5*pow(sep-crit,2);
-			}
-		}
+		// base -= 1e3*pow(Parameters.Contamination[q] - (Settings.Ploidy - q)*Parameters.Eta,2);
+		// if (q > 0)
+		// {
+		// 	double sep = (Parameters.Contamination[q-1] - Parameters.Contamination[q]);
+		// 	double crit = 1.2;
+		// 	if (sep > crit)
+		// 	{
+		// 		base -= 1e5*pow(sep-crit,2);
+		// 	}
+		// }
 	}
 	return base;
 }
@@ -284,5 +286,34 @@ void Model::ComputeGradient(StateVector & grad,const std::vector<int> & histogra
 		}
 	}
 	
-	// LOG(WARN) << JSL::Vector(grad.gamma);
+
+	//prior term
+	grad.x -= alpha * (1.0 - Settings.DefaultMean/(Parameters.Nu * Settings.Ploidy));
+	double wplo = Parameters.Weight[Settings.Ploidy];
+	std::vector<double> dpriordw(Parameters.Weight.size(),0.0);
+	// std::vector<double> dpriordcont(Parameters.Weight.size(),0.0);
+	// double s =0;
+	for (int q = 0; q < Parameters.Weight.size(); ++q)
+	{
+
+		if (Parameters.Weight[q] > wplo)
+		{
+			dpriordw[q] -= 1e5*(Parameters.Weight[q] - wplo);
+			dpriordw[Settings.Ploidy] += 1e5*(Parameters.Weight[q] - wplo);
+		}
+		double etaTerm = -1e1*(Parameters.Contamination[q] - (Settings.Ploidy - q)*Parameters.Eta) * Parameters.Weight[q];
+
+		// grad.psi[q] += 0.01*etaTerm * contaminationPref[q];
+		// grad.h -= etaTerm * Parameters.Eta * (Settings.ContaminationMax - Parameters.Eta);
+	}
+	double s =0;
+	for (int q = 0; q < Parameters.Weight.size(); ++q)
+	{
+		s += Parameters.Weight[q] * dpriordw[q];
+	}
+	for (int q = 0; q < Parameters.Weight.size(); ++q)
+	{
+		grad.z[q] += Parameters.Weight[q] * (dpriordw[q] - s);
+	}
+	// LOG(DEBUG) << "internal" << grad.h << " " << Parameters.Eta;
 }

@@ -79,7 +79,7 @@ void ModelParameters::Transform(const StateVector &in, int Kmax)
 		LogWeight[q] = log(Weight[q]);
 	}
 
-	Eta = 0.1/(1 + exp(-in.h));
+	Eta = Settings.ContaminationMax/(1 + exp(-in.h));
 
 	double Enorm = -9e99;
 

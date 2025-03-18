@@ -73,6 +73,7 @@ class DataHolder
 		size_t size();
 		void Analyse();
 		void TruncateHistogram(std::vector<int> & vec, lint nTotal) const;
+		double OverallMean;
 	private:
 		std::vector<CoverageArray> data;
 		void internalHistogram(int c, std::vector<int> & output) const;

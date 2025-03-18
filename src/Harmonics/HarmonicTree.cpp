@@ -13,8 +13,8 @@ HarmonicTree::HarmonicTree(Model & model, DataHolder & data, int chromosome) : P
 	
 	DataSize = Data[chromosome].size();
 
-	logPloidyPrior = log(Settings.PloidyPrior);
-	logContinuityPrior = 0;//log(s.ContinuityPrior);
+	logPloidyPrior = log(1.0 - model.Parameters.LogWeight[Settings.Ploidy]);
+	logContinuityPrior = -10;//log(s.ContinuityPrior);
 	Ploidy = Settings.Ploidy;
 	Paths.resize(BufferSize);
 
@@ -29,7 +29,7 @@ Path HarmonicTree::Navigate()
 {
 	//do the initial layer first
 	// 
-	LOG(INFO) << "Beginning navigating chromosome " << TargetChromosome;
+	LOG(INFO) << "Beginning navigating chromosome " << Data[TargetChromosome].Name;
 	int k0 = Data[TargetChromosome][0].Coverage;
 	
 
@@ -40,6 +40,7 @@ Path HarmonicTree::Navigate()
 		{
 			score += logPloidyPrior;
 		}
+		// score += Probability.Parameters.LogWeight[q];
 		Paths[0][q].InitialStep(score,q);
 
 	}

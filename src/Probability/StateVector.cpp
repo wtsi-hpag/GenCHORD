@@ -29,8 +29,8 @@ void StateVector::LightCopy(const StateVector & in)
 
 void StateVector::SetDefaultValues()
 {
-	x = log(30);
-	y = 4;
+	x = log(Settings.DefaultMean/Settings.Ploidy);
+	y = 1;
 	phi = -1;
 	h = -1;
 	std::fill(z.begin(), z.end(),0.0);

@@ -71,38 +71,77 @@ void TreeFunction()
 	auto model = AS.Fit();
 	model.PrepareHarmonics();
 	LOG(INFO) << "Harmonics prepared";
-	for (int c = 0; c < Data.size(); ++c)
+	int C = 6;
+	JSL::gnuplot gp;
+	int row = 2;
+	int col = 3;
+	gp.SetMultiplot(row,col);
+	gp.WindowSize(2000,900);
+	gp.SetSuperTitle("Accumulation Length: " + std::to_string(Settings.AccumulationFactor));
+	// y = 0;
+	// x = 0;
+	// for (int c = 0; c < Data.size(); ++c)
+	for (int c =0; c < C; ++c)
 	{
-		AS.FineTune(model,c);
-		HarmonicTree Network(model,Data,c);
+		gp.SetAxis(c);
+		gp.SetTitle("Chromosome " + Data[c].Name);
+		LOG(INFO) << "Beginning fine-tuning of Chromosome " << Data[c].Name;
+		auto tunedModel = AS.FineTune(model,c);
+
+		LOG(INFO) << "I find the contamination to be " << tunedModel.Parameters.Eta;
+		std::string s = "(";
+		for (int i = 0; i < tunedModel.Parameters.Contamination.size(); ++i)
+		{
+			s += std::to_string(tunedModel.Parameters.Contamination[i]/(Settings.Ploidy - i)) + ", ";
+		}
+		s+=")";
+		LOG(DEBUG) << "\tPer-node Contamination: " << s;
+		HarmonicTree Network(tunedModel,Data,c);
 		auto path = Network.Navigate();
-		LOG(INFO) << "Navigated " << c;
 
 		auto xy = Data[c].GetCoverage();
-		JSL::gnuplot gp;
-		gp.Plot(xy.X,xy.Y);
-		gp.SetTitle("Chromosome " + std::to_string(c));
+		std::vector<double> yRound;
+		std::vector<double> xRound;
+		int skipper = max(1,(int)xy.X.size()/10000);
+		for (int i = 0; i < xy.Y.size(); ++i)
+		{
+			if (i % skipper == 0)
+			{
+				xRound.push_back(xy.X[i]);
+				yRound.push_back(xy.Y[i] * 1.0/(tunedModel.Parameters.Nu * Settings.AccumulationFactor));
+			}
+		}
+		// JSL::gnuplot gp;
+		gp.Plot(xRound,yRound);
+		gp.SetTitle("Chromosome " + Data[c].Name);
 		gp.SetYRange(0,model.Kmax+10);
 
 		std::vector<int> x= {0};
 		std::vector<double> y = {0};
 		double prevy = 0;
+		double maxHarmonic = 0;
 		for (auto pos : path.Route)
 		{
 			x.push_back(pos.Index);
 			x.push_back(pos.Index);
 			y.push_back(prevy);
 			int q = pos.Value;
-			prevy = (q + model.Parameters.Contamination[q]) * model.Parameters.Nu * Settings.AccumulationFactor; 
-			LOG(DEBUG) << pos.Index << "  " << pos.Value;
+			prevy = (q + tunedModel.Parameters.Contamination[q]);
+			if (prevy > maxHarmonic)
+			{
+				maxHarmonic = prevy;
+			} 
 			y.push_back(prevy);
 		}
 		x.push_back(Data[c][Data[c].size()-1].Index);
 		y.push_back(prevy);
 		gp.Plot(x,y);
-
-		gp.Show();
+		gp.SetYRange(0,int(maxHarmonic+1.5));
+		gp.SetGrid(true);
+		gp.SetXLabel("Index");
+		gp.SetYLabel("Copy Number (Estimated)");
 	}
+	gp.Show();
 
 
 }

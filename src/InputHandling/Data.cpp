@@ -143,7 +143,7 @@ void DataHolder::TruncateHistogram(std::vector<int> & vec, lint Ntotal) const
 			lastk = k;
 		}
 		
-		if (cumulative > 0.95*Ntotal && gap > 10)
+		if (cumulative > 0.95*Ntotal && gap > 1 || cumulative > Ntotal-25)
 		{
 			int s = vec.size();
 			vec.resize(lastk);
@@ -187,18 +187,20 @@ void DataHolder::Analyse()
 		}
 	}
 	double muTotal = 0;
-	double sqTotal = 0;
-	double longTotal = 0;
+	double nTotal = 0;
 	for (int c = 0; c < data.size(); ++c)
 	{
 		LOG(DEBUG) << "Running stats for" << data[c].Name;
 		data[c].Statistics();
 		
-		// int n = data[c].size();
-		// muTotal += data[c].Mean * n;
+		int n = data[c].size();
+		muTotal += data[c].RawMean * n;
+
+		nTotal += n;
 		// longTotal += n;
 		// sqTotal += (data[c].Variance + data[c].Mean*data[c].Mean)*n;
 	}
+	OverallMean = muTotal/nTotal;
 
 
 }
