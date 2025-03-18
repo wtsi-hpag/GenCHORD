@@ -121,11 +121,13 @@ void StatefulReader::ProcessLine(const dnaindex & idx, const lint & k)
 {
 	if (Count.IndependenceCount == 0)
 	{
+		
 		auto & target = Data[Count.ChromosomeCount];
 		if (Count.SumCount == 0)
 		{
 			++Count.DataIndex;
 			target.AddData(idx,k);
+			LOG(DEBUG) << "Adding point at " << idx << " " << Count.DataIndex;
 		}
 		else
 		{
@@ -139,4 +141,5 @@ void StatefulReader::ProcessLine(const dnaindex & idx, const lint & k)
 		}
 	}
 	Count.IndependenceCount = (Count.IndependenceCount + 1) % Settings.AutocorrelationLength;
+	// exit(5);
 }
