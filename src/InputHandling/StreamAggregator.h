@@ -42,14 +42,15 @@ struct StreamAggregator
 		Sum = 0;
 		SqSum = 0;
 		Size = 0;
-		Position = 0;	
+		Position = -1;	
 	}
 	
 	void Update(int idx, int k)
 	{
 		
-		if (Position == 0)
+		if (Position == -1)
 		{
+			LOG(DEBUG) << "\t Crawling position " << idx;
 			Position = idx;
 		}
 		Sum += k;
@@ -70,7 +71,7 @@ struct StreamAggregator
 			Counter = 0;
 			Sum = 0;
 			SqSum = 0;
-			Position = 0;
+			Position = -1;
 		}
 	}
 	void Flush()
