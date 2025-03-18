@@ -1,6 +1,8 @@
 Data/
-deforest
-# Prerequisites
+genchord
+
+*.gca
+
 *.d
 *.vscode
 *.DS*

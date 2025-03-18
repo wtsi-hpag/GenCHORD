@@ -1,97 +1,75 @@
 #pragma once
-#include "../libs/JSL/JSL.h"
+#include "JSL.h"
+#include "Utility/Log.h"
+/*
+	IMPORTANT! 
+	
+	Settings are defined using some funky macros which remove the need to declare/initialise variables on multiple lines.
 
-extern bool globalRegress;
-class Settings
+	To add a new setting variable, add it in following the pattern Setting(type,VariableName,default value,command-line-string. Everything will be sorted such that a member variable of Settings will be constructed with name Variable name, of type "type" and initialised to the default value. 
+
+	If you pass the command-line-string as a command line argument (or in a config file), the Settings object will instead use that value, using the most recent value it encounters (left-right in CLA, top-down in config file). 
+*/
+#define SETTINGS_LIST \
+	Setting(int,Ploidy,2,"ploidy")  /*The (assumed) default ploidy of the genome.*/\
+	Setting(std::string,DataFile,"_no_file_","file")  /*The input datafile to be read*/\
+	Setting(int,AccumulationFactor,100,"accumulate")  /*The size of the Accumulation Window*/\
+	Setting(std::string,Output,"genchord_output","output")\
+	Setting(bool,CreateArchive,1,"archive")  /*Controls if an archive file is created*/\
+	Setting(int,LogLevel,2,"log")  /*The logging level (0=errors only, 1 = errors + warnings, 2=general info, 3=debug mode)*/\
+	Setting(char,StreamDelimiter,'\t',"delim")	\
+	Setting(bool,LogHeaders,1,"loghead")  /*Controls if the logging headers are printed*/\
+	Setting(int,PlotBinFactor,1,"plotbin") \
+	Setting(double,TruncationFactor,0.999,"truncate")/*Controls the amount of high-coverage tail which is truncated*/\
+	Setting(int,DataGap,1,"datagap")/*the expected gap between genome indices in the input file*/\
+	Setting(std::string,IgnoreChromosomeFlag,"CACP","ignore")\
+	Setting(int,AutocorrelationLength,10,"autocorr")/*The (approximate) lengthscale over which the coverage data are not independent*/\
+	Setting(double, ErrorMax,1e-1,"epsilon") /*the maximum permitted error rate during inference*/ \
+	Setting(double, ContaminationMin,-0.8,"cont-min") /* the lower deviation of contamination*/ \
+	Setting(double, ContaminationMax,0.8,"cont-max") /*The upper deviation of contamination*/\
+	Setting(bool,ProcessMode,false,"process") /*activates a special mode which only reads in files*/\
+	Setting(bool,TreeMode,true,"tree") \
+	Setting(int,ErrorRes,100,"eres") \
+	Setting(int,HarmonicCount,7,"Q") \
+	Setting(int,MinJump,10000,"L") \
+	Setting(double,PloidyPrior,1e-1,"ploidy-prior")\
+	Setting(double,DefaultMean,-1,"expect-mean")\
+
+// Do not edit anything below this line!
+class SettingsObject		
 {
 	public:
-		int Ploidy;
-		double PloidyPrior;
-		double sigmaMin;
-		double sigmaMax;
-		int sigmaResolution;
-		int nuResolution;
+		#define Setting(type, name, defaultValue, cmdArg) type name;
+			SETTINGS_LIST
+		#undef Setting
 
-		double gammaMin;
-		double gammaMax;
-		int gammaResolution;
-		int Accelerator;
-		double Gamma;
-		int Qmax;
-		int L;
-		double ContinuityPrior;
-
-		std::string OutputDirectory;
-		std::string TargetChromosome;
-		bool AllChromosomes;
-		std::string DataFile;
-		int DataThinning;
-		bool Quiet;
-		bool PlotOnly;
-		std::string ComparePlot;
-		double MemorySmoothing;
-		int ParallelWorkers;
-		char DataFileDelimiter;
-		Settings(std::string configFile, int argc, char** argv)
+		// Constructor
+		SettingsObject(){};
+		SettingsObject(int argc, char** argv)
 		{
-			if (configFile == "__none__")
+			Configure(argc,argv);
+		}
+		
+		void Configure(int argc, char**argv)
+		{
+			std::string configFile = JSL::Argument<std::string>("__none__","config",argc,argv);
+			if (configFile.size() == 0 || configFile == "__none__")
 			{
-				Initialise(argc,argv);
+				Initialise(argc, argv);
 			}
 			else
 			{
-				Initialise(configFile);
+				Initialise(configFile,' ');
 			}
 		}
 
-		void Initialise(int argc, char**argv)
+		template<class T, class U>
+		void Initialise(T a, U b)
 		{
-			InitialiseParams(argc,argv);
-
-			Quiet = JSL::Toggle(false,"q",argc,argv); //flags can only be used with the command-arg interface, not with config files
+			#define Setting(type, name, defaultValue, cmdArg) name = JSL::Argument<type>(defaultValue, cmdArg, a,b);
+			SETTINGS_LIST
+			#undef Setting
 		}
-		void Initialise(std::string configFile)
-		{
-			InitialiseParams(configFile,' ');
-		}
+};
 
-	private:
-
-			template<class T, class U>
-			void InitialiseParams(T a, U b)
-			{
-				Ploidy = JSL::Argument<int>(2,"ploidy",a,b);
-				PloidyPrior= JSL::Argument<double>(1,"ploidyPrior",a,b);
-				sigmaMin =JSL::Argument<double>(1,"sigmaMin",a,b);
-				sigmaMax = JSL::Argument<double>(10,"sigmaMax",a,b);
-				sigmaResolution= JSL::Argument<int>(3,"sigmaResolution",a,b);
-				nuResolution = JSL::Argument<int>(100,"nuResolution",a,b);
-				gammaMin =JSL::Argument<double>(0.1,"gammaMin",a,b);
-				gammaMax = JSL::Argument<double>(10,"gammaMax",a,b);
-				gammaResolution= JSL::Argument<int>(5,"gammaResolution",a,b);
-				Accelerator = JSL::Argument<int>(1,"accelerate",a,b);
-				Gamma =  JSL::Argument<double>(-1,"gamma",a,b);
-				Qmax = JSL::Argument<int>(10,"Qmax",a,b);
-				L = JSL::Argument<int>(10000,"L",a,b);
-				ContinuityPrior = JSL::Argument<double>(1e-2,"alpha",a,b);
-				TargetChromosome = JSL::Argument<std::string>("all","c",a,b);
-
-				AllChromosomes = (TargetChromosome == "all"); 
-
-				DataFile = JSL::Argument<std::string>("_no_file_provided_","f",a,b);
-				DataThinning = JSL::Argument<int>(1,"thin",a,b);
-				
-				OutputDirectory = JSL::Argument<std::string>("Output","o",a,b);
-				ParallelWorkers = JSL::Argument<int>(0,"worker",a,b);
-				ComparePlot = JSL::Argument<std::string>("__none__","compare",a,b);
-
-				MemorySmoothing = JSL::Argument<double>(0,"smooth",a,b);
-
-				Quiet = JSL::Argument<bool>(false,"quiet",a,b);
-
-				DataFileDelimiter = JSL::Argument<char>(' ',"data-delimiter",a,b);
-			}
-
-			
-			
-};	
+extern SettingsObject Settings;
