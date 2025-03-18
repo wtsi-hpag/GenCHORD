@@ -13,8 +13,8 @@ HarmonicTree::HarmonicTree(Model & model, DataHolder & data, int chromosome) : P
 	
 	DataSize = Data[chromosome].size();
 
-	logPloidyPrior = log(1.0 - model.Parameters.LogWeight[Settings.Ploidy]);
-	logContinuityPrior = -10;//log(s.ContinuityPrior);
+	logPloidyPrior = 0;//log(1.0 - model.Parameters.LogWeight[Settings.Ploidy]);
+	logContinuityPrior = 0;//log(s.ContinuityPrior);
 	Ploidy = Settings.Ploidy;
 	Paths.resize(BufferSize);
 
@@ -47,6 +47,10 @@ Path HarmonicTree::Navigate()
 	LOG(DEBUG) << "\tInitial nodes set up";
 	for (dnaindex i = 1; i < DataSize; ++i)
 	{
+		if (i < 10)
+		{
+			LOG(DEBUG) << i << " " << Data[TargetChromosome][i].Index;
+		}
 		int bufferIndex = i % BufferSize;
 		
 		int lowerIndex = bufferIndex-1;

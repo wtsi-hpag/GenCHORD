@@ -1,5 +1,5 @@
+#define GNUPLOT_NO_TIDY 1
 #include <iostream>
-
 #include "JSL.h"
 #include "Utility/Log.h"
 #include "settings.h"
